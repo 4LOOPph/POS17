@@ -1,0 +1,31 @@
+<section class="content-header">
+    <h1>
+            Product Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.products">Products</a></li>
+        <li class="active">Product New Entry</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-list'></i> General Info" bs-pane ng-if="!tabprod.product">
+            <div ng-include="'modules/products/product.html'"></div>
+        </div>
+        <div data-title="<i class='fa fa-home'></i> Store" bs-pane ng-if="!tabprod.store">
+            <div ng-include="'modules/products/store.html'"></div>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="!tabprod.category">
+            <div ng-include="'modules/products/category.html'"></div>
+        </div>
+        <div data-title="<i class='fa fa-list-ol'></i> Attribute" bs-pane ng-if="!tabprod.attribute">
+        </div>
+        <div data-title="<i class='fa fa-th'></i> Variation" bs-pane ng-if="!tabprod.variation">
+        </div>
+        <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="!tabprod.price">
+        </div>
+    </div>
+</section>
+<!-- /.content -->
