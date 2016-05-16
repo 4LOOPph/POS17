@@ -1,4 +1,4 @@
-<div class="row" ng-controller="productsAEController">
+<div class="row">
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-8">
             <div class="box box-warning">
@@ -76,9 +76,9 @@
         <div class="col-md-3">
             <div class="box box-warning">
                 <div class="box-body">
-                    <button type="submit" class="btn btn-primary btn-block">Save Entry</button>
-                    <a class="btn btn-success btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
-                    <a class="btn btn-danger btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
+                    <button type="submit" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                    <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
+                    <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
                 </div>
             </div>
         </div>

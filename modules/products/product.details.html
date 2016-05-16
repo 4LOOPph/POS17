@@ -11,20 +11,21 @@
 <!-- Main content -->
 <section class="content">
     <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="<i class='fa fa-list'></i> General Info" bs-pane ng-if="!tabprod.product">
+        <div data-title="<i class='fa fa-list'></i> General Info" bs-pane ng-if="tabprod.product">
             <div ng-include="'modules/products/product.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-home'></i> Store" bs-pane ng-if="!tabprod.store">
+        <div data-title="<i class='fa fa-home'></i> Store" bs-pane ng-if="tabprod.store">
             <div ng-include="'modules/products/store.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="!tabprod.category">
+        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="tabprod.category">
             <div ng-include="'modules/products/category.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-list-ol'></i> Attribute" bs-pane ng-if="!tabprod.attribute">
+        <div data-title="<i class='fa fa-list-ol'></i> Attribute" bs-pane ng-if="tabprod.attribute">
+            <div ng-include="'modules/products/attributes.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-th'></i> Variation" bs-pane ng-if="!tabprod.variation">
+        <div data-title="<i class='fa fa-th'></i> Variation" bs-pane ng-if="tabprod.variation">
         </div>
-        <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="!tabprod.price">
+        <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="tabprod.price">
         </div>
     </div>
 </section>

@@ -11,27 +11,26 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <div class="col-md-8">
-            <div class="box box-warning">
-                <div class="box-header">
-                    <h3 class="box-title">General Info</h3>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form role="form">
+        <form role="form" ng-submit = "saveAttribute()">
+            <div class="col-md-8">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">General Info</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
                     <div class="box-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" disabled ng-model = "details.name"class="form-control" placeholder="Name">
+                            <input type="text" ng-model="details.name" class="form-control" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label>Label</label>
-                            <input type="text" disabled ng-model = "details.label" class="form-control" placeholder="Label">
+                            <input type="text" ng-model="details.label" class="form-control" placeholder="Label">
                         </div>
-
                         <div class="form-group">
                             <label>Default Value</label>
-                            <input type="text" disabled ng-model = "details.default_value" class="form-control" placeholder="Default Value">
+                            <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value">
                         </div>
                         <div class="form-group">
                             <div class="checkbox">
@@ -66,23 +65,23 @@
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"/> Comparable
+                                    <input type="checkbox" /> Comparable
                                 </label>
                             </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
-                </form>
-            </div>
-        </div>
-        <!-- <div class="col-md-3">
-            <div class="box box-warning">
-                <div class="box-body">
-                    <button class="btn btn-primary btn-block">Save Entry</button>
-                    <button class="btn btn-default btn-block">Cancel</button>
                 </div>
             </div>
-        </div> -->
+            <div class="col-md-3">
+                <div class="box box-warning">
+                    <div class="box-body">
+                        <button type = "submit" class="btn btn-primary btn-block">Save Entry</button>
+                        <button class="btn btn-default btn-block">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 <!-- /.content -->

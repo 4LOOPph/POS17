@@ -11,64 +11,84 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <div class="col-md-8">
-            <div class="box box-warning">
-                <div class="box-header">
-                    <h3 class="box-title">General Info</h3>
-                </div>
-                <form role="form">
+        <form role="form" ng-submit="savePersonel()">
+            <div class="col-md-8">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">General Info</h3>
+                    </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text"  ng-model="details.lastname" class="form-control" placeholder="Last Name">
-                        </div>
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text"  ng-model="details.firstname" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <input type="text"  ng-model="details.address" class="form-control" placeholder="Address">
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="text"  ng-model="details.email" class="form-control" placeholder="Email Address">
-                        </div>
-                        <div class="form-group">
-                            <label>Mobile</label>
-                            <input type="text" ng-model="details.mobile" class="form-control" placeholder="Mobile">
-                        </div>
-                        <div class="form-group">
                             <div class="checkbox">
-                                <label>
-                                    <input ng-model = "details.isActive" type="checkbox" /> Active
-                                </label>
+                                <span ng-if="details.isActive == '0' " class="label label-warning">Inactive</span>
+                                <span ng-if="details.isActive == '1' " class="label label-success">Active</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <img ngf-src="prod.img_default_url || prod.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                            <label>Last Name</label>
+                            <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Address </label>
+                            <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..."></textarea>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col control-label">Time Zone</label>
+                            <div class="col">
+                                <select class="form-control" ng-model="details.timeZone" ng-options="item.text for item in timezone">
+                                    <option disabled value="">Choose Time Zone</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="text" ng-model="details.email" class="form-control" placeholder="Email Address">
+                        </div>
+                        <div class="form-group ">
+                            <label class="col control-label">Store Name</label>
+                            <div class="col">
+                                <select class="form-control" ng-model="details.store_id" ng-options="item.store_id as item.name for item in stores">
+                                    <option disabled value="">Choose Store Name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col control-label">Person Type</label>
+                            <div class="col">
+                                <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons">
+                                    <option disabled value="">Choose Personel Type</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <img ngf-src="details.person_img || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
                             <div class="input-group image-preview">
                                 <span class="input-group-btn">
-                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="prod.img_default"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.person_img"> <span class="glyphicon glyphicon-remove"></span> Clear
+                                </button>
                                 <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.img_default" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.person_img" ngf-max-size="8MB" ngf-select="upload($files)" />
                                 </div>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
-                </form>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="box box-warning">
-                <div class="box-body">
-                    <button class="btn btn-primary btn-block">Save Entry</button>
-                    <button class="btn btn-default btn-block">Cancel</button>
                 </div>
             </div>
-        </div>
+            <div class="col-md-3">
+                <div class="box box-warning">
+                    <div class="box-body">
+                        <button type="submit" class=" btn btn-primary btn-block ">Save Entry</button>
+                        <button class="btn btn-default btn-block ">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 <!-- /.content -->

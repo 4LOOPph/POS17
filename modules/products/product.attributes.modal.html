@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <h3 class="modal-title">Manage Product Attributes</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Attributes</label>
+            <div class="col-sm-9">
+                <ui-select ng-model="attrib.attribute_id">
+                    <ui-select-match>
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (attributes | filter: $select.search | limitTo:infiniteScrollContacts.currentItems) track by emp.att_id">
+                    <!-- <ui-select-choices repeat="emp in (attributes | filter: $select.search) track by emp.att_id"> -->
+                        <b>{{emp.name}}</b> <small>({{emp.attrib_type_name}})</small>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label checkbox">
+                <!-- <input type="checkbox" /> -->
+                Name
+            </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Name" ng-model="attrib.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label checkbox">Value</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Value" ng-model="attrib.value">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">SKU</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="SKU" ng-model="attrib.sku">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Image</label>
+            <div class="col-sm-9">
+                <img ngf-src="attrib.value_image || 'http://placehold.it/250x250'" err-src="http://placehold.it/150x150" class="thumbnail" width="150" height="150">
+                <div class="input-group image-preview">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="attrib.value_image"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="attrib.value_image" ngf-max-size="8MB" ngf-select />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">File</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Document" ng-model="attrib.document">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removeFile()" ng-show="attrib.document">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                        <div class="btn btn-primary image-preview-input" ng-model="attrib.document" ngf-max-size="25MB" ngf-select ngf-pattern="application/pdf,application/vnd.ms-powerpoint,application/vnd.open‌​xmlformats-officedocument.wordprocessingml.document" accept="application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlfor‌​mats-officedocument.wordprocessingml.document"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                            <input type="file" name="input-file-preview" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Color</label>
+            <div class="col-sm-9">
+                <div class="input-group my-colorpicker2">
+                    <input type="text" class="form-control" />
+                    <div class="input-group-addon">
+                        <i></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-flat btn-primary" type="button" ng-click="saveAttributes()">Save</button>
+    <button class="btn btn-flat btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>
