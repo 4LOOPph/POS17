@@ -56,7 +56,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat='data in attribute' repeat-end="paginate()">
+                            <tr ng-repeat="data in attribute | orderBy: 'data.date_created':true" repeat-end="paginate()">
                                 <td>
                                     <input type="checkbox" ng-model="data.selected" ng-change="checkDataChanges(data)">
                                 </td>

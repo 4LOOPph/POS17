@@ -24,8 +24,10 @@
             <div ng-include="'modules/products/attributes.html'"></div>
         </div>
         <div data-title="<i class='fa fa-th'></i> Variation" bs-pane ng-if="tabprod.variation">
+            <div ng-include="'modules/products/variants.html'"></div>
         </div>
         <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="tabprod.price">
+            <div ng-include="'modules/products/price.history.html'"></div>
         </div>
     </div>
 </section>

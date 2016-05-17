@@ -14,13 +14,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="settings-stores-add">
-                            <i class="fa fa-edit"></i> Add New Entry
-                        </button>
-                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
-                            <i class="fa fa-remove"></i> Delete
-                        </button>
-                        <button ng-click = "refresh()"class="btn btn-flat btn-sm btn-success">
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                             <i class="fa fa-refresh"></i> Refresh
                         </button>
                     </div>
@@ -43,24 +37,14 @@
                     <table class="table table-hover footable" data-page-size="10">
                         <thead>
                             <tr>
-                                <th data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                </th>
                                 <th data-sort-ignore="true">Name</th>
                                 <th data-sort-ignore="true">Date Created</th>
-                                <th data-sort-ignore="true"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="type in types" repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="type.selected" ng-change = "checkDataChanges(type)">
-                                </td>
-                                <td>{{type.name}}</td>
+                                <td text-align="right">{{type.name}}</td>
                                 <td>{{type.date_created}}</td>
-                                <td class="text-right">
-                                    <button ng-click="edit(data.att_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                </td>
                             </tr>
                         </tbody>
                         <tfoot class="hide-if-no-paging">
