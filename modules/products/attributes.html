@@ -41,7 +41,8 @@
                             </div>
                             <!-- QRCode Textbox -->
                             <label ng-if="attrib.attribute_type=='QRCode Textbox'">{{attrib.attribute}}</label>
-                            <qrcode data="{{attrib.value}}" ng-if="attrib.attribute_type=='QRCode Textbox'"></qrcode>
+                            <br>
+                            <qr type-number="6" correction-level="'M'" size="200" input-mode="''" text="attrib.value" image="true" ng-if="attrib.attribute_type=='QRCode Textbox'"></qr>
                             <!-- Percentage -->
                             <label ng-if="attrib.attribute_type=='Percentage'">{{attrib.attribute}}</label>
                             <h3 class="box-title" ng-if="attrib.attribute_type=='Percentage'">{{attrib.value | percentage:2}}</h3>
