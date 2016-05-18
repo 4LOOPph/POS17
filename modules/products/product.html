@@ -59,7 +59,7 @@
                         <text-angular ng-model="details.item_description"></text-angular>
                     </div>
                     <div class="form-group">
-                        <img ngf-src="details.img_default_url || details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                        <img ngf-src="details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
                         <div class="input-group image-preview">
                             <span class="input-group-btn">
                                         <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.img_default"> <span class="glyphicon glyphicon-remove"></span> Clear

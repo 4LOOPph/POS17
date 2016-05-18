@@ -25,7 +25,7 @@
                                 <button class="btn btn-flat btn-sm btn-danger">
                                     <i class="fa fa-remove"></i> Unpublish
                                 </button>
-                                <button ng-click = "refresh()" class="btn btn-flat btn-sm btn-success">
+                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                     <i class="fa fa-refresh"></i> Refresh
                                 </button>
                             </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="box-body table-responsive no-padding" ng-show="displayModel=='List'">
-                    <table class="table table-hover footable" data-page-size="25">
+                    <table class="table table-hover footable" data-page-size="20">
                         <thead>
                             <tr>
                                 <th data-sort-ignore="true">
@@ -105,7 +105,7 @@
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>
-                                <td colspan="6" align="center">
+                                <td colspan="10" align="center">
                                     <ul class="pagination"></ul>
                                 </td>
                             </tr>
@@ -128,9 +128,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right">
-                        <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                    <div class="text-center">
+                        <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
                     </div>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
         </div>
