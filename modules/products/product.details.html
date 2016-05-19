@@ -29,6 +29,12 @@
         <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="tabprod.price">
             <div ng-include="'modules/products/price.history.html'"></div>
         </div>
+        <div data-title="<i class='fa fa-star'></i> Review / Ratings" bs-pane ng-if="tabprod.ratings">
+        <div ng-include="'modules/products/ratings.html'"></div>
+        </div>
+        <div data-title="<i class='fa fa-link'></i> Related Products" bs-pane ng-if="tabprod.related">
+
+        </div>
     </div>
 </section>
 <!-- /.content -->

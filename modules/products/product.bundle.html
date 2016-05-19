@@ -1,0 +1,333 @@
+<section class="content-header">
+    <h1>
+            Product Bundle Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.products">Products</a></li>
+        <li class="active">Product Bundle New Entry</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+            <div class="row">
+                <form role="form" ng-submit="addProduct()">
+                    <div class="col-md-9">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <div class="form-group" ng-if="details.p_id">
+                                    <label>Status: </label>
+                                    <span ng-if="details.is_published == '0' " class="label label-warning">draft</span>
+                                    <span ng-if="details.is_published == '1' " class="label label-success">published</span>
+                                    <span ng-if="details.is_archived == '1'" class="label label-danger">archived</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Name</label>
+                                    <input type="text" class="form-control" ng-model="details.item_name" placeholder="Product Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Code</label>
+                                    <input type="text" class="form-control" ng-model="details.product_code" placeholder="Product Code">
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Type</label>
+                                    <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Brand</label>
+                                    <input type="text" class="form-control" ng-model="details.brand" placeholder="Product Brand">
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Php ₱</span>
+                                        <input type="text" ng-model="details.sell_price" class="form-control">
+                                        <span class="input-group-addon">.00</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start Date: </label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date: </label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <text-angular ng-model="details.item_description"></text-angular>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <button type="submit" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                                <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
+                                <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
+                                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div data-title="<i class='fa fa-image'></i> Upload Image" bs-pane>
+            <div class="row" nv-file-drop="" uploader="uploader">
+                <form role="form">
+                    <div class="col-md-9">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Select Files</label>
+                                    <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                                        Drop images here
+                                    </div>
+                                    <div class="input-group image-preview">
+                                        <div class="input-group-btn">
+                                            <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                                <input type="file" accept="image/png, image/jpeg, image/gif" nv-file-select="" uploader="uploader" multiple />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Queue length: {{ uploader.queue.length }}</p>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%">Name</th>
+                                                <th ng-show="uploader.isHTML5">Size</th>
+                                                <th ng-show="uploader.isHTML5">Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in uploader.queue">
+                                                <td>
+                                                    <strong>{{ item.file.name }}</strong>
+                                                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                                                </td>
+                                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                                <td ng-show="uploader.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                        <span class="glyphicon glyphicon-ban-circle"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        Queue progress:
+                                        <div class="progress" style="">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload all
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove all
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <button type="submit" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                                <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
+                                <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
+                                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Composite" bs-pane>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-warning">
+                        <div class="box-header">
+                            <h3 class="box-title">Bundle Product</h3>
+                            <div class="box-tools pull-left">
+                                <button class="btn btn-flat btn-sm btn-primary" ng-click="saveCategory()">
+                                    <i class="fa fa-edit"></i> Save
+                                </button>
+                                <button class="btn btn-flat btn-sm btn-success" ng-click="getAllCategory()">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th style="width: 40px">Image</th>
+                                </tr>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Update software</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-red">55%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Clean database</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-yellow">70%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Cron job running</td>
+                                    <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-light-blue">30%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>Fix and squish bugs</td>
+                                    <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-green">90%</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <div class="box box-warning">
+                        <div class="box-header">
+                            <h3 class="box-title">List of Products</h3>
+                            <div class="box-tools">
+                                <div class="input-group">
+                                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" />
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th style="width: 40px">Image</th>
+                                </tr>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Update software</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-red">55%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Clean database</td>
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-yellow">70%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Cron job running</td>
+                                    <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-light-blue">30%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>Fix and squish bugs</td>
+                                    <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-green">90%</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            <ul class="pagination pagination-sm no-margin pull-right">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+</section>
