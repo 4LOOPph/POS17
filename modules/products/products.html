@@ -16,22 +16,13 @@
                     <div class="pull-left">
                         <form class="form-inline">
                             <div class="form-group">
-                                <div class="btn-group">
-                                    <button class="btn btn-flat btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
-                                        Add New Entry
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="" ui-sref="main.products-add"><i class="fa fa-edit"></i> Single Product</a>
-                                        </li>
-                                        <li>
-                                            <a href="" ui-sref="main.products-bundle-add"><i class="fa fa-archive"></i>Bundle / Package</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="btn btn-flat btn-sm btn-danger">
+                                <button class="btn btn-flat btn-sm btn-default">
+                                    <i class="fa fa-list"></i>
+                                </button>
+                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
+                                    <i class="fa fa-edit"></i> Add New Entry
+                                </a>
+                                <button class="btn btn-flat btn-sm btn-primary">
                                     <i class="glyphicon glyphicon-ok"></i> Publish
                                 </button>
                                 <button class="btn btn-flat btn-sm btn-danger">

@@ -19,7 +19,7 @@
                         <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
                             <i class="fa fa-remove"></i> Delete
                         </button>
-                        <button ng-click = "refresh()"class="btn btn-flat btn-sm btn-success">
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                             <i class="fa fa-refresh"></i> Refresh
                         </button>
                     </div>
@@ -53,7 +53,7 @@
                         <tbody>
                             <tr ng-repeat="bank in banks" repeat-end="paginate()">
                                 <td>
-                                    <input type="checkbox" ng-model="bank.selected" ng-change = "checkDataChanges(bank)">
+                                    <input type="checkbox" ng-model="bank.selected" ng-change="checkDataChanges(bank)">
                                 </td>
                                 <td>{{bank.name}}</td>
                                 <td>{{bank.address}}</td>
@@ -70,6 +70,9 @@
                             </tr>
                         </tfoot>
                     </table>
+                </div>
+                <div class="overlay" ng-show="bankisLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
         </div>

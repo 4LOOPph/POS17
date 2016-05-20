@@ -39,9 +39,9 @@
                         <div class="form-group ">
                             <label class="col control-label">Time Zone</label>
                             <div class="col">
-                                <select class="form-control" ng-model="details.timeZone" ng-options="item.text for item in timezone" required> 
+                                <select class="form-control" ng-model="details.timeZone" ng-options="item.text as item.text for item in timezone">
                                     <option disabled value="">Choose Time Zone</option>
-                                </select >
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,9 +51,9 @@
                         <div class="form-group ">
                             <label class="col control-label">Store Name</label>
                             <div class="col">
-                                <select class="form-control" ng-model="details.store_id" ng-options="item.store_id as item.name for item in stores" required>
+                                <select class="form-control" ng-model="details.store_id" ng-options="item.store_id as item.name for item in stores">
                                     <option disabled value="">Choose Store Name</option>
-                                </select >
+                                </select>
                             </div>
                         </div>
                         <div class="form-group ">
@@ -61,17 +61,17 @@
                             <div class="col">
                                 <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required>
                                     <option disabled value="">Choose Personel Type</option>
-                                </select >
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <img ngf-src="details.person_img || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                            <img ngf-src="details.image || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
                             <div class="input-group image-preview">
                                 <span class="input-group-btn">
-                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.person_img"> <span class="glyphicon glyphicon-remove"></span> Clear
+                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.image"> <span class="glyphicon glyphicon-remove"></span> Clear
                                 </button>
                                 <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.person_img" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
                                 </div>
                                 </span>
                             </div>
@@ -83,7 +83,7 @@
             <div class="col-md-3">
                 <div class="box box-warning">
                     <div class="box-body">
-                        <button type="submit" class=" btn btn-primary btn-block " ng-disabled ="personForm.$invalid" >Save Entry</button>
+                        <button type="submit" class=" btn btn-primary btn-block " ng-disabled="personForm.$invalid">Save Entry</button>
                         <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                     </div>
                 </div>

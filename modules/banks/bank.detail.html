@@ -22,13 +22,13 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>Bank Name</label>
-                            <input type="text" class="form-control" name="bankname" ng-model="details.name" ng-minlength="2" ng-maxlength="50" placeholder="Bank Name" required>
+                            <input type="text" class="form-control" name="bankname" ng-model="details.name" ng-minlength="2" ng-maxlength="50" placeholder="Bank Name" required="">
                             <p ng-show="bankForm.bankname.$error.minlength" class="help-block">Bank Name is too short.</p>
                             <p ng-show="bankForm.bankname.$error.maxlength" class="help-block">Bank Name is too long.</p>
                         </div>
                         <div class="form-group">
                             <label>Bank Address</label>
-                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Bank Address" required></textarea>
+                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Bank Address" required=""></textarea>
                         </div>
                     </div>
                     <!-- /.box-body -->

@@ -1,29 +1,37 @@
 <section class="content-header">
-    <h1>Human Resource</h1>
+    <h1>Product Bundles</h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Human Resource</li>
+        <li class="active">Product Bundles</li>
     </ol>
 </section>
 <!-- Main content -->
 <section class="content">
     <!-- /.row -->
-    <div class="row">
+    <div class="row" role="search-row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
+                    <!-- <h3 class="box-title">List of Products</h3> -->
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-humanresource-detail">
-                            <i class="fa fa-edit"></i> Add New Entry
-                        </button>
-                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
-                            <i class="fa fa-remove"></i> Delete
-                        </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                            <i class="fa fa-refresh"></i> Refresh
-                        </button>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add">
+                                    <i class="fa fa-edit"></i> Add New Entry
+                                </a>
+                                <button class="btn btn-flat btn-sm btn-primary">
+                                    <i class="glyphicon glyphicon-ok"></i> Publish
+                                </button>
+                                <button class="btn btn-flat btn-sm btn-danger">
+                                    <i class="fa fa-remove"></i> Unpublish
+                                </button>
+                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-right box-tools">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -42,9 +50,11 @@
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a ng-click="updateStatus('All')">All</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                            <li><a ng-click="updateStatus('Publish')">Published</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                            <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Draft')">Draft</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -54,48 +64,49 @@
                     </div>
                 </div>
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
+                    <table class="table table-hover footable" data-page-size="20">
                         <thead>
                             <tr>
                                 <th data-sort-ignore="true">
                                     <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
-                                <th data-sort-ignore="true">Image</th>
-                                <th data-sort-ignore="true">Name</th>
-                                <th data-sort-ignore="true">Address</th>
-                                <th data-sort-ignore="true">Person Type</th>
+                                <th data-sort-ignore="true">Product Name</th>
+                                <th data-sort-ignore="true">Product Type</th>
+                                <th data-sort-ignore="true">Base Price</th>
+                                <th data-sort-ignore="true">Status</th>
+                                <th data-sort-ignore="true">Last Updated</th>
                                 <th data-sort-ignore="true"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat='person in persons' repeat-end="paginate()">
+                            <tr ng-repeat="product in products | orderBy: 'product.start_date':true " repeat-end="paginate()">
                                 <td>
-                                    <input type="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                                    <input type="checkbox" ng-model="product.selected">
                                 </td>
-                                <td class="text-center center-td-table" data-title="'Image'">
-                                    <img class="img-thumbnail" ng-src="{{person.image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />
-                                </td>
-                                <td>{{person.lastname +','+ person.firstname}}</td>
-                                <td>{{person.address}}</td>
+                                <td>{{product.item_name}}</td>
+                                <td>{{product.product_type}}</td>
+                                <td>${{product.sell_price}}</td>
                                 <td>
-                                    <span ng-if="person.per_type_id == '1' " class="label label-success">Employee</span>
-                                    <span ng-if="person.per_type_id == '2' " class="label label-primary">Customer</span>
+                                    <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
+                                    <span ng-if="product.is_published == '1' " class="label label-success">published</span>
+                                    <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
                                 </td>
+                                <td am-time-ago="product.date_created"></td>
                                 <td class="text-right">
-                                    <button ng-click="edit(person.person_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>
-                                <td colspan="6" align="center">
+                                <td colspan="10" align="center">
                                     <ul class="pagination"></ul>
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-                <div class="overlay" ng-show="personisLoading">
+                <div class="overlay" ng-show="productIsLoading">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
