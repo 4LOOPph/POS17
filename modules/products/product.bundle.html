@@ -4,7 +4,7 @@
           </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a ui-sref="main.products">Products</a></li>
+        <li><a ui-sref="main.products-bundles">Product Bundle</a></li>
         <li class="active">Product Bundle New Entry</li>
     </ol>
 </section>
@@ -23,23 +23,23 @@
                                     <span ng-if="details.is_archived == '1'" class="label label-danger">archived</span>
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Name</label>
-                                    <input type="text" class="form-control" ng-model="details.item_name" placeholder="Product Name">
+                                    <label>Bundle Name</label>
+                                    <input type="text" class="form-control" ng-model="details.bundle_name" placeholder="Product Name">
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Code</label>
-                                    <input type="text" class="form-control" ng-model="details.product_code" placeholder="Product Code">
+                                    <label>Bundle Code</label>
+                                    <input type="text" class="form-control" ng-model="details.bundle_code" placeholder="Product Code">
                                 </div>
                                 <div class="form-group">
                                     <label>Product Type</label>
-                                    <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes"></select>
+                                    <select class="form-control" ng-model="details.product_type_id" ng-options="option.ptype_id as option.name for option in ptypes"></select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Brand</label>
-                                    <input type="text" class="form-control" ng-model="details.brand" placeholder="Product Brand">
+                                    <label>Bundle Brand</label>
+                                    <input type="text" class="form-control" ng-model="details.bundle_brand" placeholder="Product Brand">
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Price</label>
+                                    <label>Sell Price</label>
                                     <div class="input-group">
                                         <span class="input-group-addon">Php ₱</span>
                                         <input type="text" ng-model="details.sell_price" class="form-control">
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <text-angular ng-model="details.item_description"></text-angular>
+                                    <text-angular ng-model="details.bundle_description"></text-angular>
                                 </div>
                             </div>
                         </div>
@@ -75,8 +75,8 @@
                         <div class="box box-warning">
                             <div class="box-body">
                                 <button type="submit" class="btn btn-primary btn-flat btn-block">Save Entry</button>
-                                <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
-                                <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
+                                <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.pb_id)">Publish</a>
+                                <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.pb_id)">Archive</a>
                                 <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                             </div>
                         </div>
@@ -84,79 +84,84 @@
                 </form>
             </div>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Composite" bs-pane>
+        <div data-title="<i class='fa fa-list'></i> Composite" bs-pane ng-if="displayComposite">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="box box-warning">
-                        <div class="box-header">
-                            <h3 class="box-title">Bundle Product</h3>
-                            <div class="box-tools pull-left">
-                                <button class="btn btn-flat btn-sm btn-primary" ng-click="saveCategory()">
-                                    <i class="fa fa-edit"></i> Save
-                                </button>
-                                <button class="btn btn-flat btn-sm btn-success" ng-click="getAllCategory()">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                </tr>
-                                <tr ng-repeat="item in dropped" dd-drop-target="true">
-                                    <td class="item">{{item.name}}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-6">
-                    <div class="box box-warning">
-                        <div class="box-header">
-                            <h3 class="box-title">List of Products</h3>
-                            <div class="box-tools">
-                                <div class="input-group">
-                                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" />
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <form role="form" ng-submit="addProductBundle()">
+                            <div class="box-header">
+                                <div class="pull-right">
+                                    <div class="col-md-12">
+                                        <div class="box-tools pull-right">
+                                            <button type="submit" class="btn btn-flat btn-sm btn-primary">
+                                                <i class="fa fa-edit"></i> Save
+                                            </button>
+                                            <button class="btn btn-flat btn-sm btn-danger" ng-click="removeAll(list2)" ng-disabled="!list2.length">
+                                                <i class="fa fa-trash"></i> Remove all
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="box-body">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading"> Package</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul dnd-list="list2">
+                                            <li ng-repeat="item in list2 track by $index" ng-model="item.products.item_name" target-list="item">
+                                                {{item.item_name}}
+                                                <button type="button" class="btn btn-danger btn-xs pull-right" ng-click="remove($index)">
+                                                    <span class="fa fa-times"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box-header">
+                            <div class="pull-right">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData(txtSearch):0">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchData(txtSearch)" ng-keypress="($event.which === 13)?searchData(txtSearch):0"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button ng-click= "refresh()" class="btn btn-flat btn-sm btn-success">
+                                                    <i class="fa fa-refresh"></i> Refresh
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <table class="table">
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                </tr>
-                                <tr ng-repeat="item in suppliers">
-                                    <td dd-draggable="true" class="item" itemid="{{item.s_id}}">{{item.name}}</td>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                            <ul class="pagination pagination-sm no-margin pull-right">
-                                <li><a href="">&laquo;</a></li>
-                                <li><a href="">1</a></li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                                <li><a href="">&raquo;</a></li>
-                            </ul>
+                        <div class="box-body">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Product</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <ul dnd-list="list1">
+                                        <li ng-repeat="item in list1 | orderBy:'start_date' | limitTo: 25 track by $index" dnd-draggable="item" dnd-effect-allowed="move" dnd-dragstart="onDragstart(list1, event)" ng-class="{'selected': item.selected}" dnd-selected="item.selected = !item.selected" dnd-moved="dropCallback(event, $index, item)">
+                                            {{item.item_name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.col -->
             </div>
         </div>
-        <div data-title="<i class='fa fa-image'></i> Bundle Images" bs-pane>
+        <div data-title="<i class='fa fa-image'></i> Bundle Images" bs-pane ng-if="displayImage">
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-warning">
@@ -223,3 +228,43 @@
             </div>
         </div>
 </section>
+<style>
+.row ul[dnd-list],
+.row ul[dnd-list] > li {
+    position: relative;
+}
+
+.row ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
+}
+
+.row ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+.row ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+}
+
+.row ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+}
+
+.row ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.row ul[dnd-list] li.target-list {
+    min-height: 30px;
+}
+</style>

@@ -19,10 +19,10 @@
                                 <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add">
                                     <i class="fa fa-edit"></i> Add New Entry
                                 </a>
-                                <button class="btn btn-flat btn-sm btn-primary">
+                                <button ng-click="publishSelected()" class="btn btn-flat btn-sm btn-primary">
                                     <i class="glyphicon glyphicon-ok"></i> Publish
                                 </button>
-                                <button class="btn btn-flat btn-sm btn-danger">
+                                <button ng-click="archiveSelected()" class="btn btn-flat btn-sm btn-danger">
                                     <i class="fa fa-remove"></i> Unpublish
                                 </button>
                                 <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
@@ -70,30 +70,30 @@
                                 <th data-sort-ignore="true">
                                     <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
-                                <th data-sort-ignore="true">Product Name</th>
-                                <th data-sort-ignore="true">Product Type</th>
-                                <th data-sort-ignore="true">Base Price</th>
+                                <th data-sort-ignore="true">Bundle Name</th>
+                                <th data-sort-ignore="true">Bundle Type</th>
+                                <th data-sort-ignore="true">Bundle Price</th>
                                 <th data-sort-ignore="true">Status</th>
                                 <th data-sort-ignore="true">Last Updated</th>
                                 <th data-sort-ignore="true"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="product in products | orderBy: 'product.start_date':true " repeat-end="paginate()">
+                            <tr ng-repeat="bundle in bundles" repeat-end="paginate()">
                                 <td>
-                                    <input type="checkbox" ng-model="product.selected">
+                                    <input type="checkbox" ng-model="bundle.selected" ng-change="checkDataChanges(bundle)">
                                 </td>
-                                <td>{{product.item_name}}</td>
-                                <td>{{product.product_type}}</td>
-                                <td>${{product.sell_price}}</td>
+                                <td>{{bundle.bundle_name}}</td>
+                                <td>{{bundle.product_type}}</td>
+                                <td>${{bundle.sell_price}}</td>
                                 <td>
-                                    <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
-                                    <span ng-if="product.is_published == '1' " class="label label-success">published</span>
-                                    <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
+                                    <span ng-if="bundle.is_published == '0' " class="label label-warning">draft</span>
+                                    <span ng-if="bundle.is_published == '1' " class="label label-success">published</span>
+                                    <span ng-if="bundle.is_archived == '1'" class="label label-danger">archived</span>
                                 </td>
-                                <td am-time-ago="product.date_created"></td>
+                                <td am-time-ago="bundle.date_created"></td>
                                 <td class="text-right">
-                                    <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                             </tr>
                         </tbody>
