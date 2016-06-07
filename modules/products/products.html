@@ -93,7 +93,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="product in products | orderBy: 'product.start_date':true " repeat-end="paginate()">
+                                <tr ng-repeat="product in products | orderBy: 'product.start_date':true track by $index" repeat-end="paginate()">
                                     <td>
                                         <input type="checkbox" ng-model="product.selected">
                                     </td>
@@ -114,7 +114,7 @@
                             <tfoot class="hide-if-no-paging">
                                 <tr>
                                     <td colspan="10" align="center">
-                                        <ul class="pagination"></ul>
+                                        <ul class="pagination"></ul>    
                                     </td>
                                 </tr>
                             </tfoot>

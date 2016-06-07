@@ -12,7 +12,7 @@
     <div class="nav-tabs-custom" bs-tabs>
         <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
             <div class="row">
-                <form role="form" ng-submit="addProduct()">
+                <form role="form" name="bundleForm" ng-submit="addProduct()">
                     <div class="col-md-9">
                         <div class="box box-warning">
                             <div class="box-body">
@@ -24,25 +24,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Bundle Name</label>
-                                    <input type="text" class="form-control" ng-model="details.bundle_name" placeholder="Product Name">
+                                    <input type="text" class="form-control" ng-model="details.bundle_name" placeholder="Product Name" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Bundle Code</label>
-                                    <input type="text" class="form-control" ng-model="details.bundle_code" placeholder="Product Code">
+                                    <input type="text" class="form-control" ng-model="details.bundle_code" placeholder="Product Code" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Product Type</label>
-                                    <select class="form-control" ng-model="details.product_type_id" ng-options="option.ptype_id as option.name for option in ptypes"></select>
+                                    <select class="form-control" ng-model="details.product_type_id" ng-options="option.ptype_id as option.name for option in ptypes" required=""></select>
                                 </div>
                                 <div class="form-group">
                                     <label>Bundle Brand</label>
-                                    <input type="text" class="form-control" ng-model="details.bundle_brand" placeholder="Product Brand">
+                                    <input type="text" class="form-control" ng-model="details.bundle_brand" placeholder="Product Brand" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Sell Price</label>
                                     <div class="input-group">
                                         <span class="input-group-addon">Php ₱</span>
-                                        <input type="text" ng-model="details.sell_price" class="form-control">
+                                        <input type="text" ng-model="details.sell_price" class="form-control" required="">
                                         <span class="input-group-addon">.00</span>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker required="" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -61,12 +61,12 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
+                                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker required="" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <text-angular ng-model="details.bundle_description"></text-angular>
+                                    <text-angular ng-model="details.bundle_description" required=""></text-angular>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="col-md-3">
                         <div class="box box-warning">
                             <div class="box-body">
-                                <button type="submit" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                                <button type="submit" ng-disabled="bundleForm.$invalid" class="btn btn-primary btn-flat btn-block">Save Entry</button>
                                 <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.pb_id)">Publish</a>
                                 <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.pb_id)">Archive</a>
                                 <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
@@ -134,7 +134,7 @@
                                                 </div>
                                             </div>
                                             <div class="btn-group">
-                                                <button ng-click= "refresh()" class="btn btn-flat btn-sm btn-success">
+                                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                                     <i class="fa fa-refresh"></i> Refresh
                                                 </button>
                                             </div>
@@ -170,7 +170,7 @@
                                 <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
                                     <i class="fa fa-edit"></i> Upload Image
                                 </button>
-                                <button class="btn btn-flat btn-sm btn-danger">
+                                <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
                                     <i class="fa fa-trash"></i> Delete
                                 </button>
                                 <button class="btn btn-flat btn-sm btn-success">
@@ -181,45 +181,13 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-3 portfolio-item">
-                                    <a href="">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" ng-model="image1">
-                                                <img class="img-responsive thumbnail" src="http://placehold.it/750x450" alt="">
-                                            </label>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 portfolio-item">
-                                    <a href="">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" ng-model="image1">
-                                                <img class="img-responsive thumbnail" src="http://placehold.it/750x450" alt="">
-                                            </label>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 portfolio-item">
-                                    <a href="">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" ng-model="image1">
-                                                <img class="img-responsive thumbnail" src="http://placehold.it/750x450" alt="">
-                                            </label>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 portfolio-item">
-                                    <a href="">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" ng-model="image1">
-                                                <img class="img-responsive thumbnail" src="http://placehold.it/750x450" alt="">
-                                            </label>
-                                        </div>
-                                    </a>
+                                <div ng-repeat="img in product_image" class="col-md-3 portfolio-item">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="img.selected" ng-change="checkDataChanges(store)">
+                                            <img ngf-src="img.image_path || 'http://placehold.it/750x450'" err-src="http://placehold.it/750x450" class="thumbnail" height="150" width="230" alt="">
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
