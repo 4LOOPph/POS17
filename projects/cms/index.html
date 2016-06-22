@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="POS17">
+
+<head>
+    <meta charset="UTF-8">
+    <title>POS17</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- LIBRARY -->
+    <link rel="stylesheet" href="css/main.min.css"/>
+    <link rel="stylesheet" href="css/main-print.min.css" media="print"/>
+</head>
+
+<body class="skin-blue" ng-class="{'login-page':$state.includes('login') || $state.includes('forgot') || $state.includes('verify') || $state.includes('recovery')}">
+    <!--
+        *
+        *
+        *
+        Angular View
+        *
+        *
+        *
+        -->
+    <div ui-view></div>
+    <!--
+        *
+        *
+        *
+        Angular View
+        *
+        *
+        *
+        -->
+    <!-- ./wrapper -->
+    <script src="js/main.min.js"></script>
+    <!--
+        *
+        *
+        *
+        *
+        *
+        ANGULAR
+        *
+        *
+        *
+        *
+        *-->
+    <script src="js/app.min.js"></script>
+</body>
+
+</html>
