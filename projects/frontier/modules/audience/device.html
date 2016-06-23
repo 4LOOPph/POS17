@@ -1,0 +1,763 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Audience
+        <small>Device</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Device</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="pull-left box-tools">
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                                Export
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="" ng-click="downloadViaCSV()"><i class="fa fa-file-excel-o"></i> CSV</a>
+                                </li>
+                                <li><a href=""><i class="fa fa-file-excel-o"></i> Excel (XLSX)</a>
+                                </li>
+                                <li><a href=""><i class="fa fa-th"></i> Google Sheets</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-flat btn-sm btn-default" ng-click="refreshReport()">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                    <div class="pull-right box-tools">
+                        <div class="btn-group">
+                            <button class="btn btn-flat btn-sm btn-info">{{dtFrom | amDateFormat:'MMM DD, YYYY'}} - {{dtTo | amDateFormat:'MMM DD, YYYY'}}</button>
+                            <button class="btn btn-flat btn-sm btn-info" ng-click="openDate()">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Day'">Day</label>
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Week'">Week</label>
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Month'">Month</label>
+                        </div>
+                        <div class="btn-group">
+                            <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'LineChart'" ng-click="switchGraph()"><i class="fa fa-line-chart"></i></label>
+                            <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><i class="fa fa-area-chart"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="panel panel-default" ng-show="chartModel=='LineChart'">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>Device</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" ng-show="chartModel=='AreaChart'">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>Device</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <div class="pull-right box-tools">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Table'"><i class="fa fa-table"></i></label>
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Pie'"><i class="fa fa-pie-chart"></i></label>
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Bar'"><i class="fa fa-bar-chart fa-rotate-90"></i></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <uib-tabset active="active">
+                            <uib-tab index="0" select="switchData('Info')">
+                                <uib-tab-heading>
+                                    <i class='fa fa-rss'></i> Device Info
+                                </uib-tab-heading>
+                                <div class="box-body">
+                                    <div class="row" ng-show="displayModel=='Table'">
+                                        <div class="col-lg-12">
+                                            <table class="table table-hover" data-page-size="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-sort-ignore="true" width="5%">
+                                                            <input type="checkbox">
+                                                        </th>
+                                                        <th>Device Name</th>
+                                                        <th>Screen Views</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="data in deviceinfolist">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td><a href="">{{data.deviceName}}</a></td>
+                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot class="hide-if-no-paging">
+                                                    <tr>
+                                                        <td colspan="6" align="center">
+                                                            <ul class="pagination"></ul>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Pie'">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device name</th>
+                                                            <th>Screen Views</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas class="chart chart-pie" chart-data="deviceInfoCharts.data" chart-labels="deviceInfoCharts.labels"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Bar'">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Name</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Name</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </uib-tab>
+                            <uib-tab index="1" select="switchData('Brand')">
+                                <uib-tab-heading>
+                                    <i class='fa fa-rss'></i>Device Brand
+                                </uib-tab-heading>
+                                <div class="box-body">
+                                    <div class="row" ng-show="displayModel=='Table'">
+                                        <div class="col-lg-12">
+                                            <table class="table table-hover" data-page-size="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-sort-ignore="true" width="5%">
+                                                            <input type="checkbox">
+                                                        </th>
+                                                        <th>Device Brand</th>
+                                                        <th>Screen Views</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="data in devicebrandlist">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td><a href="">{{data.deviceBrand}}</a></td>
+                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot class="hide-if-no-paging">
+                                                    <tr>
+                                                        <td colspan="6" align="center">
+                                                            <ul class="pagination"></ul>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Pie'">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device name</th>
+                                                            <th>Screen Views</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceBrand}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas class="chart chart-pie" chart-data="brandCharts.data" chart-labels="brandCharts.labels"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Bar'">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Name</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceBrand}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Name</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceinfolist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.deviceBrand}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </uib-tab>
+                            <uib-tab index="2" select="switchData('Deviceos')">
+                                <uib-tab-heading>
+                                    <i class='fa fa-rss'></i> Device OS
+                                </uib-tab-heading>
+                                <div class="box-body">
+                                    <div class="row" ng-show="displayModel=='Table'">
+                                        <div class="col-lg-12">
+                                            <table class="table table-hover" data-page-size="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-sort-ignore="true" width="5%">
+                                                            <input type="checkbox">
+                                                        </th>
+                                                        <th>Device OS</th>
+                                                        <th>Screen Views</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="data in deviceoslist">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td><a href="">{{data.osName}}</a></td>
+                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot class="hide-if-no-paging">
+                                                    <tr>
+                                                        <td colspan="6" align="center">
+                                                            <ul class="pagination"></ul>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Pie'">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device OS</th>
+                                                            <th>Screen Views</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceoslist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.osName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas class="chart chart-pie" chart-data="donutCharts.data" chart-labels="donutCharts.labels"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Bar'">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device OS</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceoslist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.osName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device OS</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in deviceoslist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.osName}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </uib-tab>
+                              <uib-tab index="3" select="switchData('Screen')">
+                                <uib-tab-heading>
+                                    <i class='fa fa-rss'></i> Device Screen
+                                </uib-tab-heading>
+                                <div class="box-body">
+                                    <div class="row" ng-show="displayModel=='Table'">
+                                        <div class="col-lg-12">
+                                            <table class="table table-hover" data-page-size="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-sort-ignore="true" width="5%">
+                                                            <input type="checkbox">
+                                                        </th>
+                                                        <th>Device Screen</th>
+                                                        <th>Screen Views</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="data in devicescreenlist">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td><a href="">{{data.screenResolution}}</a></td>
+                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot class="hide-if-no-paging">
+                                                    <tr>
+                                                        <td colspan="6" align="center">
+                                                            <ul class="pagination"></ul>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Pie'">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Screen</th>
+                                                            <th>Screen Views</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in devicescreenlist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.screenResolution}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas class="chart chart-pie" chart-data="donutCharts.data" chart-labels="donutCharts.labels"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="displayModel=='Bar'">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Screen</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in devicescreenlist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.screenResolution}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Device Screen</th>
+                                                            <th>Screen View</th>
+                                                            <th>Progress <small>(Screen)</small></th>
+                                                            <th>Status <small>(Screen)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="data in devicescreenlist">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{data.screenResolution}}</a></td>
+                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>

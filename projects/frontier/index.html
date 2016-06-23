@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" ng-app="analytics">
+
+<head>
+    <meta charset="utf-8">
+    <title>4LOOP Analytics</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="css/main.min.css"/>
+    <script src="js/modernizr.js"></script>
+</head>
+
+<body class="skin-blue" ng-class="{'bg-black':$state.includes('login') || $state.includes('forgot')}">
+    <div ui-view></div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!--
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+    -->
+    <script src="js/main.min.js"></script>
+    <script src="js/app.min.js"></script>
+</body>
+
+</html>

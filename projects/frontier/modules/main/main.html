@@ -1,0 +1,24 @@
+<div ng-hide="isDoneLoading" class="spinner-ball-background">
+  <div class="spinner-ball">
+    <div class="ball"></div>
+    <p>LOADING</p>
+  </div>
+</div>
+<div ng-show="isDoneLoading">
+  <header class="header">
+    <a ui-sref="app.dashboard" class="logo">
+        <i class="fa fa-th-large fa-lg"></i>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <main-header></main-header>
+  </header>
+
+  <div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <sidebar></sidebar>
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <span us-spinner spinner-key="spinner-1"></span>
+    <aside class="right-side" ui-view></aside>
+    <!-- /.right-side -->
+  </div>
+</div>

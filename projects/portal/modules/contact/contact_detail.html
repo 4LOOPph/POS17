@@ -1,0 +1,104 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Contact  
+        <small>Details</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li><a ui-sref="main.contact">Contact</a>
+        </li>
+        <li class="active">Subscription Detail</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
+        <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
+            <div class="tab-pane active" id="profile">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-header">
+                            <i class="glyphicon glyphicon-info-sign"></i>Contact Information
+                            
+                        </h2>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <form role="form" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="dl-horizontal">
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label"> Person ID: </label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.person_id" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">Last Name: </label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.lastname" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">First Name :</label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.firstname" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">Address:</label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.address" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">Email:</label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.email" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">Mobile Number:</label>
+                                    <div class="col-sm-8">
+                                        <input disabled class="form-control" ng-model="contacts.mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-4 control-label">Image:</label>
+                                    <div class="col-sm-8">
+                                        <img ng-src="{{contacts.image}}" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                                        <div class="input-group image-preview">
+                                            <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+                                            <span class="input-group-btn"> 
+                                        <button type="button" class="btn btn-warning image-preview-clear"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                                            <div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.product_variant_imgPath" ngf-max-size="8MB" ngf-select="upload($files)" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
+                                            </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dl>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!--  <div class="row no-print">
+                <div class="col-xs-12">
+                    <button ng-hide=" details.is_approved == 1 " class="btn btn-sm btn-primary " ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
+                    <button ng-hide="  details.deny_date !=null " class="btn btn-sm btn-danger" ng-click="denySubscription(details.sr_id)">Denied</button>
+                </div>
+            </div> -->
+                </form>
+            </div>
+        </div>
+        <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
+        <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
+        <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
+        <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div>
+    </div>
+</section>

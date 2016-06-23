@@ -1,0 +1,43 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+</section>
+<!-- Main content -->
+<section class="full-content">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div class="small-box">
+                <form role="form" class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <div class="col-lg-10">
+                                <input type="text" ng-model="txtSearch" ng-change="cleartext()" class="form-control input-lg" placeholder="Search...">
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-success btn-block btn-lg" ng-click="cmdSearch()" ng-keypress="($event.which === 13)?cmdSearch():0">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="account in accounts" class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>
+                        {{account.company_name}}
+                    </h3>
+                    <p>
+                        {{account.lastname +','+ account.firstname }}
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <a href="" ng-click="getAccountDetail(account.sub_id)" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,131 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        App Overview
+        <small>Overview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">App Overview</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="pull-left box-tools">
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                                Export
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="" ng-click="downloadViaCSV()"><i class="fa fa-file-excel-o"></i> CSV</a>
+                                </li>
+                                <li><a href=""><i class="fa fa-file-excel-o"></i> Excel (XLSX)</a>
+                                </li>
+                                <li><a href=""><i class="fa fa-th"></i> Google Sheets</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-flat btn-sm btn-default" ng-click="refreshReport()">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                    <div class="pull-right box-tools">
+                        <div class="btn-group">
+                            <button class="btn btn-flat btn-sm btn-info">{{dtFrom | amDateFormat:'MMM DD, YYYY'}} - {{dtTo | amDateFormat:'MMM DD, YYYY'}}</button>
+                            <button class="btn btn-flat btn-sm btn-info" ng-click="openDate()">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i> Users</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-mobile fa-fw"></i> Devices</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div line-chart line-data='deviceCharts.data' line-xkey='{{deviceCharts.xkey}}' line-ykeys='deviceCharts.ykeys' line-labels='deviceCharts.labels' line-colors='deviceCharts.colors'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-mobile fa-fw"></i>Top Devices</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped footable" data-page-size="5">
+                                        <thead>
+                                            <tr>
+                                                <th>Device Model</th>
+                                                <th>Device Brand</th>
+                                                <th class="text-right">Sessions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="device in devices">
+                                                <td>{{device.deviceModel}}</td>
+                                                <td>{{device.deviceBrand}}</td>
+                                                <td class="text-right">{{device.TotalSessions}}<small> ({{device.totalSessionsValuePercentage}}%)</small></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-laptop fa-fw"></i>Screens</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped footable" data-page-size="5">
+                                        <thead>
+                                            <tr>
+                                                <th>Screen Name</th>
+                                                <th class="text-right">Screen Views</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="screen in screens">
+                                                <td>{{screen.screenName}}</td>
+                                                <td class="text-right">{{screen.TotalScreens}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>
+<!-- /.content -->

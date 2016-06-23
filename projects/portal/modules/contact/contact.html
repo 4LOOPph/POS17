@@ -1,0 +1,71 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>         Customer         
+    	<small>Contact</small>     
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a> </li>
+        <li class="active">Contact</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header" data-toggle="tooltip" title="Header tooltip">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-info">Action</button>
+                            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data- toggle="dropdown"> <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Export All</a> </li>
+                                <li><a href="#">Export Filtered</a> </li>
+                            </ul>
+                        </div>
+                        <a ui- sref="main.contact.new">
+                            <button class="btn btn-sm btn-info">New Contact</button>
+                        </a>
+                    </div>
+                    <!-- /. tools -->
+                    <h3 class="box-title"><i class="fa fa-book"></i> Contact Book</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                <input ng-model = "searchText" type="text" class="form-control" /> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="slider" slider- nav class="clearfix slider">
+                                <div class="slider-content" id="searchTextResult" style="height: 504px;">
+                                    <ul class="list-unstyled">
+                                        <li id="{{let.letter}}"  class="selected" ng-repeat="let in letters ">
+                                            <a  name="{{let.letter}}" ng-if ="let.contacts.length != ''"class="title">{{let.ucase}}</a>
+                                            <ul class="list-unstyled">
+                                                <li ng-value="contact.person_id"  ng-repeat="contact in let.contacts | filter: searchText ">
+                                                    <a ng-click = "getContactDetail(contact.person_id)">{{contact.firstname}} {{contact.lastname}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="slider-nav" style="height:504px; top: 20px;">
+                                    <ul>
+                                        <li ng-repeat="let in letters"> <a alt="{{let.url}}">{{let.letter}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
