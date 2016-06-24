@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message=""  ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
@@ -30,31 +30,22 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
-                        <thead>
-                            <tr>
-                                <th data-sort-ignore="true">Country</th>
-                                <th data-sort-ignore="true">Symbol</th>
-                                <th data-sort-ignore="true">Currency</th>
-                                <th data-sort-ignore="true">Code</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="currency in currencies" repeat-end="paginate()">
-                                <td>{{currency.country}}</td>
-                                <td>{{currency.symbol}}</td>
-                                <td>{{currency.currency}}</td>
-                                <td>{{currency.code}}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="6" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="currenciesTable">
+                        <tr ng-repeat="currency in $data  track by $index">
+                            <td class="text-center" data-title="'Country '">
+                                {{currency.country}}
+                            </td>
+                            <td class="text-center" data-title="'Symbol'">
+                                {{currency.symbol}}
+                            </td>
+                            <td class="text-center" data-title="'Currency'">
+                                {{currency.currency}}
+                            </td>
+                            <td class="text-center" data-title="'Code'">
+                                {{currency.code}}
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="overlay" ng-show="currencyisLoading">

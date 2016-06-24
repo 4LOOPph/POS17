@@ -10,6 +10,9 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -33,28 +36,24 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
-                        <thead>
-                            <tr>
-                                <th data-sort-ignore="true">Name</th>
-                                <th data-sort-ignore="true">Date Created</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="type in types" repeat-end="paginate()">
-                                <td text-align="right">{{type.name}}</td>
-                                <td>{{type.date_created}}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="6" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="attributeTypesTable">
+                        <tr ng-repeat="type in $data">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="type.selected" ng-change="checkDataChanges(type)">
+                            </td>
+                            <td class="text-center" data-title="'Name'">
+                                {{type.name}}
+                            </td>
+                            <td class="text-center" data-title="'Date Created'">
+                                {{type.date_created}}
+                            </td>
+                            </td>
+                        </tr>
                     </table>
+                </div>
+                <div class="overlay" ng-show="attribisLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
         </div>

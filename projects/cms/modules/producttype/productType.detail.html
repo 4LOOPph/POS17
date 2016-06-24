@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-            Product Type Details
+            Product Type
           </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -11,52 +11,55 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <form role="form" name="ptypeForm" ng-submit="saveProductType()">
-            <div class="col-md-8">
-                <div class="box box-warning">
-                    <div class="box-header">
-                        <h3 class="box-title">General Info</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" ng-model="details.name" class="form-control" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Label</label>
-                            <input type="text" ng-model="details.label" class="form-control" placeholder="Label" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" ng-model="details.description" rows="3" placeholder="Description" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <img ngf-src="prod.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
-                            <div class="input-group image-preview">
-                                <span class="input-group-btn">
-                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.ptype_image"> <span class="glyphicon glyphicon-remove"></span> Clear
-                                </button>
-                                <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.ptype_image" ngf-max-size="8MB" ngf-select="upload($files)" />
+        <div class="col-xs-12">
+            <div class="row">
+                <form role="form" name="ptypeForm" ng-submit="saveProductType()">
+                    <div class="col-md-8">
+                        <div class="box box-warning">
+                            <div class="box-header">
+                                <h3 class="box-title">General Info</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" ng-model="details.name" class="form-control" placeholder="Name" required />
                                 </div>
-                                </span>
+                                <div class="form-group">
+                                    <label>Label</label>
+                                    <input type="text" ng-model="details.label" class="form-control" placeholder="Label" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" ng-model="details.description" rows="3" placeholder="Description" required /></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <img ngf-src="prod.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                                    <div class="input-group image-preview">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.ptype_image"> <span class="glyphicon glyphicon-remove"></span> Clear
+                                        </button>
+                                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.ptype_image" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                        </div>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /.box-body -->
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box box-warning">
-                    <div class="box-body">
-                        <button type="submit" class=" btn btn-primary btn-block " ng-disabled="ptypeForm.$invalid">Save Entry</button>
-                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    <div class="col-md-3">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <button type="submit" ng-disabled="ptypeForm.$invalid" class=" btn btn-primary btn-block ">Save Entry</button>
+                                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </section>
 <!-- /.content -->

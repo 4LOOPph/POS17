@@ -1,14 +1,19 @@
-<div class="login-box">
+<div class="login-box" ng-init="isVerified()">
     <div class="login-box-body">
         <form ng-submit="forgotpass()">
             <div class="text-center">
-                <h3><i class="fa fa-warning text-yellow"></i> Oops! Account already verified.</h3>
-                <p><b>[response message here]</b>.<br> <a href='../../index.html'>Return to dashboard</a> - OR - <a href="#/login">Login</a> with your account
+                <h1 ng-show="!response.success"><i class="fa fa-info-circle fa-2x text-info"></i></h1>
+                <p ng-show="!response.success">
+                    <h3 ng-show="!response.success"> Verifying account.</h3>
+                    <br>
+                    <i ng-show="!response.success" class="fa fa-spinner fa-pulse fa-3x fa-fw text-blue"></i>
                 </p>
-                <h3><i class="fa fa-info text-info"></i> Verifying Account.</h3>
-                <p><b>[response message here]</b>
-                    <br>You may now login with your account</p>
-                <a ui-sref="login" class="btn btn-block btn-default btn-flat">Login</a>
+                <h1 ng-show="response"><i class="fa fa-warning fa-2x text-yellow"></i></h1>
+                <p ng-show="response">
+                    <h3 ng-show="response">{{response.msg}}</h3>
+                    <br>
+                    <p ng-show="response">You may now <a ui-sref="login">Login</a> with your account</p>
+                </p>
             </div>
         </form>
     </div>

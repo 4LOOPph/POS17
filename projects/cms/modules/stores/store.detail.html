@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <form role="form" name="storeForm" ng-submit="saveStore()">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="box box-warning">
                     <div class="box-header">
                         <h3 class="box-title">General Info</h3>
@@ -20,39 +20,37 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label>Store Name</label>
-                            <input type="text" name="storename" class="form-control" ng-minlength="6" ng-maxlength="25" ng-model="details.name" placeholder="Store Name" required>
-                           
+                            <input type="text" name="storename" class="form-control" ng-minlength="6" ng-maxlength="25" ng-model="details.name" placeholder="Store Name" required />
+                        </div>
+                        <div class="form-group ">
+                            <label>Store TIN</label>
+                            <input type="text" class="form-control" ng-model="details.tin" placeholder="Store TIN" required />
+                        </div>
+                        <div class="form-group ">
+                            <label>Store owner</label>
+                            <input type="text" class="form-control" ng-model="details.owner_name" placeholder="Store Owner" required />
+                        </div>
+                        <div class="form-group ">
+                            <label>Contact Number</label>
+                            <input type="text" class="form-control" ng-model="details.telno" numbers-only placeholder="Contact No." required />
+                        </div>
+                        <div class="form-group ">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" ng-model="details.email_address" placeholder="Email Address" required />
                         </div>
                         <div class="form-group">
                             <label>Store Address</label>
-                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Store Address" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Store TIN</label>
-                            <input type="text" class="form-control" ng-model="details.tin" placeholder="Store TIN" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Store owner</label>
-                            <input type="text" class="form-control" ng-model="details.owner_name" placeholder="Store Owner" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <input type="text" class="form-control" ng-model="details.telno" placeholder="Contact No." required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" ng-model="details.email_address" placeholder="Email Address" required>
+                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Store Address" required /></textarea>
                         </div>
                     </div>
-                    <!-- /.box-body -->
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="box box-warning">
                     <div class="box-body">
-                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="storeForm.$invalid">Save Entry</button>
+                        <button type="submit" ng-disabled="storeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
                         <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                     </div>
                 </div>

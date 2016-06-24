@@ -9,6 +9,9 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -29,7 +32,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
@@ -39,44 +42,32 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
-                        <thead>
-                            <tr>
-                                <th data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                </th>
-                                <th data-sort-ignore="true">Name</th>
-                                <th data-sort-ignore="true">TIN</th>
-                                <th data-sort-ignore="true">Owner</th>
-                                <th data-sort-ignore="true">Contact No.</th>
-                                <th data-sort-ignore="true">Email</th>
-                                <th data-sort-ignore="true"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat='store in stores' repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="store.selected" ng-change="checkDataChanges(store)">
-                                </td>
-                                <td>{{store.name}}</td>
-                                <td>{{store.tin}}</td>
-                                <td>{{store.owner_name}}</td>
-                                <td>{{store.telno}}</td>
-                                <td>{{store.email_address}}</td>
-                                <td class="text-right">
-                                    <button ng-click="edit(store.store_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                    <button ng-click="toggleModal(store.store_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="6" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="storeTable">
+                        <tr ng-repeat="store in $data">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="store.selected" ng-change="checkDataChanges(store)">
+                            </td>
+                            <td class="text-center" data-title="'Name'">
+                                {{store.name}}
+                            </td>
+                            <td class="text-center" data-title="'TIN'">
+                                {{store.tin}}
+                            </td>
+                            <td class="text-center" data-title="'Owner'">
+                                {{store.owner_name}}
+                            </td>
+                            <td class="text-center" data-title="'Contact No.'">
+                                {{store.telno}}
+                            </td>
+                            <td class="text-center" data-title="'Email'">
+                                {{store.email_address}}
+                            </td>
+                            <td class="text-right">
+                                <button ng-click="edit(store.store_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ng-click="toggleModal(store.store_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="overlay" ng-show="storeisLoading">

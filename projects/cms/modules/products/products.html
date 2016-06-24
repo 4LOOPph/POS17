@@ -9,19 +9,21 @@
 <section class="content">
     <!-- /.row -->
     <div class="row" role="search-row">
-        <div class="col-md-12 col-xs-12">
-            <div class="col-md-3 col-xs-3">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
+        <div class="col-md-3 col-xs-3">
                 <div data-angular-treeview="true" ng-show="side" data-tree-id="mytree" data-tree-model="categoryData" data-node-id="id" data-node-label="label" data-node-children="items" style="overflow: auto; height: 927px">
                 </div>
             </div>
             <div ng-class="side ? 'cold-md-9 col-xs-9': 'cold-md-12 col-xs-12'">
-                <div class="box">
+                <div class="box box-warning">
                     <div class="box-header">
                         <!-- <h3 class="box-title">List of Products</h3> -->
                         <div class="pull-left">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <button class="btn btn-flat btn-sm btn-default" ng-click="side=!side">
+                                    <button class="btn btn-flat btn-sm btn-default" ng-click="side=!side" uib-tooltip="Show Product Category List">
                                         <i class="fa fa-list"></i>
                                     </button>
                                     <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
@@ -39,21 +41,22 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="pull-right box-tools">
+                        <div class="pull-right">
                             <form class="form-inline">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="btn-group">
+                                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                                <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                            <span class="input-group-btn">
                                             <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
                                                 {{applicationStatus}}
                                                 <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
+                                            <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a ng-click="updateStatus('All')">All</a>
@@ -65,59 +68,48 @@
                                                 <li><a ng-click="updateStatus('Draft')">Draft</a>
                                                 </li>
                                             </ul>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="btn-group">
-                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'"><i class="fa fa-list"></i></label>
-                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'"><i class="fa fa-th"></i></label>
+                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="Display List of Product"><i class="fa fa-list"></i></label>
+                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'" uib-tooltip="Display Grid of Product">
+                                            <i class="fa fa-th"></i>
+                                        </label>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="box-body table-responsive no-padding" ng-show="displayModel=='List'">
-                        <table class="table table-hover footable" data-page-size="20">
-                            <thead>
-                                <tr>
-                                    <th data-sort-ignore="true">
-                                        <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                    </th>
-                                    <th data-sort-ignore="true">Product Name</th>
-                                    <th data-sort-ignore="true">Product Type</th>
-                                    <th data-sort-ignore="true">Base Price</th>
-                                    <th data-sort-ignore="true">Status</th>
-                                    <th data-sort-ignore="true">Last Updated</th>
-                                    <th data-sort-ignore="true"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="product in products | orderBy: 'product.start_date':true track by $index" repeat-end="paginate()">
-                                    <td>
-                                        <input type="checkbox" ng-model="product.selected">
-                                    </td>
-                                    <td>{{product.item_name}}</td>
-                                    <td>{{product.product_type}}</td>
-                                    <td>${{product.sell_price}}</td>
-                                    <td>
-                                        <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
-                                        <span ng-if="product.is_published == '1' " class="label label-success">published</span>
-                                        <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
-                                    </td>
-                                    <td am-time-ago="product.date_created"></td>
-                                    <td class="text-right">
-                                        <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot class="hide-if-no-paging">
-                                <tr>
-                                    <td colspan="10" align="center">
-                                        <ul class="pagination"></ul>    
-                                    </td>
-                                </tr>
-                            </tfoot>
+                    <div class="box-body table-responsive padding" ng-show="displayModel=='List'">
+                        <table class="table table-hover" ng-table="productTable">
+                            <tr ng-repeat="product in $data | orderBy: 'item_name'">
+                                <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                    <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
+                                </td>
+                                <td class="text-center" data-title="'Product Name'">
+                                    {{product.item_name}}
+                                </td>
+                                <td class="text-center" data-title="'Product Type'">
+                                    {{product.product_type}}
+                                </td>
+                                <td class="text-center" data-title="'Base Price'">
+                                    {{product.sell_price}}
+                                </td>
+                                <td class="text-center" data-title="'Status'">
+                                    <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
+                                    <span ng-if="product.is_published == '1' " class="label label-success">published</span>
+                                    <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
+                                </td>
+                                <td class="text-center" data-title="'Last Updated'">
+                                    {{product.date_created | fromNow}}
+                                </td>
+                                <td class="text-right">
+                                    <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <div ng-class="side ? 'cold-md-9 col-xs-9': 'cold-md-12 col-xs-12'">
@@ -147,7 +139,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </section>
 <!-- /.content -->

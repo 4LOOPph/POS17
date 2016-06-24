@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <form role="form" name="supplierForm" ng-submit="saveSupplier()">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="box box-warning">
                     <div class="box-header">
                         <h3 class="box-title">General Info</h3>
@@ -22,19 +22,19 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>Supplier Name</label>
-                            <input type="text" ng-model="details.name" class="form-control" placeholder="Supplier Name" required>
+                            <input type="text" ng-model="details.name" class="form-control" placeholder="Supplier Name" required />
                         </div>
                         <div class="form-group">
                             <label>Contact Person</label>
-                            <input type="text" ng-model="details.contact_person" class="form-control" placeholder="Contact Person" required>
+                            <input type="text" ng-model="details.contact_person" class="form-control" placeholder="Contact Person" required />
                         </div>
                         <div class="form-group">
                             <label>Contact Number</label>
-                            <input type="number"  ng-model="details.contact_number" ng-maxlength="11"  class="form-control" placeholder="Contact Number" required>
+                            <input type="text"  ng-model="details.contact_number" numbers-only ng-maxlength="11"  class="form-control" placeholder="Contact Number" required />
                         </div>
                         <div class="form-group">
                             <label>Supplier Address</label>
-                            <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Supplier Address" required></textarea>
+                            <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Supplier Address" required /></textarea>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -43,7 +43,7 @@
             <div class="col-md-3">
                 <div class="box box-warning">
                     <div class="box-body">
-                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="supplierForm.$invalid">Save Entry</button>
+                        <button type="submit" ng-disabled="supplierForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
                         <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                     </div>
                 </div>

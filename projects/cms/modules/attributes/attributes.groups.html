@@ -10,6 +10,9 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -29,7 +32,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" disable-valid-styling="true" disable-validation-message="">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
@@ -39,42 +42,34 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
-                        <thead>
-                            <tr>
-                                <th data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                </th>
-                                <th data-sort-ignore="true">Name</th>
-                                <th data-sort-ignore="true">Label</th>
-                                <th data-sort-ignore="true">Description</th>
-                                <th data-sort-ignore="true">Date Created</th>
-                                <th data-sort-ignore="true"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="group in groups" repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="group.selected" ng-change="checkDataChanges(group)">
-                                </td>
-                                <td>{{group.name}}</td>
-                                <td>{{group.label}}</td>
-                                <td>{{group.description}}</td>
-                                <td>{{group.date_created}}</td>
-                                <td class="text-right">
-                                    <button ng-click="addGroups(group.attgrp_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="6" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="attributeGroupTable">
+                        <tr ng-repeat="group in $data">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="group.selected" ng-change="checkDataChanges(group)">
+                            </td>
+                            <td class="text-center" data-title="'Name'">
+                                {{group.name}}
+                            </td>
+                            <td class="text-center" data-title="'Label'">
+                                {{group.label}}
+                            </td>
+                             <td class="text-center" data-title="'Description'">
+                                {{group.description}}
+                            </td>
+                             <td class="text-center" data-title="'Date Created'">
+                                {{group.date_created}}
+                            </td>
+                            </td>
+                            <td class="text-right">
+                                <button ng-click="addGroups(group.attgrp_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ng-click="toggleModal(group.attgrp_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                            </td>
+                        </tr>
                     </table>
+                </div>
+                <div class="overlay" ng-show="attribisLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
         </div>

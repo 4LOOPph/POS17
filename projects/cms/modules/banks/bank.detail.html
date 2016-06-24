@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <form role="form" name="bankForm" ng-submit="saveBank()">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="box box-warning">
                     <div class="box-header">
                         <h3 class="box-title">General Info</h3>
@@ -20,15 +20,15 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
-                        <div class="form-group">
-                            <label>Bank Name</label>
-                            <input type="text" class="form-control" name="bankname" ng-model="details.name" ng-minlength="2" ng-maxlength="50" placeholder="Bank Name" required="">
+                        <div class="form-group" ng-class="{'has-error':!bankForm.bankname.$error.required && (bankForm.bankname.$error.minlength || bankForm.bankname.$error.maxlength) }">
+                            <label><i ng-class="{'fa fa-times': !bankForm.bankname.$error.required && (bankForm.bankname.$error.minlength || bankForm.bankname.$error.maxlength)  }"></i> Bank Name</label>
+                            <input type="text" class="form-control" name="bankname" ng-model="details.name" ng-minlength="3" ng-maxlength="50" placeholder="Bank Name" required />
                             <p ng-show="bankForm.bankname.$error.minlength" class="help-block">Bank Name is too short.</p>
                             <p ng-show="bankForm.bankname.$error.maxlength" class="help-block">Bank Name is too long.</p>
                         </div>
                         <div class="form-group">
                             <label>Bank Address</label>
-                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Bank Address" required=""></textarea>
+                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Bank Address" required /></textarea>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -38,7 +38,7 @@
                 <div class="box box-warning">
                     <div class="box-body">
                         <button type="submit" class="btn btn-primary btn-block" ng-disabled="bankForm.$invalid">Save Entry</button>
-                        <button ui-sref="main.settings-banks" class="btn btn-default btn-block">Cancel</button>
+                        <button ui-sref="main.settings-banks " class="btn btn-default btn-block ">Cancel</button>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,9 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -28,7 +31,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message=""  ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
@@ -38,41 +41,28 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover footable" data-page-size="10">
-                        <thead>
-                            <tr>
-                                <th data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                </th>
-                                <th data-sort-ignore="true">Supplier</th>
-                                <th data-sort-ignore="true">Contact Person</th>
-                                <th data-sort-ignore="true">Contact No.</th>
-                                <th data-sort-ignore="true">Address</th>
-                                <th data-sort-ignore="true"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="supplier in suppliers" repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="supplier.selected" ng-change="checkDataChanges(supplier)">
-                                </td>
-                                <td>{{supplier.name}}</td>
-                                <td>{{supplier.contact_person}}</td>
-                                <td>{{supplier.contact_number}}</td>
-                                <td>{{supplier.address}}</td>
-                                <td class="text-right">
-                                    <button ng-click="edit(supplier.s_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="6" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="supplierTable">
+                        <tr ng-repeat="supplier in $data  track by $index">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="supplier.selected" ng-change="checkDataChanges(supplier)">
+                            </td>
+                            <td class="text-center" data-title="'Supplier '">
+                                {{supplier.name}}
+                            </td>
+                            <td class="text-center" data-title="'Contact Person'">
+                                {{supplier.contact_person}}
+                            </td>
+                            <td class="text-center" data-title="'Contact No.'">
+                                {{supplier.contact_number}}
+                            </td>
+                            <td class="text-center" data-title="'Address'">
+                                {{supplier.address}}
+                            </td>
+                            <td class="text-right">
+                                <button ng-click="edit(supplier.s_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="overlay" ng-show="supplierisLoading">

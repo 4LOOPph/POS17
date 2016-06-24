@@ -9,6 +9,9 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-xs-12">
             <div class="nav-tabs-custom" bs-tabs>
                 <div data-title="<i class='fa fa-user'></i> User Accounts" bs-pane>
@@ -20,9 +23,9 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <div class="input-group">
-                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch2" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch2.length < 1)?searchData2():0">
                                                 <div class="input-group-btn">
-                                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchData2()" ng-keypress="($event.which === 13)?searchData2():0"><i class="fa fa-search"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -36,50 +39,30 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover footable" data-page-size="10">
-                                <thead>
-                                    <tr>
-                                        <th data-sort-ignore="true">
-                                            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                        </th>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th data-sort-ignore="true">User Roles</th>
-                                        <th>Account Validity</th>
-                                        <th class="text-right" data-sort-ignore="true">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="row in users" repeat-end="paginate()">
-                                        <td>
-                                            <input type="checkbox" ng-model="row.selected">
-                                        </td>
-                                        <td>
-                                            {{row.EmpName}}
-                                        </td>
-                                        <td>
-                                            {{row.username}}
-                                        </td>
-                                        <td>
-                                            <span class="role-tag label label-primary" ng-repeat="tag in row.userRoles">{{tag.name}}</span>
-                                        </td>
-                                        <td>
-                                            {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
-                                        </td>
-                                        <td class="text-right">
-                                            <a class="btn btn-flat btn-info btn-xs" ng-click="newUserAccount(row.uc_id)"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a class="btn btn-flat btn-danger btn-xs" ng-click="toggleModal(row.uc_id,$index,'users')" href=""><span class="glyphicon glyphicon-remove"></span></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot class="hide-if-no-paging">
-                                    <tr>
-                                        <td colspan="6" align="center">
-                                            <ul class="pagination"></ul>
-                                        </td>
-                                    </tr>
-                                </tfoot>
+                        <div class="box-body table-responsive padding">
+                            <table class="table table-hover" ng-table="usersTable">
+                                <tr ng-repeat="row in $data  track by $index">
+                                    <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                        <input type="checkbox" ng-model="row.selected" ng-change="checkDataChanges(row)">
+                                    </td>
+                                    <td class="text-center" data-title="'Name'">
+                                        {{row.EmpName}}
+                                    </td>
+                                    <td class="text-center" data-title="'Username'">
+                                        {{row.username}}
+                                    </td>
+                                    <td class="text-center" data-title="'User Roles'">
+                                        <span class="role-tag label label-primary" ng-repeat="tag in row.userRoles">{{tag.name}}</span>
+                                    </td>
+                                    <td class="text-center" data-title="'Account Validity'">
+                                        {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
+                                    </td>
+                                    <td class="text-right" data-title="'Action'">
+                                        <a class="btn btn-flat btn-default btn-xs" ng-click="setUsersSubscription(row.uc_id)" ng-show="profile.isOwner == 1 && profile.uc_id !== row.uc_id"><span class="fa fa-list"></span></a>
+                                        <a class="btn btn-flat btn-info btn-xs" ng-click="newUserAccount(row.uc_id,row.profile.person_id)"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a class="btn btn-flat btn-danger btn-xs" ng-click="toggleModal(row.uc_id,$index,'users')" href=""><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -93,7 +76,7 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <div class="input-group">
-                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                                 </div>
@@ -109,39 +92,27 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover footable" data-page-size="10">
-                                <thead>
-                                    <tr>
-                                        <th data-sort-ignore="true">
-                                            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                        </th>
-                                        <th>User Group</th>
-                                        <th>Description</th>
-                                        <th class="text-right" data-sort-ignore="true">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat='group in usergroups' repeat-end="paginate()">
-                                        <td>
-                                            <input type="checkbox" ng-model="group.selected">
-                                        </td>
-                                        <td>{{group.name}}</td>
-                                        <td>{{group.description}}</td>
-                                        <td class="text-right">
-                                            <a ui-sref="main.settings-permissions({groupId:group.role_id})" class="btn btn-flat btn-primary btn-xs"><i class="fa fa-key"></i></a>
-                                            <button ng-click="edit(store.store_id)" class="btn btn-flat btn-info btn-xs"><i class="glyphicon glyphicon-edit"></i></button>
-                                            <button class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i> </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot class="hide-if-no-paging">
-                                    <tr>
-                                        <td colspan="6" align="center">
-                                            <ul class="pagination"></ul>
-                                        </td>
-                                    </tr>
-                                </tfoot>
+                        
+                        <div class="box-body table-responsive padding">
+                            <table class="table table-hover" ng-table="usersGroupTable">
+                                <tr ng-repeat="group in $data  track by $index">
+                                    <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                        <input type="checkbox" ng-model="group.selected" ng-change="checkDataChanges(group)">
+                                    </td>
+                                    <td class="text-center" data-title="'User Group'">
+                                        {{group.name}}
+                                    </td>
+                                    <td class="text-center" data-title="'Description'">
+                                        {{group.description}}
+                                    </td>
+                                    <td class="text-right" data-title="'Action'">
+                                        <a ui-sref="main.settings-permissions({groupId:group.role_id})" class="btn btn-flat btn-primary btn-xs"><i class="fa fa-key"></i></a>
+                                        <button ng-click="edit(store.store_id)" class="btn btn-flat btn-info btn-xs"><i class="glyphicon glyphicon-edit"></i></button>
+                                        <button class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i> </button>
+                                        </span>
+                                        </a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>

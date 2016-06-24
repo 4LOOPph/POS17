@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">Manage User Subscription Access</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th style="width: 10px">
+                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                </th>
+                <th class="text-center">Subscription List</th>
+            </tr>
+            <tr ng-repeat="data in profile.subscriptions">
+                <td width="5%">
+                    <input type="checkbox" ng-model="data.selected" ng-change="checkDataChanges(data)">
+                </td>
+                <td class="text-center">{{data.company_name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-flat btn-primary" type="button" ng-click="saveUser()">Save</button>
+    <button class="btn btn-flat btn-default" type="button" ng-click="cancelUser()">Cancel</button>
+</div>

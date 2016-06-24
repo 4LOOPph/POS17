@@ -1,23 +1,28 @@
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
+    <div class="user-panel" style="height:44px;">
+        <p style="color:#fff;padding: 5px 5px 5px 15px;line-height: 1;position: absolute;font-weight: 600;margin-bottom: 9px;">( {{activeSub}} )</p>
+    </div>
     <!-- Sidebar user panel -->
     <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a ui-sref="main.products"><i class="fa fa-gift"></i> Products</a></li>
-        <li><a ui-sref="main.products-bundles"><i class="fa fa-gift"></i> Product Bundles</a></li>
+        <li><a ui-sref="main.products-bundles"><i class="fa fa-archive"></i> Product Group</a></li>
+        <li><a ui-sref="main.articles"><i class="fa fa-file"></i> Articles</a></li>
         <li class="treeview">
             <a href="">
                 <i class="fa fa-th"></i> <span>Inventory</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-th"></i> Purchase Order</a></li>
-                <li><a href=""><i class="fa fa-th"></i> Receive Order</a></li>
-                <li><a href=""><i class="fa fa-th"></i> Return Order</a></li>
-                <li><a href=""><i class="fa fa-th"></i> Stocks</a></li>
+                <li><a ui-sref="main.purchase_order" ui-sref-active="active"><i class="fa fa-file-text-o"></i> Purchase Order</a></li>
+                <li><a ui-sref="main.received_order"><i class="fa fa-file-text-o"></i> Receive Order</a></li>
+                <li><a ui-sref="main.return_order"><i class="fa fa-file-text-o"></i> Return Order</a></li>
+                <li><a href=""><i class="fa fa-file-text-o"></i> Stocks</a></li>
             </ul>
         </li>
+        
         <!-- <li><a href=""><i class="fa fa-laptop"></i> Campaign & Loyalty</a></li>
         <li class="treeview">
             <a href="">
@@ -135,7 +140,7 @@
                 <i class="fa fa-home"></i> <span>User Access Control</span>
             </a>
         </li>
-       <!--  <li>
+        <!--  <li>
             <a ui-sref="main.calendars">
                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                 <small class="label pull-right bg-red">3</small>
@@ -147,7 +152,8 @@
                 <small class="label pull-right bg-yellow">12</small>
             </a>
         </li>
- -->        <!-- <li class="header">HELP</li>
+ -->
+        <!-- <li class="header">HELP</li>
         <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
     </ul>
 </section>
