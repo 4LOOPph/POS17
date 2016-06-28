@@ -1,11 +1,11 @@
 <section class="content-header">
     <h1>
-            Article Details
+            Quotation Details
           </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a ui-sref="main.articles">Article</a></li>
-        <li class="active">Article New Entry</li>
+        <li><a ui-sref="main.articles">Quotation</a></li>
+        <li class="active">Quotation Entry</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -22,8 +22,9 @@
                             <div class="box-body">
                                 <div class="form-group" ng-if="details.article_id">
                                     <label>Status: </label>
-                                    <span ng-if="details.is_active == '0' " class="label label-danger">Inactive</span>
-                                    <span ng-if="details.is_active == '1' " class="label label-success">Active</span>
+                                        <span ng-if="details.is_active == '0' " class="label label-danger">Inactive</span>
+                                        <span ng-if="details.is_active == '1' " class="label label-success">Active</span>
+                                   
                                 </div>
                                 <div class="form-group">
                                     <label>Article Title</label>
@@ -37,15 +38,6 @@
                                     <label>Article Description</label>
                                     <text-angular ng-model="details.description" required /></text-angular>
                                 </div>
-                                <div class="form-group">
-                                    <label>Tags <i class="fa fa-tags"></i></label>
-                                    <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
-                                        <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
-                                        <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
-                                            <div ng-bind-html="tag.tags | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,8 +45,6 @@
                         <div class="box box-warning">
                             <div class="box-body">
                                 <button type="submit" ng-disabled="articleForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
-                                <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishArticle(details.article_id)">Publish</a>
-                                <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveArticle(details.article_id)">Archive</a>
                                 <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                             </div>
                         </div>

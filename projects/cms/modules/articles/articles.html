@@ -19,6 +19,12 @@
                         <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail">
                             <i class="fa fa-edit"></i> Add New Entry
                         </button>
+                        <button class="btn btn-flat btn-sm btn-info">
+                            <i class="glyphicon glyphicon-ok"></i> Publish
+                        </button>
+                        <button class="btn btn-flat btn-sm btn-warning">
+                            <i class="fa fa-remove"></i> Unpublish
+                        </button>
                         <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
                             <i class="fa fa-remove"></i> Delete
                         </button>
@@ -45,9 +51,9 @@
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a ng-click="updateStatus('All')">All</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Active')">Active</a>
+                                            <li><a ng-click="updateStatus('Published')">Published</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Inactive')">Inactive</a>
+                                            <li><a ng-click="updateStatus('Draft')">Draft</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -68,9 +74,12 @@
                             <td class="text-center" data-title="'Description'">
                                 <span data-ng-bind-html="article.description | limitTo:80"></span>
                             </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in article.tags">{{tag.tags}}</span>
+                            </td>
                             <td class="text-center" data-title="'Status'">
-                                <span ng-if="article.is_active == '1' " class="label label-success">Active</span>
-                                <span ng-if="article.is_active == '0' " class="label label-danger">Inactive</span>
+                                <span ng-if="article.is_active == '1' " class="label label-success">Published</span>
+                                <span ng-if="article.is_active == '0' " class="label label-warning">Draft</span>
                             </td>
                             <td class="text-right">
                                 <button ng-click="edit(article.article_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>

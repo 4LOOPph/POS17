@@ -1,8 +1,8 @@
 <section class="content-header">
-    <h1>Human Resource</h1>
+    <h1>Quotation</h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Human Resource</li>
+        <li class="active">Quotation </li>
     </ol>
 </section>
 <!-- Main content -->
@@ -16,7 +16,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-humanresource-detail">
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.quotes-detail">
                             <i class="fa fa-edit"></i> Add New Entry
                         </button>
                         <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
@@ -45,9 +45,9 @@
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a ng-click="updateStatus('All')">All</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                            <li><a ng-click="updateStatus('Active')">Active</a>
                                             </li>
-                                            <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                            <li><a ng-click="updateStatus('Inactive')">Inactive</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -57,32 +57,28 @@
                     </div>
                 </div>
                 <div class="box-body table-responsive padding">
-                    <table class="table table-hover" ng-table="personsTable">
-                        <tr ng-repeat="person in $data  track by $index">
+                    <table class="table table-hover" ng-table="articleTable">
+                        <tr ng-repeat="article in $data  track by $index">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                                <input type="checkbox" ng-model="article.selected" ng-change="checkDataChanges(article)">
                             </td>
-                            <td class="text-center" data-title="'Image'">
-                                <img class="img-thumbnail" ng-src="{{person.image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />
+                            <td class="text-center" data-title="'Title'">
+                                {{article.title}}
                             </td>
-                            <td class="text-center" data-title="'Name'">
-                                {{person.lastname +','+ person.firstname}}
+                            <td class="text-center" data-title="'Description'">
+                                <span data-ng-bind-html="article.description | limitTo:80"></span>
                             </td>
-                            <td class="text-center" data-title="'Address '">
-                                {{person.address}}
-                            </td>
-                            <td class="text-center" data-title="'Person Type'">
-                                <span ng-if="person.per_type_id == '1' && person.isSubscriber == '0'" class="label label-success">Employee</span>
-                                <span ng-if="person.per_type_id == '2' && person.isSubscriber == '0'" class="label label-primary">Customer</span>
-                                <span ng-if="person.isSubscriber == '1'" class="label label-primary">Owner</span>
+                            <td class="text-center" data-title="'Status'">
+                                <span ng-if="article.is_active == '1' " class="label label-success">Active</span>
+                                <span ng-if="article.is_active == '0' " class="label label-danger">Inactive</span>
                             </td>
                             <td class="text-right">
-                                <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ng-click="edit(article.article_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="overlay" ng-show="personisLoading">
+                <div class="overlay" ng-show="articleisLoading">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>

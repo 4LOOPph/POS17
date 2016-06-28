@@ -65,14 +65,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="btn-group">
                                     <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="Display List of Product"><i class="fa fa-list"></i></label>
                                     <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'" uib-tooltip="Display Grid of Product">
                                         <i class="fa fa-th"></i>
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -87,6 +87,9 @@
                             </td>
                             <td class="text-center" data-title="'Bundle Type'">
                                 {{bundle.product_type}}
+                            </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in bundle.tags">{{tag.tags}}</span>
                             </td>
                             <td class="text-center" data-title="'Bundle Price'">
                                 {{bundle.sell_price}}

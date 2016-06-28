@@ -34,8 +34,7 @@
                         <label>Product Price</label>
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="text" ng-model="details.sell_price" class="form-control" required / numbers-only>
-                            <span class="input-group-addon">.00</span>
+                            <input type="text" ng-model="details.sell_price" class="form-control" required valid-number>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -59,6 +58,15 @@
                     <div class="form-group">
                         <label>Description</label>
                         <text-angular ng-model="details.item_description" required /></text-angular>
+                    </div>
+                    <div class="form-group">
+                        <label>Tags <i class="fa fa-tags"></i></label>
+                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
+                            <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
+                            <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
             </div>

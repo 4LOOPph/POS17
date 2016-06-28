@@ -29,11 +29,8 @@
                                     <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
                                         <i class="fa fa-edit"></i> Add New Entry
                                     </a>
-                                    <button class="btn btn-flat btn-sm btn-primary">
-                                        <i class="glyphicon glyphicon-ok"></i> Publish
-                                    </button>
-                                    <button class="btn btn-flat btn-sm btn-danger">
-                                        <i class="fa fa-remove"></i> Unpublish
+                                    <button class="btn btn-flat btn-sm btn-danger" ng-disabled="!deleteSomeData" ng-click="deleteSelected()">
+                                        <i class="fa fa-trash"></i> Archive
                                     </button>
                                     <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                         <i class="fa fa-refresh"></i> Refresh
@@ -89,11 +86,14 @@
                                 <td data-header="'checkboxheader.html'" class="text-center center-td-table">
                                     <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
                                 </td>
-                                <td class="text-center" data-title="'Product Name'">
+                                <td class="text-left" data-title="'Product Name'">
                                     {{product.item_name}}
                                 </td>
                                 <td class="text-center" data-title="'Product Type'">
                                     {{product.product_type}}
+                                </td>
+                                <td class="text-center" data-title="'Tags'">
+                                    <span class="label label-default label-tags" ng-repeat="tag in product.tags">{{tag.tags}}</span>
                                 </td>
                                 <td class="text-center" data-title="'Base Price'">
                                     {{product.sell_price}}
