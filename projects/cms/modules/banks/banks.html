@@ -53,10 +53,12 @@
                             <td class="text-center" data-title="'Address'">
                                 {{bank.address}}
                             </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in bank.tags">{{tag.tags}}</span>
                             </td>
                             <td class="text-right">
                                 <button ng-click="edit(bank.bk_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button ng-click="toggleModal(bank.bk_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button ng-click="toggleModal(bank.bk_id);" class="btn btn-flat btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     </table>
