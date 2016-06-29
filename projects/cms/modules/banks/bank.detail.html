@@ -30,6 +30,15 @@
                             <label>Bank Address</label>
                             <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Bank Address" required /></textarea>
                         </div>
+                        <div class="form-group">
+                            <label>Tags <i class="fa fa-tags"></i></label>
+                            <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
+                                <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
+                                <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                    <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

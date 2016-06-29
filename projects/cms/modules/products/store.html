@@ -1,5 +1,5 @@
 <div class="row" ng-controller="productStoreCtrl">
-    <form role="form" ng-submit="addProduct()">
+    <form role="form">
         <div class="col-md-12">
             <div class="box box-warning">
                 <div class="box-header">
@@ -20,9 +20,9 @@
                             <button class="btn btn-flat btn-sm btn-primary" ng-click="saveStore()">
                                 <i class="fa fa-edit"></i> Save
                             </button>
-                            <button class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
+                            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
                                 <i class="fa fa-refresh"></i> Refresh
-                            </button>
+                            </a>
                         </form>
                     </div>
                     <div class="pull-right box-tools">
