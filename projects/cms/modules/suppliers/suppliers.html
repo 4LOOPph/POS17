@@ -59,6 +59,9 @@
                             <td class="text-center" data-title="'Address'">
                                 {{supplier.address}}
                             </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in supplier.tags">{{tag.tags}}</span>
+                            </td>
                             <td class="text-right">
                                 <button ng-click="edit(supplier.s_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                             </td>
