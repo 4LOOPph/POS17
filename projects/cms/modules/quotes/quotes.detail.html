@@ -4,7 +4,7 @@
           </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a ui-sref="main.articles">Quotation</a></li>
+        <li><a ui-sref="main.quotes">Quotation</a></li>
         <li class="active">Quotation Entry</li>
     </ol>
 </section>
@@ -13,38 +13,126 @@
     <div class="nav-tabs-custom" bs-tabs>
         <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
             <div class="row">
-                <form role="form" name="articleForm" ng-submit="saveArticle()">
+                <form role="form" name="quoteInfoForm" ng-submit="saveQuoteInfo()">
                     <div class="col-md-9">
                         <div class="box box-warning">
                             <div class="box-header">
-                                <h3 class="box-title">Enter Article Info</h3>
+                                <h3 class="box-title">Enter Quote Info</h3>
                             </div>
                             <div class="box-body">
-                                <div class="form-group" ng-if="details.article_id">
+                                <div class="form-group" ng-if="details.quote_id">
                                     <label>Status: </label>
-                                        <span ng-if="details.is_active == '0' " class="label label-danger">Inactive</span>
-                                        <span ng-if="details.is_active == '1' " class="label label-success">Active</span>
-                                   
+                                    <span ng-if="details.is_active == '0' " class="label label-danger">Process</span>
+                                    <span ng-if="details.is_active == '1' " class="label label-success">Pending</span>
+                                    <span ng-if="details.is_active == '1' " class="label label-success"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Article Title</label>
-                                    <input type="text" ng-model="details.title" class="form-control" placeholder="Title" required />
+                                <div class="form-group col-md-6">
+                                    <label>Quote Number</label>
+                                    <input type="text" ng-model="details.quote_number" style="width: 80%;" class="form-control" placeholder="#" required />
                                 </div>
-                                <div class="form-group">
-                                    <label>Article Summary</label>
-                                    <text-angular ng-model="details.article" required /></text-angular>
+                                <div class="form-group col-md-6">
+                                    <label>Customer Name</label>
+                                    <select style="width: 80%;" class="form-control" ng-model="details.customer_id" ng-options="option.person_id as option.displayName for option in persons" required /></select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Article Description</label>
-                                    <text-angular ng-model="details.description" required /></text-angular>
+                            </div>
+                            <div class=box-body>
+                                <div class="form-group col-md-6">
+                                    <label>Store Name</label>
+                                    <select style="width: 80%;" class="form-control" ng-model="details.store_id" ng-options="option.store_id as option.name for option in store" required /></select>
                                 </div>
+                                <div class="form-group col-md-6">
+                                </div>
+                            </div>
+                            <div class=box-body>
+                                <table class="table">
+                                    <tr>
+                                        <th style="width:40%;">Quote Product</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Discount</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <ui-select ng-model="items.product" theme="bootstrap" ng-disabled="false">
+                                                <ui-select-match placeholder="Select product...">{{$select.selected.item_name}}</ui-select-match>
+                                                <ui-select-choices repeat="items in products | filter: $select.search track by items.item_name">
+                                                    {{items.item_name}}
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </td>
+                                        <td>
+                                            <input type="number" ng-model="items.quantity"  class="input-form mytext">
+                                        </td>
+                                        <td>
+                                            <input type="number" ng-model="items.price" class="input-form mytext">
+                                        </td>
+                                        <td>
+                                            <input type="number" ng-model="items.discount" class="input-form mytext">
+                                        </td>
+                                        <td>
+                                        
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href ng-click="addItem(items)" class="btn btn-small"><i class="fa fa-plus"> Add item</i></a></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng:repeat="item in details.quoteproduct">
+                                        <td>
+                                            <b>{{item.product_details.item_name}}</b>
+                                        </td>
+                                        <td>
+                                            <b>{{item.quantity}}</b>
+                                        </td>
+                                        <td>
+                                            <b>{{item.price}}</b>
+                                        </td>
+                                        <td>
+                                            <b>{{item.discount}}</b>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="removeItem($index)"><i class="fa fa-remove"></i></a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="box box-warning">
+                            <div style="margin-top: 5px;" class="box box-solid box-primary">
+                                <div class="form-group box-body">
+                                    <label >Subtotal :</label>
+                                    <label class="pull-right"><b>{{details.sub_total}}<b></label>
+                                </div>
+                                <div class="form-group box-body">
+                                    <label >Other Fee : </label>
+                                    <input type="text" class="form-control" ng-model="details.other_fee" ng-required id="" placeholder="Enter value">
+                                </div>
+                                <div class="form-group box-body">
+                                    Tax ({{details.tax}}%)<a href="" ng-click="isCollapsed = !isCollapsed"> Edit</i></a>
+                                    <div uib-collapse="!isCollapsed">
+                                        <input type="text" class="form-control" ng-model="details.tax" ng-required id="" placeholder="Enter value">
+                                    </div>
+                                </div>
+                                <div id="demo" class="collapse">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="box-header btn-black">
+                                    <h3 class="box-title">Total :{{total()}}</h3>
+                                    <label ng-model="details.total_fee" class="pull-right"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Comments</label>
+                                <textarea rows="2" type="text" ng-model="details.comments" class="form-control" id="" placeholder=""></textarea>
+                            </div>
                             <div class="box-body">
-                                <button type="submit" ng-disabled="articleForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
+                                <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
                                 <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                             </div>
                         </div>

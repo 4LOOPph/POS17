@@ -57,28 +57,28 @@
                     </div>
                 </div>
                 <div class="box-body table-responsive padding">
-                    <table class="table table-hover" ng-table="articleTable">
-                        <tr ng-repeat="article in $data  track by $index">
+                    <table class="table table-hover" ng-table="quoteTable">
+                        <tr ng-repeat="quotes in $data  track by $index">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="article.selected" ng-change="checkDataChanges(article)">
+                                <input type="checkbox" ng-model="quotes.selected" ng-change="checkDataChanges(quotes)">
                             </td>
-                            <td class="text-center" data-title="'Title'">
-                                {{article.title}}
+                            <td class="text-center" data-title="'Quote Number'">
+                                {{quotes.quote_number}}
                             </td>
-                            <td class="text-center" data-title="'Description'">
-                                <span data-ng-bind-html="article.description | limitTo:80"></span>
+                            <td class="text-center" data-title="'Sub Total'">
+                                <span data-ng-bind-html="quotes.sub_total | limitTo:80"></span>
                             </td>
                             <td class="text-center" data-title="'Status'">
-                                <span ng-if="article.is_active == '1' " class="label label-success">Active</span>
-                                <span ng-if="article.is_active == '0' " class="label label-danger">Inactive</span>
+                                <span ng-if="quotes.is_active == '1' " class="label label-success">Active</span>
+                                <span ng-if="quotes.is_active == '0' " class="label label-danger">Inactive</span>
                             </td>
                             <td class="text-right">
-                                <button ng-click="edit(article.article_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ng-click="edit(quotes.quote_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="overlay" ng-show="articleisLoading">
+                <div class="overlay" ng-show="quoteisLoading">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>

@@ -98,17 +98,7 @@
                 <div class="col-md-9" ng-if="details.pb_id">
                     <div class="box ">
                         <h3 class="box-title">Bundle Images</h3>
-                        <div class="box-header">
-                            <div class="pull-left">
-                                <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
-                                    <i class="fa fa-edit"></i> Upload Image
-                                </button>
-                                <button class="btn btn-flat btn-sm btn-success">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-4" ng-show="slides.length > 0">
+                        <div class="text-center" ng-show="slides.length > 0">
                             <div id="carousel-custom" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-outer">
                                     <div class="carousel-inner">
@@ -124,37 +114,11 @@
                                 </ol>
                             </div>
                         </div>
-                        <div class="col-md-4" ng-hide="slides.length > 0">
-                            <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
-                                <div class='carousel-outer'>
-                                    <div class='carousel-inner'>
-                                        <div class='item active'>
-                                            <img src='http://placehold.it/400x200&text=slide1' alt='' />
-                                        </div>
-                                        <div class='item'>
-                                            <img src='http://placehold.it/400x200&text=slide2' alt='' />
-                                        </div>
-                                        <div class='item'>
-                                            <img src='http://placehold.it/400x200&text=slide3' alt='' />
-                                        </div>
-                                        <div class='item'>
-                                            <img src='http://placehold.it/400x200&text=slide4' alt='' />
-                                        </div>
-                                    </div>
-                                </div>
-                                <ol class='carousel-indicators'>
-                                    <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src='http://placehold.it/100x50&text=slide1' alt='' /></li>
-                                    <li data-target='#carousel-custom' data-slide-to='1'><img src='http://placehold.it/100x50&text=slide2' alt='' /></li>
-                                    <li data-target='#carousel-custom' data-slide-to='2'><img src='http://placehold.it/100x50&text=slide3' alt='' /></li>
-                                    <li data-target='#carousel-custom' data-slide-to='2'><img src='http://placehold.it/100x50&text=slide4' alt='' /></li>
-                                </ol>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Package Items" bs-pane ng-if="displayComposite ">
+        <div data-title="<i class='fa fa-list'></i> Package Items" bs-pane ng-if="displayComposite">
             <div class="row ">
                 <form class="form-inline " role="form ">
                     <div class="col-md-12">
@@ -186,7 +150,7 @@
                                 <div ng-repeat="list in models" class="col-md-6">
                                     <div clas="box-header">
                                         <div class="box-tools " ng-hide="list.listName === 'Products'">
-                                            <a ng-click="addProductBundle() "  class="btn btn-flat btn-sm btn-primary ">
+                                            <a ng-click="addProductBundle() " class="btn btn-flat btn-sm btn-primary ">
                                                 <i class="fa fa-edit "></i> Save
                                             </a>
                                             <a class="btn btn-flat btn-sm btn-danger " ng-click="removeAll(list,item) ">
@@ -209,7 +173,7 @@
                 </form>
             </div>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="displayComposite ">
+        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="displayComposite">
             <div class="row" ng-controller="productBundleCategoryCtrl">
                 <form role="form" ng-submit="addProduct()">
                     <div class="col-md-12">
@@ -294,125 +258,34 @@
                 </form>
             </div>
         </div>
+        <div data-title="<i class='fa fa-files-o'></i> Media / Files" bs-pane ng-if="displayComposite">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header">
+                            <div class="pull-left">
+                                <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
+                                    <i class="fa fa-edit"></i> Upload Image
+                                </button>
+                                <button ng-click="deleteAllMedia()" class="btn btn-flat btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i> Delete All
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="box">
+                                        <div class="box-body text-center">
+                                             <button class="btn btn-box-tool pull-right" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
+                                            <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
-<style>
-.row ul[dnd-list],
-.row ul[dnd-list] > li {
-    position: relative;
-}
-
-.row ul[dnd-list] {
-    min-height: 42px;
-    padding-left: 0px;
-}
-
-.row ul[dnd-list] .dndDraggingSource {
-    display: none;
-}
-
-.row ul[dnd-list] .dndPlaceholder {
-    display: block;
-    background-color: #ddd;
-    min-height: 42px;
-}
-
-.row ul[dnd-list] li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-}
-
-.row ul[dnd-list] li.selected {
-    background-color: #dff0d8;
-    color: #3c763d;
-}
-
-.row ul[dnd-list] li.target-list {
-    min-height: 30px;
-}
-
-.carousel {
-    margin-top: 20px;
-}
-
-.item .thumb {
-    width: 25%;
-    cursor: pointer;
-    float: left;
-}
-
-.item .thumb img {
-    width: 100%;
-    margin: 2px;
-}
-
-.item img {
-    width: 100%;
-}
-
-h4 {
-    margin: 20px 10px 10px;
-}
-
-p {
-    margin: 10px;
-}
-
-#carousel-example-generic {
-    margin: 20px auto;
-    width: 400px;
-}
-
-#carousel-custom {
-    margin: 20px auto;
-    width: 400px;
-}
-
-#carousel-custom .carousel-indicators {
-    margin: 10px 0 0;
-    overflow: auto;
-    position: static;
-    text-align: left;
-    white-space: nowrap;
-    width: 100%;
-}
-
-#carousel-custom .carousel-indicators li {
-    background-color: transparent;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    display: inline-block;
-    height: auto;
-    margin: 0 !important;
-    width: auto;
-}
-
-#carousel-custom .carousel-indicators li img {
-    display: block;
-    opacity: 0.5;
-}
-
-#carousel-custom .carousel-indicators li.active img {
-    opacity: 1;
-}
-
-#carousel-custom .carousel-indicators li:hover img {
-    opacity: 0.75;
-}
-
-#carousel-custom .carousel-outer {
-    position: relative;
-}
-
-.carousel-inner {
-    border-top: 5px;
-    border-left: 10px;
-    border-right: 10px;
-    border-color: #251616;
-    border-style: solid;
-}
-</style>
