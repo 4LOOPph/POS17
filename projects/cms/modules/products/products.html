@@ -29,12 +29,18 @@
                                     <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
                                         <i class="fa fa-edit"></i> Add New Entry
                                     </a>
-                                    <button class="btn btn-flat btn-sm btn-danger" ng-disabled="!deleteSomeData" ng-click="deleteSelected()">
+                                    <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()">
+                                        <i class="fa fa-file-text-o"></i> Publish
+                                    </a>
+                                    <a class="btn btn-flat btn-sm btn-warning" ng-disabled="!deleteSomeData" ng-click="draftSelected()">
+                                        <i class="fa fa-edit"></i> Draft
+                                    </a>
+                                    <a class="btn btn-flat btn-sm btn-danger" ng-disabled="!deleteSomeData" ng-click="deleteSelected()">
                                         <i class="fa fa-trash"></i> Archive
-                                    </button>
-                                    <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                                    </a>
+                                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                         <i class="fa fa-refresh"></i> Refresh
-                                    </button>
+                                    </a>
                                 </div>
                             </form>
                         </div>
