@@ -35,7 +35,7 @@
                                         <div class="form-group ">
                                             <label class="col control-label">Attribute Type</label>
                                             <div class="col">
-                                                <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attgrp_id as item.name for item in types" required />
+                                                <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attrib_type_id as item.name for item in types" required />
                                                 </select>
                                             </div>
                                         </div>
@@ -53,10 +53,13 @@
                                         <div class="form-group">
                                             <label>Attribute Values</label>
                                             <div ng-if="details.attrib_type.name == 'Textbox'">
-                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_value">
+                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_name" style="margin-bottom:10px;" placeholder="Name">
+                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_value" style="margin-bottom:10px;" placeholder="Value">
+                                                <textarea class="form-control" ng-model="attrib_type.attrib_description" placeholder="Description"></textarea>
                                             </div>
                                             <div ng-if="details.attrib_type.name == 'Numeric Textbox'">
-                                                <input type="number" class="form-control" ng-model="attrib_type.attrib_value">
+                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_name" placeholder="Name">
+                                                <input type="number" class="form-control" ng-model="attrib_type.attrib_value" placeholder="Value">
                                             </div>
                                             <div ng-if="details.attrib_type.name == 'Textarea' || details.attrib_type.name == 'Rich Textbox'">
                                                 <textarea class="form-control" ng-model="attrib_type.attrib_value"></textarea>
@@ -66,16 +69,6 @@
                                                     <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_name" placeholder="Name">
                                                     <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_value" placeholder="Value">
                                                     <textarea class="form-control" ng-model="attrib_type.attrib_description" style="margin-bottom:10px;" placeholder="Description"></textarea>
-                                                    <img ngf-src="attrib_type.value_image || attrib_type.value_image_url || 'http://placehold.it/64x64'" err-src="http://placehold.it/64x64" class="img-rounded" style="margin-bottom:10px;" width="64" height="64">
-                                                    <div class="input-group image-preview" style="margin-bottom:10px;">
-                                                        <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="attrib_type.value_image"> <span class="glyphicon glyphicon-remove"></span> Clear
-                                                        </button>
-                                                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="attrib_type.value_image" ngf-max-size="8MB" ngf-select="upload($files)" />
-                                                        </div>
-                                                        </span>
-                                                    </div>
                                                     <a class="btn btn-info btn-flat" style="margin-bottom:10px;" ng-click="addtoList()"><i class="glyphicon glyphicon-plus"></i></a>
                                                 </div>
                                                 <select class="form-control">
