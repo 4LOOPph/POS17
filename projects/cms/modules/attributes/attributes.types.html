@@ -45,8 +45,11 @@
                             <td class="text-center" data-title="'Name'">
                                 {{type.name}}
                             </td>
+                            <td class="text-center" data-title="'Label'">
+                                {{type.label}}
+                            </td>
                             <td class="text-center" data-title="'Date Created'">
-                                {{type.date_created}}
+                                {{type.date_created | fromNow}}
                             </td>
                             </td>
                         </tr>

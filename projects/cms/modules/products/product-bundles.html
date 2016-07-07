@@ -22,12 +22,15 @@
                                 <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add">
                                     <i class="fa fa-edit"></i> Add New Entry
                                 </a>
-                                <button ng-click="publishSelected()" class="btn btn-flat btn-sm btn-primary">
-                                    <i class="glyphicon glyphicon-ok"></i> Publish
-                                </button>
-                                <button ng-click="archiveSelected()" class="btn btn-flat btn-sm btn-danger">
-                                    <i class="fa fa-remove"></i> Unpublish
-                                </button>
+                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()">
+                                    <i class="fa fa-file-text-o"></i> Publish
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="!deleteSomeData" ng-click="draftSelected()">
+                                    <i class="fa fa-edit"></i> Draft
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="!deleteSomeData" ng-click="archiveSelected()">
+                                        <i class="fa fa-trash"></i> Archive
+                                    </a>
                                 <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                     <i class="fa fa-refresh"></i> Refresh
                                 </button>
