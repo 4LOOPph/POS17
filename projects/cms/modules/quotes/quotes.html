@@ -64,9 +64,9 @@
                             </td>
                             <td class="text-center" data-title="'Quote Number'">
                                 {{quotes.quote_number}}
-                            </td>
-                            <td class="text-center" data-title="'Sub Total'">
-                                <span data-ng-bind-html="quotes.sub_total | limitTo:80"></span>
+                            </td>                            
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in quotes.tags">{{tag.tags}}</span>
                             </td>
                             <td class="text-center" data-title="'Status'">
                                 <span ng-if="quotes.is_active == '1' " class="label label-success">Active</span>

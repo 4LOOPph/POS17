@@ -35,11 +35,121 @@
                                         <div class="form-group ">
                                             <label class="col control-label">Attribute Type</label>
                                             <div class="col">
-                                                <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attrib_type_id as item.name for item in types" required />
-                                                <option disabled value="">Attribute Type</option>
+                                                <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attgrp_id as item.name for item in types" required />
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Default Value</label>
+                                            <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value" required />
+                                        </div>
+                                        <!-- <div class="form-group ">
+                                            <label class="col control-label">Attribute Group</label>
+                                            <div class="col">
+                                                <select class="form-control" ng-model="details.attrib_grp_id" ng-options="item.attrib_type_id as item.name for item in attribute_group" required />
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label>Attribute Values</label>
+                                            <div ng-if="details.attrib_type.name == 'Textbox'">
+                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_value">
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Numeric Textbox'">
+                                                <input type="number" class="form-control" ng-model="attrib_type.attrib_value">
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Textarea' || details.attrib_type.name == 'Rich Textbox'">
+                                                <textarea class="form-control" ng-model="attrib_type.attrib_value"></textarea>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Dropdownlist'">
+                                                <div style="margin-bottom:15px;">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_name" placeholder="Name">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_value" placeholder="Value">
+                                                    <textarea class="form-control" ng-model="attrib_type.attrib_description" style="margin-bottom:10px;" placeholder="Description"></textarea>
+                                                    <img ngf-src="attrib_type.value_image || attrib_type.value_image_url || 'http://placehold.it/64x64'" err-src="http://placehold.it/64x64" class="img-rounded" style="margin-bottom:10px;" width="64" height="64">
+                                                    <div class="input-group image-preview" style="margin-bottom:10px;">
+                                                        <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="attrib_type.value_image"> <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="attrib_type.value_image" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                                        </div>
+                                                        </span>
+                                                    </div>
+                                                    <a class="btn btn-info btn-flat" style="margin-bottom:10px;" ng-click="addtoList()"><i class="glyphicon glyphicon-plus"></i></a>
+                                                </div>
+                                                <select class="form-control">
+                                                    <option ng-repeat="val in attrib_type.attribute_list_value" value="{{val.value}}">{{val.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Multiselect'">
+                                                <div style="margin-bottom:15px;">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_name" placeholder="Name">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_value" placeholder="Value">
+                                                    <a class="btn btn-info btn-flat" style="margin-bottom:10px;" ng-click="addtoList1()"><i class="glyphicon glyphicon-plus"></i></a>
+                                                </div>
+                                                <select multiple class="form-control">
+                                                    <option ng-repeat="val in attrib_type.attribute_list_value2" value="{{val.value}}">{{val.name}}</option>
+                                                </select>
+                                            </div>
+                                            <!-- Checkbox -->
+                                            <div ng-if="details.attrib_type.name == 'Checkbox'">
+                                                <div style="margin-bottom:15px;">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_name" placeholder="Name">
+                                                    <input type="text" class="form-control" style="margin-bottom:10px;" ng-model="attrib_type.attrib_value" placeholder="Value">
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="attrib_type.attrib_value" /> {{attrib_type.attrib_name}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Image'">
+                                                <img ngf-src="attrib_type.value_image || 'http://placehold.it/250x250'" err-src="http://placehold.it/150x150" class="thumbnail" width="150" height="150">
+                                                <div class="input-group image-preview">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="attrib_type.value_image">
+                                                            <span class="glyphicon glyphicon-remove">Clear</span>
+                                                        </button>
+                                                        <div class="btn btn-primary image-preview-input"> <span class="fa fa-file-image-o"></span> Browse<span class="image-preview-input-title"></span>
+                                                            <input type="file" accept="image/*" name="input-file-preview" ng-model="attrib_type.value_image" ngf-max-size="8MB" ngf-select />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'QRCode Textbox'">
+                                                <input type="text" class="form-control" ng-model="attrib_type.attrib_value" style="margin-bottom:15px;">
+                                                <qr type-number="6" correction-level="'M'" size="200" input-mode="''" text="attrib_type.attrib_value || 'sample'" image="true" class="padding-top"></qr>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Attachment'">
+                                                <div class="input-group image-preview">
+                                                    <input type="text" class="form-control image-preview-filename" disabled="disabled" ng-model="attrib_type.value_image.name">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="attrib_type.value_image">
+                                                            <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">Browse</span>
+                                                            <input type="file" accept="image/*" name="input-file-preview" ng-model="attrib_type.value_image" ngf-max-size="8MB" ngf-select />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group image-preview [TO HERE]-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="box box-warning">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <button type="submit" ng-disabled="attributeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
+                                            <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                                        </div>
+                                        <hr>
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
@@ -78,21 +188,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.box-body -->
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="box box-warning">
-                                    <div class="box-body">
-                                        <button type="submit" ng-disabled="attributeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
-                                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
-                                    </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div data-title="<i class='fa fa-list'></i> Product Type" bs-pane>
+                <div data-title="<i class='fa fa-cubes'></i> Product Type" bs-pane>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-warning">
@@ -163,75 +264,142 @@
                         </div>
                     </div>
                 </div>
-                <div data-title="<i class='fa fa-list'></i> Attribute Values" bs-pane ng-if="showAttributeValues">
+                <div data-title="<i class='fa fa-list'></i> Categories" bs-pane>
                     <div class="row">
                         <div class="col-md-12">
-                                <div class="box box-warning">
-                                    <div class="box-header">
-                                        <div class="pull-left">
-                                            <form class="form-inline">
-                                                <button class="btn btn-flat btn-sm btn-primary" ng-click="newEntry()">
-                                                    <i class="fa fa-file-o"></i> Add Attribute Value
-                                                </button>
-                                                <button class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
-                                                    <i class="fa fa-refresh"></i> Refresh
-                                                </button>
-                                            </form>
-                                        </div>
-                                        <div class="pull-right box-tools">
-                                            <form class="form-inline">
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                                            <div class="input-group-btn">
-                                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
-                                                            </div>
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <div class="pull-left">
+                                        <form class="form-inline">
+                                            <button class="btn btn-flat btn-sm btn-primary" ng-disabled="!deleteSomeData">
+                                                <i class="fa fa-file-o"></i> Save
+                                            </button>
+                                            <button class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
+                                                <i class="fa fa-refresh"></i> Refresh
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="pull-right box-tools">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="box-body">
-                                        <table class="table table-striped footable" data-page-size="10" id="tblStore">
-                                            <thead>
-                                                <tr>
-                                                    <th width="30" data-sort-ignore="true">
-                                                        <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                                                    </th>
-                                                    <th class="" data-sort-ignore="true">Product Type</th>
-                                                    <th class="">Label</th>
-                                                    <th class="">Description</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="var in attributeValues">
-                                                    <td>
-                                                        <input type="checkbox" ng-model="var.selected" ng-change="checkDataChanges(var)">
-                                                    </td>
-                                                    <td>
-                                                        {{var.name}}
-                                                    </td>
-                                                    <td>
-                                                        {{var.label}}
-                                                    </td>
-                                                    <td>
-                                                        {{var.description}}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot class="hide-if-no-paging">
-                                                <tr>
-                                                    <td colspan="6" align="center">
-                                                        <ul class="pagination"></ul>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+                                <div class="box-body">
+                                    <table class="table table-striped footable" data-page-size="10" id="categoryTable">
+                                        <thead>
+                                            <tr>
+                                                <th width="30" data-sort-ignore="true">
+                                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                                </th>
+                                                <th class="" data-sort-ignore="true">Product Type</th>
+                                                <th class="" data-sort-ignore="true">Label</th>
+                                                <th class="" data-sort-ignore="true">Image</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="category in categories">
+                                                <td>
+                                                    <input type="checkbox" ng-model="category.selected" ng-change="checkDataChanges(category)">
+                                                </td>
+                                                <td>
+                                                    {{category.name}}
+                                                </td>
+                                                <td>
+                                                    {{category.label}}
+                                                </td>
+                                                <td>
+                                                    <img class="img-thumbnail" ng-src="{{category.c_image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="hide-if-no-paging">
+                                            <tr>
+                                                <td colspan="6" align="center">
+                                                    <ul class="pagination"></ul>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-title="<i class='fa fa-file'></i> Articles" bs-pane>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <div class="pull-left">
+                                        <form class="form-inline">
+                                            <button class="btn btn-flat btn-sm btn-primary" ng-disabled="!deleteSomeData">
+                                                <i class="fa fa-file-o"></i> Save
+                                            </button>
+                                            <button class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
+                                                <i class="fa fa-refresh"></i> Refresh
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="pull-right box-tools">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-striped footable" data-page-size="10" id="tblArticles">
+                                        <thead>
+                                            <tr>
+                                                <th width="30" data-sort-ignore="true">
+                                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                                </th>
+                                                <th class="" data-sort-ignore="true">Title</th>
+                                                <th class="" data-sort-ignore="true">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="article in articles">
+                                                <td>
+                                                    <input type="checkbox" ng-model="article.selected" ng-change="checkDataChanges(var)">
+                                                </td>
+                                                <td>
+                                                    {{article.title}}
+                                                </td>
+                                                <td>
+                                                    <span data-ng-bind-html="article.description | limitTo:80"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="hide-if-no-paging">
+                                            <tr>
+                                                <td colspan="6" align="center">
+                                                    <ul class="pagination"></ul>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
