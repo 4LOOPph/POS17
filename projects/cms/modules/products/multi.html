@@ -1,8 +1,9 @@
 <ul dnd-list dnd-drop="onDrop(list, item, index)">
     <li ng-repeat="item in list.items track by item.p_id" dnd-draggable="getSelectedItemsIncluding(list, item)" dnd-dragstart="onDragstart(list, event)" dnd-selected="item.selected = !item.selected" ng-class="{'selected': item.selected}" dnd-disable-if="list.listName == 'Package'" dnd-moved="dropCallback(event, $index, item)">
         {{item.item_name}}
-        <a type=" button " ng-if="list.listName=='Package' " class="btn btn-danger btn-xs pull-right " ng-click="remove(list,item) ">
+        <a type=" button " ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right " ng-click="remove(list,item) ">
             <span class="fa fa-times "></span>
         </a>
+        <span class="label label-primary" ng-if="list.listName=='Package'">{{item.item_quantity}}</span>
     </li>
 </ul>

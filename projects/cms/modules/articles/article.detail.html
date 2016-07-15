@@ -136,7 +136,6 @@
                                     <thead>
                                         <tr>
                                             <th width="50%">Item Name</th>
-                                            <th>Description</th>
                                             <th>Code</th>
                                             <th>Brand</th>
                                             <th>Actions</th>
@@ -147,9 +146,17 @@
                                             <td>
                                                 <strong>{{ item.item_name }}</strong>
                                             </td>
-                                            <td>
-                                                <strong data-ng-bind-html="item.item_description | limitTo:80"></strong>
-                                            </td>
+                                            <!-- <td>
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn bg-navy btn-flat"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control" ng-model="item.item_quantity" valid-number>
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn bg-navy btn-flat"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </td> -->
                                             <td>
                                                 <strong>{{ item.item_code }}</strong>
                                             </td>
