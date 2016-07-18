@@ -16,14 +16,14 @@
             <!--  <div data-angular-treeview="true" ng-show="side" data-tree-id="mytree" data-tree-model="categoryData" data-node-id="id" data-node-label="label" data-node-children="items" style="overflow: auto; height: 927px">
                 </div> -->
             <div ng-show="side">
-                <div class="custom-panel panel-default" ng-repeat="category in categoryData" ng-click="filterByCategory(category)">
+                <div class="custom-panel panel-default" ng-repeat="category in categoryData">
                     <div class="panel-heading" ng-click="category.isCollapsed = !category.isCollapsed">
-                        {{category.label}}
+                        <a href="" ng-click="filterByCategory(category)"> {{category.label}}</a>
                         <i class="pull-right fa" ng-class="{'fa-angle-down': category.isCollapsed, 'fa-angle-right': !category.isCollapsed}"></i>
                     </div>
                     <ul class="list-group" uib-collapse="!category.isCollapsed">
                         <li ng-repeat="item in category.items" class="list-group-item">
-                            <a href="" ng-click="filterByCategory(category)"><i class="fa fa-angle-right"></i> {{item.label}}</a>
+                            <a href="" ng-click="filterByCategory(item)"><i class="fa fa-angle-right"></i> {{item.label}}</a>
                         </li>
                     </ul>
                 </div>
