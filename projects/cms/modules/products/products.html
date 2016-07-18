@@ -15,26 +15,16 @@
         <div class="col-md-3 col-xs-3">
             <!--  <div data-angular-treeview="true" ng-show="side" data-tree-id="mytree" data-tree-model="categoryData" data-node-id="id" data-node-label="label" data-node-children="items" style="overflow: auto; height: 927px">
                 </div> -->
-            <div class="box box-solid" ng-show="side">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Folders</h3>
-                    <div class="box-tools">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
+            <div ng-show="side">
+                <div class="custom-panel panel-default" ng-repeat="category in categoryData" ng-click="filterByCategory(category)">
+                    <div class="panel-heading" ng-click="category.isCollapsed = !category.isCollapsed">
+                        {{category.label}}
+                        <i class="pull-right fa" ng-class="{'fa-angle-down': category.isCollapsed, 'fa-angle-right': !category.isCollapsed}"></i>
                     </div>
-                </div>
-                <div class="box-body no-padding" style="display: block;">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active">
-                            <a href=""><i class="fa fa-inbox"></i> Inbox<span class="label label-primary pull-right">12</span></a>
+                    <ul class="list-group" uib-collapse="!category.isCollapsed">
+                        <li ng-repeat="item in category.items" class="list-group-item">
+                            <a href="" ng-click="filterByCategory(category)"><i class="fa fa-angle-right"></i> {{item.label}}</a>
                         </li>
-                        <li>
-                            <a href=""><i class="fa fa-envelope-o"></i> Sent</a>
-                        </li>
-                        <li><a href=""><i class="fa fa-file-text-o"></i> Drafts</a></li>
-                        <li><a href=""><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
-                        </li>
-                        <li><a href=""><i class="fa fa-trash-o"></i> Trash</a></li>
                     </ul>
                 </div>
             </div>
