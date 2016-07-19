@@ -17,29 +17,33 @@
     </li>
 </ul>
  -->
-<table class="table table-condensed" dnd-list dnd-drop="onDrop(list, item, index)">
-    <tr>
-        <th style="width: 60%">Item</th>
-        <th style="width: 30%" ng-if="list.listName=='Package'">Quantity</th>
-        <th style="width: 40px" ng-if="list.listName=='Package'"></th>
-    </tr>
-    <tr ng-repeat="item in list.items track by item.p_id" dnd-draggable="getSelectedItemsIncluding(list, item)" dnd-dragstart="onDragstart(list, event)" dnd-selected="item.selected = !item.selected" ng-class="{'selected': item.selected}" dnd-disable-if="list.listName == 'Package'" dnd-moved="dropCallback(event, $index, item)">
-        <td style="width: 60%">{{item.item_name}}</td>
-        <td style="width: 30%" ng-if="list.listName=='Package'">
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button ng-click="minusbutton(item)" class="btn bg-navy"><i class="fa fa-minus"></i></button>
+<table class="bundle-table table table-condensed table-hover" dnd-list dnd-drop="onDrop(list, item, index)">
+    <thead>
+        <tr>
+            <th style="width: 60%">Item</th>
+            <th style="width: 35%" ng-if="list.listName=='Package'">Quantity</th>
+            <th style="width: 40px" ng-if="list.listName=='Package'"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in list.items track by item.p_id" dnd-draggable="getSelectedItemsIncluding(list, item)" dnd-dragstart="onDragstart(list, event)" dnd-selected="item.selected = !item.selected" ng-class="{'selected': item.selected}" dnd-disable-if="list.listName == 'Package'" dnd-moved="dropCallback(event, $index, item)">
+            <td style="width: 60%">{{item.item_name}}</td>
+            <td style="width: 30%" ng-if="list.listName=='Package'">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button ng-click="minusbutton(item)" class="btn bg-navy"><i class="fa fa-minus"></i></button>
+                    </div>
+                    <input type="number" ng-model="item.quantity" class="form-control text-center" valid-number/>
+                    <div class="input-group-btn">
+                        <button ng-click="addbutton(item)" class="btn bg-navy" type="button"><i class="fa fa-plus"></i></button>
+                    </div>
                 </div>
-                <input type="number" ng-model="item.quantity" class="form-control text-center" valid-number/>
-                <div class="input-group-btn">
-                    <button ng-click="addbutton(item)" class="btn bg-navy" type="button"><i class="fa fa-plus"></i></button>
-                </div>
-            </div>
-        </td>
-        <td  style="width: 40px" ng-if="list.listName=='Package'">
-            <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right" ng-click="remove(list,item) ">
-                <i class="fa fa-times "></i>
-            </button>
-        </td>
-    </tr>
+            </td>
+            <td style="width: 40px" ng-if="list.listName=='Package'">
+                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right" ng-click="remove(list,item) ">
+                    <i class="fa fa-times "></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
 </table>
