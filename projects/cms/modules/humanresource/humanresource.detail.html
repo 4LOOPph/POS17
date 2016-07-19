@@ -20,8 +20,8 @@
                     <div class="box-body">
                         <div class="form-group" ng-if="details.person_id">
                             <label>Status: </label>
-                            <span ng-if="details.isActive == '0' " class="label label-danger">Inactive</span>
-                            <span ng-if="details.isActive == '1' " class="label label-success">Active</span>
+                            <span ng-if="details.isActiveAcnt == false " class="label label-default">In Active</span>
+                            <span ng-if="details.isActiveAcnt == true " class="label label-success">Active</span>
                         </div>
                         <div class="form-group col-md-6">
                             <label>First Name</label>
@@ -56,7 +56,19 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
+                            <label>End Term: </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <input type="checkbox" ng-model="enableEndTerm">
+                                </div>
+                                <input type="text" class="form-control" ng-disabled="!enableEndTerm"  data-date-format="MM-dd-yyyy" ng-model="details.date_end" data-min-date="today" bs-datepicker/>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
                             <label>Address </label>
                             <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..." required /></textarea>
                         </div>

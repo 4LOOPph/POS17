@@ -71,9 +71,6 @@
                             <td class="text-center" data-title="'Title'">
                                 {{article.title}}
                             </td>
-                            <td class="text-center" data-title="'Description'">
-                                <span data-ng-bind-html="article.description | limitTo:80"></span>
-                            </td>
                             <td class="text-center" data-title="'Tags'">
                                 <span class="label label-default label-tags" ng-repeat="tag in article.tags">{{tag.tags}}</span>
                             </td>
