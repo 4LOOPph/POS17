@@ -39,9 +39,25 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Default Value</label>
-                                            <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value" required />
+                                        <div class="form-group" ng-if="showAttributeValues">
+                                            <label ng-if="details.attrib_type.name == 'Dropdownlist' 
+                                            || details.attrib_type.name == 'Multiselect'
+                                            || details.attrib_type.name == 'Attachment'
+                                            || details.attrib_type.name == 'Checkbox'">Default Value</label>
+                                            
+                                            <!-- <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value" required /> -->
+                                            <div ng-if="details.attrib_type.name == 'Dropdownlist'">
+                                                <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Multiselect'">
+                                                <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Checkbox'">
+                                                <div ng-include="'./modules/attributes/types/checkbox.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Attachment'">
+                                                <div ng-include="'./modules/attributes/types/attachment.html'"></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.box-body -->
@@ -98,10 +114,10 @@
                         </form>
                     </div>
                 </div>
-                <div data-title="<i class='fa fa-list'></i> Values" bs-pane ng-if="showAttributeValues">
+                <!-- <div data-title="<i class='fa fa-list'></i> Values" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/values.html'"></div>
-                </div>
-                <div data-title="<i class='fa fa-list'></i> Groups" bs-pane ng-if="showAttributeValues">
+                </div> -->
+                <!-- <div data-title="<i class='fa fa-list'></i> Groups" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/groups.html'"></div>
                 </div>
                 <div data-title="<i class='fa fa-cubes'></i> Product Type" bs-pane ng-if="showAttributeValues">
@@ -109,10 +125,13 @@
                 </div>
                 <div data-title="<i class='fa fa-list'></i> Categories" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/categories.html'"></div>
+                </div> -->
+                <div data-title="<i class='fa fa-list'></i> Mapping" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/mapping.html'"></div>
                 </div>
-                <div data-title="<i class='fa fa-file'></i> Articles" bs-pane ng-if="showAttributeValues">
+                <!-- <div data-title="<i class='fa fa-file'></i> Articles" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/articles.html'"></div>
-                </div> 
+                </div> -->
             </div>
         </div>
     </div>
