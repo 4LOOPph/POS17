@@ -42,14 +42,17 @@
                                 <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
                                     <i class="fa fa-edit"></i> Add New Entry
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()">
+                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="selectedPublishedDatas.length < 1" ng-click="publishSelected()">
                                     <i class="fa fa-file-text-o"></i> Publish
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="!deleteSomeData" ng-click="draftSelected()">
+                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="selectedDraftedDatas.length < 1" ng-click="draftSelected()">
                                     <i class="fa fa-edit"></i> Draft
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="!deleteSomeData" ng-click="deleteSelected()">
+                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedDatas.length < 1" ng-click="deleteSelected()">
                                     <i class="fa fa-trash"></i> Archive
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-default" ng-disabled="selectedDatas.length < 1" ng-click="deleteSelected()">
+                                    <i class="fa fa-undo"></i> Restore
                                 </a>
                                 <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                                     <i class="fa fa-refresh"></i> Refresh
@@ -118,8 +121,8 @@
                                 {{product.sell_price}}
                             </td>
                             <td class="text-center" data-title="'Status'">
-                                <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
-                                <span ng-if="product.is_published == '1' " class="label label-success">published</span>
+                                <span ng-if="product.is_published == '0'" class="label label-warning">draft</span>
+                                <span ng-if="product.is_published == '1' && product.is_archived != '1'" class="label label-success">published</span>
                                 <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
                             </td>
                             <td class="text-center" data-title="'Last Updated'">
