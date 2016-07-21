@@ -21,8 +21,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Textbox'">
                                 <input type="text" class="form-control" ng-model="attrib.value">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-warning" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 
@@ -34,8 +34,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Numeric Textbox'">
                                 <input type="number" class="form-control" ng-model="attrib.value">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-warning" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 
@@ -47,8 +47,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Textarea' || attrib.attribute_type=='Rich Textbox'">
                                 <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="attrib.value"></textarea>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-warning" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 
@@ -57,8 +57,7 @@
 
                             -->
                             <label ng-if="attrib.attribute_type=='Dropdownlist'">{{attrib.attribute}}</label>
-                            <select class="form-control" ng-if="attrib.attribute_type=='Dropdownlist'">
-                                <option ng-repeat="val in attrib.attribute_list_value" ng-model="attrib.value"></option>
+                            <select class="form-control" ng-if="attrib.attribute_type=='Dropdownlist'" ng-model="attrib.value" ng-options="val.value as val.name for val in attrib.attribute_list_value">
                             </select>
                             <!-- 
 
