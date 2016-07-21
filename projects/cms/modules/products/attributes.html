@@ -21,8 +21,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Textbox'">
                                 <input type="text" class="form-control" ng-model="attrib.value">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 
@@ -34,8 +34,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Numeric Textbox'">
                                 <input type="number" class="form-control" ng-model="attrib.value">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 
@@ -47,10 +47,24 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Textarea' || attrib.attribute_type=='Rich Textbox'">
                                 <textarea class="form-control custom-control" rows="3" style="resize:none" ng-model="attrib.value"></textarea>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-default" ng-disabled="true"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
+                            <!-- 
+
+                            QRCode Textbox
+
+                             -->
+                            <label ng-if="attrib.attribute_type=='QRCode Textbox'">{{attrib.attribute}}</label>
+                            <div class="input-group margin-bottom10" ng-if="attrib.attribute_type=='QRCode Textbox'">
+                                <input type="text" class="form-control" value="{{attrib.value}}" ng-model="attrib.value">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
+                                </div>
+                            </div>
+                            <qr type-number="6" correction-level="'M'" size="200" input-mode="''" text="attrib.value" image="true" ng-if="attrib.attribute_type=='QRCode Textbox'"></qr>
                             <!-- 
 
                             Dropdownlist 
@@ -65,10 +79,7 @@
 
                             -->
                             <label ng-if="attrib.attribute_type=='Multiselect'">{{attrib.attribute}}</label>
-                            <select multiple class="form-control" ng-if="attrib.attribute_type=='Multiselect'">
-                                <option ng-repeat="val in attrib.attribute_list_value" value="{{val.value}}">
-                                    {{val.name}}
-                                </option>
+                            <select multiple class="form-control" ng-if="attrib.attribute_type=='Multiselect'" ng-model="attrib.value" ng-options="val.value as val.name for val in attrib.attribute_list_value">
                             </select>
                             <!-- 
 
@@ -80,14 +91,6 @@
                                     <input type="checkbox" /> {{attrib.attribute}}
                                 </label>
                             </div>
-                            <!-- 
-
-                            QRCode Textbox
-
-                             -->
-                            <label ng-if="attrib.attribute_type=='QRCode Textbox'">{{attrib.attribute}}</label>
-                            <input type="text" class="form-control margin-bottom10" ng-if="attrib.attribute_type=='QRCode Textbox'" value="{{attrib.value}}" ng-model="attrib.value">
-                            <qr type-number="6" correction-level="'M'" size="200" input-mode="''" text="attrib.value" image="true" ng-if="attrib.attribute_type=='QRCode Textbox'"></qr>
                             <!-- 
 
                             Percentage 
