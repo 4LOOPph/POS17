@@ -21,9 +21,9 @@
                             <div class="box-body">
                                 <div class="form-group " ng-if="details.pb_id">
                                     <label>Status: </label>
-                                    <span ng-if="details.is_published == '0' " class="label label-warning">draft</span>
-                                    <span ng-if="details.is_published == '1' " class="label label-success">published</span>
-                                    <span ng-if="details.is_archived == '1'" class="label label-danger">archived</span>
+                                    <span ng-if="details.is_published == 0 && details.is_archived == 0" class="label label-warning">draft</span>
+                                    <span ng-if="details.is_published == 1 && details.is_archived == 0" class="label label-success">published</span>
+                                    <span ng-if="details.is_archived == 1 && details.is_published == 0" class="label label-danger">archived</span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Bundle Name</label>
@@ -277,7 +277,7 @@
                                 <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
                                     <div class="box">
                                         <div class="box-body text-center">
-                                             <button class="btn btn-box-tool pull-right" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-box-tool pull-right" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
                                             <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px">
                                         </div>
                                     </div>
