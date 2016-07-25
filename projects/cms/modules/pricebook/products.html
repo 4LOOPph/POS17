@@ -1,0 +1,73 @@
+<div class="row">
+    <script type="text/ng-template" id="checkboxheader.html">
+        <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+    </script>
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control input-sm" placeholder="&#xf002; Search for Products" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" style="font-family: 'FontAwesome';">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">Go
+                                </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box-header">
+                <div class="pull-left">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" checkboxes="true" translation-texts="{buttonDefaultText: 'Filter by Tags',uncheckAll: 'Clear Filter'}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sell Price" required />
+                            <input type="text" class="form-control" placeholder="Margin" required />
+                            <input type="text" class="form-control" placeholder="Discount" required />
+                            <a class="btn btn-flat btn-primary">
+                                <i class="fa fa-check-square-o"></i> Apply
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box-body table-responsive padding">
+                <table class="table table-hover" ng-table="productBundleTable">
+                    <tr ng-repeat="bundle in $data  track by $index">
+                        <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                            <input type="checkbox" ng-model="bundle.selected" ng-change="checkDataChanges(bundle)">
+                        </td>
+                        <td class="text-center" data-title="'Products'">
+                        </td>
+                        <td class="text-center" data-title="'Description'">
+                        </td>
+                        <td class="text-center" data-title="'Sell Price'">
+                        </td>
+                        <td class="text-center" data-title="'Margin'">
+                        </td>
+                        <td class="text-center" data-title="'Discount'">
+                        </td>
+                        <td class="text-center" data-title="'Publish'">
+                            <!-- <span ng-if="bundle.is_published == '0' " class="label label-warning">draft</span>
+                            <span ng-if="bundle.is_published == '1' " class="label label-success">published</span>
+                            <span ng-if="bundle.is_archived == '1'" class="label label-danger">archived</span> -->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
