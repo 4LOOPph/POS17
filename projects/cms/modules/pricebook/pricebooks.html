@@ -1,64 +1,66 @@
 <div class="row">
-                <form role="form">
-                    <div class="col-md-9">
-                        <div class="box box-warning">
-                            <div class="box-body">
-                                <div class="form-group col-md-6">
-                                    <label>Pricebook Name</label>
-                                    <input type="text" name="required" class="form-control" placeholder="Name" required />
-                                </div>
+    <form role="form" ng-submit="savePricebook()">
+        <div class="col-md-9">
+            <div class="box box-warning">
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label>Pricebook Name</label>
+                        <input type="text" ng-model="details.name" name="required" class="form-control" placeholder="Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>PriceBook Type</label>
+                        <select class="form-control" ng-model="details.pricebook_type_id" ng-options="option.pt_id as option.name for option in pricebooktype">
+                            <option disabled value="">Choose PriceBook Type</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label>Date From: </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
                             </div>
-                            <div class="box-body">
-                                <div class="form-group col-md-9">
-                                    <label>Description</label>
-                                    <text-angular required /></text-angular>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Product Type</label>
-                                    <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes" required /></select>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="form-group col-md-6">
-                                    <label>Date From: </label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Date 1</label>
-                                    <div class="input-group">
-                                        <kk-timepicker settings="settings" ng-model="time"></kk-timepicker>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Date To: </label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Date</label>
-                                    <div class="input-group">
-                                       <kk-timepicker settings="settings1" ng-model="time"></kk-timepicker>
-                                    </div>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" ng-model="details.valid_from" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="box box-warning">
-                            <div class="box-body">
-                                <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
-                                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    <!--  <div class="form-group col-md-6">
+                        <label>Date 1</label>
+                        <div class="input-group">
+                            <kk-timepicker settings="settings" ng-model="time"></kk-timepicker>
+                        </div>
+                    </div> -->
+                    <div class="form-group col-md-6">
+                        <label>Date To: </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
                             </div>
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.valid_until" data-min-date="{{details.start_date}}" bs-datepicker/>
                         </div>
                     </div>
-                </form>
+                    <!-- <div class="form-group col-md-6">
+                        <label>Date</label>
+                        <div class="input-group">
+                            <kk-timepicker settings="settings1" ng-model="time"></kk-timepicker>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="box-body">
+                    <div class="form-group col-md-12">
+                        <label>Description</label>
+                        <text-angular ng-model="details.description" required /></text-angular>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-warning">
+                <div class="box-body">
+                    <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
+                    <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

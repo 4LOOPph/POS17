@@ -4,7 +4,7 @@
           </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a ui-sref="main.quotes">Pricebook</a></li>
+        <li><a ui-sref="main.pricebook">Pricebook</a></li>
         <li class="active">Pricebook Entry</li>
     </ol>
 </section>
@@ -14,11 +14,10 @@
         <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
             <div ng-include="'modules/pricebook/pricebooks.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-cube '></i> Products" bs-pane>
+        <div data-title="<i class='fa fa-cube '></i> Products" bs-pane ng-if="displayTab">
             <div ng-include="'modules/pricebook/products.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-exchange'></i> Assigned to" bs-pane>
+        <div data-title="<i class='fa fa-exchange'></i> Assigned to" bs-pane ng-if="displayTab">
             <div ng-include="'modules/pricebook/assignedto.html'"></div>
-            
         </div>
 </section>

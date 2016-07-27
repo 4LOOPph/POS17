@@ -8,20 +8,24 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control col-sm-12 input-sm" placeholder="&#xf002; What are you looking for?" style="font-family: 'FontAwesome';" />
+                            <input type="text" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" class="form-control col-sm-12 input-sm" placeholder="&#xf002; What are you looking for?" style="font-family: 'FontAwesome';"  ng-keypress="($event.which === 13)?searchData():0"/>
+                            
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" ng-click="searchData()">
                                 Go
                             </button>
-                            <button type="button" class="btn btn-success">
+                            <button type="button" class="btn btn-success" ui-sref="main.pricebook-detail">
                                 Create New
                             </button>
                         </div>
@@ -45,14 +49,15 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                {{type}}
+                                {{name}}
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateType('Standard')">Standard</a></li>
+                                <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
+                                <!--  <li><a ng-click="updateType('Standard')">Standard</a></li>
                                 <li><a ng-click="updateType('Sale')">Sale</a></li>
                                 <li><a ng-click="updateType('Promo')">Promo</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="btn-group">
                             <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" checkboxes="true" translation-texts="{buttonDefaultText: 'Tags'}" extra-settings="{showCheckAll: false,showUncheckAll: false} "></div>
@@ -65,146 +70,38 @@
                             <!-- /.btn-group -->
                         </div>
                     </div>
-                    <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>Type</th>
-                                    <th>Description</th>
-                                    <th>Published</th>
-                                    <th>Date From</th>
-                                    <th>Date To</th>
-                                    <th>Tags</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" />
-                                    </td>
-                                    <!-- <td class="mailbox-star"><a href=""><i class="fa fa-star text-yellow"></i></a></td> -->
-                                    <td class="mailbox-name"><a ui-sref="main.mailbox-read">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                    <td class="mailbox-attachment"></td>
-
-                                     <th>
-                                        <input type="checkbox" />
-                                    </th>
-                                    <td class="mailbox-date">5 mins ago</td>
-                                </tr>
-                            </tbody>
+                    <div class="box-body table-responsive mailbox-messages padding">
+                        <table class="table table-hover" ng-table="pricebooksTable">
+                            <tr ng-repeat="pricebook in $data  track by $index">
+                                <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                    <input type="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                                </td>
+                                <td class="text-center" data-title="'Name'">
+                                    {{pricebook.name}}
+                                </td>
+                                <td class="text-center" data-title="'Type'">
+                                    {{pricebook.pricebook_type_info.name}}
+                                </td>
+                                <td class="text-center" data-title="'Description'">
+                                    <span ng-bind-html="pricebook.description"></span>
+                                </td>
+                                <td class="text-center" data-title="'Published'">
+                                    <span ng-if="pricebook.isActive == 1 " class="label label-success">published</span>
+                                    <span ng-if="pricebook.isActive == 0 " class="label label-danger">unpublished</span>
+                                </td>
+                                <td class="text-center" data-title="'Date From'">
+                                    {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Date To'">
+                                    {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Tags'">
+                                </td>
+                                <td class="text-right">
+                                    <button ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                </td>
+                            </tr>
                         </table>
-                        <!-- /.table -->
                     </div>
                     <!-- /.mail-box-messages -->
                 </div>

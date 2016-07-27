@@ -64,6 +64,9 @@
                             </td>
                             <td class="text-center" data-title="'Quote Number'">
                                 {{quotes.quote_number}}
+                            </td> 
+                            <td class="text-center" data-title="'Customer'">
+                                {{quotes.bill_qoute_info.displayName}}
                             </td>                            
                             <td class="text-center" data-title="'Tags'">
                                 <span class="label label-default label-tags" ng-repeat="tag in quotes.tags">{{tag.tags}}</span>
