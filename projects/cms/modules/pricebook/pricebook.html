@@ -16,16 +16,15 @@
                 <div class="box-header with-border">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" class="form-control col-sm-12 input-sm" placeholder="&#xf002; What are you looking for?" style="font-family: 'FontAwesome';"  ng-keypress="($event.which === 13)?searchData():0"/>
-                            
+                            <input type="text" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" class="form-control col-sm-12 input-sm" placeholder="&#xf002; What are you looking for?" style="font-family: 'FontAwesome';" ng-keypress="($event.which === 13)?searchData():0" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary" ng-click="searchData()">
+                            <button type="button" class="btn btn-primary btn-flat btn-sm" ng-click="searchData()">
                                 Go
                             </button>
-                            <button type="button" class="btn btn-success" ui-sref="main.pricebook-detail">
+                            <button type="button" class="btn btn-success btn-flat btn-sm" ui-sref="main.pricebook-detail">
                                 Create New
                             </button>
                         </div>
@@ -105,10 +104,10 @@
                     </div>
                     <!-- /.mail-box-messages -->
                 </div>
+                <div class="overlay" ng-show="pricebookLoading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
             </div>
-            <!-- /. box -->
+            </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </section>
