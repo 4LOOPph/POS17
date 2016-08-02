@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-static-top" role="navigation" ng-controller="SignoutCtrl">
     <!-- Sidebar toggle button-->
     <a href="" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -83,7 +83,7 @@
                             <a href="" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="" class="btn btn-default btn-flat">Sign out</a>
+                            <a ng-click="signout()" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                     </li>
                 </ul>
