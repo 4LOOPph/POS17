@@ -11,13 +11,14 @@
 <!-- Main content -->
 <section class="content">
     <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
-            <div ng-include="'modules/pricebook/pricebooks.html'"></div>
-        </div>
-        <div data-title="<i class='fa fa-cube '></i> Products" bs-pane ng-if="displayTab">
-            <div ng-include="'modules/pricebook/products.html'"></div>
-        </div>
-        <div data-title="<i class='fa fa-exchange'></i> Assigned to" bs-pane ng-if="displayTab">
-            <div ng-include="'modules/pricebook/assignedto.html'"></div>
+            <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+                <div ng-include="'modules/pricebook/pricebooks.html'"></div>
+            </div>
+            <div data-title="<i class='fa fa-cube '></i> Products" bs-pane ng-if="displayTab">
+                <div ng-include="'modules/pricebook/products.html'"></div>
+            </div>
+            <div data-title="<i class='fa fa-exchange'></i> Assigned to" bs-pane ng-if="displayTab">
+                <div ng-include="'modules/pricebook/assignedto.html'"></div>
+            </div>
         </div>
 </section>
