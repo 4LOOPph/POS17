@@ -21,7 +21,9 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" checkboxes="true" translation-texts="{buttonDefaultText: 'Filter by Tags',uncheckAll: 'Clear Filter'}"></div>
+                                    <p>
+                                        <button uib-popover-template="dynamicPopover.templateUrl" popover-placement="bottom-left" type="button" class="btn btn-default">Filter By Tags</button>
+                                    </p>
                                 </div>
                                 <a class="btn btn-flat btn-danger" ng-click="deleteSelected()">
                                     <i class="fa fa-trash"></i> Delete
@@ -62,7 +64,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="product in products" repeat-end="paginate()">
+                        <tr ng-repeat="product in (products | filter:isOnSelectedTag())" repeat-end="paginate()">
                             <td>
                                 <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
                             </td>
@@ -107,3 +109,20 @@
         </div>
     </div>
 </div>
+<script type="text/ng-template" id="myPopoverTemplate.html">
+    <div class="form-group">
+        <div style="font-family: bold;">
+            <label>
+                <input type="checkbox" ng-model="selectDeselectAll2" ng-change="changeSelectDeselectAll2()"> Select All
+            </label>
+        </div>
+        <br>
+        <div class="checkbox" ng-repeat="tag in tagsArr">
+            <div style="width:150px;">
+                <label style="width: 149px;">
+                    <input type="checkbox" ng-click="toggleSelectedTag(tag)" ng-model="tag.checked"> {{tag.tags}}
+                </label>
+            </div>
+        </div>
+    </div>
+</script>

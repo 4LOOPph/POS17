@@ -1,9 +1,8 @@
 <section class="content-header">
-    <h1>Customer Groups</h1>
+    <h1>Company</h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a ui-sref="main.settings-humanresource">Human Resource</a></li>
-        <li class="active">Customer Groups</li>
+        <li class="active">Company</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -14,10 +13,10 @@
             <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addGroups()">
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-company-detail">
                             <i class="fa fa-edit"></i> Add New Entry
                         </button>
                         <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
@@ -32,45 +31,55 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" disable-valid-styling="true" disable-validation-message="">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
+                                    <!-- <div class="btn-group">
+                                        <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                            All
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a ng-click="updateStatus('All')">All</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                            </li>
+                                        </ul>
+                                    </div> -->
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="box-body table-responsive padding">
-                    <table class="table table-hover" ng-table="attributeGroupTable">
-                        <tr ng-repeat="group in $data">
+                    <table class="table table-hover" ng-table="companyTable">
+                        <tr ng-repeat="company in $data  track by $index">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="group.selected" ng-change="checkDataChanges(group)">
+                                <input type="checkbox" ng-model="company.selected" ng-change="checkDataChanges(company)">
                             </td>
-                            <td class="text-center" data-title="'Group Name'">
-                                {{group.name}}
+                            <td class="text-center" data-title="'Company Name'">
+                                {{company.name}}
                             </td>
-                            <!-- <td class="text-center" data-title="'Label'">
-                                {{group.label}}
-                            </td> -->
-                            <td class="text-center" data-title="'Description'">
-                                {{group.description}}
+                            <td class="text-center" data-title="'Address '">
+                                {{company.address}}
                             </td>
                             <td class="text-center" data-title="'Date Created'">
-                                {{group.date_created | fromNow}}
-                            </td>
+                               {{company.date_created | fromNow}}
                             </td>
                             <td class="text-right">
-                                <button ui-sref="main.settings-customergroup-detail({customergroup_id:group.cg_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button ng-click="toggleModal(group.cg_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button ui-sref="main.settings-company-detail({company_id: company.company_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="overlay" ng-show="attribisLoading">
+                <!-- <div class="overlay" ng-show="companyisLoading">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
