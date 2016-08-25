@@ -12,7 +12,7 @@
         <li><a ui-sref="main.articles"><i class="fa fa-file"></i> Articles</a></li>
         <li><a ui-sref="main.quotes"><i class="fa fa-file-text"></i> Quotation</a></li>
         <li><a ui-sref="main.pricebook"><i class="fa fa-book"></i> Price Book</a></li>
-        <!-- <li class="treeview">
+        <li class="treeview">
             <a href="">
                 <i class="fa fa-th"></i> <span>Inventory</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -24,7 +24,6 @@
                 <li><a href=""><i class="fa fa-file-text-o"></i> Stocks</a></li>
             </ul>
         </li>
-         -->
         <!-- <li><a href=""><i class="fa fa-laptop"></i> Campaign & Loyalty</a></li>
         <li class="treeview">
             <a href="">
@@ -53,42 +52,8 @@
                 <li><a href=""><i class="fa fa-circle-o"></i> Timeline</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i> Modals</a></li>
             </ul>
-        </li>
-        <li class="treeview">
-            <a href="">
-                <i class="fa fa-pie-chart"></i>
-                <span>Analytics</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a ui-sref="main.analytics-overview"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-                <li><a ui-sref="main.analytics-appoverview"><i class="fa fa-circle-o"></i> App Overview</a></li>
-                <li>
-                    <a href=""><i class="fa fa-circle-o"></i> Audience <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-circle-o"></i> Overview</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> App Versions</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Users</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Device</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href=""><i class="fa fa-circle-o"></i> Behavior <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-circle-o"></i> Overview</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Screens</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Events</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Pages</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li> -->
+        </li>-->
         <li class="header">SETTINGS</li>
-        <li>
-            <a ui-sref="main.settings-company">
-                <i class="fa fa-sitemap "></i> <span>Company</span>
-            </a>
-        </li>
         <li class="treeview">
             <a href="">
                 <i class="fa fa-folder"></i> <span>Preferrences</span>
@@ -121,6 +86,11 @@
                     </a>
                 </li>
                 <li>
+                    <a ui-sref="main.pricebooktype">
+                        <i class="fa fa-tags"></i> <span>Price Book Type</span>
+                    </a>
+                </li>
+                <li>
                     <a ui-sref="main.settings-suppliers">
                         <i class="fa fa-truck"></i> <span>Suppliers</span>
                     </a>
@@ -137,18 +107,28 @@
                 </li>
             </ul>
         </li>
-        <li><a ui-sref="main.pricebooktype"><i class="fa fa-tags"></i> Price Book Type</a></li>
         <li>
             <a ui-sref="main.settings-humanresource">
                 <i class="fa fa-group"></i> <span>Human Resource</span>
             </a>
         </li>
         <li>
-            <a ui-sref="main.settings-useraccounts">
-                <i class="fa fa-home"></i> <span>User Access Control</span>
+            <a ui-sref="main.settings-company">
+                <i class="fa fa-sitemap "></i> <span>Company <small>(customer)</small></span>
             </a>
         </li>
-        <!--  <li>
+        <li>
+            <a ui-sref="main.settings-useraccounts">
+                <i class="fa fa-home"></i> <span>Roles / Access</span>
+            </a>
+        </li>
+        <li>
+            <a ui-sref="main.settings-app">
+                <i class="fa fa-cog"></i> <span>Application Settings</span>
+            </a>
+        </li>
+        <!-- <li class="header">OTHERS</li>
+         <li>
             <a ui-sref="main.calendars">
                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                 <small class="label pull-right bg-red">3</small>
@@ -160,9 +140,9 @@
                 <small class="label pull-right bg-yellow">12</small>
             </a>
         </li>
- -->
-        <!-- <li class="header">HELP</li>
-        <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
+        <li class="header">SUPPORT</li>
+        <li><a href=""><i class="fa fa-book"></i> Documentation</a></li>
+        <li><a href=""><i class="fa fa-comment-o"></i> Customer Service</a></li> -->
     </ul>
 </section>
 <!-- /.sidebar -->

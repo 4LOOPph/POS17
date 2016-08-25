@@ -1,0 +1,83 @@
+<div class="box box-warning">
+    <div class="box-header">
+        <h3 class="box-title">
+            API Tokens <br>
+            <small>API keys allow your application to communicate with the symphony services. You can create multiple API keys that have different permissions to restrict the actions your apps can perform.</small>
+        </h3>
+        <br>
+        <br>
+        <div class="pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
+                        <i class="fa fa-edit"></i> New API Keys
+                    </a>
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="box-body table-responsive padding">
+        <table class="table table-striped footable" data-page-size="10" id="tblAttributes">
+            <thead>
+                <tr>
+                    <th class="" data-sort-ignore="true">Access Code</th>
+                    <th class="" data-sort-ignore="true">Access Key</th>
+                    <th class="" data-sort-ignore="true">Description</th>
+                    <th data-sort-ignore="true"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr ng-repeat="var in relatedProducts" repeat-end="paginate()"> -->
+                <!-- <tr>
+                    <td>
+                        {{var.ref_product.item_name}}
+                    </td>
+                    <td>
+                        {{var.relation_type.name}}
+                    </td>
+                    <td>
+                        <button ng-click="deleteSelected(var.rel_id)" class="btn btn-danger btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-remove"></i> DELETE</button>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td>
+                        e1d32b7ca50faf32cd40daa5611781747269828cad7a0165
+                    </td>
+                    <td>
+                        <span>3f41746ceca69872bfd1d23e5751f86d958cbc3eff729a0e</span>
+                    </td>
+                    <td>
+                        Master API Key
+                    </td>
+                    <td>
+                        <button ng-click="deleteSelected(var.rel_id)" class="btn btn-danger btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-remove"></i> DELETE</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        4e490f5b3f86c7458f5a014808d23ba38928f4d5d59ac8b1
+                    </td>
+                    <td>
+                        <small><a href="">Show Access Key</a></small>
+                    </td>
+                    <td>
+                        Backup API Key
+                    </td>
+                    <td>
+                        <button ng-click="deleteSelected(var.rel_id)" class="btn btn-danger btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-remove"></i> DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6" align="center">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="box box-warning">
+    <div class="box-header">
+        <h3 class="box-title">Device Management</h3>
+        <br>
+        <br>
+        <div class="pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
+                        <i class="fa fa-edit"></i> Add New Device
+                    </a>
+                    <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()">
+                        <i class="fa fa-times"></i> Revoke
+                    </a>
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                            <div class="input-group-btn">
+                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                    {{applicationStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Online')">Online</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Offline')">Offline</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="box-body padding">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Device Name</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group" uib-dropdown>
+                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <span class="info-box-icon bg-aqua"><i class="fa fa-desktop"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-number">Mac Address:</span>
+                            <small class="info-box-text">00-1B-63-84-45-E6</small>
+                            <span class="info-box-number">Device ID:</span>
+                            <small class="info-box-text">02123dVAD6</small>
+                            <span class="info-box-number">O.S.:</span>
+                            <small class="info-box-text">Windows 10</small>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <div class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Device Name</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group" uib-dropdown>
+                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <span class="info-box-icon bg-red"><i class="fa fa-plug"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-number">Mac Address:</span>
+                            <small class="info-box-text">00-1B-63-84-45-E6</small>
+                            <span class="info-box-number">Device ID:</span>
+                            <small class="info-box-text">02123dVAD6</small>
+                            <span class="info-box-number">O.S.:</span>
+                            <small class="info-box-text">Windows 10</small>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Device Name</h3>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group" uib-dropdown>
+                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <span class="info-box-icon bg-gray"><i class="fa fa-power-off"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-number">Mac Address:</span>
+                            <small class="info-box-text">00-1B-63-84-45-E6</small>
+                            <span class="info-box-number">Device ID:</span>
+                            <small class="info-box-text">02123dVAD6</small>
+                            <span class="info-box-number">O.S.:</span>
+                            <small class="info-box-text">Windows 10</small>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
