@@ -131,26 +131,24 @@
                         </tr>
                     </table>
                 </div>
-                <div ng-class="side ? 'cold-md-9 col-xs-9': 'cold-md-12 col-xs-12'">
-                    <div class="box-body" ng-show="displayModel=='Box'">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
-                                <div class="info-box ">
-                                    <span ng-click="edit(product.p_id)" class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">{{product.item_name}}</span>
-                                        <span class="info-box-number">${{product.sell_price}}</span>
-                                        <span ng-if="product.is_published == 0 && product.is_archived == 0" class="label label-warning">draft</span>
-                                        <span ng-if="product.is_published == 1 && product.is_archived == 0" class="label label-success">published</span>
-                                        <span ng-if="product.is_archived == 1 && product.is_published == 0" class="label label-danger">archived</span>
-                                    </div>
-                                    <!-- /.info-box-content -->
+                <div class="box-body" ng-show="displayModel=='Box'">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
+                            <div class="info-box ">
+                                <span ng-click="edit(product.p_id)" class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">{{product.item_name}}</span>
+                                    <span class="info-box-number">${{product.sell_price}}</span>
+                                    <span ng-if="product.is_published == 0 && product.is_archived == 0" class="label label-warning">draft</span>
+                                    <span ng-if="product.is_published == 1 && product.is_archived == 0" class="label label-success">published</span>
+                                    <span ng-if="product.is_archived == 1 && product.is_published == 0" class="label label-danger">archived</span>
                                 </div>
+                                <!-- /.info-box-content -->
                             </div>
                         </div>
-                        <div class="text-center">
-                            <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
-                        </div>
+                    </div>
+                    <div class="text-center">
+                        <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
                     </div>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
