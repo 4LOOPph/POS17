@@ -245,14 +245,16 @@
                                                     <a href="" ng-if="files.media_mimetype == 'image/x-ms-bmp'" ng-click="openLightboxModal(files)">View</a>
                                                     <a href="" ng-if="files.media_mimetype == 'image/png'" ng-click="openLightboxModal(files)">View</a>
                                                     <!-- Audio -->
-                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp3'" ng-click="openLightboxModal(files)">Play</a>
-                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp4'" ng-click="openLightboxModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp3'" ng-click="openAudioModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp4'" ng-click="openAudioModal(files)">Play</a>
                                                     <!-- Video -->
                                                     <a href="" ng-if="files.media_mimetype == 'video/mp4'" ng-click="openVideoModal(files)">Play</a>
                                                     <a href="" ng-if="files.media_mimetype == 'video/x-flv'" ng-click="openVideoModal(files)">Play</a>
                                                     <a href="" ng-if="files.media_mimetype == 'video/x-msvideo'" ng-click="openVideoModal(files)">Play</a>
                                                     <a href="" ng-if="files.media_mimetype == 'video/x-ms-wmv'" ng-click="openVideoModal(files)">Play</a>
                                                     <a href="" ng-if="files.media_mimetype == 'video/quicktime'" ng-click="openVideoModal(files)">Play</a>
+                                                    <!-- PDF -->
+                                                    <a href="" ng-if="files.media_mimetype == 'application/pdf'" ng-click="openDocsModal(files)">Open</a>
                                                </div>
                                             </span>
                                         </div>

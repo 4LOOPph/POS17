@@ -1,0 +1,11 @@
+<form class="form-horizontal">
+    <div class="modal-header">
+        <a ng-click="cancel()" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></a>
+    </div>
+    <div class="modal-body">
+        <ng-pdf template-url="./modules/articles/article.viewer.html" canvasid="pdf" scale="page-fit" page=13></ng-pdf>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-flat btn-default" ng-click="cancel()">Close</a>
+    </div>
+</form>
