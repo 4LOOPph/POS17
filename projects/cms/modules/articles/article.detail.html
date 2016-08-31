@@ -22,8 +22,8 @@
                             <div class="box-body">
                                 <div class="form-group" ng-if="details.article_id">
                                     <label>Status: </label>
-                                    <span ng-if="details.is_active == '0' " class="label label-danger">Inactive</span>
-                                    <span ng-if="details.is_active == '1' " class="label label-success">Active</span>
+                                    <span ng-if="details.is_active == '1' " class="label label-success">Published</span>
+                                    <span ng-if="details.is_active == '0' " class="label label-warning">Draft</span>
                                 </div>
                                 <div class="form-group">
                                     <label>Article Title</label>
@@ -201,32 +201,59 @@
                                         <button class="btn btn-box-tool" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
                                     </div>
                                     <div class="info-box">
+                                        <!-- Images -->
                                         <span ng-if="files.media_mimetype == 'image/jpeg'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'image/jpg'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'image/gif'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'image/x-ms-bmp'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'image/png'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
+                                        <!-- Audio -->
                                         <span ng-if="files.media_mimetype == 'audio/mp3'" class="info-box-icon bg-olive"><i class="fa fa-file-audio-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'audio/mp4'" class="info-box-icon bg-olive"><i class="fa fa-file-audio-o"></i></span>
+                                        <!-- Video -->
                                         <span ng-if="files.media_mimetype == 'video/mp4'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'video/x-flv'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'video/x-msvideo'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'video/x-ms-wmv'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'video/quicktime'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
+                                        <!-- PDF -->
                                         <span ng-if="files.media_mimetype == 'application/pdf'" class="info-box-icon bg-red"><i class="fa fa-file-pdf-o"></i></span>
+                                        <!-- DOCS -->
                                         <span ng-if="files.media_mimetype == 'application/msword'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
+                                        <!-- Excel -->
                                         <span ng-if="files.media_mimetype == 'application/vnd.ms-excel'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
+                                        <!-- Presentation / Powerpoint -->
                                         <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" class="info-box-icon bg-orange"><i class="fa fa-file-powerpoint-o"></i></span>
                                         <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
+                                        <!-- Zip -->
                                         <span ng-if="files.media_mimetype == 'application/zip'" class="info-box-icon bg-teal"><i class="fa fa-file-zip-o"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">{{files.media_name}}</span>
                                             <span class="info-box-text">{{files.media_filesize/1024/1024|number:2}} MB</span>
                                             <span class="info-box-text">
-                                                <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}">Download</a>
+                                               <div class="col-sm-6">
+                                                    <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}">Download</a>
+                                               </div>
+                                               <div class="col-sm-6">
+                                                    <!-- Images -->
+                                                    <a href="" ng-if="files.media_mimetype == 'image/jpeg'" ng-click="openLightboxModal(files)">View</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'image/jpg'" ng-click="openLightboxModal(files)">View</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'image/gif'" ng-click="openLightboxModal(files)">View</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'image/x-ms-bmp'" ng-click="openLightboxModal(files)">View</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'image/png'" ng-click="openLightboxModal(files)">View</a>
+                                                    <!-- Audio -->
+                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp3'" ng-click="openLightboxModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'audio/mp4'" ng-click="openLightboxModal(files)">Play</a>
+                                                    <!-- Video -->
+                                                    <a href="" ng-if="files.media_mimetype == 'video/mp4'" ng-click="openVideoModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'video/x-flv'" ng-click="openVideoModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'video/x-msvideo'" ng-click="openVideoModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'video/x-ms-wmv'" ng-click="openVideoModal(files)">Play</a>
+                                                    <a href="" ng-if="files.media_mimetype == 'video/quicktime'" ng-click="openVideoModal(files)">Play</a>
+                                               </div>
                                             </span>
                                         </div>
                                     </div>
