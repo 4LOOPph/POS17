@@ -1,0 +1,139 @@
+<section class="content-header">
+    <h1>
+            Attribute Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.settings-attributes">Attributes</a></li>
+        <li class="active">Attribute New Entry</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="nav-tabs-custom" bs-tabs>
+                <div data-title="<i class='fa fa-file-o'></i> General Entry" bs-pane>
+                    <div class="row">
+                        <form role="form" name="attributeForm" ng-submit="saveAttribute()">
+                            <div class="col-md-8">
+                                <div class="box box-warning">
+                                    <div class="box-header">
+                                        <h3 class="box-title">General Info</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" ng-model="details.name" class="form-control" placeholder="Name" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Label</label>
+                                            <input type="text" ng-model="details.label" class="form-control" placeholder="Label" required />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="col control-label">Attribute Type</label>
+                                            <div class="col">
+                                                <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attrib_type_id as item.name for item in types" required />
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-if="showAttributeValues">
+                                            <label ng-if="details.attrib_type.name == 'Dropdownlist' 
+                                            || details.attrib_type.name == 'Multiselect'
+                                            || details.attrib_type.name == 'Attachment'
+                                            || details.attrib_type.name == 'Checkbox'">Default Value</label>
+                                            
+                                            <!-- <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value" required /> -->
+                                            <div ng-if="details.attrib_type.name == 'Dropdownlist'">
+                                                <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Multiselect'">
+                                                <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Checkbox'">
+                                                <div ng-include="'./modules/attributes/types/checkbox.html'"></div>
+                                            </div>
+                                            <div ng-if="details.attrib_type.name == 'Attachment'">
+                                                <div ng-include="'./modules/attributes/types/attachment.html'"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="box box-warning">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <button type="submit" ng-disabled="attributeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
+                                            <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_visible" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1"> Visible
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_search"> Searchable
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_required"> Required
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_variation"> Variant
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_customizable"> Customizable
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_unique"> Unique
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="details.is_comparable"> Comparable
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div data-title="<i class='fa fa-list'></i> Values" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/values.html'"></div>
+                </div> -->
+                <!-- <div data-title="<i class='fa fa-list'></i> Groups" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/groups.html'"></div>
+                </div>
+                <div data-title="<i class='fa fa-cubes'></i> Product Type" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/producttype.html'"></div>
+                </div>
+                <div data-title="<i class='fa fa-list'></i> Categories" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/categories.html'"></div>
+                </div> -->
+                <div data-title="<i class='fa fa-list'></i> Mapping" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/mapping.html'"></div>
+                </div>
+                <!-- <div data-title="<i class='fa fa-file'></i> Articles" bs-pane ng-if="showAttributeValues">
+                    <div ng-include="'./modules/attributes/details/articles.html'"></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

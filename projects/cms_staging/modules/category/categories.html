@@ -1,0 +1,72 @@
+<section class="content-header">
+    <h1>Categories</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Categories</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- /.row -->
+    <div class="row">
+     <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="pull-left">
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-categories-add">
+                            <i class="fa fa-edit"></i> Add New Entry
+                        </button>
+                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
+                            <i class="fa fa-remove"></i> Delete
+                        </button>
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message=""  ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>           
+                <div class="box-body table-responsive padding" >
+                    <table class="table table-hover" ng-table="categoryTable">
+                        <tr ng-repeat="category in $data  track by $index">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="category.selected" ng-change="checkDataChanges(category)">
+                            </td>
+                            <td class="text-center" data-title="'Name '">
+                                {{category.name}}
+                            </td>
+                            <td class="text-center" data-title="'Label'">
+                                {{category.label}}
+                            </td>
+                            <td class="text-center" data-title="'Image'">
+                                <img class="img-thumbnail" ng-src="{{category.c_image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />
+                            </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in category.tags">{{tag.tags}}</span>
+                            </td>
+                            <td class="text-right">
+                                <button ng-click="edit(category.c_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

@@ -1,0 +1,23 @@
+<section class="content-header">
+    <h1>
+            Article Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.articles">Article</a></li>
+        <li class="active">Article New Entry</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+            <ng-include src="'./modules/articles/details/info.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-life-ring '></i> Features" bs-pane ng-if="details.article_id">
+            <ng-include src="'./modules/articles/details/features.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-files-o'></i> Media / Files" bs-pane ng-if="details.article_id">
+            <ng-include src="'./modules/articles/details/media.html'"></ng-include>
+        </div>
+</section>

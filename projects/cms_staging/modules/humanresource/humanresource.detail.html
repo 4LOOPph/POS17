@@ -1,0 +1,117 @@
+<section class="content-header">
+    <h1>
+            Person Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.settings-humanresource">Human Resource</a></li>
+        <li class="active">Person New Entry</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <form role="form" name="personForm" ng-submit="savePersonel()">
+            <div class="col-md-9">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">General Info</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group" ng-if="details.person_id">
+                            <label>Status: </label>
+                            <span ng-if="details.isActiveAcnt == false " class="label label-default">In Active</span>
+                            <span ng-if="details.isActiveAcnt == true " class="label label-primary">Active</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>First Name</label>
+                            <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email Address</label>
+                            <input type="email" ng-model="details.email" class="form-control" placeholder="Email Address" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>End Term: </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <input type="checkbox" ng-model="enableEndTerm">
+                                </div>
+                                <input type="text" class="form-control" ng-disabled="!enableEndTerm" data-date-format="MM-dd-yyyy" ng-model="details.date_end" data-min-date="today" bs-datepicker/>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group col-md-6">
+                            <label class="control-label">Store Name</label>
+                            <select class="form-control" ng-model="details.store_id" ng-options="item.store_id as item.name for item in stores">
+                                <option disabled value="">Choose Store Name</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group col-md-6 ">
+                            <label class="col control-label">Time Zone</label>
+                            <select class="form-control" ng-model="details.timeZone" ng-options="item.value as item.text for item in timezone">
+                                <option disabled value="">Choose Time Zone</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col control-label">Person Type</label>
+                            <div class="col">
+                                <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required />
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Address </label>
+                            <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..." required /></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>State</label>
+                            <input type="text" ng-model="details.state" class="form-control" placeholder="State ..." required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>City</label>
+                            <input type="text" ng-model="details.city" class="form-control" placeholder="City ..." required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Zip Code</label>
+                            <input type="text" ng-model="details.zipcode" class="form-control" placeholder="Zip Code.." required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Country</label>
+                            <select class="form-control" ng-model="details.country" ng-options="item.name as item.name for item in countries">
+                                <option disabled value="">- Select Country -</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-warning">
+                    <div class="box-body">
+                        <button type="submit" ng-disabled="personForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
+                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <img ngf-src="details.image || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                    <div class="input-group image-preview">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.image"> <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
+                        </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- /.content -->

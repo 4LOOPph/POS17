@@ -1,0 +1,128 @@
+<div class="row" ng-init="refreshData()">
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control input-sm" placeholder="Search for Products" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchProductData(txtProductSearch)">Go</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box-header">
+                <div class="pull-left">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <p>
+                                        <button uib-popover-template="dynamicPopover.templateUrl" popover-placement="bottom-left" type="button" class="btn btn-default">Filter By Tags</button>
+                                    </p>
+                                </div>
+                                <a class="btn btn-flat btn-danger" ng-click="deleteSelected()">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                                <a class="btn btn-flat btn-success" ng-click="refreshData()">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sell Price" ng-model="item.sell_price" required />
+                            <input type="text" class="form-control" placeholder="Margin" ng-model="item.margin" required />
+                            <input type="text" class="form-control" placeholder="Discount" ng-model="item.discount" required />
+                            <a class="btn btn-flat btn-primary" ng-click="savePricebookItems(item)">
+                                <i class="fa fa-check-square-o"></i> Apply
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box-body ">
+                <table class="table table-striped footable" data-page-size="10" id="tblCategory">
+                    <thead>
+                        <tr>
+                            <th width="30" data-sort-ignore="true">
+                                <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                            </th>
+                            <th data-sort-ignore="true">Products</th>
+                            <th data-sort-ignore="true">Base Price</th>
+                            <th data-sort-ignore="true">Sell Price</th>
+                            <th data-sort-ignore="true">Margin</th>
+                            <th data-sort-ignore="true">Discount</th>
+                            <th data-sort-ignore="true">Publish</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in (products | filter:isOnSelectedTag())" repeat-end="paginate()">
+                            <td>
+                                <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
+                            </td>
+                            <td>
+                                {{product.item_name}}
+                            </td>
+                            <td>
+                                {{product.sell_price | number:2}}
+                            </td>
+                            <td>
+                                {{product.sellprice | number:2}}
+                            </td>
+                            <td>
+                                {{product.margin}}
+                            </td>
+                            <td>
+                                {{product.discount | number:2}}
+                            </td>
+                            <td>
+                                <span ng-if="product.is_published == 1 " class="label label-success">published</span>
+                                <span ng-if="product.is_published == 0 " class="label label-danger">archived</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="6" align="center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="box box-warning">
+            <div class="box-body">
+                <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
+                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="myPopoverTemplate.html">
+    <div class="form-group">
+        <div style="font-family: bold;">
+            <label>
+                <input type="checkbox" ng-model="selectDeselectAll2" ng-change="changeSelectDeselectAll2()"> Select All
+            </label>
+        </div>
+        <br>
+        <div class="checkbox" ng-repeat="tag in tagsArr">
+            <div style="width:150px;">
+                <label style="width: 149px;">
+                    <input type="checkbox" ng-click="toggleSelectedTag(tag)" ng-model="tag.checked"> {{tag.tags}}
+                </label>
+            </div>
+        </div>
+    </div>
+</script>
