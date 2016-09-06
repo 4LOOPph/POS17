@@ -1,0 +1,72 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+      Analytics
+      <small>Dashboard</small>
+  </h1>
+  <ol class="breadcrumb">
+      <li><a ui-sref="main.analytics-dashboard"><i class="fa fa-dashboard"></i> Analytics</a>
+      </li>
+      <li class="active">App Overview</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- AREA CHART -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Area Chart</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div style="height: 300px;" area-chart area-data='areadata.data' area-xkey='{{areadata.xkey}}' area-ykeys='areadata.ykeys' area-labels='areadata.labels' line-colors='areadata.lineColors'>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!-- DONUT CHART -->
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Donut Chart</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div style="height: 300px; position: relative;" donut-chart donut-data='donutdata.data' donut-colors='donutdata.colors' donut-formatter='"currency"'>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col (LEFT) -->
+        <div class="col-md-6">
+            <!-- LINE CHART -->
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Line Chart</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div style="height: 300px;" line-chart line-post-units="'%'" line-data='linedata.data' line-xkey='{{linedata.xkey}}' line-ykeys='linedata.ykeys' line-labels='linedata.labels' line-colors='linedata.lineColors'>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <!-- BAR CHART -->
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Bar Chart</h3>
+                    </div>
+                    <div class="box-body chart-responsive">
+                        <div style="height: 300px;" bar-chart bar-data='bardata.data' bar-x='{{bardata.xkey}}' bar-y='bardata.ykeys' bar-labels='bardata.labels' bar-colors='bardata.barColors'>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (RIGHT) -->
+        </div>
+        <!-- /.row -->
+</section>
+<!-- /.content -->
