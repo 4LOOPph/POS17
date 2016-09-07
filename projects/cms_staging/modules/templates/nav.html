@@ -6,7 +6,9 @@
             <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="img-circle" alt="User Image" />
         </div>
         <div class="pull-left info">
-            <b ng-bind="profile.EmpName"></b><br><br> 
+            <b ng-bind="profile.EmpName"></b>
+            <br>
+            <br>
             <small><i class="fa fa-circle text-success"></i> ( {{activeSub}} )</small>
         </div>
     </div>
@@ -31,8 +33,7 @@
                 <li><a href=""><i class="fa fa-file-text-o"></i> Stocks</a></li>
             </ul>
         </li>
-        <!-- <li><a href=""><i class="fa fa-laptop"></i> Campaign & Loyalty</a></li>
-        <li class="treeview">
+        <!-- <li class="treeview">
             <a href="">
                 <i class="fa fa-money"></i>
                 <span>Financials</span>
@@ -53,13 +54,13 @@
             </a>
             <ul class="treeview-menu">
                 <li><a ui-sref="main.reports-invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Modals</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
             </ul>
-        </li>-->
+        </li> -->
         <li class="header">SETTINGS</li>
         <li class="treeview">
             <a href="">
@@ -114,15 +115,24 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a ui-sref="main.settings-humanresource">
-                <i class="fa fa-group"></i> <span>Human Resource</span>
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-group"></i>
+                <span>Personnel / Customer</span>
+                <i class="fa fa-angle-left pull-right"></i>
             </a>
-        </li>
-        <li>
-            <a ui-sref="main.settings-company">
-                <i class="fa fa-sitemap "></i> <span>Company <small>(customer)</small></span>
-            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a ui-sref="main.settings-humanresource">
+                        <i class="fa fa-group"></i> <span>Human Resource</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.settings-company">
+                        <i class="fa fa-sitemap "></i> <span>Companies</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a ui-sref="main.settings-useraccounts">
