@@ -36,7 +36,7 @@
                         <span ng-if="var.showKeys">{{var.gk_secretKey}} <a href="" ng-click="showKey(var)" ng-if="var.showKeys"> Hide</a></span>
                     </td>
                     <td>
-                        08/02/2016 - 08/30/2020
+                        {{var.valid_from | date:'MM/d/yyyy'}} - {{var.valid_to | date:'MM/d/yyyy'}}
                     </td>
                     <td>
                         <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-refresh"></i> RENEW KEY</button> 
