@@ -56,6 +56,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Overview</label>
+                        <text-angular ta-toolbar="[
+                            ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
+                            ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']
+                        ]" 
+                        ng-model="details.item_overview" required /></text-angular>
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <text-angular ng-model="details.item_description" required /></text-angular>
                     </div>
@@ -81,8 +89,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <img ngf-src="details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
-                <div class="input-group image-preview">
+                <img ngf-src="details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="280" height="280" ng-if="details.img_default">
+                <!-- <div class="input-group image-preview">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.img_default"> <span class="glyphicon glyphicon-remove"></span> Clear
                         </button>
@@ -90,7 +98,7 @@
                             <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.img_default" ngf-max-size="8MB" ngf-select="upload($files)" />
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </form>

@@ -56,6 +56,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Overview</label>
+                        <text-angular ta-toolbar="[
+                            ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
+                            ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']
+                        ]" 
+                        ng-model="details.bundle_overview" required /></text-angular>
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <text-angular ng-model="details.bundle_description" required /></text-angular>
                     </div>
