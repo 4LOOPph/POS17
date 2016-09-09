@@ -89,8 +89,8 @@
                                     <span ng-bind-html="pricebook.description"></span>
                                 </td>
                                 <td class="text-center" data-title="'Published'">
-                                    <span ng-if="pricebook.dateapproved != null " class="label label-success">published</span>
-                                    <span ng-if="pricebook.dateapproved == null " class="label label-warning">draft</span>
+                                    <span ng-if="pricebook.date_approved != null " class="label label-success">published</span>
+                                    <span ng-if="pricebook.date_approved == null " class="label label-warning">draft</span>
                                 </td>
                                 <td class="text-center" data-title="'Date From'">
                                     {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
