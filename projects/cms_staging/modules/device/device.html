@@ -1,12 +1,4 @@
-<section class="content-header">
-    <h1>Stores</h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Stores</li>
-    </ol>
-</section>
-<!-- Main content -->
-<section class="content">
+<section class="content" ng-controller="deviceController">
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
@@ -17,14 +9,14 @@
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Stores</h3> -->
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-stores-add" uib-tooltip="Add New">
-                            <i class="fa fa-plus"></i>
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-stores-add">
+                            <i class="fa fa-edit"></i> Add New Entry
                         </button>
-                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger" uib-tooltip="Delete">
-                            <i class="fa fa-remove"></i>
+                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
+                            <i class="fa fa-remove"></i> Delete
                         </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
-                            <i class="fa fa-refresh"></i>
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                            <i class="fa fa-refresh"></i> Refresh
                         </button>
                     </div>
                     <div class="pull-right">
@@ -44,34 +36,43 @@
                 </div>
                 <div class="box-body table-responsive padding">
                     <table class="table table-hover" ng-table="storeTable">
-                        <tr ng-repeat="store in $data">
+                        <tr ng-repeat="device in devices">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="store.selected" ng-change="checkDataChanges(store)">
+                                <input type="checkbox" ng-model="device.selected" ng-change="checkDataChanges(device)">
+                            </td>
+                            <td class="text-center" data-title="'UUID'">
+                                {{device.deviceUUID}}
                             </td>
                             <td class="text-center" data-title="'Name'">
-                                {{store.name}}
+                                {{device.deviceName}}
                             </td>
-                            <td class="text-center" data-title="'TIN'">
-                                {{store.tin}}
+                            <td class="text-center" data-title="'Brand'">
+                                {{device.deviceBrand}}
                             </td>
-                            <td class="text-center" data-title="'Owner'">
-                                {{store.owner_name}}
+                            <td class="text-center" data-title="'Model'">
+                                {{device.deviceModel}}
                             </td>
-                            <td class="text-center" data-title="'Tags'">
-                                <span class="label label-default label-tags" ng-repeat="tag in store.tags">{{tag.tags}}</span>
+                            <td class="text-center" data-title="'Serial Number'">
+                                {{device.deviceSerialNum}}
+                            </td>
+                            <td class="text-center" data-title="'OS'">
+                                {{device.osName}}
+                            </td>
+                            <td class="text-center" data-title="'OS Version'">
+                                {{device.osVersion}}
+                            </td>
+                            <td class="text-center" data-title="'Screen Resolution'">
+                                {{device.screenResolution}}
                             </td>
                             <td class="text-right">
-                                <button ng-click="edit(store.store_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                                 <button ng-click="toggleModal(store.store_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="overlay" ng-show="storeisLoading">
+                <div class="overlay" ng-show="deviceisLoading">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- /.content -->

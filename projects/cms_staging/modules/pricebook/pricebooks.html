@@ -24,10 +24,10 @@
                             <input type="text" class="form-control" ng-model="details.valid_from" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
                         </div>
                     </div>
-                    <!--  <div class="form-group col-md-6">
-                        <label>Date 1</label>
+                    <!-- <div class="form-group col-md-6">
+                        <label>Time From:</label>
                         <div class="input-group">
-                            <kk-timepicker settings="settings" ng-model="time"></kk-timepicker>
+                            <kk-timepicker settings="settings" ng-model="details.timFrom"></kk-timepicker>
                         </div>
                     </div> -->
                     <div class="form-group col-md-6">
@@ -40,9 +40,9 @@
                         </div>
                     </div>
                     <!-- <div class="form-group col-md-6">
-                        <label>Date</label>
+                        <label>Time To:</label>
                         <div class="input-group">
-                            <kk-timepicker settings="settings1" ng-model="time"></kk-timepicker>
+                            <kk-timepicker settings="settings" ng-model="details.timeTo"></kk-timepicker>
                         </div>
                     </div> -->
                 </div>
@@ -51,7 +51,7 @@
                         <label>Description</label>
                         <text-angular ng-model="details.description" required /></text-angular>
                     </div>
-                   <!--  <div class="form-group col-md-12">
+                    <!--  <div class="form-group col-md-12">
                         <label>Tags <i class="fa fa-tags"></i></label>
                         <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
                             <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>

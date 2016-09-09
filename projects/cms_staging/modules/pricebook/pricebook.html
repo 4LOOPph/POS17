@@ -12,24 +12,39 @@
             <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-md-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" class="form-control col-sm-12 input-sm" placeholder="&#xf002; What are you looking for?" style="font-family: 'FontAwesome';" ng-keypress="($event.which === 13)?searchData():0" />
-                        </div>
+            <div class="box box-warning">
+                <div class="box-header">
+                    <div class="pull-left">
+                        <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.pricebook-detail" uib-tooltip="Add New">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a class="btn btn-flat btn-sm btn-success" ng-click="publishSelected()" uib-tooltip="Publish">
+                            <i class="fa fa-file-text-o"></i>
+                        </a>
+                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                        <a ng-click="refresh()" class="btn btn-flat btn-sm btn-default" uib-tooltip="Refresh">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a ui-sref="main.pricebooktype" class="btn btn-flat btn-sm btn-default" uib-tooltip="Pricebook Type">
+                            <i class="fa fa-list"></i> Pricebook Type
+                        </a>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-flat btn-sm" ng-click="searchData()">
-                                Go
-                            </button>
-                            <button type="button" class="btn btn-success btn-flat btn-sm" ui-sref="main.pricebook-detail">
-                                Create New
-                            </button>
-                        </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -53,27 +68,17 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
-                                <!--  <li><a ng-click="updateType('Standard')">Standard</a></li>
-                                <li><a ng-click="updateType('Sale')">Sale</a></li>
-                                <li><a ng-click="updateType('Promo')">Promo</a></li>
-                            </ul> -->
+                            </ul>
                         </div>
                         <div class="btn-group">
                             <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" checkboxes="true" translation-texts="{buttonDefaultText: 'Tags'}" extra-settings="{showCheckAll: false,showUncheckAll: false} "></div>
-                        </div>
-                        <div class="pull-right">
-                            <div class="btn-group">
-                                <button class="btn btn-default btn-sm">P</button>
-                                <button class="btn btn-default btn-sm">X</button>
-                            </div>
-                            <!-- /.btn-group -->
                         </div>
                     </div>
                     <div class="box-body table-responsive mailbox-messages padding">
                         <table class="table table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
                                 <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                    <input type="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                                    <input type="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
                                     {{pricebook.name}}
@@ -97,7 +102,13 @@
                                 <td class="text-center" data-title="'Tags'">
                                 </td>
                                 <td class="text-right">
-                                    <button ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn btn-info btn-xs btn-flat" uib-tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a class="btn btn-flat btn-xs btn-success" ng-click="publishPricebook(pricebook.pricebook_id)" uib-tooltip="Publish">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </a>
+                                    <a class="btn btn-flat btn-xs btn-warning" ng-click="copyPricebook(pricebook.pricebook_id)" uib-tooltip="Copy/Duplicate">
+                                        <i class="fa fa-copy"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -105,8 +116,8 @@
                     <!-- /.mail-box-messages -->
                 </div>
                 <div class="overlay" ng-show="pricebookLoading">
-                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-            </div>
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                </div>
             </div>
         </div>
     </div>
