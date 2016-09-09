@@ -1,0 +1,78 @@
+<section class="content" ng-controller="deviceController">
+    <!-- /.row -->
+    <div class="row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">List of Stores</h3> -->
+                    <div class="pull-left">
+                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()">
+                            <i class="fa fa-edit"></i> Add New Entry
+                        </button>
+                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
+                            <i class="fa fa-remove"></i> Delete
+                        </button>
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="deviceTable">
+                        <tr ng-repeat="device in $data">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="device.selected" ng-change="checkDataChanges(device)">
+                            </td>
+                            <td class="text-center" data-title="'UUID'">
+                                {{device.deviceUUID}}
+                            </td>
+                            <td class="text-center" data-title="'Name'">
+                                {{device.deviceName}}
+                            </td>
+                            <td class="text-center" data-title="'Brand'">
+                                {{device.deviceBrand}}
+                            </td>
+                            <td class="text-center" data-title="'Model'">
+                                {{device.deviceModel}}
+                            </td>
+                            <td class="text-center" data-title="'Serial Number'">
+                                {{device.deviceSerialNum}}
+                            </td>
+                            <td class="text-center" data-title="'OS'">
+                                {{device.osName}}
+                            </td>
+                            <td class="text-center" data-title="'OS Version'">
+                                {{device.osVersion}}
+                            </td>
+                            <td class="text-center" data-title="'Screen Resolution'">
+                                {{device.screenResolution}}
+                            </td>
+                            <td class="text-right">
+                                <button ng-click="toggleModal(device,$index);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="overlay" ng-show="deviceisLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                </div>
+            </div>
+        </div>
+    </div>

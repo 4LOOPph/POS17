@@ -82,7 +82,6 @@
                                 </td>
                                 <td class="text-center" data-title="'Name'">
                                     {{pricebook.name}}
-                                </td>
                                 <td class="text-center" data-title="'Type'">
                                     {{pricebook.pricebook_type_info.name}}
                                 </td>
@@ -90,8 +89,8 @@
                                     <span ng-bind-html="pricebook.description"></span>
                                 </td>
                                 <td class="text-center" data-title="'Published'">
-                                    <span ng-if="pricebook.isActive == 1 " class="label label-success">published</span>
-                                    <span ng-if="pricebook.isActive == 0 " class="label label-danger">unpublished</span>
+                                    <span ng-if="pricebook.dateapproved != null " class="label label-success">published</span>
+                                    <span ng-if="pricebook.dateapproved == null " class="label label-warning">draft</span>
                                 </td>
                                 <td class="text-center" data-title="'Date From'">
                                     {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
@@ -103,10 +102,10 @@
                                 </td>
                                 <td class="text-right">
                                     <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn btn-info btn-xs btn-flat" uib-tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
-                                    <a class="btn btn-flat btn-xs btn-success" ng-click="publishPricebook(pricebook.pricebook_id)" uib-tooltip="Publish">
+                                    <a class="btn btn-flat btn-xs btn-success" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
                                         <i class="fa fa-file-text-o"></i>
                                     </a>
-                                    <a class="btn btn-flat btn-xs btn-warning" ng-click="copyPricebook(pricebook.pricebook_id)" uib-tooltip="Copy/Duplicate">
+                                    <a class="btn btn-flat btn-xs btn-warning" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
                                         <i class="fa fa-copy"></i>
                                     </a>
                                 </td>
