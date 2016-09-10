@@ -51,9 +51,9 @@
                             <td class="text-center" data-title="'Group Name'">
                                 {{group.name}}
                             </td>
-                            <!-- <td class="text-center" data-title="'Label'">
-                                {{group.label}}
-                            </td> -->
+                            <td class="text-center" data-title="'Store'">
+                                {{group.store_name}}
+                            </td>
                             <td class="text-center" data-title="'Description'">
                                 {{group.description}}
                             </td>
@@ -62,7 +62,7 @@
                             </td>
                             </td>
                             <td class="text-right">
-                                <button ui-sref="main.settings-customergroup-detail({customergroup_id:group.cg_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ng-click="addGroups(group)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                                 <button ng-click="toggleModal(group.cg_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
                             </td>
                         </tr>

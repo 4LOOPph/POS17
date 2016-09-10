@@ -18,7 +18,7 @@
                         <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.pricebook-detail" uib-tooltip="Add New">
                             <i class="fa fa-plus"></i>
                         </a>
-                        <a class="btn btn-flat btn-sm btn-success" ng-click="publishSelected()" uib-tooltip="Publish">
+                        <a class="btn btn-flat btn-sm btn-success" ng-click="publishSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Publish">
                             <i class="fa fa-file-text-o"></i>
                         </a>
                         <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
