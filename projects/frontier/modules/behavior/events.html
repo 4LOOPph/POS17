@@ -21,7 +21,7 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="" ng-click="downloadViaCSV()"><i class="fa fa-file-excel-o"></i> CSV</a>
+                        <li><a href="" ng-click="getBehavioreventsCsv()"><i class="fa fa-file-excel-o"></i> CSV</a>
                         </li>
                         <li><a href=""><i class="fa fa-file-excel-o"></i> Excel (XLSX)</a>
                         </li>
@@ -98,7 +98,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="box-body">
+                        <div class="box-body" ng-show="displayModel == 'Table'">
                             <div class="nav-tabs-custom" bs-tabs>
                                 <div data-title="<i class='fa fa-user'></i> Event Category" bs-pane>
                                     <div class="row">
@@ -172,6 +172,249 @@
                                                             <td>{{label.TotalValueEvents}}<small>({{label.totalEventsValuePercentage}}%)</small></td>
                                                         </tr>
                                                     </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" ng-show="displayModel == 'Pie'">
+                            <div class="nav-tabs-custom" bs-tabs>
+                                <div data-title="<i class='fa fa-user'></i> Event Category" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped" data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Event Category</th>
+                                                            <th>Total Events</th>
+                                                            <th>Total Value Events</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>{{totalEvents}}<small> Total Events</small></td>
+                                                            <td>{{totalValue}}<small> Total Value</small></td>
+                                                        </tr>
+                                                        <tr ng-repeat="category in categories">
+                                                            <td>{{category.eventCategory}}</td>
+                                                            <td>{{category.TotalEvents}}<small>({{category.totalEventsPercentage}}%)</small></td>
+                                                            <td>{{category.TotalValueEvents}}<small>({{category.totalEventsValuePercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas id="pie" class="chart chart-pie" chart-data="pieCharts.data" chart-labels="pieCharts.labels" </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-title="<i class='fa fa-rss'></i> Event Action" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped" data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Event Action</th>
+                                                            <th>Total Events</th>
+                                                            <th>Total Value Events</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="action in actions">
+                                                            <td>{{action.eventAction}}</td>
+                                                            <td>{{action.TotalEvents}}<small>({{action.totalEventsPercentage}}%)</small></td>
+                                                            <td>{{action.TotalValueEvents}}<small>({{action.totalEventsValuePercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas id="pie1" class="chart chart-pie" chart-data="pieCharts.data1" chart-labels="pieCharts.labels1" chart-options="options">
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-title="<i class='fa fa-bars'></i> Event Label" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped" data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Event Label</th>
+                                                            <th>Total Events</th>
+                                                            <th>Total Value Events</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="label in labels">
+                                                            <td>{{label.eventLabel}}</td>
+                                                            <td>{{label.TotalEvents}}<small>({{label.totalEventsPercentage}}%)</small></td>
+                                                            <td>{{label.TotalValueEvents}}<small>({{label.totalEventsValuePercentage}}%)</small></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="panel panel-default" style="margin-top:35px;">
+                                                <div class="panel-body">
+                                                    <canvas id="pie2" class="chart chart-pie" chart-data="pieCharts.data2" chart-labels="pieCharts.labels2" chart-options="options">
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" ng-show="displayModel == 'Bar'">
+                            <div class="nav-tabs-custom" bs-tabs>
+                                <div data-title="<i class='fa fa-user'></i> Event Category" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Event Category</th>
+                                                            <th>Total Events</th>
+                                                            <th>Progress <small>(Category)</small></th>
+                                                            <th>Status <small>(Category)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="category in categories">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{category.eventCategory}}</a></td>
+                                                            <td>{{category.TotalEvents}}<small> ({{category.totalEventsPercentage}}%)</small></td>
+                                                            <td>                                                            
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': category.totalEventsPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-title="<i class='fa fa-rss'></i> Event Action" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Event Action</th>
+                                                            <th>Total Events</th>
+                                                            <th>Progress <small>(Action)</small></th>
+                                                            <th>Status <small>(Action)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="action in actions">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{action.eventAction}}</a></td>
+                                                            <td>{{action.TotalEvents}}<small> ({{action.totalEventsPercentage}}%)</small></td>
+                                                            <td>                                                            
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': action.totalEventsPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-title="<i class='fa fa-bars'></i> Event Label" bs-pane>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped " data-page-size="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-sort-ignore="true" width="5%">
+                                                                <input type="checkbox">
+                                                            </th>
+                                                            <th>Event Label</th>
+                                                            <th>Total Events</th>
+                                                            <th>Progress <small>(Label)</small></th>
+                                                            <th>Status <small>(Label)</small></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="label in labels">
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+                                                            <td><a href="">{{label.eventLabel}}</a></td>
+                                                            <td>{{label.TotalEvents}}<small> ({{label.totalEventsPercentage}}%)</small></td>
+                                                            <td>                                                            
+                                                                <div class="progress xs">
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': label.totalEventsPercentage + '%' }"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>
