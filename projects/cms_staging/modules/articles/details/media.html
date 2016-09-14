@@ -44,6 +44,17 @@
                                         <a href="" ng-if="files.media_mimetype == 'video/quicktime'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
                                         <!-- PDF -->
                                         <a href="" ng-if="files.media_mimetype == 'application/pdf'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <!-- Doc -->
+                                        <a href="" ng-if="files.media_mimetype == 'application/msword'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <a href="" ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <!-- Sheet -->
+                                        <a href="" ng-if="files.media_mimetype == 'text/plain'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <a href="" ng-if="files.media_mimetype == 'text/csv'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <a href="" ng-if="files.media_mimetype == 'application/vnd.ms-excel'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <a href="" ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <!-- Powerpoint -->
+                                        <a href="" ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                        <a href="" ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
                                     </li>
                                     <li class="divider"></li>
                                     <li><a href="" ng-click="copyURLLink(files)">Copy URL <span class="pull-right"><i class="fa fa-link"></i></span></a></li>
@@ -68,16 +79,18 @@
                             <span ng-if="files.media_mimetype == 'video/quicktime'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
                             <!-- PDF -->
                             <span ng-if="files.media_mimetype == 'application/pdf'" class="info-box-icon bg-red"><i class="fa fa-file-pdf-o"></i></span>
+                            <!-- TextFile -->
+                            <span ng-if="files.media_mimetype == 'text/plain'" class="info-box-icon bg-gray"><i class="fa fa-file-text-o"></i></span>
                             <!-- DOCS -->
                             <span ng-if="files.media_mimetype == 'application/msword'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
                             <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
                             <!-- Excel -->
+                            <span ng-if="files.media_mimetype == 'text/csv'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
                             <span ng-if="files.media_mimetype == 'application/vnd.ms-excel'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
                             <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
                             <!-- Presentation / Powerpoint -->
-                            <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
                             <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" class="info-box-icon bg-orange"><i class="fa fa-file-powerpoint-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
+                            <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-orange"><i class="fa fa-file-powerpoint-o"></i></span>
                             <!-- Zip -->
                             <span ng-if="files.media_mimetype == 'application/zip'" class="info-box-icon bg-teal"><i class="fa fa-file-zip-o"></i></span>
                             <div class="info-box-content">

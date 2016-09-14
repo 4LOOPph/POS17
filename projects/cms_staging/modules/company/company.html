@@ -22,9 +22,35 @@
                         <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
                             <i class="fa fa-remove"></i>
                         </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-default" uib-tooltip="Refresh">
                             <i class="fa fa-refresh"></i>
                         </button>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-flat btn-success dropdown-toggle" data-toggle="dropdown" uib-tooltip="Import">
+                                <i class="fa fa-upload"></i>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="" ng-click="importCompanies('excel')"><i class="fa fa-file-excel-o"></i> Excel</a>
+                                </li>
+                                <li><a href="" ng-click="importCompanies('csv')"><i class="fa fa-file-excel-o"></i> CSV</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-flat btn-success dropdown-toggle" data-toggle="dropdown" uib-tooltip="Export">
+                                <i class="fa fa-download"></i>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="" ng-click="exportData('excel')"><i class="fa fa-file-excel-o"></i> Excel</a>
+                                </li>
+                                <li><a href="" ng-click="exportData('csv')"><i class="fa fa-file-excel-o"></i> CSV</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">

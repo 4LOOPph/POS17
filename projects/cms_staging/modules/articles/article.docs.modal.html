@@ -3,7 +3,7 @@
         <a ng-click="cancel()" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></a>
     </div>
     <div class="modal-body">
-        <ng-pdf template-url="./modules/articles/article.viewer.html" canvasid="pdf" scale="page-fit" page=13></ng-pdf>
+        <iframe style="width: 100%;height: 100%;" ng-src="{{pdfUrl}}"></iframe>
     </div>
     <div class="modal-footer">
         <a class="btn btn-flat btn-default" ng-click="cancel()">Close</a>
