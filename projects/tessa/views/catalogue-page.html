@@ -1,0 +1,696 @@
+<div id="product-catalogue">
+    <div id="article-page" class="wrapper">
+        <div class="breadcrumbs padding_10">
+            <img src="../images/icons/ico_store00.svg" />
+            <a class="current font_medium">
+                Product Catalogue
+            </a>
+        </div>
+        <div class="page_menu">
+            <div class="menu_primary ">
+                <div class="dis_table_auto">
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Solution'}" ng-click="activeProd('Solution')" fa-track-event="['Product Catalogue','click','Solutions',null]">Solutions</a>
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Hardware'}" ng-click="activeProd('Hardware')" fa-track-event="['Product Catalogue','click','Hardware',null]">Hardware</a>
+                </div>
+            </div>
+            <div class="menu_secondary" ng-show="prodTypeLabel == 'Hardware'">
+                <a class="dis_cell" ng-class="{'active': hardwareType == 'Screens'}" ng-click="activeHard('Screens')" fa-track-event="['Product Category','click','Screens',null]">Screens</a>
+                <a class="dis_cell" ng-class="{'active': hardwareType == 'MediaPlayer'}" ng-click="activeHard('MediaPlayer')" fa-track-event="['Product Category','click','Media Player',null]">Media Player</a>
+            </div>
+            <div class="menu_secondary" ng-show="prodTypeLabel == 'Solution'">
+                <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeImpress'}" ng-click="activateTab('EzeImpress')">Eze Impress</a>
+                <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeWifi'}" ng-click="activateTab('EzeWifi')">Eze Wifi</a>
+            </div>
+
+        </div>
+        <div class="filter_primary">
+            <!-- <div class="dis_table_auto">
+                <a class="dis_cell" ng-click="seemore=!seemore">
+                    <span>
+                        <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                    </span>
+                    <span class="blue2 font_12">
+                    Filter
+                    <div class="text14_medium">
+                </a>
+                <div class=" dis_cell  pad_side_10">
+                    Number of Results
+                </div>
+                 <a class="dis_cell">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Sort By <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            dasdsa
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </a>
+            </div> -->
+            <div class="dis_table">
+                <a class="dis_cell" ng-click="seemore=!seemore" style="width: 40%;">
+                        <span>
+                            <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                        </span>
+                    <span class="blue2 font_12">
+                        Filter
+                        </span>
+                </a>
+                <div class=" dis_cell  pad_side_10">
+                    Number of Results
+                </div>
+            </div>
+        </div>
+        <div ng-hide="seemore" class="filter_secondary">
+            <div>
+                <span class="font_medium">Select one or more options below.</span>
+                <a class="btn btn-default btn-sm" ng-click="clear()">
+                    <span class="fa fa-minus-square-o"></span> Clear all filter selection.
+                </a>
+            </div>
+            <div ng-show="prodTypeLabel == 'Solution'">
+                <div ng-show="solutionTypes == 'EzeImpress'">
+                    <!--EZE IMPRESS-->
+                    <span>
+                            <div class="inblock">
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                  <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                  <i class="fa fa-search"></i>
+                                   </a>
+                                </div>
+                            </div>
+                        </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.location" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Location
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.mounting" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Mounting Option
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span class="pad_side_10">
+                            <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                            <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
+                        </span>
+                </div>
+                <div ng-show="solutionTypes == 'EzeWifi'">
+                    <!--EZE WIFI-->
+                    <span class="btn-group">
+                            <div class="inblock">
+                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                        <i class="fa fa-search"></i>
+                                </a>
+                                </div>
+                            </div>
+
+                        </span>
+                    <span class="pad_side_10">
+                            <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                            <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
+                        </span>
+                    <!-- <span class="btn-group">
+                            <button uib-popover-template="dynamicPopover.templateUrl7" ng-click="wifi = !wifi" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">CMS
+                                <span ng-class="{'glyphicon glyphicon-chevron-up': wifi,'glyphicon glyphicon-chevron-down': !wifi}"></span>
+                            </button>
+                        </span> -->
+                    <!-- <span class="btn-group">
+                            <button type="button" class="font_medium btn btn-default dropdown-toggle"
+                                    data-toggle="dropdown" aria-expanded="false">
+                                Wifi Test <span class="caret"></span>
+                        </button>
+                        </span> -->
+                </div>
+            </div>
+            <div ng-show="prodTypeLabel == 'Hardware'">
+                <div ng-show="hardwareType == 'Screens'">
+                    <!--SCREENS-->
+                    <span class="btn-group">
+                           <div class="inblock">
+                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                        <i class="fa fa-search"></i>
+                                </a>
+                                </div>
+                            </div>
+                        </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.screensize" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Screen Size
+                                  <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.brightness" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Brightness
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.bezel" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Bezel Size
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.usage" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Usage
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span class="pad_side_10">
+                            <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                            <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
+                        </span>
+                </div>
+                <div ng-show="hardwareType == 'MediaPlayer'">
+                    <!-- MEDIA PLAYER-->
+                    <span class="btn-group">
+                                <div class="inblock">
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                         <i class="fa fa-search"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">RAM
+                                  <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.templateUrlStorage" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Storage
+                                  <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.templateUrlGraphics" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Graphics
+                                  <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span>
+                            <button uib-popover-template="dynamicPopover.templateUrlResolution" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Max Resolution
+                                <span class="caret"></span>
+                    </button>
+                    </span>
+                    <span class="pad_side_10">
+                            <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
+                            <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
+                    </span>
+                </div>
+            </div>
+            <!-- <div class="padding_10" ng-repeat="item in typeselected" ng-if="prodTypeLabel == 'Solution'">
+                <button type="button" class="btn btn-sm btn-default" style="padding: 5px 10px 0px 9px 0px;" ng-click="uncheck(item,$index)">x</button> {{item.label}}
+            </div>
+            <div class="padding_10" ng-repeat="item in tagselected" ng-if="prodTypeLabel == 'Hardware'">
+                <button type="button" class="btn btn-sm btn-default" style="padding: 5px 10px 0px 9px 0px;" ng-click="uncheck(item,$index)">x</button> {{item.value}}
+            </div> -->
+        </div>
+        <div ng-show="prodTypeLabel == 'Hardware'">
+            <div class="row sec-pc-items">
+                <div ng-show="hardwareType == 'Screens'">
+                    <div class=" sec-search-filter" ng-if="Screens.length == 0">
+                        <h4>NO RESULT</h4>
+                    </div>
+                    <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in Screens" ng-if="item.is_published == 1 && item.is_archived == 0">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <a class="img_holder">
+                                    <img ng-src="{{item.img_default}}" class="" />
+                                </a>
+                                <div class="item_text">
+                                    <div class="item_title">
+                                        <a class=" blue1 font_bold">
+                                            {{item.item_name}}
+                                        </a>
+                                    </div>
+                                    <div class="font_14 grey2 font_medium pad20top">
+                                        For as low as
+                                    </div>
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.sell_price | number:2}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div ng-show="prodTypeLabel == 'Hardware'">
+                <div class="row sec-pc-items">
+                    <div ng-show="hardwareType == 'Screens'">
+                        <div class=" sec-search-filter" ng-if="Screens.length == 0">
+                            <h4>NO RESULT</h4>
+                        </div>
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})"
+                             ng-repeat="item in Screens" ng-if="item.is_published == 1 && item.is_archived == 0">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <a class="img_holder">
+                                        <img ng-src="{{item.img_default}}" class=""/>
+                                    </a>
+                                    <div class="item_text">
+                                        <div class="item_title">
+                                            <a class=" blue1 font_bold">
+                                                {{item.item_name}}
+                                            </a>
+                                        </div>
+                                        <div class="font_14 grey2 font_medium pad20top">
+                                            For as low as
+                                        </div>
+                                        <div class="box_price font_24 font_light">
+                                            <sup class="">$</sup>{{item.sell_price | number:2}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="hardwareType == 'MediaPlayer'">
+                        <div class=" sec-search-filter" ng-if="MediaPlayer.length == 0">
+                            <h4>NO RESULT</h4>
+                        </div>
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})"
+                             ng-repeat="item in MediaPlayer" ng-if="item.is_published == 1 && item.is_archived == 0">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <a class="img_holder">
+                                        <img ng-src="{{item.img_default}}" err-src="images/is5.jpg" class=""/>
+                                    </a>
+                                    <div class="item_text">
+                                        <div class="item_title">
+                                            <a class=" blue1 font_bold">
+                                                {{item.item_name}}
+                                            </a>
+                                        </div>
+                                        <div class="font_14 grey2 font_medium pad20top">
+                                            For as low as
+                                        </div>
+                                        <div class="box_price font_24 font_light">
+                                            <sup class="">$</sup>{{item.sell_price | number:2}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="prodTypeLabel == 'Solution'">
+                <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeImpress'">
+                    <div class=" sec-search-filter" ng-if="products.length == 0">
+                        <h4>NO RESULT</h4>
+                    </div>
+                    <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
+                         ng-repeat="item in products"
+                         ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <a class="img_holder">
+                                    <img ng-src="{{myImage.image_path}}"
+                                         ng-repeat="myImage in item.product_images | limitTo: 1" imageonload
+                                         err-src="images/is5.jpg"/>
+                                    <span class="loading background-spinner"> <img
+                                            src="./images/icons/default.gif"></span>
+                                </a>
+                                <div class="item_text">
+                                    <div class="item_title">
+                                        <a class=" blue1 font_bold">
+                                            {{item.bundle_name}}
+                                        </a>
+                                    </div>
+                                    <div class="item_content font_14 grey1 font_light">
+                                        <span data-ng-bind-html="item.bundle_description"></span>
+                                    </div>
+                                    <!--<div class="box_price font_light font_14">
+                                    View Details
+                                </div>-->
+                                    <div class="font_14 grey2 font_medium pad20top">
+                                        For as low as
+                                    </div>
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.weekly | number : 2}}<span
+                                            class="font_light font_14">/wk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeWifi'">
+                    <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
+                         ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <a class="img_holder">
+                                    <img ng-src="{{myImage.image_path}}"
+                                         ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload
+                                         err-src="images/is5.jpg"/>
+                                    <span class="loading"
+                                          style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
+                                            src="./images/icons/default.gif" style="width: 20% !important;"/></span>
+                                </a>
+                                <div class="item_text">
+                                    <div class="item_title">
+                                        <a class=" blue1 font_bold">
+                                            {{item.bundle_name}}
+                                        </a>
+                                    </div>
+                                    <div class="item_content font_14 grey1 font_light">
+                                        <span data-ng-bind-html="item.bundle_description"></span>
+                                    </div>
+                                    <!--<div class="box_price font_light font_14">
+                                    View Details
+                                </div>-->
+                                    <!--  <div class="font_14 grey2 font_medium pad20top">
+                                        For as low as
+                                    </div> -->
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.weekly | number : 2}}<span
+                                            class="font_light font_14">/wk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Solutions-->
+
+        </div>
+        <div ng-show="prodTypeLabel == 'Solution'">
+            <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeImpress'">
+                <div class=" sec-search-filter" ng-if="products.length == 0">
+                    <h4>NO RESULT</h4>
+                </div>
+                <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a class="img_holder">
+                                <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" imageonload err-src="images/is5.jpg" />
+                                <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
+                            </a>
+                            <div class="item_text">
+                                <div class="item_title">
+                                    <a class=" blue1 font_bold">
+                                        {{item.bundle_name}}
+                                    </a>
+                                </div>
+                                <div class="item_content font_14 grey1 font_light">
+                                    <span data-ng-bind-html="item.bundle_description"></span>
+                                </div>
+                                <!--<div class="box_price font_light font_14">
+                                    View Details
+                                </div>-->
+                                <div class="font_14 grey2 font_medium pad20top">
+                                    For as low as
+                                </div>
+                                <div class="box_price font_24 font_light">
+                                    <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeWifi'">
+                <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a class="img_holder">
+                                <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
+                                <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
+                                        src="./images/icons/default.gif" style="width: 20% !important;"/></span>
+                            </a>
+                            <div class="item_text">
+                                <div class="item_title">
+                                    <a class=" blue1 font_bold">
+                                        {{item.bundle_name}}
+                                    </a>
+                                </div>
+                                <div class="item_content font_14 grey1 font_light">
+                                    <span data-ng-bind-html="item.bundle_description"></span>
+                                </div>
+                                <!--<div class="box_price font_light font_14">
+                                    View Details
+                                </div>-->
+                                <!--  <div class="font_14 grey2 font_medium pad20top">
+                                        For as low as
+                                    </div> -->
+                                <div class="box_price font_24 font_light">
+                                    <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Solutions-->
+    </div>
+</div>
+<style>
+#active-catalogue {
+    background: #424242;
+}
+</style>
+<script async type="text/ng-template" id="location.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in location | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="configuration.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in config | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="screens.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="attribute in ScreenSize | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"> {{attribute.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="brightness.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="attribute in Brightness | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"> {{attribute.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="bezel.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="attribute in Bezel | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"> {{attribute.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="usage.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="attribute in Usage | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"> {{attribute.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="wifi.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="eze in categWifi | duplicates: 'item_name' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(eze)" ng-model="eze.checked"> {{eze.item_name}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="ram.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="media in Ram | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked">{{media.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="storage.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="media in Storage | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked">{{media.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="graphics.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="media in Graphics | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked">{{media.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="resolution.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="media in Resolution | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked">{{media.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="displaytechno.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in Displaytechno | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="weight.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in weight | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="dimensions.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in dimensions | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="orientation.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in orientation | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="displayinterface.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in displayinterface | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="vesa.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in vesa | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="screentype.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in screentype | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="resolution.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="display in resolution | duplicates: 'value' | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked">{{display.value}}
+            </label>
+        </div>
+    </div>
+</script>

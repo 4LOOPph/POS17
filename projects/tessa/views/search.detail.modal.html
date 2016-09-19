@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <button class="close" aria-hidden="true" ng-click="cancel()">×</button>
+    <div class="row_title">Item Details</div>
+</div>
+<div class="modal-body">
+    <div class="row_title margin20top">
+        <a ng-click="openShareModal()" class=" btn btn-label btn-social btn-flickr">
+            <i class="padding_10 fa fa-share-square"></i> Share
+        </a>
+    </div>
+    <div id="mdl-hardware">
+        <div class="contain-image">
+            <div class="img_holder pad20top" ng-if="selected.self == 'articles'">
+                <img src="{{image.media_path}}" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" />
+            </div>
+            <div class="img_holder pad20top" ng-if="selected.self == 'products'">
+                <img src="{{selected.img_default}}" class="bg-icon">
+            </div>
+            <div class="img_holder pad20top" ng-if="selected.self == 'bundles'">
+                <img src="{{image.image_path}}" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1" >
+            </div>
+        </div>
+
+
+        <div class="pad20top mdl-hardware-content">
+            <div class="font_24 blue1 font_medium">
+                {{selected.name}}
+            </div>
+            <div class="font_24 blue1 font_medium" ng-if="selected.self == 'bundles'">
+                {{selected.bundle_name}}
+            </div>
+            <div class="article-primary ">
+                <p ta-bind ng-model="selected.description"></p>
+            </div>
+            <div class="article-primary " ng-if="selected.self == 'bundles'">
+                <p ng-bind-html="selected.bundle_description"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer margin20top">
+    <button ng-if="selected.self == 'products' || selected.self == 'bundles'" type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

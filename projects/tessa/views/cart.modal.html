@@ -1,0 +1,338 @@
+<div id="modal-cart">
+    <div class="modal-body" style="padding:0;">
+        <!--Cart-->
+        <div ng-switch="cart">
+            <div ng-switch-when="items">
+                <div class="dis_flex">
+                    <div id="shopping_cart">
+                        <div class="row_title">
+                            SHOPPING CART
+                        </div>
+                        <div id="cart_details">
+                            <div id="cart_items">
+                                <table class="flow-x">
+                                    <thead>
+                                        <tr>
+                                            <th width="70%">ITEMS</th>
+                                            <th>QTY</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="cartitem in details track by $index">
+                                            <td>
+                                                <div class="img_holder" ng-if="cartitem.pb_id ">
+                                                    <img src="{{image.image_path}}" ng-repeat="image in cartitem.product_images | limitTo: 1" />
+                                                </div>
+                                                <div class="img_holder" ng-if="cartitem.p_id">
+                                                    <img src="{{cartitem.img_default}}" />
+                                                </div>
+                                                <div class="font_bold grey2" ng-show="cartitem.bundle_name">
+                                                    {{cartitem.bundle_name}}
+                                                </div>
+                                                <div class="font_bold grey2" ng-show="cartitem.item_name">
+                                                    {{cartitem.item_name}}
+                                                </div>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="input-group bootstrap-touchspin">
+                                                    <span class="input-group-btn">
+                                                        <button ng-click="minusbutton(cartitem)"
+                                                                class="btn btn-midnightblue bootstrap-touchspin-down"
+                                                                type="button">-</button>
+                                            </span>
+                                                    <input ng-model="cartitem.quantity" class="form-control" />
+                                                    <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;">
+                                            </span>
+                                                    <span class="input-group-btn">
+                                                        <button ng-click="addbutton(cartitem)"
+                                                                class="btn btn-midnightblue"
+                                                                type="button">+</button>
+                                            </span>
+                                                    <span class="input-group-btn">
+                                                    <button ng-click="remove(cartitem)" type="button"
+                                                            class=" btn-midnightblue round_button">
+                                                        <i class="fa fa-close"></i>
+                                                    </button>
+                                            </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="!details.length">
+                                            <td colspan="2">
+                                                <div class="empty_box">
+                                                    Your cart is empty.
+                                                    <div>
+                                                        <a ng-click="cancel()" ui-sref="main.productCatalogue" class="font_12">(Browse
+                                                        Products)</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="cart_cost">
+                                <div id="total_cost" class="dis_cell">
+                                    <div class="font_bold  grey2">Subtotal</div>
+                                    <div class="font_bold font_18 blue1">{{total() | currency}}</div>
+                                    <!--<div class="font_12 grey3">{{items.length}} items</div>-->
+                                </div>
+                            </div>
+                            <div id="cart_foot">
+                                <div class="dis_table">
+                                    <div class="dis_cell">
+                                        <a ng-click="reset()"><i class="fa fa-minus-square"></i> Reset Shopping Cart</a>
+                                    </div>
+                                    <div class="dis_cell">
+                                        <a ui-sref="main.productCatalogue" ng-click="cancel()"><i
+                                                class="fa fa-plus-square"></i>
+                                            Add More Items</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payment_terms" ng-show="details.length">
+                        <div class="row_title">
+                            pricing options
+                        </div>
+                        <div id="payment_options">
+                            <div id="capex">
+                                <div class="font_bold grey3">CAPEX</div>
+                                <div class="dis_table">
+                                    <div class="dis_cell ">
+                                        <div class="price_option">
+                                            <div class="font_12 grey3 font_bold ">Upfront</div>
+                                            <div class="font_medium font_24 grey2 pad_vertical">
+                                                {{total() | currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dis_cell">
+                                        <div class="price_option">
+                                            <div class="font_12 grey3 font_bold">Monthly</div>
+                                            <div class="font_medium font_24 grey2 pad_vertical">
+                                                {{ monthly() | currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="opex">
+                                <div class="font_bold grey3">OPEX</div>
+                                <div class="dis_table">
+                                    <div class="dis_cell ">
+                                        <div class="price_option">
+                                            <div class="font_12 grey3 font_bold">TCO monthly</div>
+                                            <div class="font_medium font_24 grey2 pad_vertical">
+                                                {{(((total() * 31.111)/1000) + spprice) | currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dis_cell">
+                                        <div class="price_option">
+                                            <div class="font_12 grey3 font_bold">For as low as</div>
+                                            <div class="font_medium font_24 grey3 pad_vertical">
+                                                {{(((((total() * 31.111)/1000) + spprice)*12)/52) | currency}} /wk
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payment_terms" ng-show="!details.length">
+                        <div class="row_title">
+                            Payment terms
+                        </div>
+                        <div class="empty_box mar10top">
+                            Your cart is empty.
+                            <div>
+                                <a ng-click="cancel()" ui-sref="main.productCatalogue" class="font_12">(Browse
+                                    Products)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="font_bold modal-footer">
+                    <div uib-tooltip="Please Select Pricing Options" tooltip-enable="!details.length">
+                        <button type="button" class=" btn btn-primary pull-right" ng-click="next()" ng-disabled="!details.length">
+                            PROCEED
+                        </button>
+                    </div>
+                    <button type="button" class=" btn btn-primary-alt pull-left" ng-click="cancel()">CLOSE
+                    </button>
+                </div>
+            </div>
+            <div ng-switch-when="customer">
+                <form name="customerForm">
+                    <div id="customer_details">
+                        <div class="row_title">
+                            COMPANY INFORMATION
+                        </div>
+                        <table>
+                            <tr>
+                                <th colspan="2">
+                                    <hr/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Company</th>
+                                <td>
+                                    <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getCompanyDetail" local-data="companies" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contact Person</th>
+                                <td>
+                                    <div angucomplete-alt placeholder="Search..." pause="100" local-data="customers" selected-object="getCustomer" search-fields="firstname" title-field="firstname" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <hr/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th><span class="font_bold grey3">BILL TO</span></th>
+                                <!-- <td>
+                                    <div class="pull-right">
+                                        <div class="checkbox">
+                                            <i class="ti ti-check"></i>
+                                            <input type="checkbox" ng-model="billing" ng-click="useCustomerAddress(billing)"> Use Customer Address as Billing Address
+                                        </div>
+                                    </div>
+                                </td> -->
+                            </tr>
+                            <tr>
+                                <th>Attention</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.bill_name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Street Address</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.bill_address" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.bill_city" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.bill_state" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Postal Code</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.bill_zipcode" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>
+                                    <!-- <input type="text" ng-model="company.country" class="form-control" /> -->
+                                    <select class="form-control" ng-model="company.bill_country" ng-options="item.name as item.name for item in countries" required>
+                                        <option disabled value="">- Select Country -</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <hr/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span class="font_bold grey3">SHIP TO</span>
+                                </th>
+                                <td>
+                                    <div class="pull-right">
+                                        <div class="checkbox">
+                                            <!-- <i class="ti ti-check"></i> -->
+                                            <input type="checkbox" ng-model="shipping" ng-click="useBillingAddress(shipping)" /> Use Billing Address as Shipping Address
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- <td>
+                                <select class="form-control">
+                                    <option>1</option>
+                                </select>
+                            </td> -->
+                            </tr>
+                            <tbody ng-hide="shipping">
+                            <tr>
+                                <th>Attention</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.ship_name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Street Address</th>
+                                <td>
+                                    <input type="text" ng-model="company.ship_address" class="form-control" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>
+                                    <input type="text" ng-model="company.ship_city" class="form-control" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>
+                                    <input type="text" class="form-control" ng-model="company.ship_state" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Postal Code</th>
+                                <td>
+                                    <input type="text" ng-model="company.ship_zipcode" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>
+                                    <!-- <input type="text" ng-model="company.country" class="form-control" /> -->
+                                    <select class="form-control" ng-model="company.ship_country" ng-options="item.name as item.name for item in countries" required>
+                                        <option disabled value="">- Select Country -</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+
+                            <tr>
+                                <th colspan="2">
+                                    <hr/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Memo</th>
+                                <td>
+                                    <textarea rows="3" class="form-control" ng-model="company.comments"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                </form>
+                </div>
+                <div class="font_bold modal-footer">
+                    <button ng-click="confirmation()" type="submit" class="pull-right  btn btn-success" ng-disabled="customerForm.$invalid">
+                        GENERATE QUOTE
+                    </button>
+                    <button id="close_quote" type="button" class=" btn btn-primary-alt pull-left" ng-click="back()">BACK
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--End of Cart-->
+    </div>
+</div>
