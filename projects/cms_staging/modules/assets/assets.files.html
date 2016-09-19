@@ -10,15 +10,14 @@
         <!-- /.box-tools -->
     </div>
     <!-- /.box-header -->
-    <div class="box-body no-padding">
+    <div class="box-body no-padding" ng-click="clearSelection()">
         <div class="mailbox-controls">
-            <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Remove"><i class="fa fa-trash-o"></i></button>
+            <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Remove" ng-click="deleteSelected()" ng-if="selectedFile !== {}"><i class="fa fa-trash-o"></i></button>
             <div class="btn-group">
-                <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Get shareable link"><i class="fa fa-link"></i></button>
-                <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Share..."><i class="fa fa-user-plus"></i></button>
-                <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Preview"><i class="fa fa-eye"></i></button>
+                <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Share..." ng-click="shareToOthers()" ng-if="selectedFile"><i class="fa fa-user-plus"></i></button>
+                <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Preview" ng-click="previewSelected()" ng-if="showToolPreview"><i class="fa fa-eye"></i></button>
             </div>
-            <div class="btn-group">
+            <div class="btn-group" ng-if="selectedFile">
                 <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown" uib-tooltip="More actions">
                     <i class="fa fa-ellipsis-v"></i>
                 </button>
@@ -26,8 +25,11 @@
                     <li>
                         <a ng-click="updateStatus('All')"><i class="fa fa-arrows-alt"></i>&nbsp Move to...</a>
                     </li>
-                    <li>
-                        <a ng-click="updateStatus('Published')"><i class="fa fa-star"></i>&nbsp Add star</a>
+                    <li ng-if="selectedFile.isStarred == 0">
+                        <a ng-click="starredSelected()"><i class="fa fa-star"></i>&nbsp Add star</a>
+                    </li>
+                    <li ng-if="selectedFile.isStarred == 1">
+                        <a ng-click="starredSelected()"><i class="fa fa-star-o"></i>&nbsp Remove star</a>
                     </li>
                     <li>
                         <a ng-click="updateStatus('Draft')"><i class="fa fa-pencil"></i>&nbsp Rename</a>
@@ -36,32 +38,51 @@
                     <li>
                         <a ng-click="updateStatus('Draft')"><i class="fa fa-info-circle"></i>&nbsp View details</a>
                     </li>
-                    <li>
-                        <a ng-click="updateStatus('Draft')"><i class="fa fa-download"></i>&nbsp Download</a>
+                    <li ng-if="showToolMakeCopy">
+                        <a ng-click="updateStatus('Draft')"><i class="fa fa-copy"></i>&nbsp Make a copy</a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isFolder == false">
+                         <a ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}" uib-tooltip="Download"><i class="fa fa-download"></i>&nbsp Download</a>
                     </li>
                 </ul>
             </div>
-            <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Refresh" ng-click="showAllFiles()"><i class="fa fa-refresh"></i></button>
+            <button class="btn btn-default btn-sm btn-flat" uib-tooltip="Refresh" ng-click="refreshAssets()"><i class="fa fa-refresh"></i></button>
             <div class="pull-right">
                 <div class="btn-group">
                     <button class="btn btn-default btn-flat btn-sm" ng-if="isList" ng-click="changeDisplay()"><i class="fa fa-th-large"></i></button>
                     <button class="btn btn-default btn-flat btn-sm" ng-if="!isList" ng-click="changeDisplay()"><i class="fa fa-list"></i></button>
                 </div>
-                <button class="btn btn-default btn-flat btn-sm"><i class="fa fa-info-circle"></i></button>
+                <button class="btn btn-default btn-flat btn-sm" ng-if="selectedFile"><i class="fa fa-info-circle"></i></button>
                 <button class="btn btn-default btn-flat btn-sm"><i class="fa fa-cogs"></i></button>
                 <!-- /.btn-group -->
             </div>
             <!-- /.pull-right -->
         </div>
-        <div class="mailbox-controls">
+        <div class="mailbox-controls" ng-if="assets.info">
             <ol class="breadcrumb" ng-if="showBread">
                 <li><a ui-sref="main.assets"><i class="fa fa-hdd-o"></i> Files</a></li>
+                <li class="active" ng-if="assets.info.parent_folder"><a href="" ng-click="goBack()">{{assets.info.parent_folder.folder_name}} </a></li>
                 <li class="active">{{assets.info.folder_name}}</li>
             </ol>
         </div>
         <div class="table-responsive">
-            <ng-include src="'./modules/assets/assets.list.html'" ng-if="isList"></ng-include>
-            <ng-include src="'./modules/assets/assets.grid.html'" ng-if="!isList"></ng-include>
+            <ng-include src="'./modules/assets/assets.list.html'" ng-if="isList && showFiles"></ng-include>
+            <ng-include src="'./modules/assets/assets.grid.html'" ng-if="!isList && showFiles"></ng-include>
+
+            <section class="content" ng-if="!showFiles">
+                <div class="row my-drop-zone" style="height: 100vh;">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="text-center asset-uploader">
+                            <div class="drop-zone">
+                                <h3><i class="fa fa-files-o fa-5x text-dark"></i></h3>
+                                <h3>
+                                   Use New button
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         <!-- /.mail-box-messages -->
     </div>

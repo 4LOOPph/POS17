@@ -1,6 +1,6 @@
-<section class="content">
-    <h4 class="page-header">Folders</h4>
-    <div class="row">
+<section class="content" ng-if="assets.folders.length > 0">
+    <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
+    <div class="row" ng-if="assets.folders.length > 0">
         <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders">
             <div class="asset-box">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}"><a href="" ng-click="openFolder(file)"><i class="fa fa-folder text-muted"></i></a></span>
@@ -13,8 +13,8 @@
             </div>
         </div>
     </div>
-    <h4 class="page-header">Files</h4>
-    <div class="row">
+    <h4 class="page-header" ng-if="assets.assets.length > 0">Files</h4>
+    <div class="row" ng-if="assets.assets.length > 0">
         <div class="col-md-12">
             <ul class="mailbox-attachments clearfix">
                 <li ng-repeat="files in assets.assets">
@@ -39,10 +39,37 @@
                         <img src="{{files.asset_url}}" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"/>
                     </span>
                     <div class="mailbox-attachment-info">
-                        <a href="" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
+                        <a href="" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}" ><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
                         <span class="mailbox-attachment-size">
                           {{ files.asset_filesize/1024/1024|number:2 }} MB
-                          <a href="" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+
+                          <!-- <a href="" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"
+                          ng-click="openLightboxModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"
+                          ng-click="openAudioModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime'"
+                          ng-click="openVideoModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'application/pdf'" 
+                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'text/plain'"
+                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'text/csv' || files.asset_mimetype == 'application/vnd.ms-excel' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" 
+                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"
+                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+
+                          <a ng-href="" ng-click="deleteFile(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a> -->
                         </span>
                     </div>
                 </li>

@@ -6,23 +6,33 @@
     </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content" ng-init="refreshAssets()">
     <div class="row">
         <div class="col-md-2">
+            <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder">New</a>
+
+            <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
+                <button id="simple-btn-keyboard-nav" class="btn btn-primary btn-block btn-flat" uib-dropdown-toggle>
+                    NEW
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                    <li role="menuitem"><a href="" ng-click="createNewFolder()"><i class="fa fa-folder"></i> Folder</a></li>
+                    <li role="menuitem"><a href="" ng-click="newUploader()"><i class="fa fa-upload"></i> File Upload</a></li>
+                </ul>
+            </div>
             <div class="box box-solid">
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="" ng-click="showAllFiles()"><i class="fa fa-hdd-o"></i> Files</a></li>
-                        <li><a href=""><i class="fa fa-users"></i> Shared with me</a></li>
-                        <li><a href=""><i class="fa fa-clock-o"></i> Recent</a></li>
-                        <li><a href=""><i class="fa fa-star"></i> Starred</a></li>
-                        <li><a href=""><i class="fa fa-trash-o"></i> Trash</a></li>
+                        <li class="active"><a href="" ng-click="showAllFiles()"><i class="fa fa-folder"></i> Files</a></li>
+                        <li><a href="" ng-click="showAllShared()"><i class="fa fa-users"></i> Shared with me</a></li>
+                        <li><a href="" ng-click="showAllStarred()"><i class="fa fa-star"></i> Starred</a></li>
+                        <li><a href="" ng-click="showAllTrash()"><i class="fa fa-trash"></i> Trash</a></li>
                     </ul>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /. box -->
-            <div class="box box-solid">
+            <!-- <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Labels</h3>
                 </div>
@@ -33,13 +43,11 @@
                         <li><a href=""><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
                     </ul>
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+            </div> -->
         </div>
         <!-- /.col -->
         <div class="col-md-10">
-           <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
+            <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
         </div>
         <!-- /.col -->
     </div>
