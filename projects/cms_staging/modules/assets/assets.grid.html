@@ -1,14 +1,71 @@
-<section class="content" ng-if="assets.folders.length > 0">
+<section class="content">
+    <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
+        <ul class="dropdown-menu" role="menu">
+            <li ng-if="meta.contextmenu.item.isFolder == false">
+                <a role="menuitem" href ng-click="previewSelected()" ng-if="showToolPreview">
+                    <i class="fa fa-eye"></i> <span>Preview</span>
+                </a>
+            </li>
+            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false"></li>
+            <li>
+                <a role="menuitem" href ng-click="shareToOthers()">
+                    <i class="fa fa-user-plus"></i><span>Share</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isStarred == 0">
+                <a role="menuitem" href ng-click="starredSelected()">
+                    <i class="fa fa-star"></i><span>Add Star</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isStarred == 1">
+                <a role="menuitem" href ng-click="starredSelected()">
+                    <i class="fa fa-star-o"></i><span>Remove Star</span>
+                </a>
+            </li>
+            <li>
+                <a role="menuitem" href ng-click="moveSelected()">
+                    <i class="fa fa-arrows-alt"></i><span>Move to...</span>
+                </a>
+            </li>
+            <li>
+                <a role="menuitem" href ng-click="renameSelected()">
+                    <i class="fa fa-pencil"></i><span>Rename</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a role="menuitem" href ng-click="showInfoSelected()">
+                    <i class="fa fa-info-circle"></i><span>View Details</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isFolder == false">
+                <a role="menuitem" href>
+                    <i class="fa fa-copy"></i><span>Make a copy</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isFolder == false">
+                <a role="menuitem" ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}">
+                    <i class="fa fa-download"></i><span>Download</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a role="menuitem" href ng-click="deleteSelected()">
+                    <i class="fa fa-trash-o"></i><span>Remove</span>
+                </a>
+            </li>
+        </ul>
+    </div>
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
-    <div class="row" ng-if="assets.folders.length > 0">
-        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders">
-            <div class="asset-box" ng-class="{'active':file.isActive}">
+    <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
+        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
+            <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
                     <a href="" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)"><i class="fa fa-folder text-muted"></i></a>
                 </span>
                 <div class="asset-box-content">
                     <span class="info-box-number" uib-tooltip="{{file.folder_name}}">
-                        <a href="" ng-click="openFolder(file)">{{file.folder_name | ellipsis:true:10:'...'}}</a>
+                        <a href="" ng-dblclick="openFolder(file)">{{file.folder_name | ellipsis:true:10:'...'}}</a>
                     </span>
                     <span class="info-box-text">{{ file.folder_filesize/1024/1024|number:2 }} MB</span>
                 </div>
@@ -18,8 +75,8 @@
     <h4 class="page-header" ng-if="assets.assets.length > 0">Files</h4>
     <div class="row" ng-if="assets.assets.length > 0">
         <div class="col-md-12">
-            <ul class="mailbox-attachments clearfix">
-                <li ng-repeat="files in assets.assets">
+            <ul class="mailbox-attachments clearfix" contextmenu-container="meta.contextmenu">
+                <li ng-repeat="files in assets.assets" class="mailbox-attachment" ng-class="{'active':files.isActive}" contextmenu-item="files">
                     <span class="mailbox-attachment-icon" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
                         <!-- PDF -->
                         <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
@@ -28,7 +85,7 @@
                         <!-- AUDIO -->
                         <i class="fa fa-file-audio-o" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
                         <!-- VIDEO -->
-                        <i class="fa fa-file-video-o" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime'"></i>
+                        <i class="fa fa-file-video-o" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype =='video/3gpp'"></i>
                         <!-- TEXT -->
                         <i class="fa fa-file-text-o text-blue" ng-if="files.asset_mimetype == 'text/plain'"></i>
                         <!-- EXCEL -->
@@ -37,11 +94,13 @@
                         <i class="fa fa-file-powerpoint-o text-orange" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
                         <!-- ZIP -->
                         <i class="fa fa-file-zip-o text-purple" ng-if="files.asset_mimetype == 'application/zip'"></i>
+                        <!-- FILES -->
+                        <i class="fa fa-file-o text-purple" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
                         <!-- IMAGE -->
                         <img src="{{files.asset_url}}" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"/>
                     </span>
-                    <div class="mailbox-attachment-info" ng-class="{'active':files.isActive,}">
-                        <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
+                    <div class="mailbox-attachment-info" ng-click="activeSelected(files)">
+                        <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
                         <span class="mailbox-attachment-size">
                           {{ files.asset_filesize/1024/1024|number:2 }} MB
 

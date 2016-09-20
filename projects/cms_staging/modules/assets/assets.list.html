@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li>
-                <a role="menuitem" href>
+                <a role="menuitem" href ng-click="moveSelected()">
                     <i class="fa fa-arrows-alt"></i><span>Move to...</span>
                 </a>
             </li>
@@ -89,7 +89,7 @@
                     <!-- AUDIO -->
                     <i class="fa fa-file-audio-o fa-2x" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
                     <!-- VIDEO -->
-                    <i class="fa fa-file-video-o fa-2x" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime'"></i>
+                    <i class="fa fa-file-video-o fa-2x" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'"></i>
                     <!-- TEXT -->
                     <i class="fa fa-file-text-o fa-2x text-blue" ng-if="files.asset_mimetype == 'text/plain'"></i>
                     <!-- EXCEL -->
@@ -98,6 +98,8 @@
                     <i class="fa fa-file-powerpoint-o fa-2x text-orange" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
                     <!-- ZIP -->
                     <i class="fa fa-file-zip-o fa-2x text-purple" ng-if="files.asset_mimetype == 'application/zip'"></i>
+                    <!-- FILES -->
+                    <i class="fa fa-file-o fa-2x text-purple" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
                     <!-- IMAGE -->
                     <img src="{{files.asset_url}}" alt="Attachment" style="width: 27px;" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
                     

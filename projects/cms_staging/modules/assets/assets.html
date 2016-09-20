@@ -22,10 +22,10 @@
             <div class="box box-solid">
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="" ng-click="showAllFiles()"><i class="fa fa-folder"></i> Files</a></li>
-                        <li><a href="" ng-click="showAllShared()"><i class="fa fa-users"></i> Shared with me</a></li>
-                        <li><a href="" ng-click="showAllStarred()"><i class="fa fa-star"></i> Starred</a></li>
-                        <li><a href="" ng-click="showAllTrash()"><i class="fa fa-trash"></i> Trash</a></li>
+                        <li ng-class="{'active': activeAllFiles}"><a href="" ng-click="showAllFiles()"><i class="fa fa-folder"></i> Files</a></li>
+                        <li ng-class="{'active': activeSharedFiles}"><a href="" ng-click="showAllShared()"><i class="fa fa-users"></i> Shared with me</a></li>
+                        <li ng-class="{'active': activeStarredFiles}"><a href="" ng-click="showAllStarred()"><i class="fa fa-star"></i> Starred</a></li>
+                        <li ng-class="{'active': activeTrashFiles}"><a href="" ng-click="showAllTrash()"><i class="fa fa-trash"></i> Trash</a></li>
                     </ul>
                 </div>
             </div>

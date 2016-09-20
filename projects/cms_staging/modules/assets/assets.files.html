@@ -23,7 +23,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a ng-click="updateStatus('All')"><i class="fa fa-arrows-alt"></i>&nbsp Move to...</a>
+                        <a ng-click="moveSelected()"><i class="fa fa-arrows-alt"></i>&nbsp Move to...</a>
                     </li>
                     <li ng-if="selectedFile.isStarred == 0">
                         <a ng-click="starredSelected()"><i class="fa fa-star"></i>&nbsp Add star</a>
@@ -70,14 +70,11 @@
             <ng-include src="'./modules/assets/assets.grid.html'" ng-if="!isList && showFiles"></ng-include>
 
             <section class="content" ng-if="!showFiles">
-                <div class="row my-drop-zone" style="height: 100vh;">
+                <div class="row" style="height: 100vh;">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="text-center asset-uploader">
                             <div class="drop-zone">
                                 <h3><i class="fa fa-files-o fa-5x text-dark"></i></h3>
-                                <h3>
-                                   Use New button
-                                </h3>
                             </div>
                         </div>
                     </div>
