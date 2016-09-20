@@ -10,7 +10,6 @@
     <div class="row">
         <div class="col-md-2">
             <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder">New</a>
-
             <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
                 <button id="simple-btn-keyboard-nav" class="btn btn-primary btn-block btn-flat" uib-dropdown-toggle>
                     NEW
@@ -29,10 +28,8 @@
                         <li><a href="" ng-click="showAllTrash()"><i class="fa fa-trash"></i> Trash</a></li>
                     </ul>
                 </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /. box -->
-            <!-- <div class="box box-solid">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Labels</h3>
                 </div>
@@ -43,7 +40,17 @@
                         <li><a href=""><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
+            <div class="box box-solid" ng-controller="assetsStorageCtrl">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Storage</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="chart-responsive" style="margin-top: 10px;">
+                        <canvas id="doughnut" class="chart chart-doughnut chart-xs" legend="true" data="data" labels="labels" legend="false"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.col -->
         <div class="col-md-10">

@@ -2,8 +2,10 @@
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0">
         <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders">
-            <div class="asset-box">
-                <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}"><a href="" ng-click="openFolder(file)"><i class="fa fa-folder text-muted"></i></a></span>
+            <div class="asset-box" ng-class="{'active':file.isActive}">
+                <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
+                    <a href="" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)"><i class="fa fa-folder text-muted"></i></a>
+                </span>
                 <div class="asset-box-content">
                     <span class="info-box-number" uib-tooltip="{{file.folder_name}}">
                         <a href="" ng-click="openFolder(file)">{{file.folder_name | ellipsis:true:10:'...'}}</a>
@@ -18,7 +20,7 @@
         <div class="col-md-12">
             <ul class="mailbox-attachments clearfix">
                 <li ng-repeat="files in assets.assets">
-                    <span class="mailbox-attachment-icon" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
+                    <span class="mailbox-attachment-icon" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
                         <!-- PDF -->
                         <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
                         <!-- DOCS -->
@@ -38,8 +40,8 @@
                         <!-- IMAGE -->
                         <img src="{{files.asset_url}}" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"/>
                     </span>
-                    <div class="mailbox-attachment-info">
-                        <a href="" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}" ><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
+                    <div class="mailbox-attachment-info" ng-class="{'active':files.isActive,}">
+                        <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
                         <span class="mailbox-attachment-size">
                           {{ files.asset_filesize/1024/1024|number:2 }} MB
 
