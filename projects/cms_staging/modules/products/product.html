@@ -1,0 +1,97 @@
+<div class="row">
+    <form role="form" name="productForm" ng-submit="addProduct()">
+        <div class="col-md-9">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">Enter Product Info</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group" ng-if="details.p_id">
+                        <label>Status: </label>                        
+                        <span ng-if="details.is_published == 0 && details.is_archived == 0" class="label label-warning">draft</span>
+                        <span ng-if="details.is_published == 1 && details.is_archived == 0" class="label label-success">published</span>
+                        <span ng-if="details.is_archived == 1 && details.is_published == 0" class="label label-danger">archived</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Product Name</label>
+                        <input type="text" name="required" class="form-control" ng-model="details.item_name" placeholder="Product Name" required />
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group col-md-6">
+                        <label>Product Code</label>
+                        <input type="text" class="form-control" ng-model="details.product_code" placeholder="Product Code" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Product Type</label>
+                        <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes" required /></select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Product Brand</label>
+                        <input type="text" class="form-control" ng-model="details.brand" placeholder="Product Brand" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Product Price</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" ng-model="details.sell_price" class="form-control" required valid-number>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Start Date: </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>End Date: </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <text-angular ng-model="details.item_description" required /></text-angular>
+                    </div>
+                    <div class="form-group">
+                        <label>Tags <i class="fa fa-tags"></i></label>
+                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
+                            <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
+                            <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-warning">
+                <div class="box-body">
+                    <button type="submit" ng-disabled="productForm.$invalid" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                    <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(details.p_id)">Publish</a>
+                    <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(details.p_id)">Archive</a>
+                    <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <img ngf-src="details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                <div class="input-group image-preview">
+                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.img_default"> <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.img_default" ngf-max-size="8MB" ngf-select="upload($files)" />
+                    </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,54 +1,59 @@
 <section class="content">
     <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
         <ul class="dropdown-menu" role="menu">
-            <li ng-if="meta.contextmenu.item.isFolder == false">
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="previewSelected()" ng-if="showToolPreview">
                     <i class="fa fa-eye"></i> <span>Preview</span>
                 </a>
             </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false"></li>
-            <li>
+            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0"></li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="shareToOthers()">
                     <i class="fa fa-user-plus"></i><span>Share</span>
                 </a>
             </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 0">
+            <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="starredSelected()">
                     <i class="fa fa-star"></i><span>Add Star</span>
                 </a>
             </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 1">
+            <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="starredSelected()">
                     <i class="fa fa-star-o"></i><span>Remove Star</span>
                 </a>
             </li>
-            <li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="moveSelected()">
                     <i class="fa fa-arrows-alt"></i><span>Move to...</span>
                 </a>
             </li>
-            <li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="renameSelected()">
                     <i class="fa fa-pencil"></i><span>Rename</span>
                 </a>
             </li>
-            <li class="divider"></li>
-            <li>
+            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href ng-click="showInfoSelected()">
                     <i class="fa fa-info-circle"></i><span>View Details</span>
                 </a>
             </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false">
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" href>
                     <i class="fa fa-copy"></i><span>Make a copy</span>
                 </a>
             </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false">
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                 <a role="menuitem" ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}">
                     <i class="fa fa-download"></i><span>Download</span>
                 </a>
+            </li>            
+            <li ng-if="meta.contextmenu.item.isDeleted == 1">
+                <a role="menuitem" href ng-click="restoreSelected()">
+                    <i class="fa fa-history"></i> <span>Restore</span>
+                </a>
             </li>
-            <li class="divider"></li>
+            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
             <li>
                 <a role="menuitem" href ng-click="deleteSelected()">
                     <i class="fa fa-trash-o"></i><span>Remove</span>
@@ -59,9 +64,9 @@
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
         <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
-            <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)">
+            <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
-                    <a href="" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)"><i class="fa fa-folder text-muted"></i></a>
+                    <i class="fa fa-folder text-muted"></i>
                 </span>
                 <div class="asset-box-content">
                     <span class="info-box-number" uib-tooltip="{{file.folder_name}}">
