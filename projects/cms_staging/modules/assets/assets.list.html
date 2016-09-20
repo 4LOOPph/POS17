@@ -85,7 +85,8 @@
                 </td>
                 <td class="mailbox-subject">{{file.folder_name}}</td>
                 <td class="mailbox-name">{{file.created_by.displayName}}</td>
-                <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td>
+                <!-- <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ file.folder_filesize }} </td>
                 <td class="mailbox-date" am-time-ago="file.date_created"></td>
                 <td class="mailbox-name"></td>
             </tr>
@@ -120,7 +121,8 @@
                 </td>
                 <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}</td>
                 <td class="mailbox-name">{{files.created_by.displayName}}</td>
-                <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td>
+                <!-- <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ files.asset_filesize }}</td>
                 <td class="mailbox-date" am-time-ago="files.date_created"></td>
                 <td class="mailbox-name">
                     <span ng-if="files.isPublished == 0" class="label label-warning">draft</span>
