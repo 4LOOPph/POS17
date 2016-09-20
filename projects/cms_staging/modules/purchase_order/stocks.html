@@ -16,7 +16,7 @@
             <div class="box box-warning">
                 <div class="box-header">
                     <div class="pull-left">
-                       <!--  <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
+                        <!--  <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
                             <i class="fa fa-plus"></i>
                         </button>
                         <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()" uib-tooltip="Publish">
@@ -65,7 +65,7 @@
                 <div class="box-body table-responsive padding">
                     <table class="table table-hover" ng-table="stocksTable">
                         <tr ng-repeat="item in $data  track by $index">
-                           <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                            <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
                                 <input type="checkbox" ng-model="item.selected" ng-change="checkDataChanges(item)">
                             </td> -->
                             <td class="text-left" data-title="'Product'">
@@ -81,7 +81,7 @@
                                 <span>{{item.reorder_level}}</span>
                             </td>
                             <td class="text-center" data-title="'Expiration Date'">
-                                <span>{{item.reStock_date | fromNow}}</span>
+                                <span>{{item.expiration_date| date : format : timezone}}</span>
                             </td>
                             <td class="text-center" data-title="'Status'">
                                 <span ng-if="item.status == 1 || item.status == 21" class="label label-success">Published</span>
