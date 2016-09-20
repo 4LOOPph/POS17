@@ -2,113 +2,137 @@
     <form role="form">
         <div class="col-md-9">
             <div class="box box-warning">
-                <div class="box-header">
-                    <h3 class="box-title">Product List</h3>
-                </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <div class="btn-group">
-                            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
-                            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'productgroup'" ng-click="changeData('productgroup')">Product Group</label>
+                <div>
+                    <div uib-collapse="!isColl">
+                        <div class=" well-lg">
+                            <h4 class="box-header">Product List</h4>
+                            <div class="">
+                                <script type="text/ng-template" id="checkboxheader.html">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </script>
+                                <!-- /.box-header -->
+                                <div class="box-body table-responsive padding" ng-show="displayModel=='List'">
+                                    <table class="table table-hover" ng-table="productTable">
+                                        <tr ng-repeat="product in $data">
+                                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                                <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
+                                            </td>
+                                            <td class="text-center" data-title="'Product Name'">
+                                                {{product.item_name}}
+                                            </td>
+                                            <td class="text-center" data-title="'Product Type'">
+                                                {{product.product_type}}
+                                            </td>
+                                            <td class="text-center" data-title="'Base Price'">
+                                                {{product.sell_price}}
+                                            </td>
+                                            <!--                                             <td class="text-center" data-title="'Status'">
+                                                <span ng-if="product.is_published == '0' " class="label label-warning">draft</span>
+                                                <span ng-if="product.is_published == '1' " class="label label-success">published</span>
+                                                <span ng-if="product.is_archived == '1'" class="label label-danger">archived</span>
+                                            </td> -->
+                                            <!--                                             <td class="text-center" data-title="'Description'">
+                                                {{product.date_created}}
+                                            </td> -->
+                                            <!-- <td class="text-right">
+                                                <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                            </td> -->
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- <div ng-class="side ? 'cold-md-9 col-xs-9': 'cold-md-12 col-xs-12'">
+                                    <div class="box-body" ng-show="displayModel=='Box'"> -->
+                                <!-- <div class="row">
+                                            <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
+                                                <div class="info-box ">
+                                                    <span ng-click="edit(product.p_id)" class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                                                    <div class="info-box-content">
+                                                        <span class="info-box-text">{{product.item_name}}</span>
+                                                        <span class="info-box-number">${{product.sell_price}}</span>
+                                                        <span ng-if="product.is_published == '0' " class="label label-danger">draft</span>
+                                                        <span ng-if="product.is_published == '1' " class="label label-success">published</span>
+                                                        <span ng-if="product.is_archived == '1'" class="label label-warning">archived</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                <!--                                         <div class="text-center">
+                                            <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                                        </div> -->
+                                <!--                                     </div>
+                                </div> -->
+                                <!--  <div class="overlay" ng-show="productIsLoading">
+                                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div> -->
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
                         </div>
                     </div>
-                    <div class="form-group col-md-4" ng-show="radioModel == 'product'">
-                        <label>Products</label>
-                        <ui-select ng-model="items.product" allow-clear>
-                            <ui-select-match>
-                                {{$select.selected.item_name}}
-                            </ui-select-match>
-                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (products | filter: $select.search) track by emp.p_id">
-                                {{emp.item_name}}
-                                <small>{{emp.product_code}}</small>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="form-group col-md-4" ng-show="radioModel == 'productgroup'">
-                        <label>Products Groups</label>
-                        <ui-select ng-model="items.productgroup" allow-clear>
-                            <ui-select-match>
-                                {{$select.selected.bundle_name}}
-                            </ui-select-match>
-                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (productBundles | filter: $select.search) track by emp.pb_id">
-                                {{emp.bundle_name}}
-                                <small>{{emp.bundle_code}}</small>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Qty</label>
-                        <input type="number" ng-model="items.quantity" class="form-control" ng-change="calculateItem(items)">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Price</label>
-                        <input type="number" ng-model="items.price" class="form-control" ng-change="calculateItem(items)">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Discount</label>
-                        <input type="number" ng-model="items.discount" class="form-control" ng-change="calculateItem(items)">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Total</label>
-                        <input type="number" ng-model="items.total" class="form-control" ng-change="calculateItem(items)" ng-disabled="true">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <a class="btn btn-flat btn-primary" ng-click="addToList(items)"><i class="fa fa-plus"></i> Add</a>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th width="50%">Item Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Discount</th>
-                                <th>Sub-Total</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in details.products_list">
-                                <td>
-                                    <strong>{{ item.item_name }}</strong>
-                                </td>
-                                <td>
-                                    <strong>{{ item.quantity}}</strong>
-                                </td>
-                                <td>
-                                    <strong>{{ item.price | number:2 }}</strong>
-                                </td>
-                                <td>
-                                    <strong>{{ item.discount | number:2 }}</strong>
-                                </td>
-                                <td>
-                                    <strong>{{ item.total | number:2}}</strong>
-                                </td>
-                                <td nowrap>
-                                    <button type="button" class="btn btn-danger btn-xs" ng-click="removeProduct($index)">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                <div class="box-body col-md-12">
+                    <div class="form-group col-md-4 pull-left">
+                        <label>Supplier</label>
+                        <select class="form-control select2 sm" style="width: 100%;">
+                            <option selected="selected">Alabama</option>
+                            <option>Alaska</option>
+                            <option>California</option>
+                            <option>Delaware</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option>Washington</option>
+                        </select>
+                    </div>
+                    <div class="form-group pull-right" style="padding-top:25px;">
+                        <form action="#" method="get">
+                            <div class="input-group">
+                                <!-- <span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                                </button>
+                                </span>
+                                <input type="text" name="q" class="form-control" placeholder="Search product..." />
+ -->
+                                <!-- <a ui-sref="main.list" type='submit' name='seach' id='search-btn' class="btn btn-flat btn-primary"></a>-->
+                                
+                                <span type="button" class="btn btn-primary btn-flat btn-sm" ng-click="isColl = !isColl">
+                                        <span class="fa fa-list-ol"> View List</span>
+                                </span>
+                            
+                            </div>
+                        </form>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th style="width:40%;">Product</th>
+                            <th>Qty</th>
+                            <th>Cost</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr ng:repeat="item in invoice.items">
+                            <td>
+                                <input type="text" ng-model="item.name" class="input-form col-md-10 mytext" placeholder="Enter item name">
+                                <div class="input-group-btn">
+                                </div>
+                            </td>
+                            <td>
+                                <input type="number" ng-model="item.qty" ng:required class="input-form mytext">
+                            </td>
+                            <td>
+                                <input type="number" ng-model="item.cost" ng:required class="input-form mytext">
+                            </td>
+                            <td>{{item.qty * item.cost}}</td>
+                            <td>
+                                [<a href ng:click="removeItem($index)"><i class="fa fa-remove"></i></a>]
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href ng:click="addItem()" class="btn btn-small"><i class="fa fa-plus"> Add item</i></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </table>
-                    <!-- <div class="form-group">
-                        <h3>Sub-Total: </h3>
-                        <input type="text" class="form-control input-lg" value="{{details.sub_total | number:2}}" ng-disabled="true">
-                    </div> -->
-                    <div class="form-group">
-                        <h3>Shipping Fee : </h3>
-                        <input type="number" class="form-control input-lg" ng-model="details.shipping_fee" ng-change="calculateBilling()" ng-required placeholder="Enter value">
-                    </div>
-                    <div class="form-group">
-                        <h3>Tax : </h3>
-                        <input type="text" class="form-control input-lg" ng-model="details.tax" ng-change="calculateBilling()" ng-required placeholder="Enter value">
-                    </div>
-                    <!-- <div class="form-group">
-                        <h2>Total : </h2>
-                        <input type="text" class="form-control input-lg" value="{{details.total_fee | number:2}}" ng-disabled="true" placeholder="0.00">
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -121,20 +145,13 @@
                         <div class="box box-solid box-primary">
                             <div class="box-body">
                                 <label ng:model="item.tot">Subtotal :</label>
-                                {{details.sub_total}}
+                                <label class="pull-right">{{subtotal()}}</label>
                             </div>
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label>Shipping fee:</label>
-                                    {{details.shipping_fee}}
-                                </div>
-                                <div class="form-group">
-                                    <label>Tax:</label>{{details.tax}}
-                                </div>
-                                <!-- Tax ({{item.tax}}%)<a href="" ng-click="isCollapsed = !isCollapsed"> Edit</i></a>
+                                Tax ({{item.tax}}%)<a href="" ng-click="isCollapsed = !isCollapsed"> Edit</i></a>
                                 <div uib-collapse="!isCollapsed">
                                     <input type="text" class="form-control" ng:model="item.tax" ng:required id="" placeholder="Enter value">
-                                </div> -->
+                                </div>
                             </div>
                             <div id="demo" class="collapse">
                                 <div class="form-group">
@@ -142,41 +159,30 @@
                                 </div>
                             </div>
                             <div class="box-header btn-black">
-                                <h3 class="box-title">Total : </h3> {{total}}
+                                <h3 class="box-title">Total : </h3>
                                 <label class="pull-right"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Payment Method</label>
-                            <select ng-init="details.shipvia = options[0]" class="form-control" ng-model="details.shipvia">
-                                <option value="">--Please Select Payment Method--</option>
-                                <option value="Visa">Visa</option>
-                                <option value="Mastercard">Mastercard</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Paypal">Paypal</option>
+                            <select class="form-control">
+                                <option>Visa</option>
+                                <option>Mastercard</option>
+                                <option>American Express</option>
+                                <option>Paypal</option>
                             </select>
-                            <div ng-if="!details.shipvia">
-                                <img src="../../images/credit/visa.png" alt="Visa" />
-                                <img src="../../images/credit/mastercard.png" alt="Mastercard" />
-                                <img src="../../images/credit/american-express.png" alt="American Express" />
-                                <img src="../../images/credit/paypal2.png" alt="Paypal" />
-                            </div>
-                                <img src="../../images/credit/visa.png" alt="Visa" ng-if="details.shipvia == 'Visa'"/>
-                                <img src="../../images/credit/mastercard.png" alt="Mastercard" ng-if="details.shipvia == 'Mastercard'"/>
-                                <img src="../../images/credit/american-express.png" alt="American Express" ng-if="details.shipvia == 'American Express'"/>
-                                <img src="../../images/credit/paypal2.png" alt="Paypal" ng-if="details.shipvia == 'Paypal'"/>
+                            <img src="../../images/credit/visa.png" alt="Visa" />
+                            <img src="../../images/credit/mastercard.png" alt="Mastercard" />
+                            <img src="../../images/credit/american-express.png" alt="American Express" />
+                            <img src="../../images/credit/paypal2.png" alt="Paypal" />
                         </div>
                         <div class="form-group">
-                            <label>Terms:</label>
-                            <p ng-bind-html="details.shipping_terms"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Notes/Memo:</label>
-                            <p ng-bind-html="details.comments"></p>
+                            <label>Notes/Memo</label>
+                            <textarea rows="2" type="text" class="form-control" id="" placeholder=""></textarea>
                         </div>
                     </div>
                     <div class="box-body">
-                        <button type="submit" class="btn btn-primary btn-flat btn-block" ng-click="savePO()">Complete</button>
+                        <button type="submit" class="btn btn-primary btn-flat btn-block">Complete</button>
                         <a class="btn btn-default btn-flat btn-block">Cancel</a>
                     </div>
                 </div>

@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--   <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label>Currency</label>
                         <ui-select ng-model="details.currency">
                             <ui-select-match>
@@ -36,8 +36,8 @@
                                 <small>{{"(" + option.code + " " + option.symbol + ")"}}</small>
                             </ui-select-choices>
                         </ui-select>
-                    </div> -->
-                    <!-- <div class="form-group col-md-6">
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>Store / Subsidiary</label>
                         <ui-select ng-model="details.store">
                             <ui-select-match>
@@ -48,7 +48,7 @@
                                 <small>{{option.address}}</small>
                             </ui-select-choices>
                         </ui-select>
-                    </div> -->
+                    </div>
                     <div class="form-group col-md-6">
                         <label>Customer Name</label>
                         <ui-select ng-model="details.customer">
@@ -61,10 +61,10 @@
                             </ui-select-choices>
                         </ui-select>
                     </div>
-                    <!--  <div class="form-group col-md-12">
+                    <div class="form-group col-md-12">
                         <label>Terms: </label>
                         <textarea class="form-control" rows="3" ng-model="details.terms" placeholder="Terms"></textarea>
-                    </div> -->
+                    </div>
                     <div class="form-group col-md-12">
                         <label>Notes / Memo: </label>
                         <textarea class="form-control" rows="3" ng-model="details.comments" placeholder="Notes / Memo"></textarea>
@@ -72,21 +72,14 @@
                 </div>
                 <div class="box-header">
                     <h3 class="box-title">Billing & Shipping Information</h3>
-                    <div class="pull-right">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" ng-model="shippingAddress" ng-click="useBillingAddress(shippingAddress)"> Use Billing Address as Shipping Address
-                            </label>
-                        </div>
-                    </div>
                 </div>
                 <div class="box-body">
                     <div class="col-md-6">
-                        <!-- <div class="checkbox">
+                        <div class="checkbox">
                             <label>
                                 <input type="checkbox" ng-model="billingAddress" ng-click="useCustomerAddress(billingAddress)"> Use Customer Address as Billing Address
                             </label>
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label>Attention </label>
                             <input type="text" ng-model="details.bill_to_name" class="form-control" placeholder="Bill to" required/>
@@ -116,11 +109,11 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <!--  <div class="checkbox">
+                        <div class="checkbox">
                             <label>
                                 <input type="checkbox" ng-model="shippingAddress" ng-click="useBillingAddress(shippingAddress)"> Use Billing Address as Shipping Address
                             </label>
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label>Attention </label>
                             <input type="text" ng-model="details.ship_to_name" class="form-control" placeholder="Ship to" required/>

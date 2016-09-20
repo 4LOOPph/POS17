@@ -63,7 +63,7 @@
     </div>
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
-        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
+        <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
             <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
                     <i class="fa fa-folder text-muted"></i>
