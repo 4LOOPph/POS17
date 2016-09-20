@@ -81,7 +81,7 @@
                                 <span>{{item.reorder_level}}</span>
                             </td>
                             <td class="text-center" data-title="'Expiration Date'">
-                                <span>{{item.expiration_date| date : format : timezone}}</span>
+                                <span>{{item.expiration_date| date : 'longDate'}}</span>
                             </td>
                             <td class="text-center" data-title="'Status'">
                                 <span ng-if="item.status == 1 || item.status == 21" class="label label-success">Published</span>
