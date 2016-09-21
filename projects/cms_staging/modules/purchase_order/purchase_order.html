@@ -84,22 +84,11 @@
                             </tr>
                         </thead>
                         </tbody>
-                        <tr>
-                            <td>183</td>
+                        <tr ng-repeat="item in pricebooks">
+                            <td>{{item.mame}}</td>
                             <td>11111</td>
-                            <td>vcui</td>
-                            <td>1/1/1</td>
-                            <td>oratz</td>
-                            <td><span class="label label-success">Receiving</span></td>
-                            <td class="text-right">
-                                <button class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>183</td>
-                            <td>11111</td>
-                            <td>vcui</td>
-                            <td>1/1/1</td>
+                            <td>{{item.approved_by}}</td>
+                            <td>{{item.valid_until}}</td>
                             <td>oratz</td>
                             <td><span class="label label-success">Receiving</span></td>
                             <td class="text-right">
