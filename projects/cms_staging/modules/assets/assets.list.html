@@ -65,6 +65,7 @@
         <thead>
             <tr>
                 <th width="5%"></th>
+                <th width="5%"></th>
                 <th>Name</th>
                 <th>Owner</th>
                 <th>File size</th>
@@ -76,15 +77,20 @@
             <tr contextmenu-item="file" ng-repeat="file in assets.folders" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)" ng-class="{'active':file.isActive}" ng-if="assets.folders.length > 0">
                 <td class="mailbox-star">
                     <i class="fa fa-folder fa-2x text-muted"></i>
+                </td>
+                <td class="mailbox-star">
                     <!-- STARRED -->
                     <i class="fa fa-star text-yellow" ng-if="file.isStarred"></i>
+                    <i class="fa fa-star-o" ng-if="!file.isStarred"></i>
                 </td>
                 <td class="mailbox-subject">{{file.folder_name}}</td>
                 <td class="mailbox-name">{{file.created_by.displayName}}</td>
-                <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td>
+                <!-- <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ file.folder_filesize }} </td>
                 <td class="mailbox-date" am-time-ago="file.date_created"></td>
                 <td class="mailbox-name"></td>
             </tr>
+
             <tr contextmenu-item="files" ng-repeat="files in assets.assets" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" ng-if="assets.assets.length > 0">
                 <td class="mailbox-star">
                     <!-- PDF -->
@@ -107,12 +113,16 @@
                     <i class="fa fa-file-o fa-2x text-purple" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
                     <!-- IMAGE -->
                     <img src="{{files.asset_url}}" alt="Attachment" style="width: 27px;" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
+                </td>
+                <td class="mailbox-star">
                     <!-- STARRED -->
                     <i class="fa fa-star text-yellow" ng-if="files.isStarred"></i>
+                    <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
                 </td>
                 <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}</td>
                 <td class="mailbox-name">{{files.created_by.displayName}}</td>
-                <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td>
+                <!-- <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ files.asset_filesize }}</td>
                 <td class="mailbox-date" am-time-ago="files.date_created"></td>
                 <td class="mailbox-name">
                     <span ng-if="files.isPublished == 0" class="label label-warning">draft</span>

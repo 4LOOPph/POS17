@@ -63,7 +63,7 @@
     </div>
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
-        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
+        <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
             <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
                     <i class="fa fa-folder text-muted"></i>
@@ -72,7 +72,8 @@
                     <span class="info-box-number" uib-tooltip="{{file.folder_name}}">
                         <a href="" ng-dblclick="openFolder(file)">{{file.folder_name | ellipsis:true:10:'...'}}</a>
                     </span>
-                    <span class="info-box-text">{{ file.folder_filesize/1024/1024|number:2 }} MB</span>
+                    <!-- <span class="info-box-text">{{ file.folder_filesize/1024/1024|number:2 }} MB</span> -->
+                    <span class="info-box-text">{{ file.folder_filesize }}</span>
                 </div>
             </div>
         </div>
@@ -107,7 +108,8 @@
                     <div class="mailbox-attachment-info" ng-click="activeSelected(files)">
                         <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
                         <span class="mailbox-attachment-size">
-                          {{ files.asset_filesize/1024/1024|number:2 }} MB
+                          <!-- {{ files.asset_filesize/1024/1024|number:2 }} MB -->
+                          {{ files.asset_filesize }}
 
                           <!-- <a href="" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
 
