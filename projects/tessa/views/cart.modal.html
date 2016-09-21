@@ -179,15 +179,21 @@
                             <tr>
                                 <th>Company</th>
                                 <td>
-                                    <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getCompanyDetail" local-data="companies" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                    <div class="field-md">
+                                        <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getCompanyDetail" local-data="companies" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                        </div>
                                     </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Contact Person</th>
                                 <td>
-                                    <div angucomplete-alt placeholder="Search..." pause="100" local-data="customers" selected-object="getCustomer" search-fields="firstname" title-field="firstname" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                    <div class="field-md">
+                                        <div angucomplete-alt placeholder="Search..." pause="100" local-data="customers" selected-object="getCustomer" search-fields="firstname" title-field="firstname" minlength="1" input-class="form-control form-control-small" match-class="highlight" auto-match="true" focus-first="true" override-suggestions="true">
+                                        </div>
                                     </div>
+
                                 </td>
                             </tr>
                             <tr>
@@ -209,40 +215,55 @@
                             <tr>
                                 <th>Attention</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.bill_name" />
+                                    <div class="field-md">
+                                        <input type="text" class="form-control" ng-model="company.bill_name" />
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Street Address</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.bill_address" required/>
+                                    <div class="field-lg">
+                                        <input type="text" class="form-control" ng-model="company.bill_address" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>City</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.bill_city" required/>
+                                    <div class="field-sm">
+                                        <input type="text" class="form-control" ng-model="company.bill_city" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>State</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.bill_state" required/>
+                                    <div class="field-sm">
+                                        <input type="text" class="form-control" ng-model="company.bill_state" required/>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Postal Code</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.bill_zipcode" required/>
+                                    <div class="field-xs">
+                                        <input type="text" class="form-control" ng-model="company.bill_zipcode" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Country</th>
                                 <td>
-                                    <!-- <input type="text" ng-model="company.country" class="form-control" /> -->
-                                    <select class="form-control" ng-model="company.bill_country" ng-options="item.name as item.name for item in countries" required>
-                                        <option disabled value="">- Select Country -</option>
-                                    </select>
+                                    <div class="field-sm">
+                                        <select class="form-control" ng-model="company.bill_country" ng-options="item.name as item.name for item in countries" required>
+                                            <option disabled value="">- Select Country -</option>
+                                        </select>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -272,40 +293,57 @@
                             <tr>
                                 <th>Attention</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.ship_name" />
+                                    <div class="field-md">
+                                        <input type="text" class="form-control" ng-model="company.ship_name" />
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Street Address</th>
                                 <td>
-                                    <input type="text" ng-model="company.ship_address" class="form-control" required/>
+                                    <div class="field-lg">
+                                        <input type="text" ng-model="company.ship_address" class="form-control" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>City</th>
                                 <td>
-                                    <input type="text" ng-model="company.ship_city" class="form-control" required/>
+                                    <div class="field-sm">
+                                        <input type="text" ng-model="company.ship_city" class="form-control" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>State</th>
                                 <td>
-                                    <input type="text" class="form-control" ng-model="company.ship_state" required/>
+                                    <div class="field-sm">
+                                        <input type="text" class="form-control" ng-model="company.ship_state" required/>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Postal Code</th>
                                 <td>
-                                    <input type="text" ng-model="company.ship_zipcode" class="form-control" />
+                                    <div class="field-xs">
+                                        <input type="text" ng-model="company.ship_zipcode" class="form-control" />
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>Country</th>
                                 <td>
-                                    <!-- <input type="text" ng-model="company.country" class="form-control" /> -->
-                                    <select class="form-control" ng-model="company.ship_country" ng-options="item.name as item.name for item in countries" required>
-                                        <option disabled value="">- Select Country -</option>
-                                    </select>
+                                    <div class="field-sm">
+                                        <select class="form-control" ng-model="company.ship_country" ng-options="item.name as item.name for item in countries" required>
+                                            <option disabled value="">- Select Country -</option>
+                                        </select>
+                                    </div>
+
                                 </td>
                             </tr>
                             </tbody>
@@ -321,6 +359,7 @@
                                     <textarea rows="3" class="form-control" ng-model="company.comments"></textarea>
                                 </td>
                             </tr>
+
                         </table>
                 </form>
                 </div>

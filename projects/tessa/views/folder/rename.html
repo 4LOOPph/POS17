@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3 class="modal-title">Rename</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label style="margin-top: 10px;">Please enter a new name for the item:</label>
+        <input type="text" class="form-control" name="rename" placeholder="File Name" ng-model="file.filename"  ng-if="!file.isFolder">
+        <input type="text" class="form-control" name="rename" placeholder="Folder Name" ng-model="file.foldername" ng-if="file.isFolder">
+    </div>
+</div>
+<div class="font_bold modal-footer">
+    <button ng-click="Rename()" class="pull-right  btn btn-primary" >
+        Save
+    </button>
+    <button id="close_quote" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
+    </button>
+</div>

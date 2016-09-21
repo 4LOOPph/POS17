@@ -1,0 +1,64 @@
+
+<!--End: Context Menu-->
+<div class="thumbnail_view row">
+    <div contextmenu-container="meta.contextmenu">
+        <section class="sec_folder">
+            <div class="font_medium grey2 pad_side_20 ">
+                Folders
+            </div>
+            <div class="col-lg-3" ng-click="toggle = !toggle" ng-repeat="row in assets" contextmenu-item="row">
+                <div class="folder_instance ">
+                    <div class="folder_header ">
+                        <div class=" folder_tail" ng-class="{'highlighted': toggle}">
+                        </div>
+
+                    </div>
+                    <div class="folder_body " ng-class="{'highlighted': toggle}">
+                        Lorem Ipsum
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <br>
+
+        <section class="sec_files">
+            <div class="font_medium grey2 pad_side_20 ">
+                Files
+            </div>
+            <div class="col-lg-3" ng-click="toggle = !toggle" ng-repeat="row in assets" contextmenu-item="row">
+                <div class="file_instance">
+                    <div class=" thumb_icon red1">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </div>
+                    <div class=" item_info " ng-class="{'highlighted': toggle}">
+                        Lorem Ipsum Lorem Ipsum
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3" ng-click="toggle = !toggle" ng-repeat="row in assets" contextmenu-item="row">
+                <div class="file_instance">
+                    <div class=" thumb_icon orange1">
+                        <i class="fa fa-file-powerpoint-o"></i>
+                    </div>
+                    <div class=" item_info " ng-class="{'highlighted': toggle}">
+                        Lorem Ipsum Lorem Ipsum
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3" ng-click="toggle = !toggle" ng-repeat="row in assets" contextmenu-item="row">
+                <div class="file_instance">
+                    <div class=" thumb_icon green1">
+                        <i class="fa fa-file-movie-o "></i>
+                    </div>
+                    <div class=" item_info " ng-class="{'highlighted': toggle}">
+                        Lorem Ipsum Lorem Ipsum
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+

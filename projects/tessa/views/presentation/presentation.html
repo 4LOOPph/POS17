@@ -1,0 +1,214 @@
+<div id="presentation">
+    <div class="wrapper" style="padding-bottom: 0;">
+        <div class="breadcrumbs padding_10">
+            <img src="../images/icons/ico_store00.svg" />
+            <a class="current font_medium">
+                Presentation
+            </a>
+        </div>
+        <div class="page_menu">
+            <div class="padding_10 ">
+                <div class="dis_flex">
+                    <div class="flex flex_1">
+                        <a ng-click="goBack()" class="padding_10 font_medium" ng-if="assets.info && showBread">
+                            <i class="fa fa-arrow-left"></i> Back</span>
+                        </a>
+                        <a ng-if="isList" ng-click="changeDisplay()"><i class="fa fa-th-large "></i></a>
+                        <a ng-if="!isList" ng-click="changeDisplay()"><i class="fa fa-th-list "></i></a>
+                        <a ng-click="sortTime = !sortTime" class="font_medium padding_10">
+                            <span ng-hide="sortTime">Oldest</span>
+                            <span ng-show="sortTime">Latest</span> <i class="fa fa-long-arrow-down"></i>
+                        </a>
+                    </div>
+                    <div class="flex_2">
+                        <span class="btn-group padding_10">
+                            <div class="inblock">
+                                       <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
+                                              class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                           <a class="blue1" ng-click="searchData()"
+                                              ng-keypress="($event.which === 13)?searchData():0">
+                                                <i class="fa fa-search"></i>
+                                           </a>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="flex flex_3">
+                        <a ng-click="showAllFiles()" class="padding_10 font_medium">
+                            <span ng-hide="viewFavorite"><i class="fa fa-folder"></i> View Assets</span>
+                            <span ng-show="viewFavorite"><i class="fa fa-arrow-left"></i> Back</span>
+                        </a>
+                        <a ng-click="showAllTrash()" class="padding_10 font_medium">
+                            <span ng-hide="viewFavorite"><i class="fa fa-trash"></i> View Trash</span>
+                            <span ng-show="viewFavorite"><i class="fa fa-arrow-left"></i> Back</span>
+                        </a>
+                        <a ng-click="showAllStarred()" class="padding_10 font_medium">
+                            <span ng-hide="viewFavorite"><i class="fa fa-star-o"></i> View Favorites</span>
+                            <span ng-show="viewFavorite"><i class="fa fa-arrow-left"></i> Back</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END: Page Menu-->
+        <div class="actions_menu">
+            <section class="context_menu">
+                <a ng-click="selectAll()">
+                    <span class="sm_hid">Select All</span>
+                </a>
+                <a ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}" ng-if="selectedFile.isFolder == false">
+                    <i class="fa fa-download"></i>
+                    <span class="sm_hid">Download</span>
+                </a>
+                <a ng-click="previewSelected()" ng-if="showToolPreview">
+                    <i class="fa fa-eye"></i>
+                    <span class="sm_hid">Preview</span>
+                </a>
+                <a ng-click="previewSelected()" ng-if="showToolOpen">
+                    <i class="fa fa-folder-o"></i>
+                    <span class="sm_hid">Open</span>
+                </a>
+                <a ng-click="shareToOthers()" ng-if="showBarShare">
+                    <i class="fa fa-share"></i>
+                    <span class="sm_hid">Share</span>
+                </a>
+                <a ng-click="restoreSelected()" ng-if="showBarRestore">
+                    <i class="fa fa-history"></i>
+                    <span class="sm_hid">Restore</span>
+                </a>
+                <a ng-click="deleteSelected()" ng-if="showBarDelete">
+                    <i class="fa fa-trash-o"></i>
+                    <span class="sm_hid">Delete</span>
+                </a>
+                <span uib-dropdown ng-if="showBarMore">
+                    <a id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </a>
+                    <ul class="grey2 dropdown-menu dropdown-menu-left" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li>
+                            <a ng-click="renameSelected()">
+                                <span class="svg_icon_sm"><img src="../images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="castModal()">
+                                <span class="svg_icon_sm"><img src="../images/icons/ico_cast02.svg" style="margin-top: -3px;"/> </span><span>Mirror</span>
+                            </a>
+                        </li>
+                        <li ng-if="selectedFile.isStarred == 1">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                                <span class="svg_icon_sm"><img src="../images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Remove to Favourite</span>
+                            </a>
+                        </li>
+                        <li ng-if="selectedFile.isStarred == 0">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                                <span class="svg_icon_sm"><img src="../images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Add to Favourite</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" ng-click="renameSelected()">
+                                <span class="svg_icon_sm"><img src="../images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                                <span><i class="fa fa-exchange"></i> Move to Folder</span>
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            </section>
+            <section class="secondary_menu">
+                <span>
+                    <a class="font_medium" ng-click="newFolder()" ng-if="showToolNewFolder">
+                        <i class="fa fa-plus"></i> New Folder
+                    </a>
+                </span>
+                <span>
+                    <a class="font_medium" ng-click="newUploader()" ng-if="showToolNewUpload">
+                        <i class="fa fa-plus"></i> Upload Files
+                    </a>
+                </span>
+            </section>
+        </div>
+        <div class="folder_container">
+            <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-if="meta.contextmenu.item.isFolder == true && meta.contextmenu.item.isDeleted == 0">
+                        <a ng-click="previewSelected()">
+                            <i class="fa fa-folder-open"></i> Open
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                        <a ng-click="previewSelected()">
+                            <i class="fa fa-eye"></i> Preview
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                        <a ng-click="renameSelected()">
+                            <span class="svg_icon_sm"><img src="../images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span>
+                            <span>Rename</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                        <a ng-click="castModal()">
+                            <span class="svg_icon_sm"><img src="../images/icons/ico_cast02.svg" style="margin-top: -3px;"/> </span>
+                            <span>Mirror</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
+                        <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                            <span class="svg_icon_sm"><img src="../images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span>
+                            <span>Remove to Favourite</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
+                        <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                            <span class="svg_icon_sm"><img src="../images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span>
+                            <span>Add to Favourite</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                        <a role="menuitem" tabindex="-1" ng-click="renameSelected()">
+                            <span class="svg_icon_sm"><img src="../images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span>
+                            <span>Rename</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                        <a role="menuitem" href ng-click="delete(meta.contextmenu.item)">
+                            <span><i class="fa fa-download"></i> Download</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a role="menuitem" tabindex="-1" ng-click="deleteSelected()">
+                            <span><i class="fa fa-trash-o"></i> Delete</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isDeleted == 1">
+                        <a role="menuitem" tabindex="-1" ng-click="restoreSelected()">
+                            <span><i class="fa fa-history"></i> Restore</span>
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                        <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                            <span><i class="fa fa-exchange"></i> Move to Folder</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="folder_container" ng-click="clearSelection()">
+            <ng-include src="'./views/presentation/presentation.list.html'" ng-if="isList"></ng-include>
+            <ng-include src="'./views/presentation/presentation.grid.html'" ng-if="!isList"></ng-include>
+        </div>
+    </div>
+    <!-- End : Presentation -->
+</div>
+<!-- End : Wrapper -->
+<style>
+#active-presentation {
+    background: #424242;
+}
+</style>
