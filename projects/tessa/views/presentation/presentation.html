@@ -22,11 +22,10 @@
                         <span class="btn-group padding_10">
                             <div class="inblock">
                                        <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
-                                              class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                                              class="form-control" ng-keypress="($event.which === 13)?searchData():0" ng-change="(txtSearch.length < 1)?searchData():0"/>
                             </div><div class="inblock">
                                 <div class="form_addon">
-                                           <a class="blue1" ng-click="searchData()"
-                                              ng-keypress="($event.which === 13)?searchData():0">
+                                           <a class="blue1" ng-click="searchData()">
                                                 <i class="fa fa-search"></i>
                                            </a>
                                 </div>
