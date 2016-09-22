@@ -133,13 +133,17 @@
             </section>
 
         </div><!-- End: Actions Menu -->
-        <div class="bcrms">
-            <a class="bc-b4">
-                Item Visited
+        <div class="bcrms" ng-if="assets.info">
+            <a class="bc-b4" ui-sref="main.presentation">
+                Files
             </a>
-            >
+            <span ng-if="assets.info.parent_folder">></span>
+            <a class="bc-ct" ng-click="goBack()" ng-if="assets.info.parent_folder">
+                {{assets.info.parent_folder.folder_name}}
+            </a>
+            <span ng-if="assets.info">></span>
             <a class="bc-ct">
-                Item Current
+                {{assets.info.folder_name}}
             </a>
         </div>
         <div class="folder_container">
