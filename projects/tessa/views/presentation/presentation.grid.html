@@ -1,8 +1,8 @@
 <!--End: Context Menu-->
-<div class="thumbnail_view row" style="padding-top:0;">
+<div class="thumbnail_view row">
     <div contextmenu-container="meta.contextmenu">
         <section class="sec_folder">
-            <div class="font_medium grey3 pad_side_20 ">
+            <div class="font_medium grey2 pad_side_20 ">
                 Folders
             </div>
             <div class="col-lg-3" ng-if="showToolNewFolder">
@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <td style="padding:0px;">
-                        <i class="fa fa-star text-yellow" ng-if="file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: 0px;"></i>
-                        <i class="fa fa-star-o" ng-if="!file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: 0px;"></i>
+                        <i class="fa fa-star text-yellow" ng-if="file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: -1px;"></i>
+                        <i class="fa fa-star-o" ng-if="!file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: -1px;"></i>
                     </td>
                     <div class="folder_body " ng-class="{'highlighted': file.isActive}">
                         {{file.folder_name | ellipsis:true:18:'...'}} {{file.isStarred}}
@@ -35,7 +35,7 @@
         </section>
         <br>
         <section class="sec_files">
-            <div class="font_medium grey3 pad_side_20 ">
+            <div class="font_medium grey2 pad_side_20 ">
                 Files
             </div>
             <div class="col-lg-3" ng-if="showToolNewUpload">

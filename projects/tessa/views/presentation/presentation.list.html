@@ -11,8 +11,8 @@
         </tr>
         <tr contextmenu-item="file" ng-repeat="file in assets.folders" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)" ng-class="{'active':file.isActive}">
             <td style="padding:0px;">
-                <div class=" thumb_icon blue3">
-                    <i class="fa fa-folder"></i>
+                <div class=" icon-notpic">
+                    <img src="./images/icons/ic_folder_black_24px.svg" style="margin-top: -4px;">
                 </div>
             </td>
             <td style="padding:0px;">
@@ -26,27 +26,27 @@
         </tr>
         <tr contextmenu-item="files" ng-repeat="files in assets.assets" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}">
             <td style="padding:0px;">
-                <div class=" thumb_icon">
+                <div>
                     <!-- PDF -->
-                    <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
+                    <i class="fa fa-file-pdf-o text-red docs" ng-if="files.asset_mimetype == 'application/pdf'"></i>
                     <!-- DOCS -->
-                    <i class="fa fa-file-word-o text-blue" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
+                    <i class="fa fa-file-word-o text-blue docs" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
                     <!-- AUDIO -->
-                    <i class="fa fa-file-audio-o" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
+                    <i class="fa fa-file-audio-o text-black docs" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
                     <!-- VIDEO -->
-                    <i class="fa fa-file-video-o" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'"></i>
+                    <i class="fa fa-file-video-o text-black docs" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'"></i>
                     <!-- TEXT -->
-                    <i class="fa fa-file-text-o text-blue" ng-if="files.asset_mimetype == 'text/plain'"></i>
+                    <i class="fa fa-file-text-o text-blue docs" ng-if="files.asset_mimetype == 'text/plain'"></i>
                     <!-- EXCEL -->
-                    <i class="fa fa-file-excel-o text-green" ng-if="files.asset_mimetype == 'text/csv' || files.asset_mimetype == 'application/vnd.ms-excel' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                    <i class="fa fa-file-excel-o text-green docs" ng-if="files.asset_mimetype == 'text/csv' || files.asset_mimetype == 'application/vnd.ms-excel' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
                     <!-- POWERPOINT -->
-                    <i class="fa fa-file-powerpoint-o text-orange" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
+                    <i class="fa fa-file-powerpoint-o text-orange docs" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
                     <!-- ZIP -->
-                    <i class="fa fa-file-zip-o text-purple" ng-if="files.asset_mimetype == 'application/zip'"></i>
+                    <i class="fa fa-file-zip-o text-purple docs" ng-if="files.asset_mimetype == 'application/zip'"></i>
                     <!-- FILES -->
-                    <i class="fa fa-file-o text-purple" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
+                    <i class="fa fa-file-o text-purple docs" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
                     <!-- IMAGE -->
-                    <img src="{{files.asset_url}}" alt="Attachment" style="width: 30px;width: 100%;margin-top: -10px;" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
+                    <img class="pics" src="{{files.asset_url}}" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
                 </div>
             </td>
             <td style="padding:0px;">
@@ -55,8 +55,43 @@
             </td>
             <td>{{files.asset_name | ellipsis:true:30:'...'}}</td>
             <td>{{files.created_by.displayName}}</td>
-             <td><span am-time-ago="files.date_created"></span></td>
+            <td><span am-time-ago="files.date_created"></span></td>
             <td>{{ files.asset_filesize }}</td>
         </tr>
     </table>
 </div>
+<style type="text/css">
+.icon-notpic {
+    text-align: center;
+    padding: 0 !important;
+    margin: 10px;
+    font-size: 32px;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 30px;
+    /*  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2); */
+}
+
+.docs {
+    text-align: center;
+    padding: 7px 10px !important;
+    margin: 10px;
+    font-size: 32px;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 28px
+}
+
+.pics {
+    max-width: 45px !important;
+    margin-left: 10px;
+    padding: 0;
+    height: 40px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    border-radius: 3px;
+}
+.text-black{
+    color: #616161 !important;
+}
+</style>
