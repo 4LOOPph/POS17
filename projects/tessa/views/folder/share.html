@@ -2,35 +2,33 @@
     <h4 class="modal-title">Share With others</h4>
 </div>
 <div class="modal-body">
-    <div class="row">
-        <div class="col-md-12 pad20all">
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" id="sizing-addon2">Email</span>
-                <input type="text" class="form-control" placeholder="Email Address" ng-model="data.email">
-            </div>
+    <div class="pad_vertical_15">
+        <div class="grey2 font_medium">
+            Email
         </div>
+        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
+            <ui-select-match placeholder="Enter Email...">{{$item.email}}</ui-select-match>
+            <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
+                <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
+                <small>
+                  email: {{tag.email}}
+                </small>
+            </ui-select-choices>
+        </ui-select>
     </div>
-    <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'" style="display:none;"></div>
-    <div id="printbundle" ng-include="'./views/sharer/bundle.html'" ng-if="param === 'bundle'" style="display:none;"></div>
-    <div id="printproduct" ng-include="'./views/sharer/products.html'" ng-if="param === 'product'" style="display:none;"></div>
-    <div id="printquote" ng-include="'./views/sharer/sharer-quote.html'" ng-if="param === 'quote'" style="display:none;"></div>
-    <div id="printpdfquote" ng-include="'./views/sharer/pdf-quote.html'" ng-if="param === 'quote'" style="display:none;"></div>
+    <div id="printasset" ng-include="'./views/sharer/asset.html'" style="display:none;"></div>
     <!--
     =================
     =================
     =================
     =================
     ================= -->
-    <!--  <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'"></div>
-    <div id="printbundle" ng-include="'./views/sharer/bundle.html'" ng-if="param === 'bundle'"></div>
-    <div id="printproduct" ng-include="'./views/sharer/products.html'" ng-if="param === 'product'"></div>
-    <div id="printquote" ng-include="'./views/sharer/sharer-quote.html'" ng-if="param === 'quote'"></div> 
-    <div id="printpdfquote" ng-include="'./views/sharer/pdf-quote.html'" ng-if="param === 'quote'"></div> -->
+     <!-- <div id="printasset" ng-include="'./views/sharer/asset.html'"></div> -->
 </div>
 <div class="font_bold modal-footer">
-    <button ng-click="" type="submit" class="pull-right  btn btn-primary" >
+    <button ng-click="sendMail()" class="pull-right  btn btn-primary">
         Share
     </button>
-    <button id="close_quote" type="button" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
+    <button id="close_quote" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
     </button>
 </div>
