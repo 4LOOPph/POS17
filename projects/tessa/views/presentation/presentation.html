@@ -202,7 +202,7 @@
                 </ul>
             </div>
         </div>
-        <div class="folder_container" ng-click="clearSelection()">
+        <div class="folder_container scrroll" ng-click="clearSelection()">
             <ng-include src="'./views/presentation/presentation.list.html'" ng-if="isList"></ng-include>
             <ng-include src="'./views/presentation/presentation.grid.html'" ng-if="!isList"></ng-include>
         </div>
@@ -215,4 +215,20 @@
     background: #424242;
 }
 
+.scrroll {
+    overflow-y: scroll;
+    height: 650px;
+    overflow-x: hidden;
+}
+
+.scrroll::-webkit-scrollbar {
+    width: 0.3em;
+    height: 4px;
+}
+
+.scrroll::-webkit-scrollbar-thumb {
+    background: #707976;
+    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+    line-height: 50px;
+}
 </style>
