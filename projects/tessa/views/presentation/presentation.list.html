@@ -1,4 +1,4 @@
-<div class="list_view row prestable">
+<div class="list_view row prestable" style="margin-top: -2px;">
     <table id="box" style="width: 100%;" contextmenu-container="meta.contextmenu">
         <tr>
             <th style="width: 5%;">Name</th>
@@ -12,12 +12,12 @@
         <tr contextmenu-item="file" ng-repeat="file in assets.folders" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)" ng-class="{'active':file.isActive}">
             <td style="padding:0px;height: 65px;">
                 <div class=" icon-notpic">
-                    <img src="./images/icons/ic_folder_black_24px.svg" style="margin-top: -4px;">
+                    <img src="./images/icons/ic_folder_black_24px.svg" style="margin-top: -5px;margin-bottom: 1px;">
                 </div>
             </td>
             <td style="padding:0px;">
                 <i class="fa fa-star text-yellow" ng-if="file.isStarred"></i>
-                <i class="fa fa-star-o" ng-if="!file.isStarred"></i>
+                <i class="fa fa-star-o" ng-if="!file.isStarred" style="color:transparent;"></i>
             </td>
             <td>{{file.folder_name}}</td>
             <td>{{file.created_by.displayName}}</td>
@@ -51,7 +51,7 @@
             </td>
             <td style="padding:0px;">
                 <i class="fa fa-star text-yellow" ng-if="files.isStarred"></i>
-                <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
+                <i class="fa fa-star-o" ng-if="!files.isStarred" style="color:transparent;"></i>
             </td>
             <td>{{files.asset_name | ellipsis:true:30:'...'}}</td>
             <td>{{files.created_by.displayName}}</td>

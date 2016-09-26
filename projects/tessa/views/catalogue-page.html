@@ -75,10 +75,10 @@
                     <!--EZE IMPRESS-->
                     <span>
                             <div class="inblock">
-                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." ng-keypress="($event.which === 13)?searchData():0" class="form-control" ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
                             </div><div class="inblock">
                                 <div class="form_addon">
-                                  <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                  <a class="blue1" ng-click="searchData()" >
                                   <i class="fa fa-search"></i>
                                    </a>
                                 </div>
@@ -103,10 +103,10 @@
                     <!--EZE WIFI-->
                     <span class="btn-group">
                             <div class="inblock">
-                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." ng-keypress="($event.which === 13)?searchData():0" class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
                             </div><div class="inblock">
                                 <div class="form_addon">
-                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                   <a class="blue1" ng-click="searchData()" >
                                         <i class="fa fa-search"></i>
                                 </a>
                                 </div>
@@ -135,10 +135,10 @@
                     <!--SCREENS-->
                     <span class="btn-group">
                            <div class="inblock">
-                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..." ng-keypress="($event.which === 13)?searchData():0" class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
                             </div><div class="inblock">
                                 <div class="form_addon">
-                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                   <a class="blue1" ng-click="searchData()" >
                                         <i class="fa fa-search"></i>
                                 </a>
                                 </div>
@@ -192,10 +192,10 @@
                     <!-- MEDIA PLAYER-->
                     <span class="btn-group">
                                 <div class="inblock">
-                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..." ng-keypress="($event.which === 13)?searchData():0" class="form-control" ng-change="(txtSearch.length < 1)?searchData():0"/>
                             </div><div class="inblock">
                                 <div class="form_addon">
-                                   <a class="blue1" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                   <a class="blue1" ng-click="searchData()" >
                                          <i class="fa fa-search"></i>
                                     </a>
                                 </div>
@@ -228,7 +228,7 @@
                 </div>
             </div>
             <div class="padding_10" ng-repeat="item in typeselected track by $index" ng-if="prodTypeLabel == 'Solution'">
-                <button type="button" class="btn btn-sm btn-default" style="padding: 5px 10px 0px 9px 0px;" ng-click="uncheck(item,$index)">x</button> {{item.label}}
+                <button type="button" class="btn btn-sm btn-default" style="padding: 5px 10px 0px 9px 0px;" ng-click="uncheck(item,$index)" >x</button> {{item.label}}
             </div>
             <div class="padding_10" ng-repeat="item in tagselected track by item._id" ng-if="prodTypeLabel == 'Hardware'">
                 <button type="button" class="btn btn-sm btn-default" style="padding: 5px 10px 0px 9px 0px;" ng-click="uncheck(item,$index)">x</button> {{item.value}}
@@ -270,7 +270,7 @@
                         <div class=" sec-search-filter" ng-if="Screens.length == 0">
                             <h4>NO RESULT</h4>
                         </div>
-                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in Screens" ng-if="item.is_published == 1 && item.is_archived == 0">
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in Screens track by item.p_id" ng-if="item.is_published == 1 && item.is_archived == 0">
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <a class="img_holder">
@@ -297,7 +297,7 @@
                         <div class=" sec-search-filter" ng-if="MediaPlayer.length == 0">
                             <h4>NO RESULT</h4>
                         </div>
-                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer" ng-if="item.is_published == 1 && item.is_archived == 0">
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer track by $index" ng-if="item.is_published == 1 && item.is_archived == 0">
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <a class="img_holder">

@@ -1,20 +1,23 @@
 <div id="presentation">
-    <div class="wrapper" style="padding-bottom: 0;">
+    <div class="head vid">
         <div class="breadcrumbs padding_10">
             <img src="./images/icons/ico_store00.svg" />
             <a class="current font_medium">
                 Presentation {{activePage}}
             </a>
         </div>
+        <!-- <div class="head vid">
+            <img class="logoo" src="images/eca-logo2 copy.png" width="50" style="margin-top: -12px;width: 50px;"> CONTRACTOR APP
+        </div> -->
         <div class="page_menu">
-            <div class="padding_10 ">
+            <div class="padding_10 " style="    background: #fff;">
                 <div class="dis_flex">
                     <div class="flex_2">
-                        <a ng-click="goBack()" class="padding_10 font_medium" ng-if="assets.info && showBread">
+                        <a ng-click="goBack()" class="padding_10 font_medium" ng-if="assets.info && showBread" style="padding-left: 0;">
                             <i class="fa fa-arrow-left"></i> Back</span>
                         </a>
-                        <a ng-if="isList" ng-click="changeDisplay()"><i class="fa fa-th-large "></i></a>
-                        <a ng-if="!isList" ng-click="changeDisplay()"><i class="fa fa-th-list "></i></a>
+                        <a ng-if="isList" ng-click="changeDisplay()" uib-tooltip="Grid view" class="menu" style="padding-right:8px !important;"><img src="./images/icons/view-grid.svg"></a>
+                        <a ng-if="!isList" ng-click="changeDisplay()" uib-tooltip="List view" class="menu" style="padding-right:8px !important;"><img src="./images/icons/view-list.svg"></a>
                         <!--<a ng-click="sortTime = !sortTime" class="font_medium padding_10">
                             <span ng-hide="sortTime">Oldest</span>
                             <span ng-show="sortTime">Latest</span> <i class="fa fa-long-arrow-down"></i>
@@ -33,24 +36,23 @@
                         </span>
                     </div>
                     <div class="flex flex_3">
-                        <a ng-click="showAllFiles()" class="padding_10 font_medium">
-                            <span ng-hide="viewFavorite"><i class="fa fa-folder"></i> Assets</span>
+                        <a ng-click="showAllFiles()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Assets'}" uib-tooltip="Assets">
+                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_folder_black_px.svg" ></span>
                         </a>
-                        <a ng-click="showAllTrash()" class="padding_10 font_medium">
-                            <span ng-hide="viewFavorite"><i class="fa fa-trash"></i> Trash</span>
+                        <a ng-click="showAllTrash()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Trash'}" uib-tooltip="Trash">
+                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_delete_black_24px.svg"></span>
                         </a>
-                        <a ng-click="showAllStarred()" class="padding_10 font_medium">
-                            <span ng-hide="viewFavorite"><i class="fa fa-star-o"></i> Favorites</span>
+                        <a ng-click="showAllStarred()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Favorites'}" uib-tooltip="Favorites" style="margin-right: 10px;padding-right: 8px !important;">
+                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_star_black_24px.svg"></span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--END: Page Menu-->
-        <div class="actions_menu dis_table">
+        <div class="actions_menu dis_table" style="font-size: medium;">
             <section class="dis_cell secondary_menu">
                 <a class="font_medium" ng-click="selectAll()">
-                    Select All
+                    {{selectedText}}
                 </a>
                 <a class="font_medium" ng-click="newFolder()" ng-if="showToolNewFolder">
                     <i class="fa fa-plus"></i> New Folder
@@ -93,33 +95,35 @@
                         <li>
                             <a ng-click="renameSelected()">
                                 <span class="svg_icon_sm"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
-                </a>
-                </li>
-                <li>
-                    <a ng-click="castModal()">
-                        <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg" style="margin-top: -3px;"/> </span><span>Mirror</span>
-                    </a>
-                </li>
-                <li ng-if="selectedFile.isStarred == 1">
-                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
-                        <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg"
-                                                               style="margin-top: -3px;"/> </span><span>Remove from Favorites</span>
-                    </a>
-                </li>
-                <li ng-if="selectedFile.isStarred == 0">
-                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
-                        <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Add to Favourite</span>
-                    </a>
-                </li>
-                <li>
-                    <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
-                        <span><i class="fa fa-exchange"></i> Move to Folder</span>
-                    </a>
-                </li>
-                </ul>
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="castModal()">
+                                <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg" style="margin-top: -3px;"/> </span><span>Mirror</span>
+                            </a>
+                         </li>
+                        <li ng-if="selectedFile.isStarred == 1">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                                <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Remove from Favorites</span>
+                            </a>
+                        </li>
+                        <li ng-if="selectedFile.isStarred == 0">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                                <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Add to Favourite</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                                <span><i class="fa fa-exchange"></i> Move to Folder</span>
+                            </a>
+                        </li>
+                    </ul>
                 </span>
             </section>
         </div>
+    </div>
+    <div class="wrapper" style="padding-bottom: 0;padding-top: 170px;">
+        <!--END: Page Menu-->
         <!-- End: Actions Menu -->
         <div class="bcrms" ng-if="assets.info">
             <a class="bc-b4" ui-sref="main.presentation">
@@ -216,9 +220,9 @@
 }
 
 .scrroll {
-    overflow-y: scroll;
-    height: 650px;
-    overflow-x: hidden;
+    /*    overflow-y: auto;
+    height: 700px;
+    overflow-x: hidden;*/
 }
 
 .scrroll::-webkit-scrollbar {
@@ -231,4 +235,74 @@
     transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
     line-height: 50px;
 }
+
+.menu-active {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
+    background-color: rgb(216, 216, 216);
+    border-color: hsl(0, 0%, 57%);
+}
+
+.menu:hover {
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 0px 2px 0px;
+    background-color: rgb(255, 252, 252);
+    border-color: rgb(115, 115, 115);
+    color: #080808;
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 8px 6px 10px 8px !important;
+}
+
+.menu:active {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
+    background-color: rgb(216, 216, 216);
+    border-color: hsl(0, 0%, 57%);
+    color: #080808;
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 8px 6px 10px 8px !important;
+}
+
+.menu {
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 8px 6px 10px 8px !important;
+}
+
+.modal-body {
+    padding: 0 10px;
+}
+
+.head {
+    margin-top: -155px;
+    background-color: #2980dc;
+    border-color: #2980dc;
+    border-color: #2980dc;
+    margin-right: 0;
+    margin-left: 2.2%;
+}
+
+div.sticky {
+    margin-top: -30px !important;
+}
+
+div.head {
+    margin-top: 0px;
+    position: fixed;
+    width: 89.6%;
+    background: #127bd2;
+    color: #ffffff;
+    z-index: 99;
+    background-image: #fff;
+    background: red;
+    background: #fff;
+}
 </style>
+<script type="text/javascript ">
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1) {
+        $('div.head').addClass("sticky ");
+    } else {
+        $('div.head').removeClass("sticky ");
+    }
+});
+</script>

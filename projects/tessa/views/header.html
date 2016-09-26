@@ -9,7 +9,7 @@
         </span>
         <a class="navbar-brand" ui-sref="main.experience">Tessa</a>
         <a ng-click="clicks()" id="srch-pop" class="tes-icon">
-            <img src="../images/icons/consolidated_search.png" />
+            <img src="./images/icons/consolidated_search.png" />
         </a>
         <div class=" toolbar-icon-bg" id="toolbar-search">
             <div class="input-group prim_search">
@@ -37,7 +37,7 @@
     </div>
     <ul id="nav-right" class="nav navbar-nav toolbar pull-right">
         <div class="btn-group" uib-dropdown>
-            <a ng-click="cartModal()" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled">
+            <a ng-click="cartModal()" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]">
                 <img src="images/icons/consolidated_cart.png" />
                 <span class="badge badge-danger" ng-show="cartItems.length == 0">{{cartItems.length}}</span>
                 <span class="badge badge-success" ng-show="cartItems.length > 0">{{cartItems.length}}</span>

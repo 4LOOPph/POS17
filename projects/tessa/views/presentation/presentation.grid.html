@@ -25,7 +25,7 @@
                     </div>
                     <td style="padding:0px;">
                         <i class="fa fa-star text-yellow" ng-if="file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: -1px;"></i>
-                        <i class="fa fa-star-o" ng-if="!file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: -1px;"></i>
+                        <i class="fa fa-star-o" ng-if="!file.isStarred" style="padding-left: 15px;display: block;margin-bottom: -15px;font-size: 16px;margin-top: -1px;color:transparent;"></i>
                     </td>
                     <div class="folder_body " ng-class="{'highlighted': file.isActive}">
                         {{file.folder_name | ellipsis:true:18:'...'}}
@@ -53,7 +53,7 @@
             <div class="col-lg-3" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-repeat="files in assets.assets" contextmenu-item="files"```>
                 <td style="padding:0px;">
                     <i class="fa fa-star text-yellow" ng-if="files.isStarred" style="padding-left: 15px;display: block;margin-bottom: -25px;font-size: 16px;margin-top: 10px;"></i>
-                    <i class="fa fa-star-o" ng-if="!files.isStarred" style="padding-left: 15px;display: block;margin-bottom: -25px;font-size: 16px;margin-top: 10px;"></i>
+                    <i class="fa fa-star-o" ng-if="!files.isStarred" style="padding-left: 15px;display: block;margin-bottom: -25px;font-size: 16px;margin-top: 10px;color:transparent;"></i>
                 </td>
                 <div class="file_instance">
                     <div class="thumb_icon" style="padding: 0;">
