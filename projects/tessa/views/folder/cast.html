@@ -6,7 +6,7 @@
         <div class="">
             <div class="font_medium font_15 blue3 text">Select Devices<span class="arrow"></span></div>
         </div>
-        <div class="devices" ng-class="{'active': device =='selectDevice'}">
+        <div class="devices" ng-class="{'active': device.selected ==true}">
             <div ng-repeat="device in activeDevices">
                 <a class="dis_table_auto" ng-click="selectDevice(device)">
                     <div class="dis_cell cell-sm" style="width: 10%">
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="font_bold modal-footer">
-    <button ng-click="connectDevice()" class="pull-right  btn btn-primary">Confirm</button>
+    <button ng-click="connectDevice()" class="pull-right  btn btn-primary" ng-disabled="enableCasting">Confirm</button>
     <button id="close_quote" type="button" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
     </button>
 </div>
@@ -67,6 +67,7 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 .devices:hover,
 .devices:focus,
 .devices:active,

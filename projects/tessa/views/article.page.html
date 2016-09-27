@@ -103,8 +103,11 @@
                 <section class="flex_sm">
                     <div>
                         <ul class="product_gallery">
-                            <li ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{$index}}" ng-class="{active:!$index}">
-                                <img ng-if="slide.media_mimetype == 'image/jpeg' || slide.media_mimetype == 'image/png'" ng-src="{{slide.image}}" alt='' width="150" height="150" />
+
+                            <li ng-class="{'active':!$index}" ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{$index}}">
+                                <img ng-if="slide.media_mimetype == 'image/jpeg' || slide.media_mimetype == 'image/png'"
+                                     ng-src="{{slide.image}}" alt='' width="150" height="150"/>
+
                                 <div class="vid_holder">
                                     <div ng-if="slide.media_mimetype == 'video/mp4'">
                                         <videogular vg-theme="slide.url">

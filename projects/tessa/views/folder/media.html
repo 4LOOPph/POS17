@@ -2,7 +2,7 @@
     <div class="modal-header" style="padding: 15px 15px 10px;border-bottom: 1px solid rgb(37, 42, 45);background: rgb(37, 42, 45);color: #fff;">
         <span class="cast" style="cursor: pointer;"><img src="./images/icons/ic_get_app_white_24px.svg"></span>
         <span class="cast"><a href="" ng-click="starredSelected(asset_file)"><img src="./images/icons/ic_star_border_white_24px.svg"></span></a>
-        <span uib-dropdown class="cast">
+        <!-- <span uib-dropdown class="cast">
             <a id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled" style="color: #fff;">
                    <img src="./images/icons/ico_cast04.svg" style="max-width: 35px;margin-top: -10px;margin-bottom: -6px;">
             </a>
@@ -13,7 +13,13 @@
                     </a>
                 </li>
             </ul>
-        </span>
+        </span> -->
+        <a type="button" ng-click="selectDevice()" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+            <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+        </a>
+        <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+           Install Chrome Plugin
+        </a>
         <a ng-click="cancel()" class="close" style="background: #fff;padding: 0px 5px;border-radius: 50%;"><span aria-hidden="true">×</span><span class="sr-only">Close</span></a>
     </div>
     <div class="modal-body" style="padding: 0;">

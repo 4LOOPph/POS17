@@ -1,7 +1,7 @@
 <div id="presentation">
     <div class="head vid">
         <div class="breadcrumbs padding_10">
-            <img src="./images/icons/ico_store00.svg" />
+            <img src="./images/icons/ico_preso01.svg" />
             <a class="current font_medium">
                 Presentation {{activePage}}
             </a>
@@ -36,14 +36,14 @@
                         </span>
                     </div>
                     <div class="flex flex_3">
-                        <a ng-click="showAllFiles()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Assets'}" uib-tooltip="Assets">
-                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_folder_black_px.svg" ></span>
+                        <a ng-click="showAllFiles()" class="padding_10 font_medium menu1" ng-class="{'menu1-active': activePage =='Assets'}" uib-tooltip="Assets">
+                            <span ng-hide="viewFavorite"></span>
                         </a>
-                        <a ng-click="showAllTrash()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Trash'}" uib-tooltip="Trash">
-                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_delete_black_24px.svg"></span>
+                        <a ng-click="showAllTrash()" class="padding_10 font_medium menu2" ng-class="{'menu2-active': activePage =='Trash'}" uib-tooltip="Trash">
+                            <span ng-hide="viewFavorite"></span>
                         </a>
-                        <a ng-click="showAllStarred()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Favorites'}" uib-tooltip="Favorites" style="margin-right: 10px;padding-right: 8px !important;">
-                            <span ng-hide="viewFavorite"><img src="./images/icons/ic_star_black_24px.svg"></span>
+                        <a ng-click="showAllStarred()" class="padding_10 font_medium menu3" ng-class="{'menu3-active': activePage =='Favorites'}" uib-tooltip="Favorites" >
+                            <span ng-hide="viewFavorite"></span>
                         </a>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                             <i class="fa fa-eye"></i> Preview
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                    <li ng-if="meta.contextmenu.item.isFolder == false &&  meta.contextmenu.item.isDeleted == 0">
                         <a ng-click="castModal()">
                             <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg"
                                                            style="margin-top: -3px;"/> </span>
@@ -206,7 +206,7 @@
                 </ul>
             </div>
         </div>
-        <div class="folder_container scrroll" ng-click="clearSelection()">
+        <div class="folder_container" ng-click="clearSelection()">
             <ng-include src="'./views/presentation/presentation.list.html'" ng-if="isList"></ng-include>
             <ng-include src="'./views/presentation/presentation.grid.html'" ng-if="!isList"></ng-include>
         </div>
@@ -218,38 +218,23 @@
 #active-presentation {
     background: #424242;
 }
-
-.scrroll {
-    /*    overflow-y: auto;
-    height: 700px;
-    overflow-x: hidden;*/
-}
-
-.scrroll::-webkit-scrollbar {
-    width: 0.3em;
-    height: 4px;
-}
-
-.scrroll::-webkit-scrollbar-thumb {
-    background: #707976;
-    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
-    line-height: 50px;
-}
-
 .menu-active {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
     background-color: rgb(216, 216, 216);
     border-color: hsl(0, 0%, 57%);
 }
 
-.menu:hover {
+.menu:hover,
+.menu1:hover,
+.menu2:hover,
+.menu3:hover {
     box-shadow: rgba(0, 0, 0, 0.54) 0px 0px 2px 0px;
     background-color: rgb(255, 252, 252);
     border-color: rgb(115, 115, 115);
     color: #080808;
     border-radius: 3px;
     margin-right: 10px;
-    padding: 8px 6px 10px 8px !important;
+    /*padding: 8px 6px 10px 8px !important;*/
 }
 
 .menu:active {
@@ -261,7 +246,72 @@
     margin-right: 10px;
     padding: 8px 6px 10px 8px !important;
 }
-
+.menu1 {
+    background-image: url(./images/icons/ic_folder_black_px.svg);
+/*border-radius: 3px; */
+    margin-right: 10px;
+    padding: 8px 31px 10px 8px !important;
+    width: 100%;
+    height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.menu1-active {
+    background-image: url(./images/icons/ic_folder_black_pxhover.svg);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
+    background-color: rgb(216, 216, 216);
+    border-color: hsl(0, 0%, 57%);
+    border-radius: 3px;
+}
+.menu2 {
+    background-image: url(./images/icons/ic_delete_black_24px.svg);
+/*border-radius: 3px; */
+    margin-right: 10px;
+    padding: 8px 31px 10px 8px !important;
+    width: 100%;
+    height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.menu2-active {
+    background-image: url(./images/icons/ic_delete_black_24pxhover.svg);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
+    background-color: rgb(216, 216, 216);
+    border-color: hsl(0, 0%, 57%);
+    border-radius: 3px;
+}
+.menu3 {
+    background-image: url(./images/icons/ic_star_black_24px.svg);
+/*border-radius: 3px; */
+    margin-right: 10px;
+    padding: 8px 31px 10px 8px !important;
+    width: 100%;
+    height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.menu3-active {
+    background-image: url(./images/icons/ic_star_black_24pxhover.svg);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
+    background-color: rgb(216, 216, 216);
+    border-color: hsl(0, 0%, 57%);
+    border-radius: 3px;
+}
 .menu {
     border-radius: 3px;
     margin-right: 10px;

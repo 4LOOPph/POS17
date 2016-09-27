@@ -1,0 +1,477 @@
+<div id="asset-gallery">
+    <div class="wrapper">
+        <div class="breadcrumbs ">
+            <img src="../../images/icons/ico_preso01.svg"/>
+            <a class="current font_medium">
+                Presentation {{activePage}}
+            </a>
+        </div>
+        <div class="option-menu">
+
+            <div class="dis_flex">
+                <section>
+                    <div class="dis_table_auto padding_10">
+                        <div class="dis_cell">
+                            <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
+                                   class="form-control" ng-keypress="($event.which === 13)?searchData():0"
+                                   ng-change="(txtSearch.length < 1)?searchData():0"/>
+                        </div>
+                        <div class="dis_cell" style="width:1%;">
+                            <div class="form_addon">
+                                <a class="blue1" ng-click="searchData()">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <section>
+
+                    <a class="pull-right" ng-click="presoActive = !presoActive" ng-show="presoActive" >
+                        <div class="font_medium blue1">
+                            <i class="fa fa-arrow-left"></i> <span class="sm_hid">Back to Assets</span>
+                        </div>
+                    </a>
+                    <a class="right_align" ng-click="presoActive = !presoActive" ng-hide="presoActive" >
+
+                        <div class="font_medium blue1">
+                             <span><i class="fa fa-star"></i></span> <span class="sm_hid">View Favorites</span>
+                         </div>
+                    </a>
+                </section>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+        <div ng-hide="presoActive" class="preso-assets" >
+            <div id="testo">
+
+
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+
+                        <div class="swiper-slide">
+                            <div class="tes-slider">
+                                <div class="dis_table slider-content">
+                                    <section class="dis_cell_top">
+                                        <h1>Engagis: Creating Connections</h1>
+                                        <h3>Author: Engagis</h3>
+                                        <div class="hide-sm">
+                                            <p class="pad_vertical_15 ">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                unknown printer took a galley of type and scrambled it to make a type specimen
+                                                book.
+                                            </p>
+                                            <div>
+                                                <a class="btn btn-primary">Preview</a>
+                                                <a class="btn btn-primary">Cast to Screen</a>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                    <section class="dis_cell_top">
+                                        <div class="img_holder">
+                                            <img src="../../images/img-sample-3.jpg"/>
+                                            <div class="drp-sdow"></div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div>
+                                                <a class="btn btn-primary">Preview</a>
+                                                <a class="btn btn-primary">Cast to Screen</a>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tes-slider">
+                                <div class="dis_table slider-content">
+                                    <section class="dis_cell_top">
+                                        <h1>Engagis: Creating Connections</h1>
+                                        <h3>Author: Engagis</h3>
+                                        <div class="hide-sm">
+                                            <p class="pad_vertical_15 ">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                                unknown printer took a galley of type and scrambled it to make a type specimen
+                                                book.
+                                            </p>
+                                            <div>
+                                                <a class="btn btn-primary">Preview</a>
+                                                <a class="btn btn-primary">Cast to Screen</a>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                    <section class="dis_cell_top">
+                                        <div class="img_holder">
+                                            <img src="../../images/img-sample-2.jpg"/>
+                                            <div class="drp-sdow"></div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div>
+                                                <a class="btn btn-primary">Preview</a>
+                                                <a class="btn btn-primary">Cast to Screen</a>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="slider-bg img_holder">
+
+                </div>
+                <div class="black-fade">
+                </div>
+            </div>
+
+            <div class="flexi-pad">
+                <div class="multiple-slider">
+                    <div class="font_18 font_medium blue1">
+                        Top 10 Presentations
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Add Scrollbar -->
+
+                    </div>
+                </div>
+                <div class="multiple-slider">
+                    <div class="font_18 font_medium blue1">
+                        Retail
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="orange1">
+                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a class="file-item">
+                                    <div class="img_holder">
+                                        <img src="../../images/img-sample-3.jpg"/>
+                                    </div>
+                                    <div class="file-name">
+                                    <span class="red1">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </span>
+                                        <span class="pad_side_10">
+                                        Your filename here please please please.
+                                    </span>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Add Scrollbar -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="presoActive" class="preso-favorites">
+
+
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+    var swiper = new Swiper('#testo .swiper-container', {
+        pagination: '#testo .swiper-pagination',
+        nextButton: '#testo .swiper-button-next',
+        prevButton: '#testo .swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30
+    });
+
+
+    var swiper = new Swiper('.multiple-slider .swiper-container', {
+        scrollbar: '.multiple-slider .swiper-scrollbar',
+        scrollbarHide: true,
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 30,
+        grabCursor: true
+    });
+</script>
+
+<style>
+    #active-preso {
+        background: #424242;
+    }
+</style>
