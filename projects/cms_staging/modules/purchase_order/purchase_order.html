@@ -29,84 +29,69 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                       
-                                            <div class="input-group">
-                                                <input type="text" name="q" class="form-control input-sm" placeholder="Search.." />
-                                                <span class="input-group-btn">
+                                        <div class="input-group">
+                                            <input type="text" name="q" class="form-control input-sm" placeholder="Search.." />
+                                            <span class="input-group-btn">
                                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat btn-sm">
                                                 <i class="fa fa-search"></i>
                                                 </button>
                                                 </span>
-                                                <span class="input-group-btn">
+                                            <span class="input-group-btn">
                                                 <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
                                             {{applicationStatus}}
                                             <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a ng-click="updateStatus('All')">All</a>
-                                                    </li>
-                                                    <li><a ng-click="updateStatus('Publish')">Published</a>
-                                                    </li>
-                                                    <li><a ng-click="updateStatus('Archived')">Archived</a>
-                                                    </li>
-                                                    <li><a ng-click="updateStatus('Draft')">Draft</a>
-                                                    </li>
-                                                </ul>
-                                                </span>
-                                            </div>
-                                        
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a ng-click="updateStatus('All')">All</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Publish')">Published</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                                </li>
+                                            </ul>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                    <div class="btn-group">
-                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="Display List of Product"><i class="fa fa-list"></i></label>
-                                        <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'" uib-tooltip="Display Grid of Product">
-                                            <i class="fa fa-th"></i>
-                                        </label>
-                                    </div>
-                                </div>
                         </form>
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Purchase No.</th>
-                                <th>Total Cost</th>
-                                <th>Return By</th>
-                                <th>Return Date</th>
-                                <th>Supplier</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        </tbody>
-                        <tr ng-repeat="item in pricebooks">
-                            <td>{{item.mame}}</td>
-                            <td>11111</td>
-                            <td>{{item.approved_by}}</td>
-                            <td>{{item.valid_until}}</td>
-                            <td>oratz</td>
-                            <td><span class="label label-success">Receiving</span></td>
-                            <td class="text-right">
-                                <button class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="puchaseordersTable">
+                        <tr ng-repeat="item in $data  track by $index">
+                            <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="item.selected" ng-change="checkDataChanges(item)">
+                            </td> -->
+                            <td class="text-left" data-title="'Purchase No.'">
+                                <span>{{item.po_number}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Total Cost'">
+                                <span>{{item.total_cost}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Return Date'">
+                                <span>{{item.delivery_date| date : 'longDate'}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Deliver To'">
+                                <span>{{item.deliver_to}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Supplier'">
+                                <span>{{item.supplier.name}}</span>
+                            </td>
+                            <!-- <span>{{item.expiration_date| date : 'longDate'}}</span> -->
+                            <td class="text-center" data-title="'Status'">
+                                <span ng-if="item.po_status == 'Open'" class="label label-success">Approved</span>
+                                <span ng-if="item.po_status == 'Closed'" class="label label-danger">Unapproved</span>
                             </td>
                         </tr>
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="10" align="center">
-                                    <ul class="pagination"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
-                <div class="text-center">
-                    <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                <div class="overlay" ng-show="puchaseordersisLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
                 <!-- /.box-body -->
             </div>

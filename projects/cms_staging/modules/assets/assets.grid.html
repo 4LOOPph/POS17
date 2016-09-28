@@ -106,7 +106,7 @@
                         <img src="{{files.asset_url}}" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"/>
                     </span>
                     <div class="mailbox-attachment-info" ng-click="activeSelected(files)">
-                        <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:18:'...'}}</a>
+                        <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:15:'...'}}</a>
                         <span class="mailbox-attachment-size">
                           <!-- {{ files.asset_filesize/1024/1024|number:2 }} MB -->
                           {{ files.asset_filesize }}

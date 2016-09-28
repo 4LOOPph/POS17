@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}">
+                <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
                     <i class="fa fa-download"></i><span>Download</span>
                 </a>
             </li>

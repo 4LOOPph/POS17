@@ -31,7 +31,7 @@
                     <li ng-if="showToolMakeCopy">
                         <a ng-click="updateStatus('Draft')"><i class="fa fa-copy"></i>&nbsp Make a copy</a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false">
+                    <li ng-if="selectedFile.isFolder == false">
                         <a ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}" uib-tooltip="Download"><i class="fa fa-download"></i>&nbsp Download</a>
                     </li>
                 </ul>
