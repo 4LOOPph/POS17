@@ -1,5 +1,7 @@
 <div id="presentation">
-    <div class="head vid">
+
+    <div class="wrapper" style="padding-bottom: 0   ">
+        <!--END: Page Menu-->
         <div class="breadcrumbs padding_10">
             <img src="./images/icons/ico_preso01.svg" />
             <a class="current font_medium">
@@ -92,27 +94,27 @@
                     </a>
                     <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu"
                         aria-labelledby="single-button">
-                        <li>
+                        <li ng-if="selectedFile.isDeleted == 0">
                             <a ng-click="renameSelected()">
                                 <span class="svg_icon_sm"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
                             </a>
                         </li>
-                        <li>
+                        <li ng-if="selectedFile.isFolder == false && selectedFile.isDeleted == 0">
                             <a ng-click="castModal()">
                                 <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg" style="margin-top: -3px;"/> </span><span>Mirror</span>
                             </a>
                          </li>
-                        <li ng-if="selectedFile.isStarred == 1">
+                        <li ng-if="selectedFile.isStarred == 1 && selectedFile.isDeleted == 0">
                             <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
                                 <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Remove from Favorites</span>
                             </a>
                         </li>
-                        <li ng-if="selectedFile.isStarred == 0">
+                        <li ng-if="selectedFile.isStarred == 0 && selectedFile.isDeleted == 0">
                             <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
                                 <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span><span>Add to Favourite</span>
                             </a>
                         </li>
-                        <li>
+                        <li ng-if="selectedFile.isDeleted == 0">
                             <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
                                 <span><i class="fa fa-exchange"></i> Move to Folder</span>
                             </a>
@@ -121,9 +123,6 @@
                 </span>
             </section>
         </div>
-    </div>
-    <div class="wrapper" style="padding-bottom: 0;padding-top: 170px;">
-        <!--END: Page Menu-->
         <!-- End: Actions Menu -->
         <div class="bcrms" ng-if="assets.info">
             <a class="bc-b4" ui-sref="main.presentation">
@@ -138,78 +137,81 @@
                 {{assets.info.folder_name}}
             </a>
         </div>
-        <div class="folder_container">
-            <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
-                <ul class="dropdown-menu" role="menu">
-                    <li ng-if="meta.contextmenu.item.isFolder == true && meta.contextmenu.item.isDeleted == 0">
-                        <a ng-click="previewSelected()">
-                            <i class="fa fa-folder-open"></i> Open
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                        <a ng-click="previewSelected()">
-                            <i class="fa fa-eye"></i> Preview
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false &&  meta.contextmenu.item.isDeleted == 0">
-                        <a ng-click="castModal()">
+        <div class="flexi-flow">
+            <div class="folder_container">
+                <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-if="meta.contextmenu.item.isFolder == true && meta.contextmenu.item.isDeleted == 0">
+                            <a ng-click="previewSelected()">
+                                <i class="fa fa-folder-open"></i> Open
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                            <a ng-click="previewSelected()">
+                                <i class="fa fa-eye"></i> Preview
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isFolder == false &&  meta.contextmenu.item.isDeleted == 0">
+                            <a ng-click="castModal()">
                             <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg"
                                                            style="margin-top: -3px;"/> </span>
-                            <span>Mirror</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                        <a ng-click="shareToOthers()">
+                                <span>Mirror</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                            <a ng-click="shareToOthers()">
                             <span class="svg_icon_sm"><i class="fa fa-share"></i>
                             <span>Share</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
-                        <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
                             <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg"
                                                            style="margin-top: -3px;"/> </span>
-                            <span>Remove from Favorites</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
-                        <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span>
-                            <span>Add to Favourite</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                        <a role="menuitem" tabindex="-1" ng-click="renameSelected()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span>
-                            <span>Rename</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                        <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
-                            <span><i class="fa fa-download"></i> Download</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" ng-click="deleteSelected()">
-                            <span><i class="fa fa-trash-o"></i> Delete</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 1">
-                        <a role="menuitem" tabindex="-1" ng-click="restoreSelected()">
-                            <span><i class="fa fa-history"></i> Restore</span>
-                        </a>
-                    </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                        <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
-                            <span><i class="fa fa-exchange"></i> Move to Folder</span>
-                        </a>
-                    </li>
-                </ul>
+                                <span>Remove from Favorites</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
+                            <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                                <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span>
+                                <span>Add to Favourite</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                            <a role="menuitem" tabindex="-1" ng-click="renameSelected()">
+                                <span class="svg_icon_sm"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span>
+                                <span>Rename</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                            <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
+                                <span><i class="fa fa-download"></i> Download</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" ng-click="deleteSelected()">
+                                <span><i class="fa fa-trash-o"></i> Delete</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isDeleted == 1">
+                            <a role="menuitem" tabindex="-1" ng-click="restoreSelected()">
+                                <span><i class="fa fa-history"></i> Restore</span>
+                            </a>
+                        </li>
+                        <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                            <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                                <span><i class="fa fa-exchange"></i> Move to Folder</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="folder_container" ng-click="clearSelection()">
+                <ng-include src="'./views/presentation/presentation.list.html'" ng-if="isList"></ng-include>
+                <ng-include src="'./views/presentation/presentation.grid.html'" ng-if="!isList"></ng-include>
             </div>
         </div>
-        <div class="folder_container" ng-click="clearSelection()">
-            <ng-include src="'./views/presentation/presentation.list.html'" ng-if="isList"></ng-include>
-            <ng-include src="'./views/presentation/presentation.grid.html'" ng-if="!isList"></ng-include>
-        </div>
+
     </div>
     <!-- End : Presentation -->
 </div>

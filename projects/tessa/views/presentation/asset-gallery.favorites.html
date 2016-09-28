@@ -1,0 +1,111 @@
+
+
+<div class="flexi-flow">
+    <div class="preso-favorites">
+
+
+        <!--Actions Menu-->
+        <div class="actions_menu  dis_table">
+
+            <!--Default menu-->
+            <section class="dis_cell secondary_menu">
+                <a class="font_medium grey2"><i class="fa fa-dot-circle-o"></i> Select All</a>
+                <a class="font_medium grey2"><i class="fa fa-th-list"></i> List view</a>
+            </section>
+
+            <!--Menu when an item is selected-->
+            <section class="dis_cell context_menu">
+                <a class="font_medium grey2"><i class="fa fa-eye"></i> <span class="sm_hid">Open</span></a>
+                <a class="font_medium grey2"><i class="fa fa-share-alt"></i> <span class="sm_hid">Share</span></a>
+                <a class="font_medium grey2"><i class="fa fa-desktop"></i> <span class="sm_hid">Cast to Screen</span>
+                </a>
+            </section>
+
+        </div>
+        <div class="bcrms ng-scope" >
+            <a class="bc-b4" >
+                Files
+            </a>>
+            <!-- ngIf: assets.info.parent_folder -->
+            <!-- ngIf: assets.info.parent_folder -->
+            <!-- ngIf: assets.info --><span ng-if="assets.info" class="ng-scope">&gt;</span><!-- end ngIf: assets.info -->
+            <a class="bc-ct ng-binding">
+                Sample Folder
+            </a>
+        </div>
+
+        <!--Files/Folder Container-->
+        <div class="folder_container">
+
+            <div class="thumbnail_view row">
+
+                <!--Folders -->
+                <section class="sec_folder">
+
+                    <div class=" flexi-title">
+                        <i class="fa fa-folder"></i>
+                        Folders
+                    </div>
+                    <!--<div class="col-lg-3">
+                        <div class="new_item">
+                            <a>
+                                <i class="fa fa-plus"></i>
+                            </a>
+                            <div>New Folder</div>
+                        </div>
+                    </div>-->
+                    <div class="col-lg-3">
+                        <div class="folder_instance">
+                            <div class="folder_header">
+                                <div class="folder_tail"></div>
+                            </div>
+                            <div style="padding-left: 15px; display: block; margin-bottom: -15px; font-size: 16px; margin-top: 0px;">
+                                <i class="fa fa-star text-yellow"></i></div>
+                            <div class="folder_body">
+                                Sample FOlder
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Files-->
+                <section class="sec_files" style="padding-top:15px;">
+                    <div class=" flexi-title">
+                        <i class="fa fa-folder"></i>
+                        Files
+                    </div>
+
+                    <div class="col-lg-3">
+                        <i class="fa fa-star-o ng-scope"
+                           style="padding-left: 15px;display: block;margin-bottom: -25px;font-size: 16px;margin-top: 10px;"></i>
+                        <div class="file_instance">
+                            <div class="thumb_icon">
+                                <i class="fa fa-file-pdf-o text-red ng-scope" "></i>
+                            </div>
+                            <div class="item_info  ng-binding" ng-class="{'highlighted': files.isActive}">
+                                tessaStoryboard16092...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="fa fa-star-o ng-scope"
+                           style="padding-left: 15px;display: block;margin-bottom: -25px;font-size: 16px;margin-top: 10px;"></i>
+                        <div class="file_instance">
+                            <div class="thumb_icon">
+                                <i class="fa fa-file-pdf-o text-red ng-scope" "></i>
+                            </div>
+                            <div class="item_info  ng-binding" ng-class="{'highlighted': files.isActive}">
+                                tessaStoryboard16092...
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
