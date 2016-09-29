@@ -166,7 +166,7 @@
                                                 <vg-buffering></vg-buffering>
                                                 <!-- <vg-overlay-play></vg-overlay-play> -->
                                             </videogular>
-                                            <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
+
                                         </div>
                                         <div class="item_text">
                                             <div class="item_title">
@@ -192,12 +192,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="dis_cell_top">
+                    <div class="dis_cell_top" ng-if="detail.article_features.length > 0">
                         <div class="font_18 blue3 border_bottom">
                             Featured Solution
                         </div>
                         <div class="article_instances">
-                            <div class="col-lg-3" ng-repeat="item in bundles" ng-if="detail.article_features.length > 0" ui-sref="main.productDetailsSolution({selected_id:item.pb_id})" fa-track-event="['Featured Solution','View',item.bundle_name,item.pb_id]">
+                            <div class="col-lg-3" ng-repeat="item in bundles"  ui-sref="main.productDetailsSolution({selected_id:item.pb_id})" fa-track-event="['Featured Solution','View',item.bundle_name,item.pb_id]">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="img_holder">
@@ -216,15 +216,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3" ng-if="detail.article_features.length == 0">
-                                <div class="panel-body">
-                                    <div class="item_text">
-                                        <p class="grey3 ">
-                                            {{norelated}}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

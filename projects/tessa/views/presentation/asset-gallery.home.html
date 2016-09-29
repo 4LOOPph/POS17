@@ -1,12 +1,8 @@
 <div class="preso-assets">
     <div class="flexi-flow">
         <div id="testo">
-
-
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-
-
                     <div class="swiper-slide">
                         <div class="tes-slider">
                             <div class="dis_table slider-content">
@@ -15,24 +11,17 @@
                                     <h3>Author: Engagis</h3>
                                     <div class="hide-sm">
                                         <p class="pad_vertical_15 ">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem
-                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                                            an
-                                            unknown printer took a galley of type and scrambled it to make a type
-                                            specimen
-                                            book.
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         </p>
                                         <div>
                                             <a class="btn btn-primary">Preview</a>
                                             <a class="btn btn-primary">Cast to Screen</a>
                                         </div>
                                     </div>
-
                                 </section>
                                 <section class="dis_cell_top">
                                     <div class="img_holder">
-                                        <img src="../../images/img-sample-3.jpg"/>
+                                        <img src="../../images/img-sample-3.jpg" />
                                         <div class="drp-sdow"></div>
                                     </div>
                                     <div class="show-sm">
@@ -43,7 +32,6 @@
                                     </div>
                                 </section>
                             </div>
-
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -54,24 +42,17 @@
                                     <h3>Author: Engagis</h3>
                                     <div class="hide-sm">
                                         <p class="pad_vertical_15 ">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem
-                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                                            an
-                                            unknown printer took a galley of type and scrambled it to make a type
-                                            specimen
-                                            book.
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         </p>
                                         <div>
                                             <a class="btn btn-primary">Preview</a>
                                             <a class="btn btn-primary">Cast to Screen</a>
                                         </div>
                                     </div>
-
                                 </section>
                                 <section class="dis_cell_top">
                                     <div class="img_holder">
-                                        <img src="../../images/img-sample-2.jpg"/>
+                                        <img src="../../images/img-sample-2.jpg" />
                                         <div class="drp-sdow"></div>
                                     </div>
                                     <div class="show-sm">
@@ -82,36 +63,60 @@
                                     </div>
                                 </section>
                             </div>
-
                         </div>
                     </div>
-
-
                 </div>
                 <div class="swiper-pagination"></div>
-
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
             <div class="slider-bg img_holder">
-
             </div>
             <div class="black-fade">
             </div>
         </div>
-
-        <div class="flexi-pad">
+        <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a ng-click="imgpreview()">
+                        <i class="ti ti-eye padd"></i> Preview
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="ti ti-fullscreen padd"></i> View Fullscreen
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="ti ti-desktop padd"></i> Mirror
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="ti ti-star padd"></i> Add Star
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="ti ti-download padd"></i> Download
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="flexi-pad" contextmenu-container="meta.contextmenu">
             <div class="multiple-slider">
                 <div class="font_18 font_medium blue1">
                     Top 10 Presentations
                 </div>
                 <div class="swiper-container">
+                <div class="slide-left" ng-view></div>
                     <div class="swiper-scrollbar"></div>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <a class="file-item">
+                            <a class="file-item" contextmenu-item="file">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -120,14 +125,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -136,14 +140,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -152,14 +155,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -168,14 +170,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -184,14 +185,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -200,14 +200,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -216,14 +215,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -232,14 +230,11 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
-
                     </div>
                     <!-- Add Scrollbar -->
-
                 </div>
             </div>
             <div class="multiple-slider">
@@ -250,9 +245,9 @@
                     <div class="swiper-scrollbar"></div>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <a class="file-item">
+                            <a class="file-item" contextmenu-item="file">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -261,14 +256,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -277,14 +271,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -293,14 +286,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -309,14 +301,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -325,14 +316,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -341,14 +331,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="orange1">
@@ -357,14 +346,13 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a class="file-item">
                                 <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg"/>
+                                    <img src="../../images/img-sample-3.jpg" />
                                 </div>
                                 <div class="file-name">
                                     <span class="red1">
@@ -373,38 +361,33 @@
                                     <span class="pad_side_10">
                                         Your filename here please please please.
                                     </span>
-
                                 </div>
                             </a>
                         </div>
-
                     </div>
                     <!-- Add Scrollbar -->
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 <script>
-    var swiper = new Swiper('#testo .swiper-container', {
-        pagination: '#testo .swiper-pagination',
-        nextButton: '#testo .swiper-button-next',
-        prevButton: '#testo .swiper-button-prev',
-        slidesPerView: 1,
-        paginationClickable: true,
-        spaceBetween: 30
-    });
+var swiper = new Swiper('#testo .swiper-container', {
+    pagination: '#testo .swiper-pagination',
+    nextButton: '#testo .swiper-button-next',
+    prevButton: '#testo .swiper-button-prev',
+    slidesPerView: 1,
+    paginationClickable: true,
+    spaceBetween: 30
+});
 
 
-    var swiper = new Swiper('.multiple-slider .swiper-container', {
-        scrollbar: '.multiple-slider .swiper-scrollbar',
-        scrollbarHide: true,
-        slidesPerView: 'auto',
-        centeredSlides: false,
-        spaceBetween: 30,
-        grabCursor: true
-    });
+var swiper = new Swiper('.multiple-slider .swiper-container', {
+    scrollbar: '.multiple-slider .swiper-scrollbar',
+    scrollbarHide: true,
+    slidesPerView: 'auto',
+    centeredSlides: false,
+    spaceBetween: 30,
+    grabCursor: true
+});
 </script>

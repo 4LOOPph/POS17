@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 body,
 html {
     text-align: center;
     color: white;
     overflow: hidden;
+    margin: 0;
 }
 
 .starter-template {
@@ -65,32 +65,68 @@ button[disabled] {
 }
 
 #container {
+    padding-bottom: 100px;
     -webkit-perspective: 1000;
-    background-color: #2c3e50;
-    height: 100%;
-    margin: 0px auto;
-    position: absolute;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,d3edff+100 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,d3edff+57 */
+    background: rgb(255, 255, 255);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(211, 237, 255, 1) 57%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(211, 237, 255, 1) 57%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(211, 237, 255, 1) 57%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d3edff', GradientType=0);
+    /* IE6-9 */
+    height: 100vh;
     width: 100%;
 }
 
 #card {
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition-duration: 2s;
-    -webkit-transition-property: rotation;
+    -webkit-transform-style: preserve-3d !important;
+    -webkit-transition-duration: 2s !important;
+    -webkit-transition-property: rotation !important;
+    position: absolute;
 }
 
 #local {
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: scale(-1, 1);
+    -webkit-backface-visibility: hidden !important;
+    -webkit-transform: scale(-1, 1) !important;
     position: absolute;
-    width: 100%;
+    width: 100vw;
 }
 
 #remote {
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: rotateY(180deg);
-    position: absolute;
+    /* -webkit-backface-visibility: hidden; */
+    /* -webkit-transform: rotateY(180deg); */
+    /* position: absolute; */
     width: 100%;
+    /* margin-left: 9%; */
+}
+
+#remote:-webkit-full-screen {
+    margin-left: 0;
+}
+
+#remote:-webkit-full-screen {
+    margin-left: 0;
+}
+
+#remote:-moz-full-screen {
+    margin-left: 0;
+}
+
+#remote:-ms-fullscreen {
+    margin-left: 0;
+}
+
+#remote:full-screen {
+    margin-left: 0;
+}
+
+#remote:fullscreen {
+    margin-left: 0;
 }
 
 #mini {
@@ -112,12 +148,41 @@ button[disabled] {
 }
 
 #info-bar {
-    bottom: 55%;
+    /**bottom: 55%;**/
     height: 38px;
     line-height: 38px;
-    position: absolute;
+    /**position: absolute;**/
     text-align: center;
     width: 100%;
+    font-size: 24px;
+    font-family: "Arial";
+    color: #308ECC;
+    /**top:300px;**/
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#logo {
+    width: 100%;
+    margin-bottom: 180px;
+}
+
+#logo img {
+    bottom: 55%;
+    height: 220px;
+    margin: auto;
+    text-align: center;
+}
+
+#table-div {
+    display: table;
+    width: 100%;
+}
+
+#cell-div {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100vh;
 }
 
 
@@ -126,11 +191,11 @@ button[disabled] {
 .loader {
     height: 20px;
     width: 250px;
-    position: absolute;
+    /**position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 0;**/
     margin: auto;
 }
 
@@ -139,41 +204,44 @@ button[disabled] {
     animation-timing-function: ease-in-out;
     animation-duration: 3s;
     animation-iteration-count: infinite;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     border-radius: 100%;
-    background-color: black;
     position: absolute;
-    border: 2px solid white;
 }
 
 .loader--dot:first-child {
-    background-color: #8cc759;
+    background-color: rgba(48, 142, 204, .3);
+    opacity: 0.4;
     animation-delay: 0.5s;
 }
 
 .loader--dot:nth-child(2) {
-    background-color: #8c6daf;
+    background-color: rgba(48, 142, 204, .3);
+    opacity: 0.5;
     animation-delay: 0.4s;
 }
 
 .loader--dot:nth-child(3) {
-    background-color: #ef5d74;
+    background-color: rgba(48, 142, 204, .3);
+    opacity: 0.6;
     animation-delay: 0.3s;
 }
 
 .loader--dot:nth-child(4) {
-    background-color: #f9a74b;
+    background-color: rgba(48, 142, 204, .3);
+    opacity: 0.7;
     animation-delay: 0.2s;
 }
 
 .loader--dot:nth-child(5) {
-    background-color: #60beeb;
+    background-color: rgba(48, 142, 204, .3);
+    opacity: 0.8;
     animation-delay: 0.1s;
 }
 
 .loader--dot:nth-child(6) {
-    background-color: #fbef5a;
+    background-color: rgba(48, 142, 204, .3);
     animation-delay: 0s;
 }
 
@@ -193,21 +261,28 @@ button[disabled] {
 }
 </style>
 <div id="container" ondblclick="enterFullScreen()">
-    <div id="card">
-        <div id="remote">
-            <video id="remoteVideo" autoplay="autoplay"></video>
+    <div id="table-div">
+        <div id="cell-div">
+            <div id="card">
+                <div id="remote">
+                    <video id="remoteVideo" autoplay="autoplay"></video>
+                </div>
+            </div>
+            <div id="logo">
+                <img src="images/tessa-logo.svg">
+            </div>
+            <div id="loader" class='loader'>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--text'></div>
+            </div>
+            <br>
+            <div id="info-bar"></div>
         </div>
-    </div>
-    <h1><div id="info-bar"></div></h1>
-    <br>
-    <div id="loader" class='loader'>
-        <div class='loader--dot'></div>
-        <div class='loader--dot'></div>
-        <div class='loader--dot'></div>
-        <div class='loader--dot'></div>
-        <div class='loader--dot'></div>
-        <div class='loader--dot'></div>
-        <div class='loader--text'></div>
     </div>
 </div>
 <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
@@ -289,6 +364,9 @@ connection.optionalArgument = {
 // DOM objects
 var remoteVideo = document.getElementById('remoteVideo');
 var card = document.getElementById('card');
+var logo = document.getElementById('logo');
+var loader = document.getElementById('loader');
+
 var containerDiv;
 
 if (navigator.mozGetUserMedia) {
@@ -384,16 +462,24 @@ function waitForRemoteVideo() {
 
 function transitionToActive() {
     remoteVideo.style.opacity = 1;
-    card.style.webkitTransform = 'rotateY(180deg)';
+    logo.style.opacity = 0;
+    loader.style.opacity = 0;
+    card.style.position = 'relative';
+    // card.style.webkitTransform = 'rotateY(180deg)';
     window.onresize();
 }
 
 function transitionToWaiting() {
-    card.style.webkitTransform = 'rotateY(0deg)';
+    // card.style.webkitTransform = 'rotateY(0deg)';
     remoteVideo.style.opacity = 0;
+    logo.style.opacity = 1;
+    loader.style.opacity = 1;
+    card.style.position = 'absolute';
 }
 // Set the video displaying in the center of window.
 window.onresize = function() {
+    console.log('onresize ');
+
     var aspectRatio;
     if (remoteVideo.style.opacity === '1') {
         aspectRatio = remoteVideo.videoWidth / remoteVideo.videoHeight;
@@ -413,8 +499,41 @@ window.onresize = function() {
     containerDiv.style.top = (innerHeight - videoHeight) / 2 + 'px';
 };
 
+function requestFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
 function enterFullScreen() {
-    container.webkitRequestFullScreen();
+    console.log('enterFullScreen');
+    // container.webkitRequestFullScreen();
+    var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+    var fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled;
+
+    if (fullscreenEnabled) {
+        requestFullscreen(document.documentElement);
+    } else if (fullscreenElement) {
+        requestFullscreen(document.documentElement);
+    }
+}
+
+function exitFullScreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.cancelFullScreen) {
+        document.cancelFullScreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+    }
 }
 
 // using websockets as signaling medium
@@ -476,10 +595,10 @@ websocket.onclose = function() {
     }
 };
 
-infoBar.innerHTML = 'Initialize Connection...';
+infoBar.innerHTML = 'Initializing Connection';
 
 websocket.onopen = function() {
-    infoBar.innerHTML = 'Waiting for connection...';
+    infoBar.innerHTML = 'Waiting for connection';
 
     var sessionDescription = {
         userid: params.s,
@@ -515,7 +634,6 @@ window.addEventListener('online', function() {
 </script>
 <script src="https://rawgit.com/bestiejs/platform.js/1.3.1/platform.js"></script>
 <script type="text/javascript">
-
 var deviceDetector = window.platform;
 var promise;
 
