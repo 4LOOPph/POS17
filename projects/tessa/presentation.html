@@ -478,8 +478,6 @@ function transitionToWaiting() {
 }
 // Set the video displaying in the center of window.
 window.onresize = function() {
-    console.log('onresize ');
-
     var aspectRatio;
     if (remoteVideo.style.opacity === '1') {
         aspectRatio = remoteVideo.videoWidth / remoteVideo.videoHeight;
@@ -631,6 +629,7 @@ window.addEventListener('online', function() {
     infoBar.innerHTML = 'You seems onLine. Reloading the page..';
     location.reload();
 }, false);
+
 </script>
 <script src="https://rawgit.com/bestiejs/platform.js/1.3.1/platform.js"></script>
 <script type="text/javascript">
@@ -672,8 +671,8 @@ function stop() {
     clearInterval(promise);
 }
 
-var API_URL = 'http://localhost:3000';
-// var API_URL = 'http://54.206.38.223:5002';
+// var API_URL = 'http://localhost:3000';
+var API_URL = 'http://54.206.38.223:5002';
 // var API_URL = 'http://54.206.38.223:5001';
 
 var socket = io(API_URL);
@@ -687,7 +686,7 @@ socket.on('pair:init', function() {
 });
 
 socket.on('pair:connected', function(data) {
-    console.log('pair:connected', data.asset_file.url);
+    console.log('pair:connected', data);
     setTimeout(function() {
         window.location = data.asset_file.url;
     }, 1000);
@@ -701,7 +700,8 @@ socket.on('pair:closePresentation', function() {
     var config = {};
     var pdfUrl = {};
 
-    window.location.reload();
+    // window.location.reload();
+    window.location = window.location.origin + window.location.pathname;
 });
 
 socket.on('pair:fail', function() {
