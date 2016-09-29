@@ -33,13 +33,13 @@
                         </span>
                     </div>
                     <div class="flex flex_3">
-                        <a ng-click="showAllFiles()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Assets'}" uib-tooltip="Assets">
+                        <a ng-click="showAllFiles()" ng-if="showToolBar" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Assets'}" uib-tooltip="Assets">
                             <span ng-hide="viewFavorite"><img src="./images/icons/ic_folder_black_px.svg" ></span>
                         </a>
-                        <a ng-click="showAllTrash()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Trash'}" uib-tooltip="Trash">
+                        <a ng-click="showAllTrash()" ng-if="showToolBar" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Trash'}" uib-tooltip="Trash">
                             <span ng-hide="viewFavorite"><img src="./images/icons/ic_delete_black_24px.svg"></span>
                         </a>
-                        <a ng-click="showAllStarred()" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Favorites'}" uib-tooltip="Favorites" style="margin-right: 10px;padding-right: 8px !important;">
+                        <a ng-click="showAllStarred()" ng-if="showToolBar" class="padding_10 font_medium menu" ng-class="{'menu-active': activePage =='Favorites'}" uib-tooltip="Favorites" style="margin-right: 10px;padding-right: 8px !important;">
                             <span ng-hide="viewFavorite"><img src="./images/icons/ic_star_black_24px.svg"></span>
                         </a>
                     </div>
@@ -93,11 +93,11 @@
                         <li ng-if="selectedFile.isDeleted == 0">
                             <a ng-click="renameSelected()">
                                 <span class="svg_icon_sm" style="padding: 0px 8px 0px 0px !important;"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
-                            </a>
-                        </li>
-                        <li ng-if="selectedFile.isFolder == false && selectedFile.isDeleted == 0">
-                            <a ng-click="castModal()">
-                                <span class="svg_icon_sm"><i class="ti ti-desktop padd"></i> Mirror
+                </a>
+                </li>
+                <li ng-if="selectedFile.isFolder == false && selectedFile.isDeleted == 0">
+                    <a ng-click="castModal()">
+                        <span class="svg_icon_sm"><i class="ti ti-desktop padd"></i> Mirror
                             </a>
                         </li>
                         <li ng-if="selectedFile.isStarred == 1 && selectedFile.isDeleted == 0">
@@ -183,7 +183,7 @@
                             <span><i class="fa fa-download"></i> Download</span>
                         </a>
                     </li>
-                    <li>
+                    <li ng-if="showBarDelete">
                         <a role="menuitem" tabindex="-1" ng-click="deleteSelected()">
                             <span><i class="fa fa-trash-o"></i> Delete</span>
                         </a>
@@ -230,6 +230,7 @@
     transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
     line-height: 50px;
 }
+
 .menu-active {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 8px 0px inset;
     background-color: rgb(216, 216, 216);
@@ -255,6 +256,7 @@
     margin-right: 10px;
     padding: 8px 6px 10px 8px !important;
 }
+
 .menu1 {
     background-image: url(./images/icons/ic_folder_black_px.svg);
     /*border-radius: 3px; */
@@ -336,6 +338,7 @@
 .modal-body {
     padding: 0 10px;
 }
+
 .head {
     margin-top: -155px;
     background-color: #2980dc;
