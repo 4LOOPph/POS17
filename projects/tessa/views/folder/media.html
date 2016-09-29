@@ -2,7 +2,7 @@
     <div class="modal-header" style="padding: 15px 15px 10px;border-bottom: 1px solid rgb(37, 42, 45);background: rgb(37, 42, 45);color: #fff;">
         <span class="cast" style="cursor: pointer;"><img src="./images/icons/ic_get_app_white_24px.svg"></span>
         <span class="cast"><a href="" ng-click="starredSelected(asset_file)"><img src="./images/icons/ic_star_border_white_24px.svg"></span></a>
-        <span uib-dropdown class="cast">
+        <span uib-dropdown class="cast" ng-if="!displayInstallPlugin && !mirrorFile">
             <a id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled" style="color: #fff;">
                    <img src="./images/icons/ico_cast04.svg" style="max-width: 35px;margin-top: -10px;margin-bottom: -6px;">
             </a>
@@ -14,9 +14,9 @@
                 </li>
             </ul>
         </span>
-        <!-- <a type="button" ng-click="selectDevice()" ng-if="!displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+        <a type="button" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
             <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
-        </a> -->
+        </a>
         <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
            Install Plugin
         </a>

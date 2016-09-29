@@ -3,25 +3,25 @@
         <div id="testo">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" ng-repeat="item in aboutengagis" ng-if="item.asset_mimetype == 'image/png'">
                         <div class="tes-slider">
                             <div class="dis_table slider-content">
                                 <section class="dis_cell_top">
-                                    <h1>Engagis: Creating Connections</h1>
+                                    <h1>{{item.asset_name}}</h1>
                                     <h3>Author: Engagis</h3>
                                     <div class="hide-sm">
                                         <p class="pad_vertical_15 ">
                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         </p>
                                         <div>
-                                            <a class="btn btn-primary">Preview</a>
-                                            <a class="btn btn-primary">Cast to Screen</a>
+                                            <a class="btn btn-primary" ng-click="imagepreview(item)">Preview</a>
+                                            <a class="btn btn-primary" ng-click="imageCast(item)">Cast to Screen</a>
                                         </div>
                                     </div>
                                 </section>
                                 <section class="dis_cell_top">
                                     <div class="img_holder">
-                                        <img src="../../images/img-sample-3.jpg" />
+                                        <img ng-src="{{item.asset_url}}" />
                                         <div class="drp-sdow"></div>
                                     </div>
                                     <div class="show-sm">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <!-- <div class="swiper-slide">
                         <div class="tes-slider">
                             <div class="dis_table slider-content">
                                 <section class="dis_cell_top">
@@ -64,7 +64,7 @@
                                 </section>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -78,27 +78,27 @@
         <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a ng-click="imgpreview()">
+                    <a ng-click="previewSelected()">
                         <i class="ti ti-eye padd"></i> Preview
                     </a>
                 </li>
-                <li>
+                <li ng-if="selectedFile.asset_mimetype == 'image/jpeg'||selectedFile.asset_mimetype == 'image/png'">
                     <a>
                         <i class="ti ti-fullscreen padd"></i> View Fullscreen
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a ng-click="castModal()">
                         <i class="ti ti-desktop padd"></i> Mirror
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a>
                         <i class="ti ti-star padd"></i> Add Star
                     </a>
-                </li>
+                </li> -->
                 <li>
-                    <a>
+                    <a ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}">
                         <i class="ti ti-download padd"></i> Download
                     </a>
                 </li>
@@ -107,265 +107,112 @@
         <div class="flexi-pad" contextmenu-container="meta.contextmenu">
             <div class="multiple-slider">
                 <div class="font_18 font_medium blue1">
-                    Top 10 Presentations
+                    {{toppresentation.folder_name}}
                 </div>
                 <div class="swiper-container">
-                <div class="slide-left" ng-view></div>
+                    <div class="slide-left" ng-view></div>
                     <div class="swiper-scrollbar"></div>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a class="file-item" contextmenu-item="file">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
+                        <div class="swiper-slide" ng-repeat="item in toppresentation.files">
+                            <a class="file-item" contextmenu-item="file" ng-click="activeSelected(item)" ng-class="{'active':item.isActive}">
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
+                                    <img ng-src="{{item.asset_url}}" />
                                 </div>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf'">
+                                    <img src="./images/icons/pdf-files.png" />
+                                </div>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
+                                    <img src="./images/icons/google-docs.png" />
+                                </div>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
+                                    <img src="./images/icons/google-slide.png" />
+                                </div>
+                                <i class="fa fa-file-audio-o text-black docs" ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'"></i>
+                                <i class="fa fa-file-text-o text-blue docs" ng-if="item.asset_mimetype == 'text/plain'"></i>
+                                <i class="fa fa-file-excel-o text-green docs" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                                <i class="fa fa-file-zip-o text-purple docs" ng-if="item.asset_mimetype == 'application/zip'"></i>
+                                <i class="fa fa-file-o text-purple docs" ng-if="item.asset_mimetype == 'application/octet-stream'"></i>
                                 <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
+                                    <span class="orange1 ">
+                                       <i class="fa fa-file-image-o" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'"></i>
+                                            <i class="fa fa-file-pdf-o" ng-if="item.asset_mimetype == 'application/pdf'"></i>
+                                            <i class="fa fa-file-word-o" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
+                                            <i class="fa fa-file-code-o" ng-if="item.asset_mimetype == 'text/plain'"></i>
+                                            <i class="fa fa-file-powerpoint-o" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
+                                            <i class="fa fa-file-excel-o" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                                            <i class="fa fa-file-audio-o" ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'"></i>
+                                            <i class="fa fa-file-movie-o" ng-if="item.asset_mimetype == 'video/mp4'"></i>
                                     </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
+                                    <span class="pad_side_10 ">
+                                        {{item.asset_name}}
                                     </span>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <!-- Add Scrollbar -->
                 </div>
             </div>
             <div class="multiple-slider">
-                <div class="font_18 font_medium blue1">
-                    Retail
-                </div>
-                <div class="swiper-container">
-                    <div class="swiper-scrollbar"></div>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a class="file-item" contextmenu-item="file">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="orange1">
-                                        <i class="fa fa-file-powerpoint-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="file-item">
-                                <div class="img_holder">
-                                    <img src="../../images/img-sample-3.jpg" />
-                                </div>
-                                <div class="file-name">
-                                    <span class="red1">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </span>
-                                    <span class="pad_side_10">
-                                        Your filename here please please please.
-                                    </span>
-                                </div>
-                            </a>
+                <div class="row" ng-repeat="(key,value) in (presentationfolders | groupBy: 'folder_name')">
+                    <div class="font_18 font_medium blue1" ng-hide="key == 'Top 10 Presentations'">
+                        {{key}}
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-repeat="item in value|map:'files' | flatten">
+                                <a class="file-item" contextmenu-item="file" ng-click="activeSelected(item)" ng-class="{'active':item.isActive}">
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
+                                        <img ng-src="{{item.asset_url}}" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf'">
+                                        <img src="./images/icons/pdf-files.png" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
+                                        <img src="./images/icons/google-docs.png" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'text/plain'">
+                                        <img src="./images/icons/google-text.png" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
+                                        <img src="./images/icons/google-slide.png" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
+                                        <img src="./images/icons/google-sheet.png" />
+                                    </div>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'">
+                                        <img src="./images/icons/google-audio.png" />
+                                    </div>
+                                    <div class="videogular-container" ng-if="item.asset_mimetype == 'video/mp4'">
+                                        <videogular vg-theme="item.url">
+                                            <vg-media vg-src="item.asset_url"></vg-media>
+                                            <vg-buffering></vg-buffering>
+                                            <!-- <vg-overlay-play></vg-overlay-play> -->
+                                        </videogular>
+                                    </div>
+                                    <!-- <i class="fa fa-file-audio-o text-black docs" ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'"></i> -->
+                                    <!-- <i class="fa fa-file-text-o text-blue docs" ></i> -->
+                                    <i class="fa fa-file-zip-o text-purple docs" ng-if="item.asset_mimetype == 'application/zip'"></i>
+                                    <i class="fa fa-file-o text-purple docs" ng-if="item.asset_mimetype == 'application/octet-stream'"></i>
+                                    <div class="file-name">
+                                        <span class="orange1 ">
+                                            <i class="fa fa-file-image-o" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'"></i>
+                                            <i class="fa fa-file-pdf-o" ng-if="item.asset_mimetype == 'application/pdf'"></i>
+                                            <i class="fa fa-file-word-o" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
+                                            <i class="fa fa-file-code-o" ng-if="item.asset_mimetype == 'text/plain'"></i>
+                                            <i class="fa fa-file-powerpoint-o" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
+                                            <i class="fa fa-file-excel-o" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                                            <i class="fa fa-file-audio-o" ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'"></i>
+                                            <i class="fa fa-file-movie-o" ng-if="item.asset_mimetype == 'video/mp4'"></i>
+                                        </span>
+                                        <span class="pad_side_10 ">
+                                            {{item.asset_name}}
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <!-- Add Scrollbar -->
                 </div>
             </div>
         </div>
@@ -391,3 +238,9 @@ var swiper = new Swiper('.multiple-slider .swiper-container', {
     grabCursor: true
 });
 </script>
+<style type="text/css">
+.multiple-slider .active {
+    background: #3cb1ff;
+    color: white !important;
+}
+</style>
