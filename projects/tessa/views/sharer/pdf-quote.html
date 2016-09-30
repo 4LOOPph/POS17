@@ -106,14 +106,7 @@
                     <th style="font-weight: normal;text-align: right">End Date</th>
                     <td style="padding-left:10px;text-align: left">{{selected.valid_until}}</td>
                 </tr>
-                <tr style="font-size:10px;">
-                    <th style="font-weight: normal;text-align: right">Memo</th>
-                    <td style="padding-left:10px;text-align: left">
-                        <div class="" ng-bind-html="details.comments">
-                            <!-- {{details.comments}} -->
-                        </div>
-                    </td>
-                </tr>
+
             </table>
         </div>
     </div>
@@ -240,7 +233,13 @@
         </tr>
     </table>
     <div style="padding: 10px ;font-size:10px; ">
-        <i>Quote is valid for 30 days only and is subject to our terms and conditions.</i>
+        <div>
+            <i>Quote is valid for 30 days only and is subject to our terms and conditions.</i>
+        </div>
+        <div>
+            <i>Pricing is subject to exchange rate variations.</i>
+        </div>
+
     </div>
 </div>
 </body>
