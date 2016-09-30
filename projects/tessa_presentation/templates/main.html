@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="starter-template">
+        <div class="jumbotron" ng-if="!isConnected">
+            <h1>Waiting...</h1>
+            <br>
+            <div class='loader'>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--dot'></div>
+                <div class='loader--text'></div>
+            </div>
+            <br>
+            <br>
+            <p>Please wait for presentation casting</p>
+        </div>
+        <div ng-if="isConnected">
+            <iframe style="width: 100%;height: 100%;" src="{{pdfUrl}}" frameborder='0' ng-if="file_type !=='application/pdf' && audio == null"></iframe>
+            <object type="application/pdf" data="{{pdfUrl}}" id="pdf_content" ng-if="file_type =='application/pdf' && audio == null"></object>
+
+            <div class="videogular-container" ng-class="{'audio': audio}" ng-if="audio == true || audio == false">
+                <videogular vg-theme="config.theme.url">
+                    <vg-media vg-src="config.sources" vg-type="audio" ng-if="audio"></vg-media>
+                    <vg-media vg-src="config.sources"></vg-media>
+                    <vg-controls>
+                        <vg-play-pause-button></vg-play-pause-button>
+                        <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                        <vg-scrub-bar>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                        </vg-scrub-bar>
+                        <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                        <vg-volume>
+                            <vg-mute-button></vg-mute-button>
+                            <vg-volume-bar></vg-volume-bar>
+                        </vg-volume>
+                        <vg-fullscreen-button></vg-fullscreen-button>
+                    </vg-controls>
+                    <vg-overlay-play ng-if="!audio"></vg-overlay-play>
+                </videogular>
+            </div>
+        </div>
+    </div>
+</div>

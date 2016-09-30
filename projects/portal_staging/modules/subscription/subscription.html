@@ -1,0 +1,102 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+    Customer
+        <small>Subscription Request</small>        
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Subscription Request</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content ng-scope">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-info">
+                                <span ng-if="applicationStatus == ''">All</span>
+                                <span ng-if="applicationStatus != ''">{{applicationStatus}}</span></button>
+                            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret" aria-labe="Toggle"></span>
+                                <span aria-labe="Toggle" class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a ng-click="updateStatus('')">All</a>
+                                </li>
+                                <li>
+                                    <a ng-click="updateStatus('Pending')">Pending</a>
+                                </li>
+                                <li>
+                                    <a ng-click="updateStatus('Approved')">Approved</a>
+                                </li>
+                                <li>
+                                    <a ng-click="updateStatus('Denied')">Denied</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a ng-click="addNewRequest()">
+                            <button class="btn btn-sm btn-info">New Request</button>
+                        </a>
+                    </div>
+                    <!-- /. tools -->
+                    <i class="ion ion-clipboard"></i>
+                    <h3 class="box-title">Subscription Request</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-hover footable" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </th>
+                                <!--  <th data-type="numeric" data-sort-initial="true">ID</th> -->
+                                <th>Compay Name</th>
+                                <th>Full Name</th>
+                                <th>Address</th>
+                                <th>Account Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="req in request">
+                                <td>
+                                    <input type="checkbox" ng-model="req.selected">
+                                </td>
+                                <td><a ng-click="getSubscriptionRequestDetail(req.sr_id)">{{req.company_name}}</td></a>
+                                    <td>{{req.lastname+','+ req.firstname }}</td>
+                                    <td>{{req.address1 +','+ req.city+','+ req.zipcode}}</td>
+                                    <td>
+                                        <span ng-if="req.isExisting == 1" class="label label-success">Existing</span>
+                                        <span ng-if="req.isExisting == 0" class="label label-primary">New</span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="req.is_approved == 1 && req.deny_date == null" class="label label-success">approved</span>
+                                        <span ng-if="req.is_approved == 0 && req.deny_date != null" class="label label-danger">denied</span>
+                                        <span ng-if="req.is_approved == 0 && req.deny_date == null && req.approved_date ==null" class="label label-warning">pending</span>
+                                    </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>
+<script>

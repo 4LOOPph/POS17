@@ -1,0 +1,19 @@
+<section class="content-header">
+    <h1>Purchase Order</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.purchase_order">Purchase Order List</a></li>
+        <li><a ui-sref="main.add_order">Purchase Order</a></li>
+        <li class="active">Product List</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-gift'></i> Product List" bs-pane>
+            <div ng-include="'modules/purchase_order/productList.html'"></div>
+        </div>
+        <div data-title="<i class='fa fa-gift'></i> Product Bundle" bs-pane>
+            <div ng-include="'modules/purchase_order/productBundle.html'"></div>
+        </div>
+    </div>
+</section>

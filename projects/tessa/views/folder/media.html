@@ -1,0 +1,93 @@
+<form class="form-horizontal">
+    <div class="modal-header" style="padding: 15px 15px 10px;border-bottom: 1px solid rgb(37, 42, 45);background: rgb(37, 42, 45);color: #fff;">
+        <span class="cast" style="cursor: pointer;"><img src="./images/icons/ic_get_app_white_24px.svg"></span>
+        <span class="cast"><a href="" ng-click="starredSelected(asset_file)"><img src="./images/icons/ic_star_border_white_24px.svg"></span></a>
+        <span uib-dropdown class="cast" ng-if="!displayInstallPlugin && !mirrorFile">
+            <a id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled" style="color: #fff;">
+                   <img src="./images/icons/ico_cast04.svg" style="max-width: 35px;margin-top: -10px;margin-bottom: -6px;">
+            </a>
+            <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="left: 56px;top: -7px;background: #252a2d;border: 0;">
+                <li ng-repeat="device in activeDevices">
+                    <a href="" ng-click="selectDevice(device)">
+                        <span>&nbsp {{device.os}}({{device.os_version}})</span>
+                    </a>
+                </li>
+            </ul>
+        </span>
+        <a type="button" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+            <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+        </a>
+        <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+           Install Plugin
+        </a>
+        <a ng-click="cancel()" class="close" style="background: #fff;padding: 0px 5px;border-radius: 50%;"><span aria-hidden="true">×</span><span class="sr-only">Close</span></a>
+    </div>
+    <div class="modal-body" style="padding: 0;">
+        <div class="videogular-container" ng-class="{'audio': audio}">
+            <videogular vg-player-ready="onReady($API)" vg-theme="config.theme.url">
+                <vg-media vg-src="config.sources" vg-type="audio" ng-if="audio"></vg-media>
+                <vg-media vg-src="config.sources"></vg-media>
+                <vg-controls>
+                    <vg-play-pause-button></vg-play-pause-button>
+                    <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                    <vg-scrub-bar>
+                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                    </vg-scrub-bar>
+                    <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                    <vg-volume>
+                        <vg-mute-button></vg-mute-button>
+                        <vg-volume-bar></vg-volume-bar>
+                    </vg-volume>
+                    <vg-fullscreen-button></vg-fullscreen-button>
+                </vg-controls>
+                <vg-overlay-play ng-if="!audio"></vg-overlay-play>
+            </videogular>
+        </div>
+    </div>
+    <!--  <div class="modal-footer">
+        <button type="button" class=" btn btn-primary-alt pull-right" ng-click="cancel()">CLOSE
+        </button>
+    </div> -->
+</form>
+<style type="text/css">
+.cast {
+    background: transparent;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.cast:hover,
+.cast:active,
+.cast:focus {
+    background: rgba(49, 106, 202, 0.51);
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.5s ease;
+}
+
+.dropdown-menu>li>a {
+    display: block;
+    padding: 10px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #f9f9f9;
+    white-space: nowrap;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+    color: #f9f9f9;
+    text-decoration: none;
+    background-color: rgba(49, 106, 202, 0.51);
+    transition: background-color 0.5s ease;
+    border-radius: 3px;
+}
+
+.videogular-container {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+}
+</style>

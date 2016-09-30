@@ -1,0 +1,20 @@
+<div class="login-box" ng-init="isVerified()">
+    <div class="login-box-body">
+        <form ng-submit="forgotpass()">
+            <div class="text-center">
+                <h1 ng-show="!response.success"><i class="fa fa-info-circle fa-2x text-info"></i></h1>
+                <p ng-show="!response.success">
+                    <h3 ng-show="!response.success"> Verifying account.</h3>
+                    <br>
+                    <i ng-show="!response.success" class="fa fa-spinner fa-pulse fa-3x fa-fw text-blue"></i>
+                </p>
+                <h1 ng-show="response"><i class="fa fa-warning fa-2x text-yellow"></i></h1>
+                <p ng-show="response">
+                    <h3 ng-show="response">{{response.msg}}</h3>
+                    <br>
+                    <p ng-show="response">You may now <a ui-sref="login">Login</a> with your account</p>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

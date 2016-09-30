@@ -1,0 +1,214 @@
+<div id="pd-sol-wrap" class="wrapper" ng-show="details">
+    <div class="breadcrumbs font_medium dis_table_auto" style="padding:0;">
+
+        <a class="dis_cell btn btn-tessa-back " ng-click="goBack()">
+            <i class="fa fa-angle-left"> </i>
+        </a>
+        <a class="dis_cell current pad_side_10">
+            {{details.bundle_name}}
+        </a>
+        <!-- <a class="current">
+        > {{details.bundle_name}}
+        </a> -->
+    </div>
+    <div class="flexi-flow">
+        <div class="parent-sd">
+            <div class="sec-sd-psd">
+                <!-- Main Article -->
+                <div class="main_article">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="carousel_contain">
+                                <div id="carousel-custom" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-outer">
+                                        <div class="carousel-inner">
+                                            <div ng-repeat="slide in slides" class="item" ng-class="{active:!$index}" data-thumb="{{$index}}">
+                                                <img class="image-responsive" ng-src="{{slide.image}}">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control left" data-target='#carousel-custom' data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left "></span>
+                                        </a>
+                                        <a class="carousel-control right" data-target='#carousel-custom' data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right "></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--carousel here-->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="dis_table_auto">
+                                <div class="dis_cell">
+                                    <ul class="product_gallery">
+                                        <li ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{slide.index}}" ng-class="{active:!$index}">
+                                            <img ng-src="{{slide.image}}" alt='' width="150" height="100" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="side_menu dis_cell_2">
+                                    <a ng-click="openShareModal()" class="side_buttons font_bold uppercase">
+                                        <i class="fa fa-share"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                            <br/>
+
+
+                            <div class="font_24 font_light blue1">
+                                {{details.bundle_name}}
+                            </div>
+                            <!--product name-->
+                            <div class=" font_18 grey2 pad10top" data-ng-bind-html="details.bundle_description">
+                            </div>
+                            <!--product description-->
+                            <div class="divider"></div>
+                            <div class="row_title pad20top">
+                                Pricing Options
+                            </div>
+                            <!--pricing options-->
+                            <div id="pricing_options">
+                                <div class="dis_flex">
+                                    <div class="flex_lg">
+                                        <ul class="price_row">
+                                            <li>
+                                                <div class="dis_table">
+                                                    <div class="dis_cell fill_grey center_align">
+                                                    <span class="font_18 font_bold blue3">
+                                                        Capex
+                                                    </span>
+                                                    </div>
+                                                    <div class="dis_cell fill_blue2 right_align">
+                                                        <div class="font_12">
+                                                            Upfront
+                                                        </div>
+                                                        <div class="font_18 ">
+                                                            <sup>$</sup>{{upfront | number:2}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="dis_cell fill_blue1 right_align">
+                                                        <div class="font_12 ">
+                                                            Monthly
+                                                        </div>
+                                                        <div class="font_18 ">
+                                                            <sup>$</sup>{{spPrice | number: 2}}*
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dis_table">
+                                                    <div class="dis_cell fill_grey center_align">
+                                                    <span class="font_18 font_bold blue3">
+                                                        Opex
+                                                    </span>
+                                                    </div>
+                                                    <div class="dis_cell fill_blue2 right_align">
+                                                        <div class="font_12">
+                                                            For as low as
+                                                        </div>
+                                                        <div class="font_18">
+                                                            <sup>$</sup>{{(((((upfront * 31.111)/1000) + spPrice)*12)/52) | number:2}} /wk
+                                                        </div>
+                                                    </div>
+                                                    <div class="dis_cell fill_blue1 right_align">
+                                                        <div class="font_12">
+                                                            Monthly
+                                                        </div>
+                                                        <div class="font_18 ">
+                                                            <sup>$</sup>{{(((upfront*31.111)/1000) + spPrice) | number:2}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a class="flex_sm" ng-click="addToCart(details)">
+                                        <span class="font_medium uppercase"><img src="./images/icons/ico_cartDark.svg"/> add to cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--pricing options-->
+                            <div class=" grey3 font_medium font_12">
+                                *Billed monthly within a 36-month term.
+                            </div>
+                        </div>
+                        <!--product details here-->
+                    </div>
+                </div>
+                <!-- End of: Main Article -->
+                <!--Inclusions-->
+                <div class="packages">
+                    <div class="font_24 blue3">
+                        Packages
+                    </div>
+                    <div class=" dis_table sec-sd-inclusions">
+                        <div class="dis_cell">
+                            <div class="inc_head">
+                                Software
+                            </div>
+                            <ul class="inc_body">
+                                <li ng-repeat="(key,value) in (software | groupBy: 'category_label')">
+                                    <div class="inc_title font_bold grey2" ng-if="key=='CMS'">
+                                        {{key}}
+                                    </div>
+                                    <a>
+                                        <div class="inc_text font_light grey2" ng-repeat="softwares in value" ng-click="openProductModal(softwares)" ng-if="key=='CMS'">
+                                            {{softwares.item_name}}
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dis_cell">
+                            <div class="inc_head">
+                                Hardware
+                            </div>
+                            <ul class="inc_body">
+                                <li ng-repeat="(key,value) in (hardwareCategory | groupBy: 'category_label')">
+                                    <div class="inc_title font_bold grey2">
+                                        {{key}}
+                                    </div>
+                                    <a class="inc_text font_light grey2" ng-repeat="categ in value" ng-click="openProductModal(categ)">
+                                        {{categ.item_name}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dis_cell">
+                            <div class="inc_head">
+                                Deployment
+                            </div>
+                            <ul class="inc_body">
+                                <li ng-repeat="deploy in deployment">
+                                    <a class="inc_text font_light grey2" ng-click="openProductModal(deploy)">
+                                        {{deploy.item_name}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dis_cell">
+                            <div class="inc_head">
+                                Support
+                            </div>
+                            <ul class="inc_body">
+                                <li ng-repeat="supp in support">
+                                    <a class="inc_text font_light grey2" ng-click="openProductModal(supp)">
+                                        {{supp.item_name}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--End: Inclusions-->
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    #active-catalogue {
+        background: #424242;
+    }
+</style>

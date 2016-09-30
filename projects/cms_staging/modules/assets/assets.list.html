@@ -1,0 +1,134 @@
+<section class="content">
+    <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
+        <ul class="dropdown-menu" role="menu">
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="previewSelected()" ng-if="showToolPreview">
+                    <i class="fa fa-eye"></i> <span>Preview</span>
+                </a>
+            </li>
+            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0"></li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="shareToOthers()">
+                    <i class="fa fa-user-plus"></i><span>Share</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="starredSelected()">
+                    <i class="fa fa-star"></i><span>Add Star</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="starredSelected()">
+                    <i class="fa fa-star-o"></i><span>Remove Star</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="moveSelected()">
+                    <i class="fa fa-arrows-alt"></i><span>Move to...</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="renameSelected()">
+                    <i class="fa fa-pencil"></i><span>Rename</span>
+                </a>
+            </li>
+            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href ng-click="showInfoSelected()">
+                    <i class="fa fa-info-circle"></i><span>View Details</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" href>
+                    <i class="fa fa-copy"></i><span>Make a copy</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
+                    <i class="fa fa-download"></i><span>Download</span>
+                </a>
+            </li>
+            <li ng-if="meta.contextmenu.item.isDeleted == 1">
+                <a role="menuitem" href ng-click="restoreSelected()">
+                    <i class="fa fa-history"></i> <span>Restore</span>
+                </a>
+            </li>
+            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
+            <li>
+                <a role="menuitem" href ng-click="deleteSelected()">
+                    <i class="fa fa-trash-o"></i><span>Remove</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <table class="table assets-folders" contextmenu-container="meta.contextmenu">
+        <thead>
+            <tr>
+                <th width="5%"></th>
+                <th width="5%"></th>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>File size</th>
+                <th>Date Created</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr contextmenu-item="file" ng-repeat="file in assets.folders" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)" ng-class="{'active':file.isActive}" ng-if="assets.folders.length > 0">
+                <td class="mailbox-star">
+                    <i class="fa fa-folder fa-2x text-muted"></i>
+                </td>
+                <td class="mailbox-star">
+                    <!-- STARRED -->
+                    <i class="fa fa-star text-yellow" ng-if="file.isStarred"></i>
+                    <i class="fa fa-star-o" ng-if="!file.isStarred"></i>
+                </td>
+                <td class="mailbox-subject">{{file.folder_name}}</td>
+                <td class="mailbox-name">{{file.created_by.displayName}}</td>
+                <!-- <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ file.folder_filesize }} </td>
+                <td class="mailbox-date" am-time-ago="file.date_created"></td>
+                <td class="mailbox-name"></td>
+            </tr>
+
+            <tr contextmenu-item="files" ng-repeat="files in assets.assets" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" ng-if="assets.assets.length > 0">
+                <td class="mailbox-star">
+                    <!-- PDF -->
+                    <i class="fa fa-file-pdf-o fa-2x text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
+                    <!-- DOCS -->
+                    <i class="fa fa-file-word-o fa-2x text-blue" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
+                    <!-- AUDIO -->
+                    <i class="fa fa-file-audio-o fa-2x" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
+                    <!-- VIDEO -->
+                    <i class="fa fa-file-video-o fa-2x" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'"></i>
+                    <!-- TEXT -->
+                    <i class="fa fa-file-text-o fa-2x text-blue" ng-if="files.asset_mimetype == 'text/plain'"></i>
+                    <!-- EXCEL -->
+                    <i class="fa fa-file-excel-o fa-2x text-green" ng-if="files.asset_mimetype == 'text/csv' || files.asset_mimetype == 'application/vnd.ms-excel' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                    <!-- POWERPOINT -->
+                    <i class="fa fa-file-powerpoint-o fa-2x text-orange" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
+                    <!-- ZIP -->
+                    <i class="fa fa-file-zip-o fa-2x text-purple" ng-if="files.asset_mimetype == 'application/zip'"></i>
+                    <!-- FILES -->
+                    <i class="fa fa-file-o fa-2x text-purple" ng-if="files.asset_mimetype == 'application/octet-stream'"></i>
+                    <!-- IMAGE -->
+                    <img src="{{files.asset_url}}" alt="Attachment" style="width: 27px;" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
+                </td>
+                <td class="mailbox-star">
+                    <!-- STARRED -->
+                    <i class="fa fa-star text-yellow" ng-if="files.isStarred"></i>
+                    <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
+                </td>
+                <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}</td>
+                <td class="mailbox-name">{{files.created_by.displayName}}</td>
+                <!-- <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td> -->
+                <td class="mailbox-attachment">{{ files.asset_filesize }}</td>
+                <td class="mailbox-date" am-time-ago="files.date_created"></td>
+                <td class="mailbox-name">
+                    <span ng-if="files.isPublished == 0" class="label label-warning">draft</span>
+                    <span ng-if="files.isPublished == 1" class="label label-success">published</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

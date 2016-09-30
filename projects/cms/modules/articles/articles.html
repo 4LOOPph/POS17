@@ -16,32 +16,26 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail">
-                            <i class="fa fa-edit"></i> Add New Entry
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
+                            <i class="fa fa-edit"></i> Add New
                         </button>
-                        <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()">
-                            <i class="fa fa-file-text-o"></i> Publish
+                        <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()" uib-tooltip="Publish">
+                            <i class="fa fa-file-text-o"></i>
                         </a>
-                        <a class="btn btn-flat btn-sm btn-warning" ng-disabled="!deleteSomeData" ng-click="draftSelected()">
-                            <i class="fa fa-edit"></i> Draft
+                        <a class="btn btn-flat btn-sm btn-warning" ng-disabled="!deleteSomeData" ng-click="draftSelected()" uib-tooltip="Draft">
+                            <i class="fa fa-edit"></i>
                         </a>
-                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
-                            <i class="fa fa-remove"></i> Delete
+                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                            <i class="fa fa-remove"></i>
                         </a>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                            <i class="fa fa-refresh"></i> Refresh
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                            <i class="fa fa-refresh"></i>
                         </button>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
                                             {{applicationStatus}}
@@ -57,6 +51,12 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -68,8 +68,8 @@
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
                                 <input type="checkbox" ng-model="article.selected" ng-change="checkDataChanges(article)">
                             </td>
-                            <td class="text-center" data-title="'Title'">
-                                {{article.title}}
+                            <td class="text-left" data-title="'Title'">
+                                <a href="" ng-click="edit(article.article_id)">{{article.title}}</a>
                             </td>
                             <td class="text-center" data-title="'Tags'">
                                 <span class="label label-default label-tags" ng-repeat="tag in article.tags">{{tag.tags}}</span>

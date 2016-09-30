@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#5CACDF;}
+	.st1{display:none;}
+	.st2{display:inline;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#A2CD3A;}
+</style>
+<path class="st0" d="M24.2,56.3v-6.4h36.7v6.4H24.2z M24.2,29.2h36.7v6.4H24.2V29.2z M24.2,8.5h36.7v6.4H24.2V8.5z M3.5,45.1h15.9
+	v16H3.5V45.1z M3.5,24.4h15.9v16H3.5V24.4z M3.5,3.7h15.9v15.9H3.5V3.7z"/>
+<g class="st1">
+	<g class="st2">
+		<path class="st3" d="M4.2,19.6h15.9V3.7H4.2V19.6z M4.2,61.1h15.9v-16H4.2V61.1z M4.2,40.3h15.9v-16H4.2V40.3z M44.3,40.3h15.9
+			v-16H44.3V40.3z M44.3,3.7v15.9h15.9V3.7H44.3z M44.3,61.1h15.9v-16H44.3V61.1z M24.2,19.6h15.9V3.7H24.2V19.6z M24.2,40.3h15.9
+			v-16H24.2V40.3z M24.2,61.1h15.9v-16H24.2V61.1z"/>
+	</g>
+</g>
+</svg>

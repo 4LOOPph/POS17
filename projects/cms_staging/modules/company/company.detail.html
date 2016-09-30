@@ -1,0 +1,22 @@
+<section class="content-header">
+    <h1>
+            Company Information
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.settings-company">Company </a></li>
+        <li class="active">Company Information</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+            <ng-include src="'./modules/company/details/info.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list '></i> Grouping" bs-pane ng-if="details.company_id">
+            <ng-include src="'./modules/company/details/grouping.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

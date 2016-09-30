@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ENGAGIS-TESSA</title>
+    <style>
+        #quote_items th {
+            background: black;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        #quote_items td {
+            padding: 10px;
+            border: solid thin #ededed;
+            border-right: 0;
+            border-left: 0;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,900,300,300italic' rel='stylesheet'
+          type='text/css'>
+</head>
+
+<body class="full-padding" style="margin: 0; padding: 0;-webkit-text-size-adjust: 100%;background-color: #ffffff;">
+<div class="wrapper" style="background-color: #ffffff; ">
+    <table class="layout layout--no-gutter"
+           style="color: #333333;border-collapse: collapse;table-layout: fixed;margin-left: auto;margin-right: auto;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;"
+           align="center">
+        <tbody>
+        <tr>
+            <td class="preheader__webversion"
+                style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+            </td>
+        </tr>
+        <tr>
+            <td class="preheader__webversion"
+                style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+            </td>
+        </tr>
+        <tr>
+            <td class="column" style="padding: 0 20px 20px 20px; width: 800px;">
+                <a href="http://engagis.com.au/" title="Engagis Home"><img
+                        src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png" width="268" height="62"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="border-bottom: solid thin #bdbdbd"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="preheader__webversion"
+                style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:30px;">
+                <p style="margin-top:10px;"><b>Greetings!</b></p>
+                <p>Thank you for your interest in our products.</p>
+                <p>Provided below is the specifications of your requested quotation. A PDF copy of the quotation is also attached available for you to download.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="margin: 30px; padding: 20px; border:solid thin #bdbdbd;">
+                    <div style="display: table; margin-top:20px;width: 100%; table-layout: fixed; ">
+                        <div style="display: table-cell; vertical-align: top; ">
+                            <table style="width: 100%; table-layout: fixed;">
+                                <tr>
+                                    <td style="padding:5px 30px;">
+                                        <p style="margin:0;font-family: 'Roboto Medium';">Engagis Pty Ltd</p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">ABN 98 098 945 469</p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">North Sydney NSW 2060</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:5px 30px;">
+                                        <h5 style="margin: 2px 0 ; font-size: 12px; color:#bdbdbd;">BILL TO</h5>
+                                        <p style="margin:0;font-family: 'Roboto Medium';">
+                                            {{selected.bill_to_name}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.bill_to_address}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.bill_to_city}} {{selected.bill_to_state}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.bill_to_country}} {{selected.bill_to_zipcode}}
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:5px 30px;">
+                                        <h5 style="margin: 2px 0 ; font-size: 12px; color:#bdbdbd;">SHIP TO</h5>
+                                        <p style="margin:0;font-family: 'Roboto Medium';">
+                                            {{selected.ship_to_name}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.ship_to_address}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.ship_to_city}} {{selected.ship_to_state}}
+                                        </p>
+                                        <p style="margin:0;font-family: 'Roboto Light';">
+                                            {{selected.ship_to_country}} {{selected.ship_to_zipcode}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="display: table-cell; vertical-align: top; color: #333333;">
+                            <table>
+
+                                <tr>
+                                    <th style="text-align: left; font-family: 'Roboto Black'; padding:0 10px;">Quote No
+                                    </th>
+                                    <td style="padding:0 10px;" ng-if="selected.type == 'Capex'">
+                                        CPX-{{selected.quote_number}}
+                                    </td>
+                                    <td style="padding:0 10px;" ng-if="selected.type == 'Opex'">
+                                        OPX-{{selected.quote_number}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Date</th>
+                                    <td style="padding:0 10px;">{{selected.quote_date | date:'yyyy-MM-dd'}}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Customer
+                                    </th>
+                                    <td style="padding:0 10px;">{{selected.customer.displayName}}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Sales Rep
+                                    </th>
+                                    <td style="padding:0 10px;">TESSA</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Currency
+                                    </th>
+                                    <td style="padding:0 10px;">Australian Dollar</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">
+                                        Subsidiary
+                                    </th>
+                                    <td style="padding:0 10px;">Engagis (Australia)</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Payment
+                                        Terms
+                                    </th>
+                                    <td style="padding:0 10px;">Net 30</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">Start Date
+                                    </th>
+                                    <td style="text-align: left;padding:0 10px;">
+                                        {{selected.quote_date | date:'yyyy-MM-dd'}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: left;font-family: 'Roboto Black'; padding:0 10px;">End Date
+                                    </th>
+                                    <td style="text-align: left;padding:0 10px;">{{selected.valid_until}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="quote_items" style="padding:30px 30px 0 30px;">
+                        <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th width="auto" style="color: white; white-space: nowrap; background: #616161; padding:10px;">Item</th>
+                                <th width="auto" style="color: white;  white-space: nowrap; background: #616161; padding:10px;"
+                                    ng-if="selected.type == 'Capex'">Upfront Cost
+                                </th>
+                                <th width="auto" style="color: white;  white-space: nowrap; background: #616161; padding:10px;"
+                                    ng-if="selected.type == 'Opex'">On-going Cost
+                                </th>
+                                <th width="auto" style="color: white;  white-space: nowrap; background: #616161; padding:10px;">Monthly Cost
+                                </th>
+                                <th width="auto" style="color: white;  white-space: nowrap; background: #616161; padding:10px;">QTY</th>
+                                <th width="auto" style="color: white;  white-space: nowrap; background: #616161; padding:10px;">Subtotal</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="items in selected.quote_item_list">
+                                <td style="border-right:solid thin #333333;border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:left; padding: 5px;"
+                                    ng-if="items.bundle_id != null">
+                                    <div>
+                                        {{items.bundle_details.bundle_name}}
+                                        <ul style="margin:0;" ng-repeat="item in items.products">
+                                            <li>{{item.product_detail.item_name}}</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td style="border-right:solid thin #333333;border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:left; padding: 5px;"
+                                    ng-if="items.product_id !=null">
+                                    <div>
+                                        {{items.product_details.item_name}}
+                                        <ul style="margin:0;">
+                                            <li ng-bind-html="items.product_details.item_description">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <!--Description-->
+                                <td style="border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="selected.type == 'Capex'">
+                                    {{items.price}}
+                                </td>
+                                <td style="border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="selected.type == 'Opex'">
+                                    {{(items.price * 31.111)/1000 | number:2}}
+                                </td>
+                                <td style="border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="items.bundle_id !=null">
+                                    {{items.spprices | number:2}}
+                                </td>
+                                <td style="border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="items.product_id !=null">
+                                    {{0 | number:2}}
+                                </td>
+                                <td style="border-right:solid thin #333333;vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;">
+                                    {{items.quantity}}
+                                </td>
+                                <td style="vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="selected.type == 'Capex'">
+                                    {{( items.price + items.spprices )* items.quantity | number:2}}
+                                </td>
+                                <td style="vertical-align:top;border-bottom: solid thin #333333;text-align:center;padding: 5px;"
+                                    ng-if="selected.type == 'Opex'">
+                                    {{((((items.price*31.111)/1000)+items.spprices)*items.quantity) | number:2}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding:5px 30px;font-size: 12px;">
+                        <i>*The cost includes one month ongoing cost for support subscription which will be billed
+                            monthly within a 36-month term.</i>
+                    </div>
+                    <div style=" box-sizing: border-box; text-align: right; padding-right:30px;">
+                        <table style="margin-left: auto; color: black;" ng-if="selected.type == 'Capex'">
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">Subtotal</th>
+                                <td>{{subtotal + spprice | number:2}}</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">Tax Total (10%)</th>
+                                <td>{{((subtotal + spprice) * 0.10) | number:2}}</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">TOTAL</th>
+                                <td>{{(((subtotal + spprice) * 0.10) + (subtotal + spprice)) | currency }}
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="margin-left: auto; color: black;" ng-if="selected.type == 'Opex'">
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">Subtotal</th>
+                                <td>{{subtotalOpex | number:2}}</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">Tax Total (10%)</th>
+                                <td>{{((subtotalOpex) * 0.10) | number:2}}</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: left; font-family: 'Roboto Black';">TOTAL</th>
+                                <td>{{(((subtotalOpex)* 0.10) + (subtotalOpex)) | currency }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px 30px;">
+                <p>Should you have any questions or clarifications with the details above, please contact us through the
+                    e-mail provided below.</p>
+                <p>Thank you for your confidence in us. Hoping you a productive day ahead.</p>
+                <br/>
+                <p>Kind regards,</p>
+                <br/>
+                <b style="font-weight: 800;">TESSA</b>
+                <p style="font-weight: 800; margin: 0;">The Engagis Sales and Solutions App</p>
+                <div style="font-size: 14px; ">
+                    <p style="margin: 0;"><a href="mailto:leon.condon@engagis.com">tessa@engagis.com</a>
+                    </p>
+                    <p style="margin-top:10px;">
+                        <a href="http://wwww.engagis.com">
+                            <img src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png"
+                                 style="width: 230px;" alt="Engagis"/>
+                        </a>
+                    </p>
+                    <div style=" margin-top:10px;">
+                        <div style="font-family:'Roboto Medium'; font-size:14px; margin: 0;color: #bdbdbd;">Engagis Pty
+                            Ltd
+                        </div>
+                        <p style="margin: 0;">ABN 98 098 945 469</p>
+                        <p style="margin: 0;">Level 12, 213 Miller Street</p>
+                        <p style="margin: 0;">North Sydney NSW 2060</p>
+                        <p style="margin: 0;"><a href="http://wwww.engagis.com">engagis.com</a></p>
+                    </div>
+                    <div style=" margin-top:15px;">
+                        <div style="font-family:'Roboto Medium'; font-size:14px;margin: 0;color: #bdbdbd;">Customer
+                            Support
+                        </div>
+                        <p style="margin: 0;">1300 203 810 | <a
+                                href="mailto:support@engagis.com">support@engagis.com</a></p>
+                        <p style="margin-top:10px; font-family:'Roboto Light';font-size: 14px;color: #616161;">This
+                            email and any files transmitted with it are privileged and confidential information intended
+                            for the use of the addressee. The confidentiality and/or privilege in this email is not
+                            waived, lost or destroyed if it has been transmitted to you in error. If you have received
+                            this email in error you must (a) not disseminate, copy or take any action in reliance on it;
+                            (b) please notify Engagis Pty Ltd immediately by return email to the sender; and (c) please
+                            delete the original email.</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="border-top: solid thin #bdbdbd; margin: 20px 0;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="padding: 30px 30px 20px 20px; font-weight:800;color:#bdbdbd;">CONNECT WITH US</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800; color:#308ecc;">Leon Condon</p>
+                        <p style="margin:0;">CEO</p>
+                        <p style="margin:0;">0414 266 366</p>
+                        <p style="margin:0;"><a style="text-decoration: underline; color: black;" href="mailto:leon.condon@engagis.com">leon.condon@engagis.com</a>
+                        </p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800;color:#308ecc;">Milos Pejovic</p>
+                        <p style="margin:0;">GM Operations</p>
+                        <p style="margin:0;">0414 135 297</p>
+                        <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:milos.pejovic@engagis.com">milos.pejovic@engagis.com</a>
+                        </p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800;color:#308ecc;">Thor Turrecha</p>
+                        <p style="margin:0;">Head of Solutions</p>
+                        <p style="margin:0;">0467 654 033</p>
+                        <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:thor.turrecha@engagis.com">thor.turrecha@engagis.com</a>
+                        </p>
+                    </div>
+
+                </div>
+                <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                    <div style="border-left: solid 5px #fafafa;font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800; color:#308ecc;">Georges Sabbagh</p>
+                        <p style="margin:0;">Business Strategist</p>
+                        <p style="margin:0;">047 124 483</p>
+                        <p style="margin:0;"><a style="text-decoration: underline; color: black;" href="mailto:georges.sabbagh@engagis.com">georges.sabbagh@engagis.com</a>
+                        </p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa;font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800;color:#308ecc;">Benjamin Smith</p>
+                        <p style="margin:0;">Business Strategist</p>
+                        <p style="margin:0;">+612 8039 0648</p>
+                        <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:jay.daley@engagis.com">ben.smith@engagis.com</a>
+                        </p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                        <p style="margin:0; font-weight: 800;color:#308ecc;">Holly Booty</p>
+                        <p style="margin:0;">Sales Program Manager</p>
+                        <p style="margin:0;">02 6038 0645</p>
+                        <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:holly.booty@engagis.com">holly.booty@engagis.com</a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+
+        <tr style="background-color: #fafafa;">
+            <td>
+                <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                        <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Sydney</p>
+                        <p style="margin:0;">Level 12, 213 Miller Street,</p>
+                        <p style="margin:0;">North Sydney, NSW 2060</p>
+                        <p style="margin:0;">Australia</p><br/>
+                        <p style="margin:0;">Ph: 1300 203 810 </p>
+                        <p style="margin:0;">Ph: +61 2 8039 0651 </p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                        <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Melbourne</p>
+                        <p style="margin:0;">2/39 Laser Drive, Rowville, </p>
+                        <p style="margin:0;">Melbourne, VIC 3178</p>
+                        <p style="margin:0;">Australia</p><br/>
+                        <p style="margin:0;">Ph: +61 3 9763 6144</p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                        <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Auckland</p>
+                        <p style="margin:0;">300 Richmond Road</p>
+                        <p style="margin:0;">Grey Lynn, Auckland 1021</p>
+                        <p style="margin:0;">Australia</p><br/>
+                        <p style="margin:0;">Ph: 0800 364 244</p>
+                        <p style="margin:0;">Ph: +64 9 950 3801</p>
+                    </div>
+                    <div style="border-left: solid 5px #fafafa; font-size: 12px;vertical-align:top; display: table-cell;padding:10px;">
+                        <a href="http://www.engagis.com"><img
+                                src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png"
+                                style="width: 120px;" alt="Engagis"/> </a>
+                        <p style="margin:0;">www.engagis.com</p>
+                        <p style="margin:0;">1300 2003 (AU)</p>
+                        <p style="margin:0;">info@engagis.com</p><br/>
+                        <p style="margin:0;">0002 0213 465</p>
+
+                    </div>
+
+
+                </div>
+
+            </td>
+
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+
+</html>

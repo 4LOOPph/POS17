@@ -1,0 +1,121 @@
+<section class="content-header">
+    <h1>Product Bundles</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Product Bundles</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- /.row -->
+    <div class="row" role="search-row">
+        <script type="text/ng-template" id="checkboxheader.html">
+            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        </script>
+        <div class="col-xs-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">List of Products</h3> -->
+                    <div class="pull-left">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add" uib-tooltip="Add New">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                                    <i class="fa fa-file-text-o"></i>
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                                {{applicationStatus}}
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a ng-click="updateStatus('All')">All</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Publish')">Published</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <div class="btn-group">
+                                    <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="Display List of Product"><i class="fa fa-list"></i></label>
+                                    <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'" uib-tooltip="Display Grid of Product">
+                                        <i class="fa fa-th"></i>
+                                    </label>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="productBundleTable">
+                        <tr ng-repeat="bundle in $data  track by $index">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <input type="checkbox" ng-model="bundle.selected" ng-change="checkDataChanges(bundle)">
+                            </td>
+                            <td class="text-left" data-title="'Bundle Name'">
+                                {{bundle.bundle_name}}
+                            </td>
+                            <td class="text-center" data-title="'Bundle Type'">
+                                {{bundle.product_type}}
+                            </td>
+                            <td class="text-center" data-title="'Tags'">
+                                <span class="label label-default label-tags" ng-repeat="tag in bundle.tags">{{tag.tags}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Bundle Price'">
+                                {{bundle.sell_price}}
+                            </td>
+                            <td class="text-center" data-title="'Status'">
+                                <span ng-if="bundle.is_published == 0 && bundle.is_archived == 0" class="label label-warning">draft</span>
+                                <span ng-if="bundle.is_published == 1 && bundle.is_archived == 0" class="label label-success">published</span>
+                                <span ng-if="bundle.is_archived == 1 && bundle.is_published == 0" class="label label-danger">archived</span>
+                            </td>
+                            <td class="text-center" data-title="'Last Updated'">
+                                {{bundle.date_created | fromNow}}
+                            </td>
+                            <td class="text-right">
+                                <button ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

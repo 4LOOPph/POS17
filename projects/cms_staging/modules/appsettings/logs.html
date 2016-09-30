@@ -1,0 +1,49 @@
+<div class="box box-warning">
+    <div class="box-header">
+        <h3 class="box-title">Application Logs</h3>
+        <br><br>
+        <div class="pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                            <span class="input-group-btn">
+                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                                <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                            <span class="input-group-btn">
+                                            <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                                {{applicationStatus}}
+                                                <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="updateStatus('All')">All</a>
+                                </li>
+                                <li><a ng-click="updateStatus('Online')">Online</a>
+                                </li>
+                                <li><a ng-click="updateStatus('Offline')">Offline</a>
+                                </li>
+                            </ul>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="box-body table-responsive padding">
+        
+    </div>
+</div>

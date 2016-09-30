@@ -1,0 +1,124 @@
+<div id="search-page" class="wrapper">
+    <div class=" sec-search-filter">
+        <div class=" grey2">
+            <span class="font_bold">FILTER:</span>
+            <span class="font_light">Please select one or more.</span>
+        </div>
+        <ul class="filter_options">
+            <li>
+                <button uib-popover-template="dynamicPopover.templateUrl" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Product Type
+                </button>
+                <button uib-popover-template="dynamicPopover.templateUrl2" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Eze Suite Family
+                </button>
+                <button uib-popover-template="dynamicPopover.templateUrl3" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">In-Store Location
+                </button>
+                <button uib-popover-template="dynamicPopover.templateUrl4" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Mounting
+                </button>
+            </li>
+            <!-- <li>
+                <a class="btn btn-primary">Submit</a>
+            </li> -->
+        </ul>
+    </div>
+    <div class="pc_tabs text14_medium ">
+        <a class="tab_items" ng-class="{'active': DisplayTab == 'All'}" ng-click="activeTab('All')">Number of results ({{filtersearch.length}})</a>
+    </div>
+    <div class="row sec-pc-items">
+        <div ng-show="DisplayTab == 'All'">
+            <div class=" sec-search-filter" ng-if="filtersearch.length == 0">
+                <h4>{{noresult}}</h4>
+            </div>
+            <div href="#xd-modal" data-toggle="modal" class="col-lg-3" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'" ng-click="openModal(items)">
+                <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
+                <div class="col-md-12 col-lg-12 col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="img-contain">
+                                <a class="img_holder" ng-if="items.self == 'products'">
+                                    <img ng-src="{{items.img_default}}" imageonload err-src="images/is5.jpg" />
+                                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                </a>
+                                <a class="img_holder" ng-if="items.self == 'articles'">
+                                    <img ng-src="{{image.media_path}}" ng-repeat="image in items.mediafiles | limitTo:1" imageonload err-src="images/is5.jpg" />
+                                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                </a>
+                                <a class="img_holder" ng-if="items.self == 'bundles'">
+                                    <img ng-src="{{image.image_path}}" ng-repeat="image in items.product_images | limitTo:1" imageonload err-src="images/is5.jpg" />
+                                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                </a>
+                            </div>
+                            <div class="item_text">
+                                <div class="item_title">
+                                    <a class=" grey2 font_bold" ng-click="openModal(items)">
+                                    {{items.name}}
+                                     </a>
+                                    <a class=" grey2 font_bold" ng-click="openModal(items)">
+                                    {{items.bundle_name}}
+                                     </a>
+                                    <div class="item_content grey3 font_bold font_12" ng-if="items.self">
+                                        in {{items.self}}
+                                    </div>
+                                </div>
+                                <div class="dis_table">
+                                    <div class="dis_cell">
+                                        <a class="box_details pull-right font_medium">
+                                        View Details
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="productType.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchproductType" />
+        </div>
+        <div class="checkbox" ng-repeat="type in producttypedata | filter:searchproductType ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,1)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="ezefamily.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="eze in experiencedata | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(eze,2)" ng-model="eze.checked"> {{eze.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="location.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in location | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,3)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="configuration.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in config | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,4)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>

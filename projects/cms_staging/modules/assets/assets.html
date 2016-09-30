@@ -1,0 +1,62 @@
+<section class="content-header">
+    <h1>Assets</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Assets</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content" ng-init="refreshAssets()">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder">New</a>
+            <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
+                <button id="simple-btn-keyboard-nav" class="btn btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder">
+                    NEW
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                    <li role="menuitem"><a href="" ng-click="createNewFolder()"><i class="fa fa-folder"></i> Folder</a></li>
+                    <li role="menuitem"><a href="" ng-click="newUploader()"><i class="fa fa-upload"></i> File Upload</a></li>
+                </ul>
+            </div>
+            <div class="box box-solid">
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-class="{'active': activeAllFiles}"><a href="" ng-click="showAllFiles()"><i class="fa fa-folder"></i> Files</a></li>
+                        <li ng-class="{'active': activeSharedFiles}"><a href="" ng-click="showAllShared()"><i class="fa fa-users"></i> Shared with me</a></li>
+                        <li ng-class="{'active': activeStarredFiles}"><a href="" ng-click="showAllStarred()"><i class="fa fa-star"></i> Starred</a></li>
+                        <li ng-class="{'active': activeTrashFiles}"><a href="" ng-click="showAllTrash()"><i class="fa fa-trash"></i> Trash</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Labels</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href=""><i class="fa fa-circle-o text-red"></i> Important</a></li>
+                        <li><a href=""><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
+                        <li><a href=""><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box box-solid" ng-controller="assetsStorageCtrl" ng-init="initStorage()">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Storage <small>&nbsp {{ filesize }} of 2GB used</small></h3>
+                </div>
+                <div class="box-body no-padding">
+                    <div class="chart-responsive" style="margin-top: 10px;">
+                        <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-legend="true" chart-data="chart.data" chart-labels="chart.labels" chart-colors="chart.colors" chart-options="chart.options" chart-dataset-override="chart.options"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

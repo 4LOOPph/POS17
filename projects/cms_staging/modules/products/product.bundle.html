@@ -1,0 +1,28 @@
+<section class="content-header">
+    <h1>
+            Product Bundle Details
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.products-bundles">Product Bundle</a></li>
+        <li class="active">Product Bundle New Entry</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+            <ng-include src="'./modules/products/bundles/bundle.info.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Package Items" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundle.items.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.category.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-files-o'></i> Media / Files" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.media.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-cubes'></i> Related Bundles" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.related.html'"></ng-include>
+        </div>
+</section>

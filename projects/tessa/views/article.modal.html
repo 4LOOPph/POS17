@@ -1,0 +1,114 @@
+<!-- <div class="modal-backdrop fade in" style="height: 100vh; position: fixed;"></div> -->
+<div class="previousModalButton" ng-click="previousArticle()" fa-track-event="event"><i class="fa fa-chevron-left fa-3" style="font-size: 50px;"></i></div>
+<div class="nextModalButton" ng-click="nextArticle()" fa-track-event="event"><i class="fa fa-chevron-right fa-3" style="font-size: 50px;"></i>
+</div>
+<div class="modal-header">
+    <button class="close" aria-hidden="true" ng-click="cancel()">×</button>
+</div>
+<idv id="modal-xd">
+    <div class="modal-body">
+        <div class="row_title pad20top">
+            <a ng-click="openShareModal()" class=" btn btn-label btn-social btn-flickr" fa-track-event="['Share','click',selected.title,selected.article_id]">
+                <i class="padding_10 fa fa-share-square"></i> Share
+            </a>
+        </div>
+        <div id="sec-xd-article">
+            <div class="sec-xd-items">
+                <div class="xd-img">
+                    <div class="img_holder ">
+                        <div uib-carousel active="$ndex" interval="myInterval" no-wrap="noWrapSlides">
+                            <div uib-slide ng-repeat="slide in selected.mediafiles track by $index" index="$index">
+                                <img ng-src="{{slide.media_path}}" style="margin:auto;">
+                                <videogular vg-theme="selected.article_thumbnail.url" ng-show="slide.media_mimetype == 'video/mp4'">
+                                    <vg-media vg-src="selected.article_thumbnail.media_path"></vg-media>
+                                    <vg-controls>
+                                        <vg-play-pause-button></vg-play-pause-button>
+                                        <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                                        <vg-scrub-bar>
+                                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                        </vg-scrub-bar>
+                                        <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                                        <vg-volume>
+                                            <vg-mute-button></vg-mute-button>
+                                            <vg-volume-bar></vg-volume-bar>
+                                        </vg-volume>
+                                        <vg-fullscreen-button></vg-fullscreen-button>
+                                    </vg-controls>
+                                    <vg-overlay-play></vg-overlay-play>
+                                </videogular>
+                            </div>
+                        </div>
+                        <!-- <img ng-src="{{image.media_path}}" ng-repeat="image in selected.mediafiles | limitTo: 1" imageonload err-src="images/is5.jpg" ng-if="!selected.article_thumbnail" />
+                        <img src="{{selected.article_thumbnail.media_path}}" imageonload ng-if="selected.article_thumbnail" />
+                        <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span> -->
+                    </div>
+                    <div class="panel-body ">
+                        <blockquote>
+                            <p ng-bind-html="selected.article ">" "</p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="xd-content ">
+                    <div class="font_24 blue1 font_medium ">
+                        {{selected.title}}
+                    </div>
+                    <div class="article-primary ">
+                        <p ng-bind-html="selected.description "></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="sec-xd-fs ">
+            <div class="row_title pad20top " ng-hide="selected.article_features.length==0 ">
+                FEATURED SOLUTION
+            </div>
+            <div class="row pad20top ">
+                <div class="col-lg-4 " ng-repeat="featured in bundles " ng-click="page(featured.pb_id) " ng-hide="selected.article_features.length==0 " fa-track-event="['Featured Solution','View',featured.bundle_name,featured.pb_id]">
+                    <div class="panel panel-default box-item ">
+                        <a>
+                            <div class="img_holder ">
+                                <img ng-repeat="image in featured.product_images | limitTo: 1 " src="{{image.image_path}} " imageonload />
+                                <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                            </div>
+                            <div class="font_bold blue1 cap-box-item ">
+                                {{featured.bundle_name}}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sec-xd-rx ">
+            <div class="row_title pad20top ">
+                Related experience
+            </div>
+            <div class="row ">
+                <div class="col-lg-4 " ng-repeat="related in relatedExperiences track by $index " ng-click="select(related) " ng-if="related.is_active == 1" fa-track-event="['Related Experience','View',related.name,related.article_id]">
+                    <div class="panel panel-default box-item ">
+
+                        <a>
+                            <div class="img_holder" >
+                                <img ng-src="{{image.media_path}} " ng-repeat="image in related.mediafiles | limitTo: 1 " imageonload ng-if="image.media_mimetype == 'image/jpeg' || 'image/png' "/>
+                                <span ng-repeat="image in related.mediafiles | limitTo: 1 " imageonload ng-if="image.media_mimetype == 'image/jpeg'" class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                <img src="./images/is5.jpg" ng-if="image.media_mimetype == 'video/mp4'"/>
+                            </div>
+
+                            <div class="cap-box-item ">
+                                <div class="font_bold blue1 ">
+                                    {{related.name}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</idv>
+<div class="modal-footer ">
+    <button class="btn btn-primary " type="button " ng-click="cancel() ">Close</button>
+</div>

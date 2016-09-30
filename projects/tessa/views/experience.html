@@ -1,0 +1,102 @@
+<div id="experience" class="wrapper">
+    <div class="dis_table xd-success-stories">
+        <div class="browse_industry">
+            <div class="dis_table_auto">
+                <div class="dis_cell btn-group">
+                    <div class="input-group input-icon pad_right10 font_medium">
+
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'all')}" ng-click="filterArticle('all')" fa-track-event="['Experience','View',expFilter,null]">All</button>
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'Portfolio')}" ng-click="filterArticle('Portfolio')" fa-track-event="['Experience','View',expFilter,null]">Portfolio</button>
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'Article')}" ng-click="filterArticle('Article')" fa-track-event="['Experience','View',expFilter,null]">Articles</button>
+                    </div>
+                </div>
+                <div class="dis_cell">
+                    <div id="filter_industry">
+                        <button uib-popover-template="dynamicPopover.templateUrl" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-primary" >
+                            Filter by Industry
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  <div class="row">
+        <div id="masonry-item">
+            <div class="col-xs-18 col-sm-6 col-md-3">
+            <div ng-click="openArticle(article,articlesList,$index)" class="item_experience" ng-repeat="article in $parent.articlesListFiltered = ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0">
+                <div class="thumbnail">
+                    <img ng-repeat="image in article.mediafiles" src="{{image.media_path}}" imageonload width="300" height="500"/>
+                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                    <div class="caption">
+                        <a>{{article.title}}</a>
+                        <h4>Thumbnail label</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta, eligendi doloribus sunt minus amet sit debitis repellat. Consectetur, culpa itaque odio similique suscipit</p>
+                        <p><a href="#" class="btn btn-info btn-xs" role="button">Button</a> <a href="#" class="btn btn-default btn-xs" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div> -->
+    <div id="masonry-item" style="clear:both">
+        <div class="item_experience" ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
+            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" fa-track-event="['Experience','View',article.title,article.article_id]">
+                <div class="panel panel-default">
+                    <div class="img_holder" ng-if="!article.thumbnail_media">
+                        <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
+                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
+                    </div>
+                    <div class="img_holder" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
+                        <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" />
+                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
+                    </div>
+                    <div class="videogular-container" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
+                        <videogular vg-theme="article.article_thumbnail.url">
+                            <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
+                            <vg-controls>
+                                <vg-play-pause-button></vg-play-pause-button>
+                                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                                <vg-scrub-bar>
+                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                </vg-scrub-bar>
+                                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                                <vg-volume>
+                                    <vg-mute-button></vg-mute-button>
+                                    <vg-volume-bar></vg-volume-bar>
+                                </vg-volume>
+                                <vg-fullscreen-button></vg-fullscreen-button>
+                            </vg-controls>
+                            <vg-overlay-play></vg-overlay-play>
+                            <vg-buffering></vg-buffering>
+                        </videogular>
+                        <!--<span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>-->
+                    </div>
+                    <div id="masonry_body" class="padding_10 blue1 font_14 font_bold" ui-sref="main.articlePage({selected_id:article.article_id})"  ui-sref="main.articlePage({selected_id:article.article_id})">
+                        <a>{{article.title}}</a>
+                        <div id="featured_solution" class="label_medium">
+                            <p ng-bind-html="article.article"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+#active-experience {
+    background: #424242;
+}
+</style>
+<script type="text/ng-template" id="myPopoverTemplate.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchIndustry" />
+        </div>
+        <div class="checkbox" ng-repeat="tag in tagscopy | filter:searchIndustry ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedTag(tag)" ng-model="tag.checked" fa-track-event="['Filter by Industry','View',tag.tags,tag.tags_id]"> {{tag.tags}}
+            </label>
+        </div>
+    </div>
+</script>

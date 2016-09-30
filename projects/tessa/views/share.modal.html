@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">Share</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12 pad20all">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon2">Email</span>
+                <input type="text" class="form-control" placeholder="Email Address" ng-model="data.email">
+            </div>
+        </div>
+    </div>
+    <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'" style="display:none;"></div>
+    <div id="printbundle" ng-include="'./views/sharer/bundle.html'" ng-if="param === 'bundle'" style="display:none;"></div>
+    <div id="printproduct" ng-include="'./views/sharer/products.html'" ng-if="param === 'product'" style="display:none;"></div>
+    <div id="printquote" ng-include="'./views/sharer/sharer-quote.html'" ng-if="param === 'quote'" style="display:none;"></div>
+    <div id="printpdfquote" ng-include="'./views/sharer/pdf-quote.html'" ng-if="param === 'quote'" style="display:none;"></div>
+    <!--
+    =================
+    =================
+    =================
+    =================
+    ================= -->   
+   <!--  <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'"></div>
+    <div id="printbundle" ng-include="'./views/sharer/bundle.html'" ng-if="param === 'bundle'"></div>
+    <div id="printproduct" ng-include="'./views/sharer/products.html'" ng-if="param === 'product'"></div>
+    <div id="printquote" ng-include="'./views/sharer/sharer-quote.html'" ng-if="param === 'quote'"></div> 
+    <div id="printpdfquote" ng-include="'./views/sharer/pdf-quote.html'" ng-if="param === 'quote'"></div> -->
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
+    <button class="btn btn-primary" type="button" ng-click="send()" fa-track-event="['Share','click',details.type + +'-'+details.quote_number,details.quote_id]">Share</button>
+</div>

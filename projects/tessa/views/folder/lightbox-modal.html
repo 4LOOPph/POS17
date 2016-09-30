@@ -1,0 +1,61 @@
+<div class="modal-header">
+    <a type="button" ng-click="cancel()" uib-tooltip="Close" tooltip-placement="bottom" style="margin-bottom: -7px;float: left;padding: 8px;margin-left: 8px;">
+        <img src="./images/icons/ic_arrow_back_white_24px.svg">
+    </a>
+    <span uib-dropdown style="float: right;">
+        <a id="single-button" uib-tooltip="More actions" tooltip-placement="bottom" type="button" uib-dropdown-toggle style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;margin-right: 10px;">
+            <img src="./images/icons/ic_more_vert_white_24px.svg">
+        </a>
+            <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="margin-top: 6px;margin-right: 9px;">
+                <li ng-if="selectedFile.isDeleted == 0">
+         			<a ng-click="renameSelected()">
+                        <span class="svg_icon_sm" style="padding: 0px 8px 0px 0px !important;"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
+                    </a>
+                </li>
+    			<li ng-if="selectedFile.isFolder == false && selectedFile.isDeleted == 0">
+        			<a ng-click="castModal()">
+            			<span class="svg_icon_sm"><i class="ti ti-desktop padd"></i> Mirror
+                    </a>
+                </li>
+                <li ng-if="selectedFile.isStarred == 1 && selectedFile.isDeleted == 0">
+                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                         <i class="fa fa-star padd" style="color:orange;"></i> Remove from Favorites
+                    </a>
+                </li>
+                <li ng-if="selectedFile.isStarred == 0 && selectedFile.isDeleted == 0">
+                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                        <i class="ti ti-star padd"></i> Add to Favourite
+                    </a>
+                </li>
+                <li ng-if="selectedFile.isDeleted == 0">
+                    <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                        <i class="ti ti-move padd"></i> Move to Folder
+                    </a>
+                </li>
+            </ul>
+    </span>
+    <a type="button" uib-tooltip="Download" tooltip-placement="bottom" style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;">
+        <img src="./images/icons/ic_file_download_white_24px.svg">
+    </a>
+    <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="selectDevice()" ng-if="!displayInstallPlugin" style="margin-bottom: -7px;float: right;padding: 8px;">
+        <img src="./images/icons/ic_cast_white_24px.svg">
+    </a>
+    <div style="padding-top: 11px;margin-left: 60px;">
+        <span class="orange1" style="margin-right: 5px;">
+            <i class="fa fa-file-image-o"></i>
+        </span> File Name
+    </div>
+</div>
+<div class="modal-body" style="z-index: -1 !important;">
+    <img src="{{image_file.thumbUrl}}" width="100%" height="100%" style="padding-top: 10px;padding-left: 200px;padding-right: 200px;padding-bottom: 50px;">
+</div>
+<style type="text/css">
+a:focus,
+a:hover {
+    color: #23527c;
+    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.27);
+    padding: 8px;
+    border-radius: 3px;
+}
+</style>

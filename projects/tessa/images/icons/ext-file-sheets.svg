@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 103 117.3" style="enable-background:new 0 0 103 117.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#050101;stroke-miterlimit:10;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:url(#SVGID_2_);}
+	.st3{fill:url(#SVGID_3_);}
+	.st4{fill:#E67575;}
+	.st5{fill:#FFFFFF;}
+	.st6{fill:url(#SVGID_4_);}
+	.st7{fill:url(#SVGID_5_);}
+	.st8{fill:url(#SVGID_6_);}
+	.st9{fill:url(#SVGID_7_);}
+	.st10{fill:#FADC87;}
+	.st11{fill:url(#SVGID_8_);}
+	.st12{fill:url(#SVGID_9_);}
+	.st13{fill:#8DD0AF;}
+	.st14{fill:url(#SVGID_10_);}
+	.st15{fill:url(#SVGID_11_);}
+	.st16{fill:url(#SVGID_12_);}
+	.st17{fill:url(#SVGID_13_);}
+	.st18{fill:url(#SVGID_14_);}
+</style>
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="84.8357" y1="4.8358" x2="8.452" y2="125.4416">
+		<stop  offset="0" style="stop-color:#189F5D"/>
+		<stop  offset="1" style="stop-color:#1DA462"/>
+	</linearGradient>
+	<path class="st1" d="M97.1,39.3h-32c-1.6,0-3.1-1-4.2-2l-0.5-0.8c-1-1.1-1.5-2.8-1.5-4.4v-5.3V0.1l-0.4,0.2H9.9
+		C6.3,0.3,4,2.8,4,6.4v104.1c0,3.5,2.3,6.9,5.9,6.9h81c3.5,0,7.2-3.3,7.2-6.9V73.2V38.7L97.1,39.3z"/>
+	<path class="st13" d="M59,0.1v26.7v5.3c0,1.6,0.5,3.1,1.5,4.2l0.5,1c1.1,1,2.5,2,4.1,2h32L59,0.1z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="61.2938" y1="55.2823" x2="98" y2="55.2823">
+		<stop  offset="0" style="stop-color:#000000;stop-opacity:0.1"/>
+		<stop  offset="1" style="stop-color:#F4B505;stop-opacity:0"/>
+	</linearGradient>
+	<path class="st2" d="M97.1,39.3h-32c-1.6,0-2.7-1-3.8-2L98,73.2V38.7L97.1,39.3z"/>
+</g>
+<g>
+	<path class="st5" d="M45.6,56.1H29.9v12.8v3v9.7v3v12.5h15.7h26.4V84.6v-3v-9.7v-3V56.1H45.6z M41.9,94.1h-9v-10h9V94.1z
+		 M41.9,81.1h-9v-10h9V81.1z M41.9,68.1h-9v-9h9V68.1z M68.9,94.1h-24v-10h24V94.1z M68.9,81.1h-24v-10h24V81.1z M68.9,68.1h-24v-9
+		h24V68.1z"/>
+</g>
+</svg>

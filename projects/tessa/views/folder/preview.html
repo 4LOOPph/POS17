@@ -1,0 +1,130 @@
+<div class="modal-header" style="padding:5px 0px 11px;border-bottom: 1px solid rgb(37, 42, 45);background: rgb(37, 42, 45);color: #fff;">
+    <a type="button" ng-click="cancel()" uib-tooltip="Close" tooltip-placement="bottom" style="margin-bottom: -7px;float: left;padding: 8px;margin-left: 8px;">
+        <img src="./images/icons/ic_arrow_back_white_24px.svg">
+    </a>
+    <span uib-dropdown style="float: right;">
+        <a id="single-button" uib-tooltip="More actions" tooltip-placement="bottom" type="button" uib-dropdown-toggle style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;margin-right: 10px;">
+            <img src="./images/icons/ic_more_vert_white_24px.svg">
+        </a>
+            <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="margin-top: 6px;margin-right: 9px;">
+                <li >
+                    <a ng-click="renameSelected()">
+                        <span class="svg_icon_sm" style="padding: 0px 8px 0px 0px !important;"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
+                    </a>
+                </li>
+                <li >
+                    <a ng-click="castModal()">
+                        <span class="svg_icon_sm"><i class="ti ti-desktop padd"></i> Mirror
+                    </a>
+                </li>
+                <li ng-if="selectedFile.isStarred == 1 && selectedFile.isDeleted == 0">
+                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                         <i class="fa fa-star padd" style="color:orange;"></i> Remove from Favorites
+                    </a>
+                </li>
+                <li ng-if="selectedFile.isStarred == 0 && selectedFile.isDeleted == 0">
+                    <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
+                        <i class="ti ti-star padd"></i> Add to Favourite
+                    </a>
+                </li>
+                <li>
+                    <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
+                        <i class="ti ti-move padd"></i> Move to Folder
+                    </a>
+                </li>
+            </ul>
+    </span>
+   <span uib-dropdown style="float: right;" ng-if="!displayInstallPlugin && !mirrorFile">
+        <a id="single-button" uib-tooltip="More actions" tooltip-placement="bottom" type="button" uib-dropdown-toggle style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;margin-right: 10px;">
+            <img src="./images/icons/ic_cast_white_24px.svg">
+        </a>
+            <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="margin-top: 6px;margin-right: 9px;">
+                <li ng-repeat="device in activeDevices">
+                    <a ng-click="selectDevice(device)">
+                        <span class="svg_icon_sm"><i class="ti ti-desktop padd"></i>
+                        <span>&nbsp {{device.os}}({{device.os_version}})</span>
+                    </a>
+                </li>
+            </ul>
+    </span>
+    <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" style="margin-bottom: -7px;float: right;padding: 8px;">
+        <img src="./images/icons/ic_cast_white_24px.svg">
+    </a>
+    <div style="padding-top: 11px;margin-left: 60px;">
+        <span class="orange1" style="margin-right: 5px;">
+            <i class="fa fa-file-pdf-o"></i>
+        </span> {{asset_file.asset_name}}
+    </div>
+<!--     <span uib-dropdown class="cast" ng-if="!displayInstallPlugin && !mirrorFile">
+        <a type="button" uib-dropdown-toggle ng-disabled="disabled" style="color: #fff;">
+               <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;"> Cast to Screen
+        </a>
+        <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="left: 192px;top: -7px;background: #252a2d;border: 0;">
+            <li ng-repeat="device in activeDevices">
+                <a href="" ng-click="selectDevice(device)">
+                    <span>&nbsp {{device.os}}({{device.os_version}})</span>
+    </a>
+    </li>
+    </ul>
+    </span>
+    <a type="button" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+        <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;"> Cast to Screen
+    </a>
+    <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+       Install Plugin
+    </a>
+    <a ng-click="cancel()" class="close" style="background: #fff;padding: 0px 5px;border-radius: 50%;"><span aria-hidden="true">×</span><span class="sr-only">Close</span></a> -->
+</div>
+<div class="modal-body">
+    <div id="iframe1Div">
+        <iframe id="iframe1" style="width: 100%;height: 100%;" src="{{pdfUrl}}" frameborder='0' ng-if="file_type !=='application/pdf'"></iframe>
+    </div>
+    <div id="object1Div">
+        <object id="object1" type="application/pdf" data="{{pdfUrl}}" id="pdf_content" ng-if="file_type =='application/pdf'"></object>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+<style type="text/css">
+.cast {
+    background: transparent;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.cast:hover,
+.cast:active,
+.cast:focus {
+    background: rgba(49, 106, 202, 0.51);
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.5s ease;
+}
+
+/*.dropdown-menu>li>a {
+    display: block;
+    padding: 10px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #f9f9f9;
+    white-space: nowrap;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+    color: #f9f9f9;
+    text-decoration: none;
+    background-color: rgba(49, 106, 202, 0.51);
+    transition: background-color 0.5s ease;
+    border-radius: 3px;
+}*/
+a:focus,
+a:hover {
+    color: #23527c;
+    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.27);
+    padding: 8px;
+    border-radius: 3px;
+}
+</style>

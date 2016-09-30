@@ -1,0 +1,55 @@
+<div class="box box-warning" ng-controller="appSettingsKeysController">
+    <div class="box-header">
+        <h3 class="box-title">
+            API Tokens <br>
+            <small>API keys allow your application to communicate with the symphony services. You can create multiple API keys that have different permissions to restrict the actions your apps can perform.</small>
+        </h3>
+        <br>
+        <br>
+        <div class="pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="box-body table-responsive padding">
+        <table class="table table-striped footable" id="tblAttributes">
+            <thead>
+                <tr>
+                    <th class="" data-sort-ignore="true">Access Code</th>
+                    <th class="" data-sort-ignore="true">Access Key</th>
+                    <th class="" data-sort-ignore="true">Validatity</th>
+                    <th data-sort-ignore="true"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="var in apikeys">
+                    <td>
+                        {{var.gk_code}}
+                    </td>
+                    <td>
+                        <a href="" ng-click="showKey(var)" ng-if="!var.showKeys">Show Access Key</a>
+                        <span ng-if="var.showKeys">{{var.gk_secretKey}} <a href="" ng-click="showKey(var)" ng-if="var.showKeys"> Hide</a></span>
+                    </td>
+                    <td>
+                        {{var.valid_from | date:'MM/d/yyyy'}} - {{var.valid_to | date:'MM/d/yyyy'}}
+                    </td>
+                    <td>
+                        <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-refresh"></i> RENEW KEY</button> 
+                    </td>
+                </tr>                
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6" align="center">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

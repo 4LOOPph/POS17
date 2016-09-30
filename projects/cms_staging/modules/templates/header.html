@@ -1,0 +1,71 @@
+<!-- Logo -->
+<a href="" class="logo"><i >Symphony</i></a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li class="dropdown messages-menu">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-envelope-o"></i>
+                    <!-- <span class="label label-success">4</span> -->
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header">You have 4 messages</li>
+                    <li ng-include="'./modules/templates/header.mail.html'"></li>
+                    <li class="footer"><a href="" ui-sref="main.mailbox">See All Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a ui-sref="main.assets" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-archive"></i>
+                </a>
+            </li>
+            <!-- <li class="dropdown notifications-menu">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-warning">10</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header">You have 10 notifications</li>
+                    <li ng-include="'./modules/templates/header.notif.html'"></li>
+                    <li class="footer"><a href="">View all</a></li>
+                </ul>
+            </li> -->
+            <li class="dropdown user user-menu">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="user-image" alt="User Image">
+                    <span class="hidden-xs" ng-bind="profile.EmpName"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="user-header">
+                        <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="img-circle" alt="User Image">
+                        <p>
+                            {{profile.EmpName}}
+                            <small>Member <span am-time-ago="profile.profile.date_created"></span></small>
+                            <small>{{profile.company_name}}</small>
+                        </p>
+                    </li>
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a ui-sref="main.settings-profile" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Profile</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="" ng-click="logoutApp()" class="btn btn-default btn-flat">Sign out</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown messages-menu">
+                <a href="" ng-click="openSubscription()" ng-show="profile.isOwner == 1">
+                    <i class="fa fa-list"></i>
+                    <span class="label label-danger" ng-show="profile.subscriptions.length > 0">{{profile.subscriptions.length}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

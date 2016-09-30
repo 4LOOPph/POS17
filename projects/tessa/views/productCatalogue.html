@@ -1,0 +1,275 @@
+<div id="product-catalogue" class="dis_table">
+    <!--<div class="sec-filter">
+        <div id="sec-srch-filter">
+            <div id="hide" class="row_title pad20all">
+                <a >
+                    HIDE FILTER
+                    <i class="ti ti-filter pull-right"></i>
+                </a>
+            </div>
+
+            <hr class="border-grey"/>
+
+            <div class="sec-srch-category">
+                <div class="row_title padding_10">
+                    Category
+                </div>
+                <div class="srch-flr-items padding_10 btn-group-vertical" data-toggle="buttons">
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Eze Impress
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Eze FInd
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Eze Orda
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Eze Wi-fi
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Eze Comms
+                    </label>
+                </div>
+            </div>
+            <div class="sec-srch-category">
+                <div class="row_title padding_10">
+                    Location
+                </div>
+                <div class="srch-flr-items padding_10 btn-group-vertical" data-toggle="buttons">
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Indoor
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Outdoor
+                    </label>
+                </div>
+            </div>
+            <hr class="border-grey"/>
+            <div class="sec-srch-category">
+                <div class="row_title padding_10">
+                    Mounting Options
+                </div>
+                <div class="srch-flr-items padding_10 btn-group-vertical" data-toggle="buttons">
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Wall
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Ceiling
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Floor
+                    </label>
+                    <label class="btn srch-check">
+                        <input type="checkbox"/>
+                        <i class="ti ti-check"></i>
+                        Desk
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="srch-filter-panel">
+            <div class="row_title">
+                <ul class="min-filter">
+
+                    <li>
+                        <div>
+                            <a id="show">
+                                <i class="ti ti-filter"></i>
+                            </a>
+                        </div>
+
+                    </li>
+                    <li id="rotate-filter">
+                        <div class="rotate">
+                            Filters
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>-->
+    <div class="sec-pc">
+        <div id="pc-wrap" class="wrapper">
+            <div id="sec-pc-category" class="row_title padding_10">
+                <div class="btn-group font_14" data-toggle="buttons">
+                    <label id="btn-software" class="btn btn-primary-alt btn-pc-radio" ng-class="{'active': prodTypeLabel == 'Solution'}" ng-click="activeProd('Solution')">
+                        <input type="radio" name="catalogue_selector" id="option1" /> SOLUTION
+                    </label>
+                    <label id="btn-hardware" class="btn btn-primary-alt btn-pc-radio" ng-class="{'active': prodTypeLabel == 'Hardware'}" ng-click="activeProd('Hardware')">
+                        <input type="radio" name="catalogue_selector" id="option2" /> HARDWARE
+                    </label>
+                </div>
+            </div>
+            <div ng-show="prodTypeLabel == 'Solution'">
+                <div class="pc_tabs text14_medium ">
+                    <a class="tab_items" ng-class="{'active': solutionTypes == 'EzeImpress'}" ng-click="activateTab('EzeImpress')">Eze Impress</a>
+                    <a class="tab_items" ng-class="{'active': solutionTypes == 'EzeWifi'}" ng-click="activateTab('EzeWifi')">Eze Wifi</a>
+                    <!--<a class="tab_items active" ng-repeat="item in bundle" ng-click="activateTab(item.category_label)" ng-class="{active:!$index}">{{item.category_label}}</a>-->
+                </div>
+                <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeImpress'">
+                    <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="img_holder">
+                                    <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" imageonload err-src="images/is5.jpg" />
+                                    <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
+                                </div>
+                                <div class="item_text">
+                                    <div class="item_title">
+                                        <a class=" blue1 font_bold">
+                                            {{item.bundle_name}}
+                                        </a>
+                                    </div>
+                                    <div class="item_content font_14 grey1 font_light">
+                                        <span data-ng-bind-html="item.bundle_description"></span>
+                                    </div>
+                                    <!--<div class="box_price font_light font_14">
+                                        View Details
+                                    </div>-->
+                                    <div class="font_14 grey2 font_medium pad20top">
+                                        For as low as
+                                    </div>
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeWifi'">
+                    <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Wi-Fi'">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="img_holder">
+                                    <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
+                                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;" /></span>
+                                </div>
+                                <div class="item_text">
+                                    <div class="item_title">
+                                        <a class=" blue1 font_bold">
+                                            {{item.bundle_name}}
+                                        </a>
+                                    </div>
+                                    <div class="item_content font_14 grey1 font_light">
+                                        <span data-ng-bind-html="item.bundle_description"></span>
+                                    </div>
+                                    <!--<div class="box_price font_light font_14">
+                                        View Details
+                                    </div>-->
+                                    <!--  <div class="font_14 grey2 font_medium pad20top">
+                                            For as low as
+                                        </div> -->
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="prodTypeLabel == 'Hardware'">
+                <div class="pc_tabs text14_medium ">
+                    <a class="tab_items" ng-class="{'active': hardwareType == 'Screens'}" ng-click="activeHard('Screens')">Screens</a>
+                    <a class="tab_items" ng-class="{'active': hardwareType == 'MediaPlayer'}" ng-click="activeHard('MediaPlayer')">Media Player</a>
+                </div>
+                <div class="row sec-pc-items">
+                    <div ng-show="hardwareType == 'Screens'">
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in Screens" ng-if="item.is_published == 1 && item.is_archived == 0">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="img_holder">
+                                        <img ng-src="{{item.img_default}}" imageonload err-src="images/is5.jpg" />
+                                        <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                    </div>
+                                    <div class="item_text">
+                                        <div class="item_title">
+                                            <a class=" blue1 font_bold">
+                                                {{item.item_name}}
+                                            </a>
+                                        </div>
+                                        <div class="font_14 grey2 font_medium pad20top">
+                                            For as low as
+                                        </div>
+                                        <div class="box_price font_24 font_light">
+                                            <sup class="">$</sup>{{item.sell_price | number:2}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="hardwareType == 'MediaPlayer'">
+                        <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer" ng-if="item.is_published == 1 && item.is_archived == 0">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="img_holder">
+                                        <img ng-src="{{item.img_default}}" imageonload err-src="images/is5.jpg" />
+                                        <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                    </div>
+                                    <div class="item_text">
+                                        <div class="item_title">
+                                            <a class=" blue1 font_bold">
+                                                {{item.item_name}}
+                                            </a>
+                                        </div>
+                                        <div class="font_14 grey2 font_medium pad20top">
+                                            For as low as
+                                        </div>
+                                        <div class="box_price font_24 font_light">
+                                            <sup class="">$</sup>{{item.sell_price | number:2}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of wrapper -->
+        </div>
+        <!--End: sec-pc-->
+    </div>
+</div>
+<!-- Hide Show Advance Search Filter Panel-->
+<script async>
+    $("#hide").click(function() {
+        $("#sec-srch-filter").hide();
+        $("#srch-filter-panel").show();
+    });
+
+    $("#srch-filter-panel").click(function() {
+        $("#sec-srch-filter").show();
+        $("#srch-filter-panel").hide();
+    });
+</script>
+<!-- End Hide Show Advance Search Filter Panel-->
+<style>
+    #active-catalogue {
+        background: #424242;
+    }
+</style>

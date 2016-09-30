@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <button class="close" aria-hidden="true" ng-click="cancel()">×</button>
+</div>
+<div class="modal-body">
+    <div id="mdl-hardware">
+       <!--  <div class="img_holder pad20top" ng-if="selected.main_id">
+            <img ng-src="{{selected.img_default}}" err-src="images/is5.jpg" imageonload class="bg-icon" />
+            <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+        </div>
+        <div class="img_holder pad20top" ng-if="selected.p_id">
+            <img ng-src="{{selected.img_default}}" err-src="images/is4.jpg" imageonload class="bg-icon" />
+            <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+        </div> -->
+        <div class="img_holder pad20top" >
+            <img ng-src="{{selected.product_detail.img_default}}" err-src="images/is4.jpg" imageonload class="bg-icon" />
+            <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+        </div>
+        <!-- <div class="pad20top mdl-hardware-content" ng-if="selected.main_id">
+            <div class="font_24 blue1 font_medium">
+                {{selected.main_product.item_name}}
+            </div>
+            <div class="article-primary pad20top" ng-if="selected.main_id">
+                <p ng-bind-html="selected.main_product.item_description"></p>
+            </div>
+        </div>
+        <div class="pad20top mdl-hardware-content" ng-if="selected.p_id">
+            <div class="font_24 blue1 font_medium">
+                {{selected.item_name}}
+            </div>
+            <div class="article-primary pad20top" ng-if="selected.p_id">
+                <p ng-bind-html="selected.item_description"></p>
+            </div>
+        </div> -->
+        <div class="pad20top mdl-hardware-content">
+            <div class="font_24 blue1 font_medium" >
+                {{selected.item_name}}
+            </div>
+            <div class="article-primary pad20top"">
+                <p ng-bind-html="selected.product_detail.item_description"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

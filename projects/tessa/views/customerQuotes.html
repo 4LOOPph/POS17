@@ -1,0 +1,66 @@
+<div id="customer_quotes" class="wrapper">
+
+    <div class="row_title pad20all">
+        Customer QUotes
+    </div>
+    <div id="sec_search" class="dis_table">
+        <!--<div class="dis_cell">
+            <label for="searchQuotes" class="grey2">Customer Name</label>
+        </div>-->
+        <div class="dis_cell">
+
+            <input type="text" ng-model="searchCustomer" class="form-control" id="searchQuotes"
+                   placeholder="Search relevant keywords..."/>
+
+        </div>
+    </div>
+    <div id="quotes_table">
+        <section>
+            <table class="data_table">
+                <thead>
+                <tr>
+                    <th ng-click="sort('m_quoteID')">Quote ID
+                        <span class="fa fa-caret-down" ng-show="sortKey=='m_quoteID'"
+                              ng-class="{'fa fa-caret-up':reverse,'fa fa-caret-down':!reverse}"</th>
+                    <th ng-click="sort('m_dateCreated')">Date Created
+                        <span class="fa fa-caret-down" ng-show="sortKey=='m_dateCreated'"
+                              ng-class="{'fa fa-caret-up':reverse,'fa fa-caret-down':!reverse}"</th>
+                    <th ng-click="sort('m_staff')">Staff
+                        <span class="fa fa-caret-down" ng-show="sortKey=='m_staff'"
+                              ng-class="{'fa fa-caret-up':reverse,'fa fa-caret-down':!reverse}"</th>
+                    <th ng-click="sort('m_storeName')">Store Name
+                        <span class="fa fa-caret-down" ng-show="sortKey=='m_storeName'"
+                              ng-class="{'fa fa-caret-up':reverse,'fa fa-caret-down':!reverse}"</th>
+                    <th ng-click="sort('m_totalPrice')">Total Price
+                        <span class="fa fa-caret-down" ng-show="sortKey=='m_totalPrice'"
+                              ng-class="{'fa fa-caret-up':reverse,'fa fa-caret-down':!reverse}"</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="info in quoteproduct_list">
+                    <td>{{info.valid_until}}</td>
+                    <td>02-02-16</td>
+                    <td>Jonalyn Rosales</td>
+                    <td>ZoomTech Multimedia</td>
+                    <td>10,023.00</td>
+                    <td>
+                        <button type="button" class="btn btn-success" ui-sref="main.quoteProfile">Open</button>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+</div>
+
+<style>
+    #active-quotes {
+        background: #424242;
+    }
+</style>

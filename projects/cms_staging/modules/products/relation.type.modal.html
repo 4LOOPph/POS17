@@ -1,0 +1,87 @@
+<form class="form-horizontal" ng-submit="saveEntry()">
+    <div class="modal-header">
+        <h3 class="modal-title">Manage Relation Type</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Name" ng-model="relation.name" ng-disabled="relation.disablename">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Label</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Label" ng-model="relation.label" ng-disabled="relation.disablelabel">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Description</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Description" ng-model="relation.description" ng-disabled="relation.disabledesc">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox">Type</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Type" ng-model="relation.type" ng-disabled="relation.disabletype">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label checkbox"></label>
+            <div class="col-sm-9">
+                <a class="btn btn-flat btn-warning" ng-click="newEntry()" ng-hide="relation.disablenewbutton">New Entry</a>
+                <a class="btn btn-flat btn-default" ng-click="cancelEntry()" ng-hide="!relation.disablenewbutton">Cancel</a>
+                <button class="btn btn-flat btn-primary" type="submit" ng-disabled="relation.disablesavebutton">Save</button>
+                <a class="btn btn-flat btn-success" ng-click="refreshData()">Refresh</a>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-body">
+                    <table class="table table-striped footable" data-page-size="10" id="tblRelationType">
+                        <thead>
+                            <tr>
+                                <th class="" data-sort-ignore="true">Name</th>
+                                <th class="" data-sort-ignore="true">Label</th>
+                                <th class="" data-sort-ignore="true">Description</th>
+                                <th class="" data-sort-ignore="true">Type</th>
+                                <th data-sort-ignore="true"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="var in relationtypes" repeat-end="paginate()">
+                                <td>
+                                    {{var.name}}
+                                </td>
+                                <td>
+                                    {{var.label}}
+                                </td>
+                                <td>
+                                    <p data-ng-bind-html="var.description | limitTo: 90" data-ellipsis></p>
+                                </td>
+                                <td>
+                                    {{var.type}}
+                                </td>
+                                <td>
+                                    <a ng-click="deleteSelected(var.rel_type_id)" class="btn btn-danger btn-xs btn-flat pull-right"><i class="glyphicon glyphicon-remove"></i></a>
+                                    <a ng-click="getSelected(var)" class="btn btn-info btn-xs btn-flat pull-right"><i class="glyphicon glyphicon-edit"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-flat btn-default" ng-click="cancel()">Close</a>
+    </div>
+</form>

@@ -89,6 +89,10 @@
                             <textarea class="form-control" rows="3" ng-model="details.bill_to_address" placeholder="Billing Address"></textarea>
                         </div>
                         <div class="form-group">
+                            <label>City: </label>
+                            <input type="text" ng-model="details.bill_to_city" class="form-control" placeholder="Billing City" required/>
+                        </div>
+                        <div class="form-group">
                             <label>State: </label>
                             <input type="text" ng-model="details.bill_to_state" class="form-control" placeholder="Billing State Address" required/>
                         </div>
@@ -117,6 +121,10 @@
                         <div class="form-group">
                             <label>Shipping Address: </label>
                             <textarea class="form-control" rows="3" ng-model="details.ship_to_address" placeholder="Shipping Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City: </label>
+                            <input type="text" ng-model="details.ship_to_city" class="form-control" placeholder="Shipping City" required/>
                         </div>
                         <div class="form-group">
                             <label>State: </label>

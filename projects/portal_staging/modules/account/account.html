@@ -1,0 +1,85 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Accounts
+        <small>Subscribers</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Account</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- /.row -->
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-info">Action</button>
+                            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Export All</a>
+                                </li>
+                                <li><a href="#">Export Selected</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a ui-sref="main.account.new">
+                            <button class="btn btn-sm btn-info">New Account</button>
+                        </a>
+                    </div>
+                    <!-- /. tools -->
+                    <i class="fa fa-users"></i>
+                    <h3 class="box-title">Accounts</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-hover footable" data-page-size="5">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Current Address</th>
+                                <th>Account Type</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="account in accounts">
+                                <td><a ng-click="getAccountDetails(account.sub_id) ">{{account.company_name}}</a></td>
+                                <td>{{account.firstname+ ',' + account.lastname}}</td>
+                                <td>{{account.email}}</td>
+                                <td>{{account.address1}}</td>
+                                <td>
+                                    <span ng-if="account.isExisting == 1" class="label label-success">Existing</span>
+                                    <span ng-if="account.isExisting == 0" class="label label-primary">New</span>
+                                </td>
+                                <td>{{account.phone}}</td>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>
+<!-- /.content -->
