@@ -3,8 +3,7 @@
         <div id="testo">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" ng-repeat="item in aboutengagis"
-                         ng-if="item.asset_mimetype == 'image/png'">
+                    <div class="swiper-slide" ng-repeat="item in aboutengagis" ng-if="item.asset_mimetype == 'image/png'">
                         <div class="tes-slider">
                             <div class="dis_table slider-content">
                                 <section class="dis_cell_top">
@@ -12,10 +11,7 @@
                                     <h3>Author: Engagis</h3>
                                     <div class="hide-sm">
                                         <p class="pad_vertical_15 ">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book.
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         </p>
                                         <div>
                                             <a class="btn btn-primary" ng-click="imagepreview(item)">Preview</a>
@@ -25,7 +21,7 @@
                                 </section>
                                 <section class="dis_cell_top">
                                     <div class="img_holder">
-                                        <img ng-src="{{item.asset_url}}"/>
+                                        <img ng-src="{{item.asset_url}}" />
                                         <div class="drp-sdow"></div>
                                     </div>
                                     <div class="show-sm">
@@ -56,7 +52,7 @@
                                 </section>
                                 <section class="dis_cell_top">
                                     <div class="img_holder">
-                                        <img src="../../images/img-sample-2.jpg" />
+                                        <img src="./images/img-sample-2.jpg" />
                                         <div class="drp-sdow"></div>
                                     </div>
                                     <div class="show-sm">
@@ -101,7 +97,7 @@
                         <i class="fa fa-star padd" style="color:orange;"></i> Remove from Favorites
                     </a>
                 </li>
-                <li>
+                <li ng-if="selectedFile.isStarred == 0">
                     <a ng-click="starredSelected()">
                         <i class="ti ti-star padd"></i> Add Star
                     </a>
@@ -130,34 +126,29 @@
                                     <img ng-src="{{item.asset_url}}" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf'">
-                                    <img src="../../images/icons/ext-preso--08-pdf.svg" class="if-svg"/>
+                                    <img src="./images/icons/ext-preso--08-pdf.svg" class="if-svg" />
                                 </div>
-                                <div class="img_holder"
-                                     ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
-                                    <img src="../../images/icons/ext-preso--07-docs.svg"/>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
+                                    <img src="./images/icons/ext-preso--07-docs.svg" />
                                 </div>
-                                <div class="img_holder"
-                                     ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
-                                    <img src="../../images/icons/ext-file-slides.svg" class="if-svg"/>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
+                                    <img src="./images/icons/ext-file-slides.svg" class="if-svg" />
                                 </div>
-                                <div class="img_holder"
-                                     ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'">
-                                    <img src="../../images/icons/ext-preso--04-mp3.svg"/>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'">
+                                    <img src="./images/icons/ext-preso--04-mp3.svg" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'text/plain'">
-                                    <img src="../../images/icons/ext-preso--06-text.svg"/>
+                                    <img src="./images/icons/ext-preso--06-text.svg" />
                                 </div>
-                                <div class="img_holder"
-                                     ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
-                                    <img src="../../images/icons/ext-preso--10-sheets.svg"/>
+                                <div class="img_holder" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
+                                    <img src="./images/icons/ext-preso--10-sheets.svg" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'application/zip'">
-                                    <img src="../../images/icons/ext-preso---11-zip.svg"/>
+                                    <img src="./images/icons/ext-preso---11-zip.svg" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'application/octet-stream'">
-                                    <img src="../../images/icons/ext-preso---11-zip.svg"/>
+                                    <img src="./images/icons/ext-preso---11-zip.svg" />
                                 </div>
-
                                 <div class="file-name">
                                     <span>
                                        <i class="fa fa-file-image-o"
@@ -186,81 +177,80 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="asset-by-industry" ng-repeat="(key,value) in (presentationfolders | groupBy: 'folder_name')">
-                <div class="font_18 font_medium blue1" ng-hide="key == 'Top 10 Presentations'">
-                    {{key}}
-                </div>
-                <div class="flow-y">
-                    <div class="dis_table_auto">
-                        <a ng-repeat="item in value|map:'files' | flatten" class="file-item" contextmenu-item="file"
-                           ng-click="activeSelected(item)"
-                           ng-class="{'active':item.isActive}">
-                            <div class="img_holder"
-                                 ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
-                                <img ng-src="{{item.asset_url}}"/>
-                            </div>
-                            <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf'">
-                                <img src="../../images/icons/ext-preso--08-pdf.svg" class="if-svg"/>
-                            </div>
-                            <div class="img_holder"
-                                 ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
-                                <img src="../../images/icons/ext-preso--07-docs.svg" class="if-svg"/>
-                            </div>
-                            <div class="img_holder" ng-if="item.asset_mimetype == 'text/plain'">
-                                <img src="../../images/icons/ext-preso--06-text.svg" class="if-svg"/>
-                            </div>
-                            <div class="img_holder"
-                                 ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
-                                <img src="../../images/icons/ext-file-slides.svg" class="if-svg"/>
-                            </div>
-                            <div class="img_holder"
-                                 ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
-                                <img src="../../images/icons/ext-file-sheets.svg" class="if-svg"/>
-                            </div>
-                            <div class="img_holder"
-                                 ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'">
-                                <img src="../../images/icons/ext-preso--04-mp3.svg" class="if-svg"/>
-                            </div>
-                            <div class="videogular-container" ng-if="item.asset_mimetype == 'video/mp4'">
-                                <videogular vg-theme="item.url">
-                                    <vg-media vg-src="item.asset_url"></vg-media>
-                                    <vg-buffering></vg-buffering>
-                                    <!-- <vg-overlay-play></vg-overlay-play> -->
-                                </videogular>
-                            </div>
-                            <!-- <i class="fa fa-file-audio-o text-black docs" ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'"></i> -->
-                            <!-- <i class="fa fa-file-text-o text-blue docs" ></i> -->
-                            <div class="img_holder" ng-if="item.asset_mimetype == 'application/zip'">
-                                <img src="../../images/icons/ext-preso---11-zip.svg"/>
-                            </div>
-                            <div class="img_holder" ng-if="item.asset_mimetype == 'application/octet-stream'">
-                                <img src="../../images/icons/ext-preso---11-zip.svg"/>
-                            </div>
-                            <div class="file-name">
-
-                                <i class="fa fa-file-image-o"
-                                   ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'"></i>
-                                <i class="red1 fa fa-file-pdf-o"
-                                   ng-if="item.asset_mimetype == 'application/pdf'"></i>
-                                <i class="fa fa-file-word-o"
-                                   ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
-                                <i class="fa fa-file-code-o"
-                                   ng-if="item.asset_mimetype == 'text/plain'"></i>
-                                <i class="orange1 fa fa-file-powerpoint-o"
-                                   ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
-                                <i class="fa fa-file-excel-o"
-                                   ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
-                                <i class="fa fa-file-audio-o"
-                                   ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'"></i>
-                                <i class="fa fa-file-movie-o"
-                                   ng-if="item.asset_mimetype == 'video/mp4'"></i>
-
-                                <span class="pad_side_10 ">
-
+            <div class="multiple-slider">
+                <div class="row" ng-repeat="(key,value) in (presentationfolders | groupBy: 'folder_name')" ng-hide="key == 'Top 10 Presentations'">
+                    <div class="font_18 font_medium blue1">
+                        {{key}}
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-repeat="item in value|map:'files' | flatten">
+                                <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
+                                    <i class="fa fa-star text-yellow" ng-if="item.isStarred"></i>
+                                    <i class="fa fa-star-o" ng-if="!item.isStarred" style="color:transparent;"></i>
+                                    <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
+                                        <img ng-src="{{item.asset_url}}" />
+                                    </div>
+                                     <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf'">
+                                        <img src="./images/icons/ext-preso--08-pdf.svg" class="if-svg"/>
+                                    </div>
+                                    <!-- <pdf-thumbnail data-file="item.file" ng-if="item.asset_mimetype == 'application/pdf'">
+                                    </pdf-thumbnail> -->
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
+                                            <img src="./images/icons/ext-preso--07-docs.svg" class="if-svg" />
+                                        </div>
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'text/plain'">
+                                            <img src="./images/icons/ext-preso--06-text.svg" class="if-svg" />
+                                        </div>
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'">
+                                            <img src="./images/icons/ext-file-slides.svg" class="if-svg" />
+                                        </div>
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
+                                            <img src="./images/icons/ext-file-sheets.svg" class="if-svg" />
+                                        </div>
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'">
+                                            <img src="./images/icons/ext-preso--04-mp3.svg" class="if-svg" />
+                                        </div>
+                                        <div class="videogular-container" ng-if="item.asset_mimetype == 'video/mp4'">
+                                            <videogular vg-theme="item.url">
+                                                <vg-media vg-src="item.asset_url"></vg-media>
+                                                <vg-buffering></vg-buffering>
+                                                <!-- <vg-overlay-play></vg-overlay-play> -->
+                                            </videogular>
+                                        </div>
+                                        <!-- <i class="fa fa-file-audio-o text-black docs" ng-if="item.asset_mimetype == 'audio/mp3' || item.asset_mimetype == 'audio/mp4'"></i> -->
+                                        <!-- <i class="fa fa-file-text-o text-blue docs" ></i> -->
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'application/zip'">
+                                            <img src="./images/icons/ext-preso---11-zip.svg" />
+                                        </div>
+                                        <div class="img_holder" ng-if="item.asset_mimetype == 'application/octet-stream'">
+                                            <img src="./images/icons/ext-preso---11-zip.svg" />
+                                        </div>
+                                        <div class="file-name">
+                                            <span class=" ">
+                                            <i class="fa fa-file-image-o"
+                                               ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'"></i>
+                                            <i class="red1 fa fa-file-pdf-o"
+                                               ng-if="item.asset_mimetype == 'application/pdf'"></i>
+                                            <i class="fa fa-file-word-o"
+                                               ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
+                                            <i class="fa fa-file-code-o"
+                                               ng-if="item.asset_mimetype == 'text/plain'"></i>
+                                            <i class="orange1 fa fa-file-powerpoint-o"
+                                               ng-if="item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || item.asset_mimetype == 'application/vnd.ms-powerpoint'"></i>
+                                            <i class="fa fa-file-excel-o"
+                                               ng-if="item.asset_mimetype == 'text/csv' || item.asset_mimetype == 'application/vnd.ms-excel' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></i>
+                                            <i class="fa fa-file-audio-o"
+                                               ng-if="item.asset_mimetype == 'audio/mp3'||item.asset_mimetype == 'audio/mp4'"></i>
+                                            <i class="fa fa-file-movie-o"
+                                               ng-if="item.asset_mimetype == 'video/mp4'"></i>
+                                        </span>
+                                            <span class="pad_side_10 ">
                                             {{item.asset_name}}
                                         </span>
+                                        </div>
+                                </a>
                             </div>
                         </a>
                     </div>

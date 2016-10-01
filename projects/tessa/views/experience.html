@@ -4,7 +4,6 @@
             <div class="dis_table_auto">
                 <div class="dis_cell btn-group">
                     <div class="input-group input-icon pad_right10 font_medium">
-
                         <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'all')}" ng-click="filterArticle('all')" fa-track-event="['Experience','View',expFilter,null]">All</button>
                         <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'Portfolio')}" ng-click="filterArticle('Portfolio')" fa-track-event="['Experience','View',expFilter,null]">Portfolio</button>
                         <button type="button" class="btn btn-default-alt" ng-class="{'active': (expFilter == 'Article')}" ng-click="filterArticle('Article')" fa-track-event="['Experience','View',expFilter,null]">Articles</button>
@@ -12,7 +11,7 @@
                 </div>
                 <div class="dis_cell">
                     <div id="filter_industry">
-                        <button uib-popover-template="dynamicPopover.templateUrl" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-primary" >
+                        <button uib-popover-template="dynamicPopover.templateUrl" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-primary">
                             Filter by Industry
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -40,7 +39,7 @@
         </div>
     </div> -->
     <div id="masonry-item" style="clear:both">
-        <div class="item_experience" ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
+         <div class="item_experience" ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
             <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" fa-track-event="['Experience','View',article.title,article.article_id]">
                 <div class="panel panel-default">
                     <div class="img_holder" ng-if="!article.thumbnail_media">
@@ -70,7 +69,6 @@
                             <vg-overlay-play></vg-overlay-play>
                             <vg-buffering></vg-buffering>
                         </videogular>
-                        <!--<span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>-->
                     </div>
                     <div id="masonry_body" class="padding_10 blue1 font_14 font_bold" ui-sref="main.articlePage({selected_id:article.article_id})"  ui-sref="main.articlePage({selected_id:article.article_id})">
                         <a>{{article.title}}</a>
