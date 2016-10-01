@@ -64,7 +64,7 @@
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
         <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
-            <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file)" ng-dblclick="openFolder(file)">
+            <div class="asset-box" ng-class="{'active':file.isActive}" ng-click="activeSelected(file,$event)" ng-dblclick="openFolder(file)">
                 <span class="asset-box-icon bg-gray" uib-tooltip="{{file.folder_name}}">
                     <i class="fa fa-folder text-muted"></i>
                 </span>
@@ -83,7 +83,7 @@
         <div class="col-md-12">
             <ul class="mailbox-attachments clearfix" contextmenu-container="meta.contextmenu">
                 <li ng-repeat="files in assets.assets" class="mailbox-attachment" ng-class="{'active':files.isActive}" contextmenu-item="files">
-                    <span class="mailbox-attachment-icon" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
+                    <span class="mailbox-attachment-icon" ng-click="activeSelected(files,$event)" ng-dblclick="openFile(files)" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
                         <!-- PDF -->
                         <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
                         <!-- DOCS -->
