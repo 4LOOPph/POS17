@@ -34,7 +34,7 @@
                 </li>
             </ul>
     </span>
-   <span uib-dropdown style="float: right;" ng-if="!displayInstallPlugin && !mirrorFile">
+   <!-- <span uib-dropdown style="float: right;" ng-if="!displayInstallPlugin && !mirrorFile">
         <a id="single-button" uib-tooltip="More actions" tooltip-placement="bottom" type="button" uib-dropdown-toggle style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;margin-right: 10px;">
             <img src="./images/icons/ic_cast_white_24px.svg">
         </a>
@@ -46,8 +46,14 @@
                     </a>
                 </li>
             </ul>
-    </span>
-    <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" style="margin-bottom: -7px;float: right;padding: 8px;">
+    </span> -->
+   <a type="button" uib-tooltip="Fullscreen" tooltip-placement="bottom" ng-click="enterFullScreen()" ng-if="!isFullScreen" style="margin-bottom: -7px;float: right;padding: 8px;">
+        <img src="./images/icons/ic_zoom_out_map_white_24px.svg">
+    </a>
+    <a type="button" uib-tooltip="Exit Fullscreen" tooltip-placement="bottom" ng-click="exitFullScreen()" ng-if="isFullScreen" style="margin-bottom: -7px;float: right;padding: 8px;">
+        <img src="./images/icons/ic_aspect_ratio_white_24px.svg">
+    </a>
+    <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="castScreen()" ng-if="!displayInstallPlugin" style="margin-bottom: -7px;float: right;padding: 8px;">
         <img src="./images/icons/ic_cast_white_24px.svg">
     </a>
     <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" uib-tooltip="Install Plugin" tooltip-placement="bottom" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" style="margin-bottom: -7px;float: right;padding: 8px;color: #fff;">

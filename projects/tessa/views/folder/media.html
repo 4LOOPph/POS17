@@ -2,7 +2,7 @@
     <div class="modal-header" style="padding: 15px 15px 10px;border-bottom: 1px solid rgb(37, 42, 45);background: rgb(37, 42, 45);color: #fff;">
         <span class="cast" style="cursor: pointer;"><img src="./images/icons/ic_get_app_white_24px.svg"></span>
         <span class="cast"><a href="" ng-click="starredSelected(asset_file)"><img src="./images/icons/ic_star_border_white_24px.svg"></span></a>
-        <span uib-dropdown class="cast" ng-if="!displayInstallPlugin && !mirrorFile">
+        <!-- <span uib-dropdown class="cast" ng-if="!displayInstallPlugin && !mirrorFile">
             <a id="single-button" type="button" uib-dropdown-toggle ng-disabled="disabled" style="color: #fff;">
                    <img src="./images/icons/ico_cast04.svg" style="max-width: 35px;margin-top: -10px;margin-bottom: -6px;">
             </a>
@@ -13,8 +13,14 @@
         </a>
         </li>
         </ul>
-        </span>
-        <a type="button" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
+        </span> -->
+        <a type="button" uib-tooltip="Fullscreen" tooltip-placement="bottom" ng-click="enterFullScreen()" ng-if="!isFullScreen" style="margin-bottom: -7px;float: right;padding: 8px;">
+            <img src="./images/icons/ic_zoom_out_map_white_24px.svg">
+        </a>
+        <a type="button" uib-tooltip="Exit Fullscreen" tooltip-placement="bottom" ng-click="exitFullScreen()" ng-if="isFullScreen" style="margin-bottom: -7px;float: right;padding: 8px;">
+            <img src="./images/icons/ic_aspect_ratio_white_24px.svg">
+        </a>
+        <a type="button" ng-click="castScreen()" ng-if="!displayInstallPlugin" class="cast" style="color: #fff;max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
             <img src="./images/icons/ico_cast04.svg" style="max-width: 40px;margin-top: -10px;margin-bottom: -6px;">
         </a>
         <a type="button" ng-click="installPlugin()" ng-if="displayInstallPlugin" uib-tooltip="Install Plugin" tooltip-placement="bottom" ng-click="castScreen()" ng-if="!displayInstallPlugin && mirrorFile" style="margin-bottom: -7px;float: right;padding: 8px;color: #fff;">

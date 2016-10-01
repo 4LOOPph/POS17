@@ -178,7 +178,7 @@
                 </div>
             </div>
             <div class="multiple-slider">
-                <div class="row" ng-repeat="(key,value) in (presentationfolders | groupBy: 'folder_name')" ng-hide="key == 'Top 10 Presentations'">
+                <div class="row" ng-repeat="(key,value) in (foldercopy | groupBy: 'folder_name')" ng-hide="key == 'Top 10 Presentations'">
                     <div class="font_18 font_medium blue1">
                         {{key}}
                     </div>
