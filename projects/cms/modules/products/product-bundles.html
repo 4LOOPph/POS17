@@ -19,20 +19,20 @@
                     <div class="pull-left">
                         <form class="form-inline">
                             <div class="form-group">
-                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add">
-                                    <i class="fa fa-edit"></i> Add New Entry
+                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add" uib-tooltip="Add New">
+                                    <i class="fa fa-plus"></i>
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()">
-                                    <i class="fa fa-file-text-o"></i> Publish
+                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                                    <i class="fa fa-file-text-o"></i>
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()">
-                                    <i class="fa fa-edit"></i> Draft
+                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                                    <i class="fa fa-edit"></i>
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()">
-                                        <i class="fa fa-trash"></i> Archive
-                                    </a>
-                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                                    <i class="fa fa-refresh"></i> Refresh
+                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                                    <i class="fa fa-refresh"></i>
                                 </button>
                             </div>
                         </form>
@@ -43,28 +43,28 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <span class="input-group-btn">
-                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search">
                                                 <i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                        <span class="input-group-btn">
+                                            </button>
+                                        </div>
+                                        <div class="input-group-btn">
                                             <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
                                                 {{applicationStatus}}
                                                 <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a ng-click="updateStatus('All')">All</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Publish')">Published</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Archived')">Archived</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Draft')">Draft</a>
-                                            </li>
-                                        </ul>
-                                        </span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a ng-click="updateStatus('All')">All</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Publish')">Published</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

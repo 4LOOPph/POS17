@@ -16,75 +16,125 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <div ng-repeat="files in mediafile" class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
-                            <div class="btn-group" uib-dropdown>
-                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
-                                <ul class="dropdown-menu" uib-dropdown-menu>
-                                    <li>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}">Download
-                                            <span class="pull-right"><i class="fa fa-download"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" ng-if="files.media_mimetype == 'image/jpeg'" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'image/jpg'" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'image/gif'" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'image/x-ms-bmp'" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'image/png'" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                        <!-- Audio -->
-                                        <a href="" ng-if="files.media_mimetype == 'audio/mp3'" ng-click="openAudioModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'audio/mp4'" ng-click="openAudioModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <!-- Video -->
-                                        <a href="" ng-if="files.media_mimetype == 'video/mp4'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'video/x-flv'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'video/x-msvideo'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'video/x-ms-wmv'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <a href="" ng-if="files.media_mimetype == 'video/quicktime'" ng-click="openVideoModal(files)">Play <span class="pull-right"><i class="fa fa-play"></i></span></a>
-                                        <!-- PDF -->
-                                        <a href="" ng-if="files.media_mimetype == 'application/pdf'" ng-click="openDocsModal(files)">Open <span class="pull-right"><i class="fa fa-eye"></i></span></a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li><a href="" ng-click="copyURLLink(files)">Copy URL <span class="pull-right"><i class="fa fa-link"></i></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="info-box">
-                            <!-- Images -->
-                            <span ng-if="files.media_mimetype == 'image/jpeg'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'image/jpg'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'image/gif'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'image/x-ms-bmp'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'image/png'" class="info-box-icon bg-purple"><i class="fa fa-file-photo-o"></i></span>
-                            <!-- Audio -->
-                            <span ng-if="files.media_mimetype == 'audio/mp3'" class="info-box-icon bg-olive"><i class="fa fa-file-audio-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'audio/mp4'" class="info-box-icon bg-olive"><i class="fa fa-file-audio-o"></i></span>
-                            <!-- Video -->
-                            <span ng-if="files.media_mimetype == 'video/mp4'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'video/x-flv'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'video/x-msvideo'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'video/x-ms-wmv'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'video/quicktime'" class="info-box-icon bg-red"><i class="fa fa-file-video-o"></i></span>
-                            <!-- PDF -->
-                            <span ng-if="files.media_mimetype == 'application/pdf'" class="info-box-icon bg-red"><i class="fa fa-file-pdf-o"></i></span>
-                            <!-- DOCS -->
-                            <span ng-if="files.media_mimetype == 'application/msword'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" class="info-box-icon bg-aqua"><i class="fa fa-file-word-o"></i></span>
-                            <!-- Excel -->
-                            <span ng-if="files.media_mimetype == 'application/vnd.ms-excel'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" class="info-box-icon bg-green"><i class="fa fa-file-excel-o"></i></span>
-                            <!-- Presentation / Powerpoint -->
-                            <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" class="info-box-icon bg-orange"><i class="fa fa-file-powerpoint-o"></i></span>
-                            <span ng-if="files.media_mimetype == 'application/vnd.ms-powerpoint'" class="info-box-icon bg-olive"><i class="fa fa-file-powerpoint-o"></i></span>
-                            <!-- Zip -->
-                            <span ng-if="files.media_mimetype == 'application/zip'" class="info-box-icon bg-teal"><i class="fa fa-file-zip-o"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">{{files.media_name}}</span>
-                                <span class="info-box-text">{{files.media_filesize/1024/1024|number:2}} MB</span>
-                            </div>
-                        </div>
+                    <div ng-repeat="files in mediafile" class="col-md-2 col-sm-3 col-xs-12">
+                        <ul class="mailbox-attachments clearfix">
+                            <li ng-if="files.media_mimetype == 'image/jpeg' || files.media_mimetype == 'image/jpg' || files.media_mimetype == 'image/gif' || files.media_mimetype == 'image/x-ms-bmp' || files.media_mimetype == 'image/png'">
+                                <span class="mailbox-attachment-icon has-img"><img src="{{files.media_path}}" alt="Attachment"/></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openLightboxModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-camera"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openLightboxModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'audio/mp3' || files.media_mimetype == 'audio/mp4'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-audio-o"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openAudioModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-play"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openAudioModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'video/mp4' || files.media_mimetype == 'video/x-flv' || files.media_mimetype == 'video/x-msvideo' || files.media_mimetype == 'video/x-ms-wmv' || files.media_mimetype == 'video/quicktime'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-video-o"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openVideoModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-play"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openVideoModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'application/pdf'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o text-red"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'text/plain'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-text-o text-blue"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'application/msword' || files.media_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o text-blue"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'text/csv' || files.media_mimetype == 'application/vnd.ms-excel' || files.media_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-excel-o text-green"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.media_mimetype == 'application/vnd.ms-powerpoint'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-powerpoint-o text-orange"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-if="files.media_mimetype == 'application/zip'">
+                                <span class="mailbox-attachment-icon"><i class="fa fa-file-zip-o text-purple"></i></span>
+                                <div class="mailbox-attachment-info">
+                                    <a href="" ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
+                                    <div class="mailbox-attachment-size">
+                                        {{ files.media_filesize/1024/1024|number:2 }} MB
+                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
+                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
+                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

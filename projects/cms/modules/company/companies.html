@@ -1,0 +1,19 @@
+<section class="content-header">
+    <h1>Companies/Customer</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Companies/Customer</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-building'></i> Companies" bs-pane>
+            <ng-include src="'./modules/company/company.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-users'></i> Customers" bs-pane>
+            <ng-include src="'./modules/company/customers.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

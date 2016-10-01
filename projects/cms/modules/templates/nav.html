@@ -1,7 +1,16 @@
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
-    <div class="user-panel" style="height:44px;">
-        <p style="color:#fff;padding: 5px 5px 5px 15px;line-height: 1;position: absolute;font-weight: 600;margin-bottom: 9px;">( {{activeSub}} )</p>
+    <div class="user-panel">
+        <!-- <p style="color:#fff;padding: 5px 5px 5px 15px;line-height: 1;position: absolute;font-weight: 600;margin-bottom: 9px;"></p> -->
+        <div class="pull-left image">
+            <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="img-circle" alt="User Image" />
+        </div>
+        <div class="pull-left info">
+            <b ng-bind="profile.EmpName"></b>
+            <br>
+            <br>
+            <small><i class="fa fa-circle text-success"></i> ( {{activeSub}} )</small>
+        </div>
     </div>
     <!-- Sidebar user panel -->
     <ul class="sidebar-menu">
@@ -21,11 +30,10 @@
                 <li><a ui-sref="main.purchase_order" ui-sref-active="active"><i class="fa fa-file-text-o"></i> Purchase Order</a></li>
                 <li><a ui-sref="main.received_order"><i class="fa fa-file-text-o"></i> Receive Order</a></li>
                 <li><a ui-sref="main.return_order"><i class="fa fa-file-text-o"></i> Return Order</a></li>
-                <li><a href=""><i class="fa fa-file-text-o"></i> Stocks</a></li>
+                <li><a ui-sref="main.stock"><i class="fa fa-file-text-o"></i> Stocks</a></li>
             </ul>
         </li>
-        <!-- <li><a href=""><i class="fa fa-laptop"></i> Campaign & Loyalty</a></li>
-        <li class="treeview">
+        <!-- <li class="treeview">
             <a href="">
                 <i class="fa fa-money"></i>
                 <span>Financials</span>
@@ -37,22 +45,18 @@
                 <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
             </ul>
-        </li>
+        </li> -->
         <li class="treeview">
             <a href="">
                 <i class="fa fa-file-o"></i>
-                <span>Reports</span>
+                <span>Reports / Insights</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
                 <li><a ui-sref="main.reports-invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Modals</a></li>
+                <li><a ui-sref="main.analytics-overview"><i class="fa fa-circle-o"></i> Analytics</a></li>
             </ul>
-        </li>-->
+        </li>
         <li class="header">SETTINGS</li>
         <li class="treeview">
             <a href="">
@@ -107,15 +111,24 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a ui-sref="main.settings-humanresource">
-                <i class="fa fa-group"></i> <span>Human Resource</span>
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-group"></i>
+                <span>Personnel / Customer</span>
+                <i class="fa fa-angle-left pull-right"></i>
             </a>
-        </li>
-        <li>
-            <a ui-sref="main.settings-company">
-                <i class="fa fa-sitemap "></i> <span>Company <small>(customer)</small></span>
-            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a ui-sref="main.settings-humanresource">
+                        <i class="fa fa-group"></i> <span>Staff Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.settings-company">
+                        <i class="fa fa-sitemap "></i> <span>Companies/Customer</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a ui-sref="main.settings-useraccounts">
@@ -127,10 +140,10 @@
                 <i class="fa fa-cog"></i> <span>Application Settings</span>
             </a>
         </li>
-        <!-- <li class="header">OTHERS</li>
+        <li class="header">OTHERS</li>
          <li>
             <a ui-sref="main.calendars">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
+                <i class="fa fa-calendar"></i> <span>Appointment/Booking</span>
                 <small class="label pull-right bg-red">3</small>
             </a>
         </li>
@@ -141,8 +154,8 @@
             </a>
         </li>
         <li class="header">SUPPORT</li>
-        <li><a href=""><i class="fa fa-book"></i> Documentation</a></li>
-        <li><a href=""><i class="fa fa-comment-o"></i> Customer Service</a></li> -->
+        <!-- <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
+        <li><a href=""><i class="fa fa-comment-o"></i> Customer Service</a></li>
     </ul>
 </section>
 <!-- /.sidebar -->

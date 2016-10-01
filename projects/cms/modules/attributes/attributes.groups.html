@@ -17,14 +17,14 @@
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addGroups()">
-                            <i class="fa fa-edit"></i> Add New Entry
+                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addGroups()" uib-tooltip="Add New ">
+                            <i class="fa fa-edit"></i>
                         </button>
-                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
-                            <i class="fa fa-remove"></i> Delete
+                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                            <i class="fa fa-remove"></i>
                         </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                            <i class="fa fa-refresh"></i> Refresh
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                            <i class="fa fa-refresh"></i>
                         </button>
                     </div>
                     <div class="pull-right">

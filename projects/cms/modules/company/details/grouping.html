@@ -1,0 +1,73 @@
+<div class="row" ng-controller="companyGroupingsController">
+    <form role="form" ng-submit="addProduct()">
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">List of Products</h3> -->
+                    <div class="pull-left">
+                        <form class="form-inline">
+                            <a class="btn btn-flat btn-sm btn-primary" ng-click="saveCustomerGrouping()">
+                                <i class="fa fa-edit"></i> Save
+                            </a>
+                            <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()">
+                                <i class="fa fa-refresh"></i> Refresh
+                            </a>
+                            <a class="btn btn-sm btn-flat btn-default" ng-click="addGroups()"><i class="fa fa-list"></i> Customer Groups</a>
+                        </form>
+                    </div>
+                    <div class="pull-right box-tools">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-striped footable" data-page-size="10" id="tblCategory">
+                        <thead>
+                            <tr>
+                                <th width="30" data-sort-ignore="true">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </th>
+                                <th class="">Name</th>
+                                <th class="">Store</th>
+                                <th class="">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="var in groups" repeat-end="paginate()">
+                                <td>
+                                    <input type="checkbox" ng-model="var.selected" ng-change="checkDataChanges(var)">
+                                </td>
+                                <td>
+                                    {{var.name}}
+                                </td>
+                                <td>
+                                    {{var.store_name}}
+                                </td>
+                                <td>
+                                    {{var.description}}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

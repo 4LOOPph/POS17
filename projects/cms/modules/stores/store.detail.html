@@ -10,61 +10,13 @@
 </section>
 <!-- Main content -->
 <section class="content">
-    <div class="row">
-        <form role="form" name="storeForm" ng-submit="saveStore()">
-            <div class="col-md-9">
-                <div class="box box-warning">
-                    <div class="box-header">
-                        <h3 class="box-title">General Info</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <div class="box-body">
-                        <div class="form-group ">
-                            <label>Store Name</label>
-                            <input type="text" name="storename" class="form-control" ng-minlength="6" ng-maxlength="25" ng-model="details.name" placeholder="Store Name" required />
-                        </div>
-                        <div class="form-group ">
-                            <label>Store TIN</label>
-                            <input type="text" class="form-control" ng-model="details.tin" placeholder="Store TIN" required />
-                        </div>
-                        <div class="form-group ">
-                            <label>Store owner</label>
-                            <input type="text" class="form-control" ng-model="details.owner_name" placeholder="Store Owner" required />
-                        </div>
-                        <div class="form-group ">
-                            <label>Contact Number</label>
-                            <input type="text" class="form-control" ng-model="details.telno" numbers-only placeholder="Contact No." required />
-                        </div>
-                        <div class="form-group ">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" ng-model="details.email_address" placeholder="Email Address" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Store Address</label>
-                            <textarea class="form-control" rows="3" ng-model="details.address" placeholder="Store Address" required /></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Tags <i class="fa fa-tags"></i></label>
-                            <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
-                                <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
-                                <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
-                                    <div ng-bind-html="tag.tags | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box box-warning">
-                    <div class="box-body">
-                        <button type="submit" ng-disabled="storeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
-                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
-                    </div>
-                </div>
-            </div>
-        </form>
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+            <ng-include src="'./modules/stores/detail/info.html'"></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-tablets'></i> Devices" bs-pane ng-if="details.store_id">
+            <ng-include src="'./modules/stores/device.html'"></ng-include>
+        </div>
     </div>
 </section>
 <!-- /.content -->

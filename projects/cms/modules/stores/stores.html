@@ -17,14 +17,14 @@
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Stores</h3> -->
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-stores-add">
-                            <i class="fa fa-edit"></i> Add New Entry
+                        <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-stores-add" uib-tooltip="Add New">
+                            <i class="fa fa-plus"></i>
                         </button>
-                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
-                            <i class="fa fa-remove"></i> Delete
+                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger" uib-tooltip="Delete">
+                            <i class="fa fa-remove"></i>
                         </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                            <i class="fa fa-refresh"></i> Refresh
+                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                            <i class="fa fa-refresh"></i>
                         </button>
                     </div>
                     <div class="pull-right">

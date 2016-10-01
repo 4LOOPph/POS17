@@ -13,11 +13,11 @@
             <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box box-warning">
                 <div class="box-header">
                     <div class="pull-left">
                         <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
-                            <i class="fa fa-edit"></i> Add New
+                            <i class="fa fa-plus"></i>
                         </button>
                         <a class="btn btn-flat btn-sm btn-success" ng-disabled="!deleteSomeData" ng-click="publishSelected()" uib-tooltip="Publish">
                             <i class="fa fa-file-text-o"></i>

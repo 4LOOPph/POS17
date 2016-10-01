@@ -1,0 +1,83 @@
+<div class="row" ng-controller="perStotreController">
+    <form role="form">
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">List of Products</h3> -->
+                    <div class="pull-left">
+                        <form class="form-inline">
+                            <!-- <div class="btn-group">
+                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                    Status: <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">{{applicationStatus}}</span>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a ng-click="updateStatus('')">All</a></li>
+                                    <li><a ng-click="updateStatus('Product\'s Store')">Product's Store</a></li>
+                                </ul>
+                            </div> -->
+                            <button class="btn btn-flat btn-sm btn-primary" ng-click="saveStore()">
+                                <i class="fa fa-edit"></i> Save
+                            </button>
+                            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
+                                <i class="fa fa-refresh"></i> Refresh
+                            </a>
+                        </form>
+                    </div>
+                    <div class="pull-right box-tools">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-striped footable" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th width="30" data-sort-ignore="true">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </th>
+                                <th class="">Name</th>
+                                <th class="">Address</th>
+                                <th class="">Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="var in itemArray" repeat-end="paginate()">
+                                <td>
+                                    <input type="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
+                                </td>
+                                <td>
+                                    {{var.name}}
+                                </td>
+                                <td>
+                                    {{var.address}}
+                                </td>
+                                <td>
+                                    {{var.owner_name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

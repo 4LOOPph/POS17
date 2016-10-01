@@ -1,4 +1,4 @@
-<div class="box box-warning">
+<div class="box box-warning" ng-controller="appSettingsDeviceController" ng-init="init()">
     <div class="box-header">
         <h3 class="box-title">Device Management</h3>
         <br>
@@ -6,13 +6,7 @@
         <div class="pull-left">
             <form class="form-inline">
                 <div class="form-group">
-                    <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-add">
-                        <i class="fa fa-edit"></i> Add New Device
-                    </a>
-                    <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()">
-                        <i class="fa fa-times"></i> Revoke
-                    </a>
-                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
                         <i class="fa fa-refresh"></i> Refresh
                     </a>
                 </div>
@@ -52,99 +46,40 @@
     </div>
     <div class="box-body padding">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" ng-repeat="device in devices">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Device Name</h3>
+                        <h4 class="box-title">{{device.deviceName}}</h4>
                         <div class="box-tools pull-right">
                             <div class="btn-group" uib-dropdown>
                                 <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
                                 <ul class="dropdown-menu" uib-dropdown-menu>
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="" ng-click="syncData()">Sync Data</a></li>
+                                    <li><a href="" ng-click="backupData()">Backup</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="" ng-click="openDeviceNotification()">Notify</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="box-body">
-                        <span class="info-box-icon bg-aqua"><i class="fa fa-desktop"></i></span>
+                        <span class="info-box-icon bg-aqua" ng-if="device.isOnline"><i class="fa fa-tablet"></i></span>
+                        <span class="info-box-icon bg-gray" ng-if="!device.isOnline"><i class="fa fa-tablet"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-number">Mac Address:</span>
-                            <small class="info-box-text">00-1B-63-84-45-E6</small>
-                            <span class="info-box-number">Device ID:</span>
-                            <small class="info-box-text">02123dVAD6</small>
-                            <span class="info-box-number">O.S.:</span>
-                            <small class="info-box-text">Windows 10</small>
+                            <span class="info-box-number">UUID:</span>
+                            <small class="info-box-text">{{device.deviceUUID}}</small>
+                            <span class="info-box-number">Brand:</span>
+                            <small class="info-box-text">{{device.deviceBrand}}</small>
+                            <span class="info-box-number">Model:</span>
+                            <small class="info-box-text">{{device.deviceModel}}</small>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="overlay">
+                    <div class="overlay" ng-show="device.isSyncing">
                         <i class="fa fa-refresh fa-spin"></i>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Device Name</h3>
-                        <div class="box-tools pull-right">
-                            <div class="btn-group" uib-dropdown>
-                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
-                                <ul class="dropdown-menu" uib-dropdown-menu>
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <span class="info-box-icon bg-red"><i class="fa fa-plug"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-number">Mac Address:</span>
-                            <small class="info-box-text">00-1B-63-84-45-E6</small>
-                            <span class="info-box-number">Device ID:</span>
-                            <small class="info-box-text">02123dVAD6</small>
-                            <span class="info-box-number">O.S.:</span>
-                            <small class="info-box-text">Windows 10</small>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Device Name</h3>
-                        <div class="box-tools pull-right">
-                            <div class="btn-group" uib-dropdown>
-                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
-                                <ul class="dropdown-menu" uib-dropdown-menu>
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <span class="info-box-icon bg-gray"><i class="fa fa-power-off"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-number">Mac Address:</span>
-                            <small class="info-box-text">00-1B-63-84-45-E6</small>
-                            <span class="info-box-number">Device ID:</span>
-                            <small class="info-box-text">02123dVAD6</small>
-                            <span class="info-box-number">O.S.:</span>
-                            <small class="info-box-text">Windows 10</small>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <div class="overlay" ng-show="device.isBackup">
+                        <i class="fa fa-refresh fa-spin"></i>
                     </div>
                 </div>
             </div>

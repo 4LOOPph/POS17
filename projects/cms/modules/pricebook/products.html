@@ -1,4 +1,4 @@
-<div class="row" ng-init="refreshData()">
+<div class="row" ng-controller="pricebookProductCtrl">
     <div class="col-md-12">
         <div class="box box-warning">
             <div class="box-header">
@@ -13,6 +13,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <a class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()" uib-tooltip="Add New">
+                            <i class="fa fa-plus"></i> Add New
+                        </a>
+                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" uib-tooltip="Delete">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()" uib-tooltip="Refresh">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                    </div>
                 </form>
             </div>
             <div class="box-header">
@@ -20,17 +31,25 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                     <p>
                                         <button uib-popover-template="dynamicPopover.templateUrl" popover-placement="bottom-left" type="button" class="btn btn-default">Filter By Tags</button>
                                     </p>
+                                </div> -->
+                                <div class="btn-group">
+                                    <button class="btn btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                                        Filter By Tags
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li ng-repeat="tag in tagsArr">
+                                            <a href="" ng-click="toggleSelectedTag(tag)" class="small" data-value="{{tag.checked}}" tabIndex="-1">
+                                                <input type="checkbox" ng-model="tag.checked" />&nbsp; {{tag.tags}}
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <a class="btn btn-flat btn-danger" ng-click="deleteSelected()">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
-                                <a class="btn btn-flat btn-success" ng-click="refreshData()">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </a>
                             </div>
                         </div>
                     </form>
@@ -41,6 +60,8 @@
                             <input type="text" class="form-control" placeholder="Sell Price" ng-model="item.sell_price" required />
                             <input type="text" class="form-control" placeholder="Margin" ng-model="item.margin" required />
                             <input type="text" class="form-control" placeholder="Discount" ng-model="item.discount" required />
+                            <input type="text" class="form-control" placeholder="Min. Qty" ng-model="item.min_quantity" required />
+                            <input type="text" class="form-control" placeholder="Max. Qty" ng-model="item.max_quantity" required />
                             <a class="btn btn-flat btn-primary" ng-click="savePricebookItems(item)">
                                 <i class="fa fa-check-square-o"></i> Apply
                             </a>
@@ -55,37 +76,52 @@
                             <th width="30" data-sort-ignore="true">
                                 <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                             </th>
-                            <th data-sort-ignore="true">Products</th>
+                            <th data-sort-ignore="true">Items</th>
                             <th data-sort-ignore="true">Base Price</th>
                             <th data-sort-ignore="true">Sell Price</th>
                             <th data-sort-ignore="true">Margin</th>
                             <th data-sort-ignore="true">Discount</th>
-                            <th data-sort-ignore="true">Publish</th>
+                            <th data-sort-ignore="true">Min. Qty</th>
+                            <th data-sort-ignore="true">Max. Qty</th>
+                            <th data-sort-ignore="true" class="text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="product in (products | filter:isOnSelectedTag())" repeat-end="paginate()">
+                        <tr ng-repeat="product in (pricebookItems | filter:isOnSelectedTag())" repeat-end="paginate()">
                             <td>
                                 <input type="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
                             </td>
-                            <td>
-                                {{product.item_name}}
+                            <td ng-if="product.product_id">
+                                {{product.product_detail.item_name}} <small>(product)</small>
+                            </td>
+                            <td ng-if="product.bundle_id">
+                                {{product.bundle_detail.bundle_name}} <small>(bundle)</small>
+                            </td>
+                            <td ng-if="product.product_id">
+                                {{product.product_detail.sell_price | number:2}}
+                            </td>
+                            <td ng-if="product.bundle_id">
+                                {{product.bundle_detail.sell_price | number:2}}
                             </td>
                             <td>
                                 {{product.sell_price | number:2}}
                             </td>
                             <td>
-                                {{product.sellprice | number:2}}
-                            </td>
-                            <td>
-                                {{product.margin}}
+                                {{product.markup}}
                             </td>
                             <td>
                                 {{product.discount | number:2}}
                             </td>
-                            <td>
-                                <span ng-if="product.is_published == 1 " class="label label-success">published</span>
-                                <span ng-if="product.is_published == 0 " class="label label-danger">archived</span>
+                            <td class="text-center">
+                                {{product.min_quantity}}
+                            </td>
+                            <td class="text-center">
+                                {{product.max_quantity}}
+                            </td>
+                            <td class="text-right">
+                                <a class="btn btn-flat btn-xs btn-danger" ng-click="deleteSelectedItem(product)" uib-tooltip="Remove">
+                                    <i class="fa fa-times"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -100,29 +136,4 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="box box-warning">
-            <div class="box-body">
-                <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
-                <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
-            </div>
-        </div>
-    </div>
 </div>
-<script type="text/ng-template" id="myPopoverTemplate.html">
-    <div class="form-group">
-        <div style="font-family: bold;">
-            <label>
-                <input type="checkbox" ng-model="selectDeselectAll2" ng-change="changeSelectDeselectAll2()"> Select All
-            </label>
-        </div>
-        <br>
-        <div class="checkbox" ng-repeat="tag in tagsArr">
-            <div style="width:150px;">
-                <label style="width: 149px;">
-                    <input type="checkbox" ng-click="toggleSelectedTag(tag)" ng-model="tag.checked"> {{tag.tags}}
-                </label>
-            </div>
-        </div>
-    </div>
-</script>
