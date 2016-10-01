@@ -30,7 +30,7 @@
                     <span class="blue2 font_12" ng-show="seemore">Filter</span>
                     <span class="blue2 font_12" ng-show="!seemore">Hide Filter</span>
                 </a>
-                <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of Results({{products.length}})
+                <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of Results({{ezeimpress.length}})
                 </div>
                 <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
                     Number of Results({{categoryWifi.length}})
@@ -293,7 +293,7 @@
                             <div class=" sec-search-filter" ng-if="MediaPlayer.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer track by $index" ng-if="item.is_published == 1 && item.is_archived == 0">
+                            <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer track by $index">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <a class="img_holder">
@@ -320,13 +320,13 @@
                 </div>
             </div>
             <div class="row">
-                <div ng-show="prodTypeLabel == 'Solution'">
+                <div ng-if="prodTypeLabel == 'Solution'">
                     <div class="col-md-12">
-                        <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeImpress'">
+                        <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeImpress'">
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                            <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in ezeimpress" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <a class="img_holder">
@@ -358,38 +358,38 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeWifi'">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class=" sec-search-filter" ng-if="products.length == 0">
-                                <h4>NO RESULT</h4>
-                            </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <a class="img_holder">
-                                            <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
-                                            <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
+                    <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeWifi'">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class=" sec-search-filter" ng-if="products.length == 0">
+                                    <h4>NO RESULT</h4>
+                                </div>
+                                <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <a class="img_holder">
+                                                <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
+                                                <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
                                             src="./images/icons/default.gif" style="width: 20% !important;"/></span>
-                                        </a>
-                                        <div class="item_text">
-                                            <div class="item_title">
-                                                <a class=" blue1 font_bold">
+                                            </a>
+                                            <div class="item_text">
+                                                <div class="item_title">
+                                                    <a class=" blue1 font_bold">
                                             {{item.bundle_name}}
                                         </a>
-                                            </div>
-                                            <div class="item_content font_14 grey1 font_light">
-                                                <span data-ng-bind-html="item.bundle_description"></span>
-                                            </div>
-                                            <!--<div class="box_price font_light font_14">
+                                                </div>
+                                                <div class="item_content font_14 grey1 font_light">
+                                                    <span data-ng-bind-html="item.bundle_description"></span>
+                                                </div>
+                                                <!--<div class="box_price font_light font_14">
                                         View Details
                                     </div>-->
-                                            <!--  <div class="font_14 grey2 font_medium pad20top">
+                                                <!--  <div class="font_14 grey2 font_medium pad20top">
                                             For as low as
                                         </div> -->
-                                            <div class="box_price font_24 font_light">
-                                                <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                                <div class="box_price font_24 font_light">
+                                                    <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
