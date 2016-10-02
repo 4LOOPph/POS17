@@ -8,10 +8,9 @@
                             <div class="dis_table slider-content">
                                 <section class="dis_cell_top">
                                     <h1>{{item.asset_name}}</h1>
-                                    <h3>Author: Engagis</h3>
+                                    <!-- <h3>Author: Engagis</h3> -->
                                     <div class="hide-sm">
-                                        <p class="pad_vertical_15 ">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                        <p class="pad_vertical_15 " ng-bind-html="item.asset_description">
                                         </p>
                                         <div>
                                             <a class="btn btn-primary" ng-click="imagepreview(item)">Preview</a>
@@ -180,13 +179,13 @@
         </div>
         <div class="flexi-pad top-ten" contextmenu-container="meta.contextmenu">
             <div class="multiple-slider">
-                <div class="row" ng-repeat="items in foldercopy">
-                    <div class="font_18 font_medium blue1"  ng-hide="items.folder_name  == 'Top 10 Presentations'">
-                        {{items.folder_name}}
-                    </div>
+                <div class="row">
                     <div class="swiper-container">
                         <div class="swiper-scrollbar"></div>
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper" ng-repeat="items in foldercopy" ng-hide="items.folder_name  == 'Top 10 Presentations' || items.folder_name  == 'About Engagis'">
+                            <div class="font_18 font_medium blue1">
+                                {{items.folder_name}}
+                            </div>
                             <div class="swiper-slide" ng-repeat="item in items.files">
                                 <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                                     <i class="fa fa-star text-yellow" ng-if="item.isStarred"></i>
