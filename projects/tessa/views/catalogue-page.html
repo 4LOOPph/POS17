@@ -26,8 +26,8 @@
         <div class="filter_primary">
             <div class="dis_table">
                 <a class="dis_cell" ng-click="seemore=!seemore" style="width: 40%;" >
-                    <span ng-hide="solutionTypes == 'EzeWifi'"><img src="./images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/></span>
-                    <span ng-hide="solutionTypes == 'EzeWifi'" class="blue2 font_12" ng-show="seemore">Filter</span>
+                    <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'"><img src="./images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/></span>
+                    <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'" class="blue2 font_12" ng-show="seemore">Filter</span>
                     <span class="blue2 font_12" ng-show="!seemore">Hide Filter</span>
                 </a>
                 <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of Results({{products.length}})
