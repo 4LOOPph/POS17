@@ -21,7 +21,7 @@
     =================
     =================
     ================= -->   
-   <!--  <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'"></div>
+    <!-- <div id="printarticle" ng-include="'./views/sharer/article.html'" ng-if="param === 'article'"></div>
     <div id="printbundle" ng-include="'./views/sharer/bundle.html'" ng-if="param === 'bundle'"></div>
     <div id="printproduct" ng-include="'./views/sharer/products.html'" ng-if="param === 'product'"></div>
     <div id="printquote" ng-include="'./views/sharer/sharer-quote.html'" ng-if="param === 'quote'"></div> 
@@ -30,5 +30,5 @@
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" type="button" ng-click="cancel()">Close</button>
-    <button class="btn btn-primary" type="button" ng-click="send()" fa-track-event="['Share','click',details.type + +'-'+details.quote_number,details.quote_id]">Share</button>
+    <button class="btn btn-primary" type="button" ng-click="send()" ng-disabled="!data.email" fa-track-event="['Share','click',details.type + +'-'+details.quote_number,details.quote_id]">Share</button>
 </div>
