@@ -6,19 +6,17 @@
         <div class="">
             <div class="font_medium font_15 blue3 text">Connected Devices<span class="arrow"></span></div>
         </div>
-        <div class="devices" ng-class="{'active': device.selected ==true}">
-            <div ng-repeat="device in activeDevices">
-                <a class="dis_table_auto" ng-click="selectDevice(device)">
-                    <div class="dis_cell cell-sm" style="width: 10%">
-                        <i class="fa fa-desktop fa-5x"></i>
-                    </div>
-                    <div style="line-height: 1;padding-top: 22px;">
-                        <div class="grey2" style="font-family: medium;">&nbsp {{device.os}}({{device.os_version}})</div>
-                        <br>
-                        <small class=" grey2">&nbsp {{device.deviceUUID}}</small>
-                    </div>
-                </a>
-            </div>
+        <div class="devices" ng-class="{'active': device.selected}" ng-repeat="device in activeDevices">
+            <a class="dis_table_auto" ng-click="selectDevice(device)" ng-dblclick="pingSelectedDevice(device)">
+                <div class="dis_cell cell-sm" style="width: 10%">
+                    <i class="fa fa-desktop fa-5x"></i>
+                </div>
+                <div style="line-height: 1;padding-top: 22px;">
+                    <div class="grey2" style="font-family: medium;">&nbsp {{device.os}}({{device.os_version}})</div>
+                    <br>
+                    <small class=" grey2">&nbsp {{device.deviceUUID}}</small>
+                </div>
+            </a>
         </div>
     </div>
     <div class="mira" ng-if="displayInstallPlugin">
@@ -28,7 +26,7 @@
     </div>
 </div>
 <div class="font_bold modal-footer">
-    <button ng-click="connectDevice()" ng-if="!displayInstallPlugin" class="pull-right  btn btn-primary" ng-disabled="!enableCasting">Cast to all devices</button>
+    <button ng-click="connectDevice()" ng-if="!displayInstallPlugin" class="pull-right  btn btn-primary" ng-disabled="!enableCasting">Cast to selected device</button>
     <button id="close_quote" type="button" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
     </button>
 </div>
@@ -73,12 +71,9 @@
     margin-bottom: 5px;
 }
 
-.devices:hover,
-.devices:focus,
 .devices:active,
 .active {
     padding: 15px;
-    /* border: solid thin #ccc; */
     margin-left: -10px;
     margin-right: -10px;
     border-left: 10px solid #2b679a;

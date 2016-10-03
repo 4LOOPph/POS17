@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <style>
 body,
 html {
@@ -290,6 +291,7 @@ button[disabled] {
 <script src="https://cdn.rawgit.com/4LOOPph/projects/master/CodecsHandler.js"></script>
 <script src="https://cdn.rawgit.com/4LOOPph/projects/master/websocket.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/needim/noty/master/js/noty/packaged/jquery.noty.packaged.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 <script>
 (function() {
@@ -671,11 +673,11 @@ function stop() {
     clearInterval(promise);
 }
 
-function isFullScreen(){
+function isFullScreen() {
     return window.screenTop == 0 ? true : false;
 }
 
-// var API_URL = 'http://localhost:3000';
+// var API_URL = 'http://192.168.1.2:3000';
 var API_URL = 'http://54.206.38.223:5002';
 // var API_URL = 'http://54.206.38.223:5001';
 
@@ -686,17 +688,14 @@ socket.on('connect', function() {
 });
 
 socket.on('pair:init', function() {
-    console.log('pair:init: ',isFullScreen());
-
-    if(isFullScreen()){
+    if (isFullScreen()) {
         exitFullScreen();
-    }else{
+    } else {
         enterFullScreen();
     }
 });
 
 socket.on('pair:connected', function(data) {
-    console.log('pair:connected', data);
     setTimeout(function() {
         window.location = data.asset_file.url;
     }, 1000);
@@ -713,9 +712,27 @@ socket.on('pair:closePresentation', function() {
     window.location = window.location.origin + window.location.pathname;
 });
 
+socket.on('pair:sendMessageR', function(data) {
+    noty({
+        text: data.msg,
+        type: 'success',
+        dismissQueue: true,
+        layout: 'top',
+        maxVisible: 1,
+        theme: 'defaultTheme',
+        timeout: 1500,
+        animation: {
+            open: 'animated bounceInLeft', // Animate.css class names
+            close: 'animated bounceOutLeft', // Animate.css class names
+            easing: 'swing', // unavailable - no need
+            speed: 500 // unavailable - no need
+        }
+    });
+});
+
 socket.on('pair:fail', function() {
     var isConnected = false;
-
+    var isOffline = true;
     console.log('pair:fail');
 });
 
