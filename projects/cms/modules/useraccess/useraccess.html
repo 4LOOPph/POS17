@@ -52,7 +52,8 @@
                                         {{row.username}}
                                     </td>
                                     <td class="text-center" data-title="'User Roles'">
-                                        <span class="role-tag label label-primary" ng-repeat="tag in row.userRoles">{{tag.name}}</span>
+                                        <span ng-if="row.isOwner == 1" class="role-tag label label-warning">OWNER</span>
+                                        <span ng-if="row.userRoles.length > 0" class="role-tag label label-primary" ng-repeat="tag in row.userRoles">{{tag.name}}</span>
                                     </td>
                                     <td class="text-center" data-title="'Account Validity'">
                                         {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
