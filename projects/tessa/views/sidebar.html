@@ -12,11 +12,13 @@
                         <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="collapsible">Product Catalogue</span></a>
                 </li>
 
-                <li><a id="active-presentation" ui-sref="main.presentation" ng-if="appuser.isOwner == 1">
+                <!-- <li><a id="active-presentation" ui-sref="main.presentation" ng-if="appuser.isOwner == 1"> -->
+                <li><a id="active-presentation" ui-sref="main.presentation">
                     <img src="./images/icons/ico_preso-admin00.svg"  style="width: 23px;"/> <span class="collapsible">File Manager</span></a>
                 </li>
 
-                <li><a id="active-preso" ui-sref="main.assetGallery" ng-if="appuser.user_roles == 'Sales Rep.'">
+                <!-- <li><a id="active-preso" ui-sref="main.assetGallery" ng-if="appuser.user_roles == 'Sales Rep.'"> -->
+                <li><a id="active-preso" ui-sref="main.assetGallery">
                     <img  src="./images/icons/ico_preso00.svg" style="width: 23px;"/> <span class="collapsible">Presentation</span></a>
                 </li>
                 <!--<li><a id="active-comparison" ng-click="compareModal()">
