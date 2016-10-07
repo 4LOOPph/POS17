@@ -91,7 +91,8 @@
         </a>
         <div style="padding-top: 11px;margin-left: 60px;">
             <span class="orange1" style="margin-right: 5px;">
-            <i class="fa fa-file-pdf-o"></i>
+             <i class="fa fa-file-audio-o" ng-if="asset_file.asset_mimetype == 'audio/mp3' || asset_file.asset_mimetype == 'audio/mp4'"></i>
+             <i class="fa fa-file-video-o" ng-if="asset_file.asset_mimetype == 'video/mp4' || asset_file.asset_mimetype == 'video/x-flv' || asset_file.asset_mimetype == 'video/x-msvideo' || asset_file.asset_mimetype == 'video/x-ms-wmv' || asset_file.asset_mimetype == 'video/quicktime' || asset_file.asset_mimetype=='video/3gpp'"></i>
         </span> {{asset_file.asset_name}}
         </div>
     </div>
@@ -113,6 +114,7 @@
                     </vg-volume>
                     <vg-fullscreen-button ng-if="isFullScreen" ng-click="exitFullScreen()"></vg-fullscreen-button>
                 </vg-controls>
+                <vg-buffering></vg-buffering>
                 <vg-overlay-play ng-if="!audio"></vg-overlay-play>
             </videogular>
         </div>
@@ -163,6 +165,7 @@
     margin: auto;
     overflow: hidden;
 }
+
 .cast {
     background: transparent;
     padding: 10px;
@@ -177,6 +180,7 @@
     border-radius: 3px;
     transition: background-color 0.5s ease;
 }
+
 a:focus,
 a:hover {
     color: #23527c;

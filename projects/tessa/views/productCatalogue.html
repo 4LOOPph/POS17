@@ -123,6 +123,7 @@
                     </label>
                 </div>
             </div>
+
             <div ng-show="prodTypeLabel == 'Solution'">
                 <div class="pc_tabs text14_medium ">
                     <a class="tab_items" ng-class="{'active': solutionTypes == 'EzeImpress'}" ng-click="activateTab('EzeImpress')">Eze Impress</a>
@@ -160,6 +161,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row sec-pc-items" ng-show="solutionTypes == 'EzeWifi'">
                     <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Wi-Fi'">
                         <div class="panel panel-default">
