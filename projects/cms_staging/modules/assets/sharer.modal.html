@@ -3,11 +3,31 @@
 </div>
 <div class="modal-body" id="modal-body">
     <div class="form-group">
-        <label>People</label>
-        <input type="text" class="form-control" name="folder_name" placeholder="Email Address" ng-model="share.email">
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" ng-model="sharer.isPublic" value="true" ng-required="true" ng-boolean-radio><b>On</b> - Public on the web <small>Anyone can find and access. No sign-in required</small>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" ng-model="sharer.isPublic" value="false" ng-required="true" ng-boolean-radio><b>Off</b> - Specific People <small>Shared with specific people</small>
+            </label>
+        </div>
+        <ui-select ng-disabled="sharer.isPublic" class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
+            <ui-select-match placeholder="Enter Email...">{{$item.displayName}}</ui-select-match>
+            <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
+                <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
+                <small>
+                  Name: {{tag.displayName}}<br>
+                  email: {{tag.email}}
+                </small>
+            </ui-select-choices>
+        </ui-select>
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-sm btn-flat btn-primary" type="button" ng-click="create()">Done</button>
+    <button class="btn btn-sm btn-flat btn-primary" type="button" ng-click="sendMail()">Done</button>
     <a class="btn btn-sm btn-flat btn-default" ng-click="cancel()">Cancel</a>
 </div>

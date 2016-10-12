@@ -35,7 +35,7 @@
                                     <textarea class="form-control" ng-model="details.description" rows="3" placeholder="Description" required /></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <img ngf-src="prod.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                                    <img ngf-src="details.ptype_image || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
                                     <div class="input-group image-preview">
                                         <span class="input-group-btn">
                                         <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.ptype_image"> <span class="glyphicon glyphicon-remove"></span> Clear

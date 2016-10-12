@@ -1,66 +1,4 @@
-<section class="content">
-    <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
-        <ul class="dropdown-menu" role="menu">
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="previewSelected()" ng-if="showToolPreview">
-                    <i class="fa fa-eye"></i> <span>Preview</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0"></li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="shareToOthers()">
-                    <i class="fa fa-user-plus"></i><span>Share</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="starredSelected()">
-                    <i class="fa fa-star"></i><span>Add Star</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="starredSelected()">
-                    <i class="fa fa-star-o"></i><span>Remove Star</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="moveSelected()">
-                    <i class="fa fa-arrows-alt"></i><span>Move to...</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="renameSelected()">
-                    <i class="fa fa-pencil"></i><span>Rename</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="showInfoSelected()">
-                    <i class="fa fa-info-circle"></i><span>View Details</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href>
-                    <i class="fa fa-copy"></i><span>Make a copy</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
-                    <i class="fa fa-download"></i><span>Download</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 1">
-                <a role="menuitem" href ng-click="restoreSelected()">
-                    <i class="fa fa-history"></i> <span>Restore</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
-            <li>
-                <a role="menuitem" href ng-click="deleteSelected()">
-                    <i class="fa fa-trash-o"></i><span>Remove</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+<section class="content" ng-click="clearSelection()">
     <table class="table assets-folders" contextmenu-container="meta.contextmenu">
         <thead>
             <tr>
@@ -118,6 +56,8 @@
                     <!-- STARRED -->
                     <i class="fa fa-star text-yellow" ng-if="files.isStarred"></i>
                     <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
+                    <i class="fa fa-users" ng-if="files.isPublic == 1"></i>
+                    <i class="fa fa-lock" ng-if="files.isPublic == 0"></i>
                 </td>
                 <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}</td>
                 <td class="mailbox-name">{{files.created_by.displayName}}</td>
