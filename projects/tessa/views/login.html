@@ -11,7 +11,15 @@
                         <h2>Login Form</h2>
                     </div>
                     <div class="panel-body">
-                        <p>{{err}}</p>
+                        <div class="form-group">
+                            <div class="col-xs-12 ">
+                                <button type="button" class="btn btn-default btn-lg"  style="width:100%">Sign in with Google<i class="fa fa-google-plus pull-left" style="color:red"></i></button>
+                                <button type="button" class="btn btn-default btn-lg" ng-click="authenticate('facebook')" style="width:100%">Sign in with Facebook<i class="fa fa-facebook pull-left" style="color:#3b5998"></i></button>
+                            </div>
+                        </div>
+                        <div style="margin: 10px 0;" class="text-center">
+                            <p>--OR--</p>
+                        </div>
                         <div class="form-group mb-md">
                             <div class="col-xs-12">
                                 <div class="input-group">
@@ -48,7 +56,7 @@
                         <div class="clearfix">
                             <!-- <a href="extras-registration.html" class="btn btn-default pull-left">Register</a> -->
                             <!-- <a ui-sref="experience" class="btn btn-primary pull-right">Login</a> -->
-                            <button type="submit" class="btn btn-primary pull-right" fa-track-event="['Login','click','Login','login']" style="    border-radius: 2px;border-color: #337ab7;">Login</button>
+                            <button type="submit" class="btn btn-primary pull-right" style="border-radius: 2px;border-color: #337ab7;">Login</button>
                         </div>
                     </div>
                 </form>

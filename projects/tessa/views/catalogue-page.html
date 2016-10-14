@@ -9,13 +9,13 @@
         <div class="page_menu">
             <div class="menu_primary ">
                 <div class="dis_table_auto">
-                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Solution'}" ng-click="activeProd('Solution')" fa-track-event="['Product Catalogue','click','Solutions',null]">Solutions</a>
-                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Hardware'}" ng-click="activeProd('Hardware')" fa-track-event="['Product Catalogue','click','Hardware',null]">Hardware</a>
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Solution'}" ng-click="activeProd('Solution')" >Solutions</a>
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Hardware'}" ng-click="activeProd('Hardware')" >Hardware</a>
                 </div>
             </div>
             <div class="menu_secondary" ng-show="prodTypeLabel == 'Hardware'">
-                <a class="dis_cell" ng-class="{'active': hardwareType == 'Screens'}" ng-click="activeHard('Screens')" fa-track-event="['Product Category','click','Screens',null]">Screens</a>
-                <a class="dis_cell" ng-class="{'active': hardwareType == 'MediaPlayer'}" ng-click="activeHard('MediaPlayer')" fa-track-event="['Product Category','click','Media Player',null]">Media Player</a>
+                <a class="dis_cell" ng-class="{'active': hardwareType == 'Screens'}" ng-click="activeHard('Screens')" >Screens</a>
+                <a class="dis_cell" ng-class="{'active': hardwareType == 'MediaPlayer'}" ng-click="activeHard('MediaPlayer')">Media Player</a>
             </div>
             <div class="menu_secondary" ng-show="prodTypeLabel == 'Solution'">
                 <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeImpress'}" ng-click="activateTab('EzeImpress')">Eze Impress</a>
@@ -25,7 +25,7 @@
         </div>
         <div class="filter_primary">
             <div class="dis_table">
-                <a class="dis_cell" ng-click="seemore=!seemore" style="width: 40%;" >
+                <a class="dis_cell" ng-click="seemore=!seemore" style="width: 40%;">
                     <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'"><img src="./images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/></span>
                     <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'" class="blue2 font_12" ng-show="seemore">Filter</span>
                     <span class="blue2 font_12" ng-show="!seemore">Hide Filter</span>
@@ -266,8 +266,13 @@
                             <div class=" sec-search-filter" ng-if="Screens.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in Screens track by $index" ng-if="item.is_published == 1 && item.is_archived == 0">
-                                <div class="panel panel-default">
+                            <div class="col-lg-3" ng-repeat="item in Screens track by $index" ng-if="item.is_published == 1 && item.is_archived == 0">
+                                <div class="dis_cell">
+                                    <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                        <i class="fa fa-exchange"></i>
+                                    </button>
+                                </div>
+                                <div class="panel panel-default" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
                                     <div class="panel-body">
                                         <a class="img_holder">
                                             <img ng-src="{{item.img_default}}" class="" />
@@ -293,8 +298,15 @@
                             <div class=" sec-search-filter" ng-if="MediaPlayer.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" ng-repeat="item in MediaPlayer track by $index">
-                                <div class="panel panel-default">
+                            <div class="col-lg-3" ng-repeat="item in MediaPlayer track by $index">
+                                <div class="dis_cell">
+                                    <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                        <i class="fa fa-exchange"></i>
+                                    </button>
+                                </div>
+                                <div class="panel panel-default" ui-sref="main.productDetailsHardware({selected_id: item.p_id})" fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
+                                    <div class="dis_table box-stick">
+                                    </div>
                                     <div class="panel-body">
                                         <a class="img_holder">
                                             <img ng-src="{{item.img_default}}" err-src="images/is5.jpg" class="" />
@@ -308,10 +320,10 @@
                                             <div class="font_14 grey2 font_medium pad20top">
                                                 For as low as
                                             </div>
-                                            <div class="box_price font_24 font_light">
-                                                <sup class="">$</sup>{{item.sell_price | number:2}}
-                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="box_price font_24 font_light">
+                                        <sup class="">$</sup>{{item.sell_price | number:2}}
                                     </div>
                                 </div>
                             </div>
@@ -326,9 +338,16 @@
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                            <div class="col-lg-3" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
                                 <div class="panel panel-default">
-                                    <div class="panel-body">
+                                    <div class="dis_table box-stick">
+                                        <div class="dis_cell">
+                                            <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
                                         <a class="img_holder">
                                             <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" imageonload err-src="images/is5.jpg" />
                                             <span class="loading background-spinner"> <img
@@ -336,16 +355,13 @@
                                         </a>
                                         <div class="item_text">
                                             <div class="item_title">
-                                                <a class=" blue1 font_bold">
+                                                <a class=" blue1 font_bold" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})">
                                                     {{item.bundle_name}}
                                                 </a>
                                             </div>
                                             <div class="item_content font_14 grey1 font_light">
                                                 <span data-ng-bind-html="item.bundle_description"></span>
                                             </div>
-                                            <!--<div class="box_price font_light font_14">
-                                        View Details
-                                    </div>-->
                                             <div class="font_14 grey2 font_medium pad20top">
                                                 For as low as
                                             </div>
@@ -364,8 +380,13 @@
                                 <div class=" sec-search-filter" ng-if="products.length == 0">
                                     <h4>NO RESULT</h4>
                                 </div>
-                                <div class="col-lg-3" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
-                                    <div class="panel panel-default">
+                                <div class="col-lg-3" ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
+                                    <div class="dis_cell">
+                                        <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                            <i class="fa fa-exchange"></i>
+                                        </button>
+                                    </div>
+                                    <div class="panel panel-default" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
                                         <div class="panel-body">
                                             <a class="img_holder">
                                                 <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
@@ -375,18 +396,18 @@
                                             <div class="item_text">
                                                 <div class="item_title">
                                                     <a class=" blue1 font_bold">
-                                            {{item.bundle_name}}
-                                        </a>
+                                                        {{item.bundle_name}}
+                                                    </a>
                                                 </div>
                                                 <div class="item_content font_14 grey1 font_light">
                                                     <span data-ng-bind-html="item.bundle_description"></span>
                                                 </div>
-                                                <!--<div class="box_price font_light font_14">
-                                        View Details
-                                    </div>-->
-                                                <!--  <div class="font_14 grey2 font_medium pad20top">
-                                            For as low as
-                                        </div> -->
+                                                <!--  <div class="box_price font_light font_14">
+                                                    View Details
+                                                </div> -->
+                                                <div class="font_14 grey2 font_medium pad20top">
+                                                    For as low as
+                                                </div>
                                                 <div class="box_price font_24 font_light">
                                                     <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
                                                 </div>

@@ -24,15 +24,15 @@
         <a class="tab_items" ng-class="{'active': DisplayTab == 'All'}" ng-click="activeTab('All')">Number of results ({{filtersearch.length}})</a>
     </div>
     <div class="row sec-pc-items">
-        <div ng-show="DisplayTab == 'All'">
-            <div class=" sec-search-filter" ng-if="filtersearch.length == 0">
-                <h4>{{noresult}}</h4>
-            </div>
-            <div href="#xd-modal" data-toggle="modal" class="col-lg-3" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'" ng-click="openModal(items)">
-                <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
-                <div class="col-md-12 col-lg-12 col-xs-12">
+        <div class="col-lg-12">
+            <div class="row" ng-show="DisplayTab == 'All'">
+                <div class=" sec-search-filter" ng-if="filtersearch.length == 0">
+                    <h4>{{noresult}}</h4>
+                </div>
+                <div class="col-lg-4" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'">
+                    <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
                     <div class="panel panel-default">
-                        <div class="panel-body">
+                        <div class="panel-body" ng-click="openModal(items)">
                             <div class="img-contain">
                                 <a class="img_holder" ng-if="items.self == 'products'">
                                     <img ng-src="{{items.img_default}}" imageonload err-src="images/is5.jpg" />
@@ -59,13 +59,16 @@
                                         in {{items.self}}
                                     </div>
                                 </div>
-                                <div class="dis_table">
-                                    <div class="dis_cell">
-                                        <a class="box_details pull-right font_medium">
+                            </div>
+                        </div>
+                        <div class="dis_table">
+                            <div class="dis_cell">
+                                <a class="box_details font_medium" ng-click="openModal(items)">
                                         View Details
-                                    </a>
-                                    </div>
-                                </div>
+                                </a>
+                                <a ng-click="compare(items)" class="box_details font_medium" ng-if="items.p_id || items.pb_id">
+                                    <i class="fa fa-exchange"></i> <small>Compare</small>
+                                </a>
                             </div>
                         </div>
                     </div>

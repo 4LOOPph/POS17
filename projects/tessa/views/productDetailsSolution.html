@@ -1,7 +1,6 @@
 <div id="pd-sol-wrap" class="wrapper" ng-show="details">
-    <div class="breadcrumbs font_medium dis_table_auto" style="padding:0;">
-
-        <a class="dis_cell btn btn-tessa-back " ng-click="goBack()">
+    <div class="breadcrumbs font_medium dis_table" style="padding:0;">
+        <a class="dis_cell btn btn-tessa-back " ng-click="goBack()" style="width:1px;">
             <i class="fa fa-angle-left"> </i>
         </a>
         <a class="dis_cell current pad_side_10">
@@ -18,7 +17,6 @@
                 <div class="main_article">
                     <div class="row">
                         <div class="col-lg-6">
-
                             <div class="carousel_contain">
                                 <div id="carousel-custom" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-outer">
@@ -37,7 +35,6 @@
                                 </div>
                             </div>
                             <!--carousel here-->
-
                         </div>
                         <div class="col-lg-6">
                             <div class="dis_table_auto">
@@ -49,14 +46,15 @@
                                     </ul>
                                 </div>
                                 <div class="side_menu dis_cell_2">
-                                    <a ng-click="openShareModal()" class="side_buttons font_bold uppercase">
+                                    <a ng-click="openShareModal()" class=" side_buttons font_bold uppercase" fa-track-event="['Productcatalogue','share','Solution',details.pb_id]">
                                         <i class="fa fa-share"></i> Share
+                                    </a>
+                                    <a ng-click="compare(details)" class="side_buttons font_bold uppercase">
+                                        <i class="fa fa-exchange" ng-show="compareIs"></i> <i class="fa fa-minus-circle" ng-show="compareIs == false"></i> Compare
                                     </a>
                                 </div>
                             </div>
                             <br/>
-
-
                             <div class="font_24 font_light blue1">
                                 {{details.bundle_name}}
                             </div>
@@ -76,7 +74,7 @@
                                             <li>
                                                 <div class="dis_table">
                                                     <div class="dis_cell fill_grey center_align">
-                                                    <span class="font_18 font_bold blue3">
+                                                        <span class="font_18 font_bold blue3">
                                                         Capex
                                                     </span>
                                                     </div>
@@ -101,7 +99,7 @@
                                             <li>
                                                 <div class="dis_table">
                                                     <div class="dis_cell fill_grey center_align">
-                                                    <span class="font_18 font_bold blue3">
+                                                        <span class="font_18 font_bold blue3">
                                                         Opex
                                                     </span>
                                                     </div>
@@ -125,7 +123,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="flex_sm" ng-click="addToCart(details)">
+                                    <a class="flex_sm" ng-click="addToCart(details)" fa-track-event="['Productcatalogue','click','addtocart',details.pb_id]">
                                         <span class="font_medium uppercase"><img src="./images/icons/ico_cartDark.svg"/> add to cart</span>
                                     </a>
                                 </div>
@@ -207,10 +205,13 @@
             </div>
         </div>
     </div>
-
 </div>
 <style>
-    #active-catalogue {
-        background: #424242;
-    }
+#active-catalogue {
+    background: #424242;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
 </style>

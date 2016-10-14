@@ -76,6 +76,10 @@
                     <i class="fa fa-share"></i>
                     <span class="sm_hid">Share</span>
                 </a>
+                <a ng-click="shareEmailToOthers()" ng-if="showBarShare">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="sm_hid">Email</span>
+                </a>
                 <a ng-click="restoreSelected()" ng-if="showBarRestore">
                     <i class="fa fa-history"></i>
                     <span class="sm_hid">Restore</span>
@@ -138,64 +142,63 @@
                 <ul class="dropdown-menu" role="menu">
                     <li ng-if="meta.contextmenu.item.isFolder == true && meta.contextmenu.item.isDeleted == 0">
                         <a ng-click="previewSelected()">
-                            <i class="fa fa-folder-open"></i> Open
+                            <i class="fa fa-folder-o padd"></i> Open
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                         <a ng-click="previewSelected()">
-                            <i class="fa fa-eye"></i> Preview
+                            <i class="ti ti-eye padd"></i> Preview
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isDeleted == 0">
                         <a ng-click="castModal()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_cast02.svg"
-                                                           style="margin-top: -3px;"/> </span>
-                            <span>Mirror</span>
+                            <i class="ti ti-desktop padd"></i> Mirror
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                         <a ng-click="shareToOthers()">
-                            <span class="svg_icon_sm"><i class="fa fa-share"></i>
-                            <span>Share</span>
+                           <i class="fa fa-share padd"></i> Share
+                        </a>
+                    </li>
+                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                        <a ng-click="shareEmailToOthers()">
+                            <i class="fa fa-envelope-o padd"></i>
+                            <span>Email</span>
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg"
-                                                           style="margin-top: -3px;"/> </span>
-                            <span>Remove from Favorites</span>
+                            <i class="fa fa-star padd" style="color:orange;"></i> Remove from Favorites
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" tabindex="-1" href ng-click="starredSelected()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_addFav02_black.svg" style="margin-top: -3px;"/> </span>
-                            <span>Add to Favourite</span>
+                             <i class="ti ti-star padd"></i> Add Star
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" tabindex="-1" ng-click="renameSelected()">
-                            <span class="svg_icon_sm"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span>
-                            <span>Rename</span>
+                            <span class="svg_icon_sm" style="padding: 0px 8px 0px 0px !important;"><img src="./images/icons/ico_rename02_black.svg" style="margin-top: -3px;"/> </span><span>Rename</span>
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" ng-href="{{meta.contextmenu.item.asset_url}}" target="_self" download="{{meta.contextmenu.item.asset_url}}">
-                            <span><i class="fa fa-download"></i> Download</span>
+                            <i class="ti ti-download padd"></i> Download
                         </a>
                     </li>
                     <li ng-if="showBarDelete">
                         <a role="menuitem" tabindex="-1" ng-click="deleteSelected()">
-                            <span><i class="fa fa-trash-o"></i> Delete</span>
+                            <i class="ti ti-trash padd"></i> Delete
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isDeleted == 1">
                         <a role="menuitem" tabindex="-1" ng-click="restoreSelected()">
-                            <span><i class="fa fa-history"></i> Restore</span>
+                          <i class="fa fa-history padd"></i> Restore
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" tabindex="-1" ng-click="moveSelected()">
-                            <span><i class="fa fa-exchange"></i> Move to Folder</span>
+                            <i class="ti ti-move padd"></i> Move to Folder
                         </a>
                     </li>
                 </ul>

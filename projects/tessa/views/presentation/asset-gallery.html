@@ -13,18 +13,22 @@
                 <section>
                     <div class="dis_table_auto padding_10">
                         <div class="dis_cell">
-                            <input type="search" ng-model="txtSearch" placeholder="Search keywords..." class="form-control" ng-keypress="($event.which === 13)?searchData():0" ng-change="(txtSearch.length < 1)?searchData():0" />
+                            <input type="search" ng-model="txtSearch" placeholder="Search presentation and folders..." class="form-control" ng-keypress="($event.which === 13)?searchData():0" ng-change="(txtSearch.length < 1)?searchData():0" />
                         </div>
                         <div class="dis_cell" style="width:1%;">
-                            <div class="form_addon">
-                                <a class="blue1" ng-click="searchData()">
-                                    <i class="fa fa-search"></i>
+                            <div class="form_addon" >
+                                <a  class="blue1" ng-click="searchData()">
+                                    <i  class="fa fa-search"></i>
+
                                 </a>
+
                             </div>
                         </div>
-                        <div class="dis_cell pad_side_10">
+
+                       <!--  <div class="dis_cell pad_side_10">
                             <a><i class="fa fa-arrow-left"></i> </a>
-                        </div>
+                        </div> -->
+
                     </div>
                 </section>
                 <section>

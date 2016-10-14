@@ -1,0 +1,350 @@
+<div id="compare-page" class="wrapper">
+    <div class="breadcrumbs ">
+        <img src="../../images/icons/ico_compare01-01.svg"/>
+        <a class="current font_medium">
+            Product Comparison
+        </a>
+    </div>
+    <div class="page-menu flexi-pad">
+        <div class="dis_flex">
+            <section>
+                <a ui-sref="main.productCatalogue" class="font_medium btn btn-midnightblue">
+                    <i class="fa fa-plus"></i> Browse Product Catalogue
+                </a>
+                <a ui-sref="main.productCatalogue" class="font_medium btn btn-primary">
+                    <i class="fa fa-share"></i> Share
+                </a>
+                <!--<div class="font_medium btn-group" data-toggle="buttons">
+                    <label ng-click="viewSoftware =!viewSoftware" class="active btn btn-primary-alt">
+                        <input type="checkbox">Software
+                    </label>
+                    <label ng-click="viewHardware =!viewHardware"  class="active btn btn-primary-alt">
+                        <input type="checkbox">Hardware
+                    </label>
+                    <label ng-click="viewSupport =!viewSupport"  class="active btn btn-primary-alt">
+                        <input type="checkbox">Support
+                    </label>
+                    <label ng-click="viewPrice =!viewPrice"  class=" btn btn-primary-alt">
+                        <input type="checkbox">Price
+                    </label>
+                </div>-->
+            </section>
+        </div>
+    </div>
+    <div id="compare_products">
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+            <tr class="border-bottom compare_head">
+                <td width="15%" style="vertical-align: bottom; padding: 10px;">
+                    <!--<div class="input-group input-icon pad_right10 font_medium">
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (thisRow == 'software')}" ng-click="viewAttribute('software')" >All</button>
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (thisRow == 'hardware')}" ng-click="viewAttribute('hardware')" >Portfolio</button>
+                        <button type="button" class="btn btn-default-alt" ng-class="{'active': (thisRow == 'support')}" ng-click="viewAttribute('support')" >Articles</button>
+                    </div>-->
+
+
+                    <!--<a class="font_blue1" ng-click="testone=!testone">
+                        <i class="fa fa-eye-slash"></i>Software
+                    </a>-->
+                </td>
+                <td ng-repeat="value in compareproducts">
+                    <a class="remove" ng-click="removeItem(value)">
+                        <i class="fa fa-close"></i>
+                    </a>
+
+                    <div class="img_holder">
+                        <img ng-repeat="image in value.product_images | limitTo:1" ng-src="{{image.image_path}}" />
+                    </div>
+                    <div class="img_holder" ng-if="value.value">
+                        <img ng-src="{{value.value}}" />
+                    </div>
+                    <div class="font_medium grey2 padding_10">
+                        {{value.bundle_name || value.item_name}}
+                        <div>
+                            <a class="font_12 ">
+                                View Info
+                            </a>
+                        </div>
+
+                    </div>
+
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--Software-->
+
+            <tr class=" compare_body">
+
+
+                <td colspan="6" class=" row_label">
+                    <a ng-click="viewSoftware =!viewSoftware">
+
+                        SOFTWARE <i class="fa fa-caret-right"></i>
+                    </a>
+                </td>
+
+
+            </tr>
+            <tr ng-hide="viewSoftware"  class=" compare_body">
+
+                <td class="td-label">CMS</td>
+
+                <td ng-repeat="item in compareproducts track by $index">
+                    {{item.bundle_name || item.item_name}}
+                </td>
+            </tr>
+            <tr ng-hide="viewSoftware" class="border-bottom compare_body">
+
+                <td class="td-label">Application</td>
+
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.software">
+                        {{item.product_detail.item_name || item.item_name}}
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    {{items.solution.bundle_name}}
+                </td>
+
+            </tr>
+            <!--Hardware-->
+            <tr  class="compare_body">
+
+                <td colspan="6" class="row_label">
+
+                    <a ng-click="viewHardware =!viewHardware">
+                        HARDWARE <i class="fa fa-caret-right"></i>
+                    </a>
+                </td>
+
+
+
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screens</td>
+
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screen Model</td>
+
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screen Size</td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
+                        <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Screen Size'">
+                            {{screen.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Screen Size'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screen Bezel</td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
+                        <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Bezel Size'">
+                            {{screen.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Bezel Size'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screen Dimensions</td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
+                        <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Dimensions'">
+                            {{screen.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Dimensions'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Mounting Configuration</td>
+                <td></td>
+
+            </tr>
+
+
+            <tr ng-hide="viewHardware" class="compare_body">
+
+                <td class="td-label">Media Player</td>
+
+                <td ng-repeat="items in compareproducts track by $index">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
+                        {{item.product_detail.item_name}}
+                    </div>
+                </td>
+
+            </tr>
+            <tr ng-hide="viewHardware"  class="compare_body">
+                <td class="td-label">Media Player Model</td>
+                <td></td>
+
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Processor</td>
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
+                        <div ng-repeat="media in item.attributes" ng-if="media.name == 'Processor'">
+                            {{media.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Processor'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware"  class="compare_body">
+                <td class="td-label">RAM</td>
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
+                        <div ng-repeat="media in item.attributes" ng-if="media.name == 'RAM'">
+                            {{media.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'RAM'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware"  class="compare_body">
+                <td class="td-label">Storage</td>
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
+                        <div ng-repeat="media in item.attributes" ng-if="media.name == 'Storage'">
+                            {{media.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Storage'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Maximum Resolution</td>
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
+                    <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
+                        <div ng-repeat="media in item.attributes" ng-if="media.name == 'Maximum Resolution'">
+                            {{media.value}}
+                        </div>
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
+                    <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Maximum Resolution'">
+                        {{screen.value}}
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="viewHardware" class="border-bottom compare_body">
+                <td class="td-label">Number of Screens Supported</td>
+
+
+            </tr>
+            <!--Deployment-->
+            <tr  class="compare_body">
+                <td colspan="6" class="row_label">
+                    <a ng-click="viewSupport=!viewSupport">
+                        SUPPORT TYPE <i class="fa fa-caret-right"></i>
+                    </a>
+
+                </td>
+
+            </tr>
+            <tr ng-hide="viewSupport" class="compare_body">
+                <td class="td-label">Essential</td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.support">
+                    <div ng-repeat="item in items.support" ng-if="item.supp.length > 0">
+                        ✔
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="!items.support">
+                    X
+                </td>
+            </tr>
+            <tr ng-hide="viewSupport" class="border-bottom compare_body">
+                <td class="td-label">Enterprise</td>
+
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.support">
+                    <div ng-repeat="item in items.support" ng-if="item.product_detail.item_name == 'Enterprise Support'">
+                        ✔
+                    </div>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="!items.support">
+                    X
+                </td>
+            </tr>
+            <!--Support-->
+            <tr class=" compare_body">
+                <td colspan="6" class=" row_label">
+                    <a ng-click="viewPrice=!viewPrice">
+                        PRICE <i class="fa fa-caret-right"></i>
+                    </a>
+                </td>
+
+            </tr>
+            <tr ng-show="viewPrice" class="compare_body">
+                <td class="td-label">Capex</td>
+
+                <td ng-repeat="items in compareproducts track by $index">
+                    {{items.upfront || items.sell_price | currency}} <small>upfront*</small>
+                </td>
+            </tr>
+            <tr ng-show="viewPrice" class="border-bottom compare_body">
+                <td class="td-label">Opex</td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="items.weekly">
+                    {{items.weekly | currency}} <small>per month*</small>
+                </td>
+                <td ng-repeat="items in compareproducts track by $index" ng-if="!items.weekly">
+                    no <small>per month*</small>
+                </td>
+            </tr>
+            <tr  class="compare_body">
+                <td class="row_label">
+
+                </td>
+                <td class="row_label">
+                    <button type="button" class="full_width tes-btn bg-green">
+                        <i class="fa fa-shopping-cart"></i> Add to cart
+                    </button>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    #active-compare {
+        background: #424242;
+    }
+</style>

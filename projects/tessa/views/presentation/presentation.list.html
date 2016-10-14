@@ -28,13 +28,14 @@
             <td style="padding:0px;height: 65px;">
                 <div>
                     <!-- PDF -->
-                    <i class="fa fa-file-pdf-o text-red docs" ng-if="files.asset_mimetype == 'application/pdf'"></i>
+                    <i class="fa fa-file-pdf-o text-red docs" ng-if="files.asset_mimetype == 'application/pdf' && !files.thumbnail.thumbnail"></i>
+                    <img class="pics" ng-src="{{files.thumbnail.thumbnail}}" alt="" ng-if="files.asset_mimetype == 'application/pdf' && files.thumbnail.thumbnail" />
                     <!-- DOCS -->
                     <i class="fa fa-file-word-o text-blue docs" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
                     <!-- AUDIO -->
                     <i class="fa fa-file-audio-o text-black docs" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
                     <!-- VIDEO -->
-                    <i class="fa fa-file-video-o text-black docs" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'"></i>
+                    <i class="fa fa-file-video-o text-black docs" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype =='video/3gpp'" style="margin: 35px;"></i>
                     <!-- TEXT -->
                     <i class="fa fa-file-text-o text-blue docs" ng-if="files.asset_mimetype == 'text/plain'"></i>
                     <!-- EXCEL -->
@@ -59,7 +60,7 @@
             <td>{{ files.asset_filesize }}</td>
         </tr>
     </table>
-<!--     <p>Click to open light box:
+    <!--     <p>Click to open light box:
         <button ng-click="showLightBox = true">SHOW LIGHTBOX</button>
     </p> -->
 </div>
@@ -105,11 +106,10 @@
     margin-top: 11px;
     margin-bottom: 11px;
     border-radius: 3px;
-        width: 100%;
+    width: 100%;
 }
 
 .text-black {
     color: #616161 !important;
 }
-
 </style>

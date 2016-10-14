@@ -1,6 +1,6 @@
 <div id="pd-sol-wrap" class="wrapper" ng-show="productDetails">
-    <div class="breadcrumbs font_medium dis_table_auto">
-        <a class="dis_cell btn btn-tessa-back " ng-click="goBack()">
+    <div class="breadcrumbs font_medium dis_table" style="padding:0;">
+        <a class="dis_cell btn btn-tessa-back " ng-click="goBack()" style="width: 1px;">
             <i class="fa fa-angle-left"> </i>
         </a>
         <a class="dis_cell current pad_side_10">
@@ -10,6 +10,7 @@
         > {{details.bundle_name}}
         </a> -->
     </div>
+
     <div class="flexi-flow">
         <div class="parent-sd">
             <div class="sec-sd-psd">
@@ -45,10 +46,14 @@
                                     </ul>
                                 </div>
                                 <div class="side_menu dis_cell_2">
-                                    <a ng-click="openShareModal()" class="side_buttons font_bold uppercase">
+                                    <a ng-click="openShareModal()" class=" side_buttons bg-sky font_bold uppercase" fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]">
                                         <i class="fa fa-share"></i> Share
                                     </a>
+                                    <a ng-click="openShareModal()" class=" side_buttons bg-violet font_bold uppercase">
+                                        <i class="fa fa-exchange"></i> Compare
+                                    </a>
                                 </div>
+
                             </div>
                             <br/>
                             <div class=" font_24 font_light blue1">
@@ -86,7 +91,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="flex_sm" ng-click="addToCart(productDetails)">
+                                    <a class="flex_sm" ng-click="addToCart(productDetails)" fa-track-event="['Productcatalogue','click','addtocart',productDetails.p_id]">
                                         <span class="font_medium font_14 uppercase"><img src="./images/icons/ico_cartDark.svg"/> add to cart</span>
                                     </a>
                                 </div>
