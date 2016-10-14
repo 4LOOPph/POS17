@@ -1,131 +1,293 @@
-<!-- Content Header (Page header) -->
+
 <section class="content-header">
-    <h1>
-        App Overview
-        <small>Overview</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+    <h4 class="bread">
+        Overview
+      
+    </h4>
+    <!--  <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard" style="color: #777 !important;"> Dashboard</a>
         </li>
-        <li class="active">App Overview</li>
-    </ol>
+    </ol> -->
 </section>
-<!-- Main content -->
-<section class="content">
-    <div class="row">
-        <section class="col-lg-12">
-            <div class="box">
-                <div class="box-header">
-                    <div class="pull-left box-tools">
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
-                                Export
+<section>
+    <div class="">
+       <div class="col-sm-12 subcrumb">
+            <div class="btn-group" style="margin-top: -19px;">
+                <span data-toggle="dropdown" style="font-size: 15px;color: #555;cursor: pointer;">
+                                <img src="./images/file-export.svg" style="width: 18px;margin-top: -3px;"> Export
                                 <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="" ng-click="downloadViaCSV()"><i class="fa fa-file-excel-o"></i> CSV</a>
-                                </li>
-                                <li><a href=""><i class="fa fa-file-excel-o"></i> Excel (XLSX)</a>
-                                </li>
-                                <li><a href=""><i class="fa fa-th"></i> Google Sheets</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <button class="btn btn-flat btn-sm btn-default" ng-click="refreshReport()">
-                            <i class="fa fa-refresh"></i>
-                        </button>
-                    </div>
-                    <div class="pull-right box-tools">
-                        <div class="btn-group">
-                            <button class="btn btn-flat btn-sm btn-info">{{dtFrom | amDateFormat:'MMM DD, YYYY'}} - {{dtTo | amDateFormat:'MMM DD, YYYY'}}</button>
-                            <button class="btn btn-flat btn-sm btn-info" ng-click="openDate()">
-                                <i class="fa fa-calendar"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i> Users</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-mobile fa-fw"></i> Devices</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div line-chart line-data='deviceCharts.data' line-xkey='{{deviceCharts.xkey}}' line-ykeys='deviceCharts.ykeys' line-labels='deviceCharts.labels' line-colors='deviceCharts.colors'>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-mobile fa-fw"></i>Top Devices</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped footable" data-page-size="5">
-                                        <thead>
-                                            <tr>
-                                                <th>Device Model</th>
-                                                <th>Device Brand</th>
-                                                <th class="text-right">Sessions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="device in devices">
-                                                <td>{{device.deviceModel}}</td>
-                                                <td>{{device.deviceBrand}}</td>
-                                                <td class="text-right">{{device.TotalSessions}}<small> ({{device.totalSessionsValuePercentage}}%)</small></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-laptop fa-fw"></i>Screens</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped footable" data-page-size="5">
-                                        <thead>
-                                            <tr>
-                                                <th>Screen Name</th>
-                                                <th class="text-right">Screen Views</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="screen in screens">
-                                                <td>{{screen.screenName}}</td>
-                                                <td class="text-right">{{screen.TotalScreens}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-body -->
+                <span class="sr-only">Toggle Dropdown</span>
+                </span>
+                <ul class="dropdown-menu" role="menu" style="left: -1px !important;margin-top: -25px;">
+                    <li><a href="" ng-click="getAudienceOverviewCsv()">CSV</a>
+                    </li>
+                    <li><a href="">Excel (XLSX)</a>
+                    </li>
+                    <li><a href="">Google Sheets</a>
+                    </li>
+                </ul>
             </div>
-            <!-- /.box -->
+            <div class="btn-group" style="float: right;margin-top: -3px;">
+                <span style="font-size: 15px;color: #555;cursor: pointer;display: inline-flex;">
+                <img src="../images/ic_date_range_black_18px.svg" style="margin-top: -9px;margin-right: 2px;"> 
+                <input date-range-picker class="pull-right date-picker datefilter" type="text"
+                           name="date2" ng-model="date2" options="opts" format="MM/DD/YYYY">
+                           <span class="caret">   
+                           </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgm-lightgreen">
+                <div class="clearfix">
+                    <div class="chart stats-bar">
+                        <img src="../images/ic_people_white_24px.svg" width="68" height="35" style="display: inline-block; width: 70px; height: 51px; vertical-align: top;">
+                    </div>
+                    <div class="count">
+                        <small>Users</small>
+                        <h2>{{users.totalUsersults}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgm-purple">
+                <div class="clearfix">
+                    <div class="chart stats-bar-2">
+                        <img src="../images/ic_equalizer_white_24px.svg" width="68" height="35" style="display: inline-block; width: 70px; height: 51px; vertical-align: top;">
+                    </div>
+                    <div class="count">
+                        <small>Sessions</small>
+                        <h2>{{sessions.totalSessionsults}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgm-orange">
+                <div class="clearfix">
+                    <div class="chart stats-line">
+                        <img src="../images/ic_devices_white_24px.svg" width="68" height="35" style="display: inline-block; width: 70px; height: 51px; vertical-align: top;">
+                    </div>
+                    <div class="count">
+                        <small>Devices</small>
+                        <h2>{{devices.totalDeviceConnected}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="mini-charts-item bgm-bluegray">
+                <div class="clearfix">
+                    <div class="chart stats-line-2">
+                        <img src="../images/ic_computer_white_24px.svg" width="68" height="35" style="display: inline-block; width: 70px; height: 51px; vertical-align: top;">
+                    </div>
+                    <div class="count">
+                        <small>Screens</small>
+                        <h2>6</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-md-6 col-sm-6">
+            <div id="site-visits" class="dw-item bgm-teal">
+                <div class="col-sm-5" style="padding: 0;background: url(../images/dashback.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;">
+                    <div class="dwi-header">
+                        <div class="p-30">
+                            <div class="dash-widget-visits">
+                                <div google-chart chart="userChart" style="height:130px; width:100%;margin-top: -5px;margin-bottom: 5px;margin: auto;"></div>
+                            </div>
+                        </div>
+                        <!--  <div class="dwih-title">For the past 30 days</div> -->
+                    </div>
+                </div>
+                <div class="col-sm-7" style="padding: 0;">
+                    <div class="list-group lg-even-white">
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-bar">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Page Views</small>
+                                <h3>47,896,536</h3>
+                            </div>
+                        </div>
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-bar-2">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Site Visitors</small>
+                                <h3>24,456,799</h3>
+                            </div>
+                        </div>
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-line">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Total Clicks</small>
+                                <h3>13,965</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div id="site-visits" class="dw-item bgm-teal">
+                <div class="col-sm-5" style="padding: 0;background: url(../images/dashback.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;">
+                    <div class="dwi-header">
+                        <div class="p-30">
+                            <div class="dash-widget-visits">
+                                <div google-chart chart="sessionChart" style="height:130px; width:100%;margin-top: -5px;margin-bottom: 5px;margin: auto;"></div>
+                            </div>
+                        </div>
+                        <!--  <div class="dwih-title">For the past 30 days</div> -->
+                    </div>
+                </div>
+                <div class="col-sm-7" style="padding: 0;">
+                    <div class="list-group lg-even-white">
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-bar">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Page Views</small>
+                                <h3>47,896,536</h3>
+                            </div>
+                        </div>
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-bar-2">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Site Visitors</small>
+                                <h3>24,456,799</h3>
+                            </div>
+                        </div>
+                        <div class="list-group-item media sv-item">
+                            <div class="pull-right">
+                                <div class="stats-line">
+                                    <canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <small>Total Clicks</small>
+                                <h3>13,965</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="col-md-6 col-sm-6">
+            <div class="box">
+                <div class="panel-heading">
+                    <h4>Pages
+                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="../images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="col-md-6 col-sm-6">
+            <div class="box" style="margin-bottom: 30px;">
+                <div class="panel-heading">
+                    <h4>Shared Item
+                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="../images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+                    </div>
+                    <!-- <div area-chart area-data='areaCharts1.data' area-xkey='{{areaCharts1.xkey}}' area-ykeys='areaCharts1.ykeys' area-labels='areaCharts1.labels' line-colors='areaCharts1.colors'>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section class="col-md-6 col-sm-6">
+            <div class="box" style="margin-bottom: 30px;">
+                <div class="panel-heading">
+                    <h4>Bar Chart
+                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="../images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <!-- <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"> -->
+                    <div bar-chart bar-data='[
+    { y: "2009", a: 75,  b: 65 },
+    { y: "2010", a: 50,  b: 40 },
+    { y: "2011", a: 75,  b: 65 },
+    { y: "2012", a: 100, b: 90 }
+]' bar-x='y' bar-y='["a", "b"]' bar-labels='["Series A", "Series B"]' bar-colors='["#00bcd4", "#f8bc07"]'>
+                    </div>
+                    <!-- <div style="padding: 18px;font-size: 15px;text-align: center;">
+                        <div class="col-sm-6">
+                            <div class="morris-hover-point" style="color: #00bcd4">
+                                Total A: Count
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="morris-hover-point" style="color: #f8bc07">
+                                Total B: Count
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section class="col-md-6 col-sm-6">
+            <div class="box">
+                <div class="panel-heading">
+                    <h4>Word Cloud
+                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="../images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <jqcloud words="words" width="500" height="500" steps="7"></jqcloud>
+                </div>
+            </div>
         </section>
     </div>
 </section>
-<!-- /.content -->

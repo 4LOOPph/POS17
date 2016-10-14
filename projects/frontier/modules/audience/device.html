@@ -112,7 +112,7 @@
                                 <div class="box-body">
                                     <div class="row" ng-show="displayModel=='Table'">
                                         <div class="col-lg-12">
-                                            <table class="table table-hover" data-page-size="5">
+                                            <table class="table table-striped footable" data-page-size="5">
                                                 <thead>
                                                     <tr>
                                                         <th data-sort-ignore="true" width="5%">
@@ -128,7 +128,7 @@
                                                             <input type="checkbox">
                                                         </td>
                                                         <td><a href="">{{data.deviceName}}</a></td>
-                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalInfoViews*100).toFixed(2)}}%)</small></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot class="hide-if-no-paging">
@@ -144,7 +144,7 @@
                                     <div class="row" ng-show="displayModel=='Pie'">
                                         <div class="col-lg-8 col-md-8">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable" data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -160,7 +160,7 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.deviceName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalInfoViews*100).toFixed(2)}}%)</small></td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot class="hide-if-no-paging">
@@ -182,9 +182,9 @@
                                         </div>
                                     </div>
                                     <div class="row" ng-show="displayModel=='Bar'">
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable " data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -202,14 +202,14 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.deviceName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalInfoViews*100).toFixed(2)}}%)</small></td>
                                                             <td>
                                                                 <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.ScreenView/totalInfoViews*100 + '%' }"></div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                                <span class="label label-success">({{(data.ScreenView/totalInfoViews*100).toFixed(2)}}%)</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -222,48 +222,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-sort-ignore="true" width="5%">
-                                                                <input type="checkbox">
-                                                            </th>
-                                                            <th>Device Name</th>
-                                                            <th>Screen View</th>
-                                                            <th>Progress <small>(Screen)</small></th>
-                                                            <th>Status <small>(Screen)</small></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="data in deviceinfolist">
-                                                            <td>
-                                                                <input type="checkbox">
-                                                            </td>
-                                                            <td><a href="">{{data.deviceName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
-                                                            <td>
-                                                                <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot class="hide-if-no-paging">
-                                                        <tr>
-                                                            <td colspan="6" align="center">
-                                                                <ul class="pagination"></ul>
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </uib-tab>
@@ -274,7 +233,7 @@
                                 <div class="box-body">
                                     <div class="row" ng-show="displayModel=='Table'">
                                         <div class="col-lg-12">
-                                            <table class="table table-hover" data-page-size="5">
+                                            <table class="table table-striped footable" data-page-size="5">
                                                 <thead>
                                                     <tr>
                                                         <th data-sort-ignore="true" width="5%">
@@ -290,7 +249,7 @@
                                                             <input type="checkbox">
                                                         </td>
                                                         <td><a href="">{{data.deviceBrand}}</a></td>
-                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalBrandViews*100).toFixed(2)}}%)</small></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot class="hide-if-no-paging">
@@ -306,7 +265,7 @@
                                     <div class="row" ng-show="displayModel=='Pie'">
                                         <div class="col-lg-8 col-md-8">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable" data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -317,12 +276,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="data in deviceinfolist">
+                                                        <tr ng-repeat="data in devicebrandlist">
                                                             <td>
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.deviceBrand}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small>({{(data.ScreenView/totalBrandViews*100).toFixed(2)}}%)</small></td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot class="hide-if-no-paging">
@@ -344,9 +303,9 @@
                                         </div>
                                     </div>
                                     <div class="row" ng-show="displayModel=='Bar'">
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable " data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -359,19 +318,19 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="data in deviceinfolist">
+                                                        <tr ng-repeat="data in devicebrandlist">
                                                             <td>
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.deviceBrand}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalBrandViews*100).toFixed(2)}}%)</small></td>
                                                             <td>
                                                                 <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.ScreenView/totalBrandViews*100 + '%' }"></div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                                <span class="label label-success">{{(data.ScreenView/totalBrandViews*100).toFixed(2)}}%</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -384,48 +343,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-sort-ignore="true" width="5%">
-                                                                <input type="checkbox">
-                                                            </th>
-                                                            <th>Device Name</th>
-                                                            <th>Screen View</th>
-                                                            <th>Progress <small>(Screen)</small></th>
-                                                            <th>Status <small>(Screen)</small></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="data in deviceinfolist">
-                                                            <td>
-                                                                <input type="checkbox">
-                                                            </td>
-                                                            <td><a href="">{{data.deviceBrand}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
-                                                            <td>
-                                                                <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot class="hide-if-no-paging">
-                                                        <tr>
-                                                            <td colspan="6" align="center">
-                                                                <ul class="pagination"></ul>
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </uib-tab>
@@ -436,7 +354,7 @@
                                 <div class="box-body">
                                     <div class="row" ng-show="displayModel=='Table'">
                                         <div class="col-lg-12">
-                                            <table class="table table-hover" data-page-size="5">
+                                            <table class="table table-striped footable" data-page-size="5">
                                                 <thead>
                                                     <tr>
                                                         <th data-sort-ignore="true" width="5%">
@@ -452,7 +370,7 @@
                                                             <input type="checkbox">
                                                         </td>
                                                         <td><a href="">{{data.osName}}</a></td>
-                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalScreenViews*100).toFixed(2)}}%)</small></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot class="hide-if-no-paging">
@@ -468,7 +386,7 @@
                                     <div class="row" ng-show="displayModel=='Pie'">
                                         <div class="col-lg-8 col-md-8">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable " data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -484,7 +402,7 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.osName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalScreenViews*100).toFixed(2)}}%)</small></td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot class="hide-if-no-paging">
@@ -506,9 +424,9 @@
                                         </div>
                                     </div>
                                     <div class="row" ng-show="displayModel=='Bar'">
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable" data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -526,14 +444,14 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.osName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalScreenViews*100).toFixed(2)}}%)</small></td>
                                                             <td>
                                                                 <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.ScreenView/totalScreenViews*100 + '%' }"></div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                                <span class="label label-success">{{(data.ScreenView/totalScreenViews*100).toFixed(2)}}%</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -546,48 +464,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-sort-ignore="true" width="5%">
-                                                                <input type="checkbox">
-                                                            </th>
-                                                            <th>Device OS</th>
-                                                            <th>Screen View</th>
-                                                            <th>Progress <small>(Screen)</small></th>
-                                                            <th>Status <small>(Screen)</small></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="data in deviceoslist">
-                                                            <td>
-                                                                <input type="checkbox">
-                                                            </td>
-                                                            <td><a href="">{{data.osName}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
-                                                            <td>
-                                                                <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot class="hide-if-no-paging">
-                                                        <tr>
-                                                            <td colspan="6" align="center">
-                                                                <ul class="pagination"></ul>
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </uib-tab>
@@ -598,7 +475,7 @@
                                 <div class="box-body">
                                     <div class="row" ng-show="displayModel=='Table'">
                                         <div class="col-lg-12">
-                                            <table class="table table-hover" data-page-size="5">
+                                            <table class="table table-striped footable" data-page-size="5">
                                                 <thead>
                                                     <tr>
                                                         <th data-sort-ignore="true" width="5%">
@@ -614,7 +491,7 @@
                                                             <input type="checkbox">
                                                         </td>
                                                         <td><a href="">{{data.screenResolution}}</a></td>
-                                                        <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                        <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalDeviceScreen*100).toFixed(2)}}%)</small></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot class="hide-if-no-paging">
@@ -630,7 +507,7 @@
                                     <div class="row" ng-show="displayModel=='Pie'">
                                         <div class="col-lg-8 col-md-8">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable " data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -646,7 +523,7 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.screenResolution}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalDeviceScreen*100).toFixed(2)}}%)</small></td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot class="hide-if-no-paging">
@@ -668,9 +545,9 @@
                                         </div>
                                     </div>
                                     <div class="row" ng-show="displayModel=='Bar'">
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
+                                                <table class="table table-striped footable " data-page-size="5">
                                                     <thead>
                                                         <tr>
                                                             <th data-sort-ignore="true" width="5%">
@@ -688,14 +565,14 @@
                                                                 <input type="checkbox">
                                                             </td>
                                                             <td><a href="">{{data.screenResolution}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
+                                                            <td>{{data.ScreenView}}<small> ({{(data.ScreenView/totalDeviceScreen*100).toFixed(2)}}%)</small></td>
                                                             <td>
                                                                 <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
+                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.ScreenView/totalDeviceScreen*100 + '%' }"></div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
+                                                                <span class="label label-success">{{(data.ScreenView/totalDeviceScreen*100).toFixed(2)}}%</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -708,48 +585,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped " data-page-size="5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-sort-ignore="true" width="5%">
-                                                                <input type="checkbox">
-                                                            </th>
-                                                            <th>Device Screen</th>
-                                                            <th>Screen View</th>
-                                                            <th>Progress <small>(Screen)</small></th>
-                                                            <th>Status <small>(Screen)</small></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="data in devicescreenlist">
-                                                            <td>
-                                                                <input type="checkbox">
-                                                            </td>
-                                                            <td><a href="">{{data.screenResolution}}</a></td>
-                                                            <td>{{data.ScreenView}}<small> ({{data.screenviewPercentage}}%)</small></td>
-                                                            <td>
-                                                                <div class="progress xs">
-                                                                    <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.screenviewPercentage + '%' }"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <span class="label label-success">{{data.screenviewPercentage}}%</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot class="hide-if-no-paging">
-                                                        <tr>
-                                                            <td colspan="6" align="center">
-                                                                <ul class="pagination"></ul>
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </uib-tab>

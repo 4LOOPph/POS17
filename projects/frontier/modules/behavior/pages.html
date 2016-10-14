@@ -102,22 +102,34 @@
                                 <div data-title="<i class='fa fa-user'></i> Pages " bs-pane>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped" data-page-size="5">
+                                            <div class="table-responsive">                                                
+                                                <table class="table table-striped footable" data-page-size="5">
                                                     <thead>
-                                                        <tr>
+                                                        <tr>                                                           
                                                             <th>Page</th>
                                                             <th>Total Events</th>
                                                             <th>Total Value Events</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                       <tr>
+                                                            <td></td>
+                                                            <td>{{totalEvents}}<small> Total Events</small></td>
+                                                            <td>{{totalValue}}<small> Total Value</small></td>
+                                                        </tr>
                                                         <tr ng-repeat="page in pages">
                                                             <td>{{page.page}}</td>
                                                             <td>{{page.TotalEvents}}<small>({{page.totalEventsPercentage}}%)</small></td>
                                                             <td>{{page.TotalValueEvents}}<small>({{page.totalEventsValuePercentage}}%)</small></td>
                                                         </tr>
                                                     </tbody>
+                                                    <tfoot class="hide-if-no-paging">
+                                                        <tr>
+                                                            <td colspan="6" align="center">
+                                                                <ul class="pagination"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>

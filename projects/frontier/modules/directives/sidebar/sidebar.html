@@ -1,61 +1,71 @@
 <aside class="left-side sidebar-offcanvas">
-  <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
-    <ul class="sidebar-menu">
-      <li class="active">
-        <a ng-click="goback()">
-          <i class="fa fa-dashboard"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li class="active">
-        <a ui-sref="main.appoverview">
-          <i class="fa fa-dot-circle-o"></i>
-          <span>App Overview</span>
-        </a>
-      </li>
-      <li class="treeview">
-        <a href="">
-          <i class="fa fa-group"></i>
-          <span>Audience</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li><a ui-sref="main.audience"><i class="fa fa-angle-double-right"></i> Overview</a>
-          </li>
-          <li><a ui-sref="main.audience.appversion"><i class="fa fa-angle-double-right"></i> App Versions</a>
-          </li>
-          <li><a ui-sref="main.audience.users"><i class="fa fa-angle-double-right"></i> Users</a>
-          </li>
-          <li><a ui-sref="main.audience.device"><i class="fa fa-angle-double-right"></i> Device</a>
-          </li>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <!--  <img src="./images/sidebar_head_bg.png"> -->
+    <div class="sidebarprofile">
+        <div class="sidebarpro">
+            <img src="./images/avatar3.png" class="img-circle" alt="User Image" style="width: 30%;
+    border: 3px solid rgba(0, 0, 0, 0.22)">
+            <div class="usertxt">Jane Doe<br>
+                <small style="color: #000;">ADMIN</small>
+            </div>
+        </div>
+    </div>
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a ui-sref="main.dashboard">
+                    <img src="./images/ic_dashboard.svg" style="margin-right: 10px;margin-top: -2px;">
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="main.appoverview">
+                    <img src="./images/ic_adjust.svg" style="margin-right: 10px;margin-top: -2px;">
+                    <span>App Overview</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/ic_people_black_24px.svg" style="margin-right: 10px;margin-top: -2px;">
+                    <span>Audience</span>
+                    <i class="fa fa-angle-left pull-right" style="margin-top: 4px;color: #1c81d2;"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a ui-sref="main.audience"> Overview</a>
+                    </li>
+                    <li><a ui-sref="main.audience.appversion"> App Versions</a>
+                    </li>
+                    <li><a ui-sref="main.audience.users"> Users</a>
+                    </li>
+                    <li><a ui-sref="main.audience.device"> Device</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/ic_view_compact_black_24px.svg" style="margin-right: 10px;margin-top: -2px;">
+                    <span>Behavior</span>
+                    <i class="fa fa-angle-left pull-right" style="margin-top: 4px;color: #1c81d2;"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a ui-sref="main.behavior"> Overview</a>
+                    </li>
+                    <li><a ui-sref="main.behavior.screens"> Screens</a>
+                    </li>
+                    <li><a ui-sref="main.behavior.events"> Events</a>
+                    </li>
+                    <li><a ui-sref="main.behavior.pages"> Pages</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a ui-sref="main.settings">
+                    <img src="./images/ic_settings_black_24px.svg" style="margin-right: 10px;margin-top: -2px;">
+                    <span>Setting</span>
+                </a>
+            </li>
         </ul>
-      </li>
-      <li class="treeview">
-        <a href="">
-          <i class="fa fa-th-large"></i>
-          <span>Behavior</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li><a ui-sref="main.behavior"><i class="fa fa-angle-double-right"></i> Overview</a>
-          </li>
-          <li><a ui-sref="main.behavior.screens"><i class="fa fa-angle-double-right"></i> Screens</a>
-          </li>
-          <li><a ui-sref="main.behavior.events"><i class="fa fa-angle-double-right"></i> Events</a>
-          </li>
-          <li><a ui-sref="main.behavior.pages"><i class="fa fa-angle-double-right"></i> Pages</a>
-          </li>
-        </ul>
-      </li>
-      <li class="active">
-        <a ui-sref="main.settings">
-          <i class="fa fa-cogs"></i>
-          <span>Setting</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <!-- /.sidebar -->
+    </section>
+    <!-- /.sidebar -->
 </aside>
 </aside>

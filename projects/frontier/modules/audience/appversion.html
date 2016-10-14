@@ -1,18 +1,44 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
+    <h4 class="bread">
         Audience
         <small>App Versions</small>
-    </h1>
-    <ol class="breadcrumb">
+    </h4>
+    <!-- <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
         <li class="active">App Versions</li>
-    </ol>
+    </ol> -->
 </section>
 <!-- Main content -->
-<section class="content">
-    <div class="row">
+<section >
+    <div class="">
+        <div class="col-sm-12 subcrumb">
+            <div class="btn-group" style="margin-top: -19px;">
+                <span data-toggle="dropdown" style="font-size: 15px;color: #555;cursor: pointer;">
+                                <img src="./images/file-export.svg" style="width: 18px;margin-top: -3px;"> Export
+                                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+                </span>
+                <ul class="dropdown-menu" role="menu" style="left: -1px !important;margin-top: -25px;">
+                    <li><a href="" ng-click="getAudienceOverviewCsv()">CSV</a>
+                    </li>
+                    <li><a href="">Excel (XLSX)</a>
+                    </li>
+                    <li><a href="">Google Sheets</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group" style="float: right;margin-top: -3px;">
+                <span style="font-size: 15px;color: #555;cursor: pointer;display: inline-flex;">
+                <img src="../images/ic_date_range_black_18px.svg" style="margin-top: -9px;margin-right: 2px;"> 
+                <input date-range-picker class="pull-right date-picker datefilter" type="text"
+                           name="date2" ng-model="date2" options="opts" format="MM/DD/YYYY">
+                           <span class="caret">   
+                           </span>
+                </span>
+            </div>
+        </div>
         <section class="col-lg-12">
             <div class="box">
                 <div class="box-header">
