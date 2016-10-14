@@ -1,6 +1,6 @@
 <div id="compare-page" class="wrapper">
     <div class="breadcrumbs ">
-        <img src="../../images/icons/ico_compare01-01.svg"/>
+        <img src="./images/icons/ico_compare01-01.svg"/>
         <a class="current font_medium">
             Product Comparison
         </a>
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div id="compare_products">
-        <table cellspacing="0" cellpadding="0">
+        <table cellspacing="0" cellpadding="0" ng-if="compareproducts.length >0">
             <thead>
             <tr class="border-bottom compare_head">
                 <td width="15%" style="vertical-align: bottom; padding: 10px;">
@@ -177,7 +177,7 @@
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Mounting Configuration</td>
-                <td></td>
+
 
             </tr>
 
@@ -195,7 +195,7 @@
             </tr>
             <tr ng-hide="viewHardware"  class="compare_body">
                 <td class="td-label">Media Player Model</td>
-                <td></td>
+
 
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
@@ -321,16 +321,15 @@
                 <td ng-repeat="items in compareproducts track by $index" ng-if="items.weekly">
                     {{items.weekly | currency}} <small>per month*</small>
                 </td>
-                <td ng-repeat="items in compareproducts track by $index" ng-if="!items.weekly">
-                    no <small>per month*</small>
-                </td>
+
+
             </tr>
             <tr  class="compare_body">
                 <td class="row_label">
 
                 </td>
-                <td class="row_label">
-                    <button type="button" class="full_width tes-btn bg-green">
+                <td class="row_label" ng-repeat="items in compareproducts track by $index">
+                    <button type="button" class="full_width tes-btn bg-green" ng-click="addToCart(items)">
                         <i class="fa fa-shopping-cart"></i> Add to cart
                     </button>
 

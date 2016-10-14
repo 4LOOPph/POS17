@@ -24,7 +24,7 @@
                                                     <img src="{{image.image_path}}" ng-repeat="image in cartitem.product_images | limitTo: 1" />
                                                 </div>
                                                 <div class="img_holder" ng-if="cartitem.p_id">
-                                                    <img src="{{cartitem.img_default}}" />
+                                                    <img ng-repeat="image in cartitem.product_images | limitTo: 1" src="{{image.image_path}}" />
                                                 </div>
                                                 <div class="font_bold grey2" ng-show="cartitem.bundle_name">
                                                     {{cartitem.bundle_name}}

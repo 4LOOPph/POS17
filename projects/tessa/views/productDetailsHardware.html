@@ -46,11 +46,11 @@
                                     </ul>
                                 </div>
                                 <div class="side_menu dis_cell_2">
-                                    <a ng-click="openShareModal()" class=" side_buttons bg-sky font_bold uppercase" fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]">
+                                    <a ng-click="openShareModal()" class="side_buttons bg-sky font_bold uppercase" fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]">
                                         <i class="fa fa-share"></i> Share
                                     </a>
-                                    <a ng-click="openShareModal()" class=" side_buttons bg-violet font_bold uppercase">
-                                        <i class="fa fa-exchange"></i> Compare
+                                    <a ng-click="compare(productDetails)" class="side_buttons bg-violet font_bold uppercase">
+                                         <i class="fa fa-exchange" ng-show="compareIs"></i> <i class="fa fa-minus-circle" ng-show="compareIs == false"></i> Compare
                                     </a>
                                 </div>
 
