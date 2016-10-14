@@ -28,11 +28,11 @@
                 <td class="mailbox-date" am-time-ago="file.date_created"></td>
                 <td class="mailbox-name"></td>
             </tr>
-
             <tr contextmenu-item="files" ng-repeat="files in assets.assets" ng-click="activeSelected(files,$event)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" ng-if="assets.assets.length > 0">
                 <td class="mailbox-star">
                     <!-- PDF -->
-                    <i class="fa fa-file-pdf-o fa-2x text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
+                    <i class="fa fa-file-pdf-o fa-2x text-red" ng-if="files.asset_mimetype == 'application/pdf' && !files.thumbnail.thumbnail"></i>
+                    <img ng-src="{{files.thumbnail.thumbnail}}" alt="" style="height: 11px; width: 27px; overflow: hidden;" ng-if="files.asset_mimetype == 'application/pdf' && files.thumbnail.thumbnail" />
                     <!-- DOCS -->
                     <i class="fa fa-file-word-o fa-2x text-blue" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
                     <!-- AUDIO -->
