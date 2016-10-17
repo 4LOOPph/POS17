@@ -1,5 +1,5 @@
 <!--End: Context Menu-->
-<div class="thumbnail_view row">
+<div class="thumbnail_view row" ng-swipe-up="swipe($event)">
     <div contextmenu-container="meta.contextmenu">
         <section class="sec_folder">
             <div class="font_medium grey2 pad_side_20 ">
@@ -60,7 +60,7 @@
                         <!-- PDF -->
                         <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf' && !files.thumbnail.thumbnail" style="margin: 35px;"></i>
                         <!-- PDF -->
-                        <img ng-src="{{files.thumbnail.thumbnail}}" alt="" style="height: 118px; width: 100%; overflow: hidden;" ng-if="files.asset_mimetype == 'application/pdf' && files.thumbnail.thumbnail" />
+                        <img ng-src="{{files.thumbnail.thumbnail}}" alt="" imageonload style="height: 118px; width: 100%; overflow: hidden;" ng-if="files.asset_mimetype == 'application/pdf' && files.thumbnail.thumbnail" />
                         <!-- DOCS -->
                         <i class="fa fa-file-word-o text-blue" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" style="margin: 35px;"></i>
                         <!-- AUDIO -->

@@ -5,12 +5,12 @@
             Product Comparison
         </a>
     </div>
-    <div class="page-menu flexi-pad">
+    <div class="page-menu flexi-pad" ng-if="compareproducts.length >0">
         <div class="dis_flex">
             <section>
                 <a ui-sref="main.productCatalogue" class="font_medium btn btn-midnightblue">
-                    <i class="fa fa-plus"></i> Browse Product Catalogue
-                </a>
+                <i class="fa fa-plus"></i> Add more products to compare
+            </a>
                 <a ui-sref="main.productCatalogue" class="font_medium btn btn-primary">
                     <i class="fa fa-share"></i> Share
                 </a>
@@ -125,13 +125,15 @@
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Screens</td>
 
-            </tr>
-            <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Screen Model</td>
 
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Screen Size</td>
+                <td class="td-label">Screen model</td>
+
+
+            </tr>
+            <tr ng-hide="viewHardware" class="compare_body">
+                <td class="td-label">Screen size</td>
                 <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                     <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
                         <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Screen Size'">
@@ -144,9 +146,10 @@
                         {{screen.value}}
                     </div>
                 </td>
+
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Screen Bezel</td>
+                <td class="td-label">Screen bezel</td>
                 <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                     <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
                         <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Bezel Size'">
@@ -159,9 +162,10 @@
                         {{screen.value}}
                     </div>
                 </td>
+
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Screen Dimensions</td>
+                <td class="td-label">Screen dimensions</td>
                 <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                     <div ng-repeat="item in items.hardware" ng-if="item.category_label == 'Screen' || item.category_id == 80">
                         <div ng-repeat="screen in item.attributes" ng-if="screen.attribute == 'Dimensions'">
@@ -176,7 +180,7 @@
                 </td>
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Mounting Configuration</td>
+                <td class="td-label">Mounting configuration</td>
 
 
             </tr>
@@ -184,7 +188,7 @@
 
             <tr ng-hide="viewHardware" class="compare_body">
 
-                <td class="td-label">Media Player</td>
+                <td class="td-label">Media player</td>
 
                 <td ng-repeat="items in compareproducts track by $index">
                     <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
@@ -247,7 +251,7 @@
                 </td>
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
-                <td class="td-label">Maximum Resolution</td>
+                <td class="td-label">Maximum resolution</td>
 
                 <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                     <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
@@ -263,7 +267,7 @@
                 </td>
             </tr>
             <tr ng-hide="viewHardware" class="border-bottom compare_body">
-                <td class="td-label">Number of Screens Supported</td>
+                <td class="td-label">Number of screens supported</td>
 
 
             </tr>
@@ -339,6 +343,10 @@
 
             </tbody>
         </table>
+        <div ng-if="compareproducts.length == 0" class="flexi-pad center_align">
+            <div class="font_18">No products to compare yet.</div><br>
+            <button type="button" class="tes-btn bg-violet" ui-sref="main.productCatalogue"><img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> Browse Product Catalogue</button>
+        </div>
     </div>
 </div>
 

@@ -4,24 +4,24 @@
             <div class="col-md-3">
                 <div class="panel panel-profile">
                     <div class="panel-body">
-                        <img src="../../images/test_02.jpg" class="img-circle" />
-                        <div class="name"> Robin Thick</div>
-                        <div class="info"> Chubbels</div>
+                        <img src="{{appprofile.image}}" err-src="images/icons/dp.png" class="img-circle" />
+                        <div class="name"> {{details.firstname}} {{details.lastname}}</div>
+                        <div class="info"> {{details.email}}</div>
                     </div>
                 </div>
-                <div class="font_medium list-group list-group-alternate mb-n nav nav-tabs">
-                    <a role="tab" class=" list-group-item">
+                <div id="test" class="font_medium list-group list-group-alternate mb-n nav nav-tabs">
+                    <a role="tab" ng-click="setTab(1)" ng-class="{ active: isSet(1)" class=" list-group-item">
                         <i class="ti ti-user"></i> About
                     </a>
-                    <a role="tab" class="list-group-item">
+                    <a role="tab" ng-click="setTab(2)" ng-class="{ active: isSet(2)"class="list-group-item">
                         <i class="fa fa-edit"></i> General Info Settings
                     </a>
-                    <a role="tab" class="list-group-item">
+                    <a role="tab" ng-click="setTab(3)" ng-class="{ active: isSet(3)"ng-click="" class="list-group-item">
                         <i class="fa fa-edit"></i> Account Settings
                     </a>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-9" ng-show="isSet(1)">
                 <div class="">
                     <div class="" id="tab-">
                         <div class="panel ">
@@ -69,74 +69,76 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-sm-9">
-                <div class="panel">
-                    <div class="breadcrumbs font_medium dis_table" style="padding:0;">
-                        <div class="dis_cell blue1 current padding_10">
-                            Update General Info
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-horizontal tabular-form">
-                            <div class="form-group">
-                                <label for="form-name" class="col-sm-2 control-label">First Name</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-name" ng-model="details.firstname" placeholder="Firstname">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-website" class="col-sm-2 control-label">Last Name</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-website" ng-model="details.lastname" placeholder="Lastname">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-password" class="col-sm-2 control-label">Display Name</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-password" ng-model="details.displayName" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-website" class="col-sm-2 control-label">Email Address</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-website" ng-model="details.email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-website" class="col-sm-2 control-label">Address</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-website" ng-model="details.address" placeholder="http://">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-website" class="col-sm-2 control-label">Mobile Number</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <input type="text" class="form-control" id="form-website" ng-model="details.mobile" placeholder="Mobile Num.">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-website" class="col-sm-2 control-label">Time Zone</label>
-                                <div class="col-sm-8 tabular-border">
-                                    <!-- <input type="text" class="form-control" id="form-website" placeholder="http://"> -->
-                                    <select class="form-control" ng-model="details.timeZone" ng-options="item.text as item.text for item in timezone">
-                                        <option disabled value="">Choose Time Zone</option>
-                                    </select>
-                                </div>
+
+            <div ng-show="isSet(2)" class="col-sm-9">
+                <form role="form" ng-submit="savePersonDetail()">
+                    <div class="panel">
+                        <div class="breadcrumbs font_medium dis_table" style="padding:0;">
+                            <div class="dis_cell blue1 current padding_10">
+                                Update General Info
                             </div>
                         </div>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2">
-                                <button class="btn-primary btn">Save Changes</button>
+                        <div class="panel-body">
+                            <div class="form-horizontal tabular-form">
+                                <div class="form-group">
+                                    <label for="form-name" class="col-sm-2 control-label">First Name</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-name" ng-model="details.firstname" placeholder="Firstname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-website" class="col-sm-2 control-label">Last Name</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-website" ng-model="details.lastname" placeholder="Lastname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-password" class="col-sm-2 control-label">Display Name</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-password" ng-model="details.displayName" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-website" class="col-sm-2 control-label">Email Address</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-website" ng-model="details.email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-website" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-website" ng-model="details.address" placeholder="http://">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-website" class="col-sm-2 control-label">Mobile Number</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="text" class="form-control" id="form-website" ng-model="details.mobile" placeholder="Mobile Num.">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-website" class="col-sm-2 control-label">Time Zone</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <!-- <input type="text" class="form-control" id="form-website" placeholder="http://"> -->
+                                        <select class="form-control" ng-model="details.timeZone" ng-options="item.text as item.text for item in timezone">
+                                            <option disabled value="">Choose Time Zone</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <button type="submit" class="btn-primary btn">Save Changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-sm-9">
+
+            <div ng-show="isSet(3)" class="col-sm-9">
                 <div class="panel">
                     <div class="breadcrumbs font_medium dis_table" style="padding:0;">
                         <div class="dis_cell blue1 current padding_10">
@@ -147,64 +149,70 @@
                         <div class="card-box">
                             <div class="dis_table">
                                 <div class="dis_cell ">
-                                    <div class="flexi-box">
-                                        <div class="flexi-box-head">
-                                            Update Username
-                                        </div>
-                                        <div class="flexi-box-body">
-                                            <div class="form-label">
-                                                Username
+                                    <form role="form" name="usernameForm" ng-submit="saveUsername()" novalidate="novalidate">
+                                        <div class="flexi-box">
+                                            <div class="flexi-box-head">
+                                                Update Username
                                             </div>
-                                            <input type="text" class="form-control ">
+                                            <div class="flexi-box-body">
+                                                <div class="form-label">
+                                                    Username
+                                                </div>
+                                                <input type="text" ng-model="profile.username" class="form-control" class="User name" validator="required" required>
+                                            </div>
+                                            <div class="flexi-box-foot">
+                                                <button type="submit" ng-disabled="usernameForm.$invalid" class="tes-btn bg-sky">Update</button>
+                                            </div>
                                         </div>
-                                        <div class="flexi-box-foot">
-                                            <button type="button" class="tes-btn bg-sky">Update</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="dis_cell ">
-                                    <div class="flexi-box">
-                                        <div class="flexi-box-head">
-                                            Recovery Email
-                                        </div>
-                                        <div class="flexi-box-body">
-                                            <div class="form-label">
-                                                Email
+                                    <form role="form " name="recoveryForm " ng-submit="addRecoveryEmail() " novalidate="novalidate ">
+                                        <div class="flexi-box">
+                                            <div class="flexi-box-head">
+                                                Recovery Email
                                             </div>
-                                            <input type="text" class="form-control ">
+                                            <div class="flexi-box-body">
+                                                <div class="form-label">
+                                                    Email
+                                                </div>
+                                                <input type="email" ng-model="details.recovery_email" class="form-control" placeholder="Recovery Email" validator="required" required>
+                                            </div>
+                                            <div class="flexi-box-foot">
+                                                <button type="submit" ng-disabled="recoveryForm.$invalid " class="tes-btn bg-sky">Update</button>
+                                            </div>
                                         </div>
-                                        <div class="flexi-box-foot">
-                                            <button type="button" class="tes-btn bg-sky">Update</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         <div class="card-box">
                             <div class="dis_table">
                                 <div class="dis_cell ">
-                                    <div class="flexi-box">
-                                        <div class="flexi-box-head">
-                                            Update Username
-                                        </div>
-                                        <div class="flexi-box-body">
-                                            <div class="form-ctn">
-                                                <div class="form-label">
-                                                    New Password
-                                                </div>
-                                                <input type="password" class="form-control ">
+                                    <form role="form" name="userpasswordForm" ng-submit="savePassword()" novalidate>
+                                        <div class="flexi-box">
+                                            <div class="flexi-box-head">
+                                                Update Username
                                             </div>
-                                            <div class="form-ctn">
-                                                <div class="form-label">
-                                                    Password
+                                            <div class="flexi-box-body">
+                                                <div class="form-ctn">
+                                                    <div class="form-label">
+                                                        New Password
+                                                    </div>
+                                                    <input type="password" ng-model="details.password" class="form-control " required>
                                                 </div>
-                                                <input type="password" class="form-control ">
+                                                <div class="form-ctn">
+                                                    <div class="form-label">
+                                                        Password
+                                                    </div>
+                                                    <input type="password" ng-model="details.confirm_password " class="form-control " required>
+                                                </div>
+                                            </div>
+                                            <div class="flexi-box-foot">
+                                                <button type="submit " ng-disabled="userpasswordForm.$invalid " class="tes-btn bg-sky">Update</button>
                                             </div>
                                         </div>
-                                        <div class="flexi-box-foot">
-                                            <button type="button" class="tes-btn bg-sky">Update</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="dis_cell ">
                                     <div class="flexi-box">

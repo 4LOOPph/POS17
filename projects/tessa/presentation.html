@@ -678,7 +678,7 @@ function isFullScreen() {
 }
 
 // var API_URL = 'http://192.168.1.2:3000';
-var API_URL = 'http://54.206.38.223:5002';
+var API_URL = window.API_URL || 'http://54.206.38.223:5002';
 // var API_URL = 'http://54.206.38.223:5001';
 
 var socket = io(API_URL);

@@ -1,0 +1,41 @@
+<span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-login"></span>
+<div id="login-form">
+    <p style="text-align:center;">
+        <a href="#" class="login-logo"><img src="images/icons/svg-tessa-logo.svg"></a>
+    </p>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);border: 0px;">
+                <form class="form-horizontal" ng-submit="forgotpass()" id="validate-form" novalidate="true">
+                    <div class="panel-heading">
+                        <h2>Forgot Email/Password</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group mb-md">
+                            <div class="col-xs-12">
+                                <h5>We will send you an email with instructions on how to reset your password.</h5> <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                            <i class="ti ti-user"></i>
+                                        </span>
+                                    <input type="email" ng-model="detail.email" class="form-control" placeholder="name@example.com" data-parsley-minlength="email" placeholder="Email must be in a valid format" required style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="clearfix">
+                            <a ui-sref="login" class="pull-left">Back to Login</a>
+                            <button type="submit" class="btn btn-primary pull-right" style="border-radius: 2px;border-color: #337ab7;">Send Email</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.form-control:focus {
+    border-color: #cccccc;
+}
+</style>

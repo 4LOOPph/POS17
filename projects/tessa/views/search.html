@@ -29,9 +29,16 @@
                 <div class=" sec-search-filter" ng-if="filtersearch.length == 0">
                     <h4>{{noresult}}</h4>
                 </div>
-                <div class="col-lg-4" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'">
+                <div class="col-lg-3" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'">
                     <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
                     <div class="panel panel-default">
+                        <div class="dis_table box-stick" ng-if="items.p_id || items.pb_id">
+                            <div class="dis_cell">
+                                <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                    <i class="fa fa-exchange"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="panel-body" ng-click="openModal(items)">
                             <div class="img-contain">
                                 <a class="img_holder" ng-if="items.self == 'products'">
@@ -59,18 +66,17 @@
                                         in {{items.self}}
                                     </div>
                                 </div>
+                                <div class="dis_table">
+                                    <div class="dis_cell">
+                                        <a class="box_details font_medium" ng-click="openModal(items)">
+                                            View Details
+                                        </a>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="dis_table">
-                            <div class="dis_cell">
-                                <a class="box_details font_medium" ng-click="openModal(items)">
-                                        View Details
-                                </a>
-                                <a ng-click="compare(items)" class="box_details font_medium" ng-if="items.p_id || items.pb_id">
-                                    <i class="fa fa-exchange"></i> <small>Compare</small>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

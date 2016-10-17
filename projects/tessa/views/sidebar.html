@@ -10,19 +10,19 @@
                     <a id="active-catalogue" ng-click="product('Product')">
                         <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="collapsible">Product Catalogue</span></a>
                 </li>
-                <!-- <li><a id="active-presentation" ui-sref="main.presentation" ng-if="appuser.isOwner == 1"> -->
-                <li>
+                <li ng-if="isAssets">
                     <a id="active-presentation" ng-click="product('Presentation')">
                         <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="collapsible">File Manager</span></a>
                 </li>
-                <!-- <li><a id="active-preso" ui-sref="main.assetGallery" ng-if="appuser.user_roles == 'Sales Rep.'"> -->
-                <li>
+                <li ng-if="isPreso">
+                <!-- <li> -->
                     <a id="active-preso" ng-click="product('Gallery')">
-                        <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="collapsible">Presentation</span></a>
+                        <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="collapsible">Presentation</span>
+                    </a>
                 </li>
                 <li><a id="active-compare" ng-click="product('Compare')">
-                     <span class="badge badge-primary" ng-if="compareproducts.length >0">{{compareproducts.length}}</span>
-                     <span class="badge badge-deeporange" ng-if="compareproducts.length == 0">{{compareproducts.length}}</span>
+                     <span class="badge badge-primary" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
+
                     <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="collapsible">Compare</span></a>
                 </li>
                 <!--<li><a id="active-comparison" ng-click="compareModal()">
