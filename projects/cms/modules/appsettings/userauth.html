@@ -30,12 +30,15 @@
                                 <label>App Secret</label>
                                 <input type="text" class="form-control" ng-model="facebook.apiSecret" placeholder="" />
                             </div>
+                            <div class="form-group">
+                                <label>Redirect URL</label>
+                                <input type="text" class="form-control" ng-model="facebook.redirectUri" placeholder="" />
+                            </div>
                         </form>
                     </div>
                     <div class="box-footer">
                         <a class="btn btn-primary" ng-if="!facebook.isEnable" ng-click="enableSocialAuth('facebook')">Enable</a>
                         <a class="btn btn-primary" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</a>
-                        <a class="btn btn-default" ng-if="facebook.isEnable" ng-click="disableSocialAuth('facebook')">Disable</a>
                         <a class="btn btn-danger" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</a>
                     </div>
                 </div>
@@ -62,12 +65,15 @@
                                 <label>Consumer Secret (API Secret)</label>
                                 <input type="text" class="form-control" ng-model="twitter.apiSecret" placeholder="" />
                             </div>
+                            <div class="form-group">
+                                <label>Redirect URL</label>
+                                <input type="text" class="form-control" ng-model="twitter.redirectUri" placeholder="" />
+                            </div>
                         </form>
                     </div>
                     <div class="box-footer">
                         <a class="btn btn-primary" ng-if="!twitter.isEnable" ng-click="enableSocialAuth('twitter')">Enable</a>
                         <a class="btn btn-primary" ng-if="twitter.isEnable" ng-click="updateSocialAuth('twitter')">Update</a>
-                        <a class="btn btn-default" ng-if="twitter.isEnable" ng-click="disableSocialAuth('twitter')">Disable</a>
                         <a class="btn btn-danger" ng-if="twitter.isEnable" ng-click="deleteSocialAuth('twitter')">Delete</a>
                     </div>
                 </div>
@@ -94,12 +100,15 @@
                                 <label>Client Secret</label>
                                 <input type="text" class="form-control" ng-model="google.apiSecret" placeholder="" />
                             </div>
+                            <div class="form-group">
+                                <label>Redirect URL</label>
+                                <input type="text" class="form-control" ng-model="google.redirectUri" placeholder="" />
+                            </div>
                         </form>
                     </div>
                     <div class="box-footer">
                         <a class="btn btn-primary" ng-if="!google.isEnable" ng-click="enableSocialAuth('google')">Enable</a>
                         <a class="btn btn-primary" ng-if="google.isEnable" ng-click="updateSocialAuth('google')">Update</a>
-                        <a class="btn btn-default" ng-if="google.isEnable" ng-click="disableSocialAuth('google')">Disable</a>
                         <a class="btn btn-danger" ng-if="google.isEnable" ng-click="deleteSocialAuth('google')">Delete</a>
                     </div>
                 </div>
@@ -126,12 +135,15 @@
                                 <label>Client Secret</label>
                                 <input type="text" class="form-control" ng-model="linkedin.apiSecret" placeholder="" />
                             </div>
+                            <div class="form-group">
+                                <label>Redirect URL</label>
+                                <input type="text" class="form-control" ng-model="linkedin.redirectUri" placeholder="" />
+                            </div>
                         </form>
                     </div>
                     <div class="box-footer">
                         <a class="btn btn-primary" ng-if="!linkedin.isEnable" ng-click="enableSocialAuth('linkedin')">Enable</a>
                         <a class="btn btn-primary" ng-if="linkedin.isEnable" ng-click="updateSocialAuth('linkedin')">Update</a>
-                        <a class="btn btn-default" ng-if="linkedin.isEnable" ng-click="disableSocialAuth('linkedin')">Disable</a>
                         <a class="btn btn-danger" ng-if="linkedin.isEnable" ng-click="deleteSocialAuth('linkedin')">Delete</a>
                     </div>
                 </div>

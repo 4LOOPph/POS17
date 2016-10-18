@@ -1,66 +1,4 @@
 <section class="content">
-    <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
-        <ul class="dropdown-menu" role="menu">
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="previewSelected()" ng-if="showToolPreview">
-                    <i class="fa fa-eye"></i> <span>Preview</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0"></li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="shareToOthers()">
-                    <i class="fa fa-user-plus"></i><span>Share</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="starredSelected()">
-                    <i class="fa fa-star"></i><span>Add Star</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="starredSelected()">
-                    <i class="fa fa-star-o"></i><span>Remove Star</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="moveSelected()">
-                    <i class="fa fa-arrows-alt"></i><span>Move to...</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="renameSelected()">
-                    <i class="fa fa-pencil"></i><span>Rename</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
-            <li ng-if="meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href ng-click="showInfoSelected()">
-                    <i class="fa fa-info-circle"></i><span>View Details</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" href>
-                    <i class="fa fa-copy"></i><span>Make a copy</span>
-                </a>
-            </li>
-            <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
-                <a role="menuitem" ng-href="{{selectedFile.asset_url}}" target="_self" download="{{selectedFile.asset_url}}">
-                    <i class="fa fa-download"></i><span>Download</span>
-                </a>
-            </li>            
-            <li ng-if="meta.contextmenu.item.isDeleted == 1">
-                <a role="menuitem" href ng-click="restoreSelected()">
-                    <i class="fa fa-history"></i> <span>Restore</span>
-                </a>
-            </li>
-            <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
-            <li>
-                <a role="menuitem" href ng-click="deleteSelected()">
-                    <i class="fa fa-trash-o"></i><span>Remove</span>
-                </a>
-            </li>
-        </ul>
-    </div>
     <h4 class="page-header" ng-if="assets.folders.length > 0">Folders</h4>
     <div class="row" ng-if="assets.folders.length > 0" contextmenu-container="meta.contextmenu">
         <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="file in assets.folders" contextmenu-item="file">
@@ -85,13 +23,20 @@
                 <li ng-repeat="files in assets.assets" class="mailbox-attachment" ng-class="{'active':files.isActive}" contextmenu-item="files">
                     <span class="mailbox-attachment-icon" ng-click="activeSelected(files,$event)" ng-dblclick="openFile(files)" ng-class="{'has-img': files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'}">
                         <!-- PDF -->
-                        <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf'"></i>
+                        <i class="fa fa-file-pdf-o text-red" ng-if="files.asset_mimetype == 'application/pdf' && !files.thumbnail.thumbnail"></i>
+                        <img ng-src="{{files.thumbnail.thumbnail}}" alt="" style="height: 78px; width: 100%; overflow: hidden;" ng-if="files.asset_mimetype == 'application/pdf' && files.thumbnail.thumbnail"/>
                         <!-- DOCS -->
                         <i class="fa fa-file-word-o text-blue" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"></i>
                         <!-- AUDIO -->
                         <i class="fa fa-file-audio-o" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"></i>
                         <!-- VIDEO -->
-                        <i class="fa fa-file-video-o" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype =='video/3gpp'"></i>
+                        <!-- <i class="fa fa-file-video-o" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype =='video/3gpp'"></i> -->
+                        <div class="videogular-container" style="height: 92px !important;" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime' || files.asset_mimetype=='video/3gpp'">
+                            <videogular vg-theme="files.url">
+                                <vg-media vg-src="files.asset_url"></vg-media>
+                                <vg-buffering></vg-buffering>
+                            </videogular>
+                        </div>
                         <!-- TEXT -->
                         <i class="fa fa-file-text-o text-blue" ng-if="files.asset_mimetype == 'text/plain'"></i>
                         <!-- EXCEL -->
@@ -110,34 +55,6 @@
                         <span class="mailbox-attachment-size">
                           <!-- {{ files.asset_filesize/1024/1024|number:2 }} MB -->
                           {{ files.asset_filesize }}
-
-                          <!-- <a href="" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'"
-                          ng-click="openLightboxModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'audio/mp3' || files.asset_mimetype == 'audio/mp4'"
-                          ng-click="openAudioModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'video/mp4' || files.asset_mimetype == 'video/x-flv' || files.asset_mimetype == 'video/x-msvideo' || files.asset_mimetype == 'video/x-ms-wmv' || files.asset_mimetype == 'video/quicktime'"
-                          ng-click="openVideoModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'application/pdf'" 
-                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'text/plain'"
-                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'application/msword' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
-                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'text/csv' || files.asset_mimetype == 'application/vnd.ms-excel' || files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" 
-                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-if="files.asset_mimetype == 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || files.asset_mimetype == 'application/vnd.ms-powerpoint'"
-                          ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-
-                          <a ng-href="" ng-click="deleteFile(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a> -->
                         </span>
                     </div>
                 </li>
