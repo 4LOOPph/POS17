@@ -32,6 +32,7 @@
                 <div class="col-lg-3" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'">
                     <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
                     <div class="panel panel-default">
+                        <!--------------COMPARISON MODULE-------------------
                         <div class="dis_table box-stick" ng-if="items.p_id || items.pb_id">
                             <div class="dis_cell">
                                 <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
@@ -39,6 +40,7 @@
                                 </button>
                             </div>
                         </div>
+                        ---------------------------------------------------->
                         <div class="panel-body" ng-click="openModal(items)">
                             <div class="img-contain">
                                 <a class="img_holder" ng-if="items.self == 'products'">

@@ -13,13 +13,13 @@
     <div id="mdl-hardware">
         <div class="contain-image">
             <div class="img_holder pad20top" ng-if="selected.self == 'articles'">
-                <img src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" />
+                <img ng-src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" />
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'products'">
-                <img src="{{selected.img_default}}" err-src="images/is5.jpg" class="bg-icon">
+            <img ng-src="{{selected.img_default}}"  err-src="images/is5.jpg" class="bg-icon">
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'bundles'">
-                <img src="{{image.image_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1">
+                <img ng-src="{{image.image_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1">
             </div>
         </div>
         <div class="pad20top mdl-hardware-content">
@@ -40,9 +40,13 @@
                 <p ng-bind-html="selected.bundle_description"></p>
             </div>
         </div>
+
+
     </div>
 </div>
 <div class="modal-footer margin20top">
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button ng-if="selected.self == 'products' || selected.self == 'bundles' || selected.self == 'articles'" type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification</button>
+    <button ng-if="selected.self == 'products' || selected.self == 'bundles' || selected.self == 'articles'"
+            type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification
+    </button>
 </div>

@@ -34,12 +34,25 @@
                 </li>
             </ul>
     </span>
-    <a type="button" uib-tooltip="Download" tooltip-placement="bottom" style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;">
+    <a type="button" uib-tooltip="Download" tooltip-placement="bottom" style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;" ng-href="{{image_file.url}}" target="_self" download="{{image_file.url}}">
         <img src="./images/icons/ic_file_download_white_24px.svg">
     </a>
-    <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="selectDevice()" ng-if="!displayInstallPlugin" style="margin-bottom: -7px;float: right;padding: 8px;">
+    <span uib-dropdown style="float: right;" ng-if="!displayInstallPlugin && !mirrorFile">
+        <a id="single-button" uib-tooltip="Cast to Screen" tooltip-placement="bottom" type="button" uib-dropdown-toggle style="margin-bottom: -7px;float: right;padding: 8px;margin-left: 10px;margin-right: 10px;">
+            <img src="./images/icons/ic_cast_white_24px.svg">
+        </a>
+         <ul class="grey2 dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="margin-top: 6px;margin-right: 9px;">
+                <li ng-repeat="device in activeDevices">
+                    <a ng-click="selectDevice(device)">
+                        <span class="svg_icon_sm"><i class="ti ti-desktop padd"></i></span>
+                        <span>&nbsp {{device.os}}({{device.os_version}})</span>
+                    </a>
+                </li>
+        </ul>
+    </span>
+    <!-- <a type="button" uib-tooltip="Cast to" tooltip-placement="bottom" ng-click="selectDevice()" ng-if="!displayInstallPlugin" style="margin-bottom: -7px;float: right;padding: 8px;">
         <img src="./images/icons/ic_cast_white_24px.svg">
-    </a>
+    </a> -->
     <div style="padding-top: 11px;margin-left: 60px;">
         <span class="orange1" style="margin-right: 5px;">
             <i class="fa fa-file-image-o"></i>
