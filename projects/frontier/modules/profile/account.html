@@ -1,0 +1,538 @@
+<section class="content-header">
+    <h4 class="bread">
+        Profile
+      
+    </h4>
+</section>
+<section>
+    <div class="col-sm-12" style="margin-top: 30px;">
+        <div class="box">
+            <div class="col-sm-3" style="padding-right: 0px;">
+                <div class="box">
+                    <div class="panel-body autoscroll profholder">
+                        <div>
+                            <img src="./images/avatar3.png" class="profilepic">
+                            <div style="width: 100%;height: 0;">
+                                <button class="uploadbutton"><img class="img" src="./images/ic_camera_alt_black_24px.svg" style="width: 80%;margin-top: 2px;"></button>
+                            </div>
+                            <div class="profpic">
+                                Jane Doe
+                                <br>
+                                <small>Admin</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <h4>Social Accounts</h4>
+                            <br>
+                            <div>
+                                <div>
+                                    <img src="./images/email.svg" style="margin-right: 10px;"> <small>jane.doe@gmail.com</small>
+                                </div>
+                                <br>
+                                <div>
+                                    <img src="./images/facebook-box.svg" style="margin-right: 10px;"> <small>jane.doe</small>
+                                </div>
+                                <br>
+                                <div>
+                                    <img src="./images/twitter.svg" style="margin-right: 10px;"> <small>@jane (twitter.com/jane)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9" style="padding-left: 0px;border-left: thin solid rgba(212, 211, 211, 0.15);">
+                <div class="box" style="margin-bottom: 0px;">
+                    <div class="panel-body" style="padding: 0;">
+                        <div class="tab-wrap">
+                            <input type="radio" name="tabs" id="tab1" checked>
+                            <div class="tab-label-content" id="tab1-content">
+                                <label for="tab1">Basic Information</label>
+                                <div class="tab-content">
+                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <img src="./images/ic_more_vert_black_24px.svg" style="width: 21px;"> 
+                                    </span>
+                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
+                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                        </li>
+                                    </ul>
+                                    </span>
+                                    <span style="display: inline-flex;"><img src="./images/ic_person_black_24px.svg" style="margin-right: 10px;"><h4>Basic Information</h4></span>
+                                    <ng-include src="'./modules/profile/basicinfo.html'" ng-show="basicInfo"></ng-include>
+                                    <ng-include src="'./modules/profile/basicinfoedit.html'" ng-show="basicinfoEdit"></ng-include>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab2">
+                            <div class="tab-label-content" id="tab2-content">
+                                <label for="tab2">Contact Information</label>
+                                <div class="tab-content">
+                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <img src="./images/ic_more_vert_black_24px.svg" style="width: 21px;"> 
+                                    </span>
+                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
+                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                        </li>
+                                    </ul>
+                                    </span>
+                                    <span style="display: inline-flex;"><img src="./images/phone.svg" style="margin-right: 10px;"><h4>Contact Information</h4></span>
+                                    <ng-include src="'./modules/profile/contactinfo.html'" ng-show="basicInfo"></ng-include>
+                                    <ng-include src="'./modules/profile/contactinfoEdit.html'" ng-show="basicinfoEdit"></ng-include>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab3">
+                            <div class="tab-label-content" id="tab3-content">
+                                <label for="tab3">Summary</label>
+                                <div class="tab-content">
+                                    <span style="display: inline-flex;"><img src="./images/ic_equalizer_black_24px.svg" style="margin-right: 10px;"><h4>Summary</h4></span>
+                                    <div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12" style="padding-left: 35px;">
+                                                <small style="line-height: 2;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab4">
+                            <div class="tab-label-content" id="tab4-content">
+                                <label for="tab4">Notifications</label>
+                                <div class="tab-content">TAB 4 - Quisque egestas, purus in tempor vulputate, diam augue mollis quam, quis elementum ipsum ex a risus. Quisque sed augue porta, facilisis felis vitae, cursus mi. Nullam mollis magna eget tincidunt mollis. Sed suscipit placerat ultricies. Sed eget lorem et ipsum ultricies congue eu a enim. Nam quis ex nec lorem dignissim suscipit eu ut felis. Vivamus molestie felis id purus congue, vel ultrices sem molestie.</div>
+                            </div>
+                            <div class="slide"></div>
+                        </div>
+                        <a class="follow"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+.tab-wrap {
+    /* width: 50%;*/
+    /* margin-left: 20%; */
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 0px;
+    box-shadow: inset 0 -4px 0 0 #eee;
+}
+
+input[type="radio"][name="tabs"] {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content label {
+    color: rgb(72, 72, 72);
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+    display: block;
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+    left: calc((100% / 4) * 0);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+    left: calc((100% / 4) * 1);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+    left: calc((100% / 4) * 2);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+    left: calc((100% / 4) * 3);
+}
+
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+    left: 0;
+}
+
+label {
+    cursor: pointer;
+    color: #777777;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 60px;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.slide {
+    background: #139bb4;
+    width: calc(100% / 4);
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 4px);
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+}
+
+.tab-label-content {
+    width: 100%;
+}
+
+.tab-label-content .tab-content {
+    position: absolute;
+    /* top: 100px; */
+    left: 16px;
+    line-height: 130%;
+    display: none;
+    margin-left: -16px;
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    height: 475px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        padding: 40px 0 90px 10%;
+    }
+    .tab-wrap {
+        width: 80%;
+        margin-left: 10%;
+        top: -106px;
+    }
+}
+
+.modlabel {
+    height: 0;
+    text-align: left !important;
+    padding: 0;
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-transform: none;
+    justify-content: flex-start !important;
+    padding-left: 35px;
+    /*font-size: 14px;*/
+    /* font-family: roboto; */
+    font-size: 13px;
+    font-weight: 700;
+    color: #5E5E5E !important;
+}
+
+input {
+    font-size: 14px;
+    display: block;
+    width: 300px;
+    border: none;
+    margin-top: -1px;
+    border-bottom: 1px solid #ababab;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/* LABEL ======================================= */
+
+
+/*label                {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}*/
+
+
+/* active state */
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #218ac6;
+}
+
+
+/* BOTTOM BARS ================================= */
+
+.barzz {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.barzz:before,
+.barzz:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: #218ac6;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.barzz:before {
+    left: 50%;
+}
+
+.barzz:after {
+    right: 50%;
+}
+
+
+/* active state */
+
+input:focus ~ .barzz:before,
+input:focus ~ .barzz:after {
+    width: 50%;
+}
+
+
+/* HIGHLIGHTER ================================== */
+
+.highlighten {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active state */
+
+input:focus ~ .highlighten {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+.btn.btn-primary {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .16), 0 2px 10px rgba(0, 0, 0, .12);
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary.hover {
+    background-color: #2196F3;
+}
+
+.btn.btn-default:hover,
+.btn.btn-default:active,
+.btn.btn-default.hover {
+    background-color: #ffffff!important;
+    color: #000;
+}
+
+.btnholder {
+    width: 100%;
+    bottom: 150px;
+    position: absolute;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 5px 15px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.uploadbutton {
+    position: relative;
+    margin-left: 40%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .16), 0 2px 10px rgba(0, 0, 0, .12);
+    border: 0;
+    background: #fff;
+    margin-top: -15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn.btn-default {
+    background-color: #ffffff !important;
+    color: #666;
+    border-color: #fff;
+    border-bottom-color: #ffffff;
+    box-shadow: none;
+}
+
+
+/* ANIMATIONS ================ */
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+button {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    /* -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
+    /* border-radius: 2px;*/
+}
+
+.ripple {
+    position: absolute;
+    background: rgba(0, 0, 0, .25);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.ripple.show {
+    -webkit-animation: ripple .5s ease-out;
+    animation: ripple .5s ease-out;
+}
+
+@-webkit-keyframes ripple {
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+<script type="text/javascript">
+var addRippleEffect = function(e) {
+
+    var target = e.target;
+
+    if (target.tagName.toLowerCase() !== 'button') return false;
+
+    var rect = target.getBoundingClientRect();
+
+    var ripple = target.querySelector('.ripple');
+
+    if (!ripple) {
+
+        ripple = document.createElement('span');
+
+        ripple.className = 'ripple';
+
+        ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+
+        target.appendChild(ripple);
+
+    }
+
+    ripple.classList.remove('show');
+
+    var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+
+    var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+
+    ripple.style.top = top + 'px';
+
+    ripple.style.left = left + 'px';
+
+    ripple.classList.add('show');
+
+    return false;
+
+}
+
+document.addEventListener('click', addRippleEffect, false);
+</script>

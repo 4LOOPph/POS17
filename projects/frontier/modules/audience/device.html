@@ -1,20 +1,46 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
+    <h4 class="bread">
         Audience
         <small>Device</small>
-    </h1>
-    <ol class="breadcrumb">
+    </h4>
+    <!--  <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
         <li class="active">Device</li>
-    </ol>
+    </ol> -->
 </section>
-<section class="content">
-    <div class="row">
+<section>
+    <div class="">
+        <div class="col-sm-12 subcrumb">
+            <div class="btn-group" style="margin-top: -19px;">
+                <span data-toggle="dropdown" style="font-size: 15px;color: #555;cursor: pointer;">
+                                <img src="./images/file-export.svg" style="width: 18px;margin-top: -3px;"> Export
+                                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+                </span>
+                <ul class="dropdown-menu" role="menu" style="left: -1px !important;margin-top: -25px;">
+                    <li><a href="" ng-click="getAudienceDeviceCsv()">CSV</a>
+                    </li>
+                    <li><a href="">Excel (XLSX)</a>
+                    </li>
+                    <li><a href="">Google Sheets</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group" style="float: right;margin-top: -3px;">
+                <span style="font-size: 15px;color: #555;cursor: pointer;display: inline-flex;">
+                <img src="../images/ic_date_range_black_18px.svg" style="margin-top: -9px;margin-right: 2px;"> 
+                <input date-range-picker class="pull-right date-picker datefilter" type="text"
+                           name="date2" ng-model="date2" options="opts" format="MM/DD/YYYY">
+                           <span class="caret">   
+                           </span>
+                </span>
+            </div>
+        </div>
         <section class="col-lg-12">
-            <div class="box">
-                <div class="box-header">
+            <div class="">
+                <!-- <div class="box-header">
                     <div class="pull-left box-tools">
                         <div class="btn-group">
                             <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
@@ -52,23 +78,54 @@
                             <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><i class="fa fa-area-chart"></i></label>
                         </div>
                     </div>
+                </div> -->
+                <div class="box">
+                    <div class="panel-heading">
+                        <h4> Users
+                                    <div class="btn-group" style="float: right;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="./images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                        </div>
+                                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                                        <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'LineChart'" ng-click="switchGraph()"><img src="./images/chart-line.svg" style="width: 65%;"></label>
+                                        <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><img src="./images/chart-areaspline.svg" style="width: 65%;"></label>
+                                    </div>
+                    <div class="pull-right box-tools">                     
+                        <div class="btn-group" style="margin-right: 15px;margin-top: -3px;">
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Day'">Day</label>
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Week'">Week</label>
+                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Month'">Month</label>
+                        </div>
+                    </div>
+                                    </h4>
+                    </div>
+                    <div class="panel-body" ng-show="chartModel=='LineChart'">
+                        <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
+                        </div>
+                    </div>
+                    <div class="panel-body" ng-show="chartModel=='AreaChart'">
+                        <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
-                            <div class="panel panel-default" ng-show="chartModel=='LineChart'">
+                            <div class="box" ng-show="chartModel=='LineChart'">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>Device</h3>
+                                    <h4>Device</h4>
                                 </div>
                                 <div class="panel-body">
                                     <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default" ng-show="chartModel=='AreaChart'">
+                            <div class="box" ng-show="chartModel=='AreaChart'">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>Device</h3>
+                                    <h4>Device</h4>
                                 </div>
                                 <div class="panel-body">
                                     <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
@@ -94,10 +151,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn-group">
+                            <!-- <div class="btn-group">
                                 <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Table'"><i class="fa fa-table"></i></label>
                                 <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Pie'"><i class="fa fa-pie-chart"></i></label>
                                 <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Bar'"><i class="fa fa-bar-chart fa-rotate-90"></i></label>
+                            </div> -->
+                            <div class="btn-group" style="float: right;">
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Table'"><img src="./images/table-large.svg" style="width: 65%;"></label>
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Pie'"><img src="./images/chart-pie.svg" style="width: 65%;"></label>
+                                <label class="btn btn-sm btn-default" ng-model="displayModel" ng-click="swithTableView()" uib-btn-radio="'Bar'"><img src="./images/chart-bar.svg" style="width: 65%;"></label>
                             </div>
                         </form>
                     </div>
@@ -222,7 +284,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </uib-tab>
@@ -343,7 +405,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </uib-tab>
@@ -464,11 +526,11 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </uib-tab>
-                              <uib-tab index="3" select="switchData('Screen')">
+                            <uib-tab index="3" select="switchData('Screen')">
                                 <uib-tab-heading>
                                     <i class='fa fa-rss'></i> Device Screen
                                 </uib-tab-heading>
@@ -585,7 +647,7 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </uib-tab>

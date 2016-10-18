@@ -40,7 +40,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
                 </span>
                 <ul class="dropdown-menu" role="menu" style="left: -1px !important;margin-top: -25px;">
-                    <li><a href="" ng-click="getAudienceOverviewCsv()">CSV</a>
+                    <li><a href="" ng-click="downloadViaCSV()">CSV</a>
                     </li>
                     <li><a href="">Excel (XLSX)</a>
                     </li>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="count">
                         <small>Users</small>
-                        <h2>{{users.totalUsersults}}</h2>
+                        <h2>{{sessions.totalUserSessionsData}}</h2>
                     </div>
                 </div>
             </div>
@@ -105,8 +105,8 @@
                         <img src="./images/ic_computer_white_24px.svg" width="68" height="35" style="display: inline-block; width: 70px; height: 51px; vertical-align: top;">
                     </div>
                     <div class="count">
-                        <small>Active Sessions</small>
-                        <h2>6</h2>
+                        <small>Sessions</small>
+                        <h2>{{sessions.totalSessionsults}}</h2>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="media-body">
                                 <small>Active Users</small>
-                                <h3>{{users.totalUsersults}}</h3>
+                                <h3>{{activeUsers.length}}</h3>
                             </div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                             </div>
                             <div class="media-body">
                                 <small>Total Shared Items</small>
-                                <h3>{{TotalEventCategorySession}}0</h3>
+                                <h3>{{TotalEventCategorySession}}</h3>
                             </div>
                         </div>
                         <div class="list-group-item media sv-item">
@@ -214,7 +214,7 @@
                             </div>
                             <div class="media-body">
                                 <small>Active Sessions</small>
-                                <h3>{{sessions.totalUserSessionsData}}</h3>
+                                <h3>{{totalactiveSessions}}</h3>
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
         <section class="col-md-6 col-sm-6">
             <div class="box" style="margin-bottom: 30px;">
                 <div class="panel-heading">
-                    <h4>Shared Item
+                    <h4>Shared Items (Session Vs User)
                     <div class="btn-group" style="float: right;margin-top: -3px;">
                             
                              <a  ng-click="refreshReport()">
@@ -262,7 +262,7 @@
         <section class="col-md-6 col-sm-6">
             <div class="box" style="margin-bottom: 30px;">
                 <div class="panel-heading">
-                    <h4>Session Vs User
+                    <h4>Quote (Session Vs User)
                     <div class="btn-group" style="float: right;margin-top: -3px;">
                             
                              <a  ng-click="refreshReport()">
@@ -272,7 +272,7 @@
                     </h4>
                 </div>
                 <div class="panel-body">              
-                    <div bar-chart bar-data='barCharts.data' bar-x='DayIndex' bar-y='["TotalSession", "TotalUsers"]' bar-labels='["Total Session", "Total Users"]' bar-colors='["#00bcd4", "#c7254e"]'>
+                    <div bar-chart bar-data='barCharts.data' bar-x='DayIndex' bar-y='["TotalSession", "TotalUsers"]' bar-labels='barCharts.label' bar-colors='["#00bcd4", "#c7254e"]'>
                     </div>                    
                 </div>
             </div>

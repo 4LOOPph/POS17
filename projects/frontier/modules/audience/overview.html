@@ -146,6 +146,7 @@
                                         <h2>{{userSession.totalUserSessionsData}}</h2>
                                     </div>
                                 </div>
+                                <a href="" ng-click="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -172,6 +173,7 @@
                                         <h2>6</h2>
                                     </div>
                                 </div>
+                                <a href="" ng-click="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -284,13 +286,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                             <tr ng-repeat="data in deviceoslist">
                                                 <td>{{data.osName}}</td>
                                                 <td>{{data.sessions}}</td>
                                                 <td>
                                                     <div class="progress xs">
-                                                        <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.sessions/totalDeviceSessions*100 + '%' }"></div>
-                                                    </div> {{(data.sessions / totalDeviceSessions * 100).toFixed(2)}}%
+                                                        <div class="progress-bar progress-bar-primary" ng-style="{ 'width': data.ScreenView/totalDeviceSessions*100 + '%' }"></div>
+                                                    </div> {{(data.ScreenView / totalDeviceSessions * 100).toFixed(2)}}%
                                                 </td>
                                             </tr>
                                         </tbody>
