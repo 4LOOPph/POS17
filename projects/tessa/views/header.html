@@ -48,9 +48,7 @@
                 <img src="{{appprofile.image}}" err-src="images/icons/dp.png" />
             </a>
             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                <li><a ui-sref="main.userProfile"><i class="ti ti-user"></i> <span>Profile</span><span
-                        class="badge badge-info pull-right">80%</span></a></li>
-                <li><a href=""><i class="ti ti-panel"></i> <span>Account</span></a></li>
+                <li><a ui-sref="main.userProfile"><i class="ti ti-user"></i> <span>Profile</span></a></li>
                 <li><a href=""><i class="ti ti-settings"></i> <span>Settings</span></a></li>
                 <li class="divider"></li>
                 <li><a ng-click="signout()" fa-track-event="['Logout','click','Logout',appuser.uc_id]"><i

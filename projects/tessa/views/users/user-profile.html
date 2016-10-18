@@ -10,13 +10,13 @@
                     </div>
                 </div>
                 <div id="test" class="font_medium list-group list-group-alternate mb-n nav nav-tabs">
-                    <a role="tab" ng-click="setTab(1)" ng-class="{ active: isSet(1)" class=" list-group-item">
+                    <a role="tab" ng-click="setTab(1)" ng-class="{ 'active': isSet(1)}" class=" list-group-item">
                         <i class="ti ti-user"></i> About
                     </a>
-                    <a role="tab" ng-click="setTab(2)" ng-class="{ active: isSet(2)"class="list-group-item">
+                    <a role="tab" ng-click="setTab(2)" ng-class="{ 'active': isSet(2)}" class="list-group-item">
                         <i class="fa fa-edit"></i> General Info Settings
                     </a>
-                    <a role="tab" ng-click="setTab(3)" ng-class="{ active: isSet(3)"ng-click="" class="list-group-item">
+                    <a role="tab" ng-click="setTab(3)" ng-class="{ 'active': isSet(3)}" ng-click="" class="list-group-item">
                         <i class="fa fa-edit"></i> Account Settings
                     </a>
                 </div>
@@ -69,7 +69,6 @@
                     </div>
                 </div>
             </div>
-
             <div ng-show="isSet(2)" class="col-sm-9">
                 <form role="form" ng-submit="savePersonDetail()">
                     <div class="panel">
@@ -137,7 +136,6 @@
                     </div>
                 </form>
             </div>
-
             <div ng-show="isSet(3)" class="col-sm-9">
                 <div class="panel">
                     <div class="breadcrumbs font_medium dis_table" style="padding:0;">
