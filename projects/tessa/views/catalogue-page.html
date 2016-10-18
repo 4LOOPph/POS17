@@ -36,20 +36,7 @@
                           ng-show="seemore">Filter</span>
                     <span class="blue2 font_12" ng-show="!seemore">Hide Filter</span>
                 </a>
-                <div class=" dis_cell  pad_side_10"
-                     ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of
-                    Results({{products.length}})
-                </div>
-                <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
-                    Number of Results({{categoryWifi.length}})
-                </div>
-                <div class=" dis_cell  pad_side_10" ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'Screens'">
-                    Number of Results({{Screens.length}})
-                </div>
-                <div class=" dis_cell  pad_side_10"
-                     ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'MediaPlayer'"> Number of
-                    Results({{MediaPlayer.length}})
-                </div>
+
                 <!-- <a class="dis_cell">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -266,7 +253,25 @@
                 {{item.value}}
             </div>
         </div>
-        <div class="flexi-flow">
+        <div class="">
+            <div class="row-results">
+                <div
+                     ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of
+                    Results({{products.length}})
+                </div>
+                <div  ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
+                    Number of Results({{categoryWifi.length}})
+                </div>
+                <div  ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'Screens'">
+                    Number of Results({{Screens.length}})
+                </div>
+                <div
+                     ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'MediaPlayer'"> Number of
+                    Results({{MediaPlayer.length}})
+                </div>
+            </div>
+
+
             <div ng-show="prodTypeLabel == 'Hardware'">
                 <div class="row">
                     <div class="row sec-pc-items col-lg-12">
@@ -350,8 +355,13 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="row">
+
                 <div ng-if="prodTypeLabel == 'Solution'">
+
                     <div class="col-md-12">
                         <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeImpress'">
                             <div class=" sec-search-filter" ng-if="products.length == 0">
@@ -403,6 +413,7 @@
 
 
                     <div class="col-lg-12">
+
                         <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeWifi'">
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>

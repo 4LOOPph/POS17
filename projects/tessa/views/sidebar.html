@@ -1,4 +1,4 @@
-<div class="sidebar">
+<!--<div class="sidebar">
     <div class="widget stay-on-collapse" id="widget-sidebar">
         <nav role="navigation" class="widget-body">
             <ul class="acc-menu">
@@ -15,26 +15,78 @@
                         <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="collapsible">File Manager</span></a>
                 </li>
                 <li ng-if="isPreso">
-                <!-- <li> -->
                     <a id="active-preso" ng-click="product('Gallery')">
                         <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="collapsible">Presentation</span>
                     </a>
                 </li>
                 <li><a id="active-compare" ng-click="product('Compare')">
                      <span class="badge badge-primary" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
-
                     <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="collapsible">Compare</span></a>
                 </li>
-                <!--<li><a id="active-comparison" ng-click="compareModal()">
-                    <span class="badge badge-primary" >0</span>
-                    <img src="../images/icons/ico_compare00.svg" style="width: 23px;"/> <span class="collapsible">Compare Products</span></a>
 
-                </li>-->
-                <!--<li><a id="active-quotes" ui-sref="main.customerQuotes"><i
-                                        class="fa fa-file-text"></i><span
-                                        class="collapsible">Customer Quotes</span></a>
-                                </li>-->
             </ul>
         </nav>
     </div>
+</div>-->
+
+<div class="lg-side">
+    <nav class="flexi-sidebar" >
+        <ul class="flexi-menu">
+            <li>
+                <a id="active-experience" ng-click="product('Experience')">
+                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm" ng-show="isHide">Experience</span></a>
+            </li>
+            <li>
+                <a id="active-catalogue" ng-click="product('Product')">
+                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="nav-itm" ng-show="isHide">Product Catalogue</span></a>
+            </li>
+            <li ng-if="isAssets">
+                <a id="active-presentation" ng-click="product('Presentation')">
+                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="nav-itm" ng-show="isHide">File Manager</span></a>
+            </li>
+            <li ng-if="isPreso">
+                <a id="active-preso" ng-click="product('Gallery')">
+                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="nav-itm"  ng-show="isHide">Presentation</span>
+                </a>
+            </li>
+            <li><a id="active-compare" ng-click="product('Compare')">
+                <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
+                <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="nav-itm" ng-show="isHide">Compare</span></a>
+            </li>
+        </ul>
+
+    </nav>
 </div>
+<div class="sm-side" ng-show="isHide">
+    <nav class="flexi-sidebar" >
+        <ul class="flexi-menu">
+            <li>
+                <a id="active-experience" ng-click="product('Experience')">
+                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm" >Experience</span></a>
+            </li>
+            <li>
+                <a id="active-catalogue" ng-click="product('Product')">
+                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="nav-itm" >Product Catalogue</span></a>
+            </li>
+            <li ng-if="isAssets">
+                <a id="active-presentation" ng-click="product('Presentation')">
+                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="nav-itm">File Manager</span></a>
+            </li>
+            <li ng-if="isPreso">
+                <a id="active-preso" ng-click="product('Gallery')">
+                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="nav-itm" >Presentation</span>
+                </a>
+            </li>
+            <li><a id="active-compare" ng-click="product('Compare')">
+                <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
+                <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="nav-itm" >Compare</span></a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+
+
+
+
+
