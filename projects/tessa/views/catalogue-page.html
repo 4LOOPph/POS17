@@ -275,13 +275,22 @@
                                  ng-if="item.is_published == 1 && item.is_archived == 0">
                                 <div class="panel panel-default"
                                      fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
-                                    <!-- <div class="dis_table box-stick">
+
+
+                                    <!-- Note: Uncomment for Staging
+
+                                    <div class="dis_table box-stick">
+
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-                                    </div> -->
+
+                                    </div>
+
+                                    -->
+
                                     <div class="panel-body"
                                          ui-sref="main.productDetailsHardware({selected_id: item.p_id})">
                                         <a class="img_holder">
@@ -310,14 +319,27 @@
                             </div>
                             <div class="col-lg-3" ng-repeat="item in MediaPlayer track by $index">
 
-                                <div class="panel panel-default" fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
-                                    <!-- <div class="dis_table box-stick">
+
+                                <div class="panel panel-default"
+
+                                     fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
+
+                                    <!-- Note: Uncomment for Staging
+
+                                    <div class="dis_table box-stick">
+
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-                                    </div> -->
+
+                                    </div>
+
+                                    -->
+
+
+
                                     <div class="panel-body"
                                          ui-sref="main.productDetailsHardware({selected_id: item.p_id})">
                                         <a class="img_holder">
@@ -356,14 +378,24 @@
                             </div>
                             <div class="col-lg-3" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
                                 <div class="panel panel-default">
-                                    <!-- <div class="dis_table box-stick">
+
+                                    <!-- Note: Uncomment for Staging
+
+                                    <div class="dis_table box-stick">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-                                    </div> -->
-                                    <div class="panel-body" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+
+                                    </div>
+
+                                    -->
+
+                                    <div class="panel-body"
+                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
+                                         fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+
                                         <a class="img_holder">
                                             <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" imageonload err-src="images/is5.jpg" />
                                             <span class="loading background-spinner"> <img
@@ -400,16 +432,25 @@
                                  ng-if="item.is_published == 1 && item.is_archived == 0">
 
                                 <div class="panel panel-default">
-                                    <!-- <div class="dis_table box-stick">
+
+
+                                    <!-- Note: Uncomment for Staging
+
+                                    <div class="dis_table box-stick">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-                                    </div> -->
-                                    <div class="panel-body" 
-                                     ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
-                                     fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+
+                                    </div>
+
+                                    -->
+
+                                    <div class="panel-body"  ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
+                                         fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+
+
                                         <a class="img_holder">
                                             <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
                                             <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
