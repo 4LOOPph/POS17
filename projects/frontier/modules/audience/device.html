@@ -32,7 +32,7 @@
                 <span style="font-size: 15px;color: #555;cursor: pointer;display: inline-flex;">
                 <img src="../images/ic_date_range_black_18px.svg" style="margin-top: -9px;margin-right: 2px;"> 
                 <input date-range-picker class="pull-right date-picker datefilter" type="text"
-                           name="date2" ng-model="date2" options="opts" format="MM/DD/YYYY">
+                           name="date" ng-model="date" options="opts" format="MM/DD/YYYY">
                            <span class="caret">   
                            </span>
                 </span>
@@ -78,45 +78,57 @@
                             <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><i class="fa fa-area-chart"></i></label>
                         </div>
                     </div>
+
                 </div> -->
-                <div class="box">
-                    <div class="panel-heading">
-                        <h4> Users
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <div class="box">
+                            <div class="panel-heading">
+                                <h4> Users
+
                                     <div class="btn-group" style="float: right;">
                             
                              <a  ng-click="refreshReport()">
                             <img class="rotate" tabindex="1" src="./images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
                             </a>
-                        </div>
-                                    <div class="btn-group" style="float: right;margin-top: -3px;">
+                            </div>
+                            <div class="btn-group" style="float: right;margin-top: -3px;">
                                         <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'LineChart'" ng-click="switchGraph()"><img src="./images/chart-line.svg" style="width: 65%;"></label>
                                         <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><img src="./images/chart-areaspline.svg" style="width: 65%;"></label>
-                                    </div>
-                    <div class="pull-right box-tools">                     
-                        <div class="btn-group" style="margin-right: 15px;margin-top: -3px;">
-                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Day'">Day</label>
-                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Week'">Week</label>
-                            <label class="btn btn-sm btn-default" ng-model="radioModel" uib-btn-radio="'Month'">Month</label>
-                        </div>
-                    </div>
-                                    </h4>
-                    </div>
-                    <div class="panel-body" ng-show="chartModel=='LineChart'">
-                        <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
-                        </div>
-                    </div>
-                    <div class="panel-body" ng-show="chartModel=='AreaChart'">
-                        <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+
+
+                            </div>
+                    
+                            </h4>
+                            </div>
+                            <div class="panel-body" ng-show="chartModel=='LineChart'">
+                                <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
+                                </div>
+                            </div>
+                            <div class="panel-body" ng-show="chartModel=='AreaChart'">
+                                <div area-chart area-data='areaCharts.data' area-xkey='{{areaCharts.xkey}}' area-ykeys='areaCharts.ykeys' area-labels='areaCharts.labels' line-colors='areaCharts.colors'>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-6 col-md-6">
                             <div class="box" ng-show="chartModel=='LineChart'">
                                 <div class="panel-heading">
-                                    <h4>Device</h4>
+                                    <h4>Device
+                                      <div class="btn-group" style="float: right;">
+                            
+                             <a  ng-click="refreshReport()">
+                            <img class="rotate" tabindex="1" src="./images/ic_sync_black_24px.svg" style="float: right;cursor: pointer;margin-left: 15px;">
+                            </a>
+                            </div>
+                            <div class="btn-group" style="float: right;margin-top: -3px;">
+                                        <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'LineChart'" ng-click="switchGraph()"><img src="./images/chart-line.svg" style="width: 65%;"></label>
+                                        <label class="btn btn-sm btn-default" ng-model="chartModel" uib-btn-radio="'AreaChart'" ng-click="switchGraph()"><img src="./images/chart-areaspline.svg" style="width: 65%;"></label>
+                            </div></h4>
                                 </div>
                                 <div class="panel-body">
                                     <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
