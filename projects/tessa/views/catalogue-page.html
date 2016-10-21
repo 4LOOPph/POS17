@@ -1,7 +1,7 @@
 <div id="product-catalogue">
     <div id="article-page" class="wrapper">
         <div class="breadcrumbs padding_10">
-            <img src="./images/icons/ico_store00.svg" />
+            <img src="./images/icons/ico_store00.svg"/>
             <a class="current font_medium">
                 Product Catalogue
             </a>
@@ -9,26 +9,30 @@
         <div class="page_menu">
             <div class="menu_primary ">
                 <div class="dis_table_auto">
-                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Solution'}" ng-click="activeProd('Solution')">Solutions</a>
-                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Hardware'}" ng-click="activeProd('Hardware')">Hardware</a>
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Solution'}"
+                       ng-click="activeProd('Solution')">Solutions</a>
+                    <a class="dis_cell" ng-class="{'active': prodTypeLabel == 'Hardware'}"
+                       ng-click="activeProd('Hardware')">Hardware</a>
                 </div>
             </div>
             <div class="menu_secondary" ng-show="prodTypeLabel == 'Hardware'">
                 <a class="dis_cell" ng-class="{'active': hardwareType == 'Screens'}" ng-click="activeHard('Screens')">Screens</a>
-                <a class="dis_cell" ng-class="{'active': hardwareType == 'MediaPlayer'}" ng-click="activeHard('MediaPlayer')">Media Player</a>
+                <a class="dis_cell" ng-class="{'active': hardwareType == 'MediaPlayer'}"
+                   ng-click="activeHard('MediaPlayer')">Media Player</a>
             </div>
             <div class="menu_secondary" ng-show="prodTypeLabel == 'Solution'">
-                <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeImpress'}" ng-click="activateTab('EzeImpress')">Eze Impress</a>
+                <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeImpress'}"
+                   ng-click="activateTab('EzeImpress')">Eze Impress</a>
                 <a class="dis_cell" ng-class="{'active': solutionTypes == 'EzeWifi'}" ng-click="activateTab('EzeWifi')">Eze
                     Wifi</a>
             </div>
         </div>
         <div class="filter_primary">
-            <div class="dis_table">
+            <div class="dis_table" ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
                 <a class="dis_cell" ng-click="seemore=!seemore" style="width: 40%;">
-                    <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'"><img
+                    <span><img
                             src="./images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/></span>
-                    <span ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'" class="blue2 font_12" ng-show="seemore">Filter</span>
+                    <span class="blue2 font_12" ng-show="seemore">Filter</span>
                     <span class="blue2 font_12" ng-show="!seemore">Hide Filter</span>
                 </a>
                 <!-- <a class="dis_cell">
@@ -45,7 +49,7 @@
                 </a> -->
             </div>
         </div>
-        <div ng-hide="seemore" class="filter_secondary" ng-hide="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
+        <div ng-hide="seemore" class="filter_secondary">
             <div>
                 <div>
                     <span class="font_medium">Select one or more options below.</span>
@@ -54,7 +58,7 @@
                     </a>
                 </div>
                 <div ng-show="prodTypeLabel == 'Solution'" style="padding:10px 0px 0px;">
-                    <div ng-show="solutionTypes == 'EzeImpress'">
+                    <div class="dd-filter" ng-show="solutionTypes == 'EzeImpress'">
                         <span>
                             <button uib-popover-template="dynamicPopover.location" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
@@ -66,6 +70,31 @@
                             <button uib-popover-template="dynamicPopover.mounting" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
                                     style="margin-right: 6px;margin-top: -2px;">Mounting Option
+                                <span class="caret"></span>
+                        </button>
+                        </span>
+                        <span>
+                            <button uib-popover-template="dynamicPopover.usage" popover-trigger="outsideClick"
+                                    popover-placement="bottom" type="button" class="btn font_medium btn-default"
+                                    style="margin-right: 5px;">Usage
+                                <span class="caret"></span>
+                        </button>
+                        </span>
+                        <span>
+                            <button uib-popover-template="dynamicPopover.orientation" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Orientation
+                                <span class="caret"></span>
+                        </button>
+                        <span>
+                            <button uib-popover-template="dynamicPopover.brightness" popover-trigger="outsideClick"
+                                    popover-placement="bottom" type="button" class="btn font_medium btn-default"
+                                    style="margin-right: 5px;">Brightness
+                                <span class="caret"></span>
+                        </button>
+                        </span>
+                         <span>
+                            <button uib-popover-template="dynamicPopover.bezel" popover-trigger="outsideClick"
+                                    popover-placement="bottom" type="button" class="btn font_medium btn-default"
+                                    style="margin-right: 5px;">Bezel Size
                                 <span class="caret"></span>
                         </button>
                         </span>
@@ -83,7 +112,7 @@
                             </div>
                         </span>
                     </div>
-                    <div ng-show="solutionTypes == 'EzeWifi'">
+                    <div class="dd-filter" ng-show="solutionTypes == 'EzeWifi'">
                         <!--EZE WIFI-->
                         <span class="btn-group">
                             <div class="inblock">
@@ -117,10 +146,11 @@
                     </div>
                 </div>
                 <div ng-show="prodTypeLabel == 'Hardware'" style="padding:10px 0px 0px;">
-                    <div ng-show="hardwareType == 'Screens'">
+                    <div class="dd-filter"  ng-show="hardwareType == 'Screens'">
                         <!--SCREENS-->
                         <span>
-                            <button uib-popover-template="dynamicPopover.screensize" popover-trigger="outsideClick"
+                            <button uib-popover-template="dynamicPopover.screensize"
+                                    popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
                                     style="margin-right: 5px;">Screen Size
                                   <span class="caret"></span>
@@ -184,7 +214,7 @@
                             <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
                         </span> -->
                     </div>
-                    <div ng-show="hardwareType == 'MediaPlayer'">
+                    <div class="dd-filter"  ng-show="hardwareType == 'MediaPlayer'">
                         <!-- MEDIA PLAYER-->
                         <span>
                             <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick"
@@ -234,12 +264,14 @@
                     </div>
                 </div>
             </div>
-            <div class="padding_10 filterss" ng-repeat="item in typeselected track by $index" ng-if="prodTypeLabel == 'Solution'">
+            <div class="padding_10 filterss" ng-repeat="item in typeselected track by $index"
+                 ng-if="prodTypeLabel == 'Solution'">
                 <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
                 </button>
-                {{item.label}}
+                {{item.label || item.value}}
             </div>
-            <div class="padding_10 filterss" ng-repeat="item in tagselected track by item._id" ng-if="prodTypeLabel == 'Hardware'">
+            <div class="padding_10 filterss" ng-repeat="item in tagselected track by item._id"
+                 ng-if="prodTypeLabel == 'Hardware'">
                 <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
                 </button>
                 {{item.value}}
@@ -247,8 +279,7 @@
         </div>
         <div class="">
             <div class="row-results">
-                <div
-                        ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of
+                <div ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of
                     Results({{products.length}})
                 </div>
                 <div ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
@@ -257,17 +288,15 @@
                 <div ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'Screens'">
                     Number of Results({{Screens.length}})
                 </div>
-                <div
-                        ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'MediaPlayer'"> Number of
+                <div ng-if="prodTypeLabel == 'Hardware' && hardwareType == 'MediaPlayer'"> Number of
                     Results({{MediaPlayer.length}})
                 </div>
             </div>
+            <div class="row">
+                <div ng-show="prodTypeLabel == 'Hardware'">
 
-
-            <div ng-show="prodTypeLabel == 'Hardware'">
-                <div class="row">
-                    <div class="row sec-pc-items col-lg-12">
-                        <div ng-show="hardwareType == 'Screens'">
+                    <div class="col-lg-12">
+                        <div class="row sec-pc-items" ng-show="hardwareType == 'Screens'">
                             <div class=" sec-search-filter" ng-if="Screens.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
@@ -275,26 +304,17 @@
                                  ng-if="item.is_published == 1 && item.is_archived == 0">
                                 <div class="panel panel-default"
                                      fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
-
-
-                                    <!-- Note: Uncomment for Staging
-
                                     <div class="dis_table box-stick">
-
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-
                                     </div>
-
-                                    -->
-
                                     <div class="panel-body"
                                          ui-sref="main.productDetailsHardware({selected_id: item.p_id})">
                                         <a class="img_holder">
-                                            <img ng-src="{{item.img_default}}" class="" />
+                                            <img ng-src="{{item.img_default}}" class=""/>
                                         </a>
                                         <div class="item_text">
                                             <div class="item_title">
@@ -318,28 +338,15 @@
                                 <h4>NO RESULT</h4>
                             </div>
                             <div class="col-lg-3" ng-repeat="item in MediaPlayer track by $index">
-
-
                                 <div class="panel panel-default"
-
                                      fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
-
-                                    <!-- Note: Uncomment for Staging
-
                                     <div class="dis_table box-stick">
-
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-
                                     </div>
-
-                                    -->
-
-
-
                                     <div class="panel-body"
                                          ui-sref="main.productDetailsHardware({selected_id: item.p_id})">
                                         <a class="img_holder">
@@ -368,42 +375,36 @@
 
 
             <div class="row">
-
                 <div ng-if="prodTypeLabel == 'Solution'">
-
                     <div class="col-md-12">
                         <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeImpress'">
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                            <div class="col-lg-3" ng-repeat="item in products"
+                                 ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
                                 <div class="panel panel-default">
-
-                                    <!-- Note: Uncomment for Staging
-
-                                    <div class="dis_table box-stick">
+                                    <div class="dis_table box-stick ">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-
                                     </div>
-
-                                    -->
-
                                     <div class="panel-body"
                                          ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
                                          fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
-
                                         <a class="img_holder">
-                                            <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" imageonload err-src="images/is5.jpg" />
-                                            <span class="loading background-spinner"> <img
-                                                    src="./images/icons/default.gif"></span>
+                                            <img ng-src="{{myImage.image_path}}"
+                                                 ng-repeat="myImage in item.product_images | limitTo: 1" imageonload
+                                                 err-src="images/is5.jpg"/>
+                                            <span class="loading background-spinner">
+                                            <img src="./images/icons/default.gif"></span>
                                         </a>
                                         <div class="item_text">
                                             <div class="item_title">
-                                                <a class=" blue1 font_bold" ui-sref="main.productDetailsSolution({selected_id: item.pb_id})">
+                                                <a class=" blue1 font_bold"
+                                                   ui-sref="main.productDetailsSolution({selected_id: item.pb_id})">
                                                     {{item.bundle_name}}
                                                 </a>
                                             </div>
@@ -414,7 +415,8 @@
                                                 For as low as
                                             </div>
                                             <div class="box_price font_24 font_light">
-                                                <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                                <sup class="">$</sup>{{item.weekly | number : 2}}<span
+                                                    class="font_light font_14">/wk</span>
                                             </div>
                                         </div>
                                     </div>
@@ -423,39 +425,31 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-
                         <div class="row sec-pc-items" ng-if="solutionTypes == 'EzeWifi'">
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
                             <div class="col-lg-3" ng-repeat="item in categoryWifi"
                                  ng-if="item.is_published == 1 && item.is_archived == 0">
-
                                 <div class="panel panel-default">
-
-
-                                    <!-- Note: Uncomment for Staging
-
                                     <div class="dis_table box-stick">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
                                             </button>
                                         </div>
-
                                     </div>
-
-                                    -->
-
-                                    <div class="panel-body"  ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
+                                    <div class="panel-body"
+                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
                                          fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
-
-
                                         <a class="img_holder">
-                                            <img ng-src="{{myImage.image_path}}" ng-repeat="myImage in item.product_images | limitTo: 1" class="" imageonload err-src="images/is5.jpg" />
-                                            <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img
-                                                    src="./images/icons/default.gif"
-                                                    style="width: 20% !important;"/></span>
+                                            <img ng-src="{{myImage.image_path}}"
+                                                 ng-repeat="myImage in item.product_images | limitTo: 1" class=""
+                                                 imageonload err-src="images/is5.jpg"/>
+                                            <span class="loading"
+                                                  style="text-align: center;margin-left: 40%;margin-right: 40%;">
+                                            <img src="./images/icons/default.gif"
+                                                 style="width: 20% !important;"/></span>
                                         </a>
                                         <div class="item_text">
                                             <div class="item_title">
@@ -473,7 +467,8 @@
                                                 For as low as
                                             </div>
                                             <div class="box_price font_24 font_light">
-                                                <sup class="">$</sup>{{item.weekly | number : 2}}<span class="font_light font_14">/wk</span>
+                                                <sup class="">$</sup>{{item.weekly | number : 2}}<span
+                                                    class="font_light font_14">/wk</span>
                                             </div>
                                         </div>
                                     </div>
@@ -489,18 +484,19 @@
 </div>
 </div>
 <style>
-#active-catalogue {
-    background: #424242;
-}
+    #active-catalogue {
+        background: #424242;
+    }
 </style>
 <script async type="text/ng-template" id="location.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="type in location | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked" fa-track-event="['Category Filter','View',type.label,type.id]"> {{type.label}}
+                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked"
+                       fa-track-event="['Category Filter','View',type.label,type.id]"> {{type.label}}
             </label>
         </div>
     </div>
@@ -508,11 +504,12 @@
 <script async type="text/ng-template" id="configuration.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="type in config | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked" fa-track-event="['Category Filter','View',type.label,type.id]"> {{type.label}}
+                <input type="checkbox" ng-click="toggleSelectedType(type)" ng-model="type.checked"
+                       fa-track-event="['Category Filter','View',type.label,type.id]"> {{type.label}}
             </label>
         </div>
     </div>
@@ -520,11 +517,12 @@
 <script async type="text/ng-template" id="screens.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="attribute in ScreenSize | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked" fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"
+                       fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
             </label>
         </div>
     </div>
@@ -532,11 +530,12 @@
 <script async type="text/ng-template" id="brightness.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="attribute in Brightness | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked" fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"
+                       fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
             </label>
         </div>
     </div>
@@ -544,11 +543,12 @@
 <script async type="text/ng-template" id="bezel.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="attribute in Bezel | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked" fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"
+                       fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
             </label>
         </div>
     </div>
@@ -556,11 +556,12 @@
 <script async type="text/ng-template" id="usage.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="attribute in Usage | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked" fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(attribute)" ng-model="attribute.checked"
+                       fa-track-event="['Category Filter','View',attribute.value,attribute.att_id]"> {{attribute.value}}
             </label>
         </div>
     </div>
@@ -568,11 +569,12 @@
 <script async type="text/ng-template" id="wifi.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="eze in categWifi | duplicates: 'item_name' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(eze)" ng-model="eze.checked" fa-track-event="['Category Filter','View',eze.item_name,eze.p_id]"> {{eze.item_name}}
+                <input type="checkbox" ng-click="toggleSelectedType(eze)" ng-model="eze.checked"
+                       fa-track-event="['Category Filter','View',eze.item_name,eze.p_id]"> {{eze.item_name}}
             </label>
         </div>
     </div>
@@ -580,11 +582,12 @@
 <script async type="text/ng-template" id="ram.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="media in Ram | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked" fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked"
+                       fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
             </label>
         </div>
     </div>
@@ -592,11 +595,12 @@
 <script async type="text/ng-template" id="storage.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="media in Storage | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked" fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked"
+                       fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
             </label>
         </div>
     </div>
@@ -604,11 +608,12 @@
 <script async type="text/ng-template" id="graphics.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="media in Graphics | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked" fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked"
+                       fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
             </label>
         </div>
     </div>
@@ -616,11 +621,12 @@
 <script async type="text/ng-template" id="resolutions.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="media in Resolution | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked" fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(media)" ng-model="media.checked"
+                       fa-track-event="['Category Filter','View',media.value,media.att_id]">{{media.value}}
             </label>
         </div>
     </div>
@@ -628,11 +634,12 @@
 <script async type="text/ng-template" id="displaytechno.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in Displaytechno | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -640,11 +647,12 @@
 <script async type="text/ng-template" id="weight.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in weight | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -652,11 +660,12 @@
 <script async type="text/ng-template" id="dimensions.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in dimensions | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -664,11 +673,12 @@
 <script async type="text/ng-template" id="orientation.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
-        <div class="checkbox" ng-repeat="display in orientation | duplicates: 'value' | filter:searchEzeFamily ">
+        <div class="checkbox" ng-repeat="display in orientation | duplicates: 'value' | filter:searchEzeFamily track by display.value">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -676,11 +686,12 @@
 <script async type="text/ng-template" id="displayinterface.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in displayinterface | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -688,11 +699,12 @@
 <script async type="text/ng-template" id="vesa.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in vesa | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -700,11 +712,12 @@
 <script async type="text/ng-template" id="screentype.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in screentype | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
@@ -712,47 +725,48 @@
 <script async type="text/ng-template" id="resolution.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily"/>
         </div>
         <div class="checkbox" ng-repeat="display in resolution | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
-                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked" fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
+                <input type="checkbox" ng-click="toggleSelectedType(display)" ng-model="display.checked"
+                       fa-track-event="['Category Filter','View',display.value,display.att_id]">{{display.value}}
             </label>
         </div>
     </div>
 </script>
 <style type="text/css">
-.disabled {
-    cursor: not-allowed;
-}
+    .disabled {
+        cursor: not-allowed;
+    }
 
-.popover {
-    margin-left: 55px !important;
-}
+    /**.popover {
+        margin-left: 55px !important;
+    }**/
 
-.popover.bottom > .arrow {
-    left: 23% !important;
-}
+    /**.popover.bottom > .arrow {
+        left: 23% !important;
+    }**/
 
-.filterss {
-    display: inline-block;
-    padding: 3px 5px !important;
-    border: solid thin #ccc !important;
-    margin: 5px;
-    border-radius: 3px;
-    background: #fff;
-}
+    .filterss {
+        display: inline-block;
+        padding: 3px 5px !important;
+        border: solid thin #ccc !important;
+        margin: 5px;
+        border-radius: 3px;
+        background: #fff;
+    }
 
-.btn-clozz {
-    padding: 3px 4px 1px;
-    border-radius: 50%;
-    font-size: 10px;
-    border: solid thin #9a9a9a;
-    color: #000;
-}
+    .btn-clozz {
+        padding: 3px 4px 1px;
+        border-radius: 50%;
+        font-size: 10px;
+        border: solid thin #9a9a9a;
+        color: #000;
+    }
 
-.btn-clozz:hover {
-    background-color: #333333;
-    color: #fff;
-}
+    .btn-clozz:hover {
+        background-color: #333333;
+        color: #fff;
+    }
 </style>

@@ -31,11 +31,11 @@
             </ul>
         </div>
         <div class="flexi-pad top-ten" contextmenu-container="meta.contextmenu">
-            <div class="font_18 font_medium blue1"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Others
+            <div class="font_18 font_medium blue1" ng-if="assetcopy.length > 0"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Others
             </div>
-            <div class="asset-by-industry">
+            <div class="asset-by-industry" ng-if="assetcopy.length > 0">
                 <ks-swiper-container show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assets.assets | filter:{folder_id: null}" ng-if="item.isDeleted == 0">
+                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetcopy" ng-if="item.isDeleted == 0">
                         <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                             <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                 <img ng-src="{{item.asset_url}}" />
@@ -101,11 +101,11 @@
                     <div class="swiper-scrollbar"></div>
                 </ks-swiper-container>
             </div>
-            <div class="font_18 font_medium blue1"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Shared with me
+            <div class="font_18 font_medium blue1" ng-if="assetshared.length > 0"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Shared with me
             </div>
-            <div class="asset-by-industry">
+            <div class="asset-by-industry" ng-if="assetshared.length > 0">
                 <ks-swiper-container show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assets.assets | filter: {type: 'shared'}">
+                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetshared">
                         <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                             <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                 <img ng-src="{{item.asset_url}}" />

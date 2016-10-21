@@ -13,10 +13,10 @@
                    class="font_medium btn btn-midnightblue">
                     <i class="fa fa-plus"></i> Add More
                 </a>
-                <a ng-click="comparisonShare()" class="font_medium btn btn-primary">
+                <!-- <a ng-click="comparisonShare()" class="font_medium btn btn-primary">
 
                     <i class="fa fa-share"></i> Share
-                </a>
+                </a> -->
                 <!--<div class="font_medium btn-group" data-toggle="buttons">
                     <label ng-click="viewSoftware =!viewSoftware" class="active btn btn-primary-alt">
                         <input type="checkbox">Software
@@ -55,16 +55,19 @@
                         <i class="fa fa-close"></i>
                     </a>
 
-                    <div class="padding_10 img_holder">
+                    <div class="padding_10 img_holder" ng-if="!value.img_default">
                         <img ng-repeat="image in value.product_images | limitTo:1" ng-src="{{image.image_path}}"/>
+                    </div>
+                     <div class="padding_10 img_holder" ng-if="value.img_default">
+                        <img  ng-src="{{value.img_default}}"/>
                     </div>
                     <div class="img_holder" ng-if="value.value">
                         <img ng-src="{{value.value}}"/>
                     </div>
-                    <div class="font_medium grey2 padding_10">
+                    <div class="font_medium font_18 grey2 padding_10">
                         {{value.bundle_name || value.item_name}}
                         <div>
-                            <a class="font_12 ">
+                            <a class="font_12" ng-click="vewDetail(value)">
                                 View Details
                             </a>
                         </div>
@@ -121,14 +124,17 @@
                 </td>
 
 
+
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Screens</td>
 
 
+
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Screen model</td>
+
 
 
             </tr>
@@ -187,6 +193,9 @@
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Mounting configuration</td>
+                <td ng-repeat="item in compareproducts track by $index ">
+                    {{item.bundle_name || item.item_name}}
+                </td>
 
 
             </tr>
@@ -206,26 +215,13 @@
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Media Player Model</td>
+                
 
 
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">Processor</td>
 
-                <td ng-repeat="items in compareproducts track by $index" ng-if="pb_id">
-                    <div ng-repeat="item in items.hardware"
-                         ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
-                        <div ng-repeat="media in item.attributes" ng-if="media.name == 'Processor'">
-                            {{media.value}}
-                        </div>
-                    </div>
-                </td>
-                <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
-                    <div ng-repeat="screen in items.attributes.attribute_values"
-                         ng-if="screen.attribute == 'Processor'">
-                        {{screen.value}}
-                    </div>
-                </td>
             </tr>
             <tr ng-hide="viewHardware" class="compare_body">
                 <td class="td-label">RAM</td>
@@ -290,6 +286,7 @@
                     style="cursor: pointer">
                     SUPPORT TYPE <i class="fa fa-arrows-v"></i>
                 </td>
+
 
             </tr>
             <tr ng-hide="viewSupport" class="compare_body">

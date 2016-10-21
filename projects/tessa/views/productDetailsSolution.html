@@ -15,46 +15,75 @@
             <div class="sec-sd-psd">
                 <!-- Main Article -->
                 <div class="main_article">
+
                     <div class="row">
+
                         <div class="col-lg-6">
+                            <div class="dis_table_auto pull-right hide-lg box-non-stick" >
+                                <div class="dis_cell ">
+                                    <button ng-click="openShareModal()"
+                                            fa-track-event="['Productcatalogue','share','Solution',details.pb_id]"
+                                            type="button" class="tes-btn bg-sky">
+                                        <i class="fa fa-share"></i>
+                                        <div class="hide-sm">
+                                            Share
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="dis_cell">
+                                    <button ng-click="compare(details)"
+                                            fa-track-event="['Productcatalogue','share','Solution',details.pb_id]"
+                                            type="button" class="tes-btn bg-violet">
+                                        <i class="fa fa-exchange" ng-show="compareIs"></i>
+                                        <i class="fa fa-minus-circle" ng-show="compareIs == false"></i>
+                                        <div class="hide-sm">
+                                            Compare
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="dis_cell">
+                                    <button ng-click="addToCart(details)"
+                                            fa-track-event="['Productcatalogue','click','addtocart',details.pb_id]"
+                                            type="button" class="tes-btn bg-green">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <div class="hide-sm" >Add to cart</div>
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="clear-fix"></div>
+
                             <div class="carousel_contain">
-                                <div class="dis_table_auto box-stick">
+                                <div class="dis_table_auto box-stick hide-sm ">
                                     <div class="dis_cell">
                                         <button ng-click="openShareModal()"
                                                 fa-track-event="['Productcatalogue','share','Solution',details.pb_id]"
                                                 type="button" class="tes-btn bg-sky">
                                             <i class="fa fa-share"></i>
-                                            <div>
+                                            <div class="hide-sm">
                                                 Share
                                             </div>
                                         </button>
-
                                     </div>
-
-                                    <!--- Note: Uncomment for taging --->
-                                    <!--
                                     <div class="dis_cell">
                                         <button ng-click="compare(details)"
                                                 fa-track-event="['Productcatalogue','share','Solution',details.pb_id]"
                                                 type="button" class="tes-btn bg-violet">
                                             <i class="fa fa-exchange" ng-show="compareIs"></i>
                                             <i class="fa fa-minus-circle" ng-show="compareIs == false"></i>
-                                            <div>
+                                            <div class="hide-sm">
                                                 Compare
                                             </div>
                                         </button>
                                     </div>
-
-                                    -->
-
                                     <div class="dis_cell">
                                         <button ng-click="addToCart(details)"
                                                 fa-track-event="['Productcatalogue','click','addtocart',details.pb_id]"
                                                 type="button" class="tes-btn bg-green">
                                             <i class="fa fa-shopping-cart"></i>
-                                            <div >Add to cart</div>
+                                            <div class="hide-sm" >Add to cart</div>
                                         </button>
-
                                     </div>
                                 </div>
                                 <div id="carousel-custom" class="carousel slide" data-ride="carousel">
@@ -85,7 +114,6 @@
 
                             </div>
 
-
                             <!--carousel here-->
                         </div>
                         <div class="col-lg-6">
@@ -97,8 +125,6 @@
                                        class="side_buttons bg-sky font_bold uppercase">
                                         <i class="fa fa-share"></i> Share
                                     </a>
-
-
                                     <a ng-click="compare(details)" class="side_buttons bg-violet font_bold uppercase">
                                         <i class="fa fa-exchange" ng-show="compareIs"></i>
                                         <i class="fa fa-minus-circle" ng-show="compareIs == false"></i>
@@ -106,7 +132,6 @@
                                     </a>
                                 </div>
                             </div>-->
-
                             <div class="dis_table_auto ">
                                 <div class="dis_cell font_24 font_light blue1">
                                     {{details.bundle_name}}
@@ -122,7 +147,6 @@
                                     </button>
                                 </div>-->
                             </div>
-
                             <!--product name-->
                             <div class=" font_18 grey2 pad10top" data-ng-bind-html="details.bundle_description">
                             </div>
@@ -190,9 +214,22 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="flex_sm" ng-click="addToCart(details)"
+                                    <a class="flex_sm bg-green" ng-click="addToCart(details)"
                                        fa-track-event="['Productcatalogue','click','addtocart',details.pb_id]">
-                                        <span class="font_medium uppercase"><img src="./images/icons/ico_cartDark.svg"/> add to cart</span>
+                                        <div class="font_medium uppercase"><i class="fa fa-shopping-cart"></i> add to cart</div>
+                                    </a>
+                                    <a class="hide-lg flex_sm bg-violet" ng-click="compare(details)"
+                                       fa-track-event="['Productcatalogue','share','Solution',details.pb_id]">
+                                        <div class="font_medium font_14 uppercase">
+                                            <i class="fa fa-exchange"></i>
+                                            Add to Compare
+                                        </div>
+                                    </a>
+                                    <a class="hide-lg flex_sm bg-sky" ng-click="openShareModal()"
+                                       fa-track-event="['Productcatalogue','share','Solution',details.pb_id]">
+                                        <div class="font_medium font_14 uppercase">
+                                            <i class="fa fa-share"></i> Share
+                                        </div>
                                     </a>
                                 </div>
                             </div>

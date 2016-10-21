@@ -32,20 +32,13 @@
                 <div class="col-lg-3" ng-repeat="items in filtersearch " ng-hide="items.type == 'Services'">
                     <!-- ui-sref="main.productDetailsHardware({selected_id: searchresult.p_id})" -->
                     <div class="panel panel-default">
-
-
-                        <!-- Note: Uncomment for Staging
-
-                        <div class="dis_table box-stick" ng-if="items.p_id || items.pb_id">
+                        <!-- <div class="dis_table box-stick" ng-if="items.p_id || items.pb_id">
                             <div class="dis_cell">
-                                <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
+                                <button ng-click="compare(items)" type="button" class="tes-btn bg-violet">
                                     <i class="fa fa-exchange"></i>
                                 </button>
                             </div>
-                        </div>
-
-                        -->
-
+                        </div> -->
                         <div class="panel-body" ng-click="openModal(items)">
                             <div class="img-contain">
                                 <a class="img_holder" ng-if="items.self == 'products'">
@@ -75,7 +68,7 @@
                                 </div>
                                 <div class="dis_table">
                                     <div class="dis_cell">
-                                        <a class="box_details font_medium" ng-click="openModal(items)">
+                                        <a class="box_details font_medium">
                                             View Details
                                         </a>
 

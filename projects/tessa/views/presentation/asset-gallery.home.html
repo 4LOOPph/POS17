@@ -86,9 +86,9 @@
                     <div class="font_18 font_medium blue1">
                         <span class="orange1" ng-if="$first"><i class=" fa fa-bookmark"></i></span> {{items.folder_name}}
                     </div>
-                    <ks-swiper-container pagination-is-active="true"
-                                         pagination-clickable="true" show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                        <ks-swiper-slide class="swiper-slide" ng-repeat="item in items.files" ng-if="items.files.length > 0">
+                    <br>
+                    <ks-swiper-container pagination-is-active="true" pagination-clickable="true" show-nav-buttons="true" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
+                        <ks-swiper-slide class="swiper-slide" ng-repeat="item in items.files" ng-if="item.isDeleted == 0">
                             <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                     <img ng-src="{{item.asset_url}}" imageonload/>
@@ -97,7 +97,7 @@
                                     <img src="./images/icons/ext-preso--08-pdf.svg" class="if-svg" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'application/pdf' && item.thumbnail.thumbnail">
-                                    <img src="{{item.thumbnail.thumbnail}}"/>
+                                    <img src="{{item.thumbnail.thumbnail}}" />
                                 </div>
                                 <div class="img_holder" ng-if="item.asset_mimetype == 'application/msword' || item.asset_mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">
                                     <img src="./images/icons/ext-preso--07-docs.svg" class="if-svg" />
@@ -151,8 +151,8 @@
                                 </div>
                             </a>
                         </ks-swiper-slide>
-                        <div class="swiper-scrollbar"></div>
                     </ks-swiper-container>
+
                 </div>
             </div>
         </div>
