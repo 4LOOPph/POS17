@@ -302,8 +302,7 @@
                             </div>
                             <div class="col-lg-3" ng-repeat="item in Screens track by $index"
                                  ng-if="item.is_published == 1 && item.is_archived == 0">
-                                <div class="panel panel-default"
-                                     fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
+                                <div class="panel panel-default" ng-click="hardwareScreens(item)">
                                     <div class="dis_table box-stick">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
@@ -338,8 +337,7 @@
                                 <h4>NO RESULT</h4>
                             </div>
                             <div class="col-lg-3" ng-repeat="item in MediaPlayer track by $index">
-                                <div class="panel panel-default"
-                                     fa-track-event="['Productcatalogue','click','Hardware',item.p_id]">
+                                <div class="panel panel-default" ng-click="hardwareMediaplayer(item)">
                                     <div class="dis_table box-stick">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
@@ -392,8 +390,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-body"
-                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
-                                         fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-click="solutionsEzeImpress(item)">
                                         <a class="img_holder">
                                             <img ng-src="{{myImage.image_path}}"
                                                  ng-repeat="myImage in item.product_images | limitTo: 1" imageonload
@@ -440,8 +437,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-body"
-                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})"
-                                         fa-track-event="['Productcatalogue','click','Solution',item.pb_id]">
+                                         ui-sref="main.productDetailsSolution({selected_id: item.pb_id})" ng-click="solutionsEzeWifi(item)">
                                         <a class="img_holder">
                                             <img ng-src="{{myImage.image_path}}"
                                                  ng-repeat="myImage in item.product_images | limitTo: 1" class=""

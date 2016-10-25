@@ -9,16 +9,19 @@
                         <div class="info"> {{details.email}}</div>
                     </div>
                 </div> -->
-                <div class="panel panel-profile">
+                <div class="panel panel-profile" style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);">
                     <div class="panel-body">
-                        <div class="btn-hov"> 
-                            <img id="blah"  src="{{appprofile.image}}" err-src="images/icons/dp.png" class="profholder"/>
-                            <!-- <button>
+                        <div class="btn-hov">
+
+                            <img id="blah" src="{{appprofile.image}}" err-src="images/icons/dp.png" class="profholder"/>
+
+                          <!--   <button>
                             <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                         </button> -->
                             <div class="fileUpload btn btn-primary upbtn">
                                 <span>Upload</span>
-                                <input id="uploadBtn" type="file" class="upload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
+                                <input id="uploadBtn" type="file" class="upload"
+                                       onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"/>
                             </div>
                         </div>
                         <div class="name"> {{details.firstname}} {{details.lastname}}</div>
@@ -34,7 +37,8 @@
                     <a role="tab" ng-click="setTab(2)" ng-class="{'active':isSet(2)}" class="list-group-item">
                         <i class="fa fa-edit"></i> Update General Info
                     </a>
-                    <a role="tab" ng-click="setTab(3)" ng-class="{'active':isSet(3)}" ng-click="" class="list-group-item">
+                    <a role="tab" ng-click="setTab(3)" ng-class="{'active':isSet(3)}" ng-click=""
+                       class="list-group-item">
                         <i class="fa fa-edit"></i> Update Account Settings
                     </a>
                 </div>
@@ -42,7 +46,7 @@
             <div class="col-sm-9" ng-show="isSet(1)">
                 <div class="">
                     <div class="" id="tab-">
-                        <div class="panel ">
+                        <div class="panel " style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);">
                             <div class="breadcrumbs font_medium dis_table" style="padding:0;">
                                 <div class="dis_cell blue1 current padding_10">
                                     <i class="fa fa-user"></i> User Profile
@@ -55,30 +59,30 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <td>{{details.firstname}} {{details.lastname}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Display Name</th>
-                                                    <td>{{details.displayName}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Email Address</th>
-                                                    <td>{{details.email}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Address</th>
-                                                    <td>{{details.address}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Mobile Number</th>
-                                                    <td>{{details.mobile}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Time Zone</th>
-                                                    <td>{{details.timeZone}}</td>
-                                                </tr>
+                                            <tr>
+                                                <th>Name</th>
+                                                <td>{{details.firstname}} {{details.lastname}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Display Name</th>
+                                                <td>{{details.displayName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email Address</th>
+                                                <td>{{details.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Address</th>
+                                                <td>{{details.address}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mobile Number</th>
+                                                <td>{{details.mobile}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Time Zone</th>
+                                                <td>{{details.timeZone}}</td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -90,7 +94,7 @@
             </div>
             <div ng-show="isSet(2)" class="col-sm-9">
                 <form role="form" ng-submit="savePersonDetail()">
-                    <div class="panel">
+                    <div class="panel" style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);">
                         <div class="breadcrumbs font_medium dis_table" style="padding:0;">
                             <div class="dis_cell blue1 current padding_10">
                                 Update General Info
@@ -98,47 +102,61 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-horizontal tabular-form">
+                                <!--<div class="form-group">
+                                    <label for="form-name" class="col-sm-2 control-label">Upload Display Photo</label>
+                                    <div class="col-sm-8 tabular-border">
+                                        <input type="file" name=""/>
+                                    </div>
+                                </div>-->
+
                                 <div class="form-group">
                                     <label for="form-name" class="col-sm-2 control-label">First Name</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-name" ng-model="details.firstname" placeholder="Firstname">
+                                        <input type="text" class="form-control" id="form-name"
+                                               ng-model="details.firstname" placeholder="Firstname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-website" class="col-sm-2 control-label">Last Name</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-website" ng-model="details.lastname" placeholder="Lastname">
+                                        <input type="text" class="form-control" id="form-website"
+                                               ng-model="details.lastname" placeholder="Lastname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-password" class="col-sm-2 control-label">Display Name</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-password" ng-model="details.displayName" placeholder="Password">
+                                        <input type="text" class="form-control" id="form-password"
+                                               ng-model="details.displayName" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-website" class="col-sm-2 control-label">Email Address</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-website" ng-model="details.email" placeholder="Email">
+                                        <input type="text" class="form-control" id="form-website"
+                                               ng-model="details.email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-website" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-website" ng-model="details.address" placeholder="http://">
+                                        <input type="text" class="form-control" id="form-website"
+                                               ng-model="details.address" placeholder="http://">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-website" class="col-sm-2 control-label">Mobile Number</label>
                                     <div class="col-sm-8 tabular-border">
-                                        <input type="text" class="form-control" id="form-website" ng-model="details.mobile" placeholder="Mobile Num.">
+                                        <input type="text" class="form-control" id="form-website"
+                                               ng-model="details.mobile" placeholder="Mobile Num.">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-website" class="col-sm-2 control-label">Time Zone</label>
                                     <div class="col-sm-8 tabular-border">
                                         <!-- <input type="text" class="form-control" id="form-website" placeholder="http://"> -->
-                                        <select class="form-control" ng-model="details.timeZone" ng-options="item.text as item.text for item in timezone">
+                                        <select class="form-control" ng-model="details.timeZone"
+                                                ng-options="item.text as item.text for item in timezone">
                                             <option disabled value="">Choose Time Zone</option>
                                         </select>
                                     </div>
@@ -156,7 +174,7 @@
                 </form>
             </div>
             <div ng-show="isSet(3)" class="col-sm-9">
-                <div class="panel">
+                <div class="panel" style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);">
                     <div class="breadcrumbs font_medium dis_table" style="padding:0;">
                         <div class="dis_cell blue1 current padding_10">
                             Update Account
@@ -166,7 +184,8 @@
                         <div class="card-box">
                             <div class="dis_table">
                                 <div class="dis_cell ">
-                                    <form role="form" name="usernameForm" ng-submit="saveUsername()" novalidate="novalidate">
+                                    <form role="form" name="usernameForm" ng-submit="saveUsername()"
+                                          novalidate="novalidate">
                                         <div class="flexi-box">
                                             <div class="flexi-box-head">
                                                 Update Username
@@ -175,16 +194,21 @@
                                                 <div class="form-label">
                                                     Username
                                                 </div>
-                                                <input type="text" ng-model="profile.username" class="form-control" class="User name" validator="required" required>
+                                                <input type="text" ng-model="profile.username" class="form-control"
+                                                       class="User name" validator="required" required>
                                             </div>
                                             <div class="flexi-box-foot">
-                                                <button type="submit" ng-class="{'diabled-class': usernameForm}" ng-disabled="usernameForm.$invalid" class="tes-btn bg-sky">Update</button>
+                                                <button type="submit" ng-class="{'diabled-class': usernameForm}"
+                                                        ng-disabled="usernameForm.$invalid" class="tes-btn bg-sky">
+                                                    Update
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="dis_cell ">
-                                    <form role="form " name="recoveryForm " ng-submit="addRecoveryEmail() " novalidate="novalidate ">
+                                    <form role="form " name="recoveryForm " ng-submit="addRecoveryEmail() "
+                                          novalidate="novalidate ">
                                         <div class="flexi-box">
                                             <div class="flexi-box-head">
                                                 Recovery Email
@@ -193,10 +217,14 @@
                                                 <div class="form-label">
                                                     Email
                                                 </div>
-                                                <input type="email" ng-model="details.recovery_email" class="form-control" placeholder="Recovery Email" validator="required" required>
+                                                <input type="email" ng-model="details.recovery_email"
+                                                       class="form-control" placeholder="Recovery Email"
+                                                       validator="required" required>
                                             </div>
                                             <div class="flexi-box-foot">
-                                                <button type="submit" ng-disabled="recoveryForm.$invalid " class="tes-btn bg-sky">Update</button>
+                                                <button type="submit" ng-disabled="recoveryForm.$invalid "
+                                                        class="tes-btn bg-sky">Update
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -216,17 +244,22 @@
                                                     <div class="form-label">
                                                         New Password
                                                     </div>
-                                                    <input type="password" ng-model="details.password" class="form-control " required>
+                                                    <input type="password" ng-model="details.password"
+                                                           class="form-control " required>
                                                 </div>
                                                 <div class="form-ctn">
                                                     <div class="form-label">
                                                         Password
                                                     </div>
-                                                    <input type="password" ng-model="details.confirm_password " class="form-control " required>
+                                                    <input type="password" ng-model="details.confirm_password "
+                                                           class="form-control " required>
                                                 </div>
                                             </div>
                                             <div class="flexi-box-foot">
-                                                <button type="submit " uib-tooltip="Grid view" ng-disabled="userpasswordForm.$invalid " class="tes-btn bg-sky">Update</button>
+                                                <button type="submit " uib-tooltip="Grid view"
+                                                        ng-disabled="userpasswordForm.$invalid " class="tes-btn bg-sky">
+                                                    Update
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -241,13 +274,18 @@
                                                 Connect your Facebook account
                                             </div>
                                             <div class="pull-right">
-                                                <button type="button" class="btn btn-label btn-social btn-facebook" ng-click="authenticate('facebook')" ng-if="!showFacebook">
+                                                <button type="button" class="btn btn-label btn-social btn-facebook"
+                                                        ng-click="authenticate('facebook')" ng-if="!showFacebook">
                                                     <i class="fa fa-facebook"></i> Facebook
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-facebook" ng-click="unlinkAccount('facebook')" ng-if="showFacebook">
+                                                <button type="button" class="btn btn-label btn-social btn-facebook"
+                                                        ng-click="unlinkAccount('facebook')" ng-if="showFacebook">
                                                     <i class="fa fa-unlock"></i> Unlink Facebook
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-facebook" style="margin-right: 10px;" ng-click="viewProfile('facebook',social.inappFacebook)" ng-if="showFacebook">
+                                                <button type="button" class="btn btn-label btn-social btn-facebook"
+                                                        style="margin-right: 10px;"
+                                                        ng-click="viewProfile('facebook',social.inappFacebook)"
+                                                        ng-if="showFacebook">
                                                     <i class="fa fa-user"></i> View Profile
                                                 </button>
                                             </div>
@@ -257,13 +295,18 @@
                                                 Connect your Google account
                                             </div>
                                             <div class="pull-right">
-                                                <button type="button" class="btn btn-label btn-social btn-googleplus" ng-click="authenticate('google')" ng-if="!showGoogle">
+                                                <button type="button" class="btn btn-label btn-social btn-googleplus"
+                                                        ng-click="authenticate('google')" ng-if="!showGoogle">
                                                     <i class="fa fa-google"></i> Google
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-googleplus" ng-click="unlinkAccount('google')" ng-if="showGoogle">
+                                                <button type="button" class="btn btn-label btn-social btn-googleplus"
+                                                        ng-click="unlinkAccount('google')" ng-if="showGoogle">
                                                     <i class="fa fa-unlock"></i> Unlink Google
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-googleplus" style="margin-right: 10px;" ng-click="viewProfile('google',social.inappGoogle)" ng-if="showGoogle">
+                                                <button type="button" class="btn btn-label btn-social btn-googleplus"
+                                                        style="margin-right: 10px;"
+                                                        ng-click="viewProfile('google',social.inappGoogle)"
+                                                        ng-if="showGoogle">
                                                     <i class="fa fa-user"></i> Google
                                                 </button>
                                             </div>
@@ -273,13 +316,18 @@
                                                 Connect your Twitter account
                                             </div>
                                             <div class="pull-right">
-                                                <button type="button" class="btn btn-label btn-social btn-twitter" ng-click="authenticate('twitter')" ng-if="!showTwitter">
+                                                <button type="button" class="btn btn-label btn-social btn-twitter"
+                                                        ng-click="authenticate('twitter')" ng-if="!showTwitter">
                                                     <i class="fa fa-twitter"></i> Twitter
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-twitter" ng-click="unlinkAccount('twitter')" ng-if="showTwitter">
+                                                <button type="button" class="btn btn-label btn-social btn-twitter"
+                                                        ng-click="unlinkAccount('twitter')" ng-if="showTwitter">
                                                     <i class="fa fa-unlock"></i> Unlink Twitter
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-twitter" style="margin-right: 10px;" ng-click="viewProfile('twitter',social.inappLinkedIn)" ng-if="showTwitter">
+                                                <button type="button" class="btn btn-label btn-social btn-twitter"
+                                                        style="margin-right: 10px;"
+                                                        ng-click="viewProfile('twitter',social.inappLinkedIn)"
+                                                        ng-if="showTwitter">
                                                     <i class="fa fa-user"></i> Twitter
                                                 </button>
                                             </div>
@@ -289,13 +337,18 @@
                                                 Connect your LinkedIn account
                                             </div>
                                             <div class="pull-right">
-                                                <button type="button" class="btn btn-label btn-social btn-linkedin" ng-click="authenticate('linkedin')" ng-if="!showLinkedin">
+                                                <button type="button" class="btn btn-label btn-social btn-linkedin"
+                                                        ng-click="authenticate('linkedin')" ng-if="!showLinkedin">
                                                     <i class="fa fa-linkedin"></i> Linkedin
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-linkedin" ng-click="unlinkAccount('linkedin')" ng-if="showLinkedin">
+                                                <button type="button" class="btn btn-label btn-social btn-linkedin"
+                                                        ng-click="unlinkAccount('linkedin')" ng-if="showLinkedin">
                                                     <i class="fa fa-unlock"></i> Unlink Linkedin
                                                 </button>
-                                                <button type="button" class="btn btn-label btn-social btn-linkedin" style="margin-right: 10px;" ng-click="viewProfile('linkedin',social.inappTwitter)" ng-if="showLinkedin">
+                                                <button type="button" class="btn btn-label btn-social btn-linkedin"
+                                                        style="margin-right: 10px;"
+                                                        ng-click="viewProfile('linkedin',social.inappTwitter)"
+                                                        ng-if="showLinkedin">
                                                     <i class="fa fa-user"></i> Linkedin
                                                 </button>
                                             </div>
@@ -311,3 +364,64 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.upbtn {
+    position: absolute;
+    bottom: 40%;
+    right: 35%;
+    left: 35%;
+    background-color: #3cb1ff!important;
+    border-color: #3cb1ff!important;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 5px 7px;
+    font-family: regular;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.upbtn:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.profholder {
+    border-radius: 50% !important;
+    border: solid #a9a9a9;
+    width: 140px !important;
+    max-height: 100% !important;
+    height: 135px !important;
+    min-height: 102% !important;
+}
+
+.btn-hov .upbtn {
+    display: none;
+}
+
+.btn-hov:hover .upbtn {
+    display: inline;
+    -webkit-transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
+    -moz-transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
+    -o-transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
+    transition: color .25s linear, background-color .25s ease-in-out, border-color .25s ease-in-out;
+}
+
+</style>

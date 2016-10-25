@@ -7,15 +7,14 @@
             </span>
         </a>
         </span>-->
-
-        <span  class="toolbar-trigger toolbar-icon-bg">
+        <span class="toolbar-trigger toolbar-icon-bg">
           <a ng-click="isHide = !isHide" data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
             <span class="icon-bg">
-              <i class="fa fa-bars"></i>
+              <i ng-if= "!isHide" class="fa fa-bars"></i>
+                <i ng-if="isHide" class="fa fa-close"></i>
             </span>
         </a>
         </span>
-
         <a class="navbar-brand" ui-sref="main.experience">Tessa</a>
         <a ng-click="clicks()" id="srch-pop" class="tes-icon">
             <img src="./images/icons/consolidated_search.png" />
@@ -23,7 +22,7 @@
         <div class=" toolbar-icon-bg" id="toolbar-search">
             <div class="input-group prim_search">
                 <div class="dis_cell">
-                    <div angucomplete-alt id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="false" text-no-results="{{searchinput}}" initial-value="searchinput" input-changed="inputProductChanged">
+                    <div angucomplete-alt id="ex4"  placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="true" text-no-results="{{searchinput}}" initial-value="searchinput" input-changed="inputProductChanged">
                     </div>
                 </div>
                 <div class="dis_cell cell_xs font_18">
@@ -46,13 +45,16 @@
     </div>
     <ul id="nav-right" class="nav navbar-nav toolbar pull-right">
         <div class="btn-group" uib-dropdown>
-            <a ng-click="cartModal()" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]">
+            <a ui-sref="login" type="button" class="tes-icon" ng-if="!appuser">
+                <img src="images/icons/black-login-icon.png" />
+            </a>
+            <a ng-click="cartModal()" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]" ng-if="appuser">
                 <img src="images/icons/consolidated_cart.png" />
                 <!-- <span class="badge badge-danger" ng-show="cartItems.length == 0">{{cartItems.length}}</span> -->
                 <span class="badge badge-success" ng-show="cartItems.length > 0">{{cartItems.length}}</span>
             </a>
         </div>
-        <div class="btn-group" uib-dropdown>
+        <div class="btn-group" uib-dropdown ng-if="appuser">
             <a id="single-button" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled">
                 <img src="{{appprofile.image}}" err-src="images/icons/dp.png" />
             </a>

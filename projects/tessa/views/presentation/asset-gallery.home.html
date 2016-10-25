@@ -82,7 +82,7 @@
                 <ng-include src="'./views/presentation/asset-gallery.search.html'"></ng-include>
             </div>
             <div ng-show="!showresult">
-                <div class="asset-by-industry" ng-repeat="items in foldercopies" ng-if="foldercopies.length > 0" ng-hide="items.folder_name == 'About Engagis'">
+                <div class="asset-by-industry" ng-repeat="items in foldercopies" ng-if="items.files.length > 0" ng-hide="items.folder_name == 'About Engagis'">
                     <div class="font_18 font_medium blue1">
                         <span class="orange1" ng-if="$first"><i class=" fa fa-bookmark"></i></span> {{items.folder_name}}
                     </div>

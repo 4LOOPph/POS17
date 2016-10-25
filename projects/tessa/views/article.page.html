@@ -194,10 +194,10 @@
                     </div>
                     <div class="dis_cell_top" ng-if="detail.article_features.length > 0">
                         <div class="font_18 blue3 border_bottom">
-                            Featured Solution
+                            Featured Solutionss
                         </div>
                         <div class="article_instances">
-                            <div class="col-lg-3" ng-repeat="item in bundles"  ui-sref="main.productDetailsSolution({selected_id:item.pb_id})" fa-track-event="['Featured Solution','View',item.bundle_name,item.pb_id]">
+                            <div class="col-lg-3" ng-repeat="item in bundles"  ng-click="openModals(item)" fa-track-event="['Featured Solution','View',item.bundle_name,item.pb_id]">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="img_holder">

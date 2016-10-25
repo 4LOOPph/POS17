@@ -29,7 +29,7 @@
                         <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
                             <div class="text-center">
                                 <div class="drop-zone">
-                                    <h3><div class="dropfile"><img src="../images/icons/ic_content_copy_black_24px.svg" style="width: 100px;"></div></h3>
+                                    <h3><div class="dropfile"><img src="./images/icons/ic_content_copy_black_24px.svg" style="width: 100px;"></div></h3>
                                     <h3>
                                             Drop files here <small> or use Browse button</small>
                                         </h3>
@@ -81,13 +81,13 @@
                                     </td> -->
                                     <td nowrap>
                                         <button type="button" uib-tooltip="Upload" class="btn btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                            <img src="../images/icons/ic_file_upload_black_24px.svg">
+                                            <img src="./images/icons/ic_file_upload_black_24px.svg">
                                         </button>
                                         <button type="button" uib-tooltip="Cancel" class="btn btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                                            <img src="../images/icons/ic_block_black_24px.svg">
+                                            <img src="./images/icons/ic_block_black_24px.svg">
                                         </button>
                                         <button type="button" uib-tooltip="Delete" class="btn btn-xs" ng-click="item.remove()">
-                                            <img src="../images/icons/ic_delete_black_24px.svg">
+                                            <img src="./images/icons/ic_delete_black_24px.svg">
                                         </button>
                                     </td>
                                 </tr>
@@ -96,13 +96,13 @@
                         <div class="form-group">
                             <div class="mailbox-controls">
                                 <button type="button" class="btn btn-flat btn-s" ng-click="uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" ng-if="isUploadAll">
-                                    <img src="../images/icons/ic_file_upload_black_24px.svg"> Upload all
+                                    <img src="./images/icons/ic_file_upload_black_24px.svg"> Upload all
                                 </button>
                                 <button type="button" class="btn btn-flat btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-                                    <img src="../images/icons/ic_block_black_24px.svg"> Cancel all
+                                    <img src="./images/icons/ic_block_black_24px.svg"> Cancel all
                                 </button>
                                 <button type="button" class="btn btn-flat btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-                                    <img src="../images/icons/ic_delete_black_24px.svg"> Delete all
+                                    <img src="./images/icons/ic_delete_black_24px.svg"> Delete all
                                 </button>
                             </div>
                         </div>

@@ -14,6 +14,12 @@
                 </button>
                 <button uib-popover-template="dynamicPopover.templateUrl4" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Mounting
                 </button>
+                <button uib-popover-template="dynamicPopover.templateUrl5" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Usages
+                </button>
+                 <button uib-popover-template="dynamicPopover.templateUrl7" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Brightness
+                </button>
+                <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Bezel Size
+                </button>
             </li>
             <!-- <li>
                 <a class="btn btn-primary">Submit</a>
@@ -71,12 +77,10 @@
                                         <a class="box_details font_medium">
                                             View Details
                                         </a>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -127,6 +131,54 @@
         <div class="checkbox" ng-repeat="type in config | filter:searchEzeFamily ">
             <label>
                 <input type="checkbox" ng-click="toggleSelectedType(type,4)" ng-model="type.checked"> {{type.label}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="usages.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in Usage | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,5)" ng-model="type.checked"> {{type.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="orientation.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in config | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,6)" ng-model="type.checked"> {{type.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="brightness.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in Brightness | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,7)" ng-model="type.checked"> {{type.value}}
+            </label>
+        </div>
+    </div>
+</script>
+<script async type="text/ng-template" id="bezelsize.html">
+    <div class="form-group">
+        <div class="pad_vertical">
+            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+        </div>
+        <div class="checkbox" ng-repeat="type in Bezel | filter:searchEzeFamily ">
+            <label>
+                <input type="checkbox" ng-click="toggleSelectedType(type,8)" ng-model="type.checked"> {{type.value}}
             </label>
         </div>
     </div>

@@ -20,7 +20,7 @@
             <label class="control-label"> </label>
             <div class="radio">
                 <label ng-click="on = true; off = false;">
-                    <input type="radio" name="radyo" ng-model="sharer.isPublic" value="true" ng-required="true" checked="checked" ng-boolean-radio checked /><i class="helper"></i>
+                    <input checked type="radio" name="radyo" ng-model="sharer.isPublic" value="true" ng-required="true" ng-boolean-radio checked /><i class="helper"></i>
                     <div class="flex"><img src="./images/icons/ic_public_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">On</b> - Public on the web
@@ -34,7 +34,7 @@
             <br>
             <div class="radio">
                 <label ng-click="off = true; on = false;">
-                    <input type="radio" name="radyo" ng-model="sharer.isPublic" value="false" ng-required="true" ng-boolean-radio/><i class="helper"></i>
+                    <input type="radio" name="radyo" ng-model="sharer.off" value="false" ng-required="true" ng-boolean-radio/><i class="helper"></i>
                     <div class="flex"><img src="./images/icons/ic_person_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">Off</b> - Specific people
