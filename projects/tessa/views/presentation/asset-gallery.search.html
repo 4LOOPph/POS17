@@ -6,9 +6,7 @@
         <div class="col-child" ng-repeat="item in searchresult">
             <a class=" file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}" >
                 <div class="file-body">
-                    <div class="font_18 font_medium blue1">
-                        <span class="orange1" <i class=" fa fa-bookmark"></i></span> {{item.asset_name}}
-                    </div>
+                   
                     <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                         <img ng-src="{{item.asset_url}}" />
                     </div>

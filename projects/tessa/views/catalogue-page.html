@@ -145,6 +145,7 @@
                         </span> -->
                     </div>
                 </div>
+
                 <div ng-show="prodTypeLabel == 'Hardware'" style="padding:10px 0px 0px;">
                     <div class="dd-filter"  ng-show="hardwareType == 'Screens'">
                         <!--SCREENS-->
@@ -264,18 +265,21 @@
                     </div>
                 </div>
             </div>
-            <div class="padding_10 filterss" ng-repeat="item in typeselected track by $index"
-                 ng-if="prodTypeLabel == 'Solution'">
-                <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
-                </button>
-                {{item.label || item.value}}
+            <div class="flex-pad">
+                <div class="padding_10 filterss" ng-repeat="item in typeselected track by $index"
+                     ng-if="prodTypeLabel == 'Solution'">
+                    <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
+                    </button>
+                    {{item.label || item.value}}
+                </div>
+                <div class="padding_10 filterss" ng-repeat="item in tagselected track by item._id"
+                     ng-if="prodTypeLabel == 'Hardware'">
+                    <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
+                    </button>
+                    {{item.value}}
+                </div>
             </div>
-            <div class="padding_10 filterss" ng-repeat="item in tagselected track by item._id"
-                 ng-if="prodTypeLabel == 'Hardware'">
-                <button type="button" class="btn btn-clozz" ng-click="uncheck(item,$index)"><i class="ti ti-close"></i>
-                </button>
-                {{item.value}}
-            </div>
+
         </div>
         <div class="">
             <div class="row-results">
