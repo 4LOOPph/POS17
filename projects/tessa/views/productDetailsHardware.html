@@ -10,21 +10,16 @@
         > {{details.bundle_name}}
         </a> -->
     </div>
-
     <div class="flexi-flow">
         <div class="parent-sd">
             <div class="sec-sd-psd">
                 <!-- Main Article -->
                 <div class="main_article">
                     <div class=" row ">
-
                         <div class="col-lg-6">
-
-                            <div class="dis_table_auto pull-right hide-lg box-non-stick" >
+                            <div class="dis_table_auto pull-right hide-lg box-non-stick">
                                 <div class="dis_cell ">
-                                    <button ng-click="openShareModal()"
-                                            fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]"
-                                            type="button" class="tes-btn bg-sky">
+                                    <button ng-click="openShareModal()" fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]" type="button" class="tes-btn bg-sky">
                                         <i class="fa fa-share"></i>
                                         <div class="hide-sm">
                                             Share
@@ -32,8 +27,7 @@
                                     </button>
                                 </div>
                                 <div class="dis_cell">
-                                    <button ng-click="compare(productDetails)"
-                                            type="button" class="tes-btn bg-violet">
+                                    <button ng-click="compare(productDetails)" type="button" class="tes-btn bg-violet">
                                         <i class="fa fa-exchange" ng-show="compareIs"></i>
                                         <i class="fa fa-minus-circle" ng-show="compareIs == false"></i>
                                         <div class="hide-sm">
@@ -42,24 +36,17 @@
                                     </button>
                                 </div>
                                 <div class="dis_cell">
-                                    <button ng-click="addToCart(productDetails)"
-                                            fa-track-event="['Productcatalogue','click','addtocart',productDetails.p_id]"
-                                            type="button" class="tes-btn bg-green">
+                                    <button ng-click="addToCart(productDetails)" fa-track-event="['Productcatalogue','click','addtocart',productDetails.p_id]" type="button" class="tes-btn bg-green">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <div class="hide-sm" >Add to cart</div>
+                                        <div class="hide-sm">Add to cart</div>
                                     </button>
-
                                 </div>
                             </div>
-
                             <div class="clear-fix"></div>
-
                             <div class="carousel_contain">
                                 <div class="dis_table_auto box-stick hide-sm">
                                     <div class="dis_cell">
-                                        <button ng-click="openShareModal()"
-                                                fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]"
-                                                type="button" class="tes-btn bg-sky">
+                                        <button ng-click="openShareModal()" type="button" class="tes-btn bg-sky">
                                             <i class="fa fa-share"></i>
                                             <div class="hide-sm">
                                                 Share
@@ -67,8 +54,7 @@
                                         </button>
                                     </div>
                                     <div class="dis_cell">
-                                        <button ng-click="compare(productDetails)"
-                                                type="button" class="tes-btn bg-violet">
+                                        <button ng-click="compare(productDetails)" type="button" class="tes-btn bg-violet">
                                             <i class="fa fa-exchange" ng-show="compareIs"></i>
                                             <i class="fa fa-minus-circle" ng-show="compareIs == false"></i>
                                             <div class="hide-sm">
@@ -77,43 +63,34 @@
                                         </button>
                                     </div>
                                     <div class="dis_cell">
-                                        <button ng-click="addToCart(productDetails)"
-                                                fa-track-event="['Productcatalogue','click','addtocart',productDetails.p_id]"
-                                                type="button" class="tes-btn bg-green">
+                                        <button ng-click="addToCart(productDetails)" type="button" class="tes-btn bg-green">
                                             <i class="fa fa-shopping-cart"></i>
                                             <div class="hide-sm">Add to cart</div>
                                         </button>
-
                                     </div>
                                 </div>
-
                                 <div id="carousel-custom" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-outer">
                                         <div class="carousel-inner">
-                                            <div ng-repeat="slide in slides" class="item" ng-class="{active:!$index}"
-                                                 data-thumb="{{$index}}">
+                                            <div ng-repeat="slide in slides" class="item" ng-class="{active:!$index}" data-thumb="{{$index}}">
                                                 <img class="image-responsive" ng-src="{{slide.image}}">
                                             </div>
                                         </div>
-                                        <a class="carousel-control left" data-target='#carousel-custom'
-                                           data-slide="prev">
+                                        <a class="carousel-control left" data-target='#carousel-custom' data-slide="prev">
                                             <span class="glyphicon glyphicon-chevron-left "></span>
                                         </a>
-                                        <a class="carousel-control right" data-target='#carousel-custom'
-                                           data-slide="next">
+                                        <a class="carousel-control right" data-target='#carousel-custom' data-slide="next">
                                             <span class="glyphicon glyphicon-chevron-right "></span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <ul class="product_gallery">
-                                <li ng-repeat="slide in slides" data-target='#carousel-custom'
-                                    data-slide-to="{{slide.index}}" ng-class="{active:!$index}">
-                                    <img ng-src="{{slide.image}}" alt='' width="150" height="100"/>
+                                <li ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{slide.index}}" ng-class="{active:!$index}">
+                                    <img ng-src="{{slide.image}}" alt='' width="150" height="100" />
                                 </li>
                             </ul>
                         </div>
-
                         <div class="col-lg-6">
                             <!-- <div class="dis_table_auto">
                                 <div class="side_menu dis_cell_2">
@@ -130,7 +107,6 @@
                                     </a>
                                 </div>
                             </div> -->
-
                             <div class=" font_24 font_light blue1">
                                 {{productDetails.item_name}}
                             </div>
@@ -150,7 +126,7 @@
                                             <li>
                                                 <div class="dis_table">
                                                     <div class="dis_cell fill_grey center_align">
-                                                    <span class="font_18 font_bold blue3 ">
+                                                        <span class="font_18 font_bold blue3 ">
                                                         Price
                                                     </span>
                                                     </div>
@@ -166,21 +142,17 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="flex_sm bg-green" ng-click="addToCart(productDetails)"
-                                       fa-track-event="['Productcatalogue','click','addtocart',productDetails.p_id]">
+                                    <a class="flex_sm bg-green" ng-click="addToCart(productDetails)">
                                         <div class="font_medium font_14 uppercase">
-                                            <i class="fa fa-shopping-cart"></i>
-                                            add to cart
+                                            <i class="fa fa-shopping-cart"></i> add to cart
                                         </div>
                                     </a>
                                     <a class="hide-lg flex_sm bg-violet" ng-click="compare(productDetails)">
                                         <div class="font_medium font_14 uppercase">
-                                            <i class="fa fa-exchange"></i>
-                                            Add to Compare
+                                            <i class="fa fa-exchange"></i> Add to Compare
                                         </div>
                                     </a>
-                                    <a class="hide-lg flex_sm bg-sky" ng-click="openShareModal()"
-                                       fa-track-event="['Productcatalogue','share','Hardware',productDetails.p_id]">
+                                    <a class="hide-lg flex_sm bg-sky" ng-click="openShareModal()" >
                                         <div class="font_medium font_14 uppercase">
                                             <i class="fa fa-share"></i> Share
                                         </div>
@@ -219,8 +191,7 @@
                                 Hardware Specifications
                             </div>
                             <ul class="spec_list">
-                                <li ng-repeat="(key,value) in (attributevalues | groupBy:'attribute')"
-                                    ng-if="category[0].fk_category_id == 83">
+                                <li ng-repeat="(key,value) in (attributevalues | groupBy:'attribute')" ng-if="category[0].fk_category_id == 83">
                                     <div class="font_12 font_bold grey3 uppercase">
                                         {{key}}
                                     </div>
@@ -228,8 +199,7 @@
                                         {{item.value}}
                                     </div>
                                 </li>
-                                <li ng-repeat="(key,value) in (attributevalues | groupBy:'attribute')"
-                                    ng-hide="category[0].fk_category_id == 83">
+                                <li ng-repeat="(key,value) in (attributevalues | groupBy:'attribute')" ng-hide="category[0].fk_category_id == 83">
                                     <div class="font_12 font_bold grey3 uppercase">
                                         {{key}}
                                     </div>
@@ -248,8 +218,7 @@
                             </div>
                             <ul class="spec_list">
                                 <li ng-repeat="item in relatedProductHardware">
-                                    <a class="font_light font_regulargrey2"
-                                       ng-click="openDetail(item.ref_product.p_id)">
+                                    <a class="font_light font_regulargrey2" ng-click="openDetail(item.ref_product.p_id)">
                                         {{item.ref_product.item_name}}
                                     </a>
                                 </li>
@@ -280,9 +249,7 @@
                             </div>
                             <ul class="spec_list">
                                 <li ng-repeat="pack in SolutionPack">
-                                    <a data-toggle="modal"
-                                       ui-sref="main.productDetailsSolution({selected_id: pack.pb_id})"
-                                       class="font_light grey2">
+                                    <a data-toggle="modal" ui-sref="main.productDetailsSolution({selected_id: pack.pb_id})" class="font_light grey2">
                                         <div class="icon_table">
                                             <div class="icon_cell">
                                                 {{pack.bundle_name}}
@@ -300,10 +267,9 @@
             </div>
         </div>
     </div>
-
 </div>
 <style>
-    #active-catalogue {
-        background: #424242;
-    }
+#active-catalogue {
+    background: #424242;
+}
 </style>
