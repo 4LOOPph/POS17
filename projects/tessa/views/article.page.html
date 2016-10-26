@@ -107,7 +107,7 @@
 
                                 <li ng-class="{'active':!$index}" ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{$index}}">
                                     <img ng-if="slide.media_mimetype == 'image/jpeg' || slide.media_mimetype == 'image/png'"
-                                         ng-src="{{slide.image}}" alt='' width="150" height="150"/>
+                                         ng-src="{{slide.image}}" alt='' />
 
                                     <div class="vid_holder">
                                         <div ng-if="slide.media_mimetype == 'video/mp4'">
