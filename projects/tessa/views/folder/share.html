@@ -6,7 +6,7 @@
         <div style="border-bottom: thin solid #e2e2e2;">
             <div style="display: inline-flex;">
                 <div>
-                    <img src="../images/icons/ic_account_box_black_24px.svg" style="width: 40px;margin-left: -5px;">
+                    <img src="./images/icons/ic_account_box_black_24px.svg" style="width: 40px;margin-left: -5px;">
                 </div>
                 <span style="line-height: 1;padding: 6px 15px;">
         <div>{{owner.displayName | uppercase}} (you)</div>
@@ -20,7 +20,7 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="radyo" ng-model="sharer.isPublic" value="true" ng-required="true" ng-boolean-radio/><i class="helper"></i>
-                    <div class="flex"><img src="../images/icons/ic_public_black_24px.svg" class="bodyimg">
+                    <div class="flex"><img src="./images/icons/ic_public_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">On</b> - Public on the web
                             <br>
@@ -33,7 +33,7 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="radyo" ng-model="sharer.isPublic" value="false" ng-required="true" ng-boolean-radio/><i class="helper"></i>
-                    <div class="flex"><img src="../images/icons/ic_person_black_24px.svg" class="bodyimg">
+                    <div class="flex"><img src="./images/icons/ic_person_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">Off</b> - Specific people
                             <br>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="nvite">
-            <div ng-if="sharer.isPublic">
+            <!-- <div ng-if="sharer.isPublic">
                 Link sharing
                 <div class="input-group" style="margin-bottom: 15px;width: 100%;">
                     <div class="form-group">
@@ -56,12 +56,12 @@
                         <input type="text" id="foo" class="form-control linkinput" value="http://localhost:9003/#/main/presentation">
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div ng-if="!sharer.isPublic">
                 Invite people:
                 <div class="input-group" style="margin-bottom: 15px;">
                     <ui-select class="form-control" ng-disabled="sharer.isPublic" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
-                        <ui-select-match placeholder="Enter Email..."><img src="../images/icons/ic_person_black_24px.svg"> <span>{{$item.displayName}}</span></ui-select-match>
+                        <ui-select-match placeholder="Enter Email..."><img src="./images/icons/ic_person_black_24px.svg"> <span>{{$item.displayName}}</span></ui-select-match>
                         <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
                             <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
                             <small>
