@@ -158,14 +158,14 @@
                         ✔
                     </td>
                 </tr>
-                <tr ng-click="togglePlayer = !togglePlayer" ng-class="{'row-highlight' : togglePlayer}" ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
+               <!--  <tr ng-click="togglePlayer = !togglePlayer" ng-class="{'row-highlight' : togglePlayer}" ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
                     <td class="td-label">Media player</td>
                     <td ng-repeat="items in compareproducts track by $index">
                         <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
                             {{item.product_detail.item_name}}
                         </div>
                     </td>
-                </tr>
+                </tr> -->
                 <!-- <tr ng-click="toggleModel = !toggleModel" ng-class="{'row-highlight' : toggleModel}" ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
                     <td class="td-label">Media Player Model</td>
                 </tr> -->
@@ -183,13 +183,8 @@
                             {{screen.value}}
                         </div>
                     </td>
-                    <td ng-repeat="items in compareproducts track by $index" ng-if="items.p_id">
-                        <div ng-repeat="screen in items.attributes.attribute_values" ng-if="screen.attribute == 'Maximum Resolution'">
-                            {{screen.value}}
-                        </div>
-                    </td>
                 </tr>
-                <tr ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
+                <tr ng-click="toggleProcessor = !toggleProcessor" ng-class="{'row-highlight' : toggleProcessor}"  ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
                     <td class="td-label">RAM</td>
                     <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                         <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
@@ -204,7 +199,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
+                <tr ng-click="toggleProcessor = !toggleProcessor" ng-class="{'row-highlight' : toggleProcessor}"  ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
                     <td class="td-label">Storage</td>
                     <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                         <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">
@@ -219,7 +214,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
+                <tr ng-click="toggleProcessor = !toggleProcessor" ng-class="{'row-highlight' : toggleProcessor}"  ng-hide="viewHardware" class="compare_body" ng-if="softwaresmediaattrib.length>0 || compare.category_id == 83">
                     <td class="td-label">Maximum resolution</td>
                     <td ng-repeat="items in compareproducts track by $index" ng-if="items.pb_id">
                         <div ng-repeat="item in items.hardware" ng-if="item.category_id == 83 || item.category_label == 'Media Player'">

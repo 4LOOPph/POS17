@@ -1,84 +1,78 @@
-<div class="modal-header" style="padding: 20px 25px 5px;border-bottom: transparent;" ng-init="on = true;">
+<div class="modal-header" style="padding: 20px 25px 5px;border-bottom: transparent;">
     <div class="modal-title" style="font-size: 20px;">Share With others</div>
 </div>
-<div class="copyalert" ng-hide="copyAlert"><img src="./images/clipboard-outline.svg" style="width: 13%;"> Link copied to clipboard.</div>
 <div class="modal-body" style="padding: 0 25px;line-height: 2;">
     <div class="pad_vertical_15">
         <div style="border-bottom: thin solid #e2e2e2;">
             <div style="display: inline-flex;">
                 <div>
-                    <img src="./images/icons/ic_account_box_black_24px.svg" style="width: 40px;margin-left: -5px;">
+                    <img src="../images/icons/ic_account_box_black_24px.svg" style="width: 40px;margin-left: -5px;">
                 </div>
-                <span style="line-height: 1;padding: 13px 15px;">
+                <span style="line-height: 1;padding: 6px 15px;">
         <div>{{owner.displayName | uppercase}} (you)</div>
         <small class="grey2">{{owner.email}}</small>
         </span>
             </div>
-            <span class="font_medium isyou">Is owner</span>
+            <span class="font_medium" style="float: right;">Is owner</span>
         </div>
         <div class="formz form-radio">
             <label class="control-label"> </label>
             <div class="radio">
-                <label ng-click="on = true; off = false;">
-                    <input type="radio" name="radyo" ng-model="sharer.isPublic" value="true" ng-required="true" checked="checked" ng-boolean-radio checked /><i class="helper"></i>
-                    <div class="flex"><img src="./images/icons/ic_public_black_24px.svg" class="bodyimg">
+                <label>
+                    <input type="radio" name="radyo" ng-model="sharer.isPublic" value="true" ng-required="true" ng-boolean-radio/><i class="helper"></i>
+                    <div class="flex"><img src="../images/icons/ic_public_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">On</b> - Public on the web
                             <br>
                             <small class="grey2">Anyone on the internet can find and access. No sign-in required.</small>
-                            <small class="grey3">Anyone can find and access.</small>
                         </div>
                     </div>
                 </label>
             </div>
             <br>
             <div class="radio">
-                <label ng-click="off = true; on = false;">
+                <label>
                     <input type="radio" name="radyo" ng-model="sharer.isPublic" value="false" ng-required="true" ng-boolean-radio/><i class="helper"></i>
-                    <div class="flex"><img src="./images/icons/ic_person_black_24px.svg" class="bodyimg">
+                    <div class="flex"><img src="../images/icons/ic_person_black_24px.svg" class="bodyimg">
                         <div class="linehyt">
                             <b class="font_medium">Off</b> - Specific people
                             <br>
                             <small class="grey2">Shared with specific people.</small>
-                            <small class="grey3">Shared with specific people.</small>
                         </div>
                     </div>
                 </label>
             </div>
         </div>
-        <div class="nvite" ng-show="on">
-            Link sharing
-            <div class="input-group" style="margin-bottom: 15px;width: 100%;">
-                <div class="form-group">
-                    <div class="linksharelabel">
-                        <div class="grey2">Anyone at Tessa with the link can view</div>
-                        <div class="grey3">Anyone at Tessa can view</div>
-                        <button class="copylinkbtn" ngclipboard data-clipboard-target="#foo" ng-click="copyclipAlert()">Copy link</button>
+        <div class="nvite">
+            <div ng-if="sharer.isPublic">
+                Link sharing
+                <div class="input-group" style="margin-bottom: 15px;width: 100%;">
+                    <div class="form-group">
+                        <div class="linksharelabel">
+                            <div class="grey2">Anyone at Tessa with the link can view</div>
+                            <div class="grey3">Anyone at Tessa can view</div>
+                            <button class="copylinkbtn" ngclipboard data-clipboard-target="#foo" ng-click="copyclipAlert()">Copy link</button>
+                        </div>
+                        <input type="text" id="foo" class="form-control linkinput" value="http://localhost:9003/#/main/presentation">
                     </div>
-                    <input type="text" id="foo" class="form-control linkinput" value="http://localhost:9003/#/main/presentation">
                 </div>
             </div>
-            <button ng-click="cancel()" class="pull-left  btn btn-primary" style="width: 85px;margin-right: 15px;color:#fff !important;font-family: medium;">
-                Done
-            </button>
-            <button id="close_quote" class=" btn btn-default pull-left" ng-click="cancel()" style="width: 85px;font-family: medium;">Cancel
-            </button>
-        </div>
-        <div class="nvite" ng-show="off">
-            Invite people:
-            <div class="input-group" style="margin-bottom: 15px;width: 100%;">
-                <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
-                    <ui-select-match placeholder="Enter Email..."><img src="./images/icons/ic_person_black_24px.svg"> <span>{{$item.displayName}}</span></ui-select-match>
-                    <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
-                        <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
-                        <small>
+            <div ng-if="!sharer.isPublic">
+                Invite people:
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <ui-select class="form-control" ng-disabled="sharer.isPublic" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
+                        <ui-select-match placeholder="Enter Email..."><img src="../images/icons/ic_person_black_24px.svg"> <span>{{$item.displayName}}</span></ui-select-match>
+                        <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
+                            <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
+                            <small>
                           Name: {{tag.displayName}}<br>
                           email: {{tag.email}}
                         </small>
-                    </ui-select-choices>
-                </ui-select>
-                <!--  <span class="input-group-addon addonss"> 
-                  </span> -->
+                        </ui-select-choices>
+                    </ui-select>
+                    <span class="input-group-addon addonss"> 
+                  </span>
+                </div>
             </div>
             <button ng-click="sendMail()" class="pull-left  btn btn-primary" style="width: 85px;margin-right: 15px;color:#fff !important;font-family: medium;">
                 Send
