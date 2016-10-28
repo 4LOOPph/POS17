@@ -16,7 +16,7 @@
                     <div class="topnav-itm nav-btn border-right search-lg">
                         <div class="dis_table_auto ">
                             <div class="dis_cell">
-                                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="false" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope"><div class="angucomplete-holder " ng-class="{'angucomplete-dropdown-visible': showDropdown}">  <input id="ex4_value" name="" tabindex="" ng-class="{'angucomplete-input-not-empty': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="text" placeholder="Search..." maxlength="524288" ng-focus="onFocusHandler()" class="form-control form-control-small ng-empty ng-valid-maxlength" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)" style="">  <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown" style="">    <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching" ng-bind="textSearching">Searching...</div>    <div class="angucomplete-searching ng-binding" ng-show="!searching &amp;&amp; (!results || results.length == 0)" ng-bind="textNoResults"></div>     </div></div></div>
+                                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="true" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope"><div class="angucomplete-holder " ng-class="{'angucomplete-dropdown-visible': showDropdown}">  <input id="ex4_value" name="" tabindex="" ng-class="{'angucomplete-input-not-empty': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="text" placeholder="Search..." maxlength="524288" ng-focus="onFocusHandler()" class="form-control form-control-small ng-empty ng-valid-maxlength" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)" style="">  <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown" style="">    <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching" ng-bind="textSearching">Searching...</div>    <div class="angucomplete-searching ng-binding" ng-show="!searching &amp;&amp; (!results || results.length == 0)" ng-bind="textNoResults"></div>     </div></div></div>
                             </div>
                             <div class="dis_cell cell_xs cell-top">
                                 <button type="button" class=" btn btn-primary" ng-click="keysearch()">
@@ -33,14 +33,8 @@
                         <a ng-click="cartModal()" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]" ng-if="appuser">
                         <span class="badge badge-success" ng-show="cartItems.length > 0">{{cartItems.length}}</span>
                             <i class="fa fa-shopping-cart"></i>
-
-
-
                         </a> 
-
-
                     </div>
-
                     <div class="topnav-itm nav-btn" uib-dropdown>
                         <div  uib-dropdown="">
                             <a id="single-button" type="button" class=" dropdown-toggle" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false">
@@ -56,8 +50,6 @@
                         </div>
 
                     </div>
-                    
-               
 
             </div>
         </div>
@@ -65,7 +57,7 @@
     <div ng-show="isSearchToggle" class="float-search">
         <div class="dis_table_auto full_width">
             <div class="dis_cell">
-                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="false" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope">
+                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="true" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope">
 
                     <div class="angucomplete-holder" ng-class="{'angucomplete-dropdown-visible': showDropdown}"> 
 

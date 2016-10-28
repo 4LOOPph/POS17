@@ -58,12 +58,12 @@
         </ul>
     </nav>
 </div>
-<div class="sm-side" >
+<div class="sm-side" ng-show="isHide">
     <nav class="flexi-sidebar ">
         <ul class="flexi-menu ">
             <li>
                 <a id="active-experience" ng-click="product('Experience')">
-                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm ">Experience</span></a>
+                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm " >Experience</span></a>
             </li>
             <li>
                 <a id="active-catalogue" ng-click="product('Product')" ng-if="appuser">
