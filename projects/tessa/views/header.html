@@ -1,71 +1,99 @@
 <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
-    <div class="logo-area">
-        <!--<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
-          <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-            <span class="icon-bg">
-              <i class="fa fa-bars"></i>
-            </span>
-        </a>
-        </span>-->
-        <span class="toolbar-trigger toolbar-icon-bg">
-          <a ng-click="toggleShow()"  data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-            <span class="icon-bg">
-              <i  class="fa fa-bars"></i>
-            </span>
-        </a>
-        </span>
-        <a class="navbar-brand" ui-sref="main.experience">Tessa</a>
-        <a ng-click="clicks()" id="srch-pop" class="tes-icon">
-            <img src="./images/icons/consolidated_search.png" />
-        </a>
-        <div class=" toolbar-icon-bg" id="toolbar-search">
-            <div class="input-group prim_search">
-                <div class="dis_cell">
-                    <div angucomplete-alt id="ex4"  placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="true" text-no-results="{{searchinput}}" initial-value="searchinput" input-changed="inputProductChanged">
+    <div class="flx-ctn spc-btwn">
+        <div class="flx-itm">
+            <div class="left-nav">
+                    <a ng-click="toggleShow()" class="topnav-itm toggle-btn bg-midnight">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="topnav-itm home-btn">
+                        
                     </div>
-                </div>
-                <div class="dis_cell cell_xs font_18">
-                    <button type="button" class=" btn btn-primary" ng-click="keysearch()">
-                        <i class="fa fa-search"></i></a>
+                    <div ng-click="isSearchToggle = !isSearchToggle" class="topnav-itm nav-btn border-right search-sm">
+                        <a>
+                            <i class="fa fa-search"></i>
+                        </a>                        
+                    </div>
+                    <div class="topnav-itm nav-btn border-right search-lg">
+                        <div class="dis_table_auto ">
+                            <div class="dis_cell">
+                                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="false" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope"><div class="angucomplete-holder " ng-class="{'angucomplete-dropdown-visible': showDropdown}">  <input id="ex4_value" name="" tabindex="" ng-class="{'angucomplete-input-not-empty': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="text" placeholder="Search..." maxlength="524288" ng-focus="onFocusHandler()" class="form-control form-control-small ng-empty ng-valid-maxlength" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)" style="">  <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown" style="">    <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching" ng-bind="textSearching">Searching...</div>    <div class="angucomplete-searching ng-binding" ng-show="!searching &amp;&amp; (!results || results.length == 0)" ng-bind="textNoResults"></div>     </div></div></div>
+                            </div>
+                            <div class="dis_cell cell_xs cell-top">
+                                <button type="button" class=" btn btn-primary" ng-click="keysearch()">
+                        <i class="fa fa-search"></i>
                     </button>
-                </div>
-                <div class="dis_cell_hide cell_xs font_18">
-                    <button type="button" class="exit cancel full_width btn btn-primary-alt">
-                        <i class="fa fa-close"></i></a>
-                    </button>
-                </div>
-                <!-- <div class="dis_cell_hide cell_xs font_18">
-                <button type="button" class="btn btn-primary">
-                        <i class="fa fa-times"></i></a>
-                    </button>
-                </div> -->
+                            </div>
+                        </div>                       
+                    </div>
+            </div>
+        </div>
+        <div class="flx-itm">
+            <div class="right-nav">
+                    <div class="topnav-itm nav-btn cart-btn">
+                        <a ng-click="cartModal()" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]" ng-if="appuser">
+                        <span class="badge badge-success" ng-show="cartItems.length > 0">{{cartItems.length}}</span>
+                            <i class="fa fa-shopping-cart"></i>
+
+
+
+                        </a> 
+
+
+                    </div>
+
+                    <div class="topnav-itm nav-btn" uib-dropdown>
+                        <div  uib-dropdown="">
+                            <a id="single-button" type="button" class=" dropdown-toggle" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false">
+                                <img err-src="images/icons/dp.png" src="images/icons/dp.png" >
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu" aria-labelledby="single-button">
+                                <li><a ui-sref="main.userProfile" href="#/main/userProfile"><i class="ti ti-user"></i> <span>Profile</span></a></li>
+                                <li><a href=""><i class="ti ti-settings"></i> <span>Settings</span></a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="signout()" fa-track-event="['Logout','click','Logout',appuser.uc_id]"><i class="ti ti-shift-right"></i> <span>Sign Out</span></a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    
+               
+
             </div>
         </div>
     </div>
-    <ul id="nav-right" class="nav navbar-nav toolbar pull-right">
-        <div class="btn-group" uib-dropdown>
+    <div ng-show="isSearchToggle" class="float-search">
+        <div class="dis_table_auto full_width">
+            <div class="dis_cell">
+                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected" match-class="highlight" local-data="allproducts" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" override-suggestions="true" clear-selected="false" text-no-results="" initial-value="searchinput" input-changed="inputProductChanged" class="ng-isolate-scope">
 
-            <a ui-sref="login" type="button" class="tes-icon" ng-if="!appuser">
-                <img src="images/icons/black-login-icon.png" />
-            </a>
-            <a ng-click="cartModal()" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled" fa-track-event="['Cart','View','Cart Modal',null]" ng-if="appuser">
+                    <div class="angucomplete-holder" ng-class="{'angucomplete-dropdown-visible': showDropdown}"> 
 
-                <img src="images/icons/consolidated_cart.png" />
-                <!-- <span class="badge badge-danger" ng-show="cartItems.length == 0">{{cartItems.length}}</span> -->
-                <span class="badge badge-success" ng-show="cartItems.length > 0">{{cartItems.length}}</span>
-            </a>
+                        <input id="ex4_value" name="" tabindex="" ng-class="{'angucomplete-input-not-empty': notEmpty}" ng-model="searchStr" ng-disabled="disableInput" type="text" placeholder="Search..." maxlength="524288" ng-focus="onFocusHandler()" class="form-control form-control-small ng-empty ng-valid-maxlength" ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off" ng-change="inputChangeHandler(searchStr)" style=""> 
+
+                        <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown" style=""> 
+
+                            <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching" ng-bind="textSearching">Searching...
+                            </div>    
+
+                            <div class="angucomplete-searching ng-binding" ng-show="!searching &amp;&amp; (!results || results.length == 0)" ng-bind="textNoResults">
+                                
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dis_cell cell_xs">
+                <button type="button" class=" btn btn-primary" ng-click="keysearch()">
+                        <i class="fa fa-search"></i>
+                    </button>
+            </div>
+            <div class="dis_cell cell_xs">
+                <button type="button" ng-click="isSearchToggle = !isSearchToggle" class="exit cancel full_width tes-btn blue2">
+                        <i class="fa fa-close"></i>
+                    </button>
+            </div>
         </div>
-        <div class="btn-group" uib-dropdown ng-if="appuser">
-            <a id="single-button" type="button" class="tes-icon" uib-dropdown-toggle ng-disabled="disabled">
-                <img src="{{appprofile.image}}" err-src="images/icons/dp.png" style="border-radius:100px;" />
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                <li><a ui-sref="main.userProfile"><i class="ti ti-user"></i> <span>Profile</span></a></li>
-                <li><a href=""><i class="ti ti-settings"></i> <span>Settings</span></a></li>
-                <li class="divider"></li>
-                <li><a ng-click="signout()" fa-track-event="['Logout','click','Logout',appuser.uc_id]"><i
-                        class="ti ti-shift-right"></i> <span>Sign Out</span></a></li>
-            </ul>
-        </div>
-    </ul>
+        
+    </div>
 </header>

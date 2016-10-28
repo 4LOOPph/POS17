@@ -35,7 +35,7 @@
             </div>
             <div class="asset-by-industry" ng-if="assetcopy.length > 0">
                 <ks-swiper-container show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetcopy" ng-if="item.isDeleted == 0">
+                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetcopy track by item.asset_id | orderBy:'date_created':true" ng-if="item.isDeleted == 0">
                         <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                             <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                 <img ng-src="{{item.asset_url}}" />
@@ -93,7 +93,8 @@
                                                ng-if="item.asset_mimetype == 'video/mp4'"></i>
                                         </span>
                                 <span class="pad_side_10 ">
-                                            {{item.asset_name}}
+                                            <!-- {{item.asset_name}} -->
+                                            {{item.date_created}}
                                         </span>
                             </div>
                         </a>
@@ -105,7 +106,7 @@
             </div>
             <div class="asset-by-industry" ng-if="assetshared.length > 0">
                 <ks-swiper-container show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetshared">
+                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetshared | orderBy:'date_created':true track by $index">
                         <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                             <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                 <img ng-src="{{item.asset_url}}" />

@@ -34,7 +34,7 @@
         <ul class="flexi-menu ">
             <li>
                 <a id="active-experience" ng-click="product('Experience')">
-                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm " ng-show="isHide">Experience</span></a>
+                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm " ng-show="isHide" >Experience</span></a>
             </li>
             <li>
                 <a id="active-catalogue" ng-click="product('Product')" ng-if="appuser">
@@ -58,31 +58,31 @@
         </ul>
     </nav>
 </div>
-<div class="sm-side" ng-show="isHide">
+<div class="sm-side" >
     <nav class="flexi-sidebar ">
         <ul class="flexi-menu ">
             <li>
                 <a id="active-experience" ng-click="product('Experience')">
-                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm " ng-show="isHide">Experience</span></a>
+                    <img src="./images/icons/ico_home00.svg" style="width: 25px;" /> <span class="nav-itm ">Experience</span></a>
             </li>
             <li>
                 <a id="active-catalogue" ng-click="product('Product')" ng-if="appuser">
-                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="nav-itm " ng-show="isHide">Product Catalogue</span></a>
+                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;" /> <span class="nav-itm " >Product Catalogue</span></a>
             </li>
             <!-- <li ng-if="isAssets"> -->
             <li>
                 <a id="active-presentation" ng-click="product('Presentation')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="nav-itm " ng-show="isHide">File Manager</span></a>
+                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;" /> <span class="nav-itm " >File Manager</span></a>
             </li>
             <li>
                 <!-- <li ng-if="isPreso"> -->
                 <a id="active-preso" ng-click="product('Gallery')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="nav-itm " ng-show="isHide">Presentation</span>
+                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;" /> <span class="nav-itm " >Presentation</span>
                 </a>
             </li>
             <li><a id="active-compare" ng-click="product('Compare')" ng-if="appuser">
                 <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
-                <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="nav-itm " ng-show="isHide"> Compare</span></a>
+                <img  src="./images/icons/ico_compare00.svg" style="width: 23px;" /> <span class="nav-itm " > Compare</span></a>
             </li>
         </ul>
     </nav>
