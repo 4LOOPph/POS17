@@ -44,7 +44,7 @@
                 <tr class="border-bottom compare_head" style="background: white;">
                     <td style=" vertical-align: bottom; padding: 10px;">
                     </td>
-                    <td ng-repeat="value in compareproducts">
+                    <td ng-repeat="value in compareproducts" ng-click="toggleProduct = !toggleProduct">
                         <a class="remove bg-violet" ng-click="removeItem(value)">
                             <i class="fa fa-close"></i>
                         </a>
@@ -60,7 +60,7 @@
                         <div class="font_medium font_18 grey2 padding_10">
                             {{value.bundle_name || value.item_name}}
                             <div>
-                                <a class="font_12 grey2" ng-click="vewDetail(value)">
+                                <a class="font_12 " ng-click="vewDetail(value)">
 
                                 View Details
                             </a>
@@ -78,7 +78,7 @@
                 </tr>
                 <tr ng-click="toggleCMS = !toggleCMS" ng-class="{'row-highlight' : toggleCMS}" ng-hide="viewSoftware" class=" compare_body">
                     <td class="td-label">CMS</td>
-                    <td ng-repeat="item in compareproducts track by $index ">
+                    <td ng-class="{'row-highlight' : toggleProduct}" ng-repeat="item in compareproducts track by $index ">
                         {{item.bundle_name || item.item_name}}
                     </td>
                 </tr>

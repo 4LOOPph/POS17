@@ -7,24 +7,6 @@
         <form role="form">
             <div class="col-md-12">
                 <div class="box" style="padding-top:10px;">
-                    <!--  <div class="form-group">
-                        <div class="mailbox-controls">
-                            <button type="button" class="btn btn-flat btn-success btn-s" ng-click="uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" ng-if="isUploadAll">
-                                <span class="glyphicon glyphicon-upload"></span> Upload all
-                            </button>
-                            <button type="button" class="btn btn-flat btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                            </button>
-                            <button type="button" class="btn btn-flat btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-                                <span class="glyphicon glyphicon-trash"></span> Remove all
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="progress" style="">
-                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
-                        </div>
-                    </div> -->
                     <div class="form-group">
                         <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
                             <div class="text-center">
@@ -37,7 +19,7 @@
                             </div>
                         </div>
                         <div class="input-group image-preview">
-                            <div class="input-group-btn">
+                            <div class="input-group-btn" style="padding-right: 10px;">
                                 <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
                                     <input type="file" accept="image/png,image/jpeg, image/gif, image/jpeg, image/x-ms-bmp, 
                                         audio/mp3, audio/mp4, 
@@ -51,6 +33,16 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h4>
+                            File Privacy
+                        </h4>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="privacy" value="false" ng-required="true" ng-boolean-radio >Public
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="privacy" value="true" ng-required="true" ng-boolean-radio >Private
+                        </label>
                     </div>
                     <div class="form-group">
                         <table class="table">

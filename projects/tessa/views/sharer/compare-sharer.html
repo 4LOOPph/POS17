@@ -69,7 +69,7 @@
                     <img ng-repeat="image in value.product_images | limitTo:1" ng-src="{{image.image_path}}"
                          style="max-height:100px;"/>
                     <div class="img_holder" ng-if="value.value">
-                        <img ng-src="{{value.value}}"/>
+                        <img src="{{value.value}}"/>
                     </div>
                     <div style="font-weight: bold; padding: 10px;font-size: 16px">
                         {{value.bundle_name || value.item_name}}

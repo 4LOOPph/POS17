@@ -1,3 +1,7 @@
+<div class="modal-header ng-scope">
+<span class="font_24 blue2 ">Shopping Cart</span>
+<button class="close" aria-hidden="true" ng-click="cancel()">×</button>
+</div>
 <div id="modal-cart">
     <div class="modal-body" style="padding:0;">
         <!--Cart-->
@@ -5,9 +9,9 @@
             <div ng-switch-when="items">
                 <div class="dis_flex">
                     <div id="shopping_cart">
-                        <div class="row_title">
+                        <!--<div class="row_title">
                             SHOPPING CART
-                        </div>
+                        </div>-->
                         <div id="cart_details">
                             <div id="cart_items">
                                 <table class="flow-x">
@@ -181,7 +185,7 @@
                                 <th>Company</th>
                                 <td>
                                     <div class="field-md">
-                                        <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getCompanyDetail" local-data="companies" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight"  override-suggestions="true">
+                                        <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getCompanyDetail" local-data="companies" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight" initial-value="val"  input-changed="changed" ng-keypress="($event.which === 13)?sample(val):0">
                                         </div>
                                     </div>
 
