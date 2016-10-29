@@ -400,6 +400,7 @@ if (navigator.mozGetUserMedia) {
     };
 } else {
     console.log("Browser does not appear to be WebRTC-capable");
+    document.getElementById('loader').style.display = 'none';
 }
 // onstream event; fired both for local and remote videos
 
@@ -599,8 +600,6 @@ websocket.onclose = function() {
 infoBar.innerHTML = 'Initializing Connection';
 
 websocket.onopen = function() {
-    infoBar.innerHTML = 'Waiting for connection';
-
     var sessionDescription = {
         userid: params.s,
         extra: {},
@@ -611,16 +610,33 @@ websocket.onopen = function() {
         sessionid: params.s
     };
 
-    if (params.s) {
-        infoBar.innerHTML = 'Streaming: ' + params.s;
+    if (navigator.mozGetUserMedia) {
+        infoBar.innerHTML = 'Waiting for connection';
 
-        if (params.p) {
-            // it seems a password protected room.
-            connection.extra.password = params.p;
+        if (params.s) {
+            infoBar.innerHTML = 'Streaming: ' + params.s;
+            if (params.p) {
+                // it seems a password protected room.
+                connection.extra.password = params.p;
+            }
+            // http://www.rtcmulticonnection.org/docs/join/
+            connection.join(sessionDescription);
         }
 
-        // http://www.rtcmulticonnection.org/docs/join/
-        connection.join(sessionDescription);
+    } else if (navigator.webkitGetUserMedia) {
+        infoBar.innerHTML = 'Waiting for connection';
+
+        if (params.s) {
+            infoBar.innerHTML = 'Streaming: ' + params.s;
+            if (params.p) {
+                // it seems a password protected room.
+                connection.extra.password = params.p;
+            }
+            // http://www.rtcmulticonnection.org/docs/join/
+            connection.join(sessionDescription);
+        }
+    } else {
+        infoBar.innerHTML = 'Browser does not appear to be WebRTC-capable';
     }
 };
 
@@ -677,9 +693,9 @@ function isFullScreen() {
     return window.screenTop == 0 ? true : false;
 }
 
-// var API_URL = 'http://192.168.1.2:3000';
+// var API_URL = window.API_URL || 'http://localhost:3000';
 var API_URL = window.API_URL || 'http://54.206.38.223:5002';
-// var API_URL = 'http://54.206.38.223:5001';
+// var API_URL = window.API_URL || 'http://54.206.38.223:5001';
 
 var socket = io(API_URL);
 
