@@ -2,7 +2,7 @@
     <span><h3 class="modal-title"><img src="./images/icons/ico_cast03.svg" style="max-width: 50px;"> Cast Screen</h3></span>
 </div>
 <div class="modal-body">
-    <div class="mira" ng-if="!displayInstallPlugin">
+    <div class="mira" ng-if="!displayInstallPlugin && !displayInCompatiblePlugin">
         <div class="">
             <div class="font_medium font_15 blue3 text">Connected Devices<span class="arrow"></span></div>
         </div>
@@ -19,14 +19,19 @@
             </a>
         </div>
     </div>
-    <div class="mira" ng-if="displayInstallPlugin">
+    <div class="mira" ng-if="displayInstallPlugin && !displayInCompatiblePlugin">
         <p class="text-center">
             <a class="btn btn-lg btn-primary" href="" ng-click="installPlugin()" role="button">Install Plugin</a>
         </p>
     </div>
+    <div class="mira" ng-if="!displayInstallPlugin && displayInCompatiblePlugin">
+        <p class="text-center">
+            <label class="font_24 text-danger">Casting not SUPPORTED on this browser!!!</label>
+        </p>
+    </div>
 </div>
 <div class="font_bold modal-footer">
-    <button ng-click="connectDevice()" ng-if="!displayInstallPlugin" class="pull-right  btn btn-primary" ng-disabled="!enableCasting">Cast to selected device</button>
+    <button ng-click="connectDevice()" ng-if="!displayInstallPlugin && !displayInCompatiblePlugin" class="pull-right  btn btn-primary" ng-disabled="!enableCasting">Cast to selected device</button>
     <button id="close_quote" type="button" class=" btn btn-primary-alt pull-left" ng-click="cancel()">Cancel
     </button>
 </div>
