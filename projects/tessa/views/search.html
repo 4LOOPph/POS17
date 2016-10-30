@@ -21,8 +21,8 @@
                 <button uib-popover-template="dynamicPopover.templateUrl5" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">
                     Usages <i class="fa fa-caret-down"></i>
                 </button>
-                 <button uib-popover-template="dynamicPopover.templateUrl7" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">
-                     Brightness <i class="fa fa-caret-down"></i>
+                <button uib-popover-template="dynamicPopover.templateUrl7" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">
+                    Brightness <i class="fa fa-caret-down"></i>
                 </button>
                 <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">
                     Bezel Size <i class="fa fa-caret-down"></i>
@@ -59,8 +59,28 @@
                                     <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
                                 </a>
                                 <a class="img_holder" ng-if="items.self == 'articles'">
-                                    <img ng-src="{{image.media_path}}" ng-repeat="image in items.mediafiles | limitTo:1" imageonload err-src="images/is5.jpg" />
-                                    <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;"></span>
+                                    <img ng-src="{{image.media_path}}" ng-repeat="image in items.mediafiles | limitTo:1" imageonload err-src="images/is5.jpg" ng-if="image.media_mimetype == 'image/jpeg' ||image.media_mimetype == 'image/png'" />
+                                    <!-- <span class="loading" style="text-align: center;margin-left: 40%;margin-right: 40%;"> <img src="./images/icons/default.gif" style="width: 20% !important;" ng-if="image.media_mimetype == 'image/jpeg'"></span> -->
+                                    <div class="videogular-container" ng-repeat="item in items.mediafiles | limitTo:1" ng-if="item.media_mimetype == 'video/mp4'">
+                                        <videogular vg-theme="item.url">
+                                            <vg-media vg-src="item.media_path"></vg-media>
+                                            <vg-controls>
+                                                <vg-play-pause-button></vg-play-pause-button>
+                                                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                                                <vg-scrub-bar>
+                                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                                </vg-scrub-bar>
+                                                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                                                <vg-volume>
+                                                    <vg-mute-button></vg-mute-button>
+                                                    <vg-volume-bar></vg-volume-bar>
+                                                </vg-volume>
+                                                <vg-fullscreen-button></vg-fullscreen-button>
+                                            </vg-controls>
+                                            <!-- <vg-overlay-play></vg-overlay-play> -->
+                                            <vg-buffering></vg-buffering>
+                                        </videogular>
+                                    </div>
                                 </a>
                                 <a class="img_holder" ng-if="items.self == 'bundles'">
                                     <img ng-src="{{image.image_path}}" ng-repeat="image in items.product_images | limitTo:1" imageonload err-src="images/is5.jpg" />

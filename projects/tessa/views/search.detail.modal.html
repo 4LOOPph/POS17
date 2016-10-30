@@ -13,10 +13,30 @@
     <div id="mdl-hardware">
         <div class="contain-image">
             <div class="img_holder pad20top" ng-if="selected.self == 'articles'">
-                <img ng-src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" />
+                <img ng-src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" ng-if="image.media_mimetype == 'image/jpeg' || image.media_mimetype == 'image/png'"/>
+                <div class="videogular-container" ng-repeat="image in selected.mediafiles | limitTo:1" ng-if="image.media_mimetype == 'video/mp4'">
+                    <videogular vg-theme="image.url">
+                        <vg-media vg-src="image.media_path"></vg-media>
+                        <vg-controls>
+                            <vg-play-pause-button></vg-play-pause-button>
+                            <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                            <vg-scrub-bar>
+                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                            </vg-scrub-bar>
+                            <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                            <vg-volume>
+                                <vg-mute-button></vg-mute-button>
+                                <vg-volume-bar></vg-volume-bar>
+                            </vg-volume>
+                            <vg-fullscreen-button></vg-fullscreen-button>
+                        </vg-controls>
+                        <vg-overlay-play></vg-overlay-play>
+                        <vg-buffering></vg-buffering>
+                    </videogular>
+                </div>
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'products'">
-            <img ng-src="{{selected.img_default}}"  err-src="images/is5.jpg" class="bg-icon">
+                <img ng-src="{{selected.img_default}}" err-src="images/is5.jpg" class="bg-icon">
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'bundles'">
                 <img ng-src="{{image.image_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1">
@@ -40,13 +60,10 @@
                 <p ng-bind-html="selected.bundle_description"></p>
             </div>
         </div>
-
-
     </div>
 </div>
 <div class="modal-footer margin20top">
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button ng-if="selected.self == 'products' || selected.self == 'bundles' || selected.self == 'articles'"
-            type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification
+    <button ng-if="selected.self == 'products' || selected.self == 'bundles' || selected.self == 'articles'" type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification
     </button>
 </div>
