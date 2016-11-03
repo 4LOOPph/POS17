@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Symphony</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
     <!-- LIBRARY -->
     <link rel="stylesheet" href="css/main.min.css"/>
     <link rel="stylesheet" href="css/main-print.min.css" media="print"/>
@@ -34,6 +33,23 @@
     <!-- ./wrapper -->
     <script src="js/main.min.js"></script>
     <script src="js/main.min.worker.js"></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+    <script>
+    // var AppID = 'b4a5359b-0427-4e97-a1e8-db8af8ebfb3b'; // LOCAL
+    var AppID = '04721b32-cbbe-48b0-816f-7856fefb0919'; // STAGING
+    // var AppID = '2a21a2e7-58e9-484f-ab16-eb9e565fd371'; // PRODUCTION
+
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+        appId: AppID,
+        autoRegister: false,
+        /* Set to true to automatically prompt visitors */
+        subdomainName: 'https://4loopph.onesignal.com',
+        notifyButton: {
+            enable: true /* Set to false to hide */
+        }
+    }]);
+    </script>
     <!--
         *
         *

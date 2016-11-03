@@ -62,63 +62,87 @@
             </div>
         </form>
     </div>
-    <div class="col-md-6 ">
-        <form role="form " name="recoveryForm " ng-submit="addRecoveryEmail() " novalidate="novalidate ">
+    <div class="col-md-6">
+        <form role="form " name="userPOSPin" ng-submit="addPOSPIN() " novalidate="novalidate ">
             <div class="box box-warning ">
                 <div class="box-header ">
-                    <h3 class="box-title ">Connect</h3>
+                    <h3 class="box-title ">Personal Identification Number</h3>
                     <div class="box-body ">
-                        <div class="form-group well">
-                            <label>Connect your Facebook account</label>
-                            <a class="btn pull-right btn-social btn-facebook" ng-click="authenticate('facebook')" ng-if="!showFacebook">
-                                <i class="fa fa-facebook"></i> Connect Facebook
-                            </a>
-                            <a class="btn pull-right btn-social btn-github" ng-click="unlinkAccount('facebook')" ng-if="showFacebook">
-                                <i class="fa fa-unlock"></i> Unlink Facebook
-                            </a>
-                            <a class="btn pull-right btn-social btn-facebook" style="margin-right: 10px;" ng-click="viewProfile('facebook',social.facebook_uuid)" ng-if="showFacebook">
-                                <i class="fa fa-user"></i> View Profile
-                            </a>
+                        <div class="form-group ">
+                            <label>PIN Number</label>
+                            <div class="input-group">
+                                <input type="{{inputType}}" numbers-only ng-model="details.pos_pin " class="form-control " placeholder="PIN Number" validator="required ">
+                                <span class="input-group-btn">
+                                    <a class="btn btn-default btn-flat" ng-click="hideShowPassword()">
+                                        <i class="fa fa-eye" ng-if="inputType=='password'"></i>
+                                        <i class="fa fa-eye-slash" ng-if="inputType=='text'"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                        <div class="form-group well">
-                            <label>Connect your Google account</label>
-                            <a class="btn pull-right btn-social btn-google" ng-click="authenticate('google')" ng-if="!showGoogle">
-                                <i class="fa fa-google"></i> Connect Google
-                            </a>
-                            <a class="btn pull-right btn-social btn-google" ng-click="unlinkAccount('google')" ng-if="showGoogle">
-                                <i class="fa fa-unlock"></i> Unlink Google
-                            </a>
-                            <a class="btn pull-right btn-social btn-google" style="margin-right: 10px;" ng-click="viewProfile('google',social.google_uuid)" ng-if="showGoogle">
-                                <i class="fa fa-user"></i> View Profile
-                            </a>
-                        </div>
-                        <div class="form-group well">
-                            <label>Connect your Twitter account</label>
-                            <a class="btn pull-right btn-social btn-twitter" ng-click="authenticate('twitter')" ng-if="!showTwitter">
-                                <i class="fa fa-twitter"></i> Connect Twitter
-                            </a>
-                            <a class="btn pull-right btn-social btn-twitter" ng-click="unlinkAccount('twitter')" ng-if="showTwitter">
-                                <i class="fa fa-unlock"></i> Unlink Twitter
-                            </a>
-                            <a class="btn pull-right btn-social btn-twitter" style="margin-right: 10px;" ng-click="viewProfile('twitter',social.twitter_uuid)" ng-if="showTwitter">
-                                <i class="fa fa-user"></i> View Profile
-                            </a>
-                        </div>
-                        <div class="form-group well">
-                            <label>Connect your LinkedIn account</label>
-                            <a class="btn pull-right btn-social btn-linkedin" ng-click="authenticate('linkedin')" ng-if="!showLinkedin">
-                                <i class="fa fa-linkedin"></i> Connect LinkenIn
-                            </a>
-                            <a class="btn pull-right btn-social btn-linkedin" ng-click="unlinkAccount('linkedin')" ng-if="showLinkedin">
-                                <i class="fa fa-unlock"></i> Unlink LinkenIn
-                            </a>
-                            <a class="btn pull-right btn-social btn-linkedin" style="margin-right: 10px;" ng-click="viewProfile('linkedin',social.linkedin_uuid)" ng-if="showLinkedin">
-                                <i class="fa fa-user"></i> View Profile
-                            </a>
-                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" ng-disabled="userPOSPin.$invalid " class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>
         </form>
+    </div>
+    <div class="col-md-12">
+        <div class="box box-warning ">
+            <div class="box-header ">
+                <h3 class="box-title ">Connect</h3>
+                <div class="box-body ">
+                    <div class="form-group well">
+                        <label>Connect your Facebook account</label>
+                        <a class="btn pull-right btn-social btn-facebook" ng-click="authenticate('facebook')" ng-if="!showFacebook">
+                            <i class="fa fa-facebook"></i> Connect Facebook
+                        </a>
+                        <a class="btn pull-right btn-social btn-github" ng-click="unlinkAccount('facebook')" ng-if="showFacebook">
+                            <i class="fa fa-unlock"></i> Unlink Facebook
+                        </a>
+                        <a class="btn pull-right btn-social btn-facebook" style="margin-right: 10px;" ng-click="viewProfile('facebook',social.facebook_uuid)" ng-if="showFacebook">
+                            <i class="fa fa-user"></i> View Profile
+                        </a>
+                    </div>
+                    <div class="form-group well">
+                        <label>Connect your Google account</label>
+                        <a class="btn pull-right btn-social btn-google" ng-click="authenticate('google')" ng-if="!showGoogle">
+                            <i class="fa fa-google"></i> Connect Google
+                        </a>
+                        <a class="btn pull-right btn-social btn-google" ng-click="unlinkAccount('google')" ng-if="showGoogle">
+                            <i class="fa fa-unlock"></i> Unlink Google
+                        </a>
+                        <a class="btn pull-right btn-social btn-google" style="margin-right: 10px;" ng-click="viewProfile('google',social.google_uuid)" ng-if="showGoogle">
+                            <i class="fa fa-user"></i> View Profile
+                        </a>
+                    </div>
+                    <div class="form-group well">
+                        <label>Connect your Twitter account</label>
+                        <a class="btn pull-right btn-social btn-twitter" ng-click="authenticate('twitter')" ng-if="!showTwitter">
+                            <i class="fa fa-twitter"></i> Connect Twitter
+                        </a>
+                        <a class="btn pull-right btn-social btn-twitter" ng-click="unlinkAccount('twitter')" ng-if="showTwitter">
+                            <i class="fa fa-unlock"></i> Unlink Twitter
+                        </a>
+                        <a class="btn pull-right btn-social btn-twitter" style="margin-right: 10px;" ng-click="viewProfile('twitter',social.twitter_uuid)" ng-if="showTwitter">
+                            <i class="fa fa-user"></i> View Profile
+                        </a>
+                    </div>
+                    <div class="form-group well">
+                        <label>Connect your LinkedIn account</label>
+                        <a class="btn pull-right btn-social btn-linkedin" ng-click="authenticate('linkedin')" ng-if="!showLinkedin">
+                            <i class="fa fa-linkedin"></i> Connect LinkenIn
+                        </a>
+                        <a class="btn pull-right btn-social btn-linkedin" ng-click="unlinkAccount('linkedin')" ng-if="showLinkedin">
+                            <i class="fa fa-unlock"></i> Unlink LinkenIn
+                        </a>
+                        <a class="btn pull-right btn-social btn-linkedin" style="margin-right: 10px;" ng-click="viewProfile('linkedin',social.linkedin_uuid)" ng-if="showLinkedin">
+                            <i class="fa fa-user"></i> View Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -16,16 +16,16 @@
                     <li ng-if="showBarMove">
                         <a ng-click="moveSelected()"><i class="fa fa-arrows-alt"></i>&nbsp Move to...</a>
                     </li>
-                    <li ng-if="selectedFile.isStarred == 0">
+                    <li ng-if="showBarAddStar && selectedFile.isStarred == 0">
                         <a ng-click="starredSelected()"><i class="fa fa-star"></i>&nbsp Add star</a>
                     </li>
-                    <li ng-if="selectedFile.isStarred == 1">
+                    <li ng-if="showBarRemoveStar && selectedFile.isStarred == 1">
                         <a ng-click="starredSelected()"><i class="fa fa-star-o"></i>&nbsp Remove star</a>
                     </li>
-                    <li>
+                    <li ng-if="showBarRename">
                         <a ng-click="renameSelected()"><i class="fa fa-pencil"></i>&nbsp Rename</a>
                     </li>
-                    <li class="divider"></li>
+                    <li class="divider" ng-if="showBarRename"></li>
                     <li>
                         <a ng-click="showInfoSelected()"><i class="fa fa-info-circle"></i>&nbsp View details</a>
                     </li>
@@ -50,9 +50,7 @@
                     <button class="btn btn-default btn-flat btn-sm" ng-if="!isList" ng-click="changeDisplay()" uib-tooltip="List View"><i class="fa fa-list"></i></button>
                 </div>
                 <button class="btn btn-default btn-flat btn-sm" uib-tooltip="Settings"><i class="fa fa-cogs"></i></button>
-                <!-- /.btn-group -->
             </div>
-            <!-- /.pull-right -->
         </div>
         <div class="mailbox-controls" ng-if="assets.info">
             <ol class="breadcrumb" ng-if="showBread">
@@ -80,12 +78,12 @@
                             <i class="fa fa-envelope-o"></i><span>Send via Email</span>
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
+                    <li ng-if="showBarAddStar && meta.contextmenu.item.isStarred == 0 && meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" href ng-click="starredSelected()">
                             <i class="fa fa-star"></i><span>Add Star</span>
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
+                    <li ng-if="showBarRemoveStar && meta.contextmenu.item.isStarred == 1 && meta.contextmenu.item.isDeleted == 0">
                         <a role="menuitem" href ng-click="starredSelected()">
                             <i class="fa fa-star-o"></i><span>Remove Star</span>
                         </a>
@@ -95,7 +93,7 @@
                             <i class="fa fa-arrows-alt"></i><span>Move to...</span>
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 0">
+                    <li ng-if="meta.contextmenu.item.isDeleted == 0 && showBarRename">
                         <a role="menuitem" href ng-click="renameSelected()">
                             <i class="fa fa-pencil"></i><span>Rename</span>
                         </a>
@@ -106,7 +104,7 @@
                             <i class="fa fa-info-circle"></i><span>View Details</span>
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0">
+                    <li ng-if="meta.contextmenu.item.isFolder == false && meta.contextmenu.item.isDeleted == 0 && showToolMakeCopy">
                         <a role="menuitem" href>
                             <i class="fa fa-copy"></i><span>Make a copy</span>
                         </a>
@@ -116,13 +114,13 @@
                             <i class="fa fa-download"></i><span>Download</span>
                         </a>
                     </li>
-                    <li ng-if="meta.contextmenu.item.isDeleted == 1">
+                    <li ng-if="meta.contextmenu.item.isDeleted == 1 && showBarRestore">
                         <a role="menuitem" href ng-click="restoreSelected()">
                             <i class="fa fa-history"></i> <span>Restore</span>
                         </a>
                     </li>
-                    <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0"></li>
-                    <li>
+                    <li class="divider" ng-if="meta.contextmenu.item.isDeleted == 0 && showBarDelete"></li>
+                    <li ng-if="showBarDelete">
                         <a role="menuitem" href ng-click="deleteSelected()">
                             <i class="fa fa-trash-o"></i><span>Remove</span>
                         </a>
