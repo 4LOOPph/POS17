@@ -35,16 +35,29 @@
     <script src="js/main.min.worker.js"></script>
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
     <script>
-    // var AppID = 'b4a5359b-0427-4e97-a1e8-db8af8ebfb3b'; // LOCAL
-    var AppID = '04721b32-cbbe-48b0-816f-7856fefb0919'; // STAGING
-    // var AppID = '2a21a2e7-58e9-484f-ab16-eb9e565fd371'; // PRODUCTION
+    /*var App = { 
+        appID: 'b4a5359b-0427-4e97-a1e8-db8af8ebfb3b',
+        domain: 'https://4loopph.onesignal.com'
+    }; // LOCAL*/
+
+    var App = { 
+        appID: '04721b32-cbbe-48b0-816f-7856fefb0919',
+        domain: 'https://symphony-staging.onesignal.com'
+    }; // STAGING
+
+    /*var App = { 
+        appID: '2a21a2e7-58e9-484f-ab16-eb9e565fd371',
+        domain: 'https://symphony-live.onesignal.com'
+    }; // PRODUCTION*/
+
+
 
     var OneSignal = window.OneSignal || [];
     OneSignal.push(["init", {
-        appId: AppID,
+        appId: App.appID,
         autoRegister: false,
         /* Set to true to automatically prompt visitors */
-        subdomainName: 'https://4loopph.onesignal.com',
+        subdomainName: App.domain,
         notifyButton: {
             enable: true /* Set to false to hide */
         }
