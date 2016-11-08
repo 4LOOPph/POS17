@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-header"><i class="glyphicon glyphicon-info-sign"></i> Item Information</h2>
+    </div>
+    <div class="col-xs-12">
+        <form role="form" class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <dl class="dl-horizontal">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Company Name:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.company_name" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">First Name:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.firstname" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Last Name:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.lastname" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Email:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.email" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Address 1:</label>
+                                <div class="col-sm-8">
+                                    <textarea disabled class="form-control" ng-model="details.address1" /></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Address 2:</label>
+                                <div class="col-sm-8">
+                                    <textarea disabled class="form-control" ng-model="details.address2" /></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Country:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.country" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">State:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.state" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">City:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.city" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Zipcode:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.zipcode" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Requested Plan:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.requestedPlan.name" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Requested Plan Description:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.requestedPlan.description" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Subscribed Plan:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.subscribedPlan.name" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Subscribed Plan Description:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.subscribedPlan.description" />
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group ">
+                                <label class="col-sm-4 control-label">Gk Code:</label>
+                                <div class="col-sm-8">
+                                    <input disabled class="form-control" ng-model="details.gk_code" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Gk SecretKey:</label>
+                                <div class="col-sm-6">
+                                    <input type="{{inputType}}" ng-disabled="buttonEnable" class="form-control" ng-model="details.gk_secretKey" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-default btn-sm" href="" role="button" ng-click="hideShowPassword()">{{buttonLabel}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="row no-print">
+                <div class="col-xs-12">
+                    <button class="btn btn-sm btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                    <button class="btn btn-sm btn-primary "><i class="fa fa-download"></i> Generate PDF</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

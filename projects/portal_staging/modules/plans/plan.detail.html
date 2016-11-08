@@ -16,13 +16,13 @@
 <section class="content">
     <div class="nav-tabs-custom" bs-tabs>
         <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
-        <!-- <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
-            <div class="tab-pane active" id="profile"> -->
+        <div data-title="<i class='fa fa-info'></i> Information" bs-pane>
+            <div class="tab-pane active" id="profile">
                 <!-- title row -->
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="page-header">
-                            <i class="glyphicon glyphicon-info-sign"></i> Item Information
+                            <i class="glyphicon glyphicon-info-sign"></i> Plan Information
                             
                         </h2>
                     </div>
@@ -31,60 +31,31 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <dl class="dl-horizontal">
-                            <dt class="text-muted">Item ID:</dt>
-                            <dd>{{details.p_id}}</dd>
-                            <dt class="text-muted">Item Name:</dt>
-                            <dd>{{details.item_name}}</dd>
+                            <dt class="text-muted">Plan:</dt>
+                            <dd>{{details.name}}</dd>
+                            <dt class="text-muted">Label:</dt>
+                            <dd>{{details.label}}</dd>
                             <dt class="text-muted">Description:</dt>
-                            <dd>{{details.item_description}}</dd>
-                            <dt class="text-muted">Brand:</dt>
-                            <dd>{{details.brand}}</dd>
-                            <dt class="text-muted">Sell Price:</dt>
-                            <dd>{{details.sell_price}}</dd>
-                            <dt class="text-muted">Purchase Price:</dt>
-                            <dd>{{details.purchase_price}}</dd>
-                            <dt class="text-muted">Vat:</dt>
-                            <dd>{{details.vat}}</dd>
-                            <dt class="text-muted">ReOrder Level:</dt>
-                            <dd>{{details.reorder_level}}</dd>
-                            <dt class="text-muted">Product Id:</dt>
-                            <dd>{{details.productType_id}}</dd>
-                            <dt class="text-muted">Product Code:</dt>
-                            <dd>{{details.product_code}}</dd>
+                            <dd>{{details.description}}</dd>
+                            <dt class="text-muted">Price:</dt>
+                            <dd>{{details.price | currency : "Php "}}</dd>
                         </dl>
                     </div>
                     <!-- /.col -->
                 </div>
-                <!-- /.row -->
-                <!-- <div class="row">
-                    <div class="col-sm-6">
-                        <p class="lead"><i class="fa fa-envelope-o"></i> Address</p>
-                        <dl class="dl-horizontal">
-                            <dt class="text-muted">Country:</dt>
-                            <dd>China</dd>
-                            <dt class="text-muted">Postal Code:</dt>
-                            <dd>123456</dd>
-                            <dt class="text-muted">State/Province:</dt>
-                            <dd>Guangdong</dd>
-                            <dt class="text-muted">City:</dt>
-                            <dd>Shenzhen</dd>
-                            <dt class="text-muted">Street:</dt>
-                            <dd>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles</dd>
-                        </dl>
-                    </div>
-                    <!-- /.col -->
-                <!-- </div> -->
                 <div class="row no-print">
                     <div class="col-xs-12">
                         <button class="btn btn-sm btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                        <button class="btn btn-sm btn-primary pull-right"><i class="fa fa-download"></i> Generate PDF</button>
+                        <button class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Update</button>
                     </div>
                 </div>
-         <!--    </div>
-        </div> -->
-        <!-- <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
-        <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
-        <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
-        <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div> -->
+            </div>
+        </div>
+        <div data-title="<i class='fa fa-home'></i> Modules" bs-pane>
+           <ng-include src="'./modules/plans/plan.module.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Features" bs-pane>
+            <ng-include src="'./modules/plans/plan.feature.html'" scope="" onload=""></ng-include>
+        </div>
     </div>
 </section>
