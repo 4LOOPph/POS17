@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="nvite">
-            <!-- <div ng-if="sharer.isPublic">
+            <div ng-if="sharer.isPublic">
                 Link sharing
                 <div class="input-group" style="margin-bottom: 15px;width: 100%;">
                     <div class="form-group">
@@ -53,10 +53,10 @@
                             <div class="grey3">Anyone at Tessa can view</div>
                             <button class="copylinkbtn" ngclipboard data-clipboard-target="#foo" ng-click="copyclipAlert()">Copy link</button>
                         </div>
-                        <input type="text" id="foo" class="form-control linkinput" value="http://localhost:9003/#/main/presentation">
+                        <input type="text" id="foo" class="form-control linkinput" ng-model="sharer.publiclink">
                     </div>
                 </div>
-            </div> -->
+            </div>
             <div ng-if="!sharer.isPublic">
                 Invite people:
                 <div class="input-group" style="margin-bottom: 15px;">

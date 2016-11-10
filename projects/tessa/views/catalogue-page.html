@@ -56,6 +56,19 @@
                 <div ng-show="prodTypeLabel == 'Solution'" style="padding:10px 0px 0px;">
                     <div class="dd-filter" ng-show="solutionTypes == 'EzeImpress'">
                         <span>
+                            <div class="inblock">
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
+                                       ng-keypress="($event.which === 13)?searchData():0" class="form-control"
+                                       ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                  <a class="blue1" ng-click="searchData()">
+                                  <i class="fa fa-search"></i>
+                                   </a>
+                                </div>
+                            </div>
+                        </span>
+                        <span>
                             <button uib-popover-template="dynamicPopover.location" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
                                     style="margin-right: 5px;margin-top: -2px;">Location
@@ -94,19 +107,7 @@
                                 <span class="caret"></span>
                         </button>
                         </span>
-                        <span>
-                            <div class="inblock">
-                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
-                                       ng-keypress="($event.which === 13)?searchData():0" class="form-control"
-                                       ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
-                            </div><div class="inblock">
-                                <div class="form_addon">
-                                  <a class="blue1" ng-click="searchData()">
-                                  <i class="fa fa-search"></i>
-                                   </a>
-                                </div>
-                            </div>
-                        </span>
+
                     </div>
                     <div class="dd-filter" ng-show="solutionTypes == 'EzeWifi'">
                         <!--EZE WIFI-->
@@ -275,7 +276,7 @@
         </div>
         <div class="">
             <div class="row-results">
-                <div ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of Results({{products.length}})
+                <div ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeImpress'"> Number of Results({{EzeImpress.length || 0}})
                 </div>
                 <div ng-if="prodTypeLabel == 'Solution' && solutionTypes == 'EzeWifi'">
                     Number of Results({{categoryWifi.length}})
@@ -367,9 +368,9 @@
                             <div class=" sec-search-filter" ng-if="products.length == 0">
                                 <h4>NO RESULT</h4>
                             </div>
-                            <div class="col-lg-3" ng-repeat="item in products" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
+                            <div class="col-lg-3" ng-repeat="item in EzeImpress" ng-if="item.is_published == 1 && item.is_archived == 0 && item.category_label == 'Eze Impress'">
                                 <div class="panel panel-default">
-                                    <div class="dis_table box-stick ">
+                                    <div class="dis_table box-stick" ng-if="item.comparable == 1">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
@@ -712,7 +713,7 @@
     }**/
 
 .popover.bottom > .arrow {
-    left: 30% !important;
+    left: 50% !important;
 }
 
 .filterss {
@@ -739,7 +740,7 @@
 
 .popover.bottom {
     margin-top: 10px;
-    left: -21px !important;
+   /* left: -21px !important;*/
 }
 
 .checkbox label,

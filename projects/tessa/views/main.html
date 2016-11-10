@@ -2,10 +2,12 @@
 <div id="wrapper">
     <span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-1"></span>
     <div id="layout-static">
+
         <div id="myBar" class="static-sidebar-wrapper sidebar-midnightblue" ng-controller="sidebarCtrl">
             <ng-include src="'./views/sidebar.html'"></ng-include>
         </div>
-        <div class="static-content-wrapper" >
+
+        <div class="static-content-wrapper" ng-click="hideNav()">
             <div class="static-content">
                 <div class="page-content">
                     <div class="container-fluid">
