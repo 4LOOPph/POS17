@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ctn-ico">
-                    <img src="./images/icons/ico_compare01-01.svg" />
+                    <img src="./images/icons/ico_compare01-01.svg"/>
                     <h2 class="fg-sky">Product Comparison</h2>
                 </div>
             </div>
@@ -17,22 +17,16 @@
                 </button>
                 <button type="button" class="btn bg-midnight" ui-sref="main.productCatalogue">
                     <div class="ctn-ico">
-                        <img src="./images/icons/ico_store00_nav.svg" />
+                        <img src="./images/icons/ico_store00_nav.svg"/>
                         <span class="sm_hid">Browse Products</span>
                     </div>
                 </button>
             </div>
         </div>
     </div>
-
-
-    <!------------------------->
-    <!--Column Implementation-->
-    <!------------------------->
-    <div class="ctn">
+    <!--  <div class="ctn">
         <div class="row">
             <div ng-repeat="group in compareproducts" class="col-lg-3 col-xs-6">
-                <!--One Product Instance-->
                 <div class="cpr-ctn">
                     <div class="cpr-head center_align">
                         <h3>
@@ -47,23 +41,13 @@
                         <img src="{{image.image_path}}" />
                     </div>
                     <br>
-                    <!------------------------------>
-                    <!--Show Products per Category-->
-                    <!------------------------------>
-                    <div class="product-spec" >
+                    <div class="product-spec">
                         <div class="sec-head">
                             <h4>
                             SOFTWARE
                             </h4>
                         </div>
-                        <!-- <div class="atb-dtl">
-                            <div class="atb">
-                                <h6>CMS</h6>
-                                <p>Eze Impress Media Player Only (Essential)</p>
-                            </div>
-                        </div> -->
-                        <div class="atb-dtl"  ng-repeat="(key,value) in (group.software | groupBy: 'category_label')">
-                            <!-- MEDIA PLAYER -->
+                        <div class="atb-dtl" ng-repeat="(key,value) in (group.software | groupBy: 'category_label')">
                             <div class="atb" ng-repeat="val in value">
                                 <h6>{{key}}</h6>
                                 <p>{{val.product_detail.item_name}}</p>
@@ -76,21 +60,13 @@
                         {{hardware.category_label}}
                             </h4>
                         </div>
-                        <!-- <div class="atb-dtl">
-                            <div class="atb">
-                                <h6>CMS</h6>
-                                <p>Eze Impress Media Player Only (Essential)</p>
-                            </div>
-                        </div> -->
                         <div class="atb-dtl" ng-repeat="values in hardware.atrribute">
-                            <!-- MEDIA PLAYER -->
                             <div class="atb" ng-if="values.is_comparable ==1">
                                 <h6>{{values.attribute}}</h6>
                                 <p>{{values.value}}</p>
                             </div>
                         </div>
                     </div>
-                    <!-- HARDWARE -->
                     <div class="product-spec" ng-if="group.p_id">
                         <div class="sec-head">
                             <h4>
@@ -110,27 +86,18 @@
                             SUPPORT TYPE
                             </h4>
                         </div>
-                        <!-- <div class="atb-dtl">
-                            <div class="atb">
-                                <h6>CMS</h6>
-                                <p>Eze Impress Media Player Only (Essential)</p>
-                            </div>
-                        </div> -->
                         <div class="atb-dtl">
-                            <!-- MEDIA PLAYER -->
                             <div class="atb">
                                 <h6>Essential</h6>
                                 <div ng-if="group.support">
-                                    <p ng-repeat="item in group.support" ng-if="item.supp.length > 0">✔</p>
-                                    <p ng-repeat="item in group.support" ng-if="item.supp.length == 0">X</p>
+                                    <p >✔</p>
                                 </div>
                                 <div ng-if="!group.support">
                                     <p>X</p>
                                 </div>
                                 <h6>Enterprise</h6>
                                 <div ng-if="group.support">
-                                    <p ng-repeat="item in group.support" ng-if="item.supp.length > 0">✔</p>
-                                    <p ng-repeat="item in group.support" ng-if="item.supp.length == 0">X</p>
+                                    <p >✔</p>
                                 </div>
                                 <div ng-if="!group.support">
                                     <p>X</p>
@@ -144,14 +111,7 @@
                             PRICE
                             </h4>
                         </div>
-                        <!-- <div class="atb-dtl">
-                            <div class="atb">
-                                <h6>CMS</h6>
-                                <p>Eze Impress Media Player Only (Essential)</p>
-                            </div>
-                        </div> -->
                         <div class="atb-dtl">
-                            <!-- MEDIA PLAYER -->
                             <div class="atb" ng-if="group.pb_id">
                                 <h6>Capex</h6>
                                 <p>{{group.upfront || group.sell_price | currency}}</p>
@@ -164,8 +124,6 @@
                             </div>
                         </div>
                     </div>
-                    <!------------------------------>
-                    <!------------------------------>
                     <br>
                     <button type="button" class="tes-btn bg-green" ng-click="addToCart(group)">
                         <i class="fa fa-shopping-cart"></i> ADD TO CART
@@ -173,134 +131,228 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
+    </div> -->
     <!---------------------->
     <!--Row Implementation-->
     <!---------------------->
 
-    <br><br>
+    <div ng-if="compareproducts.length > 0">
+        <div ng-if="compare.pb_id">
+            <div class="ctn">
+                <div class="row">
+                    <div class="col-xs-3 center_align" ng-repeat="group in comparelists">
+                        <div class="cpr-ctn">
+                            <div class="cpr-head">
+                                <h3 class="fg-dark">
+                                    {{group.titles.title}}
+                                </h3>
+                            </div>
 
-
-    <div class="ctn">
-        <div class="row">
-            <div class=" col-xs-3 center_align">
-                <div class="cpr-ctn">
-                    <div class="cpr-head">
-                        <h3 class="fg-dark">
-                            Eze Impress Media Player Only (Essential)
-                        </h3>
-                        <br>
-                        <h5>
-                            <a>View Details</a> | <a> Remove</a>
-                        </h5>
-                    </div>
-
-                    <div class="dis-img">
-                        <img src="../../images/sample-hardware-1.png"/>
-                    </div>
-                </div>
-
-            </div>
-            <div class=" col-xs-3 center_align">
-                <div class="cpr-ctn">
-                    <div class="cpr-head">
-                        <h3 class="fg-dark">
-                            Eze Impress Media Player Only (Essential)
-                        </h3>
-                        <br>
-                        <h5>
-                            <a>View Details</a> | <a> Remove</a>
-                        </h5>
-                    </div>
-
-                    <div class="dis-img">
-                        <img src="../../images/sample-hardware-1.png"/>
+                            <h5>
+                                <a ui-sref="main.productDetailsSolution({selected_id: group.id})">View Details</a> | <a
+                                    ng-click="removeItem(group)"> Remove</a>
+                            </h5>
+                        </div>
+                        <div class="dis-img">
+                            <img ng-src="{{group.titles.image}}"/>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
+            <div class="ctn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-head">
+                            <h4>
+                                Software
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row atb-itm">
+                    <div class="col-xs-3" ng-repeat="group in comparelists">
+                        <div class="atb" ng-repeat="(name,value) in group.softwaregroup">
+                            <div ng-repeat="val in value">
+                                <h6>{{name}}</h6>
+                                <p>{{val.product_detail.item_name}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="group in comparelist">
+                <div class="ctn" ng-repeat="(name,value) in group.hardwaregroup">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sec-head">
+                                <h4>
+                                    {{name}}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row atb-itm">
+                        <div class="col-xs-3" ng-repeat="val in value">
+                            <div class="atb">
+                                <div class="atb-ins" ng-repeat="attribute in val[0].atrribute"
+                                     ng-if="attribute.is_comparable == 1">
+                                    <h6>{{attribute.attribute}}</h6>
+                                    <p>{{attribute.value}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="ctn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-head">
+                        <h4>
+                            Support Type
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row atb-itm">
+                <div class="col-xs-3" ng-repeat="group in comparelists">
+                    <div class="atb">
+                        <div class="atb-ins" ng-if="group.essential">
+                            <h6>Essential</h6>
+                            <p>✔
+                            </p>
+                            <p>X
+                            </p>
+                        </div>
+                        <div class="atb-ins" ng-if="group.enterprise">
+                            <h6>Enterprise</h6>
+                            <p>✔
+                            </p>
+                            <p ng-if="!group.enterprise">X
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <div class="ctn"><!--Ng-repeat-->
+    <div class="ctn">
         <div class="row">
             <div class="col-lg-12">
                 <div class="sec-head">
                     <h4>
-                        Software <!-- attribute goes here-->
+                        Price
                     </h4>
                 </div>
-
             </div>
         </div>
         <div class="row atb-itm">
-            <div class=" col-xs-3 "><!--ng-repeat this-->
-                <div class="atb"><!--ng-repeat this-->
-                    <h6>CMS</h6>
-                    <p>Eze Impress Media Player Only
-                        (Essential)</p>
-                </div>
-                <div class="atb"><!--ng-repeat this-->
-                    <h6>CMS</h6>
-                    <p>Eze Impress Media Player Only
-                        (Essential)</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    
-    <div class="ctn"><!--For next category sample-->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="sec-head">
-                    <h4>
-                        Software <i class="fa fa-angle-down"></i>
-                    </h4>
-                </div>
-
-            </div>
-        </div>
-        <div class="row atb-itm">
-
-            <div class=" col-xs-3 "><!--ng-repeat this-->
+            <div class="col-xs-3" ng-repeat="group in comparelists">
                 <div class="atb">
-                    <h6>CMS</h6>
-                    <p>Eze Impress Media Player Only
-                        (Essential)</p>
-                </div>
-                <div class="atb">
-                    <h6>CMS</h6>
-                    <p>Eze Impress Media Player Only
-                        (Essential)</p>
+                    <div class="atb-ins">
+                        <h6>Capex</h6>
+                        <p>{{group.price | currency}}
+                        </p>
+                    </div>
+
+                    <div class="atb-ins">
+                        <h6>Opex</h6>
+                        <p ng-if="group.enterprise">{{group.weekly | currency}}
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+    <div ng-if="compare.p_id">
+        <div class="ctn">
+            <div class="row">
+                <div class="col-xs-3 center_align" ng-repeat="group in comparehardwarelists">
+                    <div class="cpr-ctn">
+                        <div class="cpr-head">
+                            <h3 class="fg-dark">
+                                {{group.title}}
+                            </h3>
+                        </div>
+                        <br>
+                        <h5>
+                            <a ui-sref="main.productDetailsHardware({selected_id: group.id})">View Details</a> | <a
+                                ng-click="removeItem(group)"> Remove</a>
+                        </h5>
+                    </div>
+                    <div class="dis-img">
+                        <img ng-src="{{group.image}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ctn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-head">
+                        <h4>
+                            {{compare.type}}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row atb-itm">
+                <div class="col-xs-3" ng-repeat="group in comparehardwarelists">
+                    <div class="atb" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
+                        <h6>{{attribute.attribute}}</h6>
+                        <p>{{attribute.value}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ctn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-head">
+                        <h4>
+                            Price
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row atb-itm">
+                <div class="col-xs-3" ng-repeat="group in comparehardwarelists">
+                    <div class="atb">
+                        <h6>Capex</h6>
+                        <p>{{group.price | currency}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
+    </div>
     <div class="ctn">
-
-        <div class="row ">
+        <div class="row">
             <div class=" col-xs-3 "><!--ng-repeat this-->
                 <button type="button" class="tes-btn bg-green">
                     <i class="fa fa-shopping-cart"></i> ADD TO CART
                 </button>
             </div>
-            <div class=" col-xs-3 "><!--ng-repeat this-->
+            <div class="col-xs-3 "><!--ng-repeat this-->
                 <button type="button" class="tes-btn bg-green">
                     <i class="fa fa-shopping-cart"></i> ADD TO CART
                 </button>
             </div>
         </div>
     </div>
-
 </div>
+
 
 <style>
     #active-compare {
