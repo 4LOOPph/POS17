@@ -7,7 +7,7 @@
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li class="active">Price</li>
+        <li class="active">Subscription Plans</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -17,27 +17,10 @@
             <div class="box">
                 <div class="box-header">
                     <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-info">Action</button>
-                            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Export All</a>
-                                </li>
-                                <li><a href="#">Export Selected</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <a ui-sref="main.lead.new">
-                            <button class="btn btn-sm btn-info">New Product Plan</button>
-                        </a>
+                    <div class="pull-left">
+                        <button class="btn btn-sm btn-info" ng-click="createPlan()">New Product Plan</button>
+                        <button class="btn btn-sm btn-default" ng-click="refreshPlan()">Refresh</button>
                     </div>
-                    <!-- /. tools -->
-                    <i class="glyphicon glyphicon-list-alt"></i>
-                    <h3 class="box-title">Plans</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -64,6 +47,10 @@
                                 <td>{{plan.label}}</td>
                                 <td>{{plan.description}}</td>
                                 <td>{{plan.price}}</td>
+                                <td class="text-right">
+                                    <button ng-click="editPlan(plan._id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button ng-click="deletePlan(plan._id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-trash"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                         <tfoot class="hide-if-no-paging">

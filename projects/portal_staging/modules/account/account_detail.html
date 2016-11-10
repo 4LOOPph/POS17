@@ -17,30 +17,23 @@
     <div class="nav-tabs-custom" bs-tabs>
         <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
         <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
-            <div class="tab-pane active" id="profile">
-                <ng-include src="'./modules/account/account_profile.html'" scope="" onload=""></ng-include>
-            </div>
+            <ng-include src="'./modules/account/account_profile.html'" scope="" onload=""></ng-include>
         </div>
         <div data-title="<i class='fa fa-envelope'></i> Message" bs-pane>
-            <div class="tab-pane" id="social">
-                <ng-include src="'./modules/account/account_message.html'" scope="" onload=""></ng-include>
-            </div>
+            <ng-include src="'./modules/account/account_message.html'" scope="" onload=""></ng-include>
         </div>
         <div data-title="<i class='fa fa-money'></i> Payment History" bs-pane>Payment History</div>
         <div data-title="<i class='fa fa-facebook'></i> Social Media" bs-pane>
-            <div class="tab-pane" id="social">
-                <ng-include src="'./modules/account/account_social.html'" scope="" onload=""></ng-include>
-            </div>
+            <ng-include src="'./modules/account/account_social.html'" scope="" onload=""></ng-include>
         </div>
         <div data-title="<i class='fa fa-credit-card-alt'></i> Payment Gateways" bs-pane>
             <ng-include src="'./modules/account/accounts_payment.html'" scope="" onload=""></ng-include>
         </div>
-        <div data-title="<i class='fa fa-tablet'></i> Devices" bs-pane>Devices</div>
-        <div data-title="<i class='fa fa-home'></i> Modules" bs-pane>
-            <ng-include src="'./modules/account/account_module.html'" scope="" onload=""></ng-include>
+        <div data-title="<i class='fa fa-tablet'></i> Devices" bs-pane>
+            <ng-include src="'./modules/account/account_device.html'" scope="" onload=""></ng-include>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Features" bs-pane>
-            <ng-include src="'./modules/account/account_feature.html'" scope="" onload=""></ng-include>
+        <div data-title="<i class='fa fa-list'></i> Modules & Features" bs-pane>
+            <ng-include src="'./modules/account/account_module.html'" scope="" onload=""></ng-include>
         </div>
     </div>
 </section>
