@@ -2,6 +2,14 @@
 <div id="wrapper">
     <span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-1"></span>
     <div id="layout-static">
+        <script>
+
+            $('input').bind('keypress', function (e) {
+                if (e.which === 13) {
+                    document.activeElement.blur();
+                }
+            });
+        </script>
 
         <div id="myBar" class="static-sidebar-wrapper sidebar-midnightblue" ng-controller="sidebarCtrl">
             <ng-include src="'./views/sidebar.html'"></ng-include>
@@ -18,3 +26,14 @@
         </div>
     </div>
 </div>
+
+<!--<script>-->
+    <!--$('#ex4_value').bind('keypress', function (e) {-->
+        <!--if (e.which === 13) {-->
+            <!--document.activeElement.blur();-->
+        <!--}-->
+    <!--});-->
+
+<!--</script>-->
+
+

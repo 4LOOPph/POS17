@@ -702,6 +702,19 @@
         </div>
     </div>
 </script>
+<script>
+    $('input').bind('keypress', function (e) {
+        if (e.which === 13) {
+            document.activeElement.blur();
+        }
+    });
+
+    $('input').keyup(function(event) {
+        if (event.which === 13) {
+            $(this).blur();
+        }
+    });
+</script>
 <style type="text/css">
 .disabled {
     cursor: not-allowed;
@@ -748,3 +761,4 @@
     width: 150px !important;
 }
 </style>
+

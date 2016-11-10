@@ -1,4 +1,11 @@
 <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
+    <script>
+        $('input').bind('keypress', function (e) {
+            if (e.which === 13) {
+                document.activeElement.blur();
+            }
+        });
+    </script>
     <div class="flx-ctn spc-btwn">
         <div class="flx-itm">
             <div class="left-nav">
@@ -14,21 +21,26 @@
                 </div>
                 <div class="topnav-itm nav-btn border-right search-lg">
                     <div class="dis_table_auto ">
-                        <div class="dis_cell">
-                            <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100"
-                                 selected-object="dataSelected" match-class="highlight" local-data="allproducts"
-                                 search-fields="name" title-field="name" minlength="1"
-                                 input-class="form-control form-control-small" text-no-results=""
-                                 initial-value="searchinput" input-changed="inputProductChanged"
-                                 class="ng-isolate-scope" ng-keypress="($event.which === 13)?sample(searchinput):0">
+                        <form>
+                            <div class="dis_cell">
+
+                                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100"
+                                     selected-object="dataSelected" match-class="highlight" local-data="allproducts"
+                                     search-fields="name" title-field="name" minlength="1"
+                                     input-class="form-control form-control-small" text-no-results=""
+                                     initial-value="searchinput" input-changed="inputProductChanged"
+                                     class="ng-isolate-scope" ng-keypress="($event.which === 13)?sample(searchinput):0">
+                                </div>
                             </div>
-                        </div>
-                        <div class="dis_cell cell_xs cell-top">
-                            <button type="button" class=" btn btn-primary" ng-click="keysearch()">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
+                            <div class="dis_cell cell_xs cell-top">
+                                <button class=" btn btn-primary" ng-click="keysearch()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -61,44 +73,54 @@
             </div>
         </div>
     </div>
+
+
     <div ng-show="isSearchToggle" class="float-search">
-        <div class="dis_table_auto full_width">
-            <div class="dis_cell">
-                <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected"
-                     match-class="highlight" local-data="allproducts" search-fields="name" title-field="name"
-                     minlength="1" input-class="form-control form-control-small" override-suggestions="true"
-                     clear-selected="true" text-no-results="" initial-value="searchinput"
-                     input-changed="inputProductChanged" class="ng-isolate-scope">
-                    <div class="angucomplete-holder" ng-class="{'angucomplete-dropdown-visible': showDropdown}">
-                        <input id="ex4_value" name="" tabindex="" ng-class="{'angucomplete-input-not-empty': notEmpty}"
-                               ng-model="searchStr" ng-disabled="disableInput" type="text" placeholder="Search..."
-                               maxlength="524288" ng-focus="onFocusHandler()"
-                               class="form-control form-control-small ng-empty ng-valid-maxlength"
-                               ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off" autocomplete="off"
-                               ng-change="inputChangeHandler(searchStr)" style="">
-                        <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown" style="">
-                            <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching"
-                                 ng-bind="textSearching">Searching...
-                            </div>
-                            <div class="angucomplete-searching ng-binding"
-                                 ng-show="!searching &amp;&amp; (!results || results.length == 0)"
-                                 ng-bind="textNoResults">
+        <form>
+            <div class="dis_table_auto full_width">
+                <div class="dis_cell">
+                    <div angucomplete-alt="" id="ex4" placeholder="Search..." pause="100" selected-object="dataSelected"
+                         match-class="highlight" local-data="allproducts" search-fields="name" title-field="name"
+                         minlength="1" input-class="form-control form-control-small" override-suggestions="true"
+                         clear-selected="true" text-no-results="" initial-value="searchinput"
+                         input-changed="inputProductChanged" class="ng-isolate-scope">
+                        <div class="angucomplete-holder" ng-class="{'angucomplete-dropdown-visible': showDropdown}">
+                            <input type="search" id="ex4_value" name="" tabindex=""
+                                   ng-class="{'angucomplete-input-not-empty': notEmpty}"
+                                   ng-model="searchStr" ng-disabled="disableInput" placeholder="Search..."
+                                   maxlength="524288" ng-focus="onFocusHandler()"
+                                   class="form-control form-control-small ng-empty ng-valid-maxlength"
+                                   ng-blur="hideResults($event)" autocapitalize="off" autocorrect="off"
+                                   autocomplete="off"
+                                   ng-change="inputChangeHandler(searchStr)">
+                            <div id="ex4_dropdown" class="angucomplete-dropdown ng-hide" ng-show="showDropdown"
+                                 style="">
+                                <div class="angucomplete-searching ng-binding ng-hide" ng-show="searching"
+                                     ng-bind="textSearching">Searching...
+                                </div>
+                                <div class="angucomplete-searching ng-binding"
+                                     ng-show="!searching &amp;&amp; (!results || results.length == 0)"
+                                     ng-bind="textNoResults">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="dis_cell cell_xs">
+                    <button type="button" class=" btn btn-primary" ng-click="keysearch()">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="dis_cell cell_xs">
+                    <button type="button" ng-click="isSearchToggle = !isSearchToggle"
+                            class="exit cancel full_width tes-btn blue2">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
             </div>
-            <div class="dis_cell cell_xs">
-                <button type="button" class=" btn btn-primary" ng-click="keysearch()">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-            <div class="dis_cell cell_xs">
-                <button type="button" ng-click="isSearchToggle = !isSearchToggle"
-                        class="exit cancel full_width tes-btn blue2">
-                    <i class="fa fa-close"></i>
-                </button>
-            </div>
-        </div>
+        </form>
     </div>
+
+
 </header>
+

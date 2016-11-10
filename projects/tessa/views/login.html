@@ -1,72 +1,82 @@
-<span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-login"></span>
+<style>
+    .login-page{
+        width:100%;
+        overflow:hidden ;
+    }
+</style>
+<div class="login-page">
+    <span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-login"></span>
 
-<div class="bg-tessa-logo">
-    <img src="../images/icons/tessa.outlined.svg">
-</div>
+    <div class="bg-tessa-logo">
+        <img src="../images/icons/tessa.outlined.svg">
+    </div>
 
-<div class="row login-ctn">
-    <div class="login-content col-lg-3 col-md-4 col-xs-12 col-sm-6">
-        <div class="login-head">
-            <div class="center_align">
-                <div class="img_holder">
-                    <img src="images/icons/svg-tessa-logo.svg">
+    <div class="row login-ctn">
+        <div class="login-content col-lg-3 col-md-4 col-xs-12 col-sm-6">
+            <div class="login-head">
+                <div class="center_align">
+                    <div class="img_holder">
+                        <img src="images/icons/svg-tessa-logo.svg">
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-        <br>
-        <div class="login-body">
-            <form class="form-horizontal" ng-submit="login()" id="validate-form" novalidate="true">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="ti ti-user"></i></span>
-                    <input type="text" ng-model="user.username" class="form-control" placeholder="Username"
-                           data-parsley-minlength="6" placeholder="At least 6 characters" required>
-                </div>
-                <div class="input-group">
+            <br>
+            <div class="login-body">
+                <form class="form-horizontal" ng-submit="login()" id="validate-form" novalidate="true">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="ti ti-user"></i></span>
+                        <input  type="text" ng-model="user.username" class="form-control" placeholder="Username"
+                                data-parsley-minlength="6" placeholder="At least 6 characters" required>
+                    </div>
+                    <div class="input-group">
                                     <span class="input-group-addon">
                                             <i class="ti ti-key"></i>
                                         </span>
-                    <input type="password" ng-model="user.password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Password" required>
-                </div>
-                <div class="input-group full_width">
-                    <button type="submit" class="full_width tes-btn bg-sky">
-                        Login
-                    </button>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <a ui-sref="forget-password" class="pull-left">Forgot password?</a>
+                        <input type="password" ng-model="user.password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Password" required>
                     </div>
-                    <div class="col-xs-6 right_align">
-                        <label style="color: #656565;">
-                            <input type="checkbox" style="visibility:inherit!important;"></input>
-                            Remember me
-                        </label>
+                    <div class="input-group full_width">
+                        <button class="full_width tes-btn bg-sky" >
+                            Login
+                        </button>
                     </div>
-                </div>
-                <div style="margin: 5px 0;" class="center_align font_14 grey3">
-                    <p>or</p>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-12 text-center">
-                        <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Google"
-                                style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('google')"><i
-                                class="fa fa-google-plus center" style="color:#dd4b39"></i></button>
-                        <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Facebook"
-                                style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('facebook')"><i
-                                class="fa fa-facebook center" style="color:#3b5998"></i></button>
-                        <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Twitter"
-                                style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('twitter')"><i
-                                class="fa fa-twitter center" style="color:#55acee"></i></button>
-                        <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with LinkedIn"
-                                style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('linkedin')"><i
-                                class="fa fa-linkedin center" style="color:#007bb6"></i></button>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="forget-password" class="pull-left">Forgot password?</a>
+                        </div>
+                        <div class="col-xs-6 right_align">
+                            <label style="color: #656565;">
+                                <input type="checkbox" style="visibility:inherit!important;"></input>
+                                Remember me
+                            </label>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div style="margin: 5px 0;" class="center_align font_14 grey3">
+                        <p>or</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Google"
+                                    style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('google')"><i
+                                    class="fa fa-google-plus center" style="color:#dd4b39"></i></button>
+                            <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Facebook"
+                                    style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('facebook')"><i
+                                    class="fa fa-facebook center" style="color:#3b5998"></i></button>
+                            <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with Twitter"
+                                    style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('twitter')"><i
+                                    class="fa fa-twitter center" style="color:#55acee"></i></button>
+                            <button type="button" class="btn btn-default btn-lg" uib-tooltip="Login with LinkedIn"
+                                    style="margin-bottom: 5px;width: 50px;" ng-click="authenticate('linkedin')"><i
+                                    class="fa fa-linkedin center" style="color:#007bb6"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </div>
 
-</div>
 
+
+</div>

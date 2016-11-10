@@ -15,46 +15,49 @@
 </head>
 
 <body>
-    <!--
-        *
-        *
-        *
-        Angular View
-        *
-        *
-        *
-        -->
-    <div ui-view></div>
-    <!--
-        *
-        *
-        *
-        Angular View
-        *
-        *
-        *
-        -->
-    <script src="js/main.min.js"></script>
-    <script src="https://rawgit.com/srfrnk/ng-device-detector/master/ng-device-detector.js"></script>
-    <script src="https://rawgit.com/srfrnk/re-tree/master/re-tree.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.6/moment-timezone-with-data.min.js"></script>
-    <script src="js/app.min.js"></script>
-    <!-- Analytics Development -->
-    <!-- <script src="http://localhost/4loop-sdks/analytics/dist/js/frontier-dev.js"></script> -->
-    <!-- <script src="http://localhost/4loop-sdks/analytics/dist/angular/ng-frontier.js"></script> -->
-    <!-- 
-        Analytics Production 
+<!--
+    *
+    *
+    *
+    Angular View
+    *
+    *
+    *
     -->
-    <!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.12/dist/frontier-dev.min.js"></script> -->
-    <!-- LOCAL -->
-    <!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier-dev.min.js"></script> -->
-    <!-- STAGING -->
-    <!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier-test.min.js"></script> -->
-    <!-- PRODUCTION -->
-    <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier.min.js"></script>
-    <script src="https://cdn.rawgit.com/4LOOPph/ng-frontier/v1.0.2/dist/ng-frontier.min.js"></script>
-    <!-- JIRA Bug Report -->
-    <script type="text/javascript" src="https://4loopph.atlassian.net/s/83943f42d32f8fe11ebbe7cc5e3fbe65-T/-7kudxl/100008/eab1dd92201bf8903619a84553170918/1000.0.4/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=3bccb6ae"></script>
+<div ui-view></div>
+<!--
+    *
+    *
+    *
+    Angular View
+    *
+    *
+    *
+    -->
+<script src="js/main.min.js"></script>
+<script src="https://rawgit.com/srfrnk/ng-device-detector/master/ng-device-detector.js"></script>
+<script src="https://rawgit.com/srfrnk/re-tree/master/re-tree.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.6/moment-timezone-with-data.min.js"></script>
+<script src="js/app.min.js"></script>
+<!-- Analytics Development -->
+<!-- <script src="http://localhost/4loop-sdks/analytics/dist/js/frontier-dev.js"></script> -->
+<!-- <script src="http://localhost/4loop-sdks/analytics/dist/angular/ng-frontier.js"></script> -->
+<!--
+    Analytics Production
+-->
+<!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.12/dist/frontier-dev.min.js"></script> -->
+<!-- LOCAL -->
+<!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier-dev.min.js"></script> -->
+<!-- STAGING -->
+<!-- <script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier-test.min.js"></script> -->
+<!-- PRODUCTION -->
+<script src="https://cdn.rawgit.com/4LOOPph/frontier/v1.0.15/dist/frontier.min.js"></script>
+<script src="https://cdn.rawgit.com/4LOOPph/ng-frontier/v1.0.2/dist/ng-frontier.min.js"></script>
+<!-- JIRA Bug Report -->
+
+<script type="text/javascript"
+        src="https://4loopph.atlassian.net/s/83943f42d32f8fe11ebbe7cc5e3fbe65-T/-7kudxl/100008/eab1dd92201bf8903619a84553170918/1000.0.4/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=3bccb6ae"></script>
+
 </body>
 
 
@@ -62,5 +65,13 @@
     document.addEventListener('gesturestart', function (e) {
         e.preventDefault();
     });
+
+
+    $('input').bind('keypress', function (e) {
+        if (e.which === 13) {
+            document.activeElement.blur();
+        }
+    });
+
 </script>
 </html>

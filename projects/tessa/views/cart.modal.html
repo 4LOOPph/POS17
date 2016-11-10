@@ -380,3 +380,11 @@
         <!--End of Cart-->
     </div>
 </div>
+
+<script>
+    $('input').bind('keypress', function (e) {
+        if (e.which === 13) {
+            document.activeElement.blur();
+        }
+    });
+</script>

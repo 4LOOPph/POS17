@@ -2,33 +2,79 @@
     <nav class="flexi-sidebar ">
         <ul class="flexi-menu ">
             <li>
-                <a id="active-experience" ng-click="product('Experience')">
-                    <img src="./images/icons/ico_home00.svg" style="width: 25px;"/> <span class="nav-itm "
-                                                                                          ng-show="isHide">Experience</span></a>
-            </li>
-            <li>
-                <a id="active-catalogue" ng-click="product('Product')" ng-if="appuser">
-                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;"/> <span class="nav-itm "
-                                                                                               ng-show="isHide">Product Catalogue</span></a>
-            </li>
+                <a id="active-experience" class="dis_table" ng-click="product('Experience')">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_home00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Experience
+                    </div>
+                </a>
 
-            <li>
-                <a id="active-presentation" ng-click="product('Presentation')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;"/> <span class="nav-itm "
-                                                                                                 ng-show="isHide">File Manager</span></a>
+
             </li>
             <li>
+                <a id="active-catalogue" class="dis_table" ng-click="product('Product')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_store00_nav.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Product Catalogue
+                    </div>
 
-                <a id="active-preso" ng-click="product('Gallery')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;"/> <span class="nav-itm "
-                                                                                           ng-show="isHide">Presentation</span>
+
+
                 </a>
             </li>
 
-            <li><a id="active-compare" ui-sref="main.compareModule" ng-if="appuser">
-                <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
-                <img src="./images/icons/ico_compare00.svg" style="width: 23px;"/> <span class="nav-itm "
-                                                                                         ng-show="isHide"> Compare</span></a>
+            <li>
+                <a id="active-presentation" class="dis_table" ng-click="product('Presentation')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_preso-admin00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                       File Manager
+                    </div>
+
+
+                </a>
+            </li>
+            <li>
+
+                <a id="active-preso" class="dis_table" ng-click="product('Gallery')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_preso00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                       Presentation
+                    </div>
+
+
+                </a>
+            </li>
+
+            <li>
+                <a id="active-compare" class="dis_table" ui-sref="main.compareModule" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                        <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
+                            <img src="./images/icons/ico_compare00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Compare
+                    </div>
+
+
+                </a>
             </li>
         </ul>
     </nav>
@@ -38,30 +84,79 @@
     <nav class="flexi-sidebar ">
         <ul class="flexi-menu ">
             <li>
-                <a id="active-experience" ng-click="product('Experience')">
-                    <img src="./images/icons/ico_home00.svg" style="width: 25px;"/> <span
-                        class="nav-itm ">Experience</span></a>
+                <a id="active-experience" class="dis_table" ng-click="product('Experience')">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_home00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Experience
+                    </div>
+                </a>
+
+
             </li>
             <li>
-                <a id="active-catalogue" ng-click="product('Product')" ng-if="appuser">
-                    <img src="./images/icons/ico_store00_nav.svg" style="width: 23px;"/> <span class="nav-itm ">Product Catalogue</span></a>
-            </li>
-            <!-- <li ng-if="isAssets"> -->
-            <li>
-                <a id="active-presentation" ng-click="product('Presentation')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso-admin00.svg" style="width: 23px;"/> <span class="nav-itm ">File Manager</span></a>
-            </li>
-            <li>
-                <!-- <li ng-if="isPreso"> -->
-                <a id="active-preso" ng-click="product('Gallery')" ng-if="appuser">
-                    <img src="./images/icons/ico_preso00.svg" style="width: 23px;"/> <span
-                        class="nav-itm ">Presentation</span>
+                <a id="active-catalogue" class="dis_table" ng-click="product('Product')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_store00_nav.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Product Catalogue
+                    </div>
+
+
+
                 </a>
             </li>
-            <li><a id="active-compare" ng-click="product('Compare')" ng-if="appuser">
-                <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
-                <img src="./images/icons/ico_compare00.svg" style="width: 23px;"/> <span
-                    class="nav-itm "> Compare</span></a>
+
+            <li>
+                <a id="active-presentation" class="dis_table" ng-click="product('Presentation')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_preso-admin00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        File Manager
+                    </div>
+
+
+                </a>
+            </li>
+            <li>
+
+                <a id="active-preso" class="dis_table" ng-click="product('Gallery')" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <img src="./images/icons/ico_preso00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Presentation
+                    </div>
+
+
+                </a>
+            </li>
+
+            <li>
+                <a id="active-compare" class="dis_table" ui-sref="main.compareModule" ng-if="appuser">
+                    <div class="dis_cell">
+                        <div class="nav-icon-holder">
+                            <span class="badge bg-violet" ng-if="compareproducts.length > 0">{{compareproducts.length}}</span>
+                            <img src="./images/icons/ico_compare00.svg" style="width: 19px;"/>
+                        </div>
+                    </div>
+                    <div class="dis_cell nav-itm" ng-show="isHide">
+                        Compare
+                    </div>
+
+
+                </a>
             </li>
         </ul>
     </nav>
