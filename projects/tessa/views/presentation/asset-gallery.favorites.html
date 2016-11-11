@@ -34,7 +34,7 @@
             </div>
             <div class="asset-by-industry" ng-if="assetcopy.length > 0">
                 <ks-swiper-container show-nav-buttons="false" slides-per-view="'auto'" space-between="0" swiper="swiper" on-ready="onReadySwiper(swiper)">
-                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetcopy track by item.asset_id | orderBy:'date_created':true">
+                    <ks-swiper-slide class="swiper-slide" ng-repeat="item in assetcopy | orderBy:'date_created':true">
                         <a class="file-item" contextmenu-item="item" ng-click="activeSelected(item)" ng-dblclick="openFile(item)" ng-class="{'active':item.isActive}">
                             <div class="img_holder" ng-if="item.asset_mimetype == 'image/jpeg'||item.asset_mimetype == 'image/gif'|| item.asset_mimetype == 'image/png'|| item.asset_mimetype == 'image/x-ms-bmp'">
                                 <img ng-src="{{item.asset_url}}" />
