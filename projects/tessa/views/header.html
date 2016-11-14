@@ -1,6 +1,7 @@
 <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
     <script>
-        $('input').bind('keypress', function (e) {
+        $('input').bind('ng-keypress', function (e) {
+            console.log('e:',e);
             if (e.which === 13) {
                 document.activeElement.blur();
             }

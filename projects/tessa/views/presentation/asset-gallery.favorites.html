@@ -1,4 +1,51 @@
 <div class="preso-assets">
+ <div id="testo"  ng-show="!showresult">
+            <div ng-carousel ng-carousel-name="example-carousel2" ng-carousel-loop="false" ng-carousel-watch="engagis">
+                <slidecontainer class="carousel-slides">
+                    <slide ng-repeat="item in engagis" ng-if="item.asset_mimetype == 'image/png' ||item.asset_mimetype == 'image/jpeg'">
+                        <div class="tes-slider">
+                            <div class="dis_table slider-content">
+                                <section class="dis_cell_top">
+                                    <h1>{{item.asset_name}}</h1>
+                                    <div class="hide-sm">
+                                        <div class="pad_vertical_15 " ng-bind-html="item.asset_description">
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-primary" ng-click="imagepreview('preview',item)">Preview</a>
+                                            <a class="btn btn-primary" ng-click="imagepreview('cast',item)">Cast to
+                                                Screen</a>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="dis_cell_top">
+                                    <div class="img_holder">
+                                        <img ondragstart="return false;" ng-src="{{item.asset_url}}" alt="{{item.asset_name}}" />
+                                        <div class="drp-sdow"></div>
+                                    </div>
+                                    <div class="show-sm">
+                                        <div>
+                                            <a class="btn btn-primary">Preview</a>
+                                            <a class="btn btn-primary">Cast to Screen</a>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="slider-bg img_holder">
+                            <img ng-src="{{item.asset_url}}" />
+                        </div>
+                        <div class="black-fade">
+                        </div>
+                    </slide>
+                </slidecontainer>
+                <a class="carousel-control left" ng-click="Carousel.get('example-carousel2').previous()">
+                    <span class="glyphicon glyphicon-chevron-left "></span>
+                </a>
+                <a class="carousel-control right" ng-click="Carousel.get('example-carousel2').next()">
+                    <span class="glyphicon glyphicon-chevron-right "></span>
+                </a>
+            </div>
+        </div>
     <div>
         <div contextmenu="meta.contextmenu" class="dropdown contextmenu">
             <ul class="dropdown-menu" role="menu">
@@ -29,6 +76,7 @@
                 </li>
             </ul>
         </div>
+       
         <div class="flexi-pad top-ten" contextmenu-container="meta.contextmenu" ng-show="!showresult">
             <div class="font_18 font_medium blue1" ng-if="assetcopy.length > 0"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Others
             </div>
@@ -103,7 +151,7 @@
             </div>
             <div class="font_18 font_medium blue1" ng-if="assetshared.length > 0 || foldershared.length > 0"><span class="orange1"><i class=" fa fa-bookmark"></i></span> * Shared with me
             </div>
-            <div class="asset-by-industry" ng-repeat="items in foldershared" ng-if="items.files.length > 0">
+            <div class="asset-by-industry" ng-repeat="items in foldershared" ng-hide="items.folder_name == 'About Engagis'">
                 <div class="font_18 font_medium blue1">
                     <span class="orange1" ng-if="$first"><i class=" fa fa-folder-o"></i></span> {{items.folder_name}}
                 </div>

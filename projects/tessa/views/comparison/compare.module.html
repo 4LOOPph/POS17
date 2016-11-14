@@ -12,7 +12,7 @@
     <div class="font_medium dis-menu">
         <div class=" row">
             <div class=" col-lg-12">
-                <!-- <button type="button" class="btn bg-sky">
+               <!--  <button type="button" class="btn bg-sky" ng-click="comparisonShare()">
                     <i class="fa fa-share"></i> <span class="sm_hid">Share</span>
                 </button> -->
                 <button type="button" class="btn bg-midnight" ui-sref="main.productCatalogue">
@@ -24,9 +24,6 @@
             </div>
         </div>
     </div>
-    <!---------------------->
-    <!--Row Implementation-->
-    <!---------------------->
     <div ng-if="compareproducts.length > 0">
         <div ng-if="compare.pb_id">
             <div class="ctn">
@@ -155,7 +152,7 @@
             </div>
             <div class="ctn">
                 <div class="row">
-                    <div class="col-xs-3"  ng-repeat="group in compareproducts">
+                    <div class="col-xs-3" ng-repeat="group in compareproducts">
                         <button type="button" class="tes-btn bg-green" ng-click="addToCart(group)">
                             <i class="fa fa-shopping-cart"></i> ADD TO CART
                         </button>
@@ -199,9 +196,11 @@
             <div class="row atb-itm">
                 <div class="col-xs-3" ng-repeat="group in comparehardwarelists">
                     <div class="atb" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
-                        <h6>{{attribute.attribute}}</h6>
-                        <p>{{attribute.value}}
-                        </p>
+                        <div ng-if="attribute.value == attribute.value">
+                            <h6>{{attribute.attribute}}</h6>
+                            <p>{{attribute.value}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
