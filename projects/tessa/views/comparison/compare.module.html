@@ -12,9 +12,9 @@
     <div class="font_medium dis-menu">
         <div class=" row">
             <div class=" col-lg-12">
-               <!--  <button type="button" class="btn bg-sky" ng-click="comparisonShare()">
+                <button ng-if="compareproducts.length > 0" type="button" class="btn bg-sky" ng-click="comparisonShare()">
                     <i class="fa fa-share"></i> <span class="sm_hid">Share</span>
-                </button> -->
+                </button>
                 <button type="button" class="btn bg-midnight" ui-sref="main.productCatalogue">
                     <div class="ctn-ico">
                         <img src="./images/icons/ico_store00_nav.svg" />
@@ -26,28 +26,38 @@
     </div>
     <div ng-if="compareproducts.length > 0">
         <div ng-if="compare.pb_id">
-            <div class="ctn">
-                <div class="row">
-                    <div class="col-xs-3 center_align" ng-repeat="group in comparelists">
-                        <div class="cpr-ctn">
+            <div class="ctn-top">
+                <div class="row dis-flx">
+                    <div class="col-xs-6 col-sm-3 center_align" ng-repeat="group in comparelists">
+                        <div class="flx-spb-vrt ">
                             <div class="cpr-head">
                                 <h3 class="fg-dark">
                                     {{group.titles.title}}
                                 </h3>
                             </div>
-                            <h5>
-                                <a ui-sref="main.productDetailsSolution({selected_id: group.id})">View Details</a> | <a
-                                    ng-click="removeItem(group)"> Remove</a>
-                            </h5>
+                            <div>
+                                <h5>
+                                    <a ui-sref="main.productDetailsSolution({selected_id: group.id})">View
+                                        Details</a> |
+                                    <a
+                                            ng-click="removeItem(group)"> Remove</a>
+                                </h5>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ctn-top">
+                <div class="row dis-flx">
+                    <div class="col-xs-6 col-sm-3 center_align" ng-repeat="group in comparelists">
                         <div class="dis-img">
                             <img ng-src="{{group.titles.image}}" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ctn">
-                <div class="row">
+            <div class="ctn-top">
+                <div class="row ">
                     <div class="col-lg-12">
                         <div class="sec-head">
                             <h4>
@@ -56,20 +66,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="row atb-itm">
-                    <div class="col-xs-3" ng-repeat="group in comparelists">
-                        <div class="atb" ng-repeat="(name,value) in group.softwaregroup">
-                            <div ng-repeat="val in value track by $index">
-                                <h6>{{name}}</h6>
-                                <p>{{val.product_detail.item_name}}
-                                </p>
+                <div class="row atb-itm dis-flx">
+                    <div class=" col-xs-6 col-sm-3" ng-repeat="group in comparelists">
+                        <div class="atb">
+                            <div class="atb-ins" ng-repeat="(name,value) in group.softwaregroup">
+                                <div ng-repeat="val in value track by $index">
+                                    <h6>{{name}}</h6>
+                                    <p>{{val.product_detail.item_name}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div ng-repeat="group in comparelist">
-                <div class="ctn" ng-repeat="(name,value) in group.hardwaregroup">
+                <div class="ctn-top" ng-repeat="(name,value) in group.hardwaregroup">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="sec-head">
@@ -79,8 +91,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row atb-itm">
-                        <div class="col-xs-3" ng-repeat="val in value track by $index">
+                    <div class="row atb-itm dis-flx">
+                        <div class="col-xs-6 col-sm-3" ng-repeat="val in value track by $index">
                             <div class="atb">
                                 <div class="atb-ins" ng-repeat="attribute in val[0].atrribute track by $index" ng-if="attribute.is_comparable == 1">
                                     <h6>{{attribute.attribute}}</h6>
@@ -92,18 +104,18 @@
                     </div>
                 </div>
             </div>
-            <div class="ctn">
+            <div class="ctn-top">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="sec-head">
                             <h4>
-                            Support Type
-                        </h4>
+                                Support Type
+                            </h4>
                         </div>
                     </div>
                 </div>
-                <div class="row atb-itm">
-                    <div class="col-xs-3" ng-repeat="group in comparelists">
+                <div class="row atb-itm dis-flx">
+                    <div class="col-xs-6 col-sm-3" ng-repeat="group in comparelists">
                         <div class="atb">
                             <div class="atb-ins">
                                 <h6>Essential</h6>
@@ -112,7 +124,7 @@
                                 <p ng-if="!group.essential">X
                                 </p>
                             </div>
-                            <div class="atb-ins" ng-if="group.enterprise">
+                            <div class="atb-ins">
                                 <h6>Enterprise</h6>
                                 <p ng-if="group.enterprise">✔
                                 </p>
@@ -123,18 +135,18 @@
                     </div>
                 </div>
             </div>
-            <div class="ctn">
+            <div class="ctn-top">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="sec-head">
                             <h4>
-                        Price
-                    </h4>
+                                Price
+                            </h4>
                         </div>
                     </div>
                 </div>
-                <div class="row atb-itm">
-                    <div class="col-xs-3" ng-repeat="group in comparelists">
+                <div class="row atb-itm dis-flx">
+                    <div class="col-xs-6 col-sm-3" ng-repeat="group in comparelists">
                         <div class="atb">
                             <div class="atb-ins">
                                 <h6>Capex</h6>
@@ -152,7 +164,84 @@
             </div>
             <div class="ctn">
                 <div class="row">
-                    <div class="col-xs-3" ng-repeat="group in compareproducts">
+                    <div class=" col-xs-6 col-sm-3" ng-repeat="group in compareproducts">
+                        <button type="button" class="tes-btn bg-green" ng-click="addToCart(group)">
+                            <i class="fa fa-shopping-cart"></i> ADD TO CART
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="compare.p_id">
+            <div class="ctn-top">
+                <div class="row dis-flx">
+                    <div class="col-xs-6 col-sm-3 flx-spb-vrt center_align" ng-repeat="group in comparehardwarelists">
+                        <div class="cpr-head">
+                            <h3 class="fg-dark">
+                                    {{group.title}}
+                                </h3>
+                        </div>
+                        <div>
+                            <h5>
+                                    <a ui-sref="main.productDetailsHardware({selected_id: group.id})">View Details 
+                                    </a> | <a ng-click="removeItem(group)"> Remove</a>
+                                </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ctn-top">
+                <div class="row dis-flx">
+                    <div class="col-xs-6 col-sm-3 center_align" ng-repeat="group in comparehardwarelists">
+                        <div class="dis-img">
+                            <img ng-src="{{group.image}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ctn-top">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-head">
+                            <h4>
+                                    {{compare.type}}
+                                </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row atb-itm dis-flx">
+                    <div class="col-xs-6 col-sm-3" ng-repeat="group in comparehardwarelists">
+                        <div class="atb" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
+                            <h6>{{attribute.attribute}}</h6>
+                            <p>{{attribute.value}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ctn-top">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-head">
+                            <h4>
+                                    Price
+                                </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row atb-itm dis-flx">
+                    <div class="col-xs-6 col-sm-3" ng-repeat="group in comparehardwarelists">
+                        <div class="atb">
+                            <h6>Capex</h6>
+                            <p>{{group.price | currency}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ctn">
+                <div class="row">
+                    <div class=" col-xs-6 col-sm-3" ng-repeat="group in compareproducts">
                         <button type="button" class="tes-btn bg-green" ng-click="addToCart(group)">
                             <i class="fa fa-shopping-cart"></i> ADD TO CART
                         </button>
@@ -161,83 +250,8 @@
             </div>
         </div>
     </div>
-    <div ng-if="compare.p_id">
-        <div class="ctn">
-            <div class="row">
-                <div class="col-xs-3 center_align" ng-repeat="group in comparehardwarelists">
-                    <div class="cpr-ctn">
-                        <div class="cpr-head">
-                            <h3 class="fg-dark">
-                                {{group.title}}
-                            </h3>
-                        </div>
-                        <br>
-                        <h5>
-                            <a ui-sref="main.productDetailsHardware({selected_id: group.id})">View Details</a> | <a
-                                ng-click="removeItem(group)"> Remove</a>
-                        </h5>
-                    </div>
-                    <div class="dis-img">
-                        <img ng-src="{{group.image}}" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ctn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-head">
-                        <h4>
-                            {{compare.type}}
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row atb-itm">
-                <div class="col-xs-3" ng-repeat="group in comparehardwarelists">
-                    <div class="atb" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
-                        <div ng-if="attribute.value == attribute.value">
-                            <h6>{{attribute.attribute}}</h6>
-                            <p>{{attribute.value}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ctn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-head">
-                        <h4>
-                            Price
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row atb-itm">
-                <div class="col-xs-3" ng-repeat="group in comparehardwarelists">
-                    <div class="atb">
-                        <h6>Capex</h6>
-                        <p>{{group.price | currency}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ctn">
-            <div class="row">
-                <div class=" col-xs-3 " ng-repeat="group in compareproducts">
-                    <button type="button" class="tes-btn bg-green" ng-click="addToCart(group)">
-                        <i class="fa fa-shopping-cart"></i> ADD TO CART
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<style>
-#active-compare {
-    background: #424242;
-}
-</style>
+    <style>
+    #active-compare {
+        background: #424242;
+    }
+    </style>

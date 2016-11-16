@@ -22,7 +22,7 @@
     </div>
     <div ng-if="expFilter == 'all'" id="masonry-item" style="clear:both">
         <div class="item_experience" ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" ng-click="trackExperienceAll(article)" >
+            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" ng-click="trackExperienceAll(article)">
                 <div class="panel panel-default">
                     <div class="img_holder" ng-if="!article.thumbnail_media">
                         <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
@@ -64,7 +64,7 @@
     </div>
     <div ng-if="expFilter == 'Portfolio'" id="masonry-item" style="clear:both">
         <div class="item_experience" ng-repeat="article in ( Portfolio | filter:isOnSelectedTag()) track by $index" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" ng-click="trackExperiencePortfolio(article)" >
+            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" ng-click="trackExperiencePortfolio(article)">
                 <div class="panel panel-default">
                     <div class="img_holder" ng-if="!article.thumbnail_media">
                         <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
@@ -95,7 +95,8 @@
                         </videogular>
                     </div>
                     <div id="masonry_body" class="padding_10 blue1  font_bold" ui-sref="main.articlePage({selected_id:article.article_id})" ui-sref="main.articlePage({selected_id:article.article_id})">
-                        <a>{{article.title}}</a><br>
+                        <a>{{article.title}}</a>
+                        <br>
                         <div iclass="featured_solution font_light">
                             <p ng-bind-html="article.article"></p>
                         </div>
@@ -146,10 +147,72 @@
             </div>
         </div>
     </div>
+    <div ng-if="expFilter == 'Article'" >
+        <ul class="dynamic-grid" angular-grid="pics" grid-width="300" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false">
+            <li ng-repeat="article in ( Article | filter:isOnSelectedTag())" class="grid">
+                <img ng-src="{{article.image}}" class="grid-img" />
+                 <a>{{article.title}}</a>
+            </li>
+        </ul>
+        <div deckgrid class="deckgrid">
+            <div class="a-card" ng-repeat="article in ( Article | filter:isOnSelectedTag())">
+                <h1>safdsfdsf</h1>
+                <img ng-src="{{article.image}}" >
+            </div>
+        </div>
+    </div>
 </div>
 <style>
 #active-experience {
     background: #424242;
+}
+
+.grid {
+    border: 1px solid #cccccc;
+    list-style: none;
+    background: #ffffff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out;
+}
+
+.grid-img {
+    width: 100%;
+    vertical-align: middle;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.grid-img.img-loaded {
+    visibility: visible;
+    opacity: 1;
+}
+.deckgrid[deckgrid]::before {
+    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+    content: '4 .column.column-1-4';
+    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+    visibility: hidden;
+}
+
+.deckgrid .column {
+    float: left;
+}
+
+.deckgrid .column-1-4 {
+    width: 25%;
+}
+.deckgrid .column-1-1 {
+    width: 100%;
+}
+
+@media screen and (max-width: 480px){
+    .deckgrid[deckgrid]::before {
+        content: '1 .column.column-1-1';
+    }
 }
 </style>
 <script type="text/ng-template" id="myPopoverTemplate.html">

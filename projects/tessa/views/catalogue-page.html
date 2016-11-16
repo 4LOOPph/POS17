@@ -55,19 +55,21 @@
                 </div>
                 <div ng-show="prodTypeLabel == 'Solution'" style="padding:10px 0px 0px;">
                     <div class="dd-filter" ng-show="solutionTypes == 'EzeImpress'">
-                        <span>
+                        <span class="btn-group" style="margin-right: 5px;margin-bottom: 3px;">
                             <div class="inblock">
                                 <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
                                        ng-keypress="($event.which === 13)?searchData():0" class="form-control"
                                        ng-change="(txtSearch.length < 1)?searchData() && clear():0"/>
-                            </div><div class="inblock">
-                                <div class="form_addon">
+                            </div>
+                            <div class="inblock">
+                                <div class="form_addon" style="margin-left: -3px;">
                                   <a class="blue1" ng-click="searchData()">
                                   <i class="fa fa-search"></i>
                                    </a>
                                 </div>
                             </div>
                         </span>
+
                         <span>
                             <button uib-popover-template="dynamicPopover.location" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
@@ -91,9 +93,10 @@
                         </span>
                         <span>
                             <button uib-popover-template="dynamicPopover.orientation1" popover-trigger="outsideClick"
-                                    popover-placement="bottom" type="button" class="btn font_medium btn-default">Orientation
+                                    popover-placement="bottom" type="button" class="btn font_medium btn-default" style="margin-right: 5px;">Orientation
                                 <span class="caret"></span>
                         </button>
+                        </span>
                         <span>
                             <button uib-popover-template="dynamicPopover.brightness" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
@@ -116,7 +119,8 @@
                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
                                       ng-keypress="($event.which === 13)?searchData():0" class="form-control"
                                       ng-change="(txtSearch.length < 1)?searchData():0"/>
-                            </div><div class="inblock">
+                            </div>
+                            <div class="inblock">
                                 <div class="form_addon">
                                    <a class="blue1" ng-click="searchData()">
                                         <i class="fa fa-search"></i>
@@ -145,6 +149,19 @@
                 <div ng-show="prodTypeLabel == 'Hardware'" style="padding:10px 0px 0px;">
                     <div class="dd-filter" ng-show="hardwareType == 'Screens'">
                         <!--SCREENS-->
+                        <span class="btn-group" style="margin-right: 5px;">
+                           <div class="inblock">
+                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
+                                      ng-keypress="($event.which === 13)?searchData():0" class="form-control"
+                                      ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                   <a class="blue1" ng-click="searchData()">
+                                        <i class="fa fa-search"></i>
+                                </a>
+                                </div>
+                            </div>
+                        </span>
                         <span>
                             <button uib-popover-template="dynamicPopover.screensize"
                                     popover-trigger="outsideClick"
@@ -174,19 +191,7 @@
                                 <span class="caret"></span>
                         </button>
                         </span>
-                        <span class="btn-group">
-                           <div class="inblock">
-                               <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
-                                      ng-keypress="($event.which === 13)?searchData():0" class="form-control"
-                                      ng-change="(txtSearch.length < 1)?searchData():0"/>
-                            </div><div class="inblock">
-                                <div class="form_addon">
-                                   <a class="blue1" ng-click="searchData()">
-                                        <i class="fa fa-search"></i>
-                                </a>
-                                </div>
-                            </div>
-                        </span>
+                        
                         <!-- <span>
                             <button uib-popover-template="dynamicPopover.weight" popover-trigger="outsideClick" popover-placement="bottom" type="button" class="btn font_medium btn-default">Weight
                                 <span class="caret"></span>
@@ -213,8 +218,21 @@
                     </div>
                     <div class="dd-filter" ng-show="hardwareType == 'MediaPlayer'">
                         <!-- MEDIA PLAYER-->
+                        <span class="btn-group" style="margin-right: 5px;">
+                                <div class="inblock">
+                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
+                                       ng-keypress="($event.which === 13)?searchData():0" class="form-control"
+                                       ng-change="(txtSearch.length < 1)?searchData():0"/>
+                            </div><div class="inblock">
+                                <div class="form_addon">
+                                   <a class="blue1" ng-click="searchData()">
+                                         <i class="fa fa-search"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </span>
                         <span>
-                            <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick"
+                        <button uib-popover-template="dynamicPopover.templateUrl8" popover-trigger="outsideClick"
                                     popover-placement="bottom" type="button" class="btn font_medium btn-default"
                                     style="margin-right: 5px;">RAM
                                   <span class="caret"></span>
@@ -241,19 +259,7 @@
                                 <span class="caret"></span>
                         </button>
                         </span>
-                        <span class="btn-group">
-                                <div class="inblock">
-                                <input type="search" ng-model="txtSearch" placeholder="Search keywords..."
-                                       ng-keypress="($event.which === 13)?searchData():0" class="form-control"
-                                       ng-change="(txtSearch.length < 1)?searchData():0"/>
-                            </div><div class="inblock">
-                                <div class="form_addon">
-                                   <a class="blue1" ng-click="searchData()">
-                                         <i class="fa fa-search"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </span>
+                        
                         <!-- <span class="pad_side_10">
                             <img src="../images/icons/ico_filter01.svg" style="max-height: 16px; max-width: 16px;"/>
                             <a ng-click="seemore=!seemore" class="font_bold blue2 font_12">Hide Filter</a>
@@ -550,7 +556,7 @@
 <script async type="text/ng-template" id="ram.html">
     <div class="form-group">
         <div class="pad_vertical">
-            <input type="search" class="form-control" placeholder="Search..." ng-model="searchEzeFamily" />
+            <input type="search" class="form-control" placeholder="Searches..." ng-model="searchEzeFamily" />
         </div>
         <div class="checkbox" ng-repeat="media in Ram | duplicates: 'value' | filter:searchEzeFamily ">
             <label>
@@ -726,9 +732,9 @@ $('input').keyup(function(event) {
             margin-left: 55px !important;
         }**/
 
-.popover.bottom > .arrow {
-    left: 50% !important;
-}
+/*.popover.bottom > .arrow {
+    left: 30% !important;
+}*/
 
 .filterss {
     display: inline-block;
@@ -752,10 +758,10 @@ $('input').keyup(function(event) {
     color: #fff;
 }
 
-.popover.bottom {
+/*.popover.bottom {
     margin-top: 10px;
-    /* left: -21px !important;*/
-}
+     left: -21px !important;
+}*/
 
 .checkbox label,
 .radio label {
