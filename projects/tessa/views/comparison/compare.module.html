@@ -211,7 +211,7 @@
                 </div>
                 <div class="row atb-itm dis-flx">
                     <div class="col-xs-6 col-sm-3" ng-repeat="group in comparehardwarelists">
-                        <div class="atb" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
+                        <div class="atb-ins" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
                             <h6>{{attribute.attribute}}</h6>
                             <p>{{attribute.value}}
                             </p>
@@ -231,7 +231,7 @@
                 </div>
                 <div class="row atb-itm dis-flx">
                     <div class="col-xs-6 col-sm-3" ng-repeat="group in comparehardwarelists">
-                        <div class="atb">
+                        <div class="atb-ins">
                             <h6>Capex</h6>
                             <p>{{group.price | currency}}
                             </p>
@@ -253,5 +253,68 @@
     <style>
     #active-compare {
         background: #424242;
+    }
+    
+    @media only screen and (min-width: 200px) and (max-width: 590px) {
+        .atb-ins {
+            margin-top: 10px !important;
+            height: 67px !important;
+            overflow: hidden;
+        }
+        .cpr-head h3 {
+            font-size: 14px !important;
+            font-family: medium;
+            vertical-align: middle;
+            color: #333333 !important;
+            height: 60px;
+        }
+        .sec-head h4 {
+            font-family: light;
+            font-size: 17px !important;
+            vertical-align: middle;
+            color: #308ECC;
+        }
+        .atb-ins p {
+            font-family: light;
+            font-size: 13px !important;
+            line-height: 1;
+            margin-top: 3px;
+        }
+        .flx-spb-vrt h5 {
+            font-size: 12px;
+        }
+    }
+    
+    @media only screen and (min-width: 591px) and (max-width: 1025px) {
+        .atb-ins {
+            margin-top: 15px;
+            height: 70px !important;
+        }
+        .atb p {
+            font-family: light;
+            font-size: 14px !important;
+        }
+        .cpr-head {
+            margin-bottom: 20px;
+            height: 100px !important;
+        }
+    }
+    
+    .atb-ins {
+        height: 50px;
+    }
+    
+    .cpr-head {
+        height: 55px;
+    }
+    
+    @media only screen and (min-width: 1026px) (max-width: 1340px) {
+        .atb-ins {
+            margin-top: 15px;
+            height: 60px !important;
+        }
+        .atb p {
+            font-family: light;
+        }
     }
     </style>

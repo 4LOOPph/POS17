@@ -36,7 +36,7 @@
                                     </button>
                                 </div>
                                 <div class="dis_cell">
-                                    <button ng-click="addToCart(details)" type="button" class="tes-btn bg-green">
+                                    <button ng-click="addToCart(details,'Solution')" type="button" class="tes-btn bg-green">
                                         <i class="fa fa-shopping-cart"></i>
                                         <div class="hide-sm">Add to cart</div>
                                     </button>
@@ -63,7 +63,7 @@
                                         </button>
                                     </div>
                                     <div class="dis_cell">
-                                        <button ng-click="addToCart(details)" type="button" class="tes-btn bg-green">
+                                        <button ng-click="addToCart(details,'Solution')" type="button" class="tes-btn bg-green">
                                             <i class="fa fa-shopping-cart"></i>
                                             <div class="hide-sm">Add to cart</div>
                                         </button>
@@ -188,7 +188,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="flex_sm bg-green" ng-click="addToCart(details)">
+                                    <a class="flex_sm bg-green" ng-click="addToCart(details,'Solution')">
                                         <div class="font_medium uppercase"><i class="fa fa-shopping-cart"></i> add to cart</div>
                                     </a>
                                     <a class="hide-lg flex_sm bg-violet" ng-click="compare(details)" fa-track-event="['Productcatalogue','share','Solution',details.pb_id]">

@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <style type="text/css">
-        p {
+    p {
         margin: 10px 0;
         padding: 0;
     }
@@ -486,7 +486,6 @@
         /*@editable*/
         border-top: 1px none;
         /*@editable*/
-        border-bottom: 1px solid #ccc;
         /*@editable*/
         padding-top: 0;
         /*@editable*/
@@ -887,6 +886,24 @@
             width: 32%;
             display: inline-flex;
         }
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        .templateContainer {
+            max-width: 535px !important;
+        }
+    }
+    
+    .h6,
+    h6 {
+        font-size: 12px;
+    }
+    
+    h6 {
+        font-weight: 800;
+        line-height: 1.1;
+        color: inherit;
+    }
     </style>
 </head>
 
@@ -997,26 +1014,25 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;display:flex;text-align: center;flex-direction: column;" ng-repeat="group in selected.comparelists">
                                                 <div style="margin-bottom: 0px;">
-                                                    <h3 style="font-size: 15px !important;font-family: medium;vertical-align: middle;color: #333333 ;padding: 0px 5px 0px 5px;">{{group.titles.title}}</h3>
+                                                    <h3 style="font-size: 15px !important;font-family: 'Arial';vertical-align: middle;color: #333333 ;padding: 0px 5px 0px 5px;">{{group.titles.title}}</h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                     <div style="padding: 20px 20px 0 20px;">
                                         <div style="margin-right: -15px;margin-left: -15px;">
                                             <div style="width: 100%;">
                                                 <div style="padding: 10px 0;">
-                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">Software</h4>
+                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px !important;margin-bottom: -15px !important;"">Software</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div ng-repeat="group in selected.comparelists" style="width: 100%;text-align: left;line-height: 1px;padding: 2px;">
-                                                <div  ng-repeat="(name,value) in group.softwaregroup">
+                                                <div ng-repeat="(name,value) in group.softwaregroup">
                                                     <div style="padding: 10px 0;" ng-repeat="val in value track by $index">
-                                                        <h6>{{name}}</h6>
-                                                        <p style="font-size: 14px !important;line-height: 1;">{{val.product_detail.item_name}}
+                                                        <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">{{name}}</h6>
+                                                        <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;">{{val.product_detail.item_name}}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1024,7 +1040,10 @@ The Engagis Sales and Solutions App<br>
                                             <!-- <div style="width: 50%;text-align: left;line-height: 1px;padding: 2px;" ng-repeat="group in selected.comparelists">
                                                 <div style="padding: 10px 0;" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
                                                     <h6>{{attribute.attribute}}</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;">{{attribute.value}}
+                                                    <p style="    font-size: 14px !important;
+    line-height: 1;
+    margin-top: 3px;
+    color: #000;">{{attribute.value}}
                                                     </p>
                                                 </div>
                                             </div> -->
@@ -1034,11 +1053,11 @@ The Engagis Sales and Solutions App<br>
                                         <tr ng-repeat="(name,value) in group.hardwaregroup" style="    display: none;">
                                             <td class="mcnTextContent" valign="top" style="width: 100%;" width="164">
                                                 <div>
-                                                    <h4>{{name}}</h4>
+                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px !important;margin-bottom: -15px !important;">{{name}}</h4>
                                                     <div class="row col-sm-3 mcnTextContent" ng-repeat="val in value track by $index" style="margin: 0px;">
                                                         <div class="atb">
                                                             <div class="atb-ins" ng-repeat="attribute in val[0].atrribute track by $index" ng-if="attribute.is_comparable == 1">
-                                                                <h6>{{attribute.attribute}}</h6>
+                                                                <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">{{attribute.attribute}}</h6>
                                                                 <p>{{attribute.value}}
                                                                 </p>
                                                             </div>
@@ -1053,15 +1072,15 @@ The Engagis Sales and Solutions App<br>
                                             <div style="margin-right: -15px;margin-left: -15px;">
                                                 <div style="width: 100%;">
                                                     <div style="padding: 10px 0;">
-                                                        <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">{{name}}</h4>
+                                                        <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px !important;margin-bottom: -15px !important;">{{name}}</h4>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                                 <div style="width: 50%;text-align: left;line-height: 1px;padding: 2px;" ng-repeat="val in value track by $index">
-                                                    <div style="padding: 10px 0;" ng-repeat="attribute in val[0].atrribute track by $index" ng-if="attribute.is_comparable == 1">
-                                                        <h6>{{attribute.attribute}}</h6>
-                                                        <p style="font-size: 14px !important;line-height: 1;">{{attribute.value}}
+                                                    <div style="padding: 10px 0;height: 80px;overflow-y: hidden;" ng-repeat="attribute in val[0].atrribute track by $index" ng-if="attribute.is_comparable == 1">
+                                                        <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">{{attribute.attribute}}</h6>
+                                                        <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;">{{attribute.value}}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1072,24 +1091,24 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;">
                                             <div style="width: 100%;">
                                                 <div style="padding: 10px 0;">
-                                                    <h4 style="    text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">Support Type</h4>
+                                                    <h4 style=" text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px;margin-bottom: -15px;">Support Type</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;text-align: left;line-height: 1px;padding: 2px;" ng-repeat="group in selected.comparelists">
                                                 <div style="padding: 10px 0;">
-                                                    <h6>Essential</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;" ng-if="group.essential">✔
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">Essential</h6>
+                                                    <p style="    font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;" ng-if="group.essential">✔
                                                     </p>
-                                                    <p style="font-size: 14px !important;line-height: 1;" ng-if="!group.essential">X
+                                                    <p style="    font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;" ng-if="!group.essential">X
                                                     </p>
                                                 </div>
                                                 <div style="padding: 10px 0;">
-                                                    <h6>Enterprise</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;" ng-if="group.enterprise">✔
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">Enterprise</h6>
+                                                    <p style="    font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;" ng-if="group.enterprise">✔
                                                     </p>
-                                                    <p style="font-size: 14px !important;line-height: 1;" ng-if="!group.enterprise">X
+                                                    <p style="    font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;" ng-if="!group.enterprise">X
                                                     </p>
                                                 </div>
                                             </div>
@@ -1122,20 +1141,20 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;">
                                             <div style="width: 100%;">
                                                 <div style="padding: 10px 0;">
-                                                    <h4 style="    text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">Price</h4>
+                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px !important;margin-bottom: -15px !important;">Price</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;text-align: left;line-height: 1px;padding: 2px;" ng-repeat="group in selected.comparelists">
                                                 <div style="padding: 10px 0;">
-                                                    <h6>Capex</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;">{{group.price | currency}}
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">Capex</h6>
+                                                    <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;">{{group.price | currency}}
                                                     </p>
                                                 </div>
                                                 <div style="padding: 10px 0;">
-                                                    <h6>Opex</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;">{{group.weekly | currency}}
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">Opex</h6>
+                                                    <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;">{{group.weekly | currency}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -1151,7 +1170,7 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;display: flex;text-align: center;" ng-repeat="group in selected.comparelist">
                                                 <div style="object-fit: cover;height: 100%; width: 100%;">
-                                                    <img ng-src="{{group.image}}" width="200px" style="width: 100%;padding: 5px;" />
+                                                    <img style="margin:auto;width: 100%;" width="700px" src="{{group.image}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1160,7 +1179,7 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;display:flex;text-align: center;flex-direction: column;" ng-repeat="group in selected.comparelist">
                                                 <div style="margin-bottom: 0px;">
-                                                    <h3 style="font-size: 15px !important;font-family: medium;vertical-align: middle;color: #333333 ;padding: 0px 5px 0px 5px;">{{group.title}}</h3>
+                                                    <h3 style="font-size: 15px !important;font-family: 'Arial';vertical-align: middle;color: #333333 ;padding: 0px 5px 0px 5px;">{{group.title}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -1169,15 +1188,15 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;">
                                             <div style="width: 100%;">
                                                 <div style="padding: 10px 0;">
-                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">{{selected.type}}</h4>
+                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px;margin-bottom: -15px !important;">{{selected.type}}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;text-align: left;line-height: 1px;padding: 2px;" ng-repeat="group in selected.comparelist">
-                                                <div style="padding: 10px 0;" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
-                                                    <h6>{{attribute.attribute}}</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;">{{attribute.value}}
+                                                <div style="padding: 10px;height: 55px;" ng-repeat="attribute in group.attributes" ng-if="attribute.is_comparable == 1">
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">{{attribute.attribute}}</h6>
+                                                    <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;margin-top: 3px;">{{attribute.value}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -1187,15 +1206,15 @@ The Engagis Sales and Solutions App<br>
                                         <div style="margin-right: -15px;margin-left: -15px;">
                                             <div style="width: 100%;">
                                                 <div style="padding: 10px 0;">
-                                                    <h4 style="    text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;">Price</h4>
+                                                    <h4 style="text-align: left;font-size: 18px;border-bottom: 1px solid #ccc;color: #308ECC;margin-top: -10px !important;margin-bottom: -15px !important;">Price</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="margin-right: -15px;margin-left: -15px;display: flex;">
                                             <div style="width: 50%;    text-align: left;line-height: 1px;padding: 2px;" ng-repeat="group in selected.comparelist">
-                                                <div style="padding: 10px 0;">
-                                                    <h6>Capex</h6>
-                                                    <p style="font-size: 14px !important;line-height: 1;">{{group.price | currency}}
+                                                <div style="padding: 10px;height: 55px;">
+                                                    <h6 style="font-size: 12px;font-weight: 800 !important;color: #585858;margin-bottom: 7px;">Capex</h6>
+                                                    <p style="font-size: 14px !important;line-height: 1;margin-top: 3px;color: #000;margin-top: 3px;">{{group.price | currency}}
                                                     </p>
                                                 </div>
                                             </div>
