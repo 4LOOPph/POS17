@@ -419,7 +419,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 " ng-repeat="item in categoryWifi" ng-if="item.is_published == 1 && item.is_archived == 0">
                                 <div class="panel panel-default">
-                                    <div class="dis_table box-stick">
+                                    <div class="dis_table box-stick" ng-if="item.comparable == 1">
                                         <div class="dis_cell">
                                             <button ng-click="compare(item)" type="button" class="tes-btn bg-violet">
                                                 <i class="fa fa-exchange"></i>
