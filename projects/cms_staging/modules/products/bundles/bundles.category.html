@@ -7,7 +7,7 @@
                     <div class="pull-left">
                         <form class="form-inline">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle mr-5" data-toggle="dropdown" style="padding: 5px 20px !important;margin-right: 5px;">
                                     Status: <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">{{applicationStatus}}</span>
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
@@ -17,11 +17,11 @@
                                     <li><a ng-click="updateStatus('Product\'s Category')">Product's Category</a></li>
                                 </ul>
                             </div>
-                            <a class="btn btn-flat btn-sm btn-primary" ng-click="saveproductBundleCategory()">
-                                <i class="fa fa-edit"></i> Save
+                            <a class="btn btn-flat pcombo btn-sm btn-primary mr-5" ng-click="saveproductBundleCategory()">
+                               <img src="./images/icon/ic_save_black_24px.svg"> Save
                             </a>
-                            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllCategory()">
-                                <i class="fa fa-refresh"></i> Refresh
+                            <a class="btn btn-flat pcombo btn-sm btn-default mr-5" ng-click="getAllCategory()">
+                                <img src="./images/icon/refresh.svg"> Refresh
                             </a>
                         </form>
                     </div>
@@ -40,12 +40,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body p-0">
                     <table class="table table-striped footable" data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
-                                <th width="30" data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                <th width="30" data-sort-ignore="true" style="padding: 10px 8px;">
+                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Label</th>
@@ -54,8 +54,8 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="var in itemArray" repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
+                                <td angular-ripple>
+                                    <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
                                 </td>
                                 <td>
                                     {{var.name}}

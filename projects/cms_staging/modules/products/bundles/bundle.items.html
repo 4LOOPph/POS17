@@ -9,15 +9,21 @@
                                 <div class="col-md-12 ">
                                     <div class="input-group ">
                                         <div class="box-tools " ng-hide="list.listName === 'Package'">
-                                            <div class="input-group ">
+                                            <div class="input-group imput">
+                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData(txtSearch)" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="input-group ">
                                                 <input type="text " class="form-control input-sm " placeholder="Search for... " ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
                                                 <div class="input-group-btn ">
                                                     <a class="btn btn-flat btn-sm btn-default " ng-click="searchData(txtSearch)"><i class="fa fa-search "></i></a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="btn-group ">
-                                                <a ng-click="refresh() " class="btn btn-flat btn-sm btn-success ">
-                                                    <i class="fa fa-refresh "></i> Refresh
+                                                <a ng-click="refresh() " class="btn btn-flat pcombo btn-sm btn-default ">
+                                                    <img src="./images/icon/refresh.svg"> Refresh
                                                 </a>
                                             </div>
                                         </div>
@@ -26,23 +32,23 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-repeat="list in models" class="col-md-6">
+                    <div ng-repeat="list in models" class="col-md-6 p-0">
                         <div clas="box-header">
                             <div class="box-tools " ng-hide="list.listName === 'Products'">
-                                <a ng-click="addProductBundle() " class="btn btn-flat btn-sm btn-primary ">
-                                    <i class="fa fa-edit "></i> Save
+                                <a ng-click="addProductBundle() " class="btn btn-flat pcombo btn-sm btn-primary mr-5">
+                                    <img src="./images/icon/ic_save_black_24px.svg"> Save
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-danger " ng-click="removeAll(list,item) ">
-                                    <i class="fa fa-trash "></i> Remove all
+                                <a class="btn btn-flat pcombo btn-sm btn-danger mr-5" ng-click="removeAll(list,item) ">
+                                    <img src="./images/icon/delete-sweep.svg"> Remove all
                                 </a>
                             </div>
                         </div>
-                        <div class="box-body">
+                        <div class="box-body p-0 mt-10 mlf-3">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">List of {{list.listName}}</h3>
                                 </div>
-                                <div class="panel-body" ng-include="'modules/products/bundles/multi.html'"></div>
+                                <div class="panel-body p-0" style="max-height: 400px;overflow-y: auto;" ng-include="'modules/products/bundles/multi.html'"></div>
                             </div>
                         </div>
                     </div>

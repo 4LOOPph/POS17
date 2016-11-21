@@ -13,7 +13,7 @@
         </script>
         <div class="col-md-12">
             <div class="box box-warning">
-                <div class="box-header">
+                <div class="box-header" style="padding: 8px 5px;">
                     <div class="col-md-12">
                         <div class="col-md-5" style="margin-left: 25%;margin-right: 25%;display: flex;">
                             <div class="input-group">
@@ -23,10 +23,10 @@
                                 <input type="text" class="form-control searchinput input-sm" placeholder="What are you looking for?" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                 <div class="input-group-btn">
                                     <!-- <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button> -->
-                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">GO</button>
+                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                 </div>
                             </div>
-                            <button ui-sref="main.pricebook-detail" class="btn btn-success createbutton btn-flat waves-effect">Create New</button>
+                            <button ui-sref="main.pricebook-detail" class="btn btn-success btn-xs btn-flat" style="padding: 0px 9px !important;height: 28px;margin-top: 5px;font-size: 14px;" >Create New</button>
                         </div>
                     </div>
                     <!-- <div class="pull-left">
@@ -66,9 +66,9 @@
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group" style="margin-bottom: -40px;margin-right: 9px;">
-                                <button class="btn btn-default pubbut" uib-tooltip="Publish">P</button>
+                                <button class="btn btn-default actbutton" uib-tooltip="Publish" style="font-size: 17px;font-weight: 500;padding: 1px 8px !important;margin-right: 17px;">P</button>
                                 <span class="badge2">4</span>
-                                <button class="btn btn-default delbut" uib-tooltip="Delete"><img src="./images/icon/ic_clear_black_24px.svg"></button>
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" style=""><img src="./images/icon/ic_clear_black_24px.svg"></button>
                                 <span class="badge1">4</span>
                             </div>
                         </form>
@@ -104,7 +104,7 @@
                     <div class="box-body table-responsive mailbox-messages padding">
                         <table class="table table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
-                                <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                                <td data-header="'checkboxheader.html'" class="text-center center-td-table" angular-ripple>
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">

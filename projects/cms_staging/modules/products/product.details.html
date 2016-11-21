@@ -9,35 +9,36 @@
     </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content prod">
     <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane ng-if="tabprod.product">
+        <div data-title="General Info" bs-pane ng-if="tabprod.product">
             <div ng-include="'modules/products/details/product.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-files-o'></i> Media / Files" bs-pane ng-if="tabprod.media">
+        <div data-title="Media / Files" bs-pane ng-if="tabprod.media">
             <ng-include src="'./modules/products/details/product.media.html'"></ng-include>
         </div>
-        <div data-title="<i class='fa fa-home'></i> Store" bs-pane ng-if="tabprod.store">
+        <div data-title="Store" bs-pane ng-if="tabprod.store">
             <div ng-include="'modules/products/details/store.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-list'></i> Category" bs-pane ng-if="tabprod.category">
+        <div data-title="Category" bs-pane ng-if="tabprod.category">
             <div ng-include="'modules/products/details/category.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-list-ol'></i> Attribute" bs-pane ng-if="tabprod.attribute">
+        <div data-title="Attribute" bs-pane ng-if="tabprod.attribute">
             <div ng-include="'modules/products/details/attributes.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-th'></i> Variants" bs-pane ng-if="tabprod.variation">
+        <div data-title="Variants" bs-pane ng-if="tabprod.variation">
             <div ng-include="'modules/products/details/variants.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-money'></i> Price" bs-pane ng-if="tabprod.price">
+        <div data-title="Price" bs-pane ng-if="tabprod.price">
             <div ng-include="'modules/products/details/price.history.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-star'></i> Review / Ratings" bs-pane ng-if="tabprod.ratings">
+        <div data-title="Review / Ratings" bs-pane ng-if="tabprod.ratings">
             <div ng-include="'modules/products/details/ratings.html'"></div>
         </div>
-        <div data-title="<i class='fa fa-link'></i> Related Products" bs-pane ng-if="tabprod.related">
+        <div data-title="Related Products" bs-pane ng-if="tabprod.related">
             <div ng-include="'modules/products/details/related.product.html'"></div>
         </div>
     </div>
 </section>
 <!-- /.content -->
+

@@ -1,43 +1,48 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-warning">
+        <div class="box box-warning m-0">
             <div class="box-header">
                 <div class="pull-left">
-                    <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
-                        <i class="fa fa-edit"></i> Upload Image
+                    <button class="btn btn-primary pcombo btn-xs btn-flat mr-5" ng-click="openUploader()" >
+                        <img src="./images/icon/ic_file_upload_white_24px.svg"> Upload Image
                     </button>
-                    <button ng-click="deleteAllMedia()" class="btn btn-flat btn-sm btn-danger">
-                        <i class="fa fa-trash"></i> Delete All
+                    <button ng-click="deleteAllMedia()" class="btn btn-danger pcombo btn-xs btn-flat mr-5">
+                        <img src="./images/icon/delete-sweep.svg"> Delete All
                     </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="box-body justcont">
                 <div class="row">
                     <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
                         <div class="box">
                             <div class="box-body text-center">
-                                <div class="box-tools pull-right">
-                                    <button class="btn btn-box-tool" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
+                                <div class="box-tools  pull-right" style="position: absolute;right: 1px;top: 5px;">
+                                    <button class=" actbuttonassets btn-box-tool" ng-click="deleteSelected(files)" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg "></button>
                                     <div class="btn-group" uib-dropdown>
-                                        <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                                        <button class=" actbuttonassets btn-box-tool dropdown-toggle" uib-dropdown-toggle uib-tooltip="More action"><img src="./images/icon/ic_more_vert_black_24px.svg " style="margin: 0;"></button>
                                         <ul class="dropdown-menu" uib-dropdown-menu>
                                             <li>
-                                                <a ng-href="{{files.image_path}}" target="_self" download="{{files.image_path}}">Download
-                                                    <span class="pull-right"><i class="fa fa-download"></i></span>
+                                                <a ng-href="{{files.image_path}}" target="_self" download="{{files.image_path}}">
+                                                    <img src="./images/icon/ic_file_download_black_24px.svg"> Download
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="" ng-click="openLightboxModal(files)">View <span class="pull-right"><i class="fa fa-eye"></i></span></a>
+                                                <a href="" ng-click="openLightboxModal(files)">
+                                                    <img src="./images/icon/ic_visibility_black_24px.svg "> View
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="" ng-click="setAsThumbNail(files)">Set as Thumbnail</a>
                                             </li>
                                             <li class="divider"></li>
-                                            <li><a href="" ng-click="copyURLLink(files)">Copy URL <span class="pull-right"><i class="fa fa-link"></i></span></a></li>
+                                            <li>
+                                                <a href="" ng-click="copyURLLink(files)"><img src="./images/icon/ic_link_black_24px.svg"> Copy URL
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px">
+                                <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px" style=" width: 100% !important;">
                             </div>
                         </div>
                     </div>

@@ -1,20 +1,22 @@
 <div class="row" ng-controller="productBundleRelatedCtrl">
     <div class="col-md-12">
         <div class="box box-warning">
-            <div class="box-header">
+            <div class="box-header p-0" style="padding: 8px 2px !important;">
                 <!-- <h3 class="box-title">List of Products</h3> -->
-                <div class="pull-left">
-                    <a class="btn btn-flat btn-sm btn-info" ng-click="addNewEntry()">
-                        <i class="fa fa-plus"></i> Add Related Bundles
+                <div class="pull-left leftstablebutton">
+                    <button class="actbuttonassets" ng-click="openRelationType()" uib-tooltip="Relation Type">
+                        <img src="./images/icon/ic_list_black_24px (1).svg"> 
+                    </button>
+                </div>
+                <div class="pull-left pl-10" style="padding-top: 4px;">
+                    <a class="btn btn-flat pcombo btn-sm btn-info mr-5" ng-click="addNewEntry()">
+                       <img src="./images/icon/ic_add_white_24px.svg"> Add Related Bundles
                     </a>
-                    <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelectedRelated()">
-                        <i class="fa fa-remove"></i> Delete
+                    <a class="btn btn-flat pcombo btn-sm btn-danger mr-5" ng-click="deleteSelectedRelated()">
+                        <img src="./images/icon/ic_close_white_24px.svg"> Delete
                     </a>
-                    <a class="btn btn-flat btn-sm btn-success" ng-click="getAllRelatedBundles()">
-                        <i class="fa fa-refresh"></i> Refresh
-                    </a>
-                    <a class="btn btn-flat btn-sm btn-default" ng-click="openRelationType()">
-                        <i class="fa fa-list"></i> Relation Type
+                    <a class="btn btn-flat pcombo btn-sm btn-default mr-5" ng-click="getAllRelatedBundles()">
+                        <img src="./images/icon/refresh.svg"> Refresh
                     </a>
                 </div>
             </div>
@@ -22,8 +24,8 @@
                 <table class="table table-striped footable" data-page-size="10" id="tblAttributes">
                     <thead>
                         <tr>
-                            <th class="" data-sort-ignore="true">
-                                <input type="checkbox" ng-model="selectDeselectAllRelation" ng-change="changeSelectDeselectAllRelated()">
+                            <th class="" data-sort-ignore="true" style="padding: 10px 8px;">
+                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAllRelation" ng-change="changeSelectDeselectAllRelated()">
                             </th>
                             <th class="" data-sort-ignore="true">Bundle</th>
                             <th class="" data-sort-ignore="true">Relation Type</th>
@@ -32,8 +34,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="var in relatedProducts" repeat-end="paginate()">
-                            <td>
-                                <input type="checkbox" ng-model="var.selected" ng-change="checkRelationChanges(var)">
+                            <td angular-ripple>
+                                <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkRelationChanges(var)">
                             </td>
                             <td>
                                 {{var.ref_bundle.bundle_name}}

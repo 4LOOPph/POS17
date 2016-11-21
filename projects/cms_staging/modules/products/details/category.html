@@ -1,51 +1,67 @@
 <div class="row" ng-controller="productCategoryCtrl">
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
-            <div class="box box-warning">
+            <div class="box box-warning m-0">
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Products</h3> -->
                     <div class="pull-left">
                         <form class="form-inline">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
-                                    Status: <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">{{applicationStatus}}</span>
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
+                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown" angular-ripple style="padding: 5px 20px !important;margin-right: 5px;" ">
+                                    Status: <span ng-if="applicationStatus=='' ">All</span><span ng-if="applicationStatus !='' ">{{applicationStatus}}</span>
+                                    <span class="caret "></span>
+                                    <span class="sr-only ">Toggle Dropdown</span>
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a ng-click="updateStatus('')">All</a></li>
-                                    <li><a ng-click="updateStatus('Product\'s Category')">Product's Category</a></li>
-                                </ul>
+                                <ul class="dropdown-menu " style="top: 30px;margin-left: 0; ">
+                                    <li><a ng-click="updateStatus( '') ">All</a></li>
+                                    <li><a ng-click="updateStatus( 'Product\'s Category ')">Product's Category</a>
+                                    </li>
+                                    </ul>
                             </div>
-                            <a class="btn btn-flat btn-sm btn-primary" ng-click="saveCategory()">
-                                <i class="fa fa-edit"></i> Save
+                            <a class="btn btn-primary pcombo btn-xs btn-flat mr-5" ng-click="saveCategory()" >
+                                <img src="./images/icon/ic_save_black_24px.svg"> Save
                             </a>
-                            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllCategory()">
-                                <i class="fa fa-refresh"></i> Refresh
+                            <a class="btn btn-default pcombo btn-xs btn-flat mr-5" ng-click="getAllCategory()" >
+                                <img src="./images/icon/refresh.svg"> Refresh
                             </a>
                         </form>
                     </div>
-                    <div class="pull-right box-tools">
+                    <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
                                         </div>
+                                    </div> -->
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                        </div>
                                     </div>
+                                    <!-- <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
+                                        </div>
+                                        <input type="text" name="q" class="form-control searchinput input-sm ng-pristine ng-valid ng-empty ng-touched" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body p-0">
                     <table class="table table-striped footable" data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
-                                <th width="30" data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                <th width="30" data-sort-ignore="true" style="padding: 10px 8px;">
+                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Label</th>
@@ -55,16 +71,16 @@
                         <tbody>
                             <tr ng-repeat="var in itemArray" repeat-end="paginate()">
                                 <td>
-                                    <input type="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
+                                    <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
                                 </td>
                                 <td>
-                                   {{var.name}}
+                                    {{var.name}}
                                 </td>
                                 <td>
                                     {{var.label}}
                                 </td>
                                 <td>
-                                   {{var.description}}
+                                    {{var.description}}
                                 </td>
                             </tr>
                         </tbody>

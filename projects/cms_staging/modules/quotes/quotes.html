@@ -14,17 +14,19 @@
         </script>
         <div class="col-xs-12">
             <div class="box box-warning">
-                <div class="box-header">
+                <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
-                        <button class="btn btn-flat actbuttonmed btn-sm btn-primary" ui-sref="main.quotes-detail" uib-tooltip="Add New">
-                            <img src="./images/icon/ic_add_white_24px.svg">
-                        </button>
-                        <button class="btn btn-flat actbuttonmed btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
-                            <img src="./images/icon/ic_close_white_24px.svg">
-                        </button>
-                        <button ng-click="refresh()" class="btn btn-flat actbuttonmed btn-sm btn-default" uib-tooltip="Refresh">
-                            <img src="./images/icon/refresh.svg">
-                        </button>
+                        <form class="form-inline p-5 pl-10">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.quotes-detail" uib-tooltip="Add New">
+                                <img src="./images/icon/ic_add_white_24px.svg">
+                            </button>
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                                <img src="./images/icon/ic_close_white_24px.svg">
+                            </button>
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
+                                <img src="./images/icon/refresh.svg">
+                            </button>
+                        </form>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
@@ -34,9 +36,9 @@
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
                                         </div>
-                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="What are you looking for?" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search">GO</button>
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                     <!-- <div class="input-group">
@@ -46,7 +48,7 @@
                                         </div>
                                     </div> -->
                                     <div class="btn-group">
-                                        <button class="btn btn-sm btn-flat drpprodbutton btn-warning dropdown-toggle" data-toggle="dropdown">
+                                        <button class="btn btn-sm btn-flat btn-warning  dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
                                             {{applicationStatus}}
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
@@ -65,10 +67,10 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="quoteTable">
                         <tr ng-repeat="quotes in $data  track by $index">
-                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table" angular-ripple>
                                 <input type="checkbox" class="checkbox" ng-model="quotes.selected" ng-change="checkDataChanges(quotes)">
                             </td>
                             <td class="text-center" data-title="'Quote Number'">

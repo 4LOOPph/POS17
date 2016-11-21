@@ -3,11 +3,11 @@
         <div class="box box-warning">
             <div class="box-header">
                 <div class="pull-left">
-                    <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
-                        <i class="fa fa-edit"></i> Upload Image
+                    <button class="btn btn-flat pcombo btn-sm btn-primary mr-5" ng-click="openUploader()">
+                        <img src="./images/icon/ic_file_upload_white_24px.svg"> Upload Image
                     </button>
-                    <button ng-click="deleteAllMedia()" class="btn btn-flat btn-sm btn-danger">
-                        <i class="fa fa-trash"></i> Delete All
+                    <button ng-click="deleteAllMedia()" class="btn btn-flat pcombo btn-sm btn-danger mr-5">
+                        <img src="./images/icon/delete-sweep.svg"> Delete All
                     </button>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                     <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
                         <div class="box">
                             <div class="box-body text-center">
-                                <button class="btn btn-box-tool pull-right" ng-click="deleteSelected(files)"><i class="fa fa-trash"></i></button>
+                                <button class="actbuttonassets btn-box-tool pull-right" ng-click="deleteSelected(files)"><img src="./images/icon/ic_delete_black_24px.svg"></button>
                                 <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px">
                             </div>
                         </div>

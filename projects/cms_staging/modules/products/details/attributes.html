@@ -1,14 +1,14 @@
 <div class="row" ng-controller="productAttributeCtrl">
     <div class="col-md-12">
         <div class="pull-left">
-            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllProductAttributes()">
-                <i class="fa fa-refresh"></i> Refresh
+            <a class="btn btn-default pcombo btn-xs btn-flat mr-5 ml-5" ng-click="getAllProductAttributes()">
+                 <img src="./images/icon/refresh.svg"> Refresh
             </a>
         </div>
     </div>
     <form role="form">
         <div class="col-md-9 col-md-offset-2">
-            <div class="box box-primary">
+            <div class=" box-primary">
                 <div class="box-body">
                     <div class="row">
                         <div class="form-group" ng-repeat="attrib in attributes">
@@ -21,8 +21,8 @@
                             <div class="input-group" ng-if="attrib.attribute_type=='Textbox'">
                                 <input type="text" class="form-control" ng-model="attrib.value">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)"><i class="glyphicon glyphicon-ok"></i></button>
-                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="saveAttributeValue(attrib)" style="    margin-top: -1px;"><i class="glyphicon glyphicon-ok"></i></button>
+                                    <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)" style="    margin-top: -1px;"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
                             <!-- 

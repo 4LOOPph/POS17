@@ -31,44 +31,46 @@
         </div>
         <div ng-class="side ? 'col-md-9 col-xs-9': 'col-md-12 col-xs-12'">
             <div class="box box-warning">
-                <div class="box-header">
+                <div class="box-header" style="padding: 8px 5px;">
                     <!-- <h3 class="box-title">List of Products</h3> -->
+                    <div class="pull-left leftstablebutton">
+                        <button class="actbuttonassets" ng-click="side=!side" uib-tooltip="Product Category" style="margin-right: 10px;cursor:pointer;">
+                            <img src="./images/icon/ic_list_black_24px (1).svg">
+                        </button>
+                    </div>
                     <div class="pull-left">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <a ng-click="side=!side" uib-tooltip="Product Category" style="margin-right: 10px;cursor:pointer;">
-                                    <img src="./images/icon/ic_list_black_24px (1).svg">
-                                </a>
-                                <a class="btn btn-flat btn-sm actbuttonmed btn-primary" ui-sref="main.products-add" uib-tooltip="Add New">
-                                    <img src="./images/icon/ic_add_white_24px.svg">
-                                </a>
-                                <a class="btn btn-flat btn-sm actbuttonmed btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
-                                    <img src="./images/icon/file-export2.svg">
-                                </a>
-                                <a class="btn btn-flat btn-sm actbuttonmed btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
-                                    <img src="./images/icon/pencil-box-outline.svg">
-                                </a>
-                                <a class="btn btn-flat btn-sm actbuttonmed btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive">
-                                    <img src="./images/icon/archive.svg">
-                                </a>
-                                <a ng-click="refresh()" class="btn btn-flat actbuttonmed btn-sm btn-default" uib-tooltip="Refresh">
-                                    <img src="./images/icon/refresh.svg">
-                                </a>
-                            </div>
+                        <form class="form-inline p-5 pl-10">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.products-add" uib-tooltip="Add New">
+                                <img src="./images/icon/ic_add_white_24px.svg">
+                            </button>
+                            <button class="btn btn-success actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                                <img src="./images/icon/file-export2.svg">
+                            </button>
+                            <button class="btn btn-warning actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                                <img src="./images/icon/pencil-box-outline.svg">
+                            </button>
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive">
+                                <img src="./images/icon/archive.svg">
+                            </button>
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5" ng-click="refresh()" uib-tooltip="Refresh">
+                                <img src="./images/icon/refresh.svg">
+                            </button>
                         </form>
+                    </div>
+                    <div class=" btn-group pull-right rightstablebutton">
+                        <button class="actbuttonassets " ng-if="!isList " ng-click="changeDisplay() " uib-tooltip="Grid View " angular-ripple><img src="./images/icon/view-grid.svg ">
+                        </button>
+                        <button class="actbuttonassets " ng-if="isList " ng-click="changeDisplay() " uib-tooltip="List View " style="padding: 2px 3px 3px; " angular-ripple><img src="./images/icon/list.svg " style="width: 18px; ">
+                        </button>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="input-group">
+                                <div class="pt-5">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
-                                        </div>
-                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="What are you looking for?" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <!-- <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button> -->
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple>GO</button>
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                     <div class="input-group">
@@ -78,8 +80,8 @@
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div> -->
-                                        <div class="input-group-btn" >
-                                            <button class="btn btn-sm btn-flat btn-warning drpprodbutton dropdown-toggle" data-toggle="dropdown">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-flat btn-warning actbutton  dropdown-toggle" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;" angular-ripple>
                                                 {{applicationStatus}}
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
@@ -98,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="btn-group">
                                     <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="List View">
                                         <img src="./images/icon/ic_list_black_24px (1).svg">
@@ -107,14 +109,14 @@
                                         <img src="./images/icon/view-grid.svg">
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding" ng-show="displayModel=='List'">
+                <div class="box-body table-responsive padding p-0" ng-show="!isList">
                     <table class="table table-hover" ng-table="productTable">
                         <tr ng-repeat="product in $data | orderBy: 'item_name'">
-                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table" angular-ripple>
                                 <input type="checkbox" class="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)" style="top: 5px;">
                             </td>
                             <td class="text-left" data-title="'Product Name'">
@@ -143,11 +145,11 @@
                         </tr>
                     </table>
                 </div>
-                <div class="box-body" ng-show="displayModel=='Box'">
+                <div class="box-body" ng-show="isList">
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="product in products.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
                             <div class="info-box ">
-                                <span ng-click="edit(product.p_id)" class="info-box-icon bg-aqua"><i class="fa fa-shopping-cart"></i></span>
+                                <span ng-click="edit(product.p_id)" class="info-box-icon bg-aqua"><img src="./images/icon/package.svg" style="    margin-top: -5px;width: 80%;"></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">{{product.item_name}}</span>
                                     <span class="info-box-number">${{product.sell_price}}</span>
