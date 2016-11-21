@@ -11,14 +11,60 @@
 <!-- Main content -->
 <section class="content">
     <div class="nav-tabs-custom" bs-tabs>
-            <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
-                <div ng-include="'modules/pricebook/pricebooks.html'"></div>
-            </div>
-            <div data-title="<i class='fa fa-cube '></i> Products" bs-pane ng-if="displayTab">
-                <div ng-include="'modules/pricebook/products.html'"></div>
-            </div>
-            <div data-title="<i class='fa fa-exchange'></i> Assigned to" bs-pane ng-if="displayTab">
-                <div ng-include="'modules/pricebook/assignedto.html'"></div>
-            </div>
+        <div data-title=" General Information" bs-pane>
+            <div ng-include="'modules/pricebook/pricebooks.html'"></div>
         </div>
+        <div data-title=" Products" bs-pane ng-if="displayTab">
+            <div ng-include="'modules/pricebook/products.html'"></div>
+        </div>
+        <div data-title=" Assigned to" bs-pane ng-if="displayTab">
+            <div ng-include="'modules/pricebook/assignedto.html'"></div>
+        </div>
+    </div>
 </section>
+<style type="text/css">
+.btn-toolbar>.btn,
+.btn-toolbar>.btn-group,
+.btn-toolbar>.input-group {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.btn-toolbar {
+    margin-left: 0px;
+    border: 1px solid #ccc;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0;
+}
+
+.btn-group>.btn:last-child:not(:first-child),
+.btn-group>.dropdown-toggle:not(:first-child) {
+    border-radius: 0;
+}
+
+.ta-scroll-window.form-control {
+    margin-top: -1px;
+}
+
+.nav-tabs-custom>.nav-tabs>li:first-of-type {
+    margin-left: 0;
+    width: 33.3%;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgb(38, 43, 51);
+    font-size: 15px;
+}
+
+.nav-tabs-custom>.nav-tabs>li {
+    border-top: 0px solid transparent;
+    margin-bottom: -2px;
+    margin-right: 0px;
+    width: 33.3%;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgb(38, 43, 51);
+    font-size: 15px;
+}
+</style>

@@ -1,0 +1,53 @@
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title"></h3>
+        <div class="pull-right box-tools">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch2" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch2.length < 1)?searchData2():0">
+                            <div class="input-group-btn">
+                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData2()" ng-keypress="($event.which === 13)?searchData2():0"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-flat btn-sm btn-primary" ng-click="newUserAccount()">
+                    <i class="fa fa-edit"></i> Add New Entry
+                </button>
+                <button class="btn btn-flat btn-sm btn-success" ng-click="refreshUser()">
+                    <i class="fa fa-refresh"></i> Refresh
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="box-body table-responsive padding">
+        <table class="table table-hover" ng-table="usersTable">
+            <tr ng-repeat="row in $data  track by $index">
+                <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                    <input type="checkbox" ng-model="row.selected" ng-change="checkDataChanges(row)">
+                </td>
+                <td class="text-center" data-title="'Name'">
+                    {{row.EmpName}}
+                </td>
+                <td class="text-center" data-title="'Username'">
+                    {{row.username}}
+                </td>
+                <td class="text-center" data-title="'User Roles'">
+                    <span ng-if="row.isOwner == 1" class="role-tag label label-warning">OWNER</span>
+                    <span ng-if="row.userRoles.length > 0" class="role-tag label label-primary" ng-repeat="tag in row.userRoles">{{tag.name}}</span>
+                </td>
+                <td class="text-center" data-title="'Account Validity'">
+                    {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
+                </td>
+                <td class="text-right" data-title="'Action'">
+                    <a class="btn btn-flat btn-default btn-xs"><span class="fa fa-tablet"></span></a>
+                    <a class="btn btn-flat btn-default btn-xs" ng-click="setUsersSubscription(row.uc_id)" ng-show="profile.isOwner == 1 && profile.uc_id !== row.uc_id"><span class="fa fa-list"></span></a>
+                    <a class="btn btn-flat btn-info btn-xs" ng-click="newUserAccount(row.uc_id,row.profile.person_id)"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a class="btn btn-flat btn-danger btn-xs" ng-click="toggleModal(row.uc_id,$index,'users')" href=""><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

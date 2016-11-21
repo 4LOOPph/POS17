@@ -15,8 +15,8 @@
                             <!-- 
 
                             Textbox 
-
-                            -->
+    
+                            -->                           
                             <label ng-if="attrib.attribute_type=='Textbox'">{{attrib.attribute}}</label>
                             <div class="input-group" ng-if="attrib.attribute_type=='Textbox'">
                                 <input type="text" class="form-control" ng-model="attrib.value">
@@ -64,6 +64,7 @@
                                     <button class="btn btn-default" ng-disabled="!attrib.value" ng-click="deleteAttributeValue(attrib)"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             </div>
+
                             <qr type-number="6" correction-level="'M'" size="200" input-mode="''" text="attrib.value" image="true" ng-if="attrib.attribute_type=='QRCode Textbox'"></qr>
                             <!-- 
 
@@ -88,7 +89,7 @@
                             -->
                             <div class="checkbox" ng-if="attrib.attribute_type=='Checkbox'">
                                 <label>
-                                    <input type="checkbox" /> {{attrib.attribute}}
+                                    <input type="checkbox" ng-click="saveAttributeValue(attrib)" ng-model="attrib.checked"/> {{attrib.attribute}}
                                 </label>
                             </div>
                             <!-- 
@@ -107,6 +108,7 @@
                             <h3 class="box-title" ng-if="attrib.attribute_type=='Numeric'">{{attrib.value | number:2}}</h3>
                         </div>
                     </div>
+                    <input type="checkbox" ng-click="saveShow()" ng-model="details.doc"/>Add To Product Catalogue
                     <!-- Attachment -->
                     <div class="row">
                         <div ng-repeat="attrib in attributes">

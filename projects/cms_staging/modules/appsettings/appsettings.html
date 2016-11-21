@@ -15,6 +15,7 @@
                         <li ng-class="{'active':app.device}"><a href="" ng-click="showTab('device')"><i class="fa fa-tablet"></i> Devices</a></li>
                         <li ng-class="{'active':app.apikeys}"><a href="" ng-click="showTab('apikeys')"><i class="fa fa-key"></i> API Keys</a></li>
                         <li ng-class="{'active':app.user}"><a href="" ng-click="showTab('user')"><i class="fa fa-users"></i> User Auth</a></li>
+                        <li ng-class="{'active':app.payment}"><a href="" ng-click="showTab('payment')"><i class="fa fa-credit-card"></i> Payment Gateways</a></li>
                         <li ng-class="{'active':app.logs}"><a href="" ng-click="showTab('logs')"><i class="fa fa-file-text-o"></i> Logs</a></li>
                     </ul>
                 </div>
@@ -25,6 +26,7 @@
             <div ng-include="'./modules/appsettings/apikeys.html'" ng-if="app.apikeys"></div>
             <div ng-include="'./modules/appsettings/userauth.html'" ng-if="app.user"></div>
             <div ng-include="'./modules/appsettings/logs.html'" ng-if="app.logs"></div>
+            <div ng-include="'./modules/appsettings/payments.html'" ng-if="app.payment"></div>
         </div>
     </div>
 </section>

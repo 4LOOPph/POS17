@@ -1,11 +1,10 @@
 <!-- sidebar: style can be found in sidebar.less -->
-<section class="sidebar">
+<div class="sidebar" ng-show="bigside">
     <div class="user-panel">
-        <!-- <p style="color:#fff;padding: 5px 5px 5px 15px;line-height: 1;position: absolute;font-weight: 600;margin-bottom: 9px;"></p> -->
         <div class="pull-left image">
             <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="img-circle" alt="User Image" />
         </div>
-        <div class="pull-left info">
+        <div class="pull-right info">
             <b ng-bind="profile.EmpName"></b>
             <br>
             <br>
@@ -13,27 +12,40 @@
         </div>
     </div>
     <!-- Sidebar user panel -->
-    <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a ui-sref="main.products"><i class="fa fa-archive"></i> Products</a></li>
-        <li><a ui-sref="main.products-bundles"><i class="fa fa-cubes"></i> Product Group</a></li>
-        <li><a ui-sref="main.articles"><i class="fa fa-file"></i> Articles</a></li>
-        <li><a ui-sref="main.quotes"><i class="fa fa-file-text"></i> Quotation</a></li>
-        <li><a ui-sref="main.pricebook"><i class="fa fa-book"></i> Price Book</a></li>
-        <li class="treeview">
-            <a href="">
-                <i class="fa fa-th"></i> <span>Inventory</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a ui-sref="main.purchase_order" ui-sref-active="active"><i class="fa fa-file-text-o"></i> Purchase Order</a></li>
-                <li><a ui-sref="main.received_order"><i class="fa fa-file-text-o"></i> Receive Order</a></li>
-                <li><a ui-sref="main.return_order"><i class="fa fa-file-text-o"></i> Return Order</a></li>
-                <li><a ui-sref="main.stock"><i class="fa fa-file-text-o"></i> Stocks</a></li>
-            </ul>
-        </li>
-        <!-- <li class="treeview">
+    <div class="autoscroll">
+        <ul class="sidebar-menu ">
+            <li class="header">NAVIGATION</li>
+            <li>
+                <a ui-sref="main.dashboard"><img src="./images/icon/ic_dashboard_white_24px.svg"> Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="main.products"><img src="./images/icon/package.svg"> Products</a>
+            </li>
+            <li>
+                <a ui-sref="main.products-bundles"><img src="./images/icon/arrange-bring-forward.svg"> Product Group</a>
+            </li>
+            <li>
+                <a ui-sref="main.articles"><img src="./images/icon/file.svg"> Articles</a>
+            </li>
+            <li>
+                <a ui-sref="main.quotes"><img src="./images/icon/file-document.svg"> Quotation</a>
+            </li>
+            <li>
+                <a ui-sref="main.pricebook"><img src="./images/icon/book-variant.svg"> Price Book</a>
+            </li>
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/icon/view-module.svg"> <span>Inventory</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a ui-sref="main.purchase_order" ui-sref-active="active">Purchase Order</a></li>
+                    <li><a ui-sref="main.received_order">Receive Order</a></li>
+                    <li><a ui-sref="main.return_order">Return Order</a></li>
+                    <li><a ui-sref="main.stock">Stocks</a></li>
+                </ul>
+            </li>
+            <!-- <li class="treeview">
             <a href="">
                 <i class="fa fa-money"></i>
                 <span>Financials</span>
@@ -46,116 +58,130 @@
                 <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
             </ul>
         </li> -->
-        <li class="treeview">
-            <a href="">
-                <i class="fa fa-file-o"></i>
-                <span>Reports / Insights</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a ui-sref="main.reports-invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a ui-sref="main.analytics-overview"><i class="fa fa-circle-o"></i> Analytics</a></li>
-            </ul>
-        </li>
-        <li class="header">SETTINGS</li>
-        <li class="treeview">
-            <a href="">
-                <i class="fa fa-folder"></i> <span>Preferrences</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                    <a ui-sref="main.settings-stores">
-                        <i class="fa fa-home"></i> <span>Stores</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-banks">
-                        <i class="fa fa-bank"></i> <span>Banks</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-attributes">
-                        <i class="fa fa-list-ol"></i> <span>Attributes</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-categories">
-                        <i class="fa fa-list"></i> <span>Category</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-producttype">
-                        <i class="fa fa-cubes"></i> <span>Product Type</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.pricebooktype">
-                        <i class="fa fa-tags"></i> <span>Price Book Type</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-suppliers">
-                        <i class="fa fa-truck"></i> <span>Suppliers</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-sitemap"></i> <span>Variations</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-currencies">
-                        <i class="fa fa-money"></i> <span>Currency</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="treeview">
-            <a href="">
-                <i class="fa fa-group"></i>
-                <span>Personnel / Customer</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                    <a ui-sref="main.settings-humanresource">
-                        <i class="fa fa-group"></i> <span>Staff Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="main.settings-company">
-                        <i class="fa fa-sitemap "></i> <span>Companies/Customer</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a ui-sref="main.settings-useraccounts">
-                <i class="fa fa-home"></i> <span>Roles / Access</span>
-            </a>
-        </li>
-        <li>
-            <a ui-sref="main.settings-app">
-                <i class="fa fa-cog"></i> <span>Application Settings</span>
-            </a>
-        </li>
-        <li class="header">OTHERS</li>
-         <li>
-            <a ui-sref="main.calendars">
-                <i class="fa fa-calendar"></i> <span>Appointment/Booking</span>
-                <small class="label pull-right bg-red">3</small>
-            </a>
-        </li>
-        <li>
-            <a ui-sref="main.mailbox">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <small class="label pull-right bg-yellow">12</small>
-            </a>
-        </li>
-        <li class="header">SUPPORT</li>
-        <!-- <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
-        <li><a href=""><i class="fa fa-comment-o"></i> Customer Service</a></li>
-    </ul>
-</section>
-<!-- /.sidebar -->
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/icon/note-outline.svg">
+                    <span>Reports / Insights</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a ui-sref="main.reports-invoice">Invoice</a></li>
+                    <li><a ui-sref="main.analytics-overview">Analytics</a></li>
+                </ul>
+            </li>
+            <li class="header">SETTINGS</li>
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/icon/ic_folder_white_24px.svg" style="margin-right: 14px;"><span>Preferrences</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a ui-sref="main.settings-stores">
+                            <span>Stores</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-banks">
+                            <span>Banks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-attributes">
+                            <span>Attributes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-categories">
+                         <span>Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-producttype">
+                          <span>Product Type</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.pricebooktype">
+                           <span>Price Book Type</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-suppliers">
+                          <span>Suppliers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Variations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-currencies">
+                          <span>Currency</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="">
+                    <img src="./images/icon/account-multiple.svg">
+                    <span>Personnel / Customer</span>
+                    <i class="fa pull-right fa-angle-left"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a ui-sref="main.settings-humanresource">
+                            <span>Staff Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="main.settings-company">
+                         <span>Companies/Customer</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a ui-sref="main.settings-useraccounts">
+                    <img src="./images/icon/ic_accessibility_white_24px.svg">
+                    <span>Roles / Access</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="main.settings-app">
+                    <img src="./images/icon/ic_settings_white_24px.svg">
+                    <span>Application Settings</span>
+                </a>
+            </li>
+            <li class="header">OTHERS</li>
+            <li>
+                <a ui-sref="main.calendars">
+                    <img src="./images/icon/calendar-text.svg">
+                    <span>Appointment/Booking</span>
+                    <small class="label pull-right bg-red">3</small>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="main.mailbox">
+                    <img src="./images/icon/ic_email_white_24px.svg">
+                    <span>Mailbox</span>
+                    <small class="label pull-right bg-yellow">12</small>
+                </a>
+            </li>
+            <li class="header">SUPPORT</li>
+            <!-- <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
+            <li>
+                <a href=""><img src="./images/icon/headset.svg"> Customer Service</a>
+            </li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+        </ul>
+    </div>
+</div>

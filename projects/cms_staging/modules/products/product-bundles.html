@@ -4,13 +4,13 @@
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Product Bundles</li>
     </ol>
-</section>
+</section> 
 <!-- Main content -->
 <section class="content">
     <!-- /.row -->
     <div class="row" role="search-row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
         </script>
         <div class="col-xs-12">
             <div class="box box-warning">
@@ -19,20 +19,20 @@
                     <div class="pull-left">
                         <form class="form-inline">
                             <div class="form-group">
-                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.products-bundle-add" uib-tooltip="Add New">
-                                    <i class="fa fa-plus"></i>
+                                <a class="btn btn-flat actbuttonmed btn-sm btn-primary" ui-sref="main.products-bundle-add" uib-tooltip="Add New">
+                                    <img src="./images/icon/ic_add_white_24px.svg">
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
-                                    <i class="fa fa-file-text-o"></i>
+                                <a class="btn btn-flat actbuttonmed btn-sm btn-success" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                                    <img src="./images/icon/file-export2.svg">
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
-                                    <i class="fa fa-edit"></i>
+                                <a class="btn btn-flat actbuttonmed btn-sm btn-warning" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                                    <img src="./images/icon/pencil-box-outline.svg">
                                 </a>
-                                <a class="btn btn-flat btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive">
-                                    <i class="fa fa-trash"></i>
+                                <a class="btn btn-flat actbuttonmed btn-sm btn-danger" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive">
+                                    <img src="./images/icon/archive.svg">
                                 </a>
-                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
-                                    <i class="fa fa-refresh"></i>
+                                <button ng-click="refresh()" class="btn btn-flat actbuttonmed btn-sm btn-default" uib-tooltip="Refresh">
+                                    <img src="./images/icon/refresh.svg">
                                 </button>
                             </div>
                         </form>
@@ -42,14 +42,23 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
+                                        </div>
+                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="What are you looking for?" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple>GO</button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <!-- <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search">
                                                 <i class="fa fa-search"></i>
                                             </button>
-                                        </div>
+                                        </div> -->
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                            <button class="btn btn-sm btn-flat btn-warning drpprodbutton dropdown-toggle" data-toggle="dropdown">
                                                 {{applicationStatus}}
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
@@ -83,10 +92,10 @@
                     <table class="table table-hover" ng-table="productBundleTable">
                         <tr ng-repeat="bundle in $data  track by $index">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="bundle.selected" ng-change="checkDataChanges(bundle)">
+                                <input type="checkbox" class="checkbox" ng-model="bundle.selected" ng-change="checkDataChanges(bundle)">
                             </td>
                             <td class="text-left" data-title="'Bundle Name'">
-                                {{bundle.bundle_name}}
+                                <a ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})">{{bundle.bundle_name}}</a>
                             </td>
                             <td class="text-center" data-title="'Bundle Type'">
                                 {{bundle.product_type}}
@@ -106,7 +115,7 @@
                                 {{bundle.date_created | fromNow}}
                             </td>
                             <td class="text-right">
-                                <button ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn actbutton btn-info btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
                             </td>
                         </tr>
                     </table>

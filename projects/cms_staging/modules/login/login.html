@@ -1,36 +1,81 @@
 <div class="login-box">
-    <div class="login-logo">
-        <b>Symphony</b>-CMS
+    <div class="box-header login-logo">
+        Sign In to <i class="headtext">Symphony</i>
     </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <form ng-submit="login()">
+    <form ng-submit="login()">
+        <!-- /.login-logo -->
+        <div class="login-box-body">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Username" ng-model="user.username" />
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <input placeholder="Username" type="text" ng-model="user.username" required>
             </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password" ng-model="user.password" />
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <div class="form-group has-feedback" style="margin-bottom: 15px;">
+                <input placeholder="Password" type="password" ng-model="user.password" required>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <div class="form-group " style="margin-bottom: 15px;">
+                <label>
+                    <input for="check" type="checkbox" class="checkbox marg" style="width: 0;">
+                    <div id="check" class="lab"> Remember Me</div>
+                </label>
+                <div class="forgot" ui-sref="forgot">
+                    <img src="./images/icon/ic_lock_black_24px.svg"> Forgot password
                 </div>
             </div>
-        </form>
-        <div class="social-auth-links text-center">
-            <p>- OR -</p>
+        </div>
+        <div class="box-footer">
             <div class="text-center">
                 <a class="btn btn-social-icon btn-facebook" ng-click="authenticate('facebook')"><i class="fa fa-facebook"></i></a>
                 <a class="btn btn-social-icon btn-google" ng-click="authenticate('google')"><i class="fa fa-google-plus"></i></a>
                 <a class="btn btn-social-icon btn-linkedin" ng-click="authenticate('linkedin')"><i class="fa fa-linkedin"></i></a>
                 <a class="btn btn-social-icon btn-twitter" ng-click="authenticate('twitter')"><i class="fa fa-twitter"></i></a>
             </div>
-            <a ui-sref="forgot" class="btn btn-block btn-link">I forgot my password</a>
-            <a ui-sref="resend" class="btn btn-block btn-link">Resend Email Verification</a>
         </div>
-    </div>
+        <div class="box-footer" style="padding: 20px 35px;">
+            <button type="submit" class="btnflat waves-effect" angular-ripple>Log In</button>
+            <button ui-sref="resend" class="btnflat waves-effect" angular-ripple>Resend Email Verification</button>
+        </div>
+    </form>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+<style type="text/css">
+.login-box input {
+    margin: 20px 0;
+    width: 100%;
+    display: block;
+    border: none;
+    padding: 10px 0;
+    border-bottom: solid 1px #bfbfbf;
+    -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #262b33 4%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #262b33 4%);
+    background-position: -500px 0;
+    background-size: 500px 100%;
+    background-repeat: no-repeat;
+    color: #737373;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.login-box input:focus,
+.login-box input:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+}
+
+.login-box input::-webkit-input-placeholder {
+    /*font-family: 'roboto', sans-serif;*/
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-box input:focus::-webkit-input-placeholder,
+.login-box input:valid::-webkit-input-placeholder {
+    color: #262b33;
+    font-size: 11px;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    visibility: visible !important;
+}
+</style>

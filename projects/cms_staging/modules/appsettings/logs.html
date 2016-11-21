@@ -1,7 +1,8 @@
 <div class="box box-warning">
     <div class="box-header">
         <h3 class="box-title">Application Logs</h3>
-        <br><br>
+        <br>
+        <br>
         <div class="pull-left">
             <form class="form-inline">
                 <div class="form-group">
@@ -16,26 +17,17 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                        </div>
+                        <div class="input-group">
                             <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                             <span class="input-group-btn">
-                                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
-                                                <i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                            <span class="input-group-btn">
-                                            <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
-                                                {{applicationStatus}}
-                                                <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateStatus('All')">All</a>
-                                </li>
-                                <li><a ng-click="updateStatus('Online')">Online</a>
-                                </li>
-                                <li><a ng-click="updateStatus('Offline')">Offline</a>
-                                </li>
-                            </ul>
+                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                <i class="fa fa-search"></i>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -44,6 +36,143 @@
         </div>
     </div>
     <div class="box-body table-responsive padding">
-        
+        <table class="table table-hover footable" data-page-size="10">
+            <thead>
+                <tr>
+                    <th data-sort-ignore="true">
+                        <input type="checkbox">
+                    </th>
+                    <th data-type="numeric" data-sort-initial="true">ID</th>
+                    <th>Subject</th>
+                    <th>Account Name</th>
+                    <th>Transaction Amount</th>
+                    <th>Converted Amount</th>
+                    <th>Valid Until</th>
+                    <th>Stage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>183</td>
+                    <td><a ui-sref="main.quote.detail({id: 183})">John Doe</a>
+                    </td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-success">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>219</td>
+                    <td>Jane Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-warning">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>657</td>
+                    <td>Bob Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-primary">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>175</td>
+                    <td>Mike Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-danger">Denied</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>183</td>
+                    <td>John Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-success">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>219</td>
+                    <td>Jane Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-warning">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>657</td>
+                    <td>Bob Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-primary">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>175</td>
+                    <td>Mike Doe</td>
+                    <td>or sit amet salami</td>
+                    <td>2342.34</td>
+                    <td>483</td>
+                    <td>2/10/2014</td>
+                    <td>
+                        <span class="label label-danger">Denied</span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="8" align="center">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>

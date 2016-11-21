@@ -10,7 +10,7 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
         </script>
         <div class="col-xs-12">
             <div class="box">
@@ -49,10 +49,10 @@
                     <table class="table table-hover" ng-table="attributeTable">
                         <tr ng-repeat="attribute in $data">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="bank.selected" ng-change="checkDataChanges(bank)">
+                                <input type="checkbox" class="checkbox" ng-model="bank.selected" ng-change="checkDataChanges(bank)">
                             </td>
                             <td class="text-center" data-title="'Name'">
-                                {{attribute.name}}
+                                 <a ui-sref="main.settings-attributes-add({att_id: attribute.att_id})">{{attribute.name}}</a>
                             </td>
                             <td class="text-center" data-title="'Label'">
                                 {{attribute.label}}
@@ -62,8 +62,8 @@
                             </td>
                             </td>
                             <td class="text-right">
-                                <button ng-click="edit(attribute.att_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button ng-click="toggleModal(attribute.att_id);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button ng-click="edit(attribute.att_id)" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                <button ng-click="toggleModal(attribute.att_id);" class="btn btn-flat actbutton btn-danger btn-xs"> <img src="./images/icon/ic_close_white_18px.svg"></button>
                             </td>
                         </tr>
                     </table>

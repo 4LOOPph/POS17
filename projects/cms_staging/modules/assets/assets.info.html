@@ -1,11 +1,12 @@
-<div class="modal-body" id="modal-body">
+<div class="modal-body" id="modal-body" style="padding: 0px;">
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-widget widget-user-2">
+            <div class="box box-widget widget-user-2" style="margin:0px;">
                 <div class="widget-user-header bg-yellow">
                     <div class="widget-user-image">
                         <!-- FOLDER -->
-                        <i class="fa fa-folder fa-5x" ng-if="files.isFolder"></i>
+                        <!-- <i class="fa fa-folder fa-5x" ng-if="files.isFolder"></i> -->
+                        <img src="./images/icon/ic_folder_white_24px.svg" ng-if="files.isFolder">
                         <!-- PDF -->
                         <i class="fa fa-file-pdf-o fa-5x" ng-if="files.asset_mimetype == 'application/pdf'"></i>
                         <!-- DOCS -->
@@ -28,10 +29,10 @@
                         <img src="{{files.asset_url}}" class="img-thumbnail" alt="Attachment" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
                     </div>
                     <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username" ng-if="files.isFolder">{{files.folder_name}}</h3>
-                    <h3 class="widget-user-username" ng-if="!files.isFolder">{{files.asset_name}}</h3>
-                    <h5 class="widget-user-desc" ng-if="files.isFolder">{{files.folder_filesize}}</h5>
-                    <h5 class="widget-user-desc" ng-if="!files.isFolder">{{files.asset_filesize}}</h5>
+                    <h4 class="widget-user-username" ng-if="files.isFolder" style="word-wrap: break-word;">{{files.folder_name}}</h4>
+                    <h4 class="widget-user-username" ng-if="!files.isFolder" style="word-wrap: break-word;">{{files.asset_name}}</h4>
+                    <h5 class="widget-user-desc" ng-if="files.isFolder" style="word-wrap: break-word;">{{files.folder_filesize}}</h5>
+                    <h5 class="widget-user-desc" ng-if="!files.isFolder" style="word-wrap: break-word;">{{files.asset_filesize}}</h5>
                 </div>
                 <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
@@ -50,5 +51,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <a class="btn btn-sm btn-flat btn-default" ng-click="cancel()">Close</a>
+    <a class="btn  btn-default" ng-click="cancel()">Close</a>
 </div>

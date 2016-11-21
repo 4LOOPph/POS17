@@ -8,143 +8,137 @@
     </div>
     <div class="box-body padding">
         <div class="row">
-            <div class="col-md-12">
-                <div class="box box-default collapsed-box">
-                    <div class="box-header with-border" data-widget="collapse">
-                        <h3 class="box-title"><i class="fa fa-facebook text-primary"></i> Facebook 
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-facebook text-primary"></i> Facebook
                             <small ng-show="facebook.isEnable">
                                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
                             </small>
                         </h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-link" data-widget="collapse"><i class="fa fa-cog"></i></button>
+                            <input id="check_facebook" bs-switch switch-change="socialChange('facebook')" ng-model="facebook.isEnable" switch-active="facebook.activated" type="checkbox">
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" ng-if="facebook.activated">
                         <form role="form">
                             <div class="form-group">
                                 <label>App Id</label>
-                                <input type="text" class="form-control" ng-model="facebook.apiKey" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="facebook.apiKey" ng-disabled="!facebook.isEnable" ng-readonly="facebook.isEnable" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>App Secret</label>
-                                <input type="text" class="form-control" ng-model="facebook.apiSecret" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="facebook.apiSecret" ng-disabled="!facebook.isEnable" ng-readonly="facebook.isEnable" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Redirect URL</label>
-                                <input type="text" class="form-control" ng-model="facebook.redirectUri" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="facebook.redirectUri" ng-disabled="!facebook.isEnable" ng-readonly="facebook.isEnable" placeholder="" />
                             </div>
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary" ng-if="!facebook.isEnable" ng-click="enableSocialAuth('facebook')">Enable</a>
-                        <a class="btn btn-primary" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</a>
-                        <a class="btn btn-danger" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</a>
+                        <a class="btn btn-primary btn-sm" ng-if="!facebook.request" ng-click="activateSocialAuth('facebook')">Activate</a>
+                        <label class="label label-info" ng-if="facebook.request && !facebook.activated">Waiting for Approval</label>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="box box-default collapsed-box">
-                    <div class="box-header with-border" data-widget="collapse">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-twitter text-info"></i> Twitter 
                             <small ng-show="twitter.isEnable">
                                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
                             </small>
                         </h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-link" data-widget="collapse"><i class="fa fa-cog"></i></button>
+                            <input id="check_twitter" bs-switch switch-change="socialChange('twitter')" ng-model="twitter.isEnable" switch-active="twitter.activated" type="checkbox">
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" ng-if="twitter.activated">
                         <form role="form">
                             <div class="form-group">
                                 <label>Consumer Key (API Key)</label>
-                                <input type="text" class="form-control" ng-model="twitter.apiKey" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="twitter.apiKey" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
                             </div>
                             <div class="form-group">
                                 <label>Consumer Secret (API Secret)</label>
-                                <input type="text" class="form-control" ng-model="twitter.apiSecret" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="twitter.apiSecret" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
                             </div>
                             <div class="form-group">
                                 <label>Redirect URL</label>
-                                <input type="text" class="form-control" ng-model="twitter.redirectUri" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="twitter.redirectUri" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
                             </div>
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary" ng-if="!twitter.isEnable" ng-click="enableSocialAuth('twitter')">Enable</a>
-                        <a class="btn btn-primary" ng-if="twitter.isEnable" ng-click="updateSocialAuth('twitter')">Update</a>
-                        <a class="btn btn-danger" ng-if="twitter.isEnable" ng-click="deleteSocialAuth('twitter')">Delete</a>
+                        <a class="btn btn-primary btn-sm" ng-if="!twitter.request" ng-click="activateSocialAuth('twitter')">Activate</a>
+                        <label class="label label-info" ng-if="twitter.request  && !twitter.activated">Waiting for Approval</label>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="box box-default collapsed-box">
-                    <div class="box-header with-border" data-widget="collapse">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-google text-danger"></i> Google
                             <small ng-show="google.isEnable">
                                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
                             </small>
                         </h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-link" data-widget="collapse"><i class="fa fa-cog"></i></button>
+                            <input id="check_google" bs-switch switch-change="socialChange('google')" ng-model="google.isEnable" switch-active="google.activated" type="checkbox">
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" ng-if="google.activated">
                         <form role="form">
                             <div class="form-group">
                                 <label>Client Id</label>
-                                <input type="text" class="form-control" ng-model="google.apiKey" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="google.apiKey" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Client Secret</label>
-                                <input type="text" class="form-control" ng-model="google.apiSecret" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="google.apiSecret" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Redirect URL</label>
-                                <input type="text" class="form-control" ng-model="google.redirectUri" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="google.redirectUri" placeholder="" />
                             </div>
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary" ng-if="!google.isEnable" ng-click="enableSocialAuth('google')">Enable</a>
-                        <a class="btn btn-primary" ng-if="google.isEnable" ng-click="updateSocialAuth('google')">Update</a>
-                        <a class="btn btn-danger" ng-if="google.isEnable" ng-click="deleteSocialAuth('google')">Delete</a>
+                        <a class="btn btn-primary btn-sm" ng-if="!google.request" ng-click="activateSocialAuth('google')">Activate</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="box box-default collapsed-box">
-                    <div class="box-header with-border" data-widget="collapse">
-                        <h3 class="box-title"><i class="fa fa-google text-light-blue"></i> LinkedIn
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-linkedin text-light-blue"></i> LinkedIn
                         <small ng-show="linkedin.isEnable">
                                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
                             </small>
                         </h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-link" data-widget="collapse"><i class="fa fa-cog"></i></button>
+                            <input id="check_linkedin" bs-switch switch-change="socialChange('linkedin')" ng-model="linkedin.isEnable" switch-active="linkedin.activated" type="checkbox">
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" ng-if="linkedin.activated">
                         <form role="form">
                             <div class="form-group">
                                 <label>Client Id</label>
-                                <input type="text" class="form-control" ng-model="linkedin.apiKey" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="linkedin.apiKey" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Client Secret</label>
-                                <input type="text" class="form-control" ng-model="linkedin.apiSecret" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="linkedin.apiSecret" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Redirect URL</label>
-                                <input type="text" class="form-control" ng-model="linkedin.redirectUri" placeholder="" />
+                                <input type="text" class="form-control input-sm" ng-model="linkedin.redirectUri" placeholder="" />
                             </div>
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary" ng-if="!linkedin.isEnable" ng-click="enableSocialAuth('linkedin')">Enable</a>
-                        <a class="btn btn-primary" ng-if="linkedin.isEnable" ng-click="updateSocialAuth('linkedin')">Update</a>
-                        <a class="btn btn-danger" ng-if="linkedin.isEnable" ng-click="deleteSocialAuth('linkedin')">Delete</a>
+                        <a class="btn btn-primary btn-sm" ng-if="!linkedin.request" ng-click="activateSocialAuth('linkedin')">Activate</a>
                     </div>
                 </div>
             </div>
