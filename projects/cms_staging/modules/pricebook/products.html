@@ -3,16 +3,22 @@
         <div class="">
             <div class="box-header">
                 <div class="col-md-12" style="padding: 0">
-                    <div class="col-md-5" style="padding: 0;margin-left: -4px;">
-                        <div class="input-group">
+                    <div >
+                        <!-- <div class="input-group">
                             <div class="input-group-btn">
                                 <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
                             </div>
-                            <!-- <input type="text" class="form-control searchinput input-sm" placeholder="What are you looking for?" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0"> -->
                             <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search for Products" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
                             <div class="input-group-btn">
-                                <!-- <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button> -->
                                 <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData(txtProductSearch)">GO</button>
+                            </div>
+                        </div> -->
+                        <div class=" pt-5 ">
+                            <div class="input-group pull-right imput" style="width: 250px;">
+                                <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData(txtProductSearch)" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,15 +58,15 @@
                                     </p>
                                 </div> -->
                                 <div class="btn-group">
-                                    <button class="btn aw btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <button class="btn aw btn-default dropdown-toggle" data-toggle="dropdown" style="border: 1px solid #d2d6de;">
                                         Filter By Tags
                                         <span class="caret"></span>
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
-                                    <ul class="dropdown-menu" role="menu">
+                                    <ul class="dropdown-menu" role="menu" style="margin-left: -15px;max-height: 400px;overflow-y: auto;">
                                         <li ng-repeat="tag in tagsArr">
                                             <a href="" ng-click="toggleSelectedTag(tag)" class="small" data-value="{{tag.checked}}" tabIndex="-1">
-                                                <input type="checkbox" ng-model="tag.checked" />&nbsp; {{tag.tags}}
+                                                <input type="checkbox" ng-model="tag.checked" style="display: initial !important;" />&nbsp; {{tag.tags}}
                                             </a>
                                         </li>
                                     </ul>
@@ -84,7 +90,7 @@
                     </form>
                 </div>
             </div>
-            <div class="box-body ">
+            <div class="box-body p-0">
                 <table class="table table-striped footable" data-page-size="10" id="tblCategory">
                     <thead>
                         <tr>
@@ -103,7 +109,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="product in (pricebookItems | filter:isOnSelectedTag())" repeat-end="paginate()">
-                            <td>
+                            <td angular-ripple>
                                 <input type="checkbox" class="checkbox" ng-model="product.selected" ng-change="checkDataChanges(product)">
                             </td>
                             <td ng-if="product.product_id">

@@ -1,10 +1,10 @@
 <div class="row">
     <form role="form" name="articleForm" ng-submit="saveArticle()">
         <div class="col-md-9">
-            <div class="box box-warning">
-                <div class="box-header">
+            <div class=" box-warning p-10">
+               <!--  <div class="box-header">
                     <h3 class="box-title">Enter Article Info</h3>
-                </div>
+                </div> -->
                 <div class="box-body">
                     <div class="form-group" ng-if="details.article_id">
                         <label>Status: </label>
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="box box-warning">
+            <div class=" box-warning">
                 <div class="box-body">
                     <button type="submit" ng-disabled="articleForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
                     <a class="btn btn-success btn-flat btn-block" ng-disabled="!showPublish" ng-click="publishArticle(details.article_id)">Publish</a>

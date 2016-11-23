@@ -9,12 +9,12 @@
     </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content hr">
     <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+        <div data-title=" General Info" bs-pane>
             <ng-include src="'./modules/humanresource/info.html'"></ng-include>
         </div>
-        <div data-title="<i class='fa fa-tablets'></i> Assign Store" bs-pane ng-if="details.person_id">
+        <div data-title=" Assign Store" bs-pane ng-if="details.person_id">
             <ng-include src="'./modules/humanresource/perstore.html'"></ng-include>
         </div>
     </div>

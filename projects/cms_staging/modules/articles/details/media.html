@@ -3,31 +3,33 @@
         <div class="box box-warning">
             <div class="box-header">
                 <div class="pull-left">
-                    <button class="btn btn-flat btn-sm btn-primary" ng-click="openUploader()">
-                        <i class="fa fa-file"></i> Add Media / File
+                    <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="openUploader()">
+                        <img src="./images/icon/ic_file_upload_white_24px.svg"> Add Media / File
                     </button>
-                    <button ng-click="deleteAllMedia()" class="btn btn-flat btn-sm btn-danger">
-                        <i class="fa fa-trash"></i> Delete All
+                    <button ng-click="deleteAllMedia()" class="btn btn-flat pcombo btn-sm btn-danger">
+                        <img src="./images/icon/delete-sweep.svg"> Delete All
                     </button>
-                    <button class="btn btn-flat btn-sm btn-success" ng-click="reloadMediaFiles()">
-                        <i class="fa fa-refresh"></i> Refresh
+                    <button class="btn btn-flat pcombo btn-sm btn-default" ng-click="reloadMediaFiles()">
+                        <img src="./images/icon/refresh.svg"> Refresh
                     </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="box-body ">
                 <div class="row">
                     <div ng-repeat="files in mediafile" class="col-md-2 col-sm-3 col-xs-12">
                         <ul class="mailbox-attachments clearfix">
-                            <li ng-if="files.media_mimetype == 'image/jpeg' || files.media_mimetype == 'image/jpg' || files.media_mimetype == 'image/gif' || files.media_mimetype == 'image/x-ms-bmp' || files.media_mimetype == 'image/png'">
+                            <li class="box" ng-if="files.media_mimetype == 'image/jpeg' || files.media_mimetype == 'image/jpg' || files.media_mimetype == 'image/gif' || files.media_mimetype == 'image/x-ms-bmp' || files.media_mimetype == 'image/png'">
                                 <span class="mailbox-attachment-icon has-img"><img src="{{files.media_path}}" alt="Attachment"/></span>
                                 <div class="mailbox-attachment-info">
                                     <a href="" ng-click="openLightboxModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-camera"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openLightboxModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openLightboxModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -37,10 +39,12 @@
                                     <a href="" ng-click="openAudioModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-play"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openAudioModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openAudioModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -50,10 +54,12 @@
                                     <a href="" ng-click="openVideoModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-play"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openVideoModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openVideoModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -63,10 +69,12 @@
                                     <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -76,10 +84,12 @@
                                     <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -89,10 +99,12 @@
                                     <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -102,10 +114,12 @@
                                     <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -115,10 +129,12 @@
                                     <a href="" ng-click="openDocsModal(files)" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="" ng-click="openDocsModal(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Preview"><i class="fa fa-eye"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -128,9 +144,11 @@
                                     <a href="" ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" class="mailbox-attachment-name" uib-tooltip="{{files.media_name}}"><i class="fa fa-paperclip"></i> {{files.media_name | ellipsis:true:18:'...'}}</a>
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
-                                        <a ng-href="" ng-click="copyURLLink(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Copy URL"><i class="fa fa-link"></i></a>
-                                        <a ng-href="" ng-click="deleteSelected(files)" class="btn btn-default btn-xs pull-right" uib-tooltip="Delete"><i class="fa fa-trash"></i></a>
-                                        <a ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="pull-right pb-10 pt-5">
+                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

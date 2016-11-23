@@ -1,4 +1,4 @@
-<section class="content-header" >
+<section class="content-header">
     <h1>
         User Profile
       </h1>
@@ -203,7 +203,7 @@
         </div>
     </div>
 </section> -->
-<section class="content forprof"  ng-init="basicInfo = true;">
+<section class="content forprof" ng-init="basicInfo = true;">
     <div class="col-sm-12 p-0">
         <div class="">
             <div class="col-sm-3 p-0">
@@ -213,12 +213,14 @@
                             <img class="profilepic" ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" alt="User profile picture">
                             <!-- <img src="./images/avatar3.png" class="profilepic"> -->
                             <div style="width: 100%;height: 0;">
-                                <button class="uploadbutton" ><img class="img" src="./images/icon/ic_camera_alt_black_24px.svg" style="width: 80%;margin-top: 2px;"></button>
+                                <button class="uploadbutton"><img class="img" src="./images/icon/ic_camera_alt_black_24px.svg" style="width: 80%;margin-top: 2px;"></button>
                             </div>
                             <div class="profpic">
                                 {{profile.EmpName}}
                                 <br>
                                 <small>{{activeSub}}</small>
+                                <br>
+                                <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block" href="#/main/settings/profile/details/" angular-ripple><b>Update Profile</b></a>
                             </div>
                         </div>
                         <br>
@@ -672,7 +674,6 @@ input:focus ~ .highlighten {
     -ms-user-select: none;
     user-select: none;
 }
-
 
 .btn.btn-default {
     background-color: #ffffff !important;

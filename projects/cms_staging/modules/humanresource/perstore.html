@@ -17,11 +17,11 @@
                                     <li><a ng-click="updateStatus('Product\'s Store')">Product's Store</a></li>
                                 </ul>
                             </div> -->
-                            <button class="btn btn-flat btn-sm btn-primary" ng-click="saveStore()">
-                                <i class="fa fa-edit"></i> Save
+                            <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="saveStore()">
+                                <img src="./images/icon/ic_save_black_24px.svg"> Save
                             </button>
-                            <a class="btn btn-flat btn-sm btn-success" ng-click="getAllStore()">
-                                <i class="fa fa-refresh"></i> Refresh
+                            <a class="btn btn-flat pcombo btn-sm btn-default" ng-click="getAllStore()">
+                                <img src="./images/icon/refresh.svg"> Refresh
                             </a>
                         </form>
                     </div>
@@ -29,10 +29,16 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div> -->
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                 </div>
@@ -40,12 +46,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body p-0">
                     <table class="table table-striped footable" data-page-size="10">
                         <thead>
                             <tr>
-                                <th width="30" data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                <th data-sort-ignore="true">
+                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;top: 5px;">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Address</th>
@@ -54,8 +60,8 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="var in itemArray" repeat-end="paginate()">
-                                <td>
-                                    <input type="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
+                                <td angular-ripple>
+                                    <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
                                 </td>
                                 <td>
                                     {{var.name}}
