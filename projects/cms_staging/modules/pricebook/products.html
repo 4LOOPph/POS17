@@ -3,7 +3,7 @@
         <div class="">
             <div class="box-header">
                 <div class="col-md-12" style="padding: 0">
-                    <div >
+                    <div>
                         <!-- <div class="input-group">
                             <div class="input-group-btn">
                                 <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
@@ -13,7 +13,7 @@
                                 <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData(txtProductSearch)">GO</button>
                             </div>
                         </div> -->
-                        <div class=" pt-5 ">
+                        <div class="pt-5">
                             <div class="input-group pull-right imput" style="width: 250px;">
                                 <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
                                 <div class="input-group-btn">
@@ -23,29 +23,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- <form class="form-inline">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <input type="text" name="q" class="form-control input-sm" placeholder="Search for Products" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchProductData(txtProductSearch)">Go</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <a class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()" uib-tooltip="Add New">
-                            <i class="fa fa-plus"></i> Add New
-                        </a>
-                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" uib-tooltip="Delete">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                        <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()" uib-tooltip="Refresh">
-                            <i class="fa fa-refresh"></i>
-                        </a>
-                    </div>
-                </form> -->
+                <div class="form-group">
+                    <a class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()" uib-tooltip="Add New">
+                        <i class="fa fa-plus"></i> Add New
+                    </a>
+                    <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" uib-tooltip="Delete">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()" uib-tooltip="Refresh">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                </div>
             </div>
             <div class="box-header">
                 <div class="pull-left">
@@ -95,7 +83,7 @@
                     <thead>
                         <tr>
                             <th width="30" data-sort-ignore="true">
-                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
+                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAllProduct" ng-click="clickselect()" ng-change="changeSelectDeselectAllProduct()" style="margin-left: -7px;">
                             </th>
                             <th data-sort-ignore="true">Product name</th>
                             <th data-sort-ignore="true" style="width: 110px;">Base Price</th>

@@ -17,18 +17,9 @@
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="form-group">
-                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.products-bundle-add" uib-tooltip="Add New" href="#/main/products-bundle/">
+                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-5" uib-tooltip="Add New" ui-sref="main.pricebook-detail">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </a>
-                                <!-- <a class="btn btn-success actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 &amp;&amp; selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish" disabled="disabled">
-                                    <img src="./images/icon/file-export2.svg">
-                                </a>
-                                <a class="btn btn-warning actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 &amp;&amp; selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft" disabled="disabled">
-                                    <img src="./images/icon/pencil-box-outline.svg">
-                                </a>
-                                <a class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-disabled="selectedPublishedDatas.length < 1 &amp;&amp; selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive" disabled="disabled">
-                                    <img src="./images/icon/archive.svg">
-                                </a> -->
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
                                     <img src="./images/icon/refresh.svg">
                                 </button>
@@ -92,10 +83,12 @@
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group" style="margin-bottom: -40px;margin-right: 9px;">
-                                <button class="btn btn-default actbutton" uib-tooltip="Publish" style="font-size: 17px;font-weight: 500;padding: 1px 8px !important;margin-right: 17px;">P</button>
-                                <span class="badge2">4</span>
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" style=""><img src="./images/icon/ic_clear_black_24px.svg"></button>
-                                <span class="badge1">4</span>
+                                <button class="btn btn-default actbutton" uib-tooltip="Publish" ng-click="publishSelected()" style="font-size: 17px;font-weight: 500;padding: 1px 8px !important;margin-right: 17px;" ng-disabled="!pusblishSomeData">P</button>
+                                <span class="badge2" ng-if="selectedToPublish.length > 0">{{selectedToPublish.length}}</span>
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
+                                    <img src="./images/icon/ic_clear_black_24px.svg">
+                                </button>
+                                <span class="badge1" ng-if="selectedDatas.length > 0">{{selectedDatas.length}}</span>
                             </div>
                         </form>
                     </div>
@@ -131,41 +124,42 @@
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
-                                    {{pricebook.name}}
-                                    <td class="text-center" data-title="'Type'">
-                                        {{pricebook.pricebook_type_info.name}}
-                                    </td>
-                                    <td class="text-center" data-title="'Description'">
-                                        <span ng-bind-html="pricebook.description"></span>
-                                    </td>
-                                    <td class="text-center" data-title="'Status'">
-                                        <span ng-if="pricebook.isActive == 1 " class="label gradcolor1 ">Active</span>
-                                        <span ng-if="pricebook.isActive != 1 " class="label gradcolor ">In-active</span>
-                                    </td>
-                                    <td class="text-center" data-title="'Published'">
-                                        <span ng-if="pricebook.date_approved != null " class="label label-success ">published</span>
-                                        <span ng-if="pricebook.date_approved == null " class="label label-warning ">draft</span>
-                                        <!-- <input type="checkbox" ng-model="Published.selected" ng-change="checkDataChanges(pricebook)"> -->
-                                    </td>
-                                    <td class="text-center" data-title="'Date From'">
-                                        {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
-                                    </td>
-                                    <td class="text-center" data-title="'Date To'">
-                                        {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
-                                    </td>
-                                    <td class="text-center" data-title="'Tags'">
-                                    </td>
-                                    <td class="text-right" style="border-right: 0;">
-                                        <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit">
-                                            <img src="./images/icon/ic_mode_edit_white_18px.svg">
-                                        </a>
-                                        <a class="btn actbutton btn-flat btn-xs btn-success" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
-                                            <img src="./images/icon/file-export (1).svg">
-                                        </a>
-                                        <a class="btn actbutton btn-flat btn-xs btn-warning" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
-                                            <img src="./images/icon/file-multiple.svg">
-                                        </a>
-                                    </td>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
+                                </td>
+                                <td class="text-center" data-title="'Type'">
+                                    {{pricebook.pricebook_type_info.name}}
+                                </td>
+                                <td class="text-center" data-title="'Description'">
+                                    <span ng-bind-html="pricebook.description"></span>
+                                </td>
+                                <td class="text-center" data-title="'Status'">
+                                    <span ng-if="pricebook.isActive == 1 " class="label gradcolor1 ">Active</span>
+                                    <span ng-if="pricebook.isActive != 1 " class="label gradcolor ">In-active</span>
+                                </td>
+                                <td class="text-center" data-title="'Published'">
+                                    <span ng-if="pricebook.date_approved != null " class="label label-success ">published</span>
+                                    <span ng-if="pricebook.date_approved == null " class="label label-warning ">draft</span>
+                                    <!-- <input type="checkbox" ng-model="Published.selected" ng-change="checkDataChanges(pricebook)"> -->
+                                </td>
+                                <td class="text-center" data-title="'Date From'">
+                                    {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Date To'">
+                                    {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Tags'">
+                                </td>
+                                <td class="text-right" style="border-right: 0;">
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit">
+                                        <img src="./images/icon/ic_mode_edit_white_18px.svg">
+                                    </a>
+                                    <a class="btn actbutton btn-flat btn-xs btn-success" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
+                                        <img src="./images/icon/file-export (1).svg">
+                                    </a>
+                                    <a class="btn actbutton btn-flat btn-xs btn-warning" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
+                                        <img src="./images/icon/file-multiple.svg">
+                                    </a>
+                                </td>
                             </tr>
                         </table>
                     </div>
