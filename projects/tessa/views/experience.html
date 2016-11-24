@@ -20,173 +20,7 @@
             </div>
         </div>
     </div>
-    <!-- <div ng-if="expFilter == 'all'" id="masonry-item" style="clear:both;">
-    <a ui-sref="main.articlePage({selected_id:article.article_id})">
-        <div class="item_experience" ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="col-md-12 col-lg-12 col-xs-12"  ng-click="trackExperienceAll(article)">
-                <div class="panel panel-default">
-                    <div class="img_holder" ng-if="!article.thumbnail_media">
-                        <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
-                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                    </div>
-                    <div class="img_holder" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                        <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" />
-                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                    </div>
-                    <div class="videogular-container" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                        <videogular vg-theme="article.article_thumbnail.url">
-                            <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                            <vg-controls>
-                                <vg-play-pause-button></vg-play-pause-button>
-                                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                                <vg-scrub-bar>
-                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                </vg-scrub-bar>
-                                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                                <vg-volume>
-                                    <vg-mute-button></vg-mute-button>
-                                    <vg-volume-bar></vg-volume-bar>
-                                </vg-volume>
-                                <vg-fullscreen-button></vg-fullscreen-button>
-                            </vg-controls>
-                            <vg-overlay-play></vg-overlay-play>
-                            <vg-buffering></vg-buffering>
-                        </videogular>
-                    </div>
-                    <div id="masonry_body" class="padding_10 blue1  font_bold" ui-sref="main.articlePage({selected_id:article.article_id})" ui-sref="main.articlePage({selected_id:article.article_id})">
-                        <a ui-sref="main.articlePage({selected_id:article.article_id})">{{article.title}}</a>
-    <div class="featured_solution font_light">
-        <p ng-bind-html="article.article"></p>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
- -->
-    <!-- <div ng-if="expFilter == 'Portfolio'" id="masonry-item" style="clear:both">
-    <a ui-sref="main.articlePage({selected_id:article.article_id})">
-    <div class="item_experience" ng-repeat="article in ( Portfolio | filter:isOnSelectedTag()) track by $index" ng-if="article.tags.length > 0 && article.is_active == 1">
-        <div class="col-md-12 col-lg-12 col-xs-12"  ng-click="trackExperiencePortfolio(article)">
-            <div class="panel panel-default">
-                <div class="img_holder" ng-if="!article.thumbnail_media">
-                    <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
-                    <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                </div>
-                <div class="img_holder" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                    <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" />
-                    <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                </div>
-                <div class="videogular-container" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                    <videogular vg-theme="article.article_thumbnail.url">
-                        <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                        <vg-controls>
-                            <vg-play-pause-button></vg-play-pause-button>
-                            <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                            <vg-scrub-bar>
-                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                            </vg-scrub-bar>
-                            <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                            <vg-volume>
-                                <vg-mute-button></vg-mute-button>
-                                <vg-volume-bar></vg-volume-bar>
-                            </vg-volume>
-                            <vg-fullscreen-button></vg-fullscreen-button>
-                        </vg-controls>
-                        <vg-overlay-play></vg-overlay-play>
-                        <vg-buffering></vg-buffering>
-                    </videogular>
-                </div>
-                <div id="masonry_body" class="padding_10 blue1  font_bold" ui-sref="main.articlePage({selected_id:article.article_id})" ui-sref="main.articlePage({selected_id:article.article_id})">
-                    <a ui-sref="main.articlePage({selected_id:article.article_id})">{{article.title}}</a>
-    <br>
-    <div iclass="featured_solution font_light">
-        <p ng-bind-html="article.article"></p>
-    </div>
-        <div ng-if="expFilter == 'Article'" id="masonry-item" style="clear:both">
-        <div class="item_experience" ng-repeat="article in ( Article | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="col-md-12 col-lg-12 col-xs-12" ui-sref="main.articlePage({selected_id:article.article_id})" ng-click="trackExperienceArticles(article)">
-                <div class="panel panel-default">
-                    <div class="img_holder" ng-if="!article.thumbnail_media">
-                        <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" />
-                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                    </div>
-                    <div class="img_holder" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                        <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" />
-                        <span class="loading background-spinner"> <img src="./images/icons/default.gif"></span>
-                    </div>
-                    <div class="videogular-container" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                        <videogular vg-theme="article.article_thumbnail.url">
-                            <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                            <vg-controls>
-                                <vg-play-pause-button></vg-play-pause-button>
-                                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                                <vg-scrub-bar>
-                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                </vg-scrub-bar>
-                                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                                <vg-volume>
-                                    <vg-mute-button></vg-mute-button>
-                                    <vg-volume-bar></vg-volume-bar>
-                                </vg-volume>
-                                <vg-fullscreen-button></vg-fullscreen-button>
-                            </vg-controls>
-                            <vg-overlay-play></vg-overlay-play>
-                            <vg-buffering></vg-buffering>
-                        </videogular>
-                    </div>
-                    <div id="masonry_body" class="padding_10 blue1 font_14 font_bold" ui-sref="main.articlePage({selected_id:article.article_id})" ui-sref="main.articlePage({selected_id:article.article_id})">
-                        <a>{{article.title}}</a>
-                        <div class="featured_solution font_light">
-                            <p ng-bind-html="article.article"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  <div ng-if="expFilter == 'Article'" style="padding: 20px 40px;">
-        <ul class="dynamic-grid" angular-grid="pics" grid-width="250" gutter-size="40" angular-grid-id="gallery" refresh-on-img-load="false">
-            <li ng-repeat="article in ( Article | filter:isOnSelectedTag())" class="grid">
-                <div ng-if="!article.thumbnail_media">
-                    <img ng-src="{{article.image}}" class="grid-img" />
-                </div>
-                <div ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                    <img ng-src="{{article.image}}" class="grid-img" />
-                </div>
-                <div class="videogular-container" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                    <videogular vg-theme="article.article_thumbnail.url">
-                        <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                        <vg-controls>
-                            <vg-play-pause-button></vg-play-pause-button>
-                            <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                            <vg-scrub-bar>
-                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                            </vg-scrub-bar>
-                            <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                            <vg-volume>
-                                <vg-mute-button></vg-mute-button>
-                                <vg-volume-bar></vg-volume-bar>
-                            </vg-volume>
-                            <vg-fullscreen-button></vg-fullscreen-button>
-                        </vg-controls>
-                        <vg-overlay-play></vg-overlay-play>
-                        <vg-buffering></vg-buffering>
-                    </videogular>
-                </div>
-            </a>
-            <div id="masonry_body" class="padding_10 blue1  font_bold" ui-sref="main.articlePage({selected_id:article.article_id})" ui-sref="main.articlePage({selected_id:article.article_id})">
-                <a ui-sref="main.articlePage({selected_id:article.article_id})">{{article.title}}</a>
-                <br>
-                <div iclass="featured_solution font_light">
-                    <p ng-bind-html="article.article"></p>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div> -->
-    <div class="row sec-pc-items " ng-if="expFilter == 'all'">
+    <div class="row sec-pc-items">
         <div class="col-xs-12 col-sm-6 col-md-3 " ng-repeat="article in ( articlesList | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
             <div class="panel panel-default">
                 <div class="panel-body" ng-click="trackExperienceAll(article)">
@@ -224,107 +58,7 @@
                     </div>
                     <div class="item_text">
                         <div class=" item_title">
-                            <a class="blue1 font_bold ng-binding" ui-sref="main.articlePage({selected_id:article.article_id})">
-                                            {{article.title}}
-                                        </a>
-                        </div>
-                        <div class="item_content font_14 grey1 font_light">
-                            <p ng-bind-html="article.article"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row sec-pc-items " ng-if="expFilter == 'Portfolio'">
-        <div class="col-xs-12 col-sm-6 col-md-3 " ng-repeat="article in ( Portfolio | filter:isOnSelectedTag()) track by $index" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="panel panel-default">
-                <div class="panel-body" ng-click="trackExperiencePortfolio(article)">
-                    <div class="" ng-if="!article.thumbnail_media">
-                        <a class="img_holder" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" style="height: 250px;" />
-                        </a>
-                    </div>
-                    <div class="" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                        <a class="img_holder" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" style="height: 250px;" />
-                        </a>
-                    </div>
-                    <div class="" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                        <a class="videogular-container" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <videogular vg-theme="article.article_thumbnail.url" style="height: 250px;">
-                                <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                                <vg-controls>
-                                    <vg-play-pause-button></vg-play-pause-button>
-                                    <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                                    <vg-scrub-bar>
-                                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                    </vg-scrub-bar>
-                                    <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                                    <vg-volume>
-                                        <vg-mute-button></vg-mute-button>
-                                        <vg-volume-bar></vg-volume-bar>
-                                    </vg-volume>
-                                    <vg-fullscreen-button></vg-fullscreen-button>
-                                </vg-controls>
-                                <vg-overlay-play></vg-overlay-play>
-                                <vg-buffering></vg-buffering>
-                            </videogular>
-                        </a>
-                    </div>
-                    <div class="item_text">
-                        <div class=" item_title">
-                            <a class="blue1 font_bold ng-binding" ui-sref="main.articlePage({selected_id:article.article_id})">
-                                            {{article.title}}
-                                        </a>
-                        </div>
-                        <div class="item_content font_14 grey1 font_light">
-                            <p ng-bind-html="article.article"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row sec-pc-items " ng-if="expFilter == 'Article'">
-        <div class="col-xs-12 col-sm-6 col-md-3 " ng-repeat="article in ( Article | filter:isOnSelectedTag())" ng-if="article.tags.length > 0 && article.is_active == 1">
-            <div class="panel panel-default">
-                <div class="panel-body" ng-click="solutionsEzeImpress(item)">
-                    <div class="" ng-if="!article.thumbnail_media">
-                        <a class="img_holder" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <img ng-src="{{article.image}}" imageonload err-src="http://placehold.it/750x450" style="height: 250px;" />
-                        </a>
-                    </div>
-                    <div class="" ng-if="article.article_thumbnail.media_mimetype == 'image/jpeg' || article.article_thumbnail.media_mimetype == 'image/png'">
-                        <a class="img_holder" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <img ng-src="{{article.article_thumbnail.media_path}}" imageonload ng-if="article.article_thumbnail" err-src="http://placehold.it/750x450" style="height: 250px;" />
-                        </a>
-                    </div>
-                    <div class="" ng-if="article.article_thumbnail.media_mimetype == 'video/mp4'">
-                        <a class="videogular-container" ui-sref="main.articlePage({selected_id:article.article_id})">
-                            <videogular vg-theme="article.article_thumbnail.url" style="height: 250px;">
-                                <vg-media vg-src="article.article_thumbnail.media_path"></vg-media>
-                                <vg-controls>
-                                    <vg-play-pause-button></vg-play-pause-button>
-                                    <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                                    <vg-scrub-bar>
-                                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                    </vg-scrub-bar>
-                                    <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                                    <vg-volume>
-                                        <vg-mute-button></vg-mute-button>
-                                        <vg-volume-bar></vg-volume-bar>
-                                    </vg-volume>
-                                    <vg-fullscreen-button></vg-fullscreen-button>
-                                </vg-controls>
-                                <vg-overlay-play></vg-overlay-play>
-                                <vg-buffering></vg-buffering>
-                            </videogular>
-                        </a>
-                    </div>
-                    <div class="item_text">
-                        <div class=" item_title">
-                            <a class="blue1 font_bold ng-binding" ui-sref="main.articlePage({selected_id:article.article_id})">
+                            <a class="blue1 font_bold ng-binding" ui-sref="main.articlePage({selected_id:article.article_id})" style="font-size: 13px;">
                                             {{article.title}}
                                         </a>
                         </div>
@@ -395,6 +129,15 @@
 @media screen and (max-width: 480px) {
     .deckgrid[deckgrid]::before {
         content: '1 .column.column-1-1';
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .item_title {
+        height: 55px !important;
+    }
+    .item_content {
+        height: 105px !important;
     }
 }
 </style>

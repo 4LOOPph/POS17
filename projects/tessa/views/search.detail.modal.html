@@ -4,7 +4,7 @@
     </button>
     <div class="row_title">Item Details</div>
 </div>
-<div class="modal-body">
+<div class="modal-body" style="padding: 20px 20px;">
     <div class="row_title margin20top">
         <a ng-click="openShareModal()" class=" btn btn-primary btn-social btn-flickr">
             <i class="padding_10 fa fa-share-square"></i> Share
@@ -13,7 +13,7 @@
     <div id="mdl-hardware">
         <div class="contain-image">
             <div class="img_holder pad20top" ng-if="selected.self == 'articles'">
-                <img ng-src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" ng-if="image.media_mimetype == 'image/jpeg' || image.media_mimetype == 'image/png'"/>
+                <img ng-src="{{image.media_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.mediafiles | limitTo:1" ng-if="image.media_mimetype == 'image/jpeg' || image.media_mimetype == 'image/png'" style="height: 250px !important;width: 400px !important" />
                 <div class="videogular-container" ng-repeat="image in selected.mediafiles | limitTo:1" ng-if="image.media_mimetype == 'video/mp4'">
                     <videogular vg-theme="image.url">
                         <vg-media vg-src="image.media_path"></vg-media>
@@ -36,10 +36,10 @@
                 </div>
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'products'">
-                <img ng-src="{{selected.img_default}}" err-src="images/is5.jpg" class="bg-icon">
+                <img ng-src="{{selected.img_default}}" err-src="images/is5.jpg" class="bg-icon" style="height: 250px !important;width: 400px !important">
             </div>
             <div class="img_holder pad20top" ng-if="selected.self == 'bundles'">
-                <img ng-src="{{image.image_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1">
+                <img ng-src="{{image.image_path}}" err-src="images/is5.jpg" class="bg-icon" ng-repeat="image in selected.product_images | limitTo:1" style="height: 250px !important;width: 400px !important">
             </div>
         </div>
         <div class="pad20top mdl-hardware-content">
@@ -50,7 +50,8 @@
                 {{selected.bundle_name}}
             </div>
             <div class="article-primary" ng-if="selected.self == 'articles'">
-                <p ta-bind ng-model="selected.description"></p>
+                <p ta-bind ng-model="selected.description" style="color: #616161 !important;
+    background-color: #ffffff;"></p>
             </div>
             <div class="article-primary" ng-if="selected.self == 'products'">
                 <p ta-bind ng-model="selected.item_description"></p>
@@ -67,3 +68,13 @@
     <button ng-if="selected.self == 'products' || selected.self == 'bundles' || selected.self == 'articles'" type="button" class="btn btn-primary" ng-click="viewDetails(selected)">View Full Specification
     </button>
 </div>
+<style type="text/css">
+h4 {
+    font-family: light;
+    font-size: 24px;
+    vertical-align: middle;
+    color: #308ECC;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+</style>
