@@ -56,6 +56,18 @@
                             <!-- <span class="barzz"></span> -->
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label>Barcode</label>
+                            <input type="text" class="form-control" ng-model="details.barcode" placeholder="Product Code" required />
+                            <br>
+                            <select class="form-control" ng-model="mycode.type" ng-options="option.type as option.code for option in barcodesType" ng-change="changeBarcodeType(mycode.type)" />
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
+                        </div>
+                    </div>
                     <div class="form-group col-md-12">
                         <label>Overview</label>
                         <text-angular ta-toolbar="[

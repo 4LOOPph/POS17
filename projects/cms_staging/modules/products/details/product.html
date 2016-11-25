@@ -21,7 +21,7 @@
                 <div class="box-body">
                     <div class="form-group col-md-6">
                         <label>Product Code</label>
-                        <input type="text" ng-model="details.product_code"  class="form-control" placeholder="Product Code" required />
+                        <input type="text" ng-model="details.product_code" class="form-control" placeholder="Product Code" required />
                         <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6">
@@ -32,14 +32,14 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Brand</label>
-                        <input type="text"  class="form-control" ng-model="details.brand" placeholder="Product Brand" required />
+                        <input type="text" class="form-control" ng-model="details.brand" placeholder="Product Brand" required />
                         <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Price</label>
                         <!-- <div class="input-group"> -->
                         <!-- <span class="input-group-addon">$</span> -->
-                        <input type="text"  class="form-control" ng-model="details.sell_price" required valid-number>
+                        <input type="text" class="form-control" ng-model="details.sell_price" required valid-number>
                         <!-- <span class="barzz"></span> -->
                         <!-- </div> -->
                     </div>
@@ -49,7 +49,7 @@
                         <!-- <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div> -->
-                        <input type="text"  class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
                         <!-- <span class="barzz"></span> -->
                         <!-- </div> -->
                     </div>
@@ -59,9 +59,20 @@
                         <!-- <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div> -->
-                        <input type="text"  class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
+                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
                         <!-- <span class="barzz"></span> -->
                         <!-- </div> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Product Barcode</label>
+                        <input type="text" ng-model="details.barcode" class="form-control" placeholder="Product Barcode" required />
+                        <br>
+                        <select class="form-control" ng-model="mycode.type" ng-options="option.type as option.code for option in barcodesType" ng-change="changeBarcodeType(mycode.type)" />
+                        </select>
+                        <!-- <span class="barzz"></span> -->
+                    </div>
+                    <div class="form-group col-md-6">
+                        <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                     </div>
                     <div class="form-group ">
                         <label>Overview</label>
