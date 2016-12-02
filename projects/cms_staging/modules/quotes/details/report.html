@@ -1,9 +1,9 @@
-<section class="invoice">
+<section class="p-20">
     <!-- title row -->
     <div class="row">
         <div class="col-xs-12">
             <h2 class="page-header">
-                <i class="fa fa-file-text-o"></i> Quotation #{{details.quote_number}}
+                <img src="./images/icon/file-document-black.svg"> Quotation #{{details.quote_number}}
                 <small class="pull-right">Date: <span date-now="MM/dd/yyyy"></span></small>
               </h2>
         </div>
@@ -80,7 +80,6 @@
             <img src="images/credit/mastercard.png" alt="Mastercard" />
             <img src="images/credit/american-express.png" alt="American Express" />
             <img src="images/credit/paypal2.png" alt="Paypal" />
-
             <p class="lead">Terms:</p>
             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;" ng-show="details.terms">
                 {{details.terms}}
@@ -121,10 +120,41 @@
     <!-- this row will not appear when printing -->
     <div class="row no-print">
         <div class="col-xs-12">
-            <button class="btn btn-default" ng-click="goBack()"><i class="fa fa-chevron-left"></i> Cancel</button>
-            <button ng-click="saveQuoteInfo()" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary"><i class="fa fa-floppy-o"></i> Save Quotation</button>
-            <button class="btn btn-success" ng-click="printQoute()" ng-show="details.quote_id"><i class="fa fa-print"></i> Print</button>
-            <button class="btn btn-primary" ng-show="details.quote_id"><i class="fa fa-download"></i> Generate Quote</button>
+            <!-- <button class="btn pcombo btn-default" ng-click="goBack()"><i class="fa fa-chevron-left"></i> Cancel</button>
+            <button ng-click="saveQuoteInfo()" ng-disabled="quoteInfoForm.$invalid" class=" btn pcombo btn-primary"><img src="./images/icon/ic_save_black_24px.svg"> Save Quotation</button>
+            <button class="btn pcombo btn-success" ng-click="printQoute()" ng-show="details.quote_id"><img src="./images/icon/ic_print_black_24px.svg"> Print</button>
+            <button class="btn pcombo btn-primary" ng-show="details.quote_id"><img src="./images/icon/file-import.svg"> Generate Quote</button> -->
+
+            <div class="pull-left disp-inline-flex">
+                <div class="w140">
+                    <a class="mr-10 label-circle-button ml-5" ng-click="goBack()">
+                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                            <img src="./images/icon/ic_close_white_24px.svg">
+                        </button>Cancel
+                    </a>
+                </div>
+                <div class="w140">
+                    <a class="mr-10 label-circle-button ml-5" ng-click="saveQuoteInfo()" ng-disabled="quoteInfoForm.$invalid">
+                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                            <img src="./images/icon/ic_save_black_24px.svg">
+                        </button>Save Quotation
+                    </a>
+                </div>
+                <div class="w140">
+                    <a class="mr-10 label-circle-button ml-5" ng-click="saveQuoteInfo()" ng-disabled="quoteInfoForm.$invalid">
+                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                           <img src="./images/icon/ic_print_black_24px.svg">
+                        </button>Print
+                    </a>
+                </div>
+                <div class="w140">
+                    <a class="mr-10 label-circle-button ml-5" ng-click="getAllCategory()">
+                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                           <img src="./images/icon/file-import.svg">
+                        </button>Generate Quote
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

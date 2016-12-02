@@ -10,26 +10,26 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
             <div class="box box-warning">
                 <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.articles-detail" uib-tooltip="Add New Entry">
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <a class="btn btn-success actbutton btn-xs btn-flat mr-5" ng-disabled="!deleteSomeData" ng-click="publishSelected()" uib-tooltip="Publish">
+                            <a class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="!deleteSomeData" ng-click="publishSelected()" uib-tooltip="Publish">
                                 <img src="./images/icon/file-export2.svg">
                             </a>
-                            <a class="btn btn-warning actbutton btn-xs btn-flat mr-5" ng-disabled="!deleteSomeData" ng-click="draftSelected()" uib-tooltip="Draft">
+                            <a class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="!deleteSomeData" ng-click="draftSelected()" uib-tooltip="Draft">
                                 <img src="./images/icon/pencil-box-outline.svg">
                             </a>
-                            <a class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
-                                <img src="./images/icon/ic_close_white_24px.svg">
+                            <a class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                                <img src="./images/icon/ic_delete_black_24px.svg">
                             </a>
-                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
                                 <img src="./images/icon/refresh.svg">
                             </button>
                         </form>
@@ -41,7 +41,7 @@
                                     <div class="input-group imput">
                                         <input type="text" name="q" class="form-control  input-sm ng-pristine ng-valid ng-empty ng-touched" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default"  ng-keypress="($event.which === 13)?searchData():0" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-keypress="($event.which === 13)?searchData():0" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                     <!-- <div class="input-group">
@@ -86,7 +86,7 @@
                                 <input type="checkbox" class="checkbox" ng-model="article.selected" ng-change="checkDataChanges(article)">
                             </td>
                             <td class="text-left" data-title="'Title'">
-                                <a href="" ng-click="edit(article.article_id)">{{article.title}}</a>
+                                <a href="" ui-sref="main.articles-detail({article_id:article.article_id})">{{article.title}}</a>
                             </td>
                             <td class="text-center" data-title="'Tags'">
                                 <span class="label label-default label-tags" ng-repeat="tag in article.tags">{{tag.tags}}</span>

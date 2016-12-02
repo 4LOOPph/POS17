@@ -2,31 +2,49 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
+        <div class="">
+            <div class="">
+                <div class="box-header" style=" padding: 8px 2px !important;">
                     <!-- <h3 class="box-title">List of Stores</h3> -->
-                    <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()">
-                            <i class="fa fa-edit"></i> Add New Entry
-                        </button>
-                        <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btn btn-flat btn-sm btn-danger">
-                            <i class="fa fa-remove"></i> Delete
-                        </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                            <i class="fa fa-refresh"></i> Refresh
-                        </button>
+                    <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_black_white_24px.svg">
+                                </button>Add Bundles
+                            </a>
+                        </div>
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_delete_black_24px.svg">
+                                </button>Delete
+                            </a>
+                        </div>
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="refresh()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/refresh.svg">
+                                </button>Refresh
+                            </a>
+                        </div>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div> -->
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm ng-pristine ng-untouched ng-valid ng-empty" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                 </div>
@@ -34,11 +52,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="deviceTable">
                         <tr ng-repeat="device in $data">
-                            <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="device.selected" ng-change="checkDataChanges(device)">
+                            <td data-header="'checkboxheader.html'" class="text-center center-td-table" angular-ripple>
+                                <input type="checkbox" class="checkbox" ng-model="device.selected" ng-change="checkDataChanges(device)">
                             </td>
                             <td class="text-center" data-title="'UUID'">
                                 {{device.deviceUUID}}
@@ -65,7 +83,7 @@
                                 {{device.screenResolution}}
                             </td>
                             <td class="text-right">
-                                <button ng-click="toggleModal(device,$index);" class="btn btn-flat btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button ng-click="toggleModal(device,$index);" class="btn actbutton btn-flat btn-xs btn-info"><img src="./images/icon/ic_delete_black_24px.svg"></button>
                             </td>
                         </tr>
                     </table>

@@ -1,64 +1,78 @@
 <div class="row" ng-controller="productRelatedCtrl">
     <div class="col-md-12">
-        <div class="box box-warning m-0">
+        <div class=" box-warning m-0">
             <div class="box-header p-0" style="padding: 8px 2px !important;">
                 <!-- <h3 class="box-title">List of Products</h3> -->
-                <div class="pull-left leftstablebutton" >
+                <div class="pull-left leftstablebutton">
                     <button class="actbuttonassets" ng-click="openRelationType()" uib-tooltip="Relation Type">
                         <img src="./images/icon/ic_list_black_24px (1).svg">
                     </button>
                 </div>
-                <div class="pull-left pl-10" style="padding-top: 4px;">
-                    <a class="btn btn-primary pcombo btn-xs btn-flat mr-5" ng-click="addNewEntry()">
-                        <img src="./images/icon/ic_add_white_24px.svg"> Add Related Products
-                    </a>
-                    <a class="btn btn-danger pcombo btn-xs btn-flat mr-5" ng-click="deleteSelectedRelated()">
-                        <img src="./images/icon/ic_close_white_24px.svg"> Delete
-                    </a>
-                    <a class="btn btn-default pcombo btn-xs btn-flat mr-5" ng-click="getAllRelatedProducts()">
-                        <img src="./images/icon/refresh.svg"> Refresh
-                    </a>
+            
+                <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/ic_black_white_24px.svg">
+                            </button>Add  Products
+                        </a>
+                    </div>
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelectedRelated()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/ic_delete_black_24px.svg">
+                            </button>Delete
+                        </a>
+                    </div>
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="getAllRelatedProducts()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/refresh.svg">
+                            </button>Refresh
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="box-body p-0">
-                <table class="table table-striped footable" data-page-size="10" id="tblAttributes">
-                    <thead>
-                        <tr>
-                            <th class="" data-sort-ignore="true" style="padding: 10px 8px;">
-                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAllRelation" ng-change="changeSelectDeselectAllRelated()">
-                            </th>
-                            <th class="" data-sort-ignore="true">Product</th>
-                            <th class="" data-sort-ignore="true">Relation Type</th>
-                            <th data-sort-ignore="true"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="var in relatedProducts" repeat-end="paginate()">
-                            <td angular-ripple>
-                                <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkRelationChanges(var)">
-                            </td>
-                            <td>
-                                {{var.ref_product.item_name}}
-                            </td>
-                            <td>
-                                {{var.relation_type.name}}
-                            </td>
-                            <td>
-                                <button ng-click="deleteSelected(var.rel_id)" class="btn actbutton btn-flat btn-xs btn-danger">
-                                    <img src="./images/icon/ic_close_white_18px.svg">
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="hide-if-no-paging">
-                        <tr>
-                            <td colspan="6" align="center">
-                                <ul class="pagination"></ul>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+        </div>
+        <div class="box-body p-0">
+            <table class="table table-striped footable" data-page-size="10" id="tblAttributes">
+                <thead>
+                    <tr>
+                        <th class="" data-sort-ignore="true">
+                            <input type="checkbox" class="checkbox" ng-model="selectDeselectAllRelation" ng-change="changeSelectDeselectAllRelated()">
+                        </th>
+                        <th class="" data-sort-ignore="true">Product</th>
+                        <th class="" data-sort-ignore="true">Relation Type</th>
+                        <th data-sort-ignore="true"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="var in relatedProducts" repeat-end="paginate()">
+                        <td angular-ripple>
+                            <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkRelationChanges(var)">
+                        </td>
+                        <td>
+                            {{var.ref_product.item_name}}
+                        </td>
+                        <td>
+                            {{var.relation_type.name}}
+                        </td>
+                        <td>
+                            <button ng-click="deleteSelected(var.rel_id)" class="btn actbutton btn-flat btn-xs btn-info" uib-tooltip="Delete">
+                                <img src="./images/icon/ic_delete_black_24px.svg">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+                    <tr>
+                        <td colspan="6" align="center">
+                            <ul class="pagination"></ul>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
+</div>
 </div>

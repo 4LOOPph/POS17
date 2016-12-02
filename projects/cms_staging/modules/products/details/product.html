@@ -6,7 +6,7 @@
                     <h4 class="box-title">Enter Product Info</h4>
                 </div> -->
                 <div class="box-body">
-                    <div class="form-group" ng-if="details.p_id">
+                    <div class="form-group pl-15" ng-if="details.p_id">
                         <label>Status: </label>
                         <span ng-if="details.is_published == 0 && details.is_archived == 0" class="label label-warning">draft</span>
                         <span ng-if="details.is_published == 1 && details.is_archived == 0" class="label label-success">published</span>
@@ -74,18 +74,18 @@
                     <div class="form-group col-md-6">
                         <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                     </div>
-                    <div class="form-group ">
+                    <div class="form-group pl-15 pr-15">
                         <label>Overview</label>
                         <text-angular ta-toolbar="[
                             ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
                             ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']
                         ]" ng-model="details.item_overview" required /></text-angular>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pl-15 pr-15">
                         <label>Description</label>
                         <text-angular ng-model="details.item_description" required /></text-angular>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pl-15 pr-15">
                         <label>Tags <i class="fa fa-tags"></i></label>
                         <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
                             <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>

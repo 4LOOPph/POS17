@@ -10,20 +10,20 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" >
         </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.settings-attributes-add" uib-tooltip="Add New ">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-attributes-add" uib-tooltip="Add New ">
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
-                                 <img src="./images/icon/ic_close_white_24px.svg">
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                                <img src="./images/icon/ic_delete_black_24px.svg">
                             </button>
-                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
                                 <img src="./images/icon/refresh.svg">
                             </button>
                         </form>
@@ -32,10 +32,10 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
+                                    <div class="input-group imput pt-5">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@
                             </td>
                             </td>
                             <td class="text-right">
-                                <button ng-click="edit(attribute.att_id)" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
-                                <button ng-click="toggleModal(attribute.att_id);" class="btn btn-flat actbutton btn-danger btn-xs"> <img src="./images/icon/ic_close_white_18px.svg"></button>
+                                <button ng-click="edit(attribute.att_id)" class="btn btn-info actbutton btn-xs btn-flat mr-5"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                <button ng-click="toggleModal(attribute.att_id);" class="btn actbutton btn-info btn-xs"> <img src="./images/icon/ic_delete_black_24px.svg"></button>
                             </td>
                         </tr>
                     </table>

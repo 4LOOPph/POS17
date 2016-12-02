@@ -1,13 +1,13 @@
 <div class="row">
     <form role="form" name="storeForm" ng-submit="saveStore()">
         <div class="col-md-9">
-            <div class="box box-warning">
-                <div class="box-header">
+            <div class=" box-warning">
+                <!-- <div class="box-header">
                     <h3 class="box-title">General Info</h3>
-                </div>
+                </div> -->
                 <!-- /.box-header -->
                 <!-- form start -->
-                <div class="box-body">
+                <div class="box-body p-20">
                     <div class="form-group ">
                         <label>Store Name</label>
                         <input type="text" name="storename" class="form-control" ng-minlength="6" ng-maxlength="25" ng-model="details.name" placeholder="Store Name" required />
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="box box-warning">
+            <div class=" box-warning">
                 <div class="box-body">
                     <button type="submit" ng-disabled="storeForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
                     <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>

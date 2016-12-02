@@ -1,10 +1,7 @@
 <div class="row">
     <form role="form" name="pricebookForm" ng-submit="addPricebook()">
         <div class="col-md-12">
-            <div class="box box-warning">
-                <div class="box-header">
-                    <h3 class="box-title">Enter Quote Info</h3>
-                </div>
+            <div class=" box-warning">
                 <div class="box-body">
                     <!-- <div class="form-group col-md-12" ng-if="details.quote_id">
                         <label>Status: </label>
@@ -20,7 +17,7 @@
                         <label>Deliver To:</label>
                         <select class="form-control" ng-model="details.deliver_to" ng-options="option.displayName as option.displayName for option in customers" required /></select>
                     </div>
-                  <!--   <div class="form-group col-md-6">
+                    <!--   <div class="form-group col-md-6">
                         <label>Valid to: </label>
                         <div class="input-group">
                             <input type="text" class="form-control" ng-model="details.valid_until" data-date-format="MM-dd-yyyy" bs-datepicker/>
@@ -42,24 +39,24 @@
                         <label>Supplier</label>
                         <select class="form-control" ng-model="details.supplier_id" ng-options="option.s_id as option.name for option in suppliers" required /></select>
                     </div>
-                      <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label>Delivery Date: </label>
                         <div class="input-group">
                             <input type="text" class="form-control" ng-model="details.delivery_date" data-date-format="MM-dd-yyyy" bs-datepicker/>
                             <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                                <img src="./images/icon/calendar-today.svg">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="form-group">
+                <div class="box-body ">
+                    <div class="form-group p-15">
                         <label>Notes/Memo:</label>
                         <text-angular ng-model="details.comments" required /></text-angular>
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group p-15">
                         <label>Terms:</label>
                         <text-angular ng-model="details.shipping_terms" required /></text-angular>
                     </div>
@@ -78,3 +75,10 @@
         </div> -->
     </form>
 </div>
+<style type="text/css">
+.btn-toolbar {
+    border: 1px solid #d2d6de;
+    margin-bottom: -1px;
+    margin-left: 0px;
+}
+</style>

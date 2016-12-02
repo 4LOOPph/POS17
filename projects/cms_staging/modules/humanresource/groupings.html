@@ -1,0 +1,84 @@
+<div class="row" ng-controller="customerGroupingsController">
+    <form role="form" ng-submit="addProduct()">
+        <div class="col-md-12">
+            <div class=" box-warning">
+                <div class="box-header p-0" style="padding: 8px 2px !important;">
+                    <div class="pull-left leftstablebutton">
+                        <button class="actbuttonassets" ng-click="addGroups()" uib-tooltip="Customer Groups">
+                            <img src="./images/icon/ic_list_black_24px (1).svg">
+                        </button>
+                    </div>
+                    <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
+                        <form class="form-inline">
+                            <div class="w140">
+                                <a ng-click="saveCustomerGrouping()" class="mr-10 label-circle-button ml-5">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/ic_save_black_24px.svg">
+                                    </button>Save
+                                </a>
+                            </div>
+                            <div class="w140">
+                                <a ng-click="refreshData()" class="mr-10 label-circle-button">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/refresh.svg">
+                                    </button>Refresh
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pull-right box-tools">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-striped footable" data-page-size="10" id="tblCategory">
+                        <thead>
+                            <tr>
+                                <th width="30" data-sort-ignore="true">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </th>
+                                <th class="">Name</th>
+                                <th class="">Company/Customer</th>
+                                <th class="">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="var in groups" repeat-end="paginate()">
+                                <td>
+                                    <input type="checkbox" ng-model="var.selected" ng-change="checkDataChanges(var)">
+                                </td>
+                                <td>
+                                    {{var.name}}
+                                </td>
+                                <td>
+                                    {{var.store_name}}
+                                </td>
+                                <td>
+                                    {{var.description}}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

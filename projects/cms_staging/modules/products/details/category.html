@@ -1,29 +1,40 @@
 <div class="row" ng-controller="productCategoryCtrl">
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
-            <div class="box box-warning m-0">
+            <div class=" box-warning m-0">
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Products</h3> -->
-                    <div class="pull-left">
+                    <div class="pull-left disp-inline-flex">
                         <form class="form-inline">
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown" angular-ripple style="padding: 5px 20px !important;margin-right: 5px;" ">
+                            <div class="btn-group w140">
+                                <a class="mr-10 label-circle-button dropdown-toggle" data-toggle="dropdown">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5 ">
+                                        <img src="./images/icon/information.svg ">
+                                    </button>
                                     Status: <span ng-if="applicationStatus=='' ">All</span><span ng-if="applicationStatus !='' ">{{applicationStatus}}</span>
                                     <span class="caret "></span>
                                     <span class="sr-only ">Toggle Dropdown</span>
-                                </button>
+                                </a>
                                 <ul class="dropdown-menu " style="top: 30px;margin-left: 0; ">
                                     <li><a ng-click="updateStatus( '') ">All</a></li>
                                     <li><a ng-click="updateStatus( 'Product\'s Category ')">Product's Category</a>
                                     </li>
                                     </ul>
+                            </div> 
+                            <div class="w140">
+                                <a class="mr-10 label-circle-button ml-5" ng-click="saveCategory()">
+                                   <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/ic_save_black_24px.svg">
+                                    </button>Save
+                                </a>
                             </div>
-                            <a class="btn btn-primary pcombo btn-xs btn-flat mr-5" ng-click="saveCategory()" >
-                                <img src="./images/icon/ic_save_black_24px.svg"> Save
-                            </a>
-                            <a class="btn btn-default pcombo btn-xs btn-flat mr-5" ng-click="getAllCategory()" >
-                                <img src="./images/icon/refresh.svg"> Refresh
-                            </a>
+                            <div class="w140">
+                                <a class="mr-10 label-circle-button" ng-click="getAllCategory()">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/refresh.svg">
+                                    </button>Refresh
+                                </a>
+                            </div>
                         </form>
                     </div>
                     <div class="pull-right">
@@ -60,7 +71,7 @@
                     <table class="table table-striped footable" data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
-                                <th width="30" data-sort-ignore="true" style="padding: 10px 8px;">
+                                <th width="30" data-sort-ignore="true">
                                     <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>

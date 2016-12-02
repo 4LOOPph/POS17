@@ -1,58 +1,67 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-warning">
-            <div class="box-header">
+        <div class=" box-warning">
+            <!-- <div class="box-header">
                 <h3 class="box-title">Quotation Items</h3>
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <div class="btn-group">
-                        <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
-                        <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'productgroup'" ng-click="changeData('productgroup')">Product Group</label>
+            </div> -->
+            <div class="box-body p-0">
+                <div class="p-10">
+                    <div class="form-group pl-15">
+                        <div class="btn-group">
+                            <label class="btn  btn-prime brtb-r-0" ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
+                            <label class="btn  btn-prime bltb-r-0" ng-model="radioModel" uib-btn-radio="'productgroup'" ng-click="changeData('productgroup')">Product Group</label>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group col-md-4" ng-show="radioModel == 'product'">
-                    <label>Products</label>
-                    <ui-select ng-model="items.product" allow-clear>
-                        <ui-select-match>
-                            {{$select.selected.item_name}}
-                        </ui-select-match>
-                        <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (products | filter: $select.search) track by emp.p_id">
-                            {{emp.item_name}}
-                            <small>{{emp.product_code}}</small>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="form-group col-md-4" ng-show="radioModel == 'productgroup'">
-                    <label>Products Groups</label>
-                    <ui-select ng-model="items.productgroup" allow-clear>
-                        <ui-select-match>
-                            {{$select.selected.bundle_name}}
-                        </ui-select-match>
-                        <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (productBundles | filter: $select.search) track by emp.pb_id">
-                            {{emp.bundle_name}}
-                            <small>{{emp.bundle_code}}</small>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Qty</label>
-                    <input type="number" ng-model="items.quantity" class="form-control" ng-change="calculateItem(items)">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Price</label>
-                    <input type="number" ng-model="items.price" class="form-control" ng-change="calculateItem(items)">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Discount</label>
-                    <input type="number" ng-model="items.discount" class="form-control" ng-change="calculateItem(items)">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Total</label>
-                    <input type="number" ng-model="items.total" class="form-control" ng-change="calculateItem(items)" ng-disabled="true">
-                </div>
-                <div class="form-group col-md-12">
-                    <a class="btn btn-flat btn-primary" ng-click="addToList(items)"><i class="fa fa-plus"></i> Add</a>
+                    <div class="form-group col-md-4" ng-show="radioModel == 'product'">
+                        <label>Products</label>
+                        <ui-select ng-model="items.product" allow-clear>
+                            <ui-select-match>
+                                {{$select.selected.item_name}}
+                            </ui-select-match>
+                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (products | filter: $select.search) track by emp.p_id">
+                                {{emp.item_name}}
+                                <small>{{emp.product_code}}</small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group col-md-4" ng-show="radioModel == 'productgroup'">
+                        <label>Products Groups</label>
+                        <ui-select ng-model="items.productgroup" allow-clear>
+                            <ui-select-match>
+                                {{$select.selected.bundle_name}}
+                            </ui-select-match>
+                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (productBundles | filter: $select.search) track by emp.pb_id">
+                                {{emp.bundle_name}}
+                                <small>{{emp.bundle_code}}</small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Qty</label>
+                        <input type="number" ng-model="items.quantity" class="form-control" ng-change="calculateItem(items)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Price</label>
+                        <input type="number" ng-model="items.price" class="form-control" ng-change="calculateItem(items)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Discount</label>
+                        <input type="number" ng-model="items.discount" class="form-control" ng-change="calculateItem(items)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Total</label>
+                        <input type="number" ng-model="items.total" class="form-control" ng-change="calculateItem(items)" ng-disabled="true">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <!-- <a class="btn btn-flat pcombo btn-primary" ng-click="addToList(items)" angular-ripple><img src="./images/icon/ic_add_white_24px.svg"> Add</a> -->
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="addToList(items)">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_black_white_24px.svg">
+                                </button>Add
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <table class="table table-striped">
@@ -69,23 +78,23 @@
                         <tbody>
                             <tr ng-repeat="item in details.quoteproduct_list">
                                 <td>
-                                    <strong>{{ item.item_name }}</strong>
+                                    <div>{{ item.item_name }}</div>
                                 </td>
                                 <td>
-                                    <strong>{{ item.quantity}}</strong>
+                                    <div>{{ item.quantity}}</div>
                                 </td>
                                 <td>
-                                    <strong>{{ item.price | number:2 }}</strong>
+                                    <div>{{ item.price | number:2 }}</div>
                                 </td>
                                 <td>
-                                    <strong>{{ item.discount | number:2 }}</strong>
+                                    <div>{{ item.discount | number:2 }}</div>
                                 </td>
                                 <td>
-                                    <strong>{{ item.total | number:2}}</strong>
+                                    <div>{{ item.total | number:2}}</div>
                                 </td>
                                 <td nowrap>
-                                    <button type="button" class="btn btn-danger btn-xs" ng-click="removeItem($index)">
-                                        <span class="glyphicon glyphicon-trash"></span>
+                                    <button type="button" class="btn actbutton btn-info btn-xs" ng-click="removeItem($index)">
+                                        <img src="./images/icon/ic_delete_black_24px.svg">
                                     </button>
                                 </td>
                             </tr>
@@ -93,21 +102,23 @@
                     </table>
                 </div>
                 <hr>
-                <div class="form-group">
-                    <h3>Sub-Total: </h3>
-                    <input type="text" class="form-control input-lg" value="{{details.currency.symbol}} {{details.sub_total | number:2}}" ng-disabled="true">
-                </div>
-                <div class="form-group">
-                    <h3>Other Fee : </h3>
-                    <input type="text" class="form-control input-lg" ng-model="details.other_fee" ng-required ng-change="calculateBilling()" placeholder="Enter value">
-                </div>
-                <div class="form-group">
-                    <h3>Tax : </h3>
-                    <input type="text" class="form-control input-lg" ng-model="details.tax" ng-required ng-change="calculateBilling()" placeholder="Enter value">
-                </div>
-                <div class="form-group">
-                    <h2>Total : </h2>
-                    <input type="text" class="form-control input-lg" value="{{details.currency.symbol}} {{details.total_fee | number:2}}" ng-disabled="true" placeholder="0.00">
+                <div class="pl-30 pr-30">
+                    <div class="form-group">
+                        <h4>Sub-Total: </h4>
+                        <input type="text" class="form-control " value="{{details.currency.symbol}} {{details.sub_total | number:2}}" ng-disabled="true">
+                    </div>
+                    <div class="form-group">
+                        <h4>Other Fee : </h4>
+                        <input type="text" class="form-control " ng-model="details.other_fee" ng-required ng-change="calculateBilling()" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <h4>Tax : </h4>
+                        <input type="text" class="form-control " ng-model="details.tax" ng-required ng-change="calculateBilling()" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <h3>Total : </h3>
+                        <input type="text" class="form-control " value="{{details.currency.symbol}} {{details.total_fee | number:2}}" ng-disabled="true" placeholder="0.00">
+                    </div>
                 </div>
             </div>
         </div>

@@ -21,9 +21,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="pull-left disp-inline-flex">
+                            <div class="w140">
+                                <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/ic_black_white_24px.svg">
+                                    </button>Add New
+                                </a>
+                            </div>
+                            <div class="w140">
+                                <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelected()">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/ic_delete_black_24px.svg">
+                                    </button>Delete
+                                </a>
+                            </div>
+                            <div class="w140">
+                                <a class="mr-10 label-circle-button ml-5" ng-click="refreshData()">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                        <img src="./images/icon/refresh.svg">
+                                    </button>Refresh
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <a class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()" uib-tooltip="Add New">
                         <i class="fa fa-plus"></i> Add New
                     </a>
@@ -33,7 +56,7 @@
                     <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()" uib-tooltip="Refresh">
                         <i class="fa fa-refresh"></i>
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="box-header">
                 <div class="pull-left">
@@ -51,7 +74,7 @@
                                         <span class="caret"></span>
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
-                                    <ul class="dropdown-menu" role="menu" style="margin-left: -15px;max-height: 400px;overflow-y: auto;">
+                                    <ul class="dropdown-menu" role="menu" style="margin-left: -15px;max-height: 370px;overflow-y: auto;">
                                         <li ng-repeat="tag in tagsArr">
                                             <a href="" ng-click="toggleSelectedTag(tag)" class="small" data-value="{{tag.checked}}" tabIndex="-1">
                                                 <input type="checkbox" ng-model="tag.checked" style="display: initial !important;" />&nbsp; {{tag.tags}}
@@ -83,7 +106,7 @@
                     <thead>
                         <tr>
                             <th width="30" data-sort-ignore="true">
-                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAllProduct" ng-click="clickselect()" ng-change="changeSelectDeselectAllProduct()" style="margin-left: -7px;">
+                                <input type="checkbox" class="checkbox" ng-model="selectDeselectAllProduct" ng-click="clickselect()" ng-change="changeSelectDeselectAllProduct()">
                             </th>
                             <th data-sort-ignore="true">Product name</th>
                             <th data-sort-ignore="true" style="width: 110px;">Base Price</th>
@@ -128,8 +151,8 @@
                                 {{product.max_quantity}}
                             </td>
                             <td class="text-right">
-                                <a class="btn actbutton btn-flat btn-xs btn-danger" ng-click="deleteSelectedItem(product)" uib-tooltip="Remove">
-                                    <img src="./images/icon/ic_close_white_18px.svg">
+                                <a class="btn actbutton btn-flat btn-xs btn-info" ng-click="deleteSelectedItem(product)" uib-tooltip="Remove">
+                                    <img src="./images/icon/ic_delete_black_24px.svg">
                                 </a>
                             </td>
                         </tr>

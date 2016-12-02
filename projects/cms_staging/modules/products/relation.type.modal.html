@@ -1,6 +1,6 @@
 <form class="form-horizontal" ng-submit="saveEntry()">
     <div class="modal-header">
-        <h3 class="modal-title">Manage Relation Type</h3>
+        <h4 class="modal-title pl-20">Manage Relation Type</h4>
     </div>
     <div class="modal-body">
         <div class="form-group">
@@ -30,10 +30,40 @@
         <div class="form-group">
             <label class="col-sm-3 control-label checkbox"></label>
             <div class="col-sm-9">
-                <a class="btn btn-flat btn-warning" ng-click="newEntry()" ng-hide="relation.disablenewbutton">New Entry</a>
+                <!-- <a class="btn btn-flat btn-warning" ng-click="newEntry()" ng-hide="relation.disablenewbutton">New Entry</a>
                 <a class="btn btn-flat btn-default" ng-click="cancelEntry()" ng-hide="!relation.disablenewbutton">Cancel</a>
                 <button class="btn btn-flat btn-primary" type="submit" ng-disabled="relation.disablesavebutton">Save</button>
-                <a class="btn btn-flat btn-success" ng-click="refreshData()">Refresh</a>
+                <a class="btn btn-flat btn-success" ng-click="refreshData()">Refresh</a> -->
+                <div class="pull-left disp-inline-flex">
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="newEntry()" ng-hide="relation.disablenewbutton">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/ic_black_white_24px.svg">
+                            </button>New Entry
+                        </a>
+                    </div>
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="saveCategory()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/ic_close_white_24px.svg">
+                            </button>Cancel
+                        </a>
+                    </div>
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="saveCategory()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/ic_save_black_24px.svg">
+                            </button>Save
+                        </a>
+                    </div>
+                    <div class="w140">
+                        <a class="mr-10 label-circle-button ml-5" ng-click="getAllCategory()">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                <img src="./images/icon/refresh.svg">
+                            </button>Refresh
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12">
@@ -64,8 +94,8 @@
                                     {{var.type}}
                                 </td>
                                 <td>
-                                    <a ng-click="deleteSelected(var.rel_type_id)" class="btn btn-danger btn-xs btn-flat pull-right"><i class="glyphicon glyphicon-remove"></i></a>
-                                    <a ng-click="getSelected(var)" class="btn btn-info btn-xs btn-flat pull-right"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a ng-click="deleteSelected(var.rel_type_id)" class="btn actbutton btn-flat btn-xs btn-info pull-right"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                    <a ng-click="getSelected(var)" class="btn actbutton btn-flat btn-xs btn-info pull-right mr-10"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                 </td>
                             </tr>
                         </tbody>

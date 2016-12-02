@@ -1,17 +1,38 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-warning">
+        <div class=" box-warning">
             <div class="box-header">
                 <div class="pull-left">
-                    <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="openUploader()">
-                        <img src="./images/icon/ic_file_upload_white_24px.svg"> Add Media / File
-                    </button>
-                    <button ng-click="deleteAllMedia()" class="btn btn-flat pcombo btn-sm btn-danger">
-                        <img src="./images/icon/delete-sweep.svg"> Delete All
-                    </button>
-                    <button class="btn btn-flat pcombo btn-sm btn-default" ng-click="reloadMediaFiles()">
-                        <img src="./images/icon/refresh.svg"> Refresh
-                    </button>
+                    <!-- <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="openUploader()">
+    <img src="./images/icon/ic_file_upload_white_24px.svg"> Add Media / File
+</button>
+<button ng-click="deleteAllMedia()" class="btn btn-flat pcombo btn-sm btn-danger">
+    <img src="./images/icon/delete-sweep.svg"> Delete All
+</button>
+<button class="btn btn-flat pcombo btn-sm btn-default" ng-click="reloadMediaFiles()">
+    <img src="./images/icon/refresh.svg"> Refresh
+</button>
+ -->
+                    <div class="pull-left disp-inline-flex">
+                        <div class="w140">
+                            <a ng-click="openUploader()" class="mr-10 label-circle-button">
+                                <button class="btn btn-danger actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_file_upload_black_24px.svg">
+                                </button>Upload File</a>
+                        </div>
+                        <div class="w140">
+                            <a ng-click="deleteAllMedia()" class="label-circle-button">
+                                <button class="btn btn-danger actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/delete-sweep.svg">
+                                </button>Delete All</a>
+                        </div>
+                        <div class="w140">
+                            <a ng-click="reloadMediaFiles()" class="label-circle-button">
+                                <button class="btn btn-danger actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/delete-sweep.svg">
+                                </button>Refresh</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box-body ">
@@ -25,10 +46,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openLightboxModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openLightboxModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -40,10 +61,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openAudioModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openAudioModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -55,10 +76,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openVideoModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openVideoModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,10 +91,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,10 +106,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -100,10 +121,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -115,10 +136,11 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></i></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -130,10 +152,10 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="openDocsModal(files)" class="actbuttonassets" uib-tooltip="Preview"><img src="./images/icon/ic_visibility_black_24px.svg "></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -145,9 +167,9 @@
                                     <div class="mailbox-attachment-size">
                                         {{ files.media_filesize/1024/1024|number:2 }} MB
                                         <div class="pull-right pb-10 pt-5">
-                                        <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
-                                        <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                        <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="copyURLLink(files)" class="actbuttonassets" uib-tooltip="Copy URL"><img src="./images/icon/ic_link_black_24px.svg"></button>
+                                            <button ng-href="" ng-click="deleteSelected(files)" class="actbuttonassets" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                            <button ng-href="{{files.media_path}}" target="_self" download="{{files.media_path}}" uib-tooltip="Download" class="actbuttonassets"><img src="./images/icon/ic_cloud_download_black_24px.svg"></button>
                                         </div>
                                     </div>
                                 </div>

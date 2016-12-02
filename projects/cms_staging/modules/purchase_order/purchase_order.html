@@ -12,32 +12,42 @@
             <div class="box box-warning">
                 <div class="box-header">
                     <!--  <h3 class="box-title">List of Purchase Orders</h3> -->
-                    <div class="pull-left">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.add_order">
-                                    <i class="fa fa-edit"></i> Add New Entry
-                                </a>
-                                <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </button>
-                            </div>
-                        </form>
+                    <div class="pull-left disp-inline-flex">
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ui-sref="main.add_order">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_black_white_24px.svg">
+                                </button>Add New Entry
+                            </a>
+                        </div>
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="refresh()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/refresh.svg">
+                                </button>Refresh
+                            </a>
+                        </div>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <div class="input-group imput">
+                                            <input type="text" name="q" class="form-control  input-sm ng-pristine ng-valid ng-empty ng-touched" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                            </div>
+                                        </div>
                                         <div class="input-group">
-                                            <input type="text" name="q" class="form-control input-sm" placeholder="Search.." />
+                                            <!--  <input type="text" name="q" class="form-control input-sm" placeholder="Search.." />
                                             <span class="input-group-btn">
                                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat btn-sm">
                                                 <i class="fa fa-search"></i>
                                                 </button>
-                                                </span>
+                                                </span> -->
                                             <span class="input-group-btn">
-                                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;">
                                             {{applicationStatus}}
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
@@ -61,7 +71,7 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive padding">
+                <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="puchaseordersTable">
                         <tr ng-repeat="item in $data  track by $index">
                             <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">

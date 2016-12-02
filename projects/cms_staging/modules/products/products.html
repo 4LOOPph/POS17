@@ -10,7 +10,7 @@
     <!-- /.row -->
     <div class="row" role="search-row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;top: 5px;">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" >
         </script>
         <div class="col-md-3 col-xs-3">
             <!--  <div data-angular-treeview="true" ng-show="side" data-tree-id="mytree" data-tree-model="categoryData" data-node-id="id" data-node-label="label" data-node-children="items" style="overflow: auto; height: 927px">
@@ -38,21 +38,21 @@
                             <img src="./images/icon/ic_list_black_24px (1).svg">
                         </button>
                     </div>
-                    <div class="pull-left">
-                        <form class="form-inline p-5 pl-10">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-5" ui-sref="main.products-add" uib-tooltip="Add New">
+                    <div class="pull-left pt-3">
+                        <form class="form-inline p-3 pl-15">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.products-add" uib-tooltip="Add New">
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <button class="btn btn-success actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                            <button class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
                                 <img src="./images/icon/file-export2.svg">
                             </button>
-                            <button class="btn btn-warning actbutton btn-xs btn-flat mr-5" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                            <button class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
                                 <img src="./images/icon/pencil-box-outline.svg">
                             </button>
-                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-5" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive">
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive">
                                 <img src="./images/icon/archive.svg">
                             </button>
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5" ng-click="refresh()" uib-tooltip="Refresh">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh">
                                 <img src="./images/icon/refresh.svg">
                             </button>
                         </form>

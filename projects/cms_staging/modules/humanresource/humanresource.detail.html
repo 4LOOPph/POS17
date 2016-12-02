@@ -11,11 +11,14 @@
 <!-- Main content -->
 <section class="content hr">
     <div class="nav-tabs-custom" bs-tabs>
-        <div data-title=" General Info" bs-pane>
+        <div data-title="General Info" bs-pane>
             <ng-include src="'./modules/humanresource/info.html'"></ng-include>
         </div>
-        <div data-title=" Assign Store" bs-pane ng-if="details.person_id">
+        <div data-title="Assign Store" bs-pane ng-if="details.person_id">
             <ng-include src="'./modules/humanresource/perstore.html'"></ng-include>
+        </div>
+        <div data-title="Assign Grouping" bs-pane ng-if="details.person_id">
+            <ng-include src="'./modules/humanresource/groupings.html'"></ng-include>
         </div>
     </div>
 </section>

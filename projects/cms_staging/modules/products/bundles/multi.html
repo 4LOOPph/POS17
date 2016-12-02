@@ -33,21 +33,21 @@
                 {{item.item_name}}
             </td>
             <td style="width: 35%" ng-if="list.listName=='Package'">
-                <div class="form-group">
+                <div class="form-group disp-inline-flex">
                     <input type="text" ng-model="item.quantity" class="form-control" />
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <button ng-click="minusbutton(item)" class="btn bg-navy"><i class="fa fa-minus"></i></button>
+                            <button ng-click="minusbutton(item)" class="btn bg-dgray m-0 br-0"><i class="fa fa-minus"></i></button>
                         </div>
                         <div class="input-group-btn">
-                            <button ng-click="addbutton(item)" class="btn bg-navy" type="button"><i class="fa fa-plus"></i></button>
+                            <button ng-click="addbutton(item)" class="btn bg-dgray" type="button"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
             </td>
             <td style="width: 10%" ng-if="list.listName=='Package'">
-                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right" ng-click="remove(list,item) ">
-                    <i class="fa fa-times "></i>
+                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right" ng-click="remove(list,item)" style="    padding: 7px 7px !important;">
+                    <img src="./images/icon/ic_close_white_18px.svg">
                 </button>
             </td>
         </tr>

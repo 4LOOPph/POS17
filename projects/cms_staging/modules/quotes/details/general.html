@@ -1,10 +1,10 @@
 <div class="row">
     <form role="form" name="quoteInfoForm">
         <div class="col-md-12">
-            <div class="box box-warning">
-                <div class="box-header">
+            <div class=" box-warning">
+                <!-- <div class="box-header">
                     <h3 class="box-title">Enter Quote Info</h3>
-                </div>
+                </div> -->
                 <div class="box-body">
                     <div class="form-group col-md-12" ng-if="details.quote_id">
                         <label>Status: </label>
@@ -21,7 +21,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" ng-model="details.valid_until" data-date-format="MM-dd-yyyy" bs-datepicker/>
                             <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                                <img src="./images/icon/calendar.svg">
                             </div>
                         </div>
                     </div>
@@ -70,12 +70,13 @@
                         <textarea class="form-control" rows="3" ng-model="details.comments" placeholder="Notes / Memo"></textarea>
                     </div>
                 </div>
-                <div class="box-header">
-                    <h3 class="box-title">Billing & Shipping Information</h3>
-                    <div class="pull-right">
-                        <div class="checkbox">
+                <div class="box-header details">
+                    <h3 class="box-title pl-10">Billing & Shipping Information</h3>
+                    <div class="pull-right pr-5">
+                        <div >
                             <label>
-                                <input type="checkbox" ng-model="shippingAddress" ng-click="useBillingAddress(shippingAddress)"> Use Billing Address as Shipping Address
+                                <input type="checkbox" class="checkbox" ng-model="shippingAddress" ng-click="useBillingAddress(shippingAddress)"> 
+                                <div id="check" class="lab"> Use Billing Address as Shipping Address</div>
                             </label>
                         </div>
                     </div>

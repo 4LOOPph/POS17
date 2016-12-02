@@ -14,7 +14,7 @@
     <!-- Info boxes -->
     <div class="row">
         <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-blue">
+            <div class="info-box-blue ">
                 <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
                 <div class="info-box-content">
                     <span class="info-box-number">{{totalItems}}</span>
@@ -25,7 +25,7 @@
             <!-- /.info-box -->
         </div>
         <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-green">
+            <div class="info-box-green ">
                 <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
                 <div class="info-box-content">
                     <span class="info-box-number">{{totalPersonel}}</span>
@@ -46,14 +46,14 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <ul class="products-list product-list-in-box">
+                    <ul class="products-list product-list-in-box example-animate-container">
                         <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
                             <div class="product-img">
                                 <img src="./images/icon/product-icon-300x300.png" alt="Product Image" />
                             </div>
                             <div class="product-info">
                                 <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
-                                    <span class="pull-right"><small am-time-ago="product.date_created"></small></span>
+                                    <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
                                 </a>
                                 <div class="product-description">
                                     <p>{{product.brand}}</p>
@@ -84,7 +84,7 @@
                     <h3 class="box-title">Latest Personel</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body bg">
                     <ul class="users-lista clearfix">
                         <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
                             <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
@@ -93,6 +93,13 @@
                         </li>
                     </ul>
                     <!-- /.users-list -->
+                </div>
+                <div class="box-body sm">
+                    <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
+                        <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
+                        <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                            <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                    </div>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
                     <div class="loader"></div>
@@ -124,7 +131,7 @@
                                 <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
                                     <td>{{user.EmpName}}</td>
                                     <td>
-                                        <span class="role-tag label gradcolor-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
+                                        <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
                                     </td>
                             </tbody>
                         </table>

@@ -1,178 +1,99 @@
-<div class="box box-warning">
-    <div class="box-header">
-        <h3 class="box-title">Application Logs</h3>
-        <br>
-        <br>
-        <div class="pull-left">
-            <form class="form-inline">
-                <div class="form-group">
-                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                        <i class="fa fa-refresh"></i> Refresh
-                    </a>
-                </div>
-            </form>
-        </div>
-        <div class="pull-right">
-            <form class="form-inline">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+<section class="content-header">
+    <h1> User Logs</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.settings-app"><i class="fa fa-settings"></i> Application Settings</a></li>
+        <li class="active">User Logs</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content" ng-controller="appSettingsUserLogController">
+    <div class="row" role="search-row">
+        <div class="col-md-12 col-xs-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">User Logs</h3>
+                    <br>
+                    <br>
+                    <div class="pull-left">
+                        <form class="form-inline">
+                            <div class="form-group" style="margin-left: 10px;">
+                                <label>From</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="details.dateFrom" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker />
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                                -
+                                <label>To</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="details.dateEnd" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker/>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                            <span class="input-group-btn">
-                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
-                                <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                            <div class="form-group">
+                                <a class="btn btn-flat btn-info btn-xs" uib-tooltip="Filter Logs" ng-click="searchData()"><span class="glyphicon glyphicon-filter"></span></a>
+                            </div>
+                            <div class="form-group">
+                                <a ng-click="searchData()" class="btn btn-flat btn-sm btn-success">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-success">
+                                    <i class="fa fa-print"></i> Print
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearchUser" ng-change="(txtSearchUser.length < 1)?searchData():0">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="usersTable">
+                        <tr ng-repeat="row in $data  track by $index">
+                            <td class="text-center" data-title="'Log Date'">
+                                {{row.created_at}}
+                            </td>
+                            <td class="text-center" data-title="'Username'">
+                                {{row.userprofile.username}}
+                            </td>
+                            <td class="text-center" data-title="'Module'">
+                                {{row.module}}
+                            </td>
+                            <td class="text-center" data-title="'API Access'">
+                                {{row.api_url}}
+                            </td>
+                            <td class="text-center" data-title="'IP Address'">
+                                {{row.ip_address}}
+                            </td>
+                            <td class="text-center" data-title="'Action'">
+                                {{row.action}}
+                            </td>
+                            <td class="text-center" data-title="'Parameters'">
+                                {{row.parameters}}
+                            </td>
+                            <td class="text-center" data-title="'Details'">
+                                {{row.action_details}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="box-body table-responsive padding">
-        <table class="table table-hover footable" data-page-size="10">
-            <thead>
-                <tr>
-                    <th data-sort-ignore="true">
-                        <input type="checkbox">
-                    </th>
-                    <th data-type="numeric" data-sort-initial="true">ID</th>
-                    <th>Subject</th>
-                    <th>Account Name</th>
-                    <th>Transaction Amount</th>
-                    <th>Converted Amount</th>
-                    <th>Valid Until</th>
-                    <th>Stage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>183</td>
-                    <td><a ui-sref="main.quote.detail({id: 183})">John Doe</a>
-                    </td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-success">Approved</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>219</td>
-                    <td>Jane Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-warning">Pending</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-primary">Approved</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-danger">Denied</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-success">Approved</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>219</td>
-                    <td>Jane Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-warning">Pending</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-primary">Approved</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>or sit amet salami</td>
-                    <td>2342.34</td>
-                    <td>483</td>
-                    <td>2/10/2014</td>
-                    <td>
-                        <span class="label label-danger">Denied</span>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot class="hide-if-no-paging">
-                <tr>
-                    <td colspan="8" align="center">
-                        <ul class="pagination"></ul>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-</div>
+</section>
+<!-- /.content -->

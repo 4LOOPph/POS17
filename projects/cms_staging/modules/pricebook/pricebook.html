@@ -9,7 +9,7 @@
 <section class="content">
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" style="margin-left: -7px;">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-md-12">
             <div class="box box-warning">
@@ -17,7 +17,7 @@
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="form-group">
-                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-5" uib-tooltip="Add New" ui-sref="main.pricebook-detail">
+                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New" href="#/main/products-bundle/">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </a>
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
@@ -83,7 +83,7 @@
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group" style="margin-bottom: -40px;margin-right: 9px;">
-                                <button class="btn btn-default actbutton" uib-tooltip="Publish" ng-click="publishSelected()" style="font-size: 17px;font-weight: 500;padding: 1px 8px !important;margin-right: 17px;" ng-disabled="!pusblishSomeData">P</button>
+                                <button class="btn btn-default actbutton" uib-tooltip="Publish" ng-click="publishSelected()" style="font-size: 16px;font-weight: 500;padding: 1px 7px !important;margin-right: 17px;" ng-disabled="!pusblishSomeData">P</button>
                                 <span class="badge2" ng-if="selectedToPublish.length > 0">{{selectedToPublish.length}}</span>
                                 <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
                                     <img src="./images/icon/ic_clear_black_24px.svg">
@@ -117,6 +117,7 @@
                             <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: 'Tags'}" extra-settings="{showCheckAll: false,showUncheckAll: false} "></div>
                         </div>
                     </div>
+
                     <div class="box-body table-responsive mailbox-messages padding p-0 pt-5">
                         <table class="table table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
@@ -124,7 +125,37 @@
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
+                                   <!--  <<<<<<< HEAD {{pricebook.name}} <td class="text-center" data-title="'Type'">
+                                        {{pricebook.pricebook_type_info.name}}
+                                </td>
+                                <td class="text-center" data-title="'Description'">
+                                    <span ng-bind-html="pricebook.description"></span>
+                                </td>
+                                <td class="text-center" data-title="'Published'">
+                                    <span ng-if="pricebook.date_approved != null " class="label label-success ">published</span>
+                                    <span ng-if="pricebook.date_approved == null " class="label label-warning ">draft</span>
+                                </td>
+                                <td class="text-center" data-title="'Date From'">
+                                    {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Date To'">
+                                    {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
+                                </td>
+                                <td class="text-center" data-title="'Tags'">
+                                </td>
+                                <td class="text-right" style="border-right: 0;">
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn actbutton btn-info btn-xs btn-flat ml-5" uib-tooltip="Edit">
+                                        <img src="./images/icon/ic_mode_edit_white_18px.svg">
+                                    </a>
+                                    <a class="btn ml-5 actbutton btn-flat btn-xs btn-info" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
+                                        <img src="./images/icon/file-export (1).svg">
+                                    </a>
+                                    <a class="btn ml-5 actbutton btn-flat btn-xs btn-info" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
+                                        <img src="./images/icon/file-multiple.svg">
+                                    </a>
+                                </td>
+                                ======= -->
+                                <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
                                 </td>
                                 <td class="text-center" data-title="'Type'">
                                     {{pricebook.pricebook_type_info.name}}
@@ -133,8 +164,8 @@
                                     <span ng-bind-html="pricebook.description"></span>
                                 </td>
                                 <td class="text-center" data-title="'Status'">
-                                    <span ng-if="pricebook.isActive == 1 " class="label gradcolor1 ">Active</span>
-                                    <span ng-if="pricebook.isActive != 1 " class="label gradcolor ">In-active</span>
+                                    <span ng-if="pricebook.isActive == 1 " class="label label-success ">Active</span>
+                                    <span ng-if="pricebook.isActive != 1 " class="label label-warning ">In-active</span>
                                 </td>
                                 <td class="text-center" data-title="'Published'">
                                     <span ng-if="pricebook.date_approved != null " class="label label-success ">published</span>
@@ -150,19 +181,20 @@
                                 <td class="text-center" data-title="'Tags'">
                                 </td>
                                 <td class="text-right" style="border-right: 0;">
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit">
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn ml-5 actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit">
                                         <img src="./images/icon/ic_mode_edit_white_18px.svg">
                                     </a>
-                                    <a class="btn actbutton btn-flat btn-xs btn-success" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
+                                    <a class="btn actbutton ml-5 btn-flat btn-xs btn-info" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
                                         <img src="./images/icon/file-export (1).svg">
                                     </a>
-                                    <a class="btn actbutton btn-flat btn-xs btn-warning" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
+                                    <a class="btn actbutton ml-5 btn-flat btn-xs btn-info" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
                                         <img src="./images/icon/file-multiple.svg">
                                     </a>
                                 </td>
                             </tr>
                         </table>
                     </div>
+
                     <!-- /.mail-box-messages -->
                 </div>
                 <div class="overlay" ng-show="pricebookLoading">

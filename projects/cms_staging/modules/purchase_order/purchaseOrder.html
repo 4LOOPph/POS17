@@ -1,15 +1,15 @@
 <div class="row">
     <form role="form">
         <div class="col-md-9">
-            <div class="box box-warning">
-                <div class="box-header">
+            <div class=" box-warning">
+                <!-- <div class="box-header">
                     <h3 class="box-title">Product List</h3>
-                </div>
+                </div> -->
                 <div class="box-body">
                     <div class="form-group">
-                        <div class="btn-group">
-                            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
-                            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'productgroup'" ng-click="changeData('productgroup')">Product Group</label>
+                        <div class="btn-group p-15">
+                            <label class="btn  btn-prime brtb-r-0 " ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
+                            <label class="btn  btn-prime bltb-r-0" ng-model="radioModel" uib-btn-radio="'productgroup'" ng-click="changeData('productgroup')">Product Group</label>
                         </div>
                     </div>
                     <div class="form-group col-md-4" ng-show="radioModel == 'product'">
@@ -53,14 +53,21 @@
                         <input type="number" ng-model="items.total" class="form-control" ng-change="calculateItem(items)" ng-disabled="true">
                     </div>
                     <div class="form-group col-md-12">
-                        <a class="btn btn-flat btn-primary" ng-click="addToList(items)"><i class="fa fa-plus"></i> Add</a>
+                        <!-- <a class="btn btn-flat btn-primary" ng-click="addToList(items)"><i class="fa fa-plus"></i> Add</a> -->
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="addToList(items)">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_black_white_24px.svg">
+                                </button>Add
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th width="50%">Item Name</th>
+                                <th width="45%">Item Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Discount</th>
@@ -97,13 +104,13 @@
                         <h3>Sub-Total: </h3>
                         <input type="text" class="form-control input-lg" value="{{details.sub_total | number:2}}" ng-disabled="true">
                     </div> -->
-                    <div class="form-group">
-                        <h3>Shipping Fee : </h3>
-                        <input type="number" class="form-control input-lg" ng-model="details.shipping_fee" ng-change="calculateBilling()" ng-required placeholder="Enter value">
+                    <div class="form-group pl-30 pr-30">
+                        <h4>Shipping Fee : </h4>
+                        <input type="number" class="form-control input" ng-model="details.shipping_fee" ng-change="calculateBilling()" ng-required placeholder="Enter value">
                     </div>
-                    <div class="form-group">
-                        <h3>Tax : </h3>
-                        <input type="text" class="form-control input-lg" ng-model="details.tax" ng-change="calculateBilling()" ng-required placeholder="Enter value">
+                    <div class="form-group pl-30 pr-30">
+                        <h4>Tax : </h4>
+                        <input type="text" class="form-control input" ng-model="details.tax" ng-change="calculateBilling()" ng-required placeholder="Enter value">
                     </div>
                     <!-- <div class="form-group">
                         <h2>Total : </h2>
@@ -141,7 +148,7 @@
                                     <input type="text" class="form-control" id="" placeholder="">
                                 </div>
                             </div>
-                            <div class="box-header btn-black">
+                            <div class="box-header btn-black" style="border-bottom: 0px !important">
                                 <h3 class="box-title">Total : </h3> {{total}}
                                 <label class="pull-right"></label>
                             </div>
@@ -161,10 +168,10 @@
                                 <img src="../../images/credit/american-express.png" alt="American Express" />
                                 <img src="../../images/credit/paypal2.png" alt="Paypal" />
                             </div>
-                                <img src="../../images/credit/visa.png" alt="Visa" ng-if="details.shipvia == 'Visa'"/>
-                                <img src="../../images/credit/mastercard.png" alt="Mastercard" ng-if="details.shipvia == 'Mastercard'"/>
-                                <img src="../../images/credit/american-express.png" alt="American Express" ng-if="details.shipvia == 'American Express'"/>
-                                <img src="../../images/credit/paypal2.png" alt="Paypal" ng-if="details.shipvia == 'Paypal'"/>
+                            <img src="../../images/credit/visa.png" alt="Visa" ng-if="details.shipvia == 'Visa'" />
+                            <img src="../../images/credit/mastercard.png" alt="Mastercard" ng-if="details.shipvia == 'Mastercard'" />
+                            <img src="../../images/credit/american-express.png" alt="American Express" ng-if="details.shipvia == 'American Express'" />
+                            <img src="../../images/credit/paypal2.png" alt="Paypal" ng-if="details.shipvia == 'Paypal'" />
                         </div>
                         <div class="form-group">
                             <label>Terms:</label>
