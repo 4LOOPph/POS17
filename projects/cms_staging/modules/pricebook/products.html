@@ -15,9 +15,9 @@
                         </div> -->
                         <div class="pt-5">
                             <div class="input-group pull-right imput" style="width: 250px;">
-                                <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
+                                <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData():0" ng-change="(txtProductSearch.length < 1)?searchProductData():0">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData(txtProductSearch)" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData()" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                 </div>
                             </div>
                         </div>
@@ -60,31 +60,13 @@
             </div>
             <div class="box-header">
                 <div class="pull-left">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <div class="col-md-12" style="padding: 0;">
-                                <!-- <div class="input-group">
-                                    <p>
-                                        <button uib-popover-template="dynamicPopover.templateUrl" popover-placement="bottom-left" type="button" class="btn btn-default">Filter By Tags</button>
-                                    </p>
-                                </div> -->
-                                <div class="btn-group">
-                                    <button class="btn aw btn-default dropdown-toggle" data-toggle="dropdown" style="border: 1px solid #d2d6de;">
-                                        Filter By Tags
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" style="margin-left: -15px;max-height: 370px;overflow-y: auto;">
-                                        <li ng-repeat="tag in tagsArr">
-                                            <a href="" ng-click="toggleSelectedTag(tag)" class="small" data-value="{{tag.checked}}" tabIndex="-1">
-                                                <input type="checkbox" ng-model="tag.checked" style="display: initial !important;" />&nbsp; {{tag.tags}}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <div class="mailbox-controls">
+                        <div class="col-md-12">
+                            <div class="btn-group">
+                                <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="pull-right">
                     <form class="form-inline">
