@@ -28,9 +28,9 @@
                     </div>
                     <div class=" pt-5 ">
                         <div class="input-group pull-right imput" style="width: 250px;">
-                            <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                            <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-keypress="($event.which === 13)?searchData():0" ng-change="(txtSearch.length < 1)?searchData():0">
                             <div class="input-group-btn">
-                                <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                             </div>
                         </div>
                     </div>
@@ -110,14 +110,14 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="updateType('-Type-')">-Type-</a></li>
                                 <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
                             </ul>
                         </div>
                         <div class="btn-group">
-                            <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: 'Tags'}" extra-settings="{showCheckAll: false,showUncheckAll: false} "></div>
+                            <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="example8settings" events="selectEvents"></div>
                         </div>
                     </div>
-
                     <div class="box-body table-responsive mailbox-messages padding p-0 pt-5">
                         <table class="table table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
@@ -125,37 +125,7 @@
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
-                                   <!--  <<<<<<< HEAD {{pricebook.name}} <td class="text-center" data-title="'Type'">
-                                        {{pricebook.pricebook_type_info.name}}
-                                </td>
-                                <td class="text-center" data-title="'Description'">
-                                    <span ng-bind-html="pricebook.description"></span>
-                                </td>
-                                <td class="text-center" data-title="'Published'">
-                                    <span ng-if="pricebook.date_approved != null " class="label label-success ">published</span>
-                                    <span ng-if="pricebook.date_approved == null " class="label label-warning ">draft</span>
-                                </td>
-                                <td class="text-center" data-title="'Date From'">
-                                    {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
-                                </td>
-                                <td class="text-center" data-title="'Date To'">
-                                    {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
-                                </td>
-                                <td class="text-center" data-title="'Tags'">
-                                </td>
-                                <td class="text-right" style="border-right: 0;">
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn actbutton btn-info btn-xs btn-flat ml-5" uib-tooltip="Edit">
-                                        <img src="./images/icon/ic_mode_edit_white_18px.svg">
-                                    </a>
-                                    <a class="btn ml-5 actbutton btn-flat btn-xs btn-info" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish">
-                                        <img src="./images/icon/file-export (1).svg">
-                                    </a>
-                                    <a class="btn ml-5 actbutton btn-flat btn-xs btn-info" ng-click="copyDuplicatePricebook(pricebook)" uib-tooltip="Copy/Duplicate">
-                                        <img src="./images/icon/file-multiple.svg">
-                                    </a>
-                                </td>
-                                ======= -->
-                                <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
                                 </td>
                                 <td class="text-center" data-title="'Type'">
                                     {{pricebook.pricebook_type_info.name}}
@@ -179,6 +149,7 @@
                                     {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
                                 </td>
                                 <td class="text-center" data-title="'Tags'">
+                                    <span class="label label-default label-tags" ng-repeat="tag in pricebook.tags">{{tag.tags}}</span>
                                 </td>
                                 <td class="text-right" style="border-right: 0;">
                                     <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn ml-5 actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit">
@@ -194,7 +165,6 @@
                             </tr>
                         </table>
                     </div>
-
                     <!-- /.mail-box-messages -->
                 </div>
                 <div class="overlay" ng-show="pricebookLoading">
