@@ -3,32 +3,34 @@
         <div class=" box-warning m-0">
             <div class="box-header p-0" style="padding: 8px 2px !important;">
                 <!-- <h3 class="box-title">List of Products</h3> -->
-                <div class="pull-left leftstablebutton">
-                    <button class="actbuttonassets" ng-click="openRelationType()" uib-tooltip="Relation Type">
-                        <img src="./images/icon/ic_list_black_24px (1).svg">
-                    </button>
-                </div>
-                <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_black_white_24px.svg">
-                            </button>Add Products
-                        </a>
+                <div class=" disp-inline-flex">
+                    <div class=" leftstablebutton pr">
+                        <button class="actbuttonassets" ng-click="openRelationType()" uib-tooltip="Relation Type">
+                            <img src="./images/icon/ic_list_black_24px (1).svg">
+                        </button>
                     </div>
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelectedRelated()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_delete_black_24px.svg">
-                            </button>Delete
-                        </a>
-                    </div>
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="getAllRelatedProducts()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/refresh.svg">
-                            </button>Refresh
-                        </a>
+                    <div class="pull-left  disp-inline-flex pl-10" style="padding-top: 4px;">
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_black_white_24px.svg">
+                                </button>Add Products
+                            </a>
+                        </div>
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelectedRelated()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/ic_delete_black_24px.svg">
+                                </button>Delete
+                            </a>
+                        </div>
+                        <div class="w140">
+                            <a class="mr-10 label-circle-button ml-5" ng-click="getAllRelatedProducts()">
+                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <img src="./images/icon/refresh.svg">
+                                </button>Refresh
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,6 +89,5 @@
     td:nth-of-type(3):before {
         content: "Relation Type";
     }
-   
 }
 </style>

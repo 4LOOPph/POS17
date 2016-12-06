@@ -2,15 +2,19 @@
     <form role="form" name="productForm" ng-submit="addProduct()">
         <div class="col-md-9">
             <div class=" box-warning">
-                <!--  <div class="">
-                    <h4 class="box-title">Enter Product Info</h4>
-                </div> -->
+                 <div class="s">
+                    <h4 class="box-title">Product Info</h4>
+                </div>
                 <div class="box-body">
                     <div class="form-group pl-15" ng-if="details.p_id">
                         <label>Status: </label>
                         <span ng-if="details.is_published == 0 && details.is_archived == 0" class="label label-warning">draft</span>
                         <span ng-if="details.is_published == 1 && details.is_archived == 0" class="label label-success">published</span>
                         <span ng-if="details.is_archived == 1 && details.is_published == 0" class="label label-danger">archived</span>
+                    </div>
+                    <div class="form-group pl-15" ng-if="details.p_id">
+                        <label>Views: </label>
+                        <span class="badge bg-light-blue">{{details.product_views}}</span>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Name</label>

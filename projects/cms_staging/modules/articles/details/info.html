@@ -11,6 +11,10 @@
                         <span ng-if="details.is_active == '1' " class="label label-success">Published</span>
                         <span ng-if="details.is_active == '0' " class="label label-warning">Draft</span>
                     </div>
+                    <div class="form-group pl-15" ng-if="details.article_id">
+                        <label>Views: </label>
+                        <span class="badge bg-light-blue">{{details.article_views}}</span>
+                    </div>
                     <div class="form-group">
                         <label>Article Title</label>
                         <input type="text" ng-model="details.title" class="form-control" placeholder="Title" required />

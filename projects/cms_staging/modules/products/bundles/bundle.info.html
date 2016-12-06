@@ -12,6 +12,10 @@
                         <span ng-if="details.is_published == 1 && details.is_archived == 0" class="label label-success">published</span>
                         <span ng-if="details.is_archived == 1 && details.is_published == 0" class="label label-danger">archived</span>
                     </div>
+                    <div class="form-group pl-15" ng-if="details.pb_id">
+                        <label>Views: </label>
+                        <span class="badge bg-light-blue">{{details.product_bundle_views}}</span>
+                    </div>
                     <div class="p-0 col-md-12">
                         <div class="form-group col-md-6">
                             <label>Bundle Name</label>

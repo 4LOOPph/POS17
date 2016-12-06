@@ -34,6 +34,47 @@
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
                                     <img src="./images/icon/refresh.svg">
                                 </button>
+                                <div class="input-group" style="margin-left: 10px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
+                                            {{applicationStatus}}
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a ng-click="updateStatus('All')">All</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Publish')">Published</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                            </li>
+                                            <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle ng-binding" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;" angular-ripple>
+                                            {{filterStatus}}
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a ng-click="updateFilterStatus('Relevance')">Relevance</a>
+                                            </li>
+                                            <li><a ng-click="updateFilterStatus('Most Viewed')">Most Viewed</a>
+                                            </li>
+                                            <li><a ng-click="updateFilterStatus('Price: High to Low')">Price: High to Low</a>
+                                            </li>
+                                            <li><a ng-click="updateFilterStatus('Price: Low to High')">Price: Low to High</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn-group mailbox-controls">
+                                    <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -47,50 +88,8 @@
                                             <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
-                                    <!--   <div class="input-group">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
-                                        </div>
-                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div>
-                                    </div> -->
-                                    <div class="input-group">
-                                        <!-- <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div> -->
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
-                                                {{applicationStatus}}
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a ng-click="updateStatus('All')">All</a>
-                                                </li>
-                                                <li><a ng-click="updateStatus('Publish')">Published</a>
-                                                </li>
-                                                <li><a ng-click="updateStatus('Archived')">Archived</a>
-                                                </li>
-                                                <li><a ng-click="updateStatus('Draft')">Draft</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                                <div class="btn-group">
-                                    <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'List'" uib-tooltip="Display List of Product"><i class="fa fa-list"></i></label>
-                                    <label class="btn btn-sm btn-default" ng-model="displayModel" uib-btn-radio="'Box'" uib-tooltip="Display Grid of Product">
-                                        <i class="fa fa-th"></i>
-                                    </label>
-                                </div>
-                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -116,6 +115,9 @@
                                 <span ng-if="bundle.is_published == 0 && bundle.is_archived == 0" class="label label-warning">draft</span>
                                 <span ng-if="bundle.is_published == 1 && bundle.is_archived == 0" class="label label-success">published</span>
                                 <span ng-if="bundle.is_archived == 1 && bundle.is_published == 0" class="label label-danger">archived</span>
+                            </td>
+                            <td class="text-center" data-title="'Views'">
+                                <span class="badge bg-light-blue">{{bundle.product_bundle_views}}</span>
                             </td>
                             <td class="text-center" data-title="'Last Updated'">
                                 {{bundle.date_created | fromNow}}
