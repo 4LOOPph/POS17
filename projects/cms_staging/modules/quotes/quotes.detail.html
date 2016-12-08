@@ -9,7 +9,7 @@
     </ol>
 </section>
 <!-- Main content -->
-<section class="content quote">
+<section class="content b quote">
     <div class="nav-tabs-custom" bs-tabs>
         <div data-title="General Info" bs-pane>
             <div ng-include="'modules/quotes/details/general.html'"></div>
@@ -18,6 +18,18 @@
             <div ng-include="'modules/quotes/details/items.html'"></div>
         </div>
         <div data-title="Review" bs-pane>
+            <div ng-include="'modules/quotes/details/report.html'"></div>
+        </div>
+</section>
+<section class="content s quote">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<img src='./images/icon/ic_info_outline_black_24px.svg'>" bs-pane>
+            <div ng-include="'modules/quotes/details/general.html'"></div>
+        </div>
+        <div data-title="<img src='./images/icon/package copy.svg'>" bs-pane>
+            <div ng-include="'modules/quotes/details/items.html'"></div>
+        </div>
+        <div data-title="<img src='./images/icon/clipboard-check.svg'>" bs-pane>
             <div ng-include="'modules/quotes/details/report.html'"></div>
         </div>
 </section>

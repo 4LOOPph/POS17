@@ -28,31 +28,16 @@
                             </button>
                         </form>
                     </div>
-                    <div class="pull-right w100">
+                    <div class="pull-right b">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="pt-5">
                                     <div class="input-group imput">
-                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div>
                                     </div>
-                                    <!-- <div class="input-group">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
-                                        </div>
-                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div> -->
                                     <div class="btn-group fr">
                                         <button class="btn btn-sm btn-flat btn-warning  dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
                                             {{applicationStatus}}
@@ -73,6 +58,31 @@
                         </form>
                     </div>
                 </div>
+                <form class="form-inline box-header" style="padding: 8px 5px;">
+                    <div class="input-group s imput" style=" margin-bottom: -8px;">
+                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                        <div class="input-group-btn">
+                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                        </div>
+                    </div>
+                    <div class=" pull-right sdropdisp pt-8">
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-flat btn-warning  dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
+                                {{applicationStatus}}
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="updateStatus('All')">All</a>
+                                </li>
+                                <li><a ng-click="updateStatus('Active')">Active</a>
+                                </li>
+                                <li><a ng-click="updateStatus('Inactive')">Inactive</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
                 <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="quoteTable">
                         <tr ng-repeat="quotes in $data  track by $index">
@@ -80,7 +90,7 @@
                                 <input type="checkbox" class="checkbox" ng-model="quotes.selected" ng-change="checkDataChanges(quotes)">
                             </td>
                             <td class="text-center" data-title="'Quote Number'">
-                                {{quotes.quote_number}}
+                                <a ui-sref="main.quotes-detail({'quote_id':quotes.quote_id })">{{quotes.quote_number}}</a>
                             </td>
                             <td class="text-center" data-title="'Customer'">
                                 {{quotes.bill_qoute_info.displayName}}
@@ -94,9 +104,12 @@
                             </td>
                             <td class="text-right">
                                 <div class="disp-inline-flex">
+                                    <a ng-click="updateHistory(quotes.quote_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></a>
                                     <a ng-click="edit(quotes.quote_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                     <a ng-click="deleteSelected()" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
                                 </div>
+                                <a ng-click="updateHistory(quotes.quote_id)" class="smscreen r200">
+                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
                                 <a ng-click="edit(quotes.quote_id)" class="smscreen r120">
                                     <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
                                 <a ng-click="deleteSelected()" class="smscreen">
@@ -116,9 +129,6 @@
 <style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
-    td:nth-of-type(1):before {
-        content: " ";
-    }
     td:nth-of-type(2):before {
         content: "Quote Number";
     }

@@ -2,9 +2,9 @@
     <form role="form" name="bundleForm" ng-submit="addProduct()">
         <div class="col-md-9">
             <div class=" box-warning">
-                <!-- <div class="box-header">
-                    <h3 class="box-title">Enter Product Bundle Info</h3>
-                </div> -->
+                <div class="s">
+                    <h4 class="box-title">Bundle Info</h4>
+                </div>
                 <div class="box-body col-md-12">
                     <div class="form-group pl-15" ng-if="details.pb_id">
                         <label>Status: </label>
@@ -60,15 +60,15 @@
                             <!-- <span class="barzz"></span> -->
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="p-0 col-md-12">
                         <div class="form-group col-md-6">
                             <label>Barcode</label>
-                            <input type="text" class="form-control" ng-model="details.barcode" placeholder="Product Code" required />
+                            <input type="text" class="form-control" ng-model="details.barcode" placeholder="Barcode Code" required />
                             <br>
                             <select class="form-control" ng-model="mycode.type" ng-options="option.type as option.code for option in barcodesType" ng-change="changeBarcodeType(mycode.type)" />
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group bar col-md-6">
                             <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
             </div>
         </div>
     </form>
-    <div class="col-md-9" ng-if="details.pb_id">
+    <div class="col-md-9 b" ng-if="details.pb_id">
         <div class="p-20 ">
             <h3 class="box-title">Bundle Images</h3>
             <div class="text-center" ng-show="slides.length > 0">

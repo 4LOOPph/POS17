@@ -2,6 +2,9 @@
     <form class="form-inline " role="form ">
         <div class="col-md-12">
             <div class=" box-warning">
+                <div class="s">
+                    <h4 class="box-title">Media / Files</h4>
+                </div>
                 <div class="box-header ">
                     <div clas="box-header">
                         <div class="pull-right">
@@ -9,7 +12,7 @@
                                 <div class="col-md-12 ">
                                     <div class="input-group ">
                                         <div class="box-tools " ng-hide="list.listName === 'Package'">
-                                            <div class="input-group imput">
+                                            <div class="input-group b imput">
                                                 <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData(txtSearch)" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
@@ -44,7 +47,7 @@
                             </div> -->
                             <div class="form-inline disp-inline-flex" ng-hide="list.listName === 'Products'">
                                 <div class="w140">
-                                    <a class="mr-10 label-circle-button ml-5" ng-click="addProductBundle() ">
+                                    <a class="mr-10 label-circle-button " ng-click="addProductBundle() ">
                                         <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
                                             <img src="./images/icon/ic_save_black_24px.svg">
                                         </button>Save
@@ -63,6 +66,12 @@
                                             <img src="./images/icon/refresh.svg">
                                         </button>Refresh
                                     </a>
+                                </div>
+                                <div class="input-group imput s smsearch" style="margin-left: -13px;margin-bottom: 40px;">
+                                    <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData(txtSearch)" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

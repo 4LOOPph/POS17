@@ -18,11 +18,25 @@
             <li angular-ripple>
                 <a ui-sref="main.dashboard"><img src="./images/icon/ic_dashboard_white_24px.svg"> Dashboard</a>
             </li>
-            <li angular-ripple>
-                <a ui-sref="main.products"><img src="./images/icon/package.svg"> Products</a>
+            <li class="treeview">
+                <a angular-ripple>
+                    <img src="./images/icon/package.svg"> <span> Products</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li angular-ripple>
+                        <a ui-sref="main.products"><img src="./images/icon/package.svg"> Products</a>
+                    </li>
+                    <li angular-ripple>
+                        <a ui-sref="main.settings-producttype"><img src="./images/icon/package.svg"><span>Product Type</span></a>
+                    </li>
+                    <li angular-ripple>
+                        <a href="#"><img src="./images/icon/package.svg"> Product Tags</a>
+                    </li>
+                </ul>
             </li>
             <li angular-ripple>
-                <a ui-sref="main.products-bundles"><img src="./images/icon/arrange-bring-forward.svg"> Product Group</a>
+                <a ui-sref="main.products-bundles"><img src="./images/icon/arrange-bring-forward.svg"> Product Bundles</a>
             </li>
             <li angular-ripple>
                 <a ui-sref="main.articles"><img src="./images/icon/file.svg"> Articles</a>
@@ -30,8 +44,18 @@
             <li angular-ripple>
                 <a ui-sref="main.quotes"><img src="./images/icon/file-document.svg"> Quotation</a>
             </li>
+            <li class="treeview">
+                <a angular-ripple>
+                    <img src="./images/icon/view-module.svg"> <span>Price Books</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li angular-ripple><a ui-sref="main.pricebooktype">Price Book Type</a></li>
+                    <li angular-ripple><a ui-sref="main.pricebookassoctype">Price Book Assoc.. Type</a></li>
+                </ul>
+            </li>
             <li angular-ripple>
-                <a ui-sref="main.pricebook"><img src="./images/icon/book-variant.svg"> Price Book</a>
+                <a href=""><img src="./images/icon/book-variant.svg"> Sales Ledger</a>
             </li>
             <li class="treeview">
                 <a angular-ripple>
@@ -45,19 +69,6 @@
                     <li angular-ripple><a ui-sref="main.stock">Stocks</a></li>
                 </ul>
             </li>
-            <!-- <li class="treeview">
-            <a href="">
-                <i class="fa fa-money"></i>
-                <span>Financials</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Sample</a></li>
-            </ul>
-        </li> -->
             <li class="treeview">
                 <a angular-ripple>
                     <img src="./images/icon/note-outline.svg">
@@ -67,7 +78,6 @@
                 <ul class="treeview-menu">
                     <li angular-ripple><a ui-sref="main.reports-invoice">Invoice</a></li>
                     <li angular-ripple><a ui-sref="main.analytics-overview">Analytics</a></li>
-                    <li class="divider"></li>
                     <li angular-ripple><a href="#">Categories</a></li>
                     <li angular-ripple><a href="#">Closeout</a></li>
                     <li angular-ripple><a href="#">Commission</a></li>
@@ -94,8 +104,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li angular-ripple>
-                        <a ui-sref="main.settings-stores">
-                            <span>Stores</span>
+                        <a ui-sref="main.settings-attributes">
+                            <span>Attributes</span>
                         </a>
                     </li>
                     <li angular-ripple>
@@ -104,38 +114,26 @@
                         </a>
                     </li>
                     <li angular-ripple>
-                        <a ui-sref="main.settings-attributes">
-                            <span>Attributes</span>
-                        </a>
-                    </li>
-                    <li angular-ripple>
                         <a ui-sref="main.settings-categories">
                             <span>Category</span>
                         </a>
                     </li>
                     <li angular-ripple>
-                        <a ui-sref="main.settings-producttype">
-                            <span>Product Type</span>
+                        <a ui-sref="main.settings-currencies">
+                            <span>Currency</span>
                         </a>
                     </li>
                     <li angular-ripple>
-                        <a ui-sref="main.pricebooktype">
-                            <span>Price Book Type</span>
+                        <a ui-sref="main.settings-stores">
+                            <span>Stores</span>
                         </a>
                     </li>
                     <li angular-ripple>
-                        <a ui-sref="main.settings-suppliers">
-                            <span>Suppliers</span>
-                        </a>
+                        <a ui-sref="main.settings-suppliers"><img src="./images/icon/package.svg"><span>Suppliers</span></a>
                     </li>
                     <li angular-ripple>
                         <a href="">
                             <span>Variations</span>
-                        </a>
-                    </li>
-                    <li angular-ripple>
-                        <a ui-sref="main.settings-currencies">
-                            <span>Currency</span>
                         </a>
                     </li>
                 </ul>

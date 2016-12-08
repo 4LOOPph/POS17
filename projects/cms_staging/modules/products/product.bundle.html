@@ -8,7 +8,7 @@
         <li class="active">Product Bundle New Entry</li>
     </ol>
 </section>
-<section class="content prodbun">
+<section class="content b prodbun">
     <div class="nav-tabs-custom" bs-tabs>
         <div data-title="General Info" bs-pane>
             <ng-include src="'./modules/products/bundles/bundle.info.html'"></ng-include>
@@ -26,6 +26,27 @@
             <ng-include src="'./modules/products/bundles/bundles.related.html'"></ng-include>
         </div>
          <div data-title="Attributes" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundle.attributes.html'"></ng-include>
+        </div>
+</section>
+<section class="content s prodbun">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<img src='./images/icon/ic_info_outline_black_24px.svg'>" bs-pane>
+            <ng-include src="'./modules/products/bundles/bundle.info.html'"></ng-include>
+        </div>
+        <div data-title="<img src='./images/icon/package copy.svg'>" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundle.items.html'"></ng-include>
+        </div>
+        <div data-title="<img src='./images/icon/animation.svg'>"  bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.category.html'"></ng-include>
+        </div>
+        <div data-title="<img src='./images/icon/ic_perm_media_black_24px.svg'>" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.media.html'"></ng-include>
+        </div>
+        <div data-title="<img src='./images/icon/package-variant-closed.svg'>" bs-pane ng-if="displayComposite">
+            <ng-include src="'./modules/products/bundles/bundles.related.html'"></ng-include>
+        </div>
+         <div data-title="<img src='./images/icon/more.svg'>" bs-pane ng-if="displayComposite">
             <ng-include src="'./modules/products/bundles/bundle.attributes.html'"></ng-include>
         </div>
 </section>

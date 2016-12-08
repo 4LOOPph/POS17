@@ -17,7 +17,7 @@
     </li>
 </ul>
  -->
-<table class="table table-condensed" dnd-list dnd-drop="onDrop(list, item, index)">
+<table class="tablesss table-condensed" dnd-list dnd-drop="onDrop(list, item, index)">
     <!-- <table class="table table-condensed"> -->
     <thead>
         <tr>
@@ -33,7 +33,7 @@
                 {{item.item_name}}
             </td>
             <td style="width: 35%" ng-if="list.listName=='Package'">
-                <div class="form-group disp-inline-flex">
+                <div class="form-group disp-inline-flex flex">
                     <input type="text" ng-model="item.quantity" class="form-control" />
                     <div class="input-group">
                         <div class="input-group-btn">
@@ -45,11 +45,50 @@
                     </div>
                 </div>
             </td>
-            <td style="width: 10%" ng-if="list.listName=='Package'">
-                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right" ng-click="remove(list,item)" style="    padding: 7px 7px !important;">
+            <td style="width: 10%" class="mt-40" ng-if="list.listName=='Package'">
+                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right mt-21" ng-click="remove(list,item)" style="    padding: 7px 7px !important;">
                     <img src="./images/icon/ic_close_white_18px.svg">
                 </button>
             </td>
         </tr>
     </tbody>
 </table>
+<style type="text/css">
+@media only screen and (max-width: 736px),
+(max-device-width: 736px) and (min-device-width: 200px) {
+    .tablesss>tbody>tr>td,
+    .tablesss>tbody>tr>th,
+    .tablesss>tfoot>tr>td,
+    .tablesss>tfoot>tr>th,
+    .tablesss>thead>tr>td,
+    .tablesss>thead>tr>th {
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-bottom: 0px solid #ddd !important;
+        padding-left: 5px !important;
+        width: 100% !important;
+        padding: 6px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 0px solid #ddd;
+        text-align: left;
+        white-space: initial !important;
+        min-height: 32px;
+    }
+    tr {
+        border-top: 0px solid #c9c9c9;
+        /*display: flex !important;*/
+    }
+    .flex {
+        display: flex !important;
+        line-height: 2.5;
+        width: 70%;
+    }
+    .mt-40 {
+        margin-top: -40px !important;
+    }
+    .mt-21 {
+        margin-top: -21px !important;
+    }
+}
+</style>

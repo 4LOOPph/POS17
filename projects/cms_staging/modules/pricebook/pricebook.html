@@ -21,16 +21,7 @@
                     </div>
                     <div class="pull-left ">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
-                            <!--  <div class="form-group">
-                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New" href="#/main/products-bundle/">
-                                    <img src="./images/icon/ic_add_white_24px.svg">
-                                </a>
-                                <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Refresh">
-                                    <img src="./images/icon/refresh.svg">
-                                </button>
-                            </div>
- -->
-                            <div class="form-group">
+                            <div class="">
                                 <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New Entry" href="#/main/articles/">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </button>
@@ -46,44 +37,7 @@
                             </div>
                         </form>
                     </div>
-                    <!-- <div class=" pt-5 ">
-                            <div class="input-group pull-right imput" style="width: 250px;">
-                                <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-keypress="($event.which === 13)?searchData():0" ng-change="(txtSearch.length < 1)?searchData():0">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                </div>
-                            </div>
-                        </div> -->
-                    <!--    <div class="col-md-6 pull-right">
-                        <div class="" style=" display: flex;">
-                            <div class="input-group imput">
-                                <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                </div>
-                            </div>
-                            
-                            <button ui-sref="main.pricebook-detail" class="btn btn-success btn-xs btn-flat" style="padding: 0px 9px !important;height: 28px;margin-top: 5px;font-size: 14px;">Create New</button>
-                        </div>
-                    </div> -->
-                    <!-- <div class="pull-left">
-                        <a class="btn btn-flat btn-sm btn-primary" ui-sref="main.pricebook-detail" uib-tooltip="Add New">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                        <a class="btn btn-flat btn-sm btn-success" ng-click="publishSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Publish">
-                            <i class="fa fa-file-text-o"></i>
-                        </a>
-                        <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
-                            <i class="fa fa-remove"></i>
-                        </a>
-                        <a ng-click="refresh()" class="btn btn-flat btn-sm btn-default" uib-tooltip="Refresh">
-                            <i class="fa fa-refresh"></i>
-                        </a>
-                        <a ui-sref="main.pricebooktype" class="btn btn-flat btn-sm btn-default" uib-tooltip="Pricebook Type">
-                            <i class="fa fa-list"></i> Pricebook Type
-                        </a>
-                    </div> -->
-                    <div class="pull-right">
+                    <div class="pull-right b">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="pt-5">
@@ -98,11 +52,20 @@
                         </form>
                     </div>
                 </div>
+                <div class="pl-5">
+                 <div class="input-group s  pt-10 imput">
+                       <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                        <div class="input-group-btn">
+                         <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                        </div>
+                 </div>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
+                    
                     <div class="pull-right">
                         <form class="form-inline">
-                            <div class="form-group" style="margin-bottom: -40px;margin-right: 9px;">
+                            <div class="form-group " style="margin-bottom: -40px;margin-right: 9px;">
                                 <button class="btn btn-default actbutton" uib-tooltip="Publish" ng-click="publishSelected()" style="font-size: 16px;font-weight: 500;padding: 1px 7px !important;margin-right: 17px;" ng-disabled="!pusblishSomeData">P</button>
                                 <span class="badge2" ng-if="selectedToPublish.length > 0">{{selectedToPublish.length}}</span>
                                 <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
@@ -112,8 +75,8 @@
                             </div>
                         </form>
                     </div>
-                    <div class="mailbox-controls" style="margin-top: 10px;padding-left: 10px;">
-                        <div class="btn-group">
+                    <div class="mailbox-controls mt-40 pl-10">
+                        <div class="btn-group w50-p rr">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 {{status}}
                                 <span class="caret"></span>
@@ -124,7 +87,7 @@
                                 <li><a ng-click="updateStatus('Unpublished')">Unpublished</a></li>
                             </ul>
                         </div>
-                        <div class="btn-group">
+                        <div class="btn-group w50-p">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 {{name}}
                                 <span class="caret"></span>
@@ -134,7 +97,7 @@
                                 <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
                             </ul>
                         </div>
-                        <div class="btn-group">
+                        <div class="btn-group w50-p">
                             <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="example8settings" events="selectEvents"></div>
                         </div>
                     </div>
@@ -179,11 +142,11 @@
                                         </a>
                                         <a ng-click="copyDuplicatePricebook(pricebook) " class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " uib-tooltip="Copy/Duplicate "><img src="./images/icon/file-multiple.svg "></a>
                                     </div>
-                                    <a ng-click="updateHistory(pricebook.pricebook_id)" class="smscreen r120">
-                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="smscreen r240 ">
+                                    <a ng-click="updateHistory(pricebook.pricebook_id)" class="smscreen" style="right: 265px">
+                                        <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="smscreen r200 ">
                                         <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_mode_edit_white_18px.svg "></button> Edit</a>
-                                    <a ng-click="publishSelectedItem(pricebook) " class="smscreen r120 ">
+                                    <a ng-click="publishSelectedItem(pricebook) " class="smscreen r100 ">
                                         <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_delete_black_24px.svg "></button> Publish</a>
                                     <a ng-click="copyDuplicatePricebook(pricebook) " class="smscreen ">
                                         <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit ">
@@ -193,7 +156,6 @@
                         </tr>
                         </table>
                     </div>
-                    <!-- /.mail-box-messages -->
                 </div>
                 <div class="overlay " ng-show="pricebookLoading ">
                     <i class="fa fa-spinner fa-pulse fa-3x fa-fw "></i>
@@ -202,62 +164,33 @@
         </div>
     </div>
 </section>
-<style type="text/css ">
-.btn-default {
-    background-color: #f4f4f4;
-    color: #444;
-    outline: 0 !important;
-    border-color: #ddd;
-    box-shadow: 0 2px 2px 0 rgba(179, 179, 179, 0.14), 0 1px 5px 0 rgba(144, 144, 144, 0.12), 0 3px 1px -2px rgba(224, 224, 224, 0.2);
-}
-
-.btn .caret {
-    margin-left: 0;
-    float: right !important;
-    margin-top: 9px!important;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: inherit !important;
-    left: inherit !important;
-    z-index: 1000;
-    display: none;
-    float: right;
-    min-width: 110px !important;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, .15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
+<!-- /.content -->
+<style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
-    td:nth-of-type(1):before {
-        content: " ";
-    }
     td:nth-of-type(2):before {
-        content: "Title";
+        content: "Name";
     }
     td:nth-of-type(3):before {
-        content: "Tags";
+        content: "Type";
     }
     td:nth-of-type(4):before {
-        content: "Status";
+        content: "Description";
     }
     td:nth-of-type(5):before {
-        content: " ";
+        content: "Status";
+    }
+    td:nth-of-type(6):before {
+        content: "Published";
+    }
+    td:nth-of-type(7):before {
+        content: "Date From";
+    }
+    td:nth-of-type(8):before {
+        content: "Date To";
+    }
+    td:nth-of-type(9):before {
+        content: "Tags";
     }
 }
-
 </style>
-<!-- /.content -->

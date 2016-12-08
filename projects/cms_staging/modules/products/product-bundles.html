@@ -34,51 +34,10 @@
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
                                     <img src="./images/icon/refresh.svg">
                                 </button>
-                                <div class="input-group" style="margin-left: 10px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
-                                            {{applicationStatus}}
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a ng-click="updateStatus('All')">All</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Publish')">Published</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Archived')">Archived</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Draft')">Draft</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle ng-binding" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;" angular-ripple>
-                                            {{filterStatus}}
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a ng-click="updateFilterStatus('Relevance')">Relevance</a>
-                                            </li>
-                                            <li><a ng-click="updateFilterStatus('Most Viewed')">Most Viewed</a>
-                                            </li>
-                                            <li><a ng-click="updateFilterStatus('Price: High to Low')">Price: High to Low</a>
-                                            </li>
-                                            <li><a ng-click="updateFilterStatus('Price: Low to High')">Price: Low to High</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-group mailbox-controls">
-                                    <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
-                                </div>
                             </div>
                         </form>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-right b">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class=" pt-5">
@@ -93,6 +52,57 @@
                         </form>
                     </div>
                 </div>
+                <form class="form-inline box-header" style="padding: 8px 5px;">
+                    <div class="input-group s imput" style=" margin-bottom: -8px;">
+                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                        <div class="input-group-btn">
+                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                        </div>
+                    </div>
+                    <div class=" pull-right sdropdisp pt-8">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle" data-toggle="dropdown" angular-ripple style="    padding: 4px 20px !important;margin-right: 10px;">
+                                    {{applicationStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Publish')">Published</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group ml-10">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-flat btn-warning pr dropdown-toggle ng-binding" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;" angular-ripple>
+                                    {{filterStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateFilterStatus('Relevance')">Relevance</a>
+                                    </li>
+                                    <li><a ng-click="updateFilterStatus('Most Viewed')">Most Viewed</a>
+                                    </li>
+                                    <li><a ng-click="updateFilterStatus('Price: High to Low')">Price: High to Low</a>
+                                    </li>
+                                    <li><a ng-click="updateFilterStatus('Price: Low to High')">Price: Low to High</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group mailbox-controls smfr pl-10">
+                        <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
+                    </div>
+                </form>
                 <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="productBundleTable">
                         <tr ng-repeat="bundle in $data  track by $index">
@@ -149,11 +159,8 @@
 <style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
-    td:nth-of-type(1):before {
-        content: " ";
-    }
     td:nth-of-type(2):before {
-        content: "prodbun Name";
+        content: "Bundle Name";
     }
     td:nth-of-type(3):before {
         content: "Bundle Type";
@@ -168,10 +175,10 @@
         content: "Status";
     }
     td:nth-of-type(7):before {
-        content: "Last Updated";
+        content: "Views";
     }
     td:nth-of-type(8):before {
-        content: " ";
+        content: "Last Updated";
     }
 }
 </style>

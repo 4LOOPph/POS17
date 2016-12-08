@@ -69,30 +69,30 @@
             </div>
         </div>
         <div class="">
-            <div class=" box-warning">
+            <div class=" box-warning mailbox-messages">
                 <div class="">
                     <table class="table table-striped footable" data-page-size="10" id="tblRelationType">
                         <thead>
                             <tr>
-                                <th class="" data-sort-ignore="true">Name</th>
-                                <th class="" data-sort-ignore="true">Label</th>
-                                <th class="" data-sort-ignore="true">Description</th>
-                                <th class="" data-sort-ignore="true">Type</th>
-                                <th data-sort-ignore="true"></th>
+                                <td class="" data-sort-ignore="true">Name</td>
+                                <td class="" data-sort-ignore="true">Label</td>
+                                <td class="" data-sort-ignore="true">Description</td>
+                                <td class="" data-sort-ignore="true">Type</td>
+                                <td data-sort-ignore="true"></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="var in relationtypes" repeat-end="paginate()">
-                                <td>
+                                <td data-title="'Name'">
                                     {{var.name}}
                                 </td>
-                                <td>
+                                <td data-title="'Label'">
                                     {{var.label}}
                                 </td>
-                                <td>
+                                <td data-title="'Description'">
                                     <p data-ng-bind-html="var.description | limitTo: 90" data-ellipsis></p>
                                 </td>
-                                <td>
+                                <td data-title="'Type'">
                                     {{var.type}}
                                 </td>
                                 <td>
@@ -120,17 +120,90 @@
 <style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
-    th:nth-of-type(1):before {
+    td:nth-of-type(1):before {
         content: "Name";
     }
-    th:nth-of-type(2):before {
+    td:nth-of-type(2):before {
         content: "Label";
     }
-    th:nth-of-type(3):before {
+    td:nth-of-type(3):before {
         content: "Description";
     }
-    th:nth-of-type(4):before {
+    td:nth-of-type(4):before {
         content: "Type";
+    }
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border-top: 1px solid #c9c9c9;
+    }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 500;
+    }
+    tbody>tr>td,
+    tbody>tr>th,
+    tfoot>tr>td,
+    tfoot>tr>th,
+    thead>tr>td,
+    thead>tr>th {
+        padding: 6px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 0px solid #ddd;
+        text-align: left;
+        padding-left: 120px;
+        white-space: initial !important;
+        min-height: 32px;
+        border-bottom: 1px solid #eaeaea;
+    }
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+        padding: 8px 10px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+        margin-left: 20;
+        padding-left: 115px;
+    }
+    .box-body>.table .checkbox,
+    .mailbox-messages>.table .checkbox {
+        position: absolute;
+        top: 11px;
+        margin: 0 1rem 0 0;
+        cursor: pointer;
+        padding-left: 0px !important;
+        left: 11px;
+    }
+    td .bgscreen {
+        display: none;
     }
 }
 </style>
