@@ -2,13 +2,16 @@
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
             <div class=" box-warning m-0">
+                <div class="s">
+                    <h4 class="box-title">Categories</h4>
+                </div>
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Products</h3> -->
                     <div class="pull-left disp-inline-flex">
                         <form class="form-inline">
                             <div class="btn-group w140">
                                 <a class="mr-10 label-circle-button dropdown-toggle" data-toggle="dropdown">
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5 ">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5 ">
                                         <img src="./images/icon/information.svg ">
                                     </button>
                                     Status: <span ng-if="applicationStatus=='' ">All</span><span ng-if="applicationStatus !='' ">{{applicationStatus}}</span>
@@ -19,11 +22,11 @@
                                     <li><a ng-click="updateStatus( '') ">All</a></li>
                                     <li><a ng-click="updateStatus( 'Product\'s Category ')">Product's Category</a>
                                     </li>
-                                    </ul>
-                            </div> 
+                                </ul>
+                            </div>
                             <div class="w140">
                                 <a class="mr-10 label-circle-button " ng-click="saveCategory()">
-                                   <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
                                         <img src="./images/icon/ic_save_black_24px.svg">
                                     </button>Save
                                 </a>
@@ -35,9 +38,15 @@
                                     </button>Refresh
                                 </a>
                             </div>
+                            <div class="input-group imput s smsearch">
+                                <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-right b">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">

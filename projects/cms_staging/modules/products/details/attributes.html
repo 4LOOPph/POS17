@@ -1,12 +1,17 @@
 <div class="row" ng-controller="productAttributeCtrl">
     <div class="col-md-12">
-        <div class="pull-left">
-            <div class="w140 pl-10 pt-10">
-                <a class="mr-10 label-circle-button ml-5" ng-click="getAllProductAttributes()">
-                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                        <img src="./images/icon/refresh.svg">
-                    </button>Refresh
-                </a>
+        <div class=" box-warning m-0">
+            <div class="s">
+                <h4 class="box-title">Attributes</h4>
+            </div>
+            <div class="pull-lef smwidmbt">
+                <div class="w140 pl-10 pt-10 ">
+                    <a class="mr-10 label-circle-button ml-5" ng-click="getAllProductAttributes()">
+                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                            <img src="./images/icon/refresh.svg">
+                        </button>Refresh
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -14,7 +19,7 @@
         <div class="col-md-9 col-md-offset-2">
             <div class=" box-primary">
                 <div class="box-body">
-                    <div class="row">
+                    <div class="">
                         <div class="form-group" ng-repeat="attrib in attributes">
                             <!-- 
 
@@ -111,7 +116,7 @@
                             <h3 class="box-title" ng-if="attrib.attribute_type=='Numeric'">{{attrib.value | number:2}}</h3>
                         </div>
                     </div>
-                        <!-- <label>
+                    <!-- <label>
                             <input type="checkbox" ng-click="saveShow()" ng-model="details.doc" /> {{attrib.attribute}}
                         </label> -->
                     <!-- Attachment -->
