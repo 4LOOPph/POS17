@@ -1,23 +1,41 @@
 <!-- Logo -->
-<a href="" class="logo" ng-init="bigside = true; show = true;"><i >Symphony</i></a>
-<!-- Header Navbar: style can be found in header.less -->
+<a href="" class="logo" ng-init="bigside = true; show = true; chatbox = false;"><i >Symphony</i></a>
 <nav class="navbar navbar-static-top" role="navigation">
-    <!-- Sidebar toggle button-->
-    <!-- <span class="sr-only">Toggle navigation</span> -->
     <img href="" src="./images/icon/ic_menu_black_24px (1).svg" class="sidebar-toggle" data-toggle="offcanvas" role="button" angular-ripple>
-    <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li class="dropdown messages-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="notbtnback">
                         <img src="./images/icon/ic_message_black_24px.svg">
-                    </div><span class="headbadge">5</span>
-                    <!-- <span class="label label-success">4</span> -->
+                    </div><span class="headbadge">2</span>
                 </a>
                 <ul class="dropdown-menu notificationzz" style="top: 9px;right: 5px;">
                     <li class="header">You have 5 messages</li>
-                    <li ng-include="'./modules/templates/header.mail.html'"></li>
+                    <li>
+                        <ul class="menu">
+                            <li ng-click="chatbox = true;">
+                                <a>
+                                    <div class="pull-left">
+                                        <img src="images/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                    </div>
+                                    <h4>Developers<small><i class="fa fa-clock-o"></i> Today</small>
+                                    </h4>
+                                    <p>Why not buy a new awesome theme?</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="pull-left">
+                                        <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                    </div>
+                                    <h4>Sales Department<small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                    </h4>
+                                    <p>Why not buy a new awesome theme?</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="footer"><a href="" ui-sref="main.mailbox">See All Messages</a></li>
                 </ul>
             </li>
@@ -102,3 +120,194 @@
         </ul>
     </div>
 </nav>
+<div class="col-md-3 chatposition" ng-show="chatbox">
+    <div class="box box-primary direct-chat direct-chat-primary chatshadow">
+        <div class="box-header with-border chathead p-5 pl-10">
+            <b>{{profile.EmpName}}</b>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool p-0 mr-10" uib-tooltip="Settings">
+                    <img src="./images/icon/ic_settings_black_18px.svg"></button>
+                <button type="button" class="btn btn-box-tool p-0" uib-tooltip="Close" ng-click="chatbox = false;">
+                    <img src="./images/icon/ic_close_black_18px.svg"></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="direct-chat-messages">
+                <span>
+                <div class="direct-chat-msg">
+                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" alt="Message User Image">
+                    <li class="direct-chat-text">
+                        Gawex?.. Musta dha?
+                    </li>
+                </div>
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+            </div>
+            </span>
+            <span>
+                <div class="direct-chat-msg right">
+                    <li class="direct-chat-text">
+                        Okay pas Alright diguard..
+                    </li>
+                </div>
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-timestamp pull-right">23 Jan 2:05 pm</span>
+        </div>
+        </span>
+        <span>
+                <div class="direct-chat-msg">
+                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" alt="Message User Image">
+                    <li class="direct-chat-text">
+                        G?
+                    </li>
+                </div>
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+    </div>
+    </span>
+    <span>
+                <div class="direct-chat-msg">
+                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" alt="Message User Image">
+                    <li class="direct-chat-text">
+                        Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?
+                    </li>
+                </div>
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+</div>
+</span>
+</div>
+<!-- <div class="direct-chat-contacts">
+                <ul class="contacts-list">
+                    <li>
+                        <a href="#">
+                            <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Image">
+                            <div class="contacts-list-info">
+                                <span class="contacts-list-name">
+                              Count Dracula
+                              <small class="contacts-list-date pull-right">2/28/2015</small>
+                            </span>
+                                <span class="contacts-list-msg">How have you been? I was...</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+</div>
+<div class="box-footer p-0">
+    <form action="#" method="post">
+        <div class="input-group w100p">
+            <input type="text" name="message" placeholder="Type a message..." class="pl-35 p-20 b-0 form-control">
+            <div class="emojis"></div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+<style type="text/css">
+.chatposition {
+    position: fixed;
+    bottom: -20px;
+    right: 0px;
+    z-index: 99999;
+}
+
+.chatshadow {
+    box-shadow: 0 1px 10px 3px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12) !important;
+}
+
+.right .direct-chat-text {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.right .direct-chat-text:after {
+    border-width: 5px;
+    margin-top: -5px;
+    display: none !important;
+}
+
+.right .direct-chat-text:before {
+    border-width: 6px;
+    margin-top: -6px;
+    display: none !important;
+}
+
+.direct-chat-messages {
+    overflow-x: hidden !important;
+}
+
+.direct-chat-info {
+    margin-left: 50px;
+}
+
+.direct-chat-primary .right>.direct-chat-text {
+    background: rgb(66, 133, 244);
+    border-color: rgb(66, 133, 244);
+    color: #fff;
+    float: right;
+}
+
+.chathead {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
+    border-bottom: 0 !important;
+    background: #565656;
+    color: #fff;
+}
+
+.emojis {
+    position: absolute;
+    display: block;
+    bottom: 7px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background-image: url(http://i.imgur.com/5WUpcPZ.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.direct-chat-messages {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    padding: 10px;
+    height: 300px;
+    overflow: auto;
+}
+
+.direct-chat-messages li {
+    display: table;
+}
+
+.direct-chat-msg {
+    margin-bottom: 0px;
+}
+
+.direct-chat-text:after,
+.direct-chat-text:before {
+    left: 20px;
+    border: 0;
+}
+
+.direct-chat-text:before {
+    border-width: 6px;
+    margin-top: -6px;
+    content: "";
+    top: 5px;
+    right: 0px;
+    left: -10px;
+    width: 0px;
+    height: 0px;
+    border: 5px solid #d2d6de;
+    border-left-color: transparent;
+    border-bottom-color: transparent
+}
+
+.direct-chat-text {
+    border-radius: 2px;
+}
+</style>

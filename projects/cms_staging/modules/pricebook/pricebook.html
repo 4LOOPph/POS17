@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="box-body table-responsive mailbox-messages padding p-0 pt-5">
-                        <table class="table table-hover" ng-table="pricebooksTable">
+                        <table class="table table-striped table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
                                 <td data-header="'checkboxheader.html'" class="text-center center-td-table" angular-ripple>
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">

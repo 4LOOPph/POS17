@@ -1,7 +1,7 @@
 <div class="row" ng-controller="companyGroupingsController">
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
-            <div class="box box-warning">
+            <div class=" box-warning">
                 <div class="box-header">
                     <!-- <h3 class="box-title">List of Products</h3> -->
                     <div class="pull-left">
@@ -31,11 +31,11 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table class="table table-striped footable" data-page-size="10" id="tblCategory">
+                    <table class="table table-striped p-0 footable" data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
-                                <th width="30" data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                <th width="30" data-sort-ignore="true" angular-ripple>
+                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Store</th>

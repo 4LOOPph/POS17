@@ -254,7 +254,7 @@
                         <div class="tab-wrap">
                             <input type="radio" name="tabs" id="tab1" checked>
                             <div class="tab-label-content" id="tab1-content">
-                                <label class="labelz" for="tab1" angular-ripple>Basic Information</label>
+                                <label class="tab-label-header" for="tab1" angular-ripple>Basic Information</label>
                                 <div class="tab-content">
                                     <span class="btn-group" style="float: right;top: 10px;">
                                     <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
@@ -272,7 +272,7 @@
                             </div>
                             <input type="radio" name="tabs" id="tab2">
                             <div class="tab-label-content" id="tab2-content">
-                                <label class="labelz" for="tab2" angular-ripple>Contact Information</label>
+                                <label class="tab-label-header" for="tab2" angular-ripple>Contact Information</label>
                                 <div class="tab-content">
                                     <span class="btn-group" style="float: right;top: 10px;">
                                     <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
@@ -290,7 +290,7 @@
                             </div>
                             <input type="radio" name="tabs" id="tab3">
                             <div class="tab-label-content" id="tab3-content">
-                                <label class="labelz" for="tab3" angular-ripple>Summary</label>
+                                <label class="tab-label-header" for="tab3" angular-ripple>Summary</label>
                                 <div class="tab-content">
                                     <span class="btn-group" style="float: right;top: 10px;">
                                     <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
@@ -308,7 +308,7 @@
                             </div>
                             <input type="radio" name="tabs" id="tab4">
                             <div class="tab-label-content" id="tab4-content">
-                                <label class="labelz" for="tab4" angular-ripple>Profile Settings</label>
+                                <label class="tab-label-header" for="tab4" angular-ripple>Profile Settings</label>
                                 <div class="tab-content">
                                     <span style="display: inline-flex;"><img src="./images/icon/account-settings-variant.svg" style="margin-right: 10px;"><h4>Profile Settings</h4></span>
                                     <ng-include src="'./modules/profile/settings.html'"></ng-include>
@@ -374,7 +374,7 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     left: 0;
 }
 
-label {
+.tab-label-header {
     cursor: pointer;
     color: #777777;
     background-color: #ffffff;
@@ -435,9 +435,7 @@ label {
         padding: 40px 0 90px 10%;
     }
     .tab-wrap {
-        width: 80%;
-        margin-left: 10%;
-        top: -106px;
+        width: 100%;
     }
 }
 
