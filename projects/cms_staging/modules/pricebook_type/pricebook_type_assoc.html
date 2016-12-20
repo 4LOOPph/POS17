@@ -11,7 +11,7 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
             <div class="box">
@@ -42,11 +42,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="box-body table-responsive p-0 padding">
                     <table class="table table-hover" ng-table="priceBookTypeTable">
                         <tr ng-repeat="type in $data">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="type.selected" ng-change="checkDataChanges(type)">
+                                <input type="checkbox" class="checkbox" ng-model="type.selected" ng-change="checkDataChanges(type)">
                             </td>
                             <td class="text-center" data-title="'Name'">
                                 {{type.name}}
@@ -64,7 +64,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="attribisLoading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" ng-init="stocktrack = false;">
     <form role="form" name="productForm" ng-submit="addProduct()">
-        <div class="col-md-9">
-            <div class=" box-warning">
-                 <div class="s">
+        <div class="col-md-12">
+            <div class="product box-warning">
+                <div class="s">
                     <h4 class="box-title">Product Info</h4>
                 </div>
                 <div class="box-body">
@@ -75,10 +75,62 @@
                         </select>
                         <!-- <span class="barzz"></span> -->
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 text-center">
                         <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                     </div>
-                    <div class="form-group pl-15 pr-15">
+                    <div class="form-group col-md-12">
+                        <label>
+                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1" ng-model="checkBoxValue" ng-true-value="true" ng-false-value="false">
+                            <div id="check" class="lab"> Track Stock Level</div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-md-12" ng-show="checkBoxValue">
+                        <div class="well p-0">
+                            <div class="box-body  padding p-0">
+                                <table class="table">
+                                    <thead>
+                                        <th>Qty.</th>
+                                        <th>Unit</th>
+                                        <th class="text-right">Re-order Level</th>
+                                    </thead>
+                                    <tbody>
+                                        <td>
+                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" value="50">
+                                        </td>
+                                        <td>
+                                            <!-- <select>
+                                                <option>Box</option>
+                                                <option>Boxes</option>
+                                            </select> -->
+                                            <div class=" btn-group mailbox-controls sdropdisp ">
+                                                <div class="input-group">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                                            Box1
+                                                            <span class="caret"></span>
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><a>Box1</a>
+                                                            </li>
+                                                            <li><a>Box2</a>
+                                                            </li>
+                                                            <li><a>Box3</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" value="50">
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group pl-15 pr-15">
                         <label>Overview</label>
                         <text-angular ta-toolbar="[
                             ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
@@ -97,11 +149,11 @@
                                 <div ng-bind-html="tag.tags | highlight: $select.search"></div>
                             </ui-select-choices>
                         </ui-select>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div class=" box-warning">
                 <div class="box-body">
                     <button type="submit" ng-disabled="productForm.$invalid" class="btn btn-primary  btn-flat btn-block">Save Entry</button angular-ripple>
@@ -112,16 +164,13 @@
             </div>
             <div class="form-group">
                 <img ngf-src="details.img_default || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" class="thumbnail" width="280" height="280" ng-if="details.img_default">
-                <!-- <div class="input-group image-preview">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-warning image-preview-clear" ng-click="removethumb()" ng-show="details.img_default"> <span class="glyphicon glyphicon-remove"></span> Clear
-                        </button>
-                        <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.img_default" ngf-max-size="8MB" ngf-select="upload($files)" />
-                        </div>
-                    </div>
-                </div> -->
             </div>
-        </div>
+        </div> -->
     </form>
+</div>
+<div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+    <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+    <button ng-click="archiveProduct(details.p_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
+    <button ng-show="showPublish" ng-click="publishProduct(details.p_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
+    <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>Save Entry</button>
 </div>

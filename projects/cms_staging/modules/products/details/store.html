@@ -5,77 +5,42 @@
                 <div class="s">
                     <h4 class="box-title">Store</h4>
                 </div>
-                <div class="box-header">
-                    <div class="pull-left disp-inline-flex w100p">
-                        <form class="form-inline ">
-                            <div class="btn-group w140">
-                                <a class="mr-10 label-circle-button dropdown-toggle" data-toggle="dropdown">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/information.svg">
-                                    </button>
-                                    Status: <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">{{applicationStatus}}</span>
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </a>
-                                <ul class="dropdown-menu" style="top: 30px;margin-left: 0;">
-                                    <li><a ng-click="updateStatus('')">All</a></li>
-                                    <li><a ng-click="updateStatus('Product\'s Store')">Product's Store</a></li>
-                                </ul>
-                            </div>
-                            <div class="w140">
-                                <a ng-click="saveStore()" class="mr-10 label-circle-button">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/ic_save_black_24px.svg">
-                                    </button>Save
-                                </a>
-                            </div>
-                            <div class="w140">
-                                <a ng-click="getAllStore()" class="mr-10 label-circle-button">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/refresh.svg">
-                                    </button>Refresh
-                                </a>
-                            </div>
-                            <div class="input-group imput s smsearch">
-                                <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                <div class="box-header" style="padding: 10px 20px;">
+                    <div class="" >
+                        <div class="form-inline w100p disp-inline-flex ">
+                            <div class=" btn-group mailbox-controls  ">
+                                <button ng-click="saveStore()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                                <button ng-click="getAllStore()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                            <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">{{applicationStatus}}</span>
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="top: 30px;margin-left: 0;">
+                                            <li><a ng-click="updateStatus('')">All</a></li>
+                                            <li><a ng-click="updateStatus('Product\'s Store')">Product's Store</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="pull-right b">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <div class="">
-                                    <!-- <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0">GO</button>
-                                        </div>
-                                    </div> -->
-                                    <div class="input-group imput">
-                                        <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
+                            <div class="pull-right searchposition b">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="pt-5">
+                                            <div class="input-group imput">
+                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0" angular-ripple>
+                                            </div>
                                         </div>
                                     </div>
-                                    <!--  <div class="input-group">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
-                                        </div>
-                                        <input type="text" name="q" class="form-control searchinput input-sm ng-pristine ng-valid ng-empty ng-touched" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div>
-                                    </div> -->
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="box-body p-0">
-                    <table class="table table-striped footable" data-page-size="10" id="tblStore">
+                    <table class="table table-hover footable" data-page-size="10" id="tblStore">
                         <thead>
                             <tr>
                                 <th width="10" data-sort-ignore="true">

@@ -118,7 +118,9 @@
                                 {{product.bundle_detail.sell_price | number:2}}
                             </td>
                             <td>
-                                {{product.sell_price | number:2}}
+                                <a href="" uib-popover-template="'myPopoverTemplate.html'" popover-title="Update selling price" popover-is-open="product.popoverIsOpen" ng-click="showTooltip1(product)" popover-trigger="none">
+                                    {{product.sell_price | number:2}}
+                                </a>
                             </td>
                             <td>
                                 {{product.markup}}
@@ -150,6 +152,16 @@
             </div>
         </div>
     </div>
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+        <div class="form-group">
+            <label>Selling Price:</label>
+            <input type="text" ng-model="product.sell_price" placeholder="0.00" class="form-control">
+        </div>
+        <div class="form-group">
+            <a class="btn btn-primary" ng-click="applyItemPrice(product)">Apply</a>
+            <a class="btn btn-default" ng-click="showTooltip1(product)">Cancel</a>
+        </div>
+    </script>
 </div>
 <style type="text/css">
 .btn-group>.btn.aw:first-child {

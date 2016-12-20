@@ -2,32 +2,17 @@
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
             <div class=" box-warning m-0">
-            <div class="s">
-                <h4 class="box-title">Price</h4>
-            </div>
-                <div class="box-header">
-                    <!-- <h3 class="box-title">List of Products</h3> -->
-                    <div class="pull-left disp-inline-flex">
-                        <div class="w140">
-                            <a class="mr-10 label-circle-button ml-5" ng-click="openAttributeModal()">
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                    <img src="./images/icon/ic_black_white_24px.svg">
-                                </button>Add Price
-                            </a>
-                        </div>
-                        <div class="w140">
-                            <a class="mr-10 label-circle-button ml-5" ng-click="saveCategory()">
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                    <img src="./images/icon/ic_delete_black_24px.svg">
-                                </button>Delete
-                            </a>
-                        </div>
-                        <div class="w140">
-                            <a class="mr-10 label-circle-button ml-5" ng-click="getAllCategory()">
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                    <img src="./images/icon/refresh.svg">
-                                </button>Refresh
-                            </a>
+                <div class="s">
+                    <h4 class="box-title">Price</h4>
+                </div>
+                <div class="box-header" style="padding: 10px 20px;">
+                    <div class="">
+                        <div class="form-inline w100p disp-inline-flex ">
+                            <div class=" btn-group mailbox-controls  ">
+                                <button ng-click="openAttributeModal()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Add Price</button>
+                                <button ng-click="saveCategory()" class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Delete</button>
+                                <button ng-click="getAllCategory()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                            </div>
                         </div>
                     </div>
                 </div>

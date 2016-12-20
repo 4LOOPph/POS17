@@ -8,132 +8,81 @@
         <li class="active">Product New Entry</li>
     </ol>
 </section>
-<section class="content b prod">
-    <!-- <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="General Info" bs-pane ng-if="tabprod.product">
-            <div ng-include="'modules/products/details/product.html'"></div>
-        </div>
-        <div data-title="Media / Files" bs-pane ng-if="tabprod.media">
-            <ng-include src="'./modules/products/details/product.media.html'"></ng-include>
-        </div>
-        <div data-title="Store" bs-pane ng-if="tabprod.store">
-            <div ng-include="'modules/products/details/store.html'"></div>
-        </div>
-        <div data-title="Category" bs-pane ng-if="tabprod.category">
-            <div ng-include="'modules/products/details/category.html'"></div>
-        </div>
-        <div data-title="Attribute" bs-pane ng-if="tabprod.attribute">
-            <div ng-include="'modules/products/details/attributes.html'"></div>
-        </div>
-        <div data-title="Variants" bs-pane ng-if="tabprod.variation">
-            <div ng-include="'modules/products/details/variants.html'"></div>
-        </div>
-        <div data-title="Price" bs-pane ng-if="tabprod.price">
-            <div ng-include="'modules/products/details/price.history.html'"></div>
-        </div>
-        <div data-title="Review / Ratings" bs-pane ng-if="tabprod.ratings">
-            <div ng-include="'modules/products/details/ratings.html'"></div>
-        </div>
-        <div data-title="Related Products" bs-pane ng-if="tabprod.related">
-            <div ng-include="'modules/products/details/related.product.html'"></div>
-        </div>
-    </div> -->
+<section class="content prod">
     <div class="tab-wrap">
         <input type="radio" name="tabs" id="tab1" checked>
         <div class="tab-label-content" id="tab1-content">
-            <label class="tab-label-header" for="tab1" angular-ripple>General Info</label>
+            <label class="b tab-label-header" for="tab1" angular-ripple>General Info</label>
+            <label class="s tab-label-header" for="tab1" angular-ripple><img src='./images/icon/ic_info_outline_black_24px.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/product.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab2">
         <div class="tab-label-content" id="tab2-content">
-            <label class="tab-label-header" for="tab2" angular-ripple>Media/Files</label>
+            <label class="b tab-label-header" for="tab2" angular-ripple>Media/Files</label>
+            <label class="s tab-label-header" for="tab2" angular-ripple><img src='./images/icon/ic_perm_media_black_24px.svg'></label>
             <div class="tab-content">
                 <ng-include src="'./modules/products/details/product.media.html'"></ng-include>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab3">
         <div class="tab-label-content" id="tab3-content">
-            <label class="tab-label-header" for="tab3" angular-ripple>Store</label>
+            <label class="b tab-label-header" for="tab3" angular-ripple>Store</label>
+            <label class="s tab-label-header" for="tab3" angular-ripple><img src='./images/icon/ic_store_black_24px.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/store.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab4">
         <div class="tab-label-content" id="tab4-content">
-            <label class="tab-label-header" for="tab4" angular-ripple>Category</label>
+            <label class="b tab-label-header" for="tab4" angular-ripple>Category</label>
+            <label class="s tab-label-header" for="tab4" angular-ripple><img src='./images/icon/animation.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/category.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab5">
         <div class="tab-label-content" id="tab5-content">
-            <label class="tab-label-header" for="tab5" angular-ripple>Attribute</label>
+            <label class="b tab-label-header" for="tab5" angular-ripple>Attribute</label>
+            <label class="s tab-label-header" for="tab5" angular-ripple><img src='./images/icon/more.svg'></label>
             <div class="tab-content">
-                <div ng-include="'modules/products/details/variants.html'"></div>
+                <div ng-include="'modules/products/details/attributes.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab6">
         <div class="tab-label-content" id="tab6-content">
-            <label class="tab-label-header" for="tab6" angular-ripple>Variants</label>
+            <label class="b tab-label-header" for="tab6" angular-ripple>Variants</label>
+            <label class="s tab-label-header" for="tab6" angular-ripple><img src='./images/icon/format-list-bulleted-type.svg'></label>
             <div class="tab-content">
-                <ng-include src="'./modules/products/details/product.media.html'"></ng-include>
+                <div ng-include="'modules/products/details/variants.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab7">
         <div class="tab-label-content" id="tab7-content">
-            <label class="tab-label-header" for="tab7" angular-ripple>Price</label>
+            <label class="b tab-label-header" for="tab7" angular-ripple>Price</label>
+            <label class="s tab-label-header" for="tab7" angular-ripple><img src='./images/icon/tag-text-outline.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/price.history.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab8">
         <div class="tab-label-content" id="tab8-content">
-            <label class="tab-label-header" for="tab8" angular-ripple>Review/Ratings</label>
+            <label class="b tab-label-header" for="tab8" angular-ripple>Review/Ratings</label>
+            <label class="s tab-label-header" for="tab8" angular-ripple><img src='./images/icon/ic_star_rate_black_18px.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/ratings.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab9">
         <div class="tab-label-content" id="tab9-content">
-            <label class="tab-label-header" for="tab9" angular-ripple>Related Products</label>
+            <label class="b tab-label-header" for="tab9" angular-ripple>Related Products</label>
+            <label class="s tab-label-header" for="tab9" angular-ripple><img src='./images/icon/package-variant-closed.svg'></label>
             <div class="tab-content">
                 <div ng-include="'modules/products/details/related.product.html'"></div>
             </div>
         </div>
         <div class="slide"></div>
-    </div>
-</section>
-<section class="content s prod">
-    <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="<img src='./images/icon/ic_info_outline_black_24px.svg'>" bs-pane ng-if="tabprod.product">
-            <div ng-include="'modules/products/details/product.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/ic_perm_media_black_24px.svg'>" bs-pane ng-if="tabprod.media">
-            <ng-include src="'./modules/products/details/product.media.html'"></ng-include>
-        </div>
-        <div data-title="<img src='./images/icon/ic_store_black_24px.svg'>" bs-pane ng-if="tabprod.store">
-            <div ng-include="'modules/products/details/store.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/animation.svg'>" bs-pane ng-if="tabprod.category">
-            <div ng-include="'modules/products/details/category.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/more.svg'>" bs-pane ng-if="tabprod.attribute">
-            <div ng-include="'modules/products/details/attributes.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/format-list-bulleted-type.svg'>" bs-pane ng-if="tabprod.variation">
-            <div ng-include="'modules/products/details/variants.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/tag-text-outline.svg'>" bs-pane ng-if="tabprod.price">
-            <div ng-include="'modules/products/details/price.history.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/ic_star_rate_black_18px.svg'>" bs-pane ng-if="tabprod.ratings">
-            <div ng-include="'modules/products/details/ratings.html'"></div>
-        </div>
-        <div data-title="<img src='./images/icon/package-variant-closed.svg'>" bs-pane ng-if="tabprod.related">
-            <div ng-include="'modules/products/details/related.product.html'"></div>
-        </div>
     </div>
 </section>
 <style type="text/css">
