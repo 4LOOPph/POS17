@@ -1,9 +1,9 @@
 <div class="row" ng-controller="customerController">
     <script type="text/ng-template" id="checkboxheader.html">
-        <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+        <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
     </script>
     <div class="col-xs-12">
-        <div class="box">
+        <div class="">
             <div class="box-header">
                 <div class="pull-left">
                     <button class="btn btn-flat btn-sm btn-primary" ui-sref="main.settings-humanresource-detail" uib-tooltip="Add New">
@@ -49,11 +49,11 @@
                     </form>
                 </div>
             </div>
-            <div class="box-body table-responsive padding">
+            <div class="box-body table-responsive p-0 padding">
                 <table class="table table-hover" ng-table="personsTable">
                     <tr ng-repeat="person in $data  track by $index">
                         <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                            <input type="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                            <input type="checkbox" class="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
                         </td>
                         <td class="text-center" data-title="'Image'">
                             <img class="img-thumbnail" ng-src="{{person.image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />

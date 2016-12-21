@@ -14,11 +14,11 @@
         <div class="col-md-12">
             <div class="box box-warning">
                 <div class="box-header" style="padding: 8px 5px;">
-                    <div class="pull-left leftstablebutton">
+                    <!-- <div class="pull-left leftstablebutton">
                         <button class="actbuttonassets" ui-sref="main.pricebooktype" uib-tooltip="Product Category" style="margin-right: 10px;cursor:pointer;">
                             <img src="./images/icon/ic_list_black_24px (1).svg">
                         </button>
-                    </div>
+                    </div> -->
                     <div class="pull-left ">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="">
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <div class="pt-5">
                                     <div class="input-group imput">
-                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" angular-ripple>
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
                                         <!-- <div class="input-group-btn">
                                             <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div> -->

@@ -1,18 +1,9 @@
 <div class="row" ng-controller="pricebookProductCtrl">
     <div class="col-md-12">
         <div class="">
-            <div class="box-header">
+            <div class="box-header" style="padding: 10px 20px;">
                 <div class="col-md-12" style="padding: 0">
                     <div>
-                        <!-- <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-flat searchicon btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><img src="./images/icon/ic_search_black_24px.svg"></button>
-                            </div>
-                            <input type="text" name="q" class="form-control searchinput input-sm" placeholder="Search for Products" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData(txtProductSearch):0" ng-change="(txtProductSearch.length < 1)?searchProductData(txtProductSearch):0">
-                            <div class="input-group-btn">
-                                <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchProductData(txtProductSearch)">GO</button>
-                            </div>
-                        </div> -->
                         <div class="pt-5">
                             <div class="input-group pull-right imput" style="width: 250px;">
                                 <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtProductSearch" ng-keypress="($event.which === 13)?searchProductData():0" ng-change="(txtProductSearch.length < 1)?searchProductData():0">
@@ -21,44 +12,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pull-left disp-inline-flex">
-                            <div class="w140">
-                                <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/ic_black_white_24px.svg">
-                                    </button>Add New
-                                </a>
-                            </div>
-                            <div class="w140">
-                                <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelected()">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/ic_delete_black_24px.svg">
-                                    </button>Delete
-                                </a>
-                            </div>
-                            <div class="w140">
-                                <a class="mr-10 label-circle-button ml-5" ng-click="refreshData()">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/refresh.svg">
-                                    </button>Refresh
-                                </a>
+                        <div class="form-inline  disp-inline-flex ">
+                            <div class=" btn-group mailbox-controls  ">
+                                <button ng-click="addNewEntry()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Add New</button>
+                                <button ng-click="deleteSelected()" class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Delete</button>
+                                <button ng-click="refreshData()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="form-group">
-                    <a class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry()" uib-tooltip="Add New">
-                        <i class="fa fa-plus"></i> Add New
-                    </a>
-                    <a class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" uib-tooltip="Delete">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                    <a class="btn btn-flat btn-sm btn-success" ng-click="refreshData()" uib-tooltip="Refresh">
-                        <i class="fa fa-refresh"></i>
-                    </a>
-                </div> -->
             </div>
-            <div class="box-header">
+            <div class="box-header priceprod">
                 <div class="pull-left">
                     <div class="mailbox-controls">
                         <div class="col-md-12">
@@ -70,7 +34,7 @@
                 </div>
                 <div class="pull-right">
                     <form class="form-inline">
-                        <div class="form-group">
+                        <div class="form-group pt-5">
                             <input type="text" class="form-control prodsearch" placeholder="Sell Price" ng-model="item.sell_price" required />
                             <input type="text" class="form-control prodsearch" placeholder="Margin" ng-model="item.margin" required />
                             <input type="text" class="form-control prodsearch" placeholder="Discount" ng-model="item.discount" required />
@@ -84,7 +48,7 @@
                 </div>
             </div>
             <div class="box-body p-0">
-                <table class="table table-striped " data-page-size="10" id="tblCategory">
+                <table class="table table-hover" data-page-size="10" id="tblCategory">
                     <thead>
                         <tr>
                             <th width="30" data-sort-ignore="true">

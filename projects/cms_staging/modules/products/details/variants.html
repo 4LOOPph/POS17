@@ -32,7 +32,7 @@
                         <!-- <tags-input ng-model="tags">
                             <auto-complete source="loadTags($query)"></auto-complete>
                         </tags-input> -->
-                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
+                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="attribute.tags" theme="bootstrap" close-on-select="false">
                             <ui-select-match placeholder="Enter Attributes...">{{$item.tags}}</ui-select-match>
                             <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
                                 <div ng-bind-html="tag.tags | highlight: $select.search"></div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group col-md-12">
                         <label>
-                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched ng-untouched" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1" ng-model="checkBoxValue">
+                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched ng-untouched" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1" >
                             <div id="check" class="lab"> Create Variation Automatically</div>
                         </label>
                     </div>
@@ -60,11 +60,11 @@
                                 <th class="" data-sort-ignore="true">SKU</th>
                                 <th class="" data-sort-ignore="true">Inventory</th>
                                 <th class="" data-sort-ignore="true">Status</th>
-                                <th data-sort-ignore="true">Action</th>
+                                <th data-sort-ignore="true"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr >
                                 <td style="padding-top: 22px;">
                                     Red
                                 </td>
@@ -94,18 +94,22 @@
                                 <td>
                                     <!-- <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                                     <button ng-click="edit(product.p_id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-remove"></i></button> -->
-                                    <nav class="menu">
+                                    <!-- <nav class="menu">
                                         <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
                                         <label class="menu-open-button" for="menu-open">
                                             <span class="hamburger hamburger-1"></span>
                                             <span class="hamburger hamburger-2"></span>
                                             <span class="hamburger hamburger-3"></span>
                                         </label>
+                                        <a href="#" class="menu-item"></a>
                                         <a href="#" class="menu-item"> </a>
                                         <a href="#" class="menu-item"> </a>
                                         <a href="#" class="menu-item"> </a>
-                                        <a href="#" class="menu-item"> </a>
-                                    </nav>
+                                    </nav> -->
+                                    <div class="disp-inline-flex pt-10">
+                                        <a ng-click="edit(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                        <a ng-click="toggleModal(article.article_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -120,9 +124,17 @@
                 </div>
             </div>
         </div>
+        <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>Save</button>
+        </div>
     </form>
 </div>
-<div class="box-body disp-inline-flex  pr-25 pb-20 fr">
-    <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
-    <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>Save</button>
-</div>
+<style type="text/css">
+.tab-content .open>.dropdown-menu {
+    display: block;
+    float: right !important;
+    margin-left: 0;
+    margin-top: -1px;
+}
+</style>

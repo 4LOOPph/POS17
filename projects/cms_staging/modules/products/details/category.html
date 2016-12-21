@@ -30,7 +30,7 @@
                                     <div class="form-group">
                                         <div class="pt-5">
                                             <div class="input-group imput">
-                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0" angular-ripple>
+                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
                                             </div>
                                         </div>
                                     </div>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="box-body p-0">
-                    <table class="table table-striped footable" data-page-size="10" id="tblCategory">
+                    <table class="table " data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
                                 <th width="30" data-sort-ignore="true">

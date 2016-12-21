@@ -2,7 +2,7 @@
     <form role="form" ng-submit="savePricebook()">
         <!-- <div class="col-md-1">
         </div> -->
-        <div class="col-md-9">
+        <div class="col-md-12 pr-30">
             <div class="" style="padding: 20px 0 50px 0;">
                 <div class="form-group col-sm-12" ng-class="{'has-error':uniquePricebookName}" style="padding: 0;">
                     <label class="col-sm-2 control-label">Pricebook Name:</label>
@@ -19,10 +19,10 @@
                         <text-angular ng-model="details.description" style="display: inline-block;margin-bottom: 25px;"></text-angular>
                     </div>
                 </div>
-                <div class="form-group col-sm-12" style="padding: 0;">
+                <div class="form-group col-sm-12" ng-class="{'has-error':uniquePricebookType}" style="padding: 0;">
                     <label class="col-sm-2 control-label">PriceBook Type:</label>
                     <div class="col-sm-5">
-                        <select class="form-control" ng-model="details.pricebook_type_id" ng-options="option.pt_id as option.name for option in pricebooktype">
+                        <select class="form-control" ng-model="details.pricebook_type_id" ng-options="option.pt_id as option.name for option in pricebooktype" required>
                             <option value="">Choose PriceBook Type</option>
                         </select>
                     </div>
@@ -71,7 +71,7 @@
                                     <label class="control-label">Customer Groups:</label>
                                     <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" multiple tagging="tagTransform" tagging-label="Enter Customer Groups..." ng-model="details.customergroups" theme="bootstrap" close-on-select="false">
                                         <ui-select-match placeholder="Enter Customer Groups...">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="group in customergroups | propsFilter: {name: $select.search}">
+                                        <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="group in customergroups | propsFilter: {name: $select.search} | limitTo: infiniteScrollContacts.currentItems">
                                             <div ng-bind-html="group.name | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
@@ -80,7 +80,7 @@
                                     <label class="control-label">Customers / Company:</label>
                                     <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" multiple tagging="tagTransform" tagging-label="Enter Customers / Company" ng-model="details.customers" theme="bootstrap" close-on-select="false">
                                         <ui-select-match placeholder="Enter Customers / Company ...">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="row in customersData | propsFilter: {name: $select.search}">
+                                        <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="row in customersData | propsFilter: {name: $select.search} | limitTo: infiniteScrollContacts.currentItems">
                                             <div ng-bind-html="row.name | highlight: $select.search"></div>
                                             <small>{{row.type}}</small>
                                         </ui-select-choices>
@@ -90,7 +90,7 @@
                                     <label class="control-label">Stores:</label>
                                     <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" multiple tagging="tagTransform" tagging-label="Enter Stores" ng-model="details.stores" theme="bootstrap" close-on-select="false">
                                         <ui-select-match placeholder="Enter Stores ...">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="row in storesArr | propsFilter: {name: $select.search}">
+                                        <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="row in storesArr | propsFilter: {name: $select.search} | limitTo: infiniteScrollContacts.currentItems">
                                             <div ng-bind-html="row.name | highlight: $select.search"></div>
                                             <small>{{row.address}}</small>
                                         </ui-select-choices>
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div class="" style="margin-top: 10px;">
                 <div class="box-body">
                     <button type="submit" ng-disabled="quoteInfoForm.$invalid" class=" btn btn-primary  btn-flat waves-effect" style="width: 100%;margin-bottom: 5px;">Save Entry</button>
@@ -127,6 +127,12 @@
                     <a class="btn btn-default  btn-flat waves-effect" ng-click="goBack()" style="width: 100%;">Cancel</a>
                 </div>
             </div>
+        </div> -->
+        <div class="box-body disp-inline-flex  pr-45 pb-20 fr">
+            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <!-- <button ng-click="archiveProduct(details.p_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button> -->
+            <button ng-show="showPublish" ng-click="publishProduct(details.p_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
+            <button type="submit" ng-disabled="quoteInfoForm.$invalid" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple>Save Entry</button>
         </div>
     </form>
 </div>

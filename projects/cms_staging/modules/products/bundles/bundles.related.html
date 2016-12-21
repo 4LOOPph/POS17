@@ -1,45 +1,15 @@
 <div class="row" ng-controller="productBundleRelatedCtrl">
     <div class="col-md-12">
         <div class=" box-warning">
-            <div class="box-header p-0" style="padding: 8px 2px !important;">
-                <!-- <h3 class="box-title">List of Products</h3> -->
-                <div class="pull-left leftstablebutton">
-                    <button class="actbuttonassets" ng-click="openRelationType()" uib-tooltip="Relation Type">
-                        <img src="./images/icon/ic_list_black_24px (1).svg">
-                    </button>
-                </div>
-              <!--   <div class="pull-left pl-10" style="padding-top: 4px;">
-                    <a class="btn btn-flat pcombo btn-sm btn-info mr-5" ng-click="addNewEntry()">
-                        <img src="./images/icon/ic_add_white_24px.svg"> Add Related Bundles
-                    </a>
-                    <a class="btn btn-flat pcombo btn-sm btn-danger mr-5" ng-click="deleteSelectedRelated()">
-                        <img src="./images/icon/ic_close_white_24px.svg"> Delete
-                    </a>
-                    <a class="btn btn-flat pcombo btn-sm btn-default mr-5" ng-click="getAllRelatedBundles()">
-                        <img src="./images/icon/refresh.svg"> Refresh
-                    </a>
-                </div> -->
-                <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="addNewEntry()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_black_white_24px.svg">
-                            </button>Add Bundles
-                        </a>
-                    </div>
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="deleteSelectedRelated()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_delete_black_24px.svg">
-                            </button>Delete
-                        </a>
-                    </div>
-                    <div class="w140">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="getAllRelatedBundles()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/refresh.svg">
-                            </button>Refresh
-                        </a>
+            <div class="box-header" style="padding: 10px 20px;">
+                <div class="">
+                    <div class="form-inline w100p disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  w100p">
+                            <button ng-click="addNewEntry()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Add Products</button>
+                            <button ng-click="deleteSelectedRelated()" class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Delete</button>
+                            <button ng-click="getAllRelatedBundles()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                            <button ng-click="openRelationType()" class="btnflat fr waves-effect  " angular-ripple>Relation Type</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +17,7 @@
                 <table class="table table-striped footable" data-page-size="10" id="tblAttributes">
                     <thead>
                         <tr>
-                            <th class="" data-sort-ignore="true" >
+                            <th class="" data-sort-ignore="true">
                                 <input type="checkbox" class="checkbox" ng-model="selectDeselectAllRelation" ng-change="changeSelectDeselectAllRelated()">
                             </th>
                             <th class="" data-sort-ignore="true">Bundle</th>

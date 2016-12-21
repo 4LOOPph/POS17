@@ -1,7 +1,7 @@
 <div class="row">
     <form role="form" name="articleForm" ng-submit="saveArticle()">
-        <div class="col-md-9">
-            <div class=" box-warning p-10">
+        <div class="col-md-12">
+            <div class=" box-warning p-15">
                <!--  <div class="box-header">
                     <h3 class="box-title">Enter Article Info</h3>
                 </div> -->
@@ -11,7 +11,7 @@
                         <span ng-if="details.is_active == '1' " class="label label-success">Published</span>
                         <span ng-if="details.is_active == '0' " class="label label-warning">Draft</span>
                     </div>
-                    <div class="form-group pl-15" ng-if="details.article_id">
+                    <div class="form-group" ng-if="details.article_id">
                         <label>Views: </label>
                         <span class="badge bg-light-blue">{{details.article_views}}</span>
                     </div>
@@ -73,15 +73,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-12">
             <div class=" box-warning">
                 <div class="box-body">
                     <button type="submit" ng-disabled="articleForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
                     <a class="btn btn-success btn-flat btn-block" ng-disabled="!showPublish" ng-click="publishArticle(details.article_id)">Publish</a>
-                    <!-- <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveArticle(details.article_id)">Archive</a> -->
                     <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                 </div>
             </div>
+        </div> -->
+        <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <!-- <button ng-click="archiveProduct(details.p_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button> -->
+            <button ng-disabled="!showPublish" ng-click="publishArticle(details.article_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
+            <button type="submit" ng-disabled="articleForm.$invalid" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple>Save Entry</button>
         </div>
     </form>
 </div>

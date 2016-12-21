@@ -2,29 +2,18 @@
     <form role="form" ng-submit="addProduct()">
         <div class="col-md-12">
             <div class=" box-warning">
-                <div class="box-header p-0" style="padding: 8px 2px !important;">
-                    <div class="pull-left leftstablebutton">
+                <div class="box-header " >
+                    <!-- <div class="pull-left leftstablebutton">
                         <button class="actbuttonassets" ng-click="addGroups()" uib-tooltip="Customer Groups">
                             <img src="./images/icon/ic_list_black_24px (1).svg">
                         </button>
-                    </div>
-                    <div class="pull-left disp-inline-flex pl-10" style="padding-top: 4px;">
-                        <form class="form-inline">
-                            <div class="w140">
-                                <a ng-click="saveCustomerGrouping()" class="mr-10 label-circle-button ml-5">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/ic_save_black_24px.svg">
-                                    </button>Save
-                                </a>
-                            </div>
-                            <div class="w140">
-                                <a ng-click="refreshData()" class="mr-10 label-circle-button">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/refresh.svg">
-                                    </button>Refresh
-                                </a>
-                            </div>
-                        </form>
+                    </div> -->
+                    <div class="form-inline  disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls ">
+                            <button ng-click="saveCustomerGrouping()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple="">Save</button>
+                            <button ng-click="refreshData()" class="btnflat  waves-effect fl mr-10 " angular-ripple="">Refresh</button>
+                            <button ng-click="addGroups()" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Customer Groups</button>
+                        </div>
                     </div>
                     <div class="pull-right box-tools">
                         <form class="form-inline">

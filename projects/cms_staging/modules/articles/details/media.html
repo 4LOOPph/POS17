@@ -1,18 +1,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class=" box-warning">
-            <div class="box-header">
+            <!-- <div class="box-header">
                 <div class="pull-left">
-                    <!-- <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="openUploader()">
-    <img src="./images/icon/ic_file_upload_white_24px.svg"> Add Media / File
-</button>
-<button ng-click="deleteAllMedia()" class="btn btn-flat pcombo btn-sm btn-danger">
-    <img src="./images/icon/delete-sweep.svg"> Delete All
-</button>
-<button class="btn btn-flat pcombo btn-sm btn-default" ng-click="reloadMediaFiles()">
-    <img src="./images/icon/refresh.svg"> Refresh
-</button>
- -->
                     <div class="pull-left disp-inline-flex">
                         <div class="w140">
                             <a ng-click="openUploader()" class="mr-10 label-circle-button">
@@ -34,9 +24,20 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="box-header" style="padding: 10px 20px;">
+                <div class="">
+                    <div class="form-inline w100p disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  ">
+                            <button ng-click="openUploader()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Upload File</button>
+                            <button ng-click="deleteAllMedia()" class="btnflat danger-color  waves-effect fl mr-10 " angular-ripple>Delete All</button>
+                            <button ng-click="reloadMediaFiles()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box-body ">
-                <div class="row">
+                <div class="">
                     <div ng-repeat="files in mediafile" class="col-md-2 col-sm-3 col-xs-12">
                         <ul class="mailbox-attachments clearfix">
                             <li class="box" ng-if="files.media_mimetype == 'image/jpeg' || files.media_mimetype == 'image/jpg' || files.media_mimetype == 'image/gif' || files.media_mimetype == 'image/x-ms-bmp' || files.media_mimetype == 'image/png'">

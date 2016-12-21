@@ -3,46 +3,16 @@
         <div class="col-md-12">
             <div class=" box-warning">
                 <div class="box-header">
-                    <!-- <h3 class="box-title">List of Products</h3> -->
-                    <!-- <div class="pull-left">
-                        <form class="form-inline">
-                            
-                            <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="saveStore()">
-                                <img src="./images/icon/ic_save_black_24px.svg"> Save
-                            </button>
-                            <a class="btn btn-flat pcombo btn-sm btn-default" ng-click="getAllStore()">
-                                <img src="./images/icon/refresh.svg"> Refresh
-                            </a>
-                        </form>
-                    </div> -->
-                    <div class="pull-left disp-inline-flex">
-                        <form class="form-inline">
-                            <div class="w140">
-                                <a ng-click="saveStore()" class="mr-10 label-circle-button ml-5">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/ic_save_black_24px.svg">
-                                    </button>Save
-                                </a>
-                            </div>
-                            <div class="w140">
-                                <a ng-click="getAllStore()" class="mr-10 label-circle-button">
-                                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                        <img src="./images/icon/refresh.svg">
-                                    </button>Refresh
-                                </a>
-                            </div>
-                        </form>
+                    <div class="form-inline disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  ">
+                            <button ng-click="saveStore()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple="">Save</button>
+                            <button ng-click="getAllStore()" class="btnflat  waves-effect fl mr-10 " angular-ripple="">Refresh</button>
+                        </div>
                     </div>
                     <div class="pull-right box-tools">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <!-- <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchStore()" ng-keypress="($event.which === 13)?searchStore():0"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div> -->
                                     <div class="input-group imput">
                                         <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchStatus():0">
                                         <div class="input-group-btn">

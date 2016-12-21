@@ -113,7 +113,7 @@
                             <div class="form-group">
                                 <div class="pt-5">
                                     <div class="input-group imput" >
-                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" angular-ripple>
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
                                         <!-- <div class="input-group-btn">
                                             <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                         </div> -->

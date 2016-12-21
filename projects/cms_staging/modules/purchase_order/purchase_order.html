@@ -71,13 +71,16 @@
                             <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
                                 <input type="checkbox" ng-model="item.selected" ng-change="checkDataChanges(item)">
                             </td> -->
-                            <td class="text-left" data-title="'Purchase No.'">
+                            <td class="text-left" data-title="'PO ID'">
                                 <span>{{item.po_number}}</span>
                             </td>
-                            <td class="text-center" data-title="'Total Cost'">
+                            <td class="text-center" data-title="'PO Name'">
                                 <span>{{item.total_cost}}</span>
                             </td>
-                            <td class="text-center" data-title="'Return Date'">
+                            <td class="text-center" data-title="'Date Created'">
+                                <span>{{item.delivery_date| date : 'longDate'}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Delivery Date'">
                                 <span>{{item.delivery_date| date : 'longDate'}}</span>
                             </td>
                             <td class="text-center" data-title="'Deliver To'">
@@ -85,6 +88,9 @@
                             </td>
                             <td class="text-center" data-title="'Supplier'">
                                 <span>{{item.supplier.name}}</span>
+                            </td>
+                            <td class="text-center" data-title="'Amount'">
+                                <span>Amount</span>
                             </td>
                             <!-- <span>{{item.expiration_date| date : 'longDate'}}</span> -->
                             <td class="text-center" data-title="'Status'">
@@ -95,7 +101,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="puchaseordersisLoading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                     <div class="loader"></div>
                 </div>
                 <!-- /.box-body -->
             </div>

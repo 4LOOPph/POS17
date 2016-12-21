@@ -1,6 +1,6 @@
 <div class="row" ng-controller="productAttributeCtrl">
     <div class="col-md-12">
-        <div class=" box-warning m-0">
+        <div class=" box-warning  m-0">
             <div class="s">
                 <h4 class="box-title">Attributes</h4>
             </div>
@@ -95,9 +95,15 @@
                             Checkbox 
 
                             -->
-                            <div class="checkbox" ng-if="attrib.attribute_type=='Checkbox'">
+                            <!--  <div class="checkbox" ng-if="attrib.attribute_type=='Checkbox'">
                                 <label>
-                                    <input type="checkbox" ng-click="saveAttributeValue(attrib)" ng-model="attrib.checked" /> {{attrib.attribute}}
+                                    <input type="checkbox" class="checkbox" ng-click="saveAttributeValue(attrib)" ng-model="attrib.checked" /> {{attrib.attribute}}
+                                </label>
+                            </div> -->
+                            <div class="disp-inline-flex w100p">
+                                <label class="disp-inline-flex attributes" ng-if="attrib.attribute_type =='Checkbox'">
+                                    <input type="checkbox" class="checkbox" ng-click="saveAttributeValue(attrib)" ng-model="attrib.checked">
+                                    <div id="check" class="lab ml-10" style="margin-top: 2px;">{{attrib.attribute}}</div>
                                 </label>
                             </div>
                             <!-- 

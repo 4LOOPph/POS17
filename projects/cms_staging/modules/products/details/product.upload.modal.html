@@ -1,11 +1,11 @@
 <div class="modal-header">
-    <h3 class="modal-title">Upload Images</h3>
+    <h3 class="modal-title pl-10">Upload Images</h3>
 </div>
 <div class="modal-body">
     <div class="row" nv-file-drop="" uploader="uploader">
         <form role="form">
-            <div class="col-md-9">
-                <div class="box box-warning">
+            <div class="col-md-12">
+                <div class=" box-warning">
                     <div class="box-body">
                         <div class="form-group">
                             <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
@@ -13,15 +13,15 @@
                             </div>
                             <div class="input-group image-preview">
                                 <div class="input-group-btn">
-                                    <div class="btn btn-primary image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                    <div class="btnflat primary-color fl waves-effect image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
                                         <input type="file" accept="image/png, image/jpeg, image/gif" nv-file-select="" uploader="uploader" multiple />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group ">
                             <p>Queue length: {{ uploader.queue.length }}</p>
-                            <table class="table">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th width="50%">Name</th>
@@ -74,10 +74,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="box box-warning">
+            <div class="col-md-12">
+                <div class="  box-warning">
                     <div class="box-body">
-                        <button type="button" class="btn btn-block btn-flat btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                        <!-- <button type="button" class="btn btn-block btn-flat btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
                             <span class="glyphicon glyphicon-upload"></span> Upload all
                         </button>
                         <button type="button" class="btn btn-block btn-flat btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
@@ -85,7 +85,14 @@
                         </button>
                         <button type="button" class="btn btn-block btn-flat btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
                             <span class="glyphicon glyphicon-trash"></span> Remove all
-                        </button>
+                        </button> -->
+                        <div class="form-inline w100p disp-inline-flex ">
+                            <div class=" btn-group mailbox-controls  ">
+                                <button ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Upload all</button>
+                                <button ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length" class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Remove all</button>
+                                <button ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading" class="btnflat  waves-effect fl mr-10 " angular-ripple>Cancel all</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,5 +100,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <a class="btn btn-flat btn-default" ng-click="cancel()">Close</a>
+<button ng-click="cancel()" class="btnflat  waves-effect fr mr-10 " angular-ripple>Close</button>
 </div>

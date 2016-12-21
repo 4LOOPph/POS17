@@ -15,29 +15,19 @@
         </script>
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header">
+                <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
-                        <button class="btn btn-flat btn-sm btn-primary" ng-click="addNewEntry(null)" uib-tooltip="Add New">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-flat btn-sm btn-danger" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
-                            <i class="fa fa-remove"></i>
-                        </button>
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
-                            <i class="fa fa-refresh"></i>
-                        </button>
-                    </div>
-                    <div class="pull-right">
-                        <form class="form-inline">
+                        <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ng-click="addNewEntry(null)" uib-tooltip="Add New" href="#/main/products-bundle/">
+                                    <img src="./images/icon/ic_add_white_24px.svg">
+                                </a>
+                                <a class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Archive" disabled="disabled">
+                                    <img src="./images/icon/archive.svg">
+                                </a>
+                                <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                                    <img src="./images/icon/refresh.svg">
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -58,7 +48,11 @@
                                 {{type.date_created}}
                             </td>
                             <td class="text-right">
-                                <button ng-click="addNewEntry(type.pat_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                <div class="disp-inline-flex">
+                                    <a ng-click="addNewEntry(type.pat_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                </div>
+                                <a ng-click="addNewEntry(type.pt_id)" class="smscreen">
+                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
                             </td>
                         </tr>
                     </table>

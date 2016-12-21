@@ -30,39 +30,40 @@
                     </div>
                     <div class="pull-right">
                         <form class="form-inline">
-                            <div class="form-group">
-                                <div class="col-md-12 pt-5">
-                                    <div class="input-group imput">
-                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div> -->
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-flat actbutton btn-warning dropdown-toggle" data-toggle="dropdown" style="padding: 4px 20px !important;margin-right: 10px;" angular-ripple>
-                                            {{applicationStatus}}
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a ng-click="updateStatus('All')">All</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Employee')">Employee</a>
-                                            </li>
-                                            <li><a ng-click="updateStatus('Customer')">Customer</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-group rightstablebutton" style="margin-bottom: -12px;">
                                 <button class="actbuttonassets" ui-sref="main.settings-customergroup" uib-tooltip="Customer Groups"><img src="./images/icon/ic_list_black_24px (1).svg"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="prod form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
+                    <div class=" btn-group mailbox-controls sdropdisp ">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                    {{applicationStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right searchposition b">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="pt-5">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" angular-ripple>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

@@ -10,7 +10,7 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" >
+            <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
             <div class="box">
@@ -28,7 +28,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="pull-right">
+                    <!--  <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -43,6 +43,23 @@
                             <div class="form-group">
                                 <button class="btn btn-sm btn-flat btn-default" ui-sref="main.settings-attributes-groups"><i class="fa fa-list"></i> Groups</button>
                                 <button class="btn btn-sm btn-flat btn-default" ui-sref="main.settings-attributes-types"><i class="fa fa-th"></i> Types</label>
+                            </div>
+                        </form>
+                    </div> -->
+                </div>
+                <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 5px;height: 60px;">
+                    <div class="form-group">
+                        <button class="btnflat  waves-effect fl mr-10 " ui-sref="main.settings-attributes-groups" angular-ripple>Groups</button>
+                        <button class="btnflat  waves-effect fl mr-10 " ui-sref="main.settings-attributes-types" angular-ripple>Types</label>
+                    </div>
+                    <div class="pull-right searchposition b">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="pt-5">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0" angular-ripple>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

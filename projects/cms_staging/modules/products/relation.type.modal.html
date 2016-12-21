@@ -1,6 +1,6 @@
 <form class="form-horizontal" ng-submit="saveEntry()">
     <div class="modal-header">
-        <h4 class="modal-title pl-20">Manage Relation Type</h4>
+        <h4 class="modal-title pl-10">Manage Relation Type</h4>
     </div>
     <div class="modal-body p-0">
         <div class="p-10">
@@ -35,7 +35,7 @@
                 <a class="btn btn-flat btn-default" ng-click="cancelEntry()" ng-hide="!relation.disablenewbutton">Cancel</a>
                 <button class="btn btn-flat btn-primary" type="submit" ng-disabled="relation.disablesavebutton">Save</button>
                 <a class="btn btn-flat btn-success" ng-click="refreshData()">Refresh</a> -->
-                    <div class="pull-left disp-inline-flex">
+                    <!--  <div class="pull-left disp-inline-flex">
                         <div class="w140">
                             <a class="mr-10 label-circle-button ml-5" ng-click="newEntry()" ng-hide="relation.disablenewbutton">
                                 <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
@@ -64,6 +64,14 @@
                                 </button>Refresh
                             </a>
                         </div>
+                    </div> -->
+                    <div class="form-inline w100p disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  ">
+                            <button ng-click="newEntry()" ng-hide="relation.disablenewbutton" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>New Entry</button>
+                            <button ng-click="saveCategory()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Cancel</button>
+                            <button ng-click="saveCategory()" class="btnflat success-color waves-effect fl mr-10 " angular-ripple>Save</button>
+                            <button ng-click="getAllCategory()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +79,7 @@
         <div class="">
             <div class=" box-warning mailbox-messages">
                 <div class="">
-                    <table class="table table-striped footable" data-page-size="10" id="tblRelationType">
+                    <table class="table " data-page-size="10" id="tblRelationType">
                         <thead>
                             <tr>
                                 <td class="" data-sort-ignore="true">Name</td>
@@ -114,10 +122,21 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a class="btn btn-flat btn-default" ng-click="cancel()">Close</a>
+        <button ng-click="cancel()" class="btnflat  waves-effect fr mr-10 " angular-ripple>Close</button>
     </div>
 </form>
 <style type="text/css">
+.table>caption+thead>tr:first-child>td,
+.table>caption+thead>tr:first-child>th,
+.table>colgroup+thead>tr:first-child>td,
+.table>colgroup+thead>tr:first-child>th,
+.table>thead:first-child>tr:first-child>td,
+.table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+}
+
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
     td:nth-of-type(1):before {

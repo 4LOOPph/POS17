@@ -2,9 +2,9 @@
     <form class="form-inline " role="form ">
         <div class="col-md-12">
             <div class=" box-warning">
-                <div class="s">
+                <!-- <div class="s">
                     <h4 class="box-title">Media / Files</h4>
-                </div>
+                </div> -->
                 <div class="box-header ">
                     <div clas="box-header">
                         <div class="pull-right">
@@ -12,60 +12,25 @@
                                 <div class="col-md-12 ">
                                     <div class="input-group ">
                                         <div class="box-tools " ng-hide="list.listName === 'Package'">
-                                            <div class="input-group b imput">
+                                            <div class="input-group b imput " style="margin-bottom: 10px;">
                                                 <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData(txtSearch)" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                                 </div>
                                             </div>
-                                            <!-- <div class="input-group ">
-                                                <input type="text " class="form-control input-sm " placeholder="Search for... " ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
-                                                <div class="input-group-btn ">
-                                                    <a class="btn btn-flat btn-sm btn-default " ng-click="searchData(txtSearch)"><i class="fa fa-search "></i></a>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="btn-group ">
-                                                <a ng-click="refresh() " class="btn btn-flat pcombo btn-sm btn-default ">
-                                                    <img src="./images/icon/refresh.svg"> Refresh
-                                                </a>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div ng-repeat="list in models" class="col-md-6 p-0">
+                    <div ng-repeat="list in models" class="packctrl col-md-6 p-0">
                         <div clas="box-header">
-                            <!-- <div class="box-tools " ng-hide="list.listName === 'Products'">
-                                <a ng-click="addProductBundle() " class="btn btn-flat pcombo btn-sm btn-primary mr-5">
-                                    <img src="./images/icon/ic_save_black_24px.svg"> Save
-                                </a>
-                                <a class="btn btn-flat pcombo btn-sm btn-danger mr-5" ng-click="removeAll(list,item) ">
-                                    <img src="./images/icon/delete-sweep.svg"> Remove all
-                                </a>
-                            </div> -->
                             <div class="form-inline disp-inline-flex" ng-hide="list.listName === 'Products'">
-                                <div class="w140">
-                                    <a class="mr-10 label-circle-button " ng-click="addProductBundle() ">
-                                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                            <img src="./images/icon/ic_save_black_24px.svg">
-                                        </button>Save
-                                    </a>
-                                </div>
-                                <div class="w140">
-                                    <a class="mr-10 label-circle-button" ng-click="removeAll(list,item) ">
-                                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                            <img src="./images/icon/delete-sweep.svg">
-                                        </button>Remove all
-                                    </a>
-                                </div>
-                                <div class="w140">
-                                    <a class="mr-10 label-circle-button" ng-click="refresh() ">
-                                        <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                            <img src="./images/icon/refresh.svg">
-                                        </button>Refresh
-                                    </a>
+                                <div class=" btn-group mailbox-controls  ">
+                                    <button ng-click="addProductBundle() " class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                                    <button ng-click="removeAll(list,item) " class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Remove all</button>
+                                    <button ng-click="refresh() " class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
                                 </div>
                                 <div class="input-group imput s smsearch" style="margin-left: -13px;margin-bottom: 40px;">
                                     <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0">
@@ -89,3 +54,24 @@
         </div>
     </form>
 </div>
+<style type="text/css">
+table .form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: transparent;
+    margin-top: 0px;
+}
+
+table .form-control:focus {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #3c8dbc;
+    margin-top: 0px;
+}
+
+
+.packctrl .input-group-btn:first-child>.btn:focus {
+    border-bottom: 1px solid #333333 !important;
+    border: 1px solid transparent;
+}
+</style>

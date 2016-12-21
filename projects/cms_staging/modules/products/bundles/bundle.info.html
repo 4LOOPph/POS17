@@ -1,6 +1,6 @@
 <div class="row">
     <form role="form" name="bundleForm" ng-submit="addProduct()">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class=" box-warning">
                 <div class="s">
                     <h4 class="box-title">Bundle Info</h4>
@@ -68,11 +68,11 @@
                             <select class="form-control" ng-model="mycode.type" ng-options="option.type as option.code for option in barcodesType" ng-change="changeBarcodeType(mycode.type)" />
                             </select>
                         </div>
-                        <div class="form-group bar col-md-6">
+                        <div class="form-group bar col-md-6 text-center">
                             <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <!-- <div class="form-group col-md-12">
                         <label>Overview</label>
                         <text-angular ta-toolbar="[
                             ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
@@ -81,7 +81,7 @@
                     </div>
                     <br>
                     <br>
-                    <br>
+                    <br> -->
                     <div class="form-group col-md-12">
                         <label>Description</label>
                         <text-angular ng-model="details.bundle_description" required /></text-angular>
@@ -95,10 +95,31 @@
                             </ui-select-choices>
                         </ui-select>
                     </div>
+                    <div class="col-md-5 b" ng-if="details.pb_id">
+                        <div class="">
+                            <h3 class="box-title">Bundle Images</h3>
+                            <div class="text-center" ng-show="slides.length > 0">
+                                <div id="carousel-custom" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-outer">
+                                        <div class="carousel-inner">
+                                            <div ng-repeat="slide in slides" class="item" ng-class="{active:!$index}" data-thumb="{{$index}}">
+                                                <img class="image-responsive" ngf-src="slide.image || 'http://placehold.it/750x450' " err-src="http://placehold.it/750x450" width="250" height="250">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators">
+                                        <li ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{slide.index}}" ng-class="{active:!$index}">
+                                            <img ng-src="{{slide.image}}" alt='' width="150" height="100" />
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-12">
             <div class=" box-warning">
                 <div class="box-body">
                     <button type="submit" ng-disabled="bundleForm.$invalid" class="btn btn-primary btn-flat btn-block">Save Entry</button>
@@ -107,27 +128,20 @@
                     <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
                 </div>
             </div>
+        </div> -->
+        <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <button ng-show="showArchive" ng-click="archiveProduct(details.pb_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
+            <button ng-show="showPublish" ng-click="publishProduct(details.pb_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
+            <button type="submit" class="btnflat primary-color waves-effect ml-10 mr-15 fr" ng-disabled="bundleForm.$invalid" angular-ripple>Save Entry</button>
         </div>
     </form>
-    <div class="col-md-9 b" ng-if="details.pb_id">
-        <div class="p-20 ">
-            <h3 class="box-title">Bundle Images</h3>
-            <div class="text-center" ng-show="slides.length > 0">
-                <div id="carousel-custom" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-outer">
-                        <div class="carousel-inner">
-                            <div ng-repeat="slide in slides" class="item" ng-class="{active:!$index}" data-thumb="{{$index}}">
-                                <img class="image-responsive" ngf-src="slide.image || 'http://placehold.it/750x450' " err-src="http://placehold.it/750x450" width="250" height="250">
-                            </div>
-                        </div>
-                    </div>
-                    <ol class="carousel-indicators">
-                        <li ng-repeat="slide in slides" data-target='#carousel-custom' data-slide-to="{{slide.index}}" ng-class="{active:!$index}">
-                            <img ng-src="{{slide.image}}" alt='' width="150" height="100" />
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+<style type="text/css">
+.carousel {
+    position: relative !important;
+    height: auto !important;
+    position: inherit !important;
+    background: #fff !important;
+}
+</style>

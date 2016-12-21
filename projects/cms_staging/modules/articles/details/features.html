@@ -1,32 +1,18 @@
 <div class="row">
     <div class="col-md-12">
         <div class=" box-warning">
-            <div class="box-header">
-                <div class="pull-left disp-inline-flex">
-                    <!--  <button class="btn btn-flat pcombo btn-sm btn-primary" ng-click="saveArticle()">
-                        <img src="./images/icon/ic_save_black_24px.svg"> Save
-                    </button>
-                    <button class="btn btn-flat pcombo btn-sm btn-default" ng-click="reloadArticle()">
-                        <img src="./images/icon/refresh.svg"> Refresh
-                    </button> -->
-                    <div class="w140">
-                        <a ng-click="saveArticle()" class="mr-10 label-circle-button ml-5">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_save_black_24px.svg">
-                            </button>Save
-                        </a>
-                    </div>
-                    <div class="w140">
-                        <a ng-click="reloadArticle()" class="mr-10 label-circle-button">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/refresh.svg">
-                            </button>Refresh
-                        </a>
+            <div class="box-header" style="padding: 10px 20px;">
+                <div class="">
+                    <div class="form-inline w100p disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  ">
+                            <button ng-click="saveArticle()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                            <button ng-click="reloadArticle()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="box-body p-0">
-                <div class="p-20">
+                <div class="p-25">
                     <div class="form-group">
                         <div class="btn-group">
                             <label class="btn  btn-prime brtb-r-0 " ng-model="radioModel" uib-btn-radio="'product'" ng-click="changeData('product')">Product</label>
@@ -80,17 +66,15 @@
                 </div>
                 <div class="form-group pl-15">
                     <!-- <a class="btn btn-flat btn-default btn-sm" type="button" ng-click="addToList()" style="border: 1px solid #e2e2e2;">Add To List</a> -->
-                    <div class="w140 ">
-                        <a class="mr-10 label-circle-button ml-5" ng-click="addToList()">
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                <img src="./images/icon/ic_black_white_24px.svg">
-                            </button>Add To List
-                        </a>
+                    <div class="form-inline w100p disp-inline-flex ">
+                        <div class=" btn-group mailbox-controls  ">
+                            <button g-click="addToList()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <hr>
-                    <table class="table table-striped">
+                    <table class="table ">
                         <thead>
                             <tr>
                                 <th width="50%">Item Name</th>
