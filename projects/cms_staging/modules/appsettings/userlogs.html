@@ -1,38 +1,29 @@
 <div class="box box-warning" ng-controller="appSettingsLogController">
     <div class="box-header">
         <h3 class="box-title">Application Logs</h3>
-        <br>
-        <br>
-        <div class="pull-left">
-            <form class="form-inline">
-                <div class="form-group">
-                    <a ng-click="searchData()" class="btn btn-flat btn-sm btn-success">
-                        <i class="fa fa-refresh"></i> Refresh
-                    </a>
-                </div>
-            </form>
-        </div>
-        <div class="pull-right">
-            <form class="form-inline">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+        <div class="">
+            <div class="form-inline w100p disp-inline-flex ">
+                <div class=" btn-group mailbox-controls  ">
+                    <button ng-click="searchData()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <img src="./images/icon/calendar-today.svg" style="width: 20px;">
                         </div>
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearchUser" ng-change="(txtSearchUser.length < 1)?searchData():0">
-                            <span class="input-group-btn">
-                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
-                                <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                        <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/ style="width: 300px;">
                     </div>
                 </div>
-            </form>
+                <div class="pull-right searchposition b">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="pt-5">
+                                <div class="input-group imput">
+                                    <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearchUser" ng-change="(txtSearchUser.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="box-body table-responsive padding">
@@ -48,7 +39,10 @@
                     {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
                 </td>
                 <td class="text-right" data-title="'Action'">
-                    <a class="btn btn-flat btn-info btn-xs" uib-tooltip="View Userlogs" ng-click="viewUserLogs(row.uc_id)"><span class="glyphicon glyphicon-search"></span></a>
+                    <div class="disp-inline-flex">
+                        <a uib-tooltip="View Userlogs" ng-click="viewUserLogs(row.uc_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" href="#/main/products-bundle/78"><img src="./images/icon/ic_visibility_black_24px.svg"></a>
+                    </div>
+                    <!-- <a class="btn btn-flat btn-info btn-xs" uib-tooltip="View Userlogs" ng-click="viewUserLogs(row.uc_id)"><span class="glyphicon glyphicon-search"></span></a> -->
                 </td>
             </tr>
         </table>

@@ -11,21 +11,21 @@
                     </div><span class="headbadge">2</span>
                 </a>
                 <ul class="dropdown-menu notificationzz" style="top: 9px;right: 5px;">
-                    <li class="header">You have 5 messages</li>
+                    <li class="header">You have 2 messages</li>
                     <li>
                         <ul class="menu">
                             <li ng-click="chatbox = true;">
-                                <a>
+                                <a style="cursor: pointer;">
                                     <div class="pull-left">
-                                        <img src="images/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                        <img ng-src="{{profile.profile.image}}" class="img-circle" alt="User Image">
                                     </div>
-                                    <h4>Developers<small><i class="fa fa-clock-o"></i> Today</small>
+                                    <h4>{{profile.EmpName}}<small><i class="fa fa-clock-o"></i> Today</small>
                                     </h4>
-                                    <p>Why not buy a new awesome theme?</p>
+                                    <p>G?</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a style="cursor: pointer;">
                                     <div class="pull-left">
                                         <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
                                     </div>
@@ -309,5 +309,11 @@
 
 .direct-chat-text {
     border-radius: 2px;
+}
+
+.menu {
+    position: inherit !important;
+    width: inherit !important;
+    right: inherit !important;
 }
 </style>

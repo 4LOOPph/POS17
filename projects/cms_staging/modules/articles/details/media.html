@@ -38,7 +38,7 @@
             </div>
             <div class="box-body ">
                 <div class="">
-                    <div ng-repeat="files in mediafile" class="col-md-2 col-sm-3 col-xs-12">
+                    <div ng-repeat="files in mediafile" class="col-sm-3 col-xs-12" style="margin-right: -60px;">
                         <ul class="mailbox-attachments clearfix">
                             <li class="box" ng-if="files.media_mimetype == 'image/jpeg' || files.media_mimetype == 'image/jpg' || files.media_mimetype == 'image/gif' || files.media_mimetype == 'image/x-ms-bmp' || files.media_mimetype == 'image/png'">
                                 <span class="mailbox-attachment-icon has-img"><img src="{{files.media_path}}" alt="Attachment"/></span>

@@ -41,19 +41,19 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">Sell Price</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Sell Price" ng-model="pb_product.sell_price" required />
+                <input type="text" class="form-control" placeholder="Sell Price" ng-model="pb_product.selling_price" required ng-readonly="true"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">Margin</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Margin" ng-model="pb_product.markup" required />
+                <input type="text" class="form-control" placeholder="Margin" ng-model="pb_product.markup" required ng-change="onCalculatePrice()"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">Discount</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Discount" ng-model="pb_product.discount" required />
+                <input type="text" class="form-control" placeholder="Discount" ng-model="pb_product.discount" required ng-change="onCalculatePrice()"/>
             </div>
         </div>
         <div class="form-group">

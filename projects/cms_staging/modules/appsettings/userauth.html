@@ -37,7 +37,7 @@
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary btn-sm" ng-if="!facebook.request" ng-click="activateSocialAuth('facebook')">Activate</a>
+                        <button ng-if="!facebook.request" ng-click="activateSocialAuth('facebook')" class="btnflat primary-color waves-effect fl" angular-ripple="">Activate</button>
                         <label class="label label-info" ng-if="facebook.request && !facebook.activated">Waiting for Approval</label>
                     </div>
                 </div>
@@ -58,20 +58,20 @@
                         <form role="form">
                             <div class="form-group">
                                 <label>Consumer Key (API Key)</label>
-                                <input type="text" class="form-control input-sm" ng-model="twitter.apiKey" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
+                                <input type="text" class="form-control input-sm" ng-model="twitter.apiKey" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable" />
                             </div>
                             <div class="form-group">
                                 <label>Consumer Secret (API Secret)</label>
-                                <input type="text" class="form-control input-sm" ng-model="twitter.apiSecret" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
+                                <input type="text" class="form-control input-sm" ng-model="twitter.apiSecret" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable" />
                             </div>
                             <div class="form-group">
                                 <label>Redirect URL</label>
-                                <input type="text" class="form-control input-sm" ng-model="twitter.redirectUri" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable"/>
+                                <input type="text" class="form-control input-sm" ng-model="twitter.redirectUri" placeholder="" ng-disabled="!twitter.isEnable" ng-readonly="twitter.isEnable" />
                             </div>
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary btn-sm" ng-if="!twitter.request" ng-click="activateSocialAuth('twitter')">Activate</a>
+                        <button ng-if="!twitter.request" ng-click="activateSocialAuth('twitter')" class="btnflat primary-color waves-effect fl" angular-ripple="">Activate</button>
                         <label class="label label-info" ng-if="twitter.request  && !twitter.activated">Waiting for Approval</label>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary btn-sm" ng-if="!google.request" ng-click="activateSocialAuth('google')">Activate</a>
+                        <button ng-if="!google.request" ng-click="activateSocialAuth('google')" class="btnflat primary-color waves-effect fl" angular-ripple="">Activate</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                         </form>
                     </div>
                     <div class="box-footer">
-                        <a class="btn btn-primary btn-sm" ng-if="!linkedin.request" ng-click="activateSocialAuth('linkedin')">Activate</a>
+                    <button ng-if="!linkedin.request" ng-click="activateSocialAuth('linkedin')" class="btnflat primary-color waves-effect fl" angular-ripple="">Activate</button>
                     </div>
                 </div>
             </div>

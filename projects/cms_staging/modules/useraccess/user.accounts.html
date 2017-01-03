@@ -1,6 +1,6 @@
 <div class="">
     <div class="box-header">
-        <div class="pull-left disp-inline-flex">
+        <!-- <div class="pull-left disp-inline-flex">
             <div class="w140">
                 <a class="mr-10 label-circle-button ml-5" ng-click="newUserAccount()">
                     <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
@@ -15,6 +15,10 @@
                     </button>Refresh
                 </a>
             </div>
+        </div> -->
+        <div class="pull-left disp-inline-flex">
+            <button ng-click="newUserAccount()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple="">Add New</button>
+            <button  ng-click="refreshUser()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
         </div>
         <div class="pull-right box-tools">
             <form class="form-inline">
@@ -50,7 +54,7 @@
                 <td class="text-center" data-title="'Account Validity'">
                     {{row.valid_until | amDateFormat:'MM/DD/YYYY'}}
                 </td>
-               <!--  <td class="text-right" data-title="'Action'">
+                <!--  <td class="text-right" data-title="'Action'">
                     <a class="btn btn-flat btn-default btn-xs"><span class="fa fa-tablet"></span></a>
                     <a class="btn btn-flat btn-default btn-xs" ng-click="setUsersSubscription(row.uc_id)" ng-show="profile.isOwner == 1 && profile.uc_id !== row.uc_id"><span class="fa fa-list"></span></a>
                     <a class="btn ml-5 actbutton btn-info btn-xs btn-flat mr-5" ng-click="newUserAccount(row.uc_id,row.profile.person_id)"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>

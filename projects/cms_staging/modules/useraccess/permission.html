@@ -14,18 +14,12 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Access Control for: <b>{{usergroup.name}}</b></h3>
-                    <div class="pull-right box-tools">
-                        <form class="form-inline">
-                            <button class="btn btn-flat btn-sm btn-success" ng-click="reloadData()">
-                                <i class="fa fa-refresh"></i> Refresh
-                            </button>
-                            <button class="btn btn-flat btn-sm btn-primary" ng-click="UpdatePermission()">
-                                <i class="fa fa-edit"></i> Update Permission
-                            </button>
-                            <button class="btn btn-flat btn-sm btn-warning" ng-click="resetPermission()">
-                                <i class="fa fa-repeat"></i> Reset
-                            </button>
-                        </form>
+                </div>
+                <div class="box-header">
+                    <div class="pull-left disp-inline-flex">
+                        <button ng-click="UpdatePermission()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple="">Update Permission</button>
+                        <button ng-click="resetPermission()" class="btnflat warning-color waves-effect ml-10 fr" angular-ripple="">Reset</button>
+                        <button ng-click="reloadData()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
                     </div>
                 </div>
                 <div class="box-body table-responsive no-padding">

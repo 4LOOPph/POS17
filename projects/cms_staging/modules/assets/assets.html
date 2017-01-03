@@ -8,7 +8,7 @@
 <!-- Main content -->
 <section class="content" ng-init="refreshAssets()">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2 col-xs-2" style="margin-right: -15px;">
             <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder" >New</a>
             <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
                 <button id="simple-btn-keyboard-nav" class="btn newbutton btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder">
@@ -54,7 +54,7 @@
             </div>
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-10">
             <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
         </div>
         <!-- /.col -->

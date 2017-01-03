@@ -9,14 +9,15 @@
         <div class="pull-left">
             <form class="form-inline">
                 <div class="form-group">
-                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
+                    <!-- <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
                         <i class="fa fa-refresh"></i> Refresh
-                    </a>
+                    </a> -->
+                     <button ng-click="refresh()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="box-body table-responsive padding">
+    <div class="box-body table-responsive padding p-0">
         <table class="table table-striped footable" id="tblAttributes">
             <thead>
                 <tr>
@@ -39,7 +40,7 @@
                         {{var.valid_from | date:'MM/d/yyyy'}} - {{var.valid_to | date:'MM/d/yyyy'}}
                     </td>
                     <td>
-                        <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat"><i class="glyphicon glyphicon-refresh"></i> RENEW KEY</button> 
+                        <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat">RENEW KEY</button> 
                     </td>
                 </tr>                
             </tbody>

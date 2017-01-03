@@ -1,20 +1,25 @@
 <div class="">
     <div class="box-header">
+        <!-- <div class="pull-left disp-inline-flex">
+    <div class="w140">
+        <a class="mr-10 label-circle-button ml-5" ng-click="newUserGroup()">
+            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                <img src="./images/icon/ic_black_white_24px.svg">
+            </button>Add New
+        </a>
+    </div>
+    <div class="w140">
+        <a class="mr-10 label-circle-button ml-5" ng-click="refreshUserGroup()">
+            <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
+                <img src="./images/icon/refresh.svg">
+            </button>Refresh
+        </a>
+    </div>
+</div>
+ -->
         <div class="pull-left disp-inline-flex">
-            <div class="w140">
-                <a class="mr-10 label-circle-button ml-5" ng-click="newUserGroup()">
-                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                        <img src="./images/icon/ic_black_white_24px.svg">
-                    </button>Add New
-                </a>
-            </div>
-            <div class="w140">
-                <a class="mr-10 label-circle-button ml-5" ng-click="refreshUserGroup()">
-                    <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                        <img src="./images/icon/refresh.svg">
-                    </button>Refresh
-                </a>
-            </div>
+            <button ng-click="newUserGroup()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple="">Add New</button>
+            <button ng-click="refreshUserGroup()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
         </div>
         <div class="pull-right box-tools">
             <form class="form-inline">
@@ -60,7 +65,7 @@
                         <button class="btn btn-info  actbutton btn-xs btn-flat"><img src="./images/icon/ic_list_black_24px (1).svg"></button> Subscription</a>
                     <a ng-click="edit(store.store_id)" class="smscreen r120">
                         <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
-                    <a  class="smscreen">
+                    <a class="smscreen">
                         <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button> Delete</a>
                 </td>
             </tr>

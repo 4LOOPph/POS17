@@ -121,17 +121,17 @@
                     </li>
                     <li ng-if="meta.contextmenu.item.isFolder==false && meta.contextmenu.item.isDeleted==0 && showToolMakeCopy ">
                         <a role="menuitem " href>
-                            <i class="fa fa-copy "></i><span>Make a copy</span>
+                            <img src="./images/icon/ic_content_copy_black_24px.svg "><span>Make a copy</span>
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isFolder==false && meta.contextmenu.item.isDeleted==0 ">
                         <a role="menuitem " ng-href="{{meta.contextmenu.item.asset_url}} " target="_self " download="{{meta.contextmenu.item.asset_url}} ">
-                            <i class="fa fa-download "></i><span>Download</span>
+                            <img src="./images/icon/ic_file_download_black_24px.svg"><span>Download</span>
                         </a>
                     </li>
                     <li ng-if="meta.contextmenu.item.isDeleted==1 && showBarRestore ">
                         <a role="menuitem " href ng-click="restoreSelected() ">
-                            <i class="fa fa-history "></i> <span>Restore</span>
+                            <img src="./images/icon/history.svg"><span>Restore</span>
                         </a>
                     </li>
                     <li class="divider " ng-if="meta.contextmenu.item.isDeleted==0 && showBarDelete "></li>
