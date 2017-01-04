@@ -11,15 +11,13 @@
 <!-- Main content -->
 <section class="content attrib">
     <div class="row">
-        <div class="col-xs-12"> 
-            <div class="nav-tabs-custom" bs-tabs>
+        <div class="col-xs-12">
+            <!-- <div class="nav-tabs-custom" bs-tabs>
                 <div data-title="General Entry" bs-pane>
                     <div class="row">
                         <form role="form" name="attributeForm" ng-submit="saveAttribute()">
                             <div class="col-md-8 pl-30">
                                 <div class=" box-warning">
-                                    <!-- /.box-header -->
-                                    <!-- form start -->
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label>Name</label>
@@ -42,7 +40,6 @@
                                             || details.attrib_type.name == 'Multiselect'
                                             || details.attrib_type.name == 'Attachment'
                                             || details.attrib_type.name == 'Checkbox'">Default Value</label>
-                                            <!-- <input type="text" ng-model="details.default_value" class="form-control" placeholder="Default Value" required /> -->
                                             <div ng-if="showDropdownlist">
                                                 <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
                                             </div>
@@ -57,7 +54,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.box-body -->
                                 </div>
                             </div>
                             <div class="col-md-3 bl-1">
@@ -118,10 +114,10 @@
                         </form>
                     </div>
                 </div>
-                <!-- <div data-title="<i class='fa fa-list'></i> Values" bs-pane ng-if="showAttributeValues">
+                <div data-title="<i class='fa fa-list'></i> Values" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/values.html'"></div>
-                </div> -->
-                <!-- <div data-title="<i class='fa fa-list'></i> Groups" bs-pane ng-if="showAttributeValues">
+                </div>
+                <div data-title="<i class='fa fa-list'></i> Groups" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/groups.html'"></div>
                 </div>
                 <div data-title="<i class='fa fa-cubes'></i> Product Type" bs-pane ng-if="showAttributeValues">
@@ -129,13 +125,135 @@
                 </div>
                 <div data-title="<i class='fa fa-list'></i> Categories" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/categories.html'"></div>
-                </div> -->
+                </div>
                 <div data-title="Mapping" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/mapping.html'"></div>
                 </div>
-                <!-- <div data-title="<i class='fa fa-file'></i> Articles" bs-pane ng-if="showAttributeValues">
+                <div data-title="<i class='fa fa-file'></i> Articles" bs-pane ng-if="showAttributeValues">
                     <div ng-include="'./modules/attributes/details/articles.html'"></div>
-                </div> -->
+                </div>
+            </div> -->
+            <div class="tab-wrap">
+                <input type="radio" name="tabs" id="tab1" checked>
+                <div class="tab-label-content" id="tab1-content">
+                    <label class="tab-label-header" for="tab1" angular-ripple>General Entry</label>
+                    <div class="tab-content">
+                        <div class="row">
+                            <form role="form" name="attributeForm" ng-submit="saveAttribute()">
+                                <div class="col-md-6 pl-30">
+                                    <div class=" box-warning">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" ng-model="details.name" class="form-control" placeholder="Name" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Label</label>
+                                                <input type="text" ng-model="details.label" class="form-control" placeholder="Label" required />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col control-label">Attribute Type</label>
+                                                <div class="col">
+                                                    <select class="form-control" ng-model="details.attrib_type_id" ng-options="item.attrib_type_id as item.name for item in types" required />
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 p-0 pb-20">
+                                                <div class=" box-warning details">
+                                                    <div class="box-body p-0">
+                                                        <div class="form-group">
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check" type="checkbox" class="checkbox" ng-model="details.is_visible" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1">
+                                                                    <div id="check" class="lab"> Visible</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check1" type="checkbox" class="checkbox" ng-model="details.is_search">
+                                                                    <div id="check1" class="lab"> Searchable</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check2" type="checkbox" class="checkbox" ng-model="details.is_required">
+                                                                    <div id="check2" class="lab"> Required</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check3" type="checkbox" class="checkbox" ng-model="details.is_variation">
+                                                                    <div id="check3" class="lab"> Variant</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check4" type="checkbox" class="checkbox" ng-model="details.is_customizable">
+                                                                    <div id="check4" class="lab"> Customizable</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check5" type="checkbox" class="checkbox" ng-model="details.is_unique">
+                                                                    <div id="check5" class="lab"> Unique</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label>
+                                                                    <input for="check6" type="checkbox" class="checkbox" ng-model="details.is_comparable">
+                                                                    <div id="check6" class="lab"> Comparable</div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class=" box-warning p-10">
+                                        <div class="box-body">
+                                            <div class="form-group" ng-if="showAttributeValues">
+                                                <hr>
+                                                <label ng-if="details.attrib_type.name == 'Dropdownlist' 
+                                            || details.attrib_type.name == 'Multiselect'
+                                            || details.attrib_type.name == 'Attachment'
+                                            || details.attrib_type.name == 'Checkbox'">Default Value</label>
+                                                <div ng-if="showDropdownlist">
+                                                    <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                                </div>
+                                                <div ng-if="showMultiSelect">
+                                                    <div ng-include="'./modules/attributes/types/multiselect.html'"></div>
+                                                </div>
+                                                <div ng-if="showCheckbox">
+                                                    <div ng-include="'./modules/attributes/types/checkbox.html'"></div>
+                                                </div>
+                                                <div ng-if="showAttachment">
+                                                    <div ng-include="'./modules/attributes/types/attachment.html'"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+                                        <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+                                        <button type="submit" ng-disabled="attributeForm.$invalid" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple>Save Entry</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tab2">
+                <div class="tab-label-content" id="tab2-content">
+                    <label class="tab-label-header" for="tab2" angular-ripple ng-if="showAttributeValues">Mapping</label>
+                    <div class="tab-content">
+                        <div ng-include="'./modules/attributes/details/mapping.html'"></div>
+                    </div>
+                </div>
+                <div class="slide"></div>
             </div>
         </div>
     </div>
@@ -168,43 +286,11 @@ input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
-    left: calc((100% / 9) * 0);
+    left: calc((100% / 2) * 0);
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
-    left: calc((100% / 9) * 1);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
-    left: calc((100% / 9) * 2);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
-    left: calc((100% / 9) * 3);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(5):checked ~ .slide {
-    left: calc((100% / 9) * 4);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(6):checked ~ .slide {
-    left: calc((100% / 9) * 5);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(7):checked ~ .slide {
-    left: calc((100% / 9) * 6);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(8):checked ~ .slide {
-    left: calc((100% / 9) * 7);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(9):checked ~ .slide {
-    left: calc((100% / 9) * 8);
-}
-
-input[type="radio"][name="tabs"]:nth-of-type(10):checked ~ .slide {
-    left: calc((100% / 9) * 9);
+    left: calc((100% / 2) * 1);
 }
 
 input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
@@ -240,7 +326,7 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
 
 .slide {
     background: #247571;
-    width: calc(100% / 9);
+    width: calc(100% / 2);
     height: 4px;
     position: absolute;
     left: 0;
