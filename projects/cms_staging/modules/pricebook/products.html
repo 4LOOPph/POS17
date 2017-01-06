@@ -35,7 +35,7 @@
                 <div class="pull-right">
                     <form class="form-inline">
                         <div class="form-group pt-5">
-                            <input type="text" class="form-control prodsearch" placeholder="Sell Price" ng-model="item.sell_price" required />
+                            <!-- <input type="text" class="form-control prodsearch" placeholder="Sell Price" ng-model="item.sell_price" required /> -->
                             <input type="text" class="form-control prodsearch" placeholder="Margin" ng-model="item.margin" required />
                             <input type="text" class="form-control prodsearch" placeholder="Discount" ng-model="item.discount" required />
                             <input type="text" class="form-control prodsearch" placeholder="Min. Qty" ng-model="item.min_quantity" required />
@@ -83,7 +83,7 @@
                             </td>
                             <td>
                                 <a href="" uib-popover-template="'myPopoverTemplate.html'" popover-title="Update selling price" popover-is-open="product.popoverIsOpen" ng-click="showTooltip1(product)" popover-trigger="none">
-                                    {{product.sell_price | number:2}}
+                                    {{product.selling_price | number:2}}
                                 </a>
                             </td>
                             <td>
@@ -117,9 +117,33 @@
         </div>
     </div>
     <script type="text/ng-template" id="myPopoverTemplate.html">
-        <div class="form-group">
-            <label>Selling Price:</label>
-            <input type="text" ng-model="product.sell_price" placeholder="0.00" class="form-control">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Selling Price:</label>
+                    <input type="text" ng-model="product.selling_price" placeholder="0.00" class="form-control" ng-readonly="true">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Margin:</label>
+                    <input type="text" ng-model="product.markup" placeholder="0.00" class="form-control" ng-change="onCalculateRowPrice(product)">
+                </div>
+                <div class="form-group">
+                    <label>Discount:</label>
+                    <input type="text" ng-model="product.discount" placeholder="0.00" class="form-control" ng-change="onCalculateRowPrice(product)">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Min. Qty:</label>
+                    <input type="text" ng-model="product.min_quantity" placeholder="0.00" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Max. Qty:</label>
+                    <input type="text" ng-model="product.max_quantity" placeholder="0.00" class="form-control">
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <a class="btn btn-primary" ng-click="applyItemPrice(product)">Apply</a>

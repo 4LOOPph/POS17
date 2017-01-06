@@ -130,7 +130,7 @@
             </div>
         </div> -->
         <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
-            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <a ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</a>
             <button ng-show="showArchive" ng-click="archiveProduct(details.pb_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
             <button ng-show="showPublish" ng-click="publishProduct(details.pb_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
             <button type="submit" class="btnflat primary-color waves-effect ml-10 mr-15 fr" ng-disabled="bundleForm.$invalid" angular-ripple>Save Entry</button>

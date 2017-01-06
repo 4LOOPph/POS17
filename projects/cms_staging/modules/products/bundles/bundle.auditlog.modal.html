@@ -17,8 +17,8 @@
             </table>
         </div>
         <div class="box-footer">
-            <div class="padding" ng-if="totalPages > 0">
-                <ul uib-pagination total-items="totalPages" ng-model="pageNumber" ng-change="addMoreItems()" boundary-links="true" class="pagination-md" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            <div class="padding" ng-if="pagination.totalPages > 0">
+                <ul uib-pagination total-items="pagination.totalPages" ng-model="pagination.currentPage" num-pages="pagination.sumOfPages" ng-change="addMoreItems()" boundary-links="true" class="pagination-md" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
             </div>
         </div>
         <div class="overlay" ng-show="articleisLoading">
