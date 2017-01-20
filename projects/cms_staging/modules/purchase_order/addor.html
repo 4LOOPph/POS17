@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
+<section class="content-header" ng-init="fstpasge = true;">
     <h1>Purchase Order</h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,14 +22,23 @@
         <div class="tab-label-content" id="tab1-content">
             <label class="tab-label-header" for="tab1" angular-ripple>General Info</label>
             <div class="tab-content">
-                 <div ng-include="'modules/purchase_order/generalinfo.html'"></div>
+                <div ng-include="'modules/purchase_order/generalinfo.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab2">
         <div class="tab-label-content" id="tab2-content">
             <label class="tab-label-header" for="tab2" angular-ripple>Items</label>
             <div class="tab-content">
-                 <div ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
+                <div ng-show="fstpasge" ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
+                <div ng-show="scndpage" ng-include="'modules/purchase_order/purchase_order-view.html'"></div>
+                <div class="box-body  pr-25 pb-20 ">
+                    <button ng-show="fstpasge" ng-click="scndpage = true; fstpasge = false;" type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-click="savePO()" angular-ripple>Save and Send</button>
+                    
+                    <button ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Save as Draft</button>
+                    <!-- <button ng-show="scndpage" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Resend Order</button> -->
+                    
+                    <button ng-show="fstpasge" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+                </div>
             </div>
         </div>
         <div class="slide"></div>
@@ -139,4 +148,6 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
         width: 100%;
     }
 }
+
+
 </style>

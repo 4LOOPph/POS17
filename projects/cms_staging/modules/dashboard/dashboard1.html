@@ -11,8 +11,7 @@
 </section>
 <!-- Main content -->
 <section class="content">
-    <!-- Info boxes -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="dash col-md-3 col-sm-6 col-xs-12">
             <div class="info-box-blue ">
                 <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
@@ -20,9 +19,7 @@
                     <span class="info-box-number">{{totalItems}}</span>
                     <span class="info-box-text">Total Products</span>
                 </div>
-                <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
         </div>
         <div class="dash col-md-3 col-sm-6 col-xs-12">
             <div class="info-box-green ">
@@ -31,11 +28,60 @@
                     <span class="info-box-number">{{totalPersonel}}</span>
                     <span class="info-box-text">Personels</span>
                 </div>
-                <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+    </div> -->
+    <div class='ui'>
+        <div class='ui_box'>
+            <div class='ui_box__inner'>
+                <h2>
+        Total Products
+      </h2>
+                <p>Total Products</p>
+                <div class='stat' style="height: 51px;">
+                    <span>{{totalItems}}</span>
+                </div>
+                <!-- <div class='progress'>
+                    <div class='progress_bar'></div>
+                </div> -->
+                <div class='progress_graph'>
+                    <div class='progress_graph__bar--1'></div>
+                    <div class='progress_graph__bar--2'></div>
+                    <div class='progress_graph__bar--3'></div>
+                    <div class='progress_graph__bar--4'></div>
+                </div>
+                <p>Product Recorded in This Year</p>
+            </div>
+            <div class='drop' ui-sref="main.products">
+                <p>View Details</p>
+                <div class='arrow'></div>
+            </div>
+        </div>
+        <div class='ui_box'>
+            <div class='ui_box__inner'>
+                <h2>
+        Personels
+      </h2>
+                <p>Total Personels</p>
+                <div class='stat' style="height: 51px;">
+                    <span>{{totalPersonel}}</span>
+                </div>
+                <!-- <div class='progress'>
+                    <div class='progress_bar--two'></div>
+                </div> -->
+                <div class='progress_graph'>
+                    <div class='progress_graph__bar--1'></div>
+                    <div class='progress_graph__bar--2'></div>
+                    <div class='progress_graph__bar--3'></div>
+                    <div class='progress_graph__bar--4'></div>
+                </div>
+                <p>Subscribers This Year</p>
+            </div>
+            <div class='drop' ui-sref="main.settings-humanresource">
+                <p>View Details</p>
+                <div class='arrow'></div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -156,3 +202,343 @@
     </div>
 </section>
 <!-- /.content -->
+<style type="text/css">
+body .ui {
+    width: 700px;
+    margin: 0 auto;
+    /*margin-bottom: 50px;*/
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    color: white;
+    box-shadow: none;
+}
+
+body .ui ul {
+    margin: 0px 30px 10px 0px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+body .ui .drop {
+    z-index: -3;
+    opacity: 0;
+    width: 350px;
+    height: 10px;
+    background: #1a5350;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    padding: 6px 20px 21px 20px;
+    -webkit-transition-property: bottom, opacity;
+    transition-property: bottom, opacity;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+body .ui .drop p {
+    color: #f8fbfa;
+}
+
+body .ui_box {
+    width: 350px;
+    height: 130px;
+    margin-bottom: 50px;
+    margin-top: -5px;
+    position: relative;
+    background: #fff;
+    color: #555;
+    float: left;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    cursor: pointer;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-property: background, -webkit-transform;
+    transition-property: background, -webkit-transform;
+    transition-property: transform, background;
+    transition-property: transform, background, -webkit-transform;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+body .ui_box__inner {
+    padding: 20px;
+}
+
+body .ui_box__inner span {
+    font-size: 36px;
+    font-weight: 200;
+}
+
+body .ui_box__inner .progress {
+    width: 100%;
+    margin-top: 10px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+body .ui_box__inner .progress_graph {
+    float: right;
+    border-bottom: 1px solid rgba(97, 97, 97, 0.19);
+    width: 110px;
+    text-align: center;
+    position: relative;
+    padding-left: 20px;
+    top: -42px;
+}
+
+body .ui_box__inner .progress_graph__bar--1 {
+    width: 10px;
+    height: 20px;
+    background: #247371;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    bottom: -10px;
+    -webkit-animation: graph 1s;
+}
+
+body .ui_box__inner .progress_graph__bar--2 {
+    width: 10px;
+    -webkit-animation: graph2 1s;
+    height: 30px;
+    float: left;
+    margin-right: 10px;
+    background: #247371;
+}
+
+body .ui_box__inner .progress_graph__bar--3 {
+    width: 10px;
+    height: 24px;
+    margin-right: 10px;
+    -webkit-animation: graph3 1s;
+    background: #247371;
+    float: left;
+    position: relative;
+    bottom: -6px;
+}
+
+body .ui_box__inner .progress_graph__bar--4 {
+    width: 10px;
+    height: 14px;
+    -webkit-animation: graph4 1s;
+    bottom: -16px;
+    position: relative;
+    background: #247371;
+    float: left;
+}
+
+body .ui_box__inner .progress_bar {
+    height: 6px;
+    float: left;
+    width: 58%;
+    background: #35aaa6;
+    -webkit-animation: bar 2s;
+}
+
+body .ui_box__inner .progress_bar--two {
+    height: 6px;
+    float: left;
+    width: 78%;
+    background: #35aaa6;
+    -webkit-animation: bar2 2s;
+}
+
+body .ui_box h2 {
+    font-weight: normal;
+    font-size: 16px;
+    margin: -4px 0px 3px 0px;
+}
+
+body .ui_box p {
+    font-size: 11px;
+    color: #565656;
+    clear: left;
+    font-weight: 300;
+    width: 160px;
+    margin: 2px 0px 15px 0px;
+}
+
+body .ui_box:hover {
+    background: #247672;
+    color: #fff;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition-property: background, -webkit-transform;
+    transition-property: background, -webkit-transform;
+    transition-property: transform, background;
+    transition-property: transform, background, -webkit-transform;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    position: relative;
+    z-index: 1;
+}
+
+.ui_box:hover > .ui_box__inner p {
+    color: #b3dacb;
+}
+
+.ui_box:hover > .drop {
+    -webkit-transition-property: bottom, opacity;
+    transition-property: bottom, opacity;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    bottom: -27px;
+    opacity: 1;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+}
+
+.ui_box:hover > .drop .arrow {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transform: rotate(765deg);
+    transform: rotate(765deg);
+}
+
+.ui_box:hover > .ui_box__inner .progress_graph > div {
+    background: white;
+}
+
+.ui_box:hover > .ui_box__inner .progress .progress_bar,
+.ui_box:hover > .ui_box__inner .progress .progress_bar--two {
+    background: white;
+}
+
+.stat_left {
+    float: left;
+}
+
+.arrow {
+    width: 5px;
+    height: 5px;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-top: 1px solid #CDEAD3;
+    border-right: 1px solid #CDEAD3;
+    float: right;
+    position: relative;
+    top: -10px;
+    right: 0px;
+}
+
+@-webkit-keyframes bar {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 58%;
+    }
+}
+
+@keyframes bar {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 58%;
+    }
+}
+
+@-webkit-keyframes bar2 {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 78%;
+    }
+}
+
+@keyframes bar2 {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 78%;
+    }
+}
+
+@-webkit-keyframes graph {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 20px;
+    }
+}
+
+@keyframes graph {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 20px;
+    }
+}
+
+@-webkit-keyframes graph2 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+@keyframes graph2 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+@-webkit-keyframes graph3 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 24px;
+    }
+}
+
+@keyframes graph3 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 24px;
+    }
+}
+
+@-webkit-keyframes graph4 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 13px;
+    }
+}
+
+@keyframes graph4 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 13px;
+    }
+}
+</style>

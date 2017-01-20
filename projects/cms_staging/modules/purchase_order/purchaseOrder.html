@@ -2,9 +2,6 @@
     <form role="form">
         <div class="col-md-12">
             <div class=" box-warning">
-                <!-- <div class="box-header">
-                    <h3 class="box-title">Product List</h3>
-                </div> -->
                 <div class="box-body">
                     <div class="form-group">
                         <div class="btn-group p-15">
@@ -44,23 +41,11 @@
                         <label>Price</label>
                         <input type="number" ng-model="items.price" class="form-control" ng-change="calculateItem(items)">
                     </div>
-                    <!-- <div class="form-group col-md-2">
-                        <label>Discount</label>
-                        <input type="number" ng-model="items.discount" class="form-control" ng-change="calculateItem(items)">
-                    </div> -->
                     <div class="form-group col-md-2">
                         <label>Total</label>
                         <input type="number" ng-model="items.total" class="form-control" ng-change="calculateItem(items)" ng-disabled="true">
                     </div>
                     <div class="form-group col-md-12">
-                        <!-- <a class="btn btn-flat btn-primary" ng-click="addToList(items)"><i class="fa fa-plus"></i> Add</a> -->
-                        <!-- <div class="w140">
-                            <a class="mr-10 label-circle-button ml-5" ng-click="addToList(items)">
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5">
-                                    <img src="./images/icon/ic_black_white_24px.svg">
-                                </button>Add
-                            </a>
-                        </div> -->
                         <button ng-click="addToList(items)" class="btnflat primary-color waves-effect fr" angular-ripple><img src="./images/icon/ic_add_white_24px.svg"> Add</button>
                     </div>
                 </div>
@@ -76,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in details.products_list">
+                            <tr ng-repeat="item in details.details">
                                 <td>
                                     {{ item.item_name }}
                                 </td>
@@ -99,102 +84,35 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!-- <div class="form-group">
-                        <h3>Sub-Total: </h3>
-                        <input type="text" class="form-control input-lg" value="{{details.sub_total | number:2}}" ng-disabled="true">
-                    </div> -->
-                    <!-- <div class="form-group pl-30 pr-30">
-                        <h4>Shipping Fee : </h4>
-                        <input type="number" class="form-control input" ng-model="details.shipping_fee" ng-change="calculateBilling()" ng-required placeholder="Enter value">
-                    </div>
-                    <div class="form-group pl-30 pr-30">
-                        <h4>Tax : </h4>
-                        <input type="text" class="form-control input" ng-model="details.tax" ng-change="calculateBilling()" ng-required placeholder="Enter value">
-                    </div> -->
-                    <!-- <div class="form-group">
-                        <h2>Total : </h2>
-                        <input type="text" class="form-control input-lg" value="{{details.total_fee | number:2}}" ng-disabled="true" placeholder="0.00">
-                    </div> -->
                 </div>
             </div>
         </div>
         <div class="col-md-4  fr">
             <div class="">
                 <div class="form-group">
-                    <div class="box-body bt-1">
+                    <div class=" bt-1">
                         <div class="w100p disp-inline-flex">
-                            <h2>Total</h2><span><h2 class="text-center ">: P 34,000</h2></span></div>
-                        <!--  <div class="box box-solid box-primary">
-                            <div class="box-body">
-                                <label ng:model="item.tot">Subtotal :</label>
-                                {{details.sub_total}}
-                            </div>
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>Shipping fee:</label>
-                                    {{details.shipping_fee}}
-                                </div>
-                                <div class="form-group">
-                                    <label>Tax:</label>{{details.tax}}
-                                </div>
-                            </div>
-                            <div id="demo" class="collapse">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="" placeholder="">
-                                </div>
-                            </div>
-                            <div class="box-header btn-black" style="border-bottom: 0px !important">
-                                <h3 class="box-title">Total : </h3> {{total}}
-                                <label class="pull-right"></label>
-                            </div>
-                        </div> -->
-                        <!-- <div class="form-group">
-                            <label>Payment Method</label>
-                            <select ng-init="details.shipvia = options[0]" class="form-control" ng-model="details.shipvia">
-                                <option value="">--Please Select Payment Method--</option>
-                                <option value="Visa">Visa</option>
-                                <option value="Mastercard">Mastercard</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Paypal">Paypal</option>
-                            </select>
-                            <div ng-if="!details.shipvia">
-                                <img src="../../images/credit/visa.png" alt="Visa" />
-                                <img src="../../images/credit/mastercard.png" alt="Mastercard" />
-                                <img src="../../images/credit/american-express.png" alt="American Express" />
-                                <img src="../../images/credit/paypal2.png" alt="Paypal" />
-                            </div>
-                            <img src="../../images/credit/visa.png" alt="Visa" ng-if="details.shipvia == 'Visa'" />
-                            <img src="../../images/credit/mastercard.png" alt="Mastercard" ng-if="details.shipvia == 'Mastercard'" />
-                            <img src="../../images/credit/american-express.png" alt="American Express" ng-if="details.shipvia == 'American Express'" />
-                            <img src="../../images/credit/paypal2.png" alt="Paypal" ng-if="details.shipvia == 'Paypal'" />
-                        </div> -->
-                        <!-- <div class="form-group">
-                            <label>Terms:</label>
-                            <p ng-bind-html="details.shipping_terms"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Notes/Memo:</label>
-                            <p ng-bind-html="details.comments"></p>
-                        </div> -->
+                            <h4>Total</h4><span><h4 class="text-center ">{{ item.total | number:2}}</h4></span></div>
                     </div>
                 </div>
-                <!-- <div class="box-body">
-    <button type="submit" class="btn btn-primary btn-flat btn-block" ng-click="savePO()">Complete</button>
-    <a class="btn btn-default btn-flat btn-block">Cancel</a>
-</div>
- -->
             </div>
         </div>
     </form>
 </div>
-<div class="box-body ">
-    <div class="form-group p-15">
-        <label>Notes/Memo:</label>
-        <text-angular ng-model="details.comments" required /></text-angular>
-    </div>
-</div>
-<div class="box-body disp-inline-flex  pr-25 pb-20 fr">
-    <button class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
-    <button class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Save as Draft</button>
-    <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-click="savePO()" angular-ripple>Save and Send</button>
-</div>
+<style type="text/css">
+.dndPlaceholder {
+    background-color: #efefef !important;
+    min-height: 10px;
+    border-radius: 2px;
+    /*border: 3px dashed #d0d0d0!important;*/
+    padding: 3px;
+    margin-bottom: 10px;
+    /*color: #d0d0d0;*/
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+    padding: 55px
+}
+</style>

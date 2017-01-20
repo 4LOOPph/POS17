@@ -71,11 +71,11 @@
                             <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
                                 <input type="checkbox" ng-model="item.selected" ng-change="checkDataChanges(item)">
                             </td> -->
-                            <td class="text-left" data-title="'PO ID'">
+                           <!--  <td class="text-left" data-title="'PO ID'">
                                 <span>{{item.po_number}}</span>
-                            </td>
-                            <td class="text-center" data-title="'PO Name'">
-                                <span>{{item.total_cost}}</span>
+                            </td> -->
+                            <td class="text-center" data-title="'PO Number'">
+                                <span>{{item.po_id}}</span>
                             </td>
                             <td class="text-center" data-title="'Date Created'">
                                 <span>{{item.delivery_date| date : 'longDate'}}</span>
@@ -90,18 +90,32 @@
                                 <span>{{item.supplier.name}}</span>
                             </td>
                             <td class="text-center" data-title="'Amount'">
-                                <span>Amount</span>
+                                <span>{{item.total_cost}}</span>
                             </td>
                             <!-- <span>{{item.expiration_date| date : 'longDate'}}</span> -->
                             <td class="text-center" data-title="'Status'">
+                                    <!-- <div class="-mt-12">
+                                        <input type="checkbox" id="unchecked" class="cbx hidden">
+                                        <label for="unchecked" class="lbl" style="top: 13px;"></label>
+                                    </div> -->
                                 <span ng-if="item.po_status == 'Open'" class="label label-success">Approved</span>
                                 <span ng-if="item.po_status == 'Closed'" class="label label-danger">Unapproved</span>
+                            </td>
+                            <td class="">
+                                <div class="disp-inline-flex">
+                                    <a ui-sref="main.add_order({selected_id:item.po_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-click="toggleModal(item.po_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                </div>
+                               <!--  <a ng-click="edit(product.p_id)" class="smscreen r120">
+                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
+                                <a ng-click="deleteSelected(var.rel_id)" class="smscreen">
+                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button> Delete</a> -->
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="overlay" ng-show="puchaseordersisLoading">
-                     <div class="loader"></div>
+                    <div class="loader"></div>
                 </div>
                 <!-- /.box-body -->
             </div>
