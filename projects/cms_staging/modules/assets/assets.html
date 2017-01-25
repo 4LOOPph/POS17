@@ -8,25 +8,52 @@
 <!-- Main content -->
 <section class="content" ng-init="refreshAssets()">
     <div class="row">
-        <div class="col-md-2 col-xs-2" style="margin-right: -15px;">
-            <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder" >New</a>
+        <div class="col-md-2 col-xs-2 pr-0" style="margin-right: -15px;">
+            <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder">New</a>
             <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
-                <button id="simple-btn-keyboard-nav" class="btn newbutton btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder">
-                    NEW
-                </button>
+                <div class="asset-newButtonholder">
+                    <button id="simple-btn-keyboard-nav" class="btn w100p newbutton btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder">
+                        NEW
+                    </button>
+                </div>
                 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav" style="width: 100%;">
-                    <li role="menuitem"><a href="" ng-click="createNewFolder()"><img src="./images/icon/folder-plus.svg"> Folder</a></li>
-                     <li class="divider "></li>
-                    <li role="menuitem"><a href="" ng-click="newUploader()"><img src="./images/icon/upload.svg" style="width: 19px;margin: 0 2px;"> File Upload</a></li>
+                    <li role="menuitem">
+                        <a href="" ng-click="createNewFolder()"><img src="./images/icon/folder-plus.svg"> Folder</a>
+                    </li>
+                    <li class="divider "></li>
+                    <li role="menuitem">
+                        <a href="" ng-click="newUploader()"><img src="./images/icon/upload.svg" style="width: 19px;margin: 0 2px;"> File Upload</a>
+                        <!-- <div class=" image-preview">
+                            <div class="btn btn-primary image-preview-input" ng-click="doGreeting()"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                <input type="file" accept="image/png,image/jpeg, image/gif, image/jpeg, image/x-ms-bmp, 
+                                        audio/mp3, audio/mp4, 
+                                        video/mp4, video/x-flv, video/3gpp, video/x-msvideo, video/x-ms-wmv, video/quicktime, 
+                                        application/pdf, 
+                                        application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, 
+                                        application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                        text/csv,text/plain,
+                                        application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                        application/zip" nv-file-select="" uploader="uploader" multiple />
+                            </div>
+                        </div> -->
+                    </li>
                 </ul>
             </div>
             <div class="assets box-solid">
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                        <li ng-class="{'active': activeAllFiles}"><a href="" ng-click="showAllFiles()"><img src="./images/icon/ic_folder_black_24px.svg"> Files</a></li>
-                        <li ng-class="{'active': activeSharedFiles}"><a href="" ng-click="showAllShared()"><img src="./images/icon/ic_people_black_24px.svg"> Shared with me</a></li>
-                        <li ng-class="{'active': activeStarredFiles}"><a href="" ng-click="showAllStarred()"><img src="./images/icon/ic_star_black_24px.svg"> Starred</a></li>
-                        <li ng-class="{'active': activeTrashFiles}"><a href="" ng-click="showAllTrash()"><img src="./images/icon/ic_delete_black_24px.svg"> Trash</a></li>
+                        <li ng-class="{'active': activeAllFiles}">
+                            <a href="" ng-click="showAllFiles()"><img src="./images/icon/ic_folder_black_24px.svg"> Files</a>
+                        </li>
+                        <li ng-class="{'active': activeSharedFiles}">
+                            <a href="" ng-click="showAllShared()"><img src="./images/icon/ic_people_black_24px.svg"> Shared with me</a>
+                        </li>
+                        <li ng-class="{'active': activeStarredFiles}">
+                            <a href="" ng-click="showAllStarred()"><img src="./images/icon/ic_star_black_24px.svg"> Starred</a>
+                        </li>
+                        <li ng-class="{'active': activeTrashFiles}">
+                            <a href="" ng-click="showAllTrash()"><img src="./images/icon/ic_delete_black_24px.svg"> Trash</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -42,11 +69,11 @@
                     </ul>
                 </div>
             </div> -->
-            <div class="box box-solid" ng-controller="assetsStorageCtrl" ng-init="initStorage()" style="margin-top: 60px;">
-                <div class="box-header with-border">
-                    <h3 class="box-title" style="font-size: 15px;">Storage <small>&nbsp {{ filesize }} of 2GB used</small></h3>
+            <div class=" box-solid" ng-controller="assetsStorageCtrl" ng-init="initStorage()" style="margin-top: 60px;">
+                <div class=" with-border">
+                    <h3 class="box-title prime-color" style="font-size: 15px;">Storage <small>&nbsp {{ filesize }} of 2GB used</small></h3>
                 </div>
-                <div class="box-body no-padding">
+                <div class=" no-padding">
                     <div class="chart-responsive" style="margin-top: 10px;">
                         <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-legend="true" chart-data="chart.data" chart-labels="chart.labels" chart-colors="chart.colors" chart-options="chart.options" chart-dataset-override="chart.options"></canvas>
                     </div>
@@ -54,10 +81,127 @@
             </div>
         </div>
         <!-- /.col -->
-        <div class="col-md-10">
+        <div class="col-md-10 pr-0">
             <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
+        </div>
+        <div class="sendcontainer" ng-show="upload">
+            <div class="head">Sending..</div>
+            <div class="body">
+                <img src="../images/icon/note-text.svg" style="width: 27px;height: 27px;">
+                <div style="margin-left: 10px;"><b>Purchase Order No.</b> <small>00011</small>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th ng-show="uploader.isHTML5">Size</th>
+                                <th ng-show="uploader.isHTML5">Progress</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in uploader.queue" ng-hide="item.isValid">
+                                <td>
+                                    <strong>{{ item.file.name }}</strong>
+                                </td>
+                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>
+                                <td nowrap>
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!-- /.col -->
     </div>
     <!-- /.row -->
 </section>
+<style type="text/css">
+.successlabel {
+    font-size: 17px;
+    padding-top: 5px;
+}
+
+.sendcontainer {
+    /*padding: 10px;*/
+    /*border: 1px solid #ccc;*/
+    width: 400px;
+    position: fixed;
+    background: #fff;
+    right: 15px;
+    z-index: 99999;
+    bottom: 15px;
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+    -webkit-border-radius: 2px;
+    border-radius: 3px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: transform .15s cubic-bezier(0.4, 0.0, 1, 1), opacity .15s cubic-bezier(0.4, 0.0, 1, 1), visibility 0ms linear .15s;
+    transition: transform .15s cubic-bezier(0.4, 0.0, 1, 1), opacity .15s cubic-bezier(0.4, 0.0, 1, 1), visibility 0ms linear .15s;
+    max-height: 323px;
+    overflow: visible;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.sendcontainer .head {
+    background-color: #444;
+    color: #fff !important;
+    padding: 18px;
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    font-size: 14px;
+}
+
+.sendcontainer .body {
+    padding: 15px;
+    display: flex;
+    height: 58px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background: rgba(115, 115, 115, 0.58)
+}
+
+.cont {
+    margin: 0 auto;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    padding: 40px;
+    color: #fff;
+    font-weight: 500;
+}
+</style>
