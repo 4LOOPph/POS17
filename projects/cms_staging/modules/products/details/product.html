@@ -21,6 +21,26 @@
                         <input type="text" name="required" class="form-control" ng-model="details.item_name" placeholder="Product Name" required />
                         <!-- <span class="barzz"></span> -->
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>Store Name</label>
+                        <!-- <div class="btn-group mailbox-controls smfr pl-10">
+                            <div ng-dropdown-multiselect options="storesArr" selected-model="selectedstore" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="producttagsSettings" events="selectEvents"></div>
+                        </div> -->
+                        <div class="btn-group" uib-dropdown dropdown-append-to-body auto-close="outsideClick" style="width: 100%;">
+                            <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 100%;">
+                                Stores <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body" style="width: 37%;">
+                                <li ng-repeat="a in storesArr" role="menuitem">
+                                    <div class="checkbox" >
+                                        <label style="width: 100%;text-align: left;margin-left: 10px;">
+                                            <input type="checkbox" ng-click="addStoreToList(a,$index)"> {{a.label}}
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="form-group col-md-6">
