@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SM CDO Downtown Premier | Tenant Preview Pre-registration Form</title>
+    <meta name="description" content="SM Tenant Preview Pre-registration Form">
+    <meta name="author" content="SitePoint">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+    <div class="bgFixed">&nbsp;</div>
+    <div class="successArea">
+        <div class="successAreaContent">
+            <img class="successSMLogo" src="assets/smCDO2.svg" width="270" height="auto" alt="sm cdo 2 logo" />
+            <div class="icoTenantPreview">
+                <img src="assets/smTitle.svg" alt="sm tenant preview" />
+            </div>
+            <div class="regoSuccess">
+                <h2>You have successfully registered.&nbsp;<img src="assets/chkSVG.svg" width="36" height="auto" /></h2>
+                <span>(You may exit or close this page.)</span>
+            </div>
+            <div class="regoErr hide">
+                <h2>Registration unsuccessful, please try again.</h2>
+                <span>There was a problem in the connection. Click on the back button to register again.</span>
+                <br />
+                <button class="back"><i class="fa fa-arrow-left"></i> Back</button>
+            </div>
+        </div>
+    </div>
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="logoArea col-sm-6">
+                <div class="logo">
+                    <img src="assets/smCDO2.svg" alt="sm cdo 2 logo" />
+                </div>
+            </div>
+            <div class="formArea col-sm-6">
+                <div class="form">
+                    <form>
+                        <fieldset class="title">
+                            <img src="assets/smTitle.svg" alt="sm tenant preview" />
+                            <h2>Pre-registration Form</h2>
+                        </fieldset>
+                        <fieldset class="input">
+                            <div class="form-group row">
+                                <div class="inGrp">
+                                    <label for="inFName" class="col-xs-12 col-sm-3 col-form-label">Firstname<span class="requiredInput">*</span></label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="text" value="" id="inFName" placeholder="ie. John" rgxp="rgxp_address" maxlength="32" required>
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="inGrp">
+                                    <label for="inLName" class="col-xs-12 col-sm-3 col-form-label">Lastname<span class="requiredInput">*</span></label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="text" value="" id="inLName" placeholder="ie. Doe" rgxp="rgxp_address" maxlength="32" required>
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="inGrp">
+                                    <label for="inMInitial" class="col-xs-12 col-sm-3 col-form-label">Middle Initial</label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="text" value="" id="inMInitial" rgxp="rgxp_address" maxlength="3" placeholder="ie. I.">
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="inGrp">
+                                    <label for="inCName" class="col-xs-12 col-sm-3 col-form-label">Company Name<span class="requiredInput">*</span></label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="text" value="" id="inCName" placeholder="ie. SM Premier" maxlength="72" rgxp="rgxp_address" required>
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="inGrp">
+                                    <label for="inContactNum" class="col-xs-12 col-sm-3 col-form-label">Contact No.<span class="requiredInput">*</span></label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="text" value="" id="inContactNum" placeholder="ie. +00 123 456 7890" maxlength="32" rgxp="rgxp_phone_num" required>
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid contact number</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="inGrp">
+                                    <label for="inEmail" class="col-xs-12 col-sm-3 col-form-label">Email<span class="requiredInput">*</span></label>
+                                    <div class="inputArea col-sm-9">
+                                        <input class="form-control" type="email" value="" id="inEmail" placeholder="ie. john.doe@sampleemail.com" rgxp="rgxp_email" maxlength="255" required>
+                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
+                                        <label class="errorMsg hide">Invalid email address</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="gRecaptcha col-sm-12">
+                                    <div class="g-recaptcha" data-sitekey="6LeB5wkTAAAAAO95ZwR_nGx6i69WDczqkg3dAnBy"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="requiredNote col-sm-12">
+                                    <p>* Denotes required input</p>
+                                </div>
+                                <div class="clearfix"></div>
+                                <br />
+                                <div id="submitArea" class="col-sm-12">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="formLoader hide"><img src="assets/ring-alt.svg" alt="loader submit" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mod.js"></script>
+</body>
+
+</html>
