@@ -17,9 +17,6 @@
                                 <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.add_order" uib-tooltip="Add New" href="#/main/settings/producttype/">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </a>
-                                <!-- <a class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete" disabled="disabled">
-                                    <img src="./images/icon/archive.svg">
-                                </a> -->
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
                                     <img src="./images/icon/refresh.svg">
                                 </button>
@@ -55,9 +52,6 @@
                                 <div class="pt-5">
                                     <div class="input-group imput">
                                         <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" angular-ripple>
-                                        <!-- <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -68,12 +62,6 @@
                 <div class="box-body table-responsive padding p-0">
                     <table class="table table-hover" ng-table="puchaseordersTable">
                         <tr ng-repeat="item in $data  track by $index">
-                            <!--  <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="item.selected" ng-change="checkDataChanges(item)">
-                            </td> -->
-                           <!--  <td class="text-left" data-title="'PO ID'">
-                                <span>{{item.po_number}}</span>
-                            </td> -->
                             <td class="text-center" data-title="'PO Number'">
                                 <span>{{item.po_id}}</span>
                             </td>
@@ -92,12 +80,7 @@
                             <td class="text-center" data-title="'Amount'">
                                 <span>{{item.total_cost}}</span>
                             </td>
-                            <!-- <span>{{item.expiration_date| date : 'longDate'}}</span> -->
                             <td class="text-center" data-title="'Status'">
-                                    <!-- <div class="-mt-12">
-                                        <input type="checkbox" id="unchecked" class="cbx hidden">
-                                        <label for="unchecked" class="lbl" style="top: 13px;"></label>
-                                    </div> -->
                                 <span ng-if="item.po_status == 'Open'" class="label label-success">Approved</span>
                                 <span ng-if="item.po_status == 'Closed'" class="label label-danger">Unapproved</span>
                             </td>
@@ -106,10 +89,6 @@
                                     <a ui-sref="main.add_order({selected_id:item.po_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                     <a ng-click="toggleModal(item.po_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
                                 </div>
-                               <!--  <a ng-click="edit(product.p_id)" class="smscreen r120">
-                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
-                                <a ng-click="deleteSelected(var.rel_id)" class="smscreen">
-                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></button> Delete</a> -->
                             </td>
                         </tr>
                     </table>

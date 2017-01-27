@@ -112,15 +112,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
 <button ng-show="scndpage" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="doGreeting()">Resend Order</button>
 <button ng-show="scndpage" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple ng-click="doExport()">Export CSV</button>
 <button ng-show="scndpage" class="btnflat default-color waves-effect fl ml-15" ng-click="toggleModal()" angular-ripple>Cancel Order</button>
-<!-- <section class="container text-center" ng-show="showMessage">
-    <section class="cont text-center">Sending...
-        <div class="progress-bar">
-            <div class="progress">
-                <div class="progress-shadow"></div>
-            </div>
-        </div>
-    </section>
-</section> -->
 <div class="sendcontainer" ng-show="showMessage">
     <div class="head">Sending..</div>
     <div class="body">
@@ -150,7 +141,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
         <div style="margin-left: 10px;">
             <div class="successlabel">Purchase Order No.<small>00011</small></div>
             <div class="pieholder">
-                <!-- <round-progress max="max" current="current" color="#247571" bgcolor="#ccc" radius="13" stroke="3" semi="false" rounded="true" clockwise="clockwise" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress> -->
                 <figure class="chart-two animate">
                     <svg role="img" xmlns="http://www.w3.org/2000/svg">
                         <circle class="circle-background" />
@@ -169,11 +159,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
         <div style="margin-left: 10px;">
             <div class="successlabel">Purchase Order No.<small>00011</small></div>
             <div class="pieholder">
-                <!-- <round-progress max="max" current="current" color="#247571" bgcolor="#ccc" radius="13" stroke="3" semi="false" rounded="true" clockwise="clockwise" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress> -->
                 <figure class="chart-two animate">
                     <svg role="img" xmlns="http://www.w3.org/2000/svg">
                         <circle class="circle-background2" />
-                        <!-- <circle class="circle-foreground" /> -->
                     </svg>
                     <figcaption>50%</figcaption>
                 </figure>
@@ -181,19 +169,13 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
         </div>
     </div>
 </div>
-<!-- <section class="container text-center" ng-show="showsecondMessage">
-    <section class="cont text-center">Success
-    </section>
-</section> -->
 <style type="text/css">
 .dndPlaceholder {
     background-color: #efefef !important;
     min-height: 10px;
     border-radius: 2px;
-    /*border: 3px dashed #d0d0d0!important;*/
     padding: 3px;
     margin-bottom: 10px;
-    /*color: #d0d0d0;*/
     font-size: 20px;
     font-weight: 600;
     text-align: center;
@@ -214,8 +196,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
 }
 
 .sendcontainer {
-    /*padding: 10px;*/
-    /*border: 1px solid #ccc;*/
     width: 400px;
     position: fixed;
     background: #fff;
@@ -613,29 +593,4 @@ button .content {
     }
 }
 
-
-/* codepen styling only */
-
-
-/*body {
-  background: #272b31;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-figure {
-  margin: 1rem !important;
-}
-
-figcaption {
-  font-family: 'Abel', sans-serif;
-}*/
 </style>

@@ -66,13 +66,13 @@
                                     {{ item.item_name }}
                                 </td>
                                 <td>
-                                    {{ item.quantity}}
+                                    {{ item.quantity | number:2}}
                                 </td>
                                 <td>
                                     {{ item.price | number:2 }}
                                 </td>
                                 <td>
-                                    {{ item.total | number:2}}
+                                    {{ ( item.quantity * item.price ) | number:2 }}
                                 </td>
                                 <td class="text-right">
                                     <div class="disp-inline-flex">
@@ -104,17 +104,4 @@
 </div>
 <button type="submit" class="btnflat primary-color waves-effect ml-10 mt-10 mr-25 fr" ng-click="openPOUpdateModal(true)" angular-ripple>Save and Send</button>
 <style type="text/css">
-/*.dndPlaceholder {
-    background-color: #efefef !important;
-    min-height: 10px;
-    border-radius: 2px;
-    padding: 3px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    vertical-align: middle;
-    display: block;
-    padding: 55px
-}*/
 </style>
