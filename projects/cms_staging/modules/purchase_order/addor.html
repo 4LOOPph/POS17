@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
+<section class="content-header" ng-init="fstpasge = true;">
     <h1>Purchase Order</h1>
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -9,27 +9,26 @@
 </section>
 <!-- Main content -->
 <section class="content po">
-    <!-- <div class="nav-tabs-custom" bs-tabs>
-        <div data-title="General Info" bs-pane>
-            <div ng-include="'modules/purchase_order/generalinfo.html'"></div>
-        </div>
-        <div data-title="Items" bs-pane>
-            <div ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
-        </div>
-    </div> -->
     <div class="tab-wrap">
         <input type="radio" name="tabs" id="tab1" checked>
         <div class="tab-label-content" id="tab1-content">
             <label class="tab-label-header" for="tab1" angular-ripple>General Info</label>
             <div class="tab-content">
-                 <div ng-include="'modules/purchase_order/generalinfo.html'"></div>
+                <div ng-include="'modules/purchase_order/generalinfo.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab2">
         <div class="tab-label-content" id="tab2-content">
             <label class="tab-label-header" for="tab2" angular-ripple>Items</label>
             <div class="tab-content">
-                 <div ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
+                <div ng-show="fstpasge" ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
+                <div ng-show="scndpage" ng-include="'modules/purchase_order/purchase_order-view.html'"></div>
+                <div class="box-body  pr-25 pb-20 ">
+                    <!-- <button ng-click="openPOUpdateModal(false)" ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Save as Draft</button> -->
+                    <button ng-click="openPOUpdateModal(false)" ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 mr-25 fr" angular-ripple>Save as Draft</button>
+                    <button ng-click="openPOUpdateModal(true)" ng-show="fstpasge" class="btnflat primary-color waves-effect ml-10 mr-25 fr" angular-ripple>Save and Send</button>
+                    <button ng-click="cancelPO()" ng-show="fstpasge" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+                </div>
             </div>
         </div>
         <div class="slide"></div>
@@ -127,8 +126,34 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     background: #fff;
     padding: 0px;
     width: 100%;
-    /*height: 475px;*/
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+li {
+    display: inherit !important;
+    font-weight: bold;
+    width: inherit !important;
+}
+
+h1 {
+    left: 0 !important;
+}
+
+.logo {
+    margin-top: 0 !important;
+}
+
+.breadcrumb>li {
+    display: inline-block !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    padding: 5px;
+    background: #fafafa !important;
+    border-bottom: solid thin #e0e0e0;
+    display: inline-flex !important;
+    width: 100%;
+    height: inherit;
 }
 
 @media screen and (max-width: 800px) {

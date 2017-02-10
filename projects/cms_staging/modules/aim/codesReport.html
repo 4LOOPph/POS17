@@ -1,0 +1,108 @@
+<div class="">
+    <div class="box-header">
+        <div class="pull-right disp-inline-flex ">
+            <button ng-click="search=true " class="btnflat waves-effect fl " uib-tooltip="Search "><img src="./images/icon/ic_search_black_24px.svg "></button>
+            <button class="btnflat btnflatzz waves-effect fl " uib-tooltip="Print "><img src="./images/icon/ic_print_black_24px.svg "></button>
+            <button class="btnflat btnflatzz waves-effect fl "><img class="rotate " tabindex="1 " src="./images/icon/refresh.svg "> Refresh</button>
+        </div>
+    </div>
+    <div ng-show="search " class="disp-inline-flex w100p searchnew ">
+        <input type="text " class="asset-search ng-pristine ng-valid ng-empty ng-touched " placeholder="Search for Item Code " ng-model="txtSearch " ng-change="(txtSearch.length < 1)?searchData():0 " style="margin-top: 0px; ">
+        <button class="btnflat waves-effect " uib-tooltip="Close "><img ng-click="search=false " src="./images/icon/ic_close_white_24px.svg "></button>
+    </div>
+    <div class="divider ">Monday, 30 Jan 2017</div>
+    <div class="box-body table-responsive padding p-0 ">
+        <table class="table table-hover ">
+            <thead>
+                <th ng-click="nameSort=! nameSort " style="text-align: left !important; ">Item Name
+                    <img ng-show="!nameSort " src="./images/icon/sort-descending.svg ">
+                    <img ng-show="nameSort " src="./images/icon/sort-ascending.svg ">
+                </th>
+                <th ng-click="codeSort=! codeSort ">Item Code
+                    <img ng-show="!codeSort " src="./images/icon/sort-descending.svg ">
+                    <img ng-show="codeSort " src="./images/icon/sort-ascending.svg ">
+                </th>
+                <th ng-click="itemQtySort=! itemQtySort ">Item QTY
+                    <img ng-show="!itemQtySort " src="./images/icon/sort-descending.svg ">
+                    <img ng-show="itemQtySort " src="./images/icon/sort-ascending.svg ">
+                </th>
+                <th ng-click="codeQtySort=! codeQtySort ">Code QTY
+                    <img ng-show="!codeQtySort " src="./images/icon/sort-descending.svg ">
+                    <img ng-show="codeQtySort " src="./images/icon/sort-ascending.svg ">
+                </th>
+                <th ng-click="diffSort=! diffSort ">Difference
+                    <img ng-show="!diffSort " src="./images/icon/sort-descending.svg ">
+                    <img ng-show="diffSort " src="./images/icon/sort-ascending.svg ">
+                </th>
+            </thead>
+            <tr>
+                <td class="text-center " style="text-align: left !important; ">
+                    Liven Coffe
+                </td>
+                <td class="text-right ">
+                    MN987J
+                </td>
+                <td class="text-right ">
+                    300
+                </td>
+                <td class="text-right ">
+                    321
+                </td>
+                <td class="text-right ">
+                    1
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center " style="text-align: left !important; ">
+                    Liven Coffe
+                </td>
+                <td class="text-right ">
+                    MN987J
+                </td>
+                <td class="text-right ">
+                    300
+                </td>
+                <td class="text-right ">
+                    321
+                </td>
+                <td class="text-right ">
+                    1
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center " style="text-align: left !important; ">
+                    Liven Coffe
+                </td>
+                <td class="text-right ">
+                    MN987J
+                </td>
+                <td class="text-right ">
+                    300
+                </td>
+                <td class="text-right ">
+                    321
+                </td>
+                <td class="text-right ">
+                    1
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center " style="text-align: left !important; ">
+                    Liven Coffe
+                </td>
+                <td class="text-right ">
+                    MN987J
+                </td>
+                <td class="text-right ">
+                    300
+                </td>
+                <td class="text-right ">
+                    321
+                </td>
+                <td class="text-right ">
+                    1
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
