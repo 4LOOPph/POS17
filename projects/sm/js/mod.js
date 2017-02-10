@@ -242,39 +242,43 @@ jQuery(document).ready(function($) {
                 if ($(this).prop('required') && $(this).val() === "") {
                     $(this).focus();
                     return false;
+                } else {
+                    $.ajax({
+                        url: "http://54.206.38.223:5002/api/1.0/persons",
+                        type: "POST",
+                        headers: {
+                            accesskey: access_key,
+                            Authorization: 'Bearer ' + sessionStorage.getItem('sm.token')
+                        },
+                        data: {
+                            lastname: $('#inLName').val(),
+                            firstname: $('#inFName').val(),
+                            middlename: $('#inMInitial').val(),
+                            email: $('#inEmail').val(),
+                            mobile: $('#inContactNum').val(),
+                            per_type_id: 2,
+                            company_name: $('#inCName').val(),
+                            captcha: grecaptcha.getResponse()
+                        },
+                        cache: false,
+                        success: function(data) {
+                            if (data.statusCode == 200 && data.response.success) {
+                                //Success in form submission
+                                $(".successArea").fadeIn("fast");
+                                $('.btnSubmitForm').fadeout("fast");
+                                alert(grecaptcha.getResponse());
+                            }
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                          //alert('Unexpected server error');
+                          alert(grecaptcha.getResponse());
+                        }
+                    });
                 }
             });
         } else {
             $("form").find("i.error:visible").prev("input").focus();
         }
 
-        $.ajax({
-            url: "http://54.206.38.223:5002/api/1.0/persons",
-            type: "POST",
-            headers: {
-                accesskey: access_key,
-                Authorization: 'Bearer ' + sessionStorage.getItem('sm.token')
-            },
-            data: {
-                lastname: $('#inLName').val(),
-                firstname: $('#inFName').val(),
-                middlename: $('#inMInitial').val(),
-                email: $('#inEmail').val(),
-                mobile: $('#inContactNum').val(),
-                per_type_id: 2,
-                company_name: $('#inCName').val()
-            },
-            cache: false,
-            success: function(data) {
-                if (data.statusCode == 200 && data.response.success) {
-                    //Success in form submission
-                    $(".successArea").fadeIn("fast");
-                    $('.btnSubmitForm').fadeout("fast");
-                }
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert('Unexpected server error');
-            }
-        });
     });
 });
