@@ -1,175 +1,198 @@
-<div class="row">
-    <form role="form">
-        <div class="col-md-12">
-            <div class=" box-warning">
-                <div class="box-body">
-                    <div class="p-15" style="line-height: 30px;">
-                        <strong class="f18">Sample Order</strong>
-                        <br>
-                        <b>Purchase Order No.</b> <small>00011</small>
-                        <br>
-                        <img src="../images/icon/ic_clear_all_black_24px.svg" style="width: 23px; margin-top: -3px;margin-right: -5px;">
-                        <i style="color: #247571;">Sent</i>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-4 row">
-                                <div class="col-sm-4">
-                                    <strong>Supplier</strong>
-                                    <br>
-                                    <strong>Deliver to</strong>
-                                </div>
-                                <div class="col-sm-6 pl-0">
-                                    <span>Sample Supplier</span>
-                                    <br>
-                                    <span>Main Outlet</span>
+<section class="content-header">
+    <h1>View Saved Purchase Order</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.purchase_order"><i class="fa fa-dashboard"></i> Purchase Order</a></li>
+        <li class="active">Saved Purchase Order</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="">
+        <div class="row">
+            <form role="form">
+                <div class="col-md-12">
+                    <div class=" box-warning">
+                        <div class="box-body">
+                            <div class="p-15" style="line-height: 30px;">
+                                <strong class="f18">Sample Order</strong>
+                                <br>
+                                <b>Purchase Order No.</b> <small>{{parent_details.po_number}}</small>
+                                <br>
+                                <img src="../images/icon/ic_clear_all_black_24px.svg" style="width: 23px; margin-top: -3px;margin-right: -5px;">
+                                <i style="color: #247571;">{{ po_status }}</i>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4">
+                                            <strong>Supplier</strong>
+                                            <br>
+                                            <strong>Deliver to</strong>
+                                        </div>
+                                        <div class="col-sm-6 pl-0">
+                                            <span>{{parent_details.supplier.name}}</span>
+                                            <br>
+                                            <span>{{parent_details.deliver_to}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 row">
+                                        <div class="col-sm-3">
+                                            <strong>Date Created</strong>
+                                            <br>
+                                            <strong>Delivery Date</strong>
+                                        </div>
+                                        <div class="col-sm-6 pl-0">
+                                            <span>{{datenow}}</span>
+                                            <br>
+                                            <span>{{parseDate(parent_details.delivery_date)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 row">
+                                        <div class="col-sm-12 POdesc">
+                                            <span ng-bind-html="parent_details.shipping_terms">
+                                    </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 row">
-                                <div class="col-sm-3">
-                                    <strong>Date Created</strong>
-                                    <br>
-                                    <strong>Delivery Date</strong>
-                                </div>
-                                <div class="col-sm-6 pl-0">
-                                    <span>January 01, 2017</span>
-                                    <br>
-                                    <span>January 05, 2017</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 row">
-                                <div class="col-sm-12 POdesc">
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                </div>
+                        </div>
+                        <div class="form-group bt-1 table-responsive" style="min-height: 100px;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Stock on Hand</th>
+                                        <th>Qty</th>
+                                        <th>Unit</th>
+                                        <th>Ordered</th>
+                                        <th>Received</th>
+                                        <th>Supply Cost</th>
+                                        <th>Total Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in details">
+                                        <td class="vam">
+                                            {{ item.item_name }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.stock_onhand }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.price | number:2 }}
+                                        </td>
+                                        <td class="vam">
+                                            --
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.quantity}}
+                                        </td>
+                                        <td class="vam">
+                                            <div class="form-group">
+                                                <input ng-keyup="specialVar1[$index] != null ? (specialVar1[$index] <= item.quantity ? updateReceiveItemScope(item,$index) : promptMsg1($index) ) : ''" ng-model="specialVar1[$index]" ng-disabled="po_status == 'Saved'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)" />
+                                            </div>
+                                        </td>
+                                        <td class="vam">
+                                            <div class="form-group">
+                                                <input ng-keyup="updateSupplyCostScope(item,$index)" ng-model="specialVar2[$index]" ng-disabled="po_status == 'Saved'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)"/>
+                                            </div>
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.quantity * item.price | number:2 }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4  fr">
+                    <div class="">
+                        <div class="form-group">
+                            <div class=" bt-1">
+                                <div class="w100p disp-inline-flex">
+                                    <h4>Total</h4><span><h4 class="text-center ">{{ overalltotal | number:2}}</h4></span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group bt-1 table-responsive" style="min-height: 100px;">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>SKU</th>
-                                <th>Stock on Hand</th>
-                                <th>Unit</th>
-                                <th>Oredered</th>
-                                <th>Received</th>
-                                <th>Supply Cost</th>
-                                <th>Total Cost</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in details.products_list">
-                                <td>
-                                    {{ item.item_name }}
-                                </td>
-                                <td>
-                                    {{ item.quantity}}
-                                </td>
-                                <td>
-                                    {{ item.price | number:2 }}
-                                </td>
-                                <td>
-                                    {{ item.total | number:2}}
-                                </td>
-                                <td>
-                                    {{ item.item_name }}
-                                </td>
-                                <td>
-                                    {{ item.quantity}}
-                                </td>
-                                <td>
-                                    {{ item.price | number:2 }}
-                                </td>
-                                <td>
-                                    {{ item.total | number:2}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            </form>
         </div>
-        <div class="col-md-4  fr">
-            <div class="">
-                <div class="form-group">
-                    <div class=" bt-1">
-                        <div class="w100p disp-inline-flex">
-                            <h4>Total</h4><span><h4 class="text-center ">{{ item.total | number:2}}</h4></span></div>
+        
+        <button ng-show="scndpage && (po_status=='Saved' || po_status=='Cancelled')" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ui-sref="main.add_order({selected_id:po_id})" angular-ripple>Edit Purchase Order</button>
+        <button ng-show="scndpage && (po_status=='Saved' || po_status=='Cancelled')" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple ng-click="doExport()">Export CSV</button>
+        <button ng-show="scndpage && (po_status=='Saved' || po_status=='Cancelled')" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Send Order</button>
+
+
+        <button ng-visible="!checkSpecialVar1()" ng-show="scndpage && (po_status=='Sent' || po_status=='Incomplete')" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ng-click="receivePO()" angular-ripple>Received Order</button>
+        <button ng-show="scndpage && (po_status=='Sent' || po_status=='Incomplete')" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Resend Order</button>
+        <button ng-show="scndpage" class="btnflat default-color waves-effect fl ml-15" ng-click="cancelPO()" angular-ripple>Cancel Order</button>
+        
+        <div class="sendcontainer" ng-show="showMessage">
+            <div class="head">Sending..</div>
+            <div class="body">
+                <img src="../images/icon/note-text.svg" style="width: 27px;height: 27px;">
+                <div style="margin-left: 10px;"><b>Purchase Order No.</b> <small>00011</small>
+                    <div class="progress-bar">
+                        <div class="progress">
+                            <div class="progress-shadow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
-</div>
-<button ng-show="scndpage" type="submit" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ng-click="savePO()" angular-ripple>Received Order</button>
-<button ng-show="scndpage" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="doGreeting()">Resend Order</button>
-<button ng-show="scndpage" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple ng-click="doExport()">Export CSV</button>
-<button ng-show="scndpage" class="btnflat default-color waves-effect fl ml-15" ng-click="toggleModal()" angular-ripple>Cancel Order</button>
-<div class="sendcontainer" ng-show="showMessage">
-    <div class="head">Sending..</div>
-    <div class="body">
-        <img src="../images/icon/note-text.svg" style="width: 27px;height: 27px;">
-        <div style="margin-left: 10px;"><b>Purchase Order No.</b> <small>00011</small>
-            <div class="progress-bar">
-                <div class="progress">
-                    <div class="progress-shadow"></div>
+        <div class="sendcontainer" ng-show="showsecondMessage">
+            <div class="head">Sending Complete</div>
+            <div class="body">
+                <img src="../images/icon/note-text.svg" style="width: 25px;height: 25px;">
+                <div style="margin-left: 10px;">
+                    <div class="successlabel"><b>Purchase Order No.</b> <small>00011</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="sendcontainer" ng-show="showExportMessage">
+            <div class="head">Exporting..</div>
+            <div class="body">
+                <img src="./images/icon/note-text.svg" style="width: 25px;height: 25px;">
+                <div style="margin-left: 10px;">
+                    <div class="successlabel">Purchase Order No.<small>00011</small></div>
+                    <div class="pieholder">
+                        <figure class="chart-two animate">
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="circle-background" />
+                                <circle class="circle-foreground" />
+                            </svg>
+                            <figcaption>50%</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sendcontainer" ng-show="showsecondExportMessage">
+            <div class="head">Export Complete</div>
+            <div class="body">
+                <img src="./images/icon/note-text.svg" style="width: 25px;height: 25px;">
+                <div style="margin-left: 10px;">
+                    <div class="successlabel">Purchase Order No.<small>00011</small></div>
+                    <div class="pieholder">
+                        <figure class="chart-two animate">
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="circle-background2" />
+                            </svg>
+                            <figcaption>50%</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="sendcontainer" ng-show="showsecondMessage">
-    <div class="head">Sending Complete</div>
-    <div class="body">
-        <img src="../images/icon/note-text.svg" style="width: 25px;height: 25px;">
-        <div style="margin-left: 10px;">
-            <div class="successlabel"><b>Purchase Order No.</b> <small>00011</small></div>
-        </div>
-    </div>
-</div>
-<div class="sendcontainer" ng-show="showExportMessage">
-    <div class="head">Exporting..</div>
-    <div class="body">
-        <img src="./images/icon/note-text.svg" style="width: 25px;height: 25px;">
-        <div style="margin-left: 10px;">
-            <div class="successlabel">Purchase Order No.<small>00011</small></div>
-            <div class="pieholder">
-                <figure class="chart-two animate">
-                    <svg role="img" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="circle-background" />
-                        <circle class="circle-foreground" />
-                    </svg>
-                    <figcaption>50%</figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="sendcontainer" ng-show="showsecondExportMessage">
-    <div class="head">Export Complete</div>
-    <div class="body">
-        <img src="./images/icon/note-text.svg" style="width: 25px;height: 25px;">
-        <div style="margin-left: 10px;">
-            <div class="successlabel">Purchase Order No.<small>00011</small></div>
-            <div class="pieholder">
-                <figure class="chart-two animate">
-                    <svg role="img" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="circle-background2" />
-                    </svg>
-                    <figcaption>50%</figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
 <style type="text/css">
+
+.vam {
+    vertical-align: middle !important;
+}
+
 .dndPlaceholder {
     background-color: #efefef !important;
     min-height: 10px;
@@ -356,9 +379,11 @@ button .content {
     width: 100%;
     height: 100%;
 }
-.chart-two svg .circle-background2{
+
+.chart-two svg .circle-background2 {
     stroke: #36aaa7;
 }
+
 .chart-one svg .circle-background,
 .chart-one svg .circle-foreground {
     r: 99.5px;
@@ -592,5 +617,4 @@ button .content {
         stroke-dashoffset: 0;
     }
 }
-
 </style>

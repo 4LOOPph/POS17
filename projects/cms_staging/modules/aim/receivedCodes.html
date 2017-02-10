@@ -1,0 +1,190 @@
+<div class="" ng-init="View = true">
+    <div class="box-header">
+        <!-- <div class="pull-left disp-inline-flex ml-20" style="width: 150px;">
+            <datepicker date-format="dd MMM yyyy" selector="form-control">
+                <div class="input-group">
+                    <input class="form-control dateinput" ng-model="today" />
+                </div>
+            </datepicker>
+        </div> -->
+        <div class="pull-left disp-inline-flex">
+            <button ng-show="viewMore" class="btnflat btnflatzz waves-effect fl " ng-click="View = true; viewMore = false;"><img src="./images/icon/ic_keyboard_arrow_left_black_24px.svg"> Back</button>
+        </div>
+        <div class="pull-right disp-inline-flex ">
+            <button ng-click="search=true " class="btnflat waves-effect fl " uib-tooltip="Search "><img src="./images/icon/ic_search_black_24px.svg "></button>
+            <button class="btnflat btnflatzz waves-effect fl " uib-tooltip="Print "><img src="./images/icon/ic_print_black_24px.svg "></button>
+            <button class="btnflat btnflatzz waves-effect fl "><img class="rotate " tabindex="1 " src="./images/icon/refresh.svg "> Refresh</button>
+        </div>
+    </div>
+    <div ng-show="search " class="disp-inline-flex w100p searchnew ">
+        <input type="text " class="asset-search ng-pristine ng-valid ng-empty ng-touched " placeholder="Search for Item Code " ng-model="txtSearch " ng-change="(txtSearch.length < 1)?searchData():0 " style="margin-top: 0px; ">
+        <button class="btnflat waves-effect " uib-tooltip="Close "><img ng-click="search=false " src="./images/icon/ic_close_white_24px.svg "></button>
+    </div>
+    <div ng-show="View">
+        <div class="divider ">Received Orders</div>
+        <div class="box-body table-responsive padding p-0 ">
+            <table class="table table-hover ">
+                <thead>
+                    <th ng-click="nameSort=! nameSort " style="text-align: left !important; ">Order Number
+                        <img ng-show="!nameSort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="nameSort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="codeSort=! codeSort ">Date Received
+                        <img ng-show="!codeSort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="codeSort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="itemQtySort=! itemQtySort ">Amount
+                        <img ng-show="!itemQtySort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="itemQtySort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="codeQtySort=! codeQtySort ">Supplier
+                        <img ng-show="!codeQtySort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="codeQtySort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                </thead>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        <a ng-click="View = false; viewMore = true;">2170989977</a>
+                    </td>
+                    <td class="text-right ">
+                        01 Feb 2017
+                    </td>
+                    <td class="text-right ">
+                        50000.00
+                    </td>
+                    <td class="text-right ">
+                        AIM HO
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        <a ng-click="View = false; viewMore = true;">2170989977</a>
+                    </td>
+                    <td class="text-right ">
+                        01 Feb 2017
+                    </td>
+                    <td class="text-right ">
+                        50000.00
+                    </td>
+                    <td class="text-right ">
+                        AIM HO
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        <a ng-click="View = false; viewMore = true;">2170989977</a>
+                    </td>
+                    <td class="text-right ">
+                        01 Feb 2017
+                    </td>
+                    <td class="text-right ">
+                        50000.00
+                    </td>
+                    <td class="text-right ">
+                        AIM HO
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        <a ng-click="View = false; viewMore = true;">2170989977</a>
+                    </td>
+                    <td class="text-right ">
+                        01 Feb 2017
+                    </td>
+                    <td class="text-right ">
+                        50000.00
+                    </td>
+                    <td class="text-right ">
+                        AIM HO
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-show="viewMore">
+        <div class="divider ">0030912802 <span> (11:24AM)</span></div>
+        <div class="box-body table-responsive padding p-0 ">
+            <table class="table table-hover ">
+                <thead>
+                    <th ng-click="nameSort=! nameSort " style="text-align: left !important; ">Item Name
+                        <img ng-show="!nameSort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="nameSort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="codeSort=! codeSort ">Item Code
+                        <img ng-show="!codeSort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="codeSort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="itemQtySort=! itemQtySort ">Item QTY Received
+                        <img ng-show="!itemQtySort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="itemQtySort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="codeQtySort=! codeQtySort ">Code QTY Received
+                        <img ng-show="!codeQtySort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="codeQtySort " src="./images/icon/sort-ascending.svg ">
+                    </th>
+                    <th ng-click="diffSort=! diffSort ">Difference
+                        <img ng-show="!diffSort " src="./images/icon/sort-descending.svg ">
+                        <img ng-show="diffSort " src="./images/icon/sort-ascending.svg "></th>
+                </thead>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        Liven Coffe
+                    </td>
+                    <td class="text-right ">
+                        MN987J
+                    </td>
+                    <td class="text-right ">
+                        300
+                    </td>
+                    <td class="text-right ">
+                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
+                    </td>
+                    <td class="text-right ">
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        Liven Coffe
+                    </td>
+                    <td class="text-right ">
+                        MN987J
+                    </td>
+                    <td class="text-right ">
+                        300
+                    </td>
+                    <td class="text-right ">
+                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
+                    </td>
+                    <td class="text-right ">
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="text-align: left !important; ">
+                        Liven Coffe
+                    </td>
+                    <td class="text-right ">
+                        MN987J
+                    </td>
+                    <td class="text-right ">
+                        300
+                    </td>
+                    <td class="text-right ">
+                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
+                    </td>
+                    <td class="text-right ">
+                        1
+                    </td>
+                </tr>
+            </table>
+            <div class="footer">
+                <div class="pull-right ">
+                    <button class="btnflat primary-color fr waves-effect mr-10 " angular-ripple="">Save</button>
+                    <button ng-click="" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Edit</button>
+                    <button ng-click="View = true; viewMore = false;" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

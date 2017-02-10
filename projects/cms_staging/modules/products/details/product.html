@@ -1,4 +1,4 @@
-<div class="row" ng-init="stocktrack = false;">
+<div class="row">
     <form role="form" name="productForm" ng-submit="addProduct()">
         <div class="col-md-12">
             <div class="product box-warning">
@@ -19,26 +19,40 @@
                     <div class="form-group col-md-6">
                         <label>Product Name</label>
                         <input type="text" name="required" class="form-control" ng-model="details.item_name" placeholder="Product Name" required />
-                        <!-- <span class="barzz"></span> -->
                     </div>
+                    
+                    <!-- D O N T  R E M O V E  T H I S -->
+
+                    <!-- <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label>Stores :</label>
+                            <ui-select multiple ng-model="_stores.selected" theme="bootstrap" ng-disabled="_stores.disabled" sortable="true" close-on-select="false" style="width: 100%;">
+                                <ui-select-match placeholder="Select store...">{{$item.label}} </ui-select-match>
+                                <ui-select-choices repeat="store in _stores.list | propsFilter: {label: $select.search}">
+                                    <div ng-bind-html="store.label | highlight: $select.search"></div>
+                                    <small>
+                                    address: {{store.address}}
+                                </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div> -->
+
                     <div class="form-group col-md-6">
-                        <label>Store Name</label>
-                        <!-- <div class="btn-group mailbox-controls smfr pl-10">
-                            <div ng-dropdown-multiselect options="storesArr" selected-model="selectedstore" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="producttagsSettings" events="selectEvents"></div>
-                        </div> -->
-                        <div class="btn-group" uib-dropdown dropdown-append-to-body auto-close="outsideClick" style="width: 100%;">
-                            <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 100%;">
-                                Stores <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body" style="width: 37%;">
-                                <li ng-repeat="a in storesArr" role="menuitem">
-                                    <div class="checkbox" >
-                                        <label style="width: 100%;text-align: left;margin-left: 10px;">
-                                            <input type="checkbox" ng-click="addStoreToList(a,$index)"> {{a.label}}
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="form-group">
+                            <label>Store </label>
+                            <ui-select ng-model="_store.selected" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;" title="Choose a person">
+                                <ui-select-match placeholder="Select store...">{{$select.selected.label}}&nbsp&nbsp&nbsp<small>( {{$select.selected.address}} )</small></ui-select-match>
+                                <ui-select-choices repeat="store in _stores.list | propsFilter: {label: $select.search}">
+                                    <div ng-bind-html="store.name | highlight: $select.search"></div>
+                                    <p>
+                                        {{store.label | highlight: $select.search}}
+                                    </p>
+                                    <small>
+                                        address : {{store.address | highlight: $select.search}}
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
                 </div>
@@ -46,46 +60,27 @@
                     <div class="form-group col-md-6">
                         <label>Product Code</label>
                         <input type="text" ng-model="details.product_code" class="form-control" placeholder="Product Code" required />
-                        <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Type</label>
                         <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes" required />
                         </select>
-                        <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Brand</label>
                         <input type="text" class="form-control" ng-model="details.brand" placeholder="Product Brand" required />
-                        <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Price</label>
-                        <!-- <div class="input-group"> -->
-                        <!-- <span class="input-group-addon">$</span> -->
                         <input type="text" class="form-control" ng-model="details.sell_price" required valid-number>
-                        <!-- <span class="barzz"></span> -->
-                        <!-- </div> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Start Date: </label>
-                        <!-- <div class="input-group"> -->
-                        <!-- <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div> -->
                         <input type="text" class="form-control" ng-model="details.start_date" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
-                        <!-- <span class="barzz"></span> -->
-                        <!-- </div> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>End Date: </label>
-                        <!-- <div class="input-group"> -->
-                        <!-- <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div> -->
                         <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
-                        <!-- <span class="barzz"></span> -->
-                        <!-- </div> -->
                     </div>
                     <div class="form-group col-md-6">
                         <label>Product Barcode</label>
@@ -93,18 +88,18 @@
                         <br>
                         <select class="form-control" ng-model="mycode.type" ng-options="option.type as option.code for option in barcodesType" ng-change="changeBarcodeType(mycode.type)" />
                         </select>
-                        <!-- <span class="barzz"></span> -->
                     </div>
                     <div class="form-group col-md-6 text-center">
                         <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" ng-hide="!_store.selected._id">
                         <label>
-                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1" ng-model="checkBoxValue" ng-true-value="true" ng-false-value="false">
-                            <div id="check" class="lab"> Track Stock Level</div>
+                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched" ng-model="stockTrack" ng-true-value="true" ng-false-value="false" ng-change="changestockTrack(stockTrack)">
+                            <div id="check" class="lab"> Track Stock Level </div>
                         </label>
                     </div>
-                    <div class=" form-group col-md-12" ng-show="checkBoxValue">
+                    <!-- for muliple stores <div class=" form-group col-md-12" ng-show="_stores.selected.length > 0"> -->
+                    <div class=" form-group col-md-12" ng-show="_store.selected._id && stockTrack">
                         <div class="well p-0">
                             <div class="box-body  padding p-0">
                                 <table class="table">
@@ -115,61 +110,24 @@
                                     </thead>
                                     <tbody>
                                         <td>
-                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" value="50">
+                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" ng-model="inv.stockTrackQty">
                                         </td>
                                         <td>
-                                            <!-- <select>
-                                                <option>Box</option>
-                                                <option>Boxes</option>
-                                            </select> -->
-                                            <div class=" btn-group mailbox-controls sdropdisp ">
-                                                <div class="input-group">
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                                            Box1
-                                                            <span class="caret"></span>
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><a>Box1</a>
-                                                            </li>
-                                                            <li><a>Box2</a>
-                                                            </li>
-                                                            <li><a>Box3</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <ui-select ng-model="inv.unit.selected" theme="bootstrap" ng-disabled="inv.unit.disabled" style="width: 300px;" title="Choose a unit">
+                                                <ui-select-match placeholder="Select or search a unit in the list...">{{$select.selected.label}}</ui-select-match>
+                                                <ui-select-choices repeat="_unit in inv.unit.list | filter: $select.search">
+                                                    <span ng-bind-html="_unit.label | highlight: $select.search"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
                                         </td>
                                         <td class="text-right">
-                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" value="50">
+                                            <input type="text" class="form-control" name="" style="margin-top: 7px;" ng-model="inv.stockTrackLevel">
                                         </td>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form-group pl-15 pr-15">
-                        <label>Overview</label>
-                        <text-angular ta-toolbar="[
-                            ['h1','h2','h3','h4','h5','h6','p','pre','bold','italics','underline','strikeThrough','ul','ol','undo','redo','clear'],
-                            ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']
-                        ]" ng-model="details.item_overview" required /></text-angular>
-                    </div>
-                    <div class="form-group pl-15 pr-15">
-                        <label>Description</label>
-                        <text-angular ng-model="details.item_description"></text-angular>
-                    </div>
-                    <div class="form-group pl-15 pr-15">
-                        <label>Tags <i class="fa fa-tags"></i></label>
-                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
-                            <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
-                            <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
-                                <div ng-bind-html="tag.tags | highlight: $select.search"></div>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -177,7 +135,7 @@
             <a ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</a>
             <button ng-click="archiveProduct(details.p_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
             <button ng-show="showPublish" ng-click="publishProduct(details.p_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
-            <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>Save Entry</button>
+            <button ng-disabled="loading1" type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>{{saveText}} <span ng-show="loading1 == true"></button>
         </div>
     </form>
 </div>
