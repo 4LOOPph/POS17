@@ -24,7 +24,9 @@
                 <div ng-show="fstpasge" ng-include="'modules/purchase_order/purchaseOrder.html'"></div>
                 <div ng-show="scndpage" ng-include="'modules/purchase_order/purchase_order-view.html'"></div>
                 <div class="box-body  pr-25 pb-20 ">
-                    <button ng-click="openPOUpdateModal(false)" ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Save as Draft</button>
+                    <!-- <button ng-click="openPOUpdateModal(false)" ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Save as Draft</button> -->
+                    <button ng-click="openPOUpdateModal(false)" ng-show="fstpasge" class="btnflat success-color waves-effect ml-10 mr-25 fr" angular-ripple>Save as Draft</button>
+                    <button ng-click="openPOUpdateModal(true)" ng-show="fstpasge" class="btnflat primary-color waves-effect ml-10 mr-25 fr" angular-ripple>Save and Send</button>
                     <button ng-click="cancelPO()" ng-show="fstpasge" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
                 </div>
             </div>
@@ -125,6 +127,33 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     padding: 0px;
     width: 100%;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+li {
+    display: inherit !important;
+    font-weight: bold;
+    width: inherit !important;
+}
+
+h1 {
+    left: 0 !important;
+}
+
+.logo {
+    margin-top: 0 !important;
+}
+
+.breadcrumb>li {
+    display: inline-block !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    padding: 5px;
+    background: #fafafa !important;
+    border-bottom: solid thin #e0e0e0;
+    display: inline-flex !important;
+    width: 100%;
+    height: inherit;
 }
 
 @media screen and (max-width: 800px) {

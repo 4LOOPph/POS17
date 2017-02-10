@@ -43,24 +43,16 @@
                     <img class='pulse' src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/rings.svg'>
                 </div>
                 <div class='login_desc'>
-                    <h3><span>Symphony</span> v1.3.3.0016</h3>
+                    <h3><span>Symphony</span> v1.4.0.0017</h3>
                 </div>
                 <div class='login_inputs'>
                     <form ng-submit="login()">
-                        <!-- <div class="form-group has-feedback">
-                            <input placeholder="Username" type="text" ng-model="user.username" autofocus required>
-                        </div>
-                        <div class="form-group has-feedback" style="margin-bottom: 15px;">
-                            <input placeholder="Password" type="password" ng-model="user.password" required>
-                        </div> -->
                         <div class="form-group has-feedback" style="margin-bottom: 25px;">
                             <input placeholder="Username" type="text" id="user" ng-model="user.username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required>
-                           <!--  <label for="user"> <span>U</span><span>s</span><span>e</span><span>r</span><span>n</span><span>a</span><span>m</span><span>e</span></label> -->
                             <div class="bar"></div>
                         </div>
                         <div class="form-group has-feedback">
                             <input placeholder="Password" type="password" id="pass" ng-model="user.password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
-                            <!-- <label for="pass"> <span>P</span><span>a</span><span>s</span><span>s</span><span>w</span><span>o</span><span>r</span><span>d</span></label> -->
                             <div class="bar"></div>
                         </div>
                         <div class="text-center">
@@ -137,101 +129,6 @@ label span {
     animation: pop .5s 1.6s forwards;
 }
 
-/*label span:nth-child(1) {
-    transition-delay: 0.04s;
-    -webkit-animation: pop .5s 1.6s forwards;
-    animation: pop .5s 1.6s forwards;
-}
-
-label span:nth-child(2) {
-    transition-delay: 0.08s;
-}
-
-label span:nth-child(3) {
-    transition-delay: 0.12s;
-}
-
-label span:nth-child(4) {
-    transition-delay: 0.16s;
-}
-
-label span:nth-child(5) {
-    transition-delay: 0.2s;
-}
-
-label span:nth-child(6) {
-    transition-delay: 0.24s;
-}
-
-label span:nth-child(7) {
-    transition-delay: 0.28s;
-}
-
-label span:nth-child(8) {
-    transition-delay: 0.32s;
-}
-
-label span:nth-child(9) {
-    transition-delay: 0.36s;
-}
-
-label span:nth-child(10) {
-    transition-delay: 0.4s;
-}
-
-label span:nth-child(11) {
-    transition-delay: 0.44s;
-}
-
-label span:nth-child(12) {
-    transition-delay: 0.48s;
-}
-
-label span:nth-child(13) {
-    transition-delay: 0.52s;
-}
-
-label span:nth-child(14) {
-    transition-delay: 0.56s;
-}
-
-label span:nth-child(15) {
-    transition-delay: 0.6s;
-}
-
-label span:nth-child(16) {
-    transition-delay: 0.64s;
-}
-
-label span:nth-child(17) {
-    transition-delay: 0.68s;
-}
-
-label span:nth-child(18) {
-    transition-delay: 0.72s;
-}
-
-label span:nth-child(19) {
-    transition-delay: 0.76s;
-}
-
-label span:nth-child(20) {
-    transition-delay: 0.8s;
-}*/
-
-
-/*input {
-    display: block;
-    background: transparent;
-    width: 100%;
-    padding-top: 40px;
-    border: none;
-    outline: none;
-    color: #673AB7;
-    font-size: 40px;
-    transition: .3s ease;
-}*/
-
 input:focus ~ label,
 input:valid ~ label {
     left: -1px;
@@ -257,19 +154,6 @@ input:valid ~ .close {
     -webkit-animation: pop .5s 1.6s forwards;
     animation: pop .5s 1.6s forwards;
 }
-/*
-.close {
-    background: url(http://goo.gl/dPuIKT) center/contain no-repeat;
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-110%);
-    transition: .3s;
-}*/
 
 .bar {
     background: grey;
