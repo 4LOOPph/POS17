@@ -30,15 +30,15 @@
                     <li angular-ripple>
                         <a ui-sref="main.settings-producttype">Product Type</a>
                     </li>
-                    <li angular-ripple>
+                    <!-- <li angular-ripple>
                         <a href="">Product Tags</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li angular-ripple ng-show="hideOther">
                 <a ui-sref="main.products-bundles"><img src="./images/icon/arrange-bring-forward.svg"> Product Bundles</a>
             </li>
-            <li angular-ripple ng-show="hideOther">
+            <!-- <li angular-ripple ng-show="hideOther">
                 <a ui-sref="main.articles"><img src="./images/icon/file.svg"> Articles</a>
             </li>
             <li angular-ripple ng-show="hideOther">
@@ -54,10 +54,10 @@
                     <li angular-ripple><a ui-sref="main.pricebooktype">Price Book Type</a></li>
                     <li angular-ripple><a ui-sref="main.pricebookassoctype">Price Book Assoc.. Type</a></li>
                 </ul>
-            </li>
-            <li angular-ripple ng-show="hideOther">
+            </li> -->
+            <!-- <li angular-ripple ng-show="hideOther">
                 <a href=""><img src="./images/icon/book-variant.svg"> Sales Ledger</a>
-            </li>
+            </li> -->
             <li class="treeview" ng-show="hideOther">
                 <a angular-ripple>
                     <img src="./images/icon/view-module.svg"> <span>Inventory</span>
@@ -65,12 +65,12 @@
                 </a>
                 <ul class="treeview-menu">
                     <li angular-ripple><a ui-sref="main.purchase_order">Purchase Order</a></li>
-                    <li angular-ripple><a ui-sref="main.received_order">Receive Order</a></li>
+                    <!-- <li angular-ripple><a ui-sref="main.received_order">Receive Order</a></li>
                     <li angular-ripple><a ui-sref="main.return_order">Return Order</a></li>
-                    <li angular-ripple><a ui-sref="main.stock">Stocks</a></li>
+                    <li angular-ripple><a ui-sref="main.stock">Stocks</a></li> -->
                 </ul>
             </li>
-            <li class="treeview" ng-show="hideOther">
+            <!-- <li class="treeview" ng-show="hideOther">
                 <a angular-ripple>
                     <img src="./images/icon/note-outline.svg">
                     <span>Reports / Insights</span>
@@ -96,7 +96,7 @@
                     <li angular-ripple><a href="#">Suspended Sales</a></li>
                     <li angular-ripple><a href="#">Taxes</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="header" ng-show="hideOther">SETTINGS</li>
             <li class="treeview" ng-show="hideOther">
                 <a angular-ripple>
@@ -109,21 +109,21 @@
                             <span>Attributes</span>
                         </a>
                     </li>
-                    <li angular-ripple>
+                    <!-- <li angular-ripple>
                         <a ui-sref="main.settings-banks">
                             <span>Banks</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li angular-ripple>
                         <a ui-sref="main.settings-categories">
                             <span>Category</span>
                         </a>
                     </li>
-                    <li angular-ripple>
+                    <!-- <li angular-ripple>
                         <a ui-sref="main.settings-currencies">
                             <span>Currency</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li angular-ripple>
                         <a ui-sref="main.settings-stores">
                             <span>Stores</span>
@@ -133,11 +133,11 @@
                         <a ui-sref="main.settings-suppliers">
                             <span>Suppliers</span></a>
                     </li>
-                    <li angular-ripple>
+                    <!-- <li angular-ripple>
                         <a href="">
                             <span>Variations</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li class="treeview" ng-show="hideOther">
@@ -172,28 +172,28 @@
                 </a>
             </li>
             <li class="header" ng-show="hideOther">OTHERS</li>
-            <li angular-ripple ng-show="hideOther">
+            <!-- <li angular-ripple ng-show="hideOther">
                 <a ui-sref="main.calendars">
                     <img src="./images/icon/calendar-text.svg">
                     <span>Appointment/Booking</span>
                     <small class="label pull-right bg-red">3</small>
                 </a>
+            </li> -->
+            <li angular-ripple ng-class="{'active': active === true}" ng-click="active = !active">
+                <a ui-sref="main.aim-tab" ng-click="hideOther = false"><img src="./images/icon/feather.svg"> AIM Item Code Inventory</a>
             </li>
-            <li angular-ripple ng-show="hideOther">
+            <!-- <li angular-ripple ng-show="hideOther">
                 <a ui-sref="main.mailbox">
                     <img src="./images/icon/ic_email_white_24px.svg">
                     <span>Mailbox</span>
                     <small class="label pull-right bg-yellow">12</small>
                 </a>
-            </li>
+            </li> -->
             <li class="header" ng-show="hideOther">SUPPORT</li>
             <!-- <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
-            <li angular-ripple ng-show="hideOther">
+            <!-- <li angular-ripple ng-show="hideOther">
                 <a href=""><img src="./images/icon/headset.svg"> Customer Service</a>
-            </li>
-            <li angular-ripple ng-class="{'active': active === true}" ng-click="active = !active">
-                <a ui-sref="main.aim-tab" ng-click="hideOther = false"><img src="./images/icon/feather.svg"> AIM Item Code Inventory</a>
-            </li>
+            </li> -->
             <li class="header"></li>
             <li class="header"></li>
             <li class="header"></li>
