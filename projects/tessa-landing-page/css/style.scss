@@ -1,0 +1,123 @@
+//MIXINS AND IMPORTS
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
+
+@mixin linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+@mixin transform($transform) {
+	   -moz-transform: $transform;
+	     -o-transform: $transform;
+	    -ms-transform: $transform;
+	-webkit-transform: $transform;
+          transform: $transform;
+}
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+@mixin border-radius($border-radius) {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+@mixin box-shadow($type, $top, $left, $blur, $color) {
+  -webkit-box-shadow:	$type $top $left $blur $color;
+  -moz-box-shadow:		$type $top $left $blur $color;
+  box-shadow:					$type $top $left $blur $color;
+}
+
+$warning: #da0000;
+$primary_00: #0055a5;
+$green: #0a9a76;
+
+h2 {
+  font-weight: 300;
+  color: #808080;
+}
+
+//GLOBALS
+body {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  h3.downloadInfo {
+    margin: 0;
+    padding-bottom: 6px;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    //text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+  .contentArea {
+    margin-top: 100px;
+    position: relative;
+  }
+  p.logoArea {
+    margin: 0;
+    margin-left: -10px;
+    //width: 300px;
+  }
+  .btnArea {
+    a.btn {
+      display: inline-block;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 1px;
+      font-size: 0.9em;
+      text-align: center;
+      line-height: 12px;
+      letter-spacing: auto;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      &:hover, &:active, &:focus {
+        color: white;
+        opacity: 0.81;
+      }
+    }
+    a.btnMac {
+      color: #fff;
+      background-color: #273036;
+      border-color: #273036;
+    }
+    a.btnWin {
+      color: #fff;
+      background-color: #0078d7;
+      border-color: #0078d7;
+    }
+    a.btnAndroid {
+      color: #fff;
+      background-color: #ef5c34;
+      border-color: #ef5c34;
+    }
+  }
+}
+
+//MEDIA
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 767px) {
+  body p.logoArea {
+    text-align: center;
+  }
+  body h2, body h3.downloadInfo {
+      text-align: center;
+  }
+}
+@media screen and (max-height: 800px) {
+}
+@media screen and (max-height: 539px) {
+}
+@media screen and (max-width: 449px) {
+}
