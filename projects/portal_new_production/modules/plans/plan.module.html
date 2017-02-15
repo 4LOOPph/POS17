@@ -1,0 +1,46 @@
+<div class="row">
+    <section class="col-lg-12">
+        <div class="box">
+            <div class="box-header">
+                <!-- tools box -->
+                <div class="pull-left">
+                    <button class="btn btn-sm btn-primary" ng-disabled="!deleteSomeData" ng-click="savePlanModules()">Save Selected</button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-hover footable" data-page-size="20">
+                    <thead>
+                        <tr>
+                            <th data-sort-ignore="true">
+                                <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                            </th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th data-type="numeric" data-sort-initial="true">Module Sort</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="module in modules">
+                            <td>
+                                <input type="checkbox" ng-model="module.selected" ng-change="checkDataChanges(module)">
+                            </td>
+                            <td>{{module.name}}</td>
+                            <td>{{module.description}}</td>
+                            <td>{{module.sortorder}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="6" align="center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+</div>

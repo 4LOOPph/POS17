@@ -54,6 +54,10 @@ body {
     font-weight: bold;
     color: $primary_00;
   }
+  h3 {
+    font-size: 0.81em;
+    color: $warning;
+  }
   .bgFixed {
     position: fixed;
     top: 50%;

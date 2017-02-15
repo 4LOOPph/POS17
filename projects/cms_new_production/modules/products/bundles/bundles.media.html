@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class=" box-warning">
+            <div class="box-header">
+                <div class="pull-left disp-inline-flex">
+                    <button ng-click="openUploader()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple>Upload Image</button>
+                    <button ng-click="deleteAllMedia()" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Delete All</button>
+                </div>
+            </div>
+            <div class="box-body bundimg">
+                <div class="row">
+                    <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="box">
+                            <div class="box-body text-center">
+                                <button class="actbuttonassets btn-box-tool pull-right" ng-click="deleteSelected(files)"><img src="./images/icon/ic_delete_black_24px.svg"></button>
+                                <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" style="width: 100%;" height="150px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

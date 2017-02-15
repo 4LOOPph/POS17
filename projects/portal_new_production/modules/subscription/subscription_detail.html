@@ -1,0 +1,120 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Subscription  
+        <small>Details</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li><a ui-sref="main.subscriptionrequest">Subscription</a>
+        </li>
+        <li class="active">Subscription Detail</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="glyphicon glyphicon-info-sign"></i>Account Information
+                </h2>
+            </div>
+        </div>
+        <form role="form" class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <dl class="dl-horizontal">
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Status: </label>
+                            <div class="col-sm-8">
+                                <span class="label label-primary" ng-show="details.isExisting !== 1">New Account</span>
+                                <span class="label label-success" ng-show="details.isExisting == 1">Existing Account</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Subscription Plan: </label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.plans.name" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Company Name: </label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.company_name" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">First Name:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.firstname" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Last Name:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.lastname" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Email:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.email" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Address:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.address1" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Address:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.address2" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">Country:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.country" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">State:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.state" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">City:</label>
+                            <div class="col-sm-8">
+                                <input disabled class="form-control" ng-model="details.city" />
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label ng-hide=" details.is_approved == 1 && details.deny_date == null" class="col-sm-4 control-label">No. of Devices :</label>
+                            <div class="col-sm-8">
+                                <input ng-hide=" details.is_approved == 1 && details.deny_date == null" class="form-control" placeholder="total" ng-model="details.tot_qty" />
+                            </div>
+                        </div>
+                    </dl>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row no-print">
+                <div class="col-xs-12">
+                    <button ng-hide=" details.is_approved == 1 " class="btn btn-sm btn-primary " ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
+                    <button ng-hide="  details.deny_date !=null " class="btn btn-sm btn-danger" ng-click="denySubscription(details.sr_id)">Denied</button>
+                </div>
+            </div>
+        </form>
+        <!--    </div>
+        </div> -->
+        <!-- <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
+        <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
+        <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
+        <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div> -->
+    </div>
+</section>

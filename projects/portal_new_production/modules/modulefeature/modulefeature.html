@@ -1,0 +1,23 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Modules & Features
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active"> Modules & Features</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <div data-title="<i class='fa fa-home'></i> Modules" bs-pane>
+            <ng-include src="'./modules/modulefeature/module.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Features" bs-pane>
+            <ng-include src="'./modules/modulefeature/feature.html'" scope="" onload=""></ng-include>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

@@ -1,0 +1,96 @@
+<section class="content-header">
+    <h1> User Logs</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="main.settings-app"><i class="fa fa-settings"></i> Application Settings</a></li>
+        <li class="active">User Logs</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content" ng-controller="appSettingsUserLogController">
+    <div class="row" role="search-row">
+        <div class="col-md-12 col-xs-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">User Logs</h3>
+                    <br>
+                    <br>
+                    <div class="pull-left">
+                        <form class="form-inline">
+                            <div class="form-group" style="margin-left: 10px;">
+                                <label>From</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="details.dateFrom" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker />
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                                -
+                                <label>To</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="details.dateEnd" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker/>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-flat btn-info btn-xs" uib-tooltip="Filter Logs" ng-click="searchData()"><span class="glyphicon glyphicon-filter"></span></a>
+                            </div>
+                            <div class="form-group">
+                                <a ng-click="searchData()" class="btn btn-flat btn-sm btn-success">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </a>
+                                <a class="btn btn-flat btn-sm btn-success">
+                                    <i class="fa fa-print"></i> Print
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pull-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearchUser" ng-change="(txtSearchUser.length < 1)?searchData():0">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body table-responsive padding">
+                    <table class="table table-hover" ng-table="usersTable">
+                        <tr ng-repeat="row in $data  track by $index">
+                            <td class="text-center" data-title="'Log Date'">
+                                {{row.created_at}}
+                            </td>
+                            <td class="text-center" data-title="'Username'">
+                                {{row.userprofile.username}}
+                            </td>
+                            <td class="text-center" data-title="'Module'">
+                                {{row.module}}
+                            </td>
+                            <td class="text-center" data-title="'IP Address'">
+                                {{row.ip_address}}
+                            </td>
+                            <td class="text-center" data-title="'Action'">
+                                {{row.action}}
+                            </td>
+                            <td class="text-center" data-title="'Parameters'">
+                                {{row.parameters}}
+                            </td>
+                            <td class="text-center" data-title="'Details'">
+                                {{row.action_details}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

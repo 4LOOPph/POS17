@@ -74,6 +74,7 @@ jQuery(document).ready(function($) {
         return isExpired;
     }
 
+    //SYMPHONY
     var access_code = '356959848506224'; // Symphony Access Key (Sushi Train)
     var access_key = 'r55V0pP3OWwtkmepHRmQ5hfPpbCwF3fU'; // Symphony Access Key (Sushi Train)
     var username = 'sushi lastname';
@@ -231,51 +232,71 @@ jQuery(document).ready(function($) {
         $('.btnSubmitForm').fadeIn("fast");
     });
 
+
     //Form Submit, note there is no submit button on this layout (modifications may be required)
     $btnSubmitForm = $(".btnSubmitForm");
     $btnSubmitForm.on("click", function() {
-        console.log('$btnSubmitForm:click ');
+
+        //RECAPTCHA
+        //var recaptcha = grecaptcha.getResponse();
+
         //Validate input
         var i = 0;
+        //alert(recaptcha);
         if (!$("i.error").is(":visible")) {
-            $('form').find('input').each(function() {
+            $("input.regoIn").each(function() {
                 if ($(this).prop('required') && $(this).val() === "") {
                     $(this).focus();
+                    $(this).next("i.error").removeClass("hide");
+                    i = 1;
                     return false;
                 } else {
-                    $.ajax({
-                        url: "http://54.206.38.223:5002/api/1.0/persons",
-                        type: "POST",
-                        headers: {
-                            accesskey: access_key,
-                            Authorization: 'Bearer ' + sessionStorage.getItem('sm.token')
-                        },
-                        data: {
-                            lastname: $('#inLName').val(),
-                            firstname: $('#inFName').val(),
-                            middlename: $('#inMInitial').val(),
-                            email: $('#inEmail').val(),
-                            mobile: $('#inContactNum').val(),
-                            per_type_id: 2,
-                            company_name: $('#inCName').val(),
-                            captcha: grecaptcha.getResponse()
-                        },
-                        cache: false,
-                        success: function(data) {
-                            if (data.statusCode == 200 && data.response.success) {
-                                //Success in form submission
-                                $(".successArea").fadeIn("fast");
-                                $('.btnSubmitForm').fadeout("fast");
-                                alert(grecaptcha.getResponse());
-                            }
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                          //alert('Unexpected server error');
-                          alert(grecaptcha.getResponse());
-                        }
-                    });
+                    i = 0;
                 }
             });
+            if ( i === 0 /*&& recaptcha.length*/ ) {
+              $(".btnSubmitForm span").remove();
+              $(".btnSubmitForm").append('<img src="assets/loaderCustom.gif" />');
+              //$(".btnSubmitForm").append('<span>SUBMIT</span>');
+              $.ajax({
+                  url: "http://54.206.38.223:5002/api/1.0/persons",
+                  type: "POST",
+                  headers: {
+                      accesskey: access_key,
+                      Authorization: 'Bearer ' + sessionStorage.getItem('sm.token')
+                  },
+                  data: {
+                      lastname: $('#inLName').val(),
+                      firstname: $('#inFName').val(),
+                      middlename: $('#inMInitial').val(),
+                      email: $('#inEmail').val(),
+                      mobile: $('#inContactNum').val(),
+                      per_type_id: 2,
+                      company_name: $('#inCName').val()
+                      //captcha: recaptcha
+                  },
+                  cache: false,
+                  success: function(data) {
+                      if (data.statusCode == 200 && data.response.success) {
+                          //Success in form submission
+                          $(".successArea").fadeIn("fast");
+                          $(".btnSubmitForm").fadeOut("fast");
+                      }
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    //alert('Unexpected server error');
+                    $(".successArea").fadeIn("fast");
+                    $(".regoSuccess").addClass("hide");
+                    $(".regoErr").removeClass("hide");
+                    $(".btnSubmitForm img").remove();
+                    //$(".btnSubmitForm").append('<img src="assets/loaderCustom.gif" />');
+                    $(".btnSubmitForm").append('<span>SUBMIT</span>');
+                    //alert(grecaptcha.getResponse());
+                  }
+              });
+            } /*else if ( !recaptcha.length ) {
+                alert('Answer the Recaptcha.');
+            }*/
         } else {
             $("form").find("i.error:visible").prev("input").focus();
         }

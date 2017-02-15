@@ -1,0 +1,862 @@
+<section class="content-header">
+    <h1>
+        User Profile
+      </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User profile</li>
+    </ol>
+</section>
+<!-- <section class="content">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User profile picture">
+                    <h3 class="profile-username text-center" data-ng-bind="profile.EmpName"></h3>
+                    <p class="text-muted text-center" data-ng-bind="profile.profile.email"></p>
+                    <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block"><b>Update Profile</b></a>
+                </div>
+            </div>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">About Me</h3>
+                </div>
+                <div class="box-body">
+                    <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                    <p class="text-muted">
+                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+                    <p class="text-muted" data-ng-bind="profile.profile.address"></p>
+                    <hr>
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="nav-tabs-custom" bs-tabs>
+                <div data-title="Activity" bs-pane>
+                    <div class="post">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="user image">
+                            <span class="username">
+                                  <a href="">Jonathan Burke Jr.</a>
+                                  <a href="" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                                </span>
+                            <span class="description">Shared publicly - 7:30 PM today</span>
+                        </div>
+                        <p>
+                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                        </p>
+                        <ul class="list-inline">
+                            <li><a href="" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                            <li><a href="" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                            </li>
+                            <li class="pull-right">
+                                <a href="" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
+                        </ul>
+                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <div class="post clearfix">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User Image">
+                            <span class="username">
+                          <a href="">Sarah Ross</a>
+                          <a href="" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                            <span class="description">Sent you a message - 3 days ago</span>
+                        </div>
+                        <p>
+                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                        </p>
+                        <form class="form-horizontal">
+                            <div class="form-group margin-bottom-none">
+                                <div class="col-sm-9">
+                                    <input class="form-control input-sm" placeholder="Response">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div data-title="Timeline" bs-pane>
+                    <div class="tab-pane" id="timeline">
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                                <span class="bg-red">
+                          10 Feb. 2014
+                        </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope bg-blue"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                    <h3 class="timeline-header"><a href="">Support Team</a> sent you an email</h3>
+                                    <div class="timeline-body">
+                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...
+                                    </div>
+                                    <div class="timeline-footer">
+                                        <a class="btn btn-primary btn-xs">Read more</a>
+                                        <a class="btn btn-danger btn-xs">Delete</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-user bg-aqua"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                    <h3 class="timeline-header no-border"><a href="">Sarah Young</a> accepted your friend request
+                      </h3>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-comments bg-yellow"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+                                    <h3 class="timeline-header"><a href="">Jay White</a> commented on your post</h3>
+                                    <div class="timeline-body">
+                                        Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+                                    </div>
+                                    <div class="timeline-footer">
+                                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="time-label">
+                                <span class="bg-green">
+                          3 Jan. 2014
+                        </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-camera bg-purple"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+                                    <h3 class="timeline-header"><a href="">Mina Lee</a> uploaded new photos</h3>
+                                    <div class="timeline-body">
+                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
+                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
+                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
+                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o bg-gray"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-title="Settings" bs-pane>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> I agree to the <a href="">terms and conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<section class="content forprof" ng-init="basicInfo = true;">
+    <div class="col-sm-12 p-0">
+        <div class="">
+            <div class="col-sm-3 p-0">
+                <div class="box">
+                    <div class="panel-body autoscroll profholder">
+                        <div>
+                            <img class="profilepic" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User profile picture">
+                            <!-- <img src="./images/avatar3.png" class="profilepic"> -->
+                            <div style="width: 100%;height: 0;">
+                                <button class="uploadbutton"><img class="img" src="./images/icon/ic_camera_alt_black_24px.svg" style="width: 80%;margin-top: 2px;"></button>
+                            </div>
+                            <div class="profpic">
+                                {{profile.EmpName}}
+                                <br>
+                                <small>{{activeSub}}</small>
+                                <br>
+                                <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block" href="#/main/settings/profile/details/" angular-ripple><b>Update Profile</b></a>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <h4>Social Accounts</h4>
+                            <br>
+                            <div>
+                                <div>
+                                    <img src="./images/icon/email.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.profile.email"></small>
+                                </div>
+                                <br>
+                                <div>
+                                    <img src="./images/icon/facebook-box.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.EmpName"></small>
+                                </div>
+                                <br>
+                                <div>
+                                    <img src="./images/icon/twitter.svg" style="margin-right: 10px;"> <small>@jane (twitter.com/jane)</small>
+                                </div>
+                                <br>
+                                <div>
+                                    <img src="./images/icon/map-marker.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.profile.address"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 p-0" style="padding-left: 0px;border-left: thin solid rgba(212, 211, 211, 0.15);">
+                <div class="box" style="margin-bottom: 0px;">
+                    <div class="panel-body" style="padding: 0;">
+                        <div class="tab-wrap">
+                            <input type="radio" name="tabs" id="tab1" checked>
+                            <div class="tab-label-content" id="tab1-content">
+                                <label class="tab-label-header" for="tab1" angular-ripple>Basic Information</label>
+                                <div class="tab-content">
+                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <img src="./images/icon/ic_more_vert_black_24px.svg" style="width: 21px;"> 
+                                    </span>
+                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
+                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                        </li>
+                                    </ul>
+                                    </span>
+                                    <span style="display: inline-flex;"><img src="./images/icon/ic_person_black_24px.svg" style="margin-right: 10px;"><h4>Basic Information</h4></span>
+                                    <ng-include src="'./modules/profile/basicinfo.html'" ng-show="basicInfo"></ng-include>
+                                    <ng-include src="'./modules/profile/basicinfoedit.html'" ng-show="basicinfoEdit"></ng-include>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab2">
+                            <div class="tab-label-content" id="tab2-content">
+                                <label class="tab-label-header" for="tab2" angular-ripple>Contact Information</label>
+                                <div class="tab-content">
+                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <img src="./images/icon/ic_more_vert_black_24px.svg" style="width: 21px;"> 
+                                    </span>
+                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
+                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                        </li>
+                                    </ul>
+                                    </span>
+                                    <span style="display: inline-flex;"><img src="./images/icon/phone.svg" style="margin-right: 10px;"><h4>Contact Information</h4></span>
+                                    <ng-include src="'./modules/profile/contactinfo.html'" ng-show="basicInfo"></ng-include>
+                                    <ng-include src="'./modules/profile/contactinfoEdit.html'" ng-show="basicinfoEdit"></ng-include>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab3">
+                            <div class="tab-label-content" id="tab3-content">
+                                <label class="tab-label-header" for="tab3" angular-ripple>Summary</label>
+                                <div class="tab-content">
+                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <img src="./images/icon/ic_more_vert_black_24px.svg" style="width: 21px;"> 
+                                    </span>
+                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
+                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                        </li>
+                                    </ul>
+                                    </span>
+                                    <span style="display: inline-flex;"><img src="./images/icon/ic_equalizer_black_24px.svg" style="margin-right: 10px;"><h4>Summary</h4></span>
+                                    <ng-include src="'./modules/profile/summary.html'" ng-show="basicInfo"></ng-include>
+                                    <ng-include src="'./modules/profile/summaryedit.html'" ng-show="basicinfoEdit"></ng-include>
+                                </div>
+                            </div>
+                            <input type="radio" name="tabs" id="tab4">
+                            <div class="tab-label-content" id="tab4-content">
+                                <label class="tab-label-header" for="tab4" angular-ripple>Profile Settings</label>
+                                <div class="tab-content">
+                                    <span style="display: inline-flex;"><img src="./images/icon/account-settings-variant.svg" style="margin-right: 10px;"><h4>Profile Settings</h4></span>
+                                    <ng-include src="'./modules/profile/settings.html'"></ng-include>
+                                </div>
+                            </div>
+                            <div class="slide"></div>
+                        </div>
+                        <a class="follow"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- targeted style -->
+<!-- targeted style -->
+<!-- targeted style -->
+<!-- targeted style -->
+<!-- targeted style -->
+<style type="text/css">
+.tab-wrap {
+    /* width: 50%;*/
+    /* margin-left: 20%; */
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 0px;
+    box-shadow: inset 0 -2px 0 0 #e2e2e2;
+}
+
+input[type="radio"][name="tabs"] {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content label {
+    color: rgb(72, 72, 72);
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+    display: block;
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+    left: calc((100% / 4) * 0);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+    left: calc((100% / 4) * 1);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+    left: calc((100% / 4) * 2);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+    left: calc((100% / 4) * 3);
+}
+
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+    left: 0;
+}
+
+.tab-label-header {
+    cursor: pointer;
+    color: #777777;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 60px;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.slide {
+    background: #247571;
+    width: calc(100% / 4);
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 6px);
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+}
+
+.tab-label-content {
+    width: 100%;
+}
+
+.tab-label-content .tab-content {
+    position: absolute;
+    /* top: 100px; */
+    left: 16px;
+    line-height: 130%;
+    display: none;
+    margin-left: -16px;
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    height: 475px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        padding: 40px 0 90px 10%;
+    }
+    .tab-wrap {
+        width: 100%;
+    }
+}
+
+.modlabel {
+    height: 0;
+    text-align: left !important;
+    padding: 0;
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-transform: none;
+    justify-content: flex-start !important;
+    padding-left: 35px;
+    /*font-size: 14px;*/
+    /* font-family: roboto; */
+    font-size: 13px;
+    font-weight: 700;
+    color: #5E5E5E !important;
+}
+
+input {
+    font-size: 14px;
+    display: block;
+    width: 300px;
+    border: none;
+    margin-top: -1px;
+    border-bottom: 1px solid #ababab;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/* LABEL ======================================= */
+
+
+/*label                {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}*/
+
+
+/* active state */
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #262b33;
+}
+
+
+/* BOTTOM BARS ================================= */
+
+.barzz {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.barzz:before,
+.barzz:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: #262b33;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.barzz:before {
+    left: 50%;
+}
+
+.barzz:after {
+    right: 50%;
+}
+
+textarea:focus ~ label,
+textarea:valid ~ label {
+    font-size: 0.75em;
+    color: #8e44ad;
+    top: -2.25rem;
+    -webkit-transition: all 0.125s ease;
+    transition: all 0.125s ease;
+}
+
+.styled-input {
+    float: left;
+    width: 33.3333%;
+    /* margin: 2rem 0 1rem;*/
+    position: relative;
+}
+
+.styled-input label {
+    color: #999;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+.styled-input.wide {
+    width: 100%;
+    border-bottom: thin solid #ababab;
+}
+
+textarea {
+    padding: 1rem 1rem;
+    border: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+textarea ~ span {
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #218ac6;
+    position: absolute;
+    margin-bottom: -3px;
+    left: 0;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.9s ease all;
+}
+
+textarea:focus {
+    outline: 0;
+}
+
+textarea:focus ~ span {
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
+}
+
+textarea {
+    width: 100%;
+    min-height: 10em;
+    line-height: 1.8;
+}
+
+
+/* active state */
+
+input:focus ~ .barzz:before,
+input:focus ~ .barzz:after {
+    width: 50%;
+}
+
+
+/* HIGHLIGHTER ================================== */
+
+.highlighten {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active state */
+
+input:focus ~ .highlighten {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+.btn.btn-primary {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .16), 0 2px 10px rgba(0, 0, 0, .12);
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary.hover {
+    background-color: #2196F3;
+}
+
+.btn.btn-default:hover,
+.btn.btn-default:active,
+.btn.btn-default.hover {
+    background-color: #ffffff!important;
+    color: #000;
+}
+
+.btnholder {
+    width: 100%;
+    bottom: 150px;
+    position: absolute;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 5px 15px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn.btn-default {
+    background-color: #ffffff !important;
+    color: #666;
+    border-color: #fff;
+    border-bottom-color: #ffffff;
+    box-shadow: none;
+}
+
+.lbl {
+    position: relative;
+    display: block;
+    height: 20px;
+    width: 44px;
+    background: #898989;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lbl:after {
+    position: absolute;
+    left: -2px;
+    top: -3px;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 100px;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    content: '';
+    transition: all 0.3s ease;
+}
+
+.lbl:active:after {
+    transform: scale(1.15, 0.85);
+}
+
+.cbx:checked ~ label {
+    background: rgba(23, 139, 181, 0.42);
+}
+
+.cbx:checked ~ label:after {
+    left: 20px;
+    background: #1d8ec1;
+}
+
+.cbx:disabled ~ label {
+    background: #d5d5d5;
+    pointer-events: none;
+}
+
+.cbx:disabled ~ label:after {
+    background: #bcbdbc;
+}
+
+
+/*.cntr {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+
+.press {
+    margin-bottom: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ANIMATIONS ================ */
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+button {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    /* -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
+    /* border-radius: 2px;*/
+}
+
+.ripple {
+    position: absolute;
+    background: rgba(0, 0, 0, .25);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.ripple.show {
+    -webkit-animation: ripple .5s ease-out;
+    animation: ripple .5s ease-out;
+}
+
+@-webkit-keyframes ripple {
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+<!-- <script type="text/javascript">
+var addRippleEffect = function(e) {
+
+    var target = e.target;
+
+    if (target.tagName.toLowerCase() !== 'button') return false;
+
+    var rect = target.getBoundingClientRect();
+
+    var ripple = target.querySelector('.ripple');
+
+    if (!ripple) {
+
+        ripple = document.createElement('span');
+
+        ripple.className = 'ripple';
+
+        ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+
+        target.appendChild(ripple);
+
+    }
+
+    ripple.classList.remove('show');
+
+    var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+
+    var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+
+    ripple.style.top = top + 'px';
+
+    ripple.style.left = left + 'px';
+
+    ripple.classList.add('show');
+
+    return false;
+
+}
+
+document.addEventListener('click', addRippleEffect, false);
+</script> -->

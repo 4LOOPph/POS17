@@ -1,0 +1,68 @@
+<div class="row" >
+    <section class="col-lg-12">
+        <div class="box">
+            <div class="box-header">
+                <!-- tools box -->
+                <div class="pull-left">
+                    <button class="btn btn-sm btn-primary" ng-disabled="!deleteSomeData1" ng-click="savePlanFeatures()">Save Selected</button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-hover footable" data-page-size="15">
+                    <thead>
+                        <tr>
+                            <th data-sort-ignore="true">
+                                <input type="checkbox" ng-model="selectDeselectAll1" ng-change="changeSelectDeselectAll1()">
+                            </th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Module</th>
+                            <th>Node</th>
+                            <th>Inactive</th>
+                            <th>Default Read</th>
+                            <th>Default Write</th>
+                            <th>Default Delete</th>
+                            <th>Default Print</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="feature in features">
+                            <td>
+                                <input type="checkbox" ng-model="feature.selected" ng-change="checkDataChanges1(feature)">
+                            </td>
+                            <td>{{feature.item_name}}</td>
+                            <td>{{feature.item_description}}</td>
+                            <td>{{feature.modulename}}</td>
+                            <td>{{feature.nodes}}</td>
+                            <td>
+                                <input type="checkbox" ng-model="feature.inactive" ng-disabled="true">
+                            </td>
+                            <td>
+                                <input type="checkbox" ng-model="feature.DefaultRead" ng-disabled="true">
+                            </td>
+                            <td>
+                                <input type="checkbox" ng-model="feature.DefaultWrite" ng-disabled="true">
+                            </td>
+                            <td>
+                                <input type="checkbox" ng-model="feature.DefaultDelete" ng-disabled="true">
+                            </td>
+                            <td>
+                                <input type="checkbox" ng-model="feature.DefaultPrint" ng-disabled="true">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="6" align="center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+</div>

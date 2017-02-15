@@ -1,0 +1,110 @@
+<div class="row" ng-controller="customerController">
+    <script type="text/ng-template" id="checkboxheader.html">
+        <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+    </script>
+    <div class="col-xs-12">
+        <div class="">
+            <div class="box-header">
+                <div class="">
+                    <button ui-sref="main.settings-humanresource-detail" class="btnflat primary-color waves-effect ml-10 fl" angular-ripple="">Add New</button>
+                    <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btnflat danger-color waves-effect ml-10 fl" angular-ripple="">Delete</button>
+                    <button ng-click="refresh()" class="btnflat waves-effect ml-10 fl" angular-ripple="">Refresh</button>
+                    <button ui-sref="main.settings-customergroup" class="btnflat waves-effect ml-10 fr" angular-ripple="">Customer Groups</button>
+                </div>
+                <!-- <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                        {{applicationStatus}}
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateStatus('All')">All</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+            <div class="box-header company pl-25" style="padding: 8px 15px;">
+                <div class="pull-left">
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                            {{applicationStatus}}
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="updateStatus('All')">All</a>
+                            </li>
+                            <li><a ng-click="updateStatus('Employee')">Employee</a>
+                            </li>
+                            <li><a ng-click="updateStatus('Customer')">Customer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="input-group imput">
+                                <input type="text" class="form-control input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0">
+                                <!-- <div class="input-group-btn">
+                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box-body table-responsive p-0 padding">
+                <table class="table table-hover" ng-table="personsTable">
+                    <tr ng-repeat="person in $data  track by $index">
+                        <td data-header="'checkboxheader.html'" class="text-center center-td-table">
+                            <input type="checkbox" class="checkbox" ng-model="person.selected" ng-change="checkDataChanges(person)">
+                        </td>
+                        <td class="text-center" data-title="'Image'">
+                            <img class="img-thumbnail" ng-src="{{person.image}}" err-src="http://placehold.it/40x40" style="width:40px;height:40px;" />
+                        </td>
+                        <td class="text-center" data-title="'Name'">
+                            {{person.lastname +','+ person.firstname}}
+                        </td>
+                        <td class="text-center" data-title="'Address '">
+                            {{person.address}}
+                        </td>
+                        <td class="text-center" data-title="'Person Type'">
+                            <span ng-if="person.per_type_id == '1' && person.isSubscriber == '0'" class="label label-success">Employee</span>
+                            <span ng-if="person.per_type_id == '2' && person.isSubscriber == '0'" class="label label-info">Customer</span>
+                            <span ng-if="person.isSubscriber == '1'" class="label label-warning">Owner</span>
+                        </td>
+                        <td class="text-center" data-title="'Status'">
+                            <span class="label label-primary" ng-if="person.isActiveAcnt == true">Active</span>
+                            <span class="label label-default" ng-if="person.isActiveAcnt != true">In Active</span>
+                        </td>
+                        <td class="text-right">
+                            <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="overlay" ng-show="personisLoading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
