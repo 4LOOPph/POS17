@@ -5,19 +5,12 @@
                 <div class="s">
                     <h3 class="box-title">General Info</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body col-md-12">
                     <div class="form-group col-md-6">
                         <label>Company Name</label>
                         <input type="text" ng-model="details.name" class="form-control" placeholder="First Name" />
                     </div>
-                </div>
-                <div class="box-body">
-                    <!-- <div class="form-group" ng-if="details.person_id">
-                            <label>Status: </label>
-                            <span ng-if="details.isActiveAcnt == false " class="label label-default">In Active</span>
-                            <span ng-if="details.isActiveAcnt == true " class="label label-primary">Active</span>
-                        </div> -->
-                    <div class="col-xs-6 form-group">
+                    <div class=" form-group col-md-6">
                         <label>Main Office</label>
                         <div class="input-group">
                             <div class="input-group-addon">
@@ -41,30 +34,18 @@
                             </ui-select>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Middle name</label>
-                        <input type="text" ng-model="details.middlename" class="form-control" placeholder="Middle Name" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>CompanyName</label>
-                        <input type="text" ng-model="details.company_name" class="form-control" placeholder="Company Name" />
-                    </div>
+                    <!-- <div class="form-group col-md-6">
+                            <label>Middle name</label>
+                            <input type="text" ng-model="details.middlename" class="form-control" placeholder="Middle Name" />
+                        </div> -->
+                    <!--  <div class="form-group col-md-6">
+                            <label>CompanyName</label>
+                            <input type="text" ng-model="details.company_name" class="form-control" placeholder="Company Name" />
+                        </div> -->
                     <div class="form-group col-md-6">
                         <label>Email Address</label>
                         <input type="email" ng-model="details.email_address" class="form-control" placeholder="Email Address" />
                     </div>
-                    <!-- <div class="form-group col-md-6">
-                            <label>End Term: </label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <input type="checkbox" ng-model="enableEndTerm">
-                                </div>
-                                <input type="text" class="form-control" ng-disabled="!enableEndTerm" data-date-format="MM-dd-yyyy" ng-model="details.date_end" data-min-date="today" bs-datepicker/>
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                            </div>
-                        </div> -->
                     <div class="form-group col-md-6">
                         <label>Contact Number</label>
                         <input type="text" class="form-control" ng-model="details.contact_number" numbers-only placeholder="Contact No." />
@@ -83,31 +64,45 @@
                         <select class="form-control" ng-model="details.country" ng-options="item.name as item.name for item in countries">
                             <option disabled value="">- Select Country -</option>
                         </select>
-                    </div>
-                    <div class="form-group col-md-6">
+                        <br>
                         <label>City</label>
                         <input type="text" ng-model="details.city" class="form-control" placeholder="City" />
                     </div>
                     <div class="form-group col-md-6">
+                        <label>Zip Code</label>
+                        <input type="text" ng-model="details.zipcode" class="form-control" placeholder="Zip Code" />
+                        <br>
                         <label>State</label>
                         <input type="text" ng-model="details.state" class="form-control" placeholder="State" />
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Zip Code</label>
-                        <input type="text" ng-model="details.zipcode" class="form-control" placeholder="Zip Code" />
-                    </div>
-                    <!-- <div class="form-group col-md-6">
+                </div>
+                <!-- <div class="form-group" ng-if="details.person_id">
+                            <label>Status: </label>
+                            <span ng-if="details.isActiveAcnt == false " class="label label-default">In Active</span>
+                            <span ng-if="details.isActiveAcnt == true " class="label label-primary">Active</span>
+                        </div> -->
+                <!-- <div class="form-group col-md-6">
+                            <label>End Term: </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <input type="checkbox" ng-model="enableEndTerm">
+                                </div>
+                                <input type="text" class="form-control" ng-disabled="!enableEndTerm" data-date-format="MM-dd-yyyy" ng-model="details.date_end" data-min-date="today" bs-datepicker/>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div> -->
+                <!-- <div class="form-group col-md-6">
                             <label>Country</label>
                             <select class="form-control" ng-model="details.country" ng-options="item.name as item.name for item in countries">
                                 <option disabled value="">- Select Country -</option>
                             </select>
                         </div> -->
-                </div>
-                <div class="box-header">
-                    <h3 class="box-title">Billing & Shipping Information</h3>
-                </div>
-                <div class="box-body">
-                    <div class="col-md-6">
+                <div class="box-body col-md-12">
+                    <h3 style="padding-left: 15px;">Billing & Shipping Information</h3>
+                    <hr>
+                    <div class="col-md-6" style="border-right: 1px solid #eee;">
                         <div class="form-group">
                             <label>Billing Attention: </label>
                             <input type="text" ng-model="details.bill_name" class="form-control" placeholder="Bill to" />
@@ -173,8 +168,12 @@
         <div class="col-md-3">
             <div class=" box-warning">
                 <div class="box-body">
-                    <button type="submit" class=" btn btn-primary btn-block">Save Entry</button>
-                    <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    <button type="submit" class="btnflat primary-color waves-effect ml-10 fl" angular-ripple>
+                        Save Entry
+                    </button>
+                    <button ng-click="goBack()" class="btnflat waves-effect ml-10 fl" angular-ripple>
+                        Cancel
+                    </button>
                 </div>
             </div>
             <!-- <div class="form-group">
@@ -192,3 +191,9 @@
         </div>
     </form>
 </div>
+<style type="text/css">
+select {
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+</style>
