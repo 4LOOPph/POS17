@@ -1,0 +1,194 @@
+<div class="row" ng-controller="socialAccountCtrl">
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-facebook text-primary"></i> Facebook 
+                            <small ng-show="facebook.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>App Id</label>
+                        <input type="text" class="form-control" ng-model="facebook.apiKey" placeholder="" ng-disabled="!facebook.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>App Secret</label>
+                        <input type="text" class="form-control" ng-model="facebook.apiSecret" placeholder="" ng-disabled="!facebook.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="facebook.redirectUri" placeholder="" ng-disabled="!facebook.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!facebook.request">
+                <a class="btn btn-primary" ng-if="facebook.request && !facebook.approved" ng-click="approvedSocialAuth('facebook')">Approve</a>
+                <a class="btn btn-default" ng-if="facebook.request" ng-click="updateSocialAuth('facebook')">Update</a>
+                <a class="btn btn-danger" ng-if="facebook.approved" ng-click="deleteSocialAuth('facebook')">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-twitter text-info"></i> Twitter 
+                            <small ng-show="twitter.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Consumer Key (API Key)</label>
+                        <input type="text" class="form-control" ng-model="twitter.apiKey" placeholder="" ng-disabled="!twitter.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Consumer Secret (API Secret)</label>
+                        <input type="text" class="form-control" ng-model="twitter.apiSecret" placeholder="" ng-disabled="!twitter.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="twitter.redirectUri" placeholder="" ng-disabled="!twitter.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!twitter.request">
+                <a class="btn btn-primary" ng-if="twitter.request && !twitter.approved" ng-click="approvedSocialAuth('twitter')">Approve</a>
+                <a class="btn btn-default" ng-if="twitter.request" ng-click="updateSocialAuth('twitter')">Update</a>
+                <a class="btn btn-danger" ng-if="twitter.approved" ng-click="deleteSocialAuth('twitter')">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-google text-danger"></i> Google
+                            <small ng-show="google.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Client Id</label>
+                        <input type="text" class="form-control" ng-model="google.apiKey" placeholder="" ng-disabled="!google.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Client Secret</label>
+                        <input type="text" class="form-control" ng-model="google.apiSecret" placeholder="" ng-disabled="!google.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="google.redirectUri" placeholder="" ng-disabled="!google.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!google.request">
+                <a class="btn btn-primary" ng-if="google.request && !google.approved" ng-click="approvedSocialAuth('google')">Approve</a>
+                <a class="btn btn-default" ng-if="google.request" ng-click="updateSocialAuth('google')">Update</a>
+                <a class="btn btn-danger" ng-if="google.approved" ng-click="deleteSocialAuth('google')">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-linkedin text-light-blue"></i> LinkedIn
+                        <small ng-show="linkedin.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Client Id</label>
+                        <input type="text" class="form-control" ng-model="linkedin.apiKey" placeholder="" ng-disabled="!linkedin.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Client Secret</label>
+                        <input type="text" class="form-control" ng-model="linkedin.apiSecret" placeholder="" ng-disabled="!linkedin.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="linkedin.redirectUri" placeholder="" ng-disabled="!linkedin.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!linkedin.request">
+                <a class="btn btn-primary" ng-if="linkedin.request && !linkedin.approved" ng-click="approvedSocialAuth('linkedin')">Approve</a>
+                <a class="btn btn-default" ng-if="linkedin.request" ng-click="updateSocialAuth('linkedin')">Update</a>
+                <a class="btn btn-danger" ng-if="linkedin.approved" ng-click="deleteSocialAuth('linkedin')">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-instagram" style="color:#3f729b;"></i> Instagram
+                        <small ng-show="instagram.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Client Id</label>
+                        <input type="text" class="form-control" ng-model="instagram.apiKey" placeholder="" ng-disabled="!instagram.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Client Secret</label>
+                        <input type="text" class="form-control" ng-model="instagram.apiSecret" placeholder="" ng-disabled="!instagram.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="instagram.redirectUri" placeholder="" ng-disabled="!instagram.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!instagram.request">
+                <a class="btn btn-primary" ng-if="instagram.request && !instagram.approved" ng-click="approvedSocialAuth('instagram')">Approve</a>
+                <a class="btn btn-default" ng-if="instagram.request" ng-click="updateSocialAuth('instagram')">Update</a>
+                <a class="btn btn-danger" ng-if="instagram.approved" ng-click="deleteSocialAuth('instagram')">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-yahoo" style="color:#720e9e;"></i> Yahoo
+                        <small ng-show="yahoo.isEnable">
+                                <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                            </small>
+                        </h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Client Id</label>
+                        <input type="text" class="form-control" ng-model="yahoo.apiKey" placeholder="" ng-disabled="!yahoo.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Client Secret</label>
+                        <input type="text" class="form-control" ng-model="yahoo.apiSecret" placeholder="" ng-disabled="!yahoo.request" />
+                    </div>
+                    <div class="form-group">
+                        <label>Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="yahoo.redirectUri" placeholder="" ng-disabled="!yahoo.request" />
+                    </div>
+                </form>
+            </div>
+            <div class="box-footer" ng-hide="!yahoo.request">
+                <a class="btn btn-primary" ng-if="yahoo.request && !yahoo.approved" ng-click="approvedSocialAuth('yahoo')">Approve</a>
+                <a class="btn btn-default" ng-if="yahoo.request" ng-click="updateSocialAuth('yahoo')">Update</a>
+                <a class="btn btn-danger" ng-if="yahoo.approved" ng-click="deleteSocialAuth('yahoo')">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

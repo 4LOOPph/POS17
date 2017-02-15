@@ -1,0 +1,39 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Subscription Account
+        <small>Details</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li><a ui-sref="main.account">Subscription Account</a>
+        </li>
+        <li class="active">Account Details</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
+        <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
+            <ng-include src="'./modules/account/account_profile.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-envelope'></i> Message" bs-pane>
+            <ng-include src="'./modules/account/account_message.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-money'></i> Payment History" bs-pane>Payment History</div>
+        <div data-title="<i class='fa fa-facebook'></i> Social Media" bs-pane>
+            <ng-include src="'./modules/account/account_social.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-credit-card-alt'></i> Payment Gateways" bs-pane>
+            <ng-include src="'./modules/account/accounts_payment.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-tablet'></i> Devices" bs-pane>
+            <ng-include src="'./modules/account/account_device.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Modules & Features" bs-pane>
+            <ng-include src="'./modules/account/account_module.html'" scope="" onload=""></ng-include>
+        </div>
+    </div>
+</section>

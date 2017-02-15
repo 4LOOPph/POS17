@@ -1,0 +1,89 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Products
+        <small>Subscription Plans</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Products</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-sm btn-flat btn-warning"><i class="fa fa-filter"></i> Filter</button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-info btn-flat">All</button>
+                            <button type="button" class="btn btn-sm btn-info btn-flat dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="">Draft</a>
+                                </li>
+                                <li><a href="">Published</a>
+                                </li>
+                                <li><a href="">Archived</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-info btn-flat">New Product</button>
+                    </div>
+                    <!-- /. tools -->
+                    <i class="glyphicon glyphicon-book"></i>
+                    <h3 class="box-title">Products</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-hover footable" data-page-size="20" data-limit-navigation="10">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true">
+                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                </th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Sell Price</th>
+                                <th>Purchase Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in products" repeat-end="paginate()">
+                                <td>
+                                    <input type="checkbox" ng-model="product.selected">
+                                </td>
+                                <td><a ng-click="getProductDetails(product.p_id)">{{product.item_name}}</a></td>
+                                <td>{{product.brand}}</th>
+                                    <td>{{product.sell_price}}</td>
+                                    <td>{{product.purchase_price}} {{product.is_published}}</td>
+                                    <td>
+                                        <small ng-if="product.is_published == 0" class="pull-right label label-warning">draft</small>
+                                        <small ng-if="product.is_published == 1" class="pull-right label label-success">published</small>
+                                        <small ng-if="product.is_archived == 1" class="pull-right label label-danger">archived</small>
+                                    </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>
+<!-- /.content -->

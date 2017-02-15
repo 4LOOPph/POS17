@@ -1,0 +1,62 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Plans
+        <small>Details</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li><a ui-sref="main.plan">Plans</a>
+        </li>
+        <li class="active">Plans</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom" bs-tabs>
+        <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
+        <div data-title="<i class='fa fa-info'></i> Information" bs-pane>
+            <div class="tab-pane active" id="profile">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-header">
+                            <i class="glyphicon glyphicon-info-sign"></i> Plan Information
+                            
+                        </h2>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <dl class="dl-horizontal">
+                            <dt class="text-muted">Plan:</dt>
+                            <dd>{{details.name}}</dd>
+                            <dt class="text-muted">Label:</dt>
+                            <dd>{{details.label}}</dd>
+                            <dt class="text-muted">Description:</dt>
+                            <dd>{{details.description}}</dd>
+                            <dt class="text-muted">Price:</dt>
+                            <dd>{{details.price | currency : "Php "}}</dd>
+                        </dl>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <button class="btn btn-sm btn-default btn-flat" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                        <button class="btn btn-sm btn-primary btn-flat" ng-click="updatePlan()"><i class="fa fa-pencil"></i> Update</button>
+                        <button class="btn btn-sm btn-danger btn-flat" ng-click="deletePlan()"><i class="fa fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-title="<i class='fa fa-home'></i> Modules" bs-pane>
+           <ng-include src="'./modules/plans/plan.module.html'" scope="" onload=""></ng-include>
+        </div>
+        <div data-title="<i class='fa fa-list'></i> Features" bs-pane>
+            <ng-include src="'./modules/plans/plan.feature.html'" scope="" onload=""></ng-include>
+        </div>
+    </div>
+</section>

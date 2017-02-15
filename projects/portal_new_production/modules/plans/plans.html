@@ -1,0 +1,71 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Plans
+        <small>Subscription Plans</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Subscription Plans</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- tools box -->
+                    <div class="pull-left">
+                        <button class="btn btn-sm btn-info" ng-click="createPlan()">New Product Plan</button>
+                        <button class="btn btn-sm btn-default" ng-click="refreshPlan()">Refresh</button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-hover footable" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true">
+                                    <input type="checkbox">
+                                </th>
+                                <!-- <th data-type="numeric" data-sort-initial="true">ID</th> -->
+                                <th>Name</th>
+                                <th>Label</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="plan in names">
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                                <!--  <td>{{plan.plan_id}}</td> -->
+                                <td><a ui-sref="main.plan.detail({'_id': plan._id})">{{plan.name}}</a></td>
+                                <td>{{plan.label}}</td>
+                                <td>{{plan.description}}</td>
+                                <td>{{plan.price}}</td>
+                                <td class="text-right">
+                                    <button ng-click="editPlan(plan._id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button ng-click="deletePlan(plan._id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </section>
+    </div>
+</section>
+<!-- /.content -->
