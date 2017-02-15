@@ -65,6 +65,9 @@
                             <td class="text-center" data-title="'PO Number'">
                                 <span>{{item.po_number}}</span>
                             </td>
+                            <td class="text-center" data-title="'PO Name'">
+                                <span>{{item.po_name}}</span>
+                            </td>
                             <td class="text-center" data-title="'Date Created'">
                                 <span> {{parseDate(item.date_created) }}</span>
                             </td>
@@ -81,8 +84,9 @@
                                 <span>{{item.total_cost}}</span>
                             </td>
                             <td class="text-center" data-title="'Status'">
-                                <span ng-if="item.date_closed != null" class="label label-success">Completed</span>
-                                <span ng-if="item.date_closed == null" class="label label-danger">Open</span>
+                                <span ng-if="item.date_closed != null && item.po_status != 'Cancelled'" class="label label-success">Completed</span>
+                                <span ng-if="item.date_closed == null && item.po_status != 'Cancelled'" class="label label-warning">Open</span>
+                                <span ng-if="item.po_status == 'Cancelled'" class="label label-danger" style="background: gray !important;">Cancelled</span>
                             </td>
                             <td class="">
                                 <div class="disp-inline-flex">

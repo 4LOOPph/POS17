@@ -55,20 +55,23 @@
                             <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh">
                                 <img src="./images/icon/refresh.svg">
                             </button>
+                            <a ng-click="search=true " class="pull-right s" uib-tooltip="more " style="position: absolute;
+    right: 12px;
+    top: 17px;"><img src="./images/icon/ic_more_vert_black_24px.svg"></a>
                         </form>
                     </div>
                 </div>
-                <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
-                    <div class="input-group s imput" style=" margin-bottom: -8px;">
-                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                        <div class="input-group-btn">
-                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                        </div>
+                <!--   <div class="input-group s imput" style=" margin-bottom: -8px;">
+                    <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                    <div class="input-group-btn">
+                        <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                     </div>
+                </div> -->
+                <div class="form-inline w100p disp-inline-flex box-header b" style="padding: 8px 15px;">
                     <div class="btn-group mailbox-controls smfr pl-10">
                         <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkbox" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
                     </div>
-                    <div class=" btn-group mailbox-controls sdropdisp ">
+                    <div class=" btn-group mailbox-controls sdropdisp">
                         <div class="input-group">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
@@ -112,15 +115,17 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="pt-5">
-                                    <div class="input-group imput" >
+                                    <div class="input-group imput">
                                         <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
-                                        <!-- <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="form-inline w100p disp-inline-flex box-header s">
+                    <div class="pull-right disp-inline-flex ">
+                        <button ng-click="search=true " class="btnflat waves-effect fl " uib-tooltip="Search"><img src="./images/icon/ic_search_black_24px.svg "></button>
                     </div>
                 </div>
                 <div class="box-body table-responsive padding p-0" ng-show="!isList">

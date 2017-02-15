@@ -35,73 +35,23 @@
                     <img ng-show="diffSort " src="./images/icon/sort-ascending.svg ">
                 </th>
             </thead>
-            <tr>
+            <tr ng-repeat="code in codeinventory | filter:txtSearch">
                 <td class="text-center " style="text-align: left !important; ">
-                    Liven Coffe
+                    {{code.pname}}
                 </td>
                 <td class="text-right ">
-                    MN987J
+                    {{code.cname}}
                 </td>
                 <td class="text-right ">
-                    300
+                    {{code.itemqty}}
                 </td>
                 <td class="text-right ">
-                    321
+                    {{code.codeqty}}
                 </td>
                 <td class="text-right ">
-                    1
+                    {{code.diff}}
                 </td>
             </tr>
-            <tr>
-                <td class="text-center " style="text-align: left !important; ">
-                    Liven Coffe
-                </td>
-                <td class="text-right ">
-                    MN987J
-                </td>
-                <td class="text-right ">
-                    300
-                </td>
-                <td class="text-right ">
-                    321
-                </td>
-                <td class="text-right ">
-                    1
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center " style="text-align: left !important; ">
-                    Liven Coffe
-                </td>
-                <td class="text-right ">
-                    MN987J
-                </td>
-                <td class="text-right ">
-                    300
-                </td>
-                <td class="text-right ">
-                    321
-                </td>
-                <td class="text-right ">
-                    1
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center " style="text-align: left !important; ">
-                    Liven Coffe
-                </td>
-                <td class="text-right ">
-                    MN987J
-                </td>
-                <td class="text-right ">
-                    300
-                </td>
-                <td class="text-right ">
-                    321
-                </td>
-                <td class="text-right ">
-                    1
-                </td>
             </tr>
         </table>
     </div>

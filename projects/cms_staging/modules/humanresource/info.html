@@ -12,22 +12,30 @@
                         <span ng-if="details.isActiveAcnt == true " class="label label-primary">Active</span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>First Name</label>
-                        <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name" required />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Last Name</label>
-                        <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name" required />
+                        <label>Customer ID</label>
+                        <input type="number" ng-model="details.id" class="form-control" placeholder="Customer ID" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Email Address</label>
                         <input type="email" ng-model="details.email" class="form-control" placeholder="Email Address" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Company Name</label>
+                        <input type="email" ng-model="details.company" class="form-control" placeholder="Company Name" required />
                     </div>
                     <div class="form-group col-md-6 ">
                         <label>Time Zone</label>
                         <select class="form-control" ng-model="details.timeZone" ng-options="item.value as item.text for item in timezone">
                             <option disabled value="">Choose Time Zone</option>
                         </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Start Term: </label>
@@ -91,8 +99,8 @@
         <div class="col-md-3">
             <div class=" box-warning">
                 <div class="box-body">
-                    <button type="submit" ng-disabled="personForm.$invalid" class=" btn btn-primary btn-block">Save Entry</button>
-                    <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    <button type="submit" ng-disabled="personForm.$invalid" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple="">Save Entry</button>
+                    <button ng-click="goBack()" class="btnflat  waves-effect fl mr-10 " angular-ripple="">Cancel</button>
                 </div>
             </div>
             <div class="form-group">
@@ -102,11 +110,11 @@
                                         <button type="button" class="btn btn-warning pcombo image-preview-clear" ng-click="removethumb()" ng-show="details.image"> <img src="./images/icon/ic_close_white_24px.svg"> Clear
                     </button>
                     <div class="btn btn-primary pcombo image-preview-input"> <img src="./images/icon/ic_folder_open_white_24px.svg"><span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
-                    </div>
-                    </span>
+                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
                 </div>
+                </span>
             </div>
         </div>
-    </form>
+</div>
+</form>
 </div>
