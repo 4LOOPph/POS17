@@ -238,7 +238,7 @@ jQuery(document).ready(function($) {
     $btnSubmitForm.on("click", function() {
 
         //RECAPTCHA
-        var recaptcha = grecaptcha.getResponse();
+        //var recaptcha = grecaptcha.getResponse();
 
         //Validate input
         var i = 0;
@@ -254,7 +254,10 @@ jQuery(document).ready(function($) {
                     i = 0;
                 }
             });
-            if ( i === 0 && recaptcha.length ) {
+            if ( i === 0 /*&& recaptcha.length*/ ) {
+              $(".btnSubmitForm span").remove();
+              $(".btnSubmitForm").append('<img src="assets/loaderCustom.gif" />');
+              //$(".btnSubmitForm").append('<span>SUBMIT</span>');
               $.ajax({
                   url: "http://54.206.38.223:5002/api/1.0/persons",
                   type: "POST",
@@ -269,8 +272,8 @@ jQuery(document).ready(function($) {
                       email: $('#inEmail').val(),
                       mobile: $('#inContactNum').val(),
                       per_type_id: 2,
-                      company_name: $('#inCName').val(),
-                      captcha: recaptcha
+                      company_name: $('#inCName').val()
+                      //captcha: recaptcha
                   },
                   cache: false,
                   success: function(data) {
@@ -281,13 +284,19 @@ jQuery(document).ready(function($) {
                       }
                   },
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert('Unexpected server error');
+                    //alert('Unexpected server error');
+                    $(".successArea").fadeIn("fast");
+                    $(".regoSuccess").addClass("hide");
+                    $(".regoErr").removeClass("hide");
+                    $(".btnSubmitForm img").remove();
+                    //$(".btnSubmitForm").append('<img src="assets/loaderCustom.gif" />');
+                    $(".btnSubmitForm").append('<span>SUBMIT</span>');
                     //alert(grecaptcha.getResponse());
                   }
               });
-            } else if ( !recaptcha.length ) {
+            } /*else if ( !recaptcha.length ) {
                 alert('Answer the Recaptcha.');
-            }
+            }*/
         } else {
             $("form").find("i.error:visible").prev("input").focus();
         }
