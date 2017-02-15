@@ -1,4 +1,4 @@
-<div class="" ng-init="View = true">
+<div class="">
     <div class="box-header">
         <!-- <div class="pull-left disp-inline-flex ml-20" style="width: 150px;">
             <datepicker date-format="dd MMM yyyy" selector="form-control">
@@ -8,19 +8,20 @@
             </datepicker>
         </div> -->
         <div class="pull-left disp-inline-flex">
-            <button ng-show="viewMore" class="btnflat btnflatzz waves-effect fl " ng-click="View = true; viewMore = false;"><img src="./images/icon/ic_keyboard_arrow_left_black_24px.svg"> Back</button>
+            <button ng-show="viewMore" class="btnflat btnflatzz waves-effect fl " ng-click="back();"><img src="./images/icon/ic_keyboard_arrow_left_black_24px.svg"> Back</button>
         </div>
         <div class="pull-right disp-inline-flex ">
             <button ng-click="search=true " class="btnflat waves-effect fl " uib-tooltip="Search "><img src="./images/icon/ic_search_black_24px.svg "></button>
-            <button class="btnflat btnflatzz waves-effect fl " uib-tooltip="Print "><img src="./images/icon/ic_print_black_24px.svg "></button>
-            <button class="btnflat btnflatzz waves-effect fl "><img class="rotate " tabindex="1 " src="./images/icon/refresh.svg "> Refresh</button>
+            <button class="btnflat btnflatzz waves-effect fl " uib-tooltip="Print " ng-click="printDoc()"><img src="./images/icon/ic_print_black_24px.svg "></button>
+            <button class="btnflat btnflatzz waves-effect fl " ng-click="startRequest()"><img class="rotate " tabindex="1 " src="./images/icon/refresh.svg "> Refresh</button>
         </div>
     </div>
     <div ng-show="search " class="disp-inline-flex w100p searchnew ">
-        <input type="text " class="asset-search ng-pristine ng-valid ng-empty ng-touched " placeholder="Search for Item Code " ng-model="txtSearch " ng-change="(txtSearch.length < 1)?searchData():0 " style="margin-top: 0px; ">
+        <input type="text" class="asset-search ng-pristine ng-valid ng-empty ng-touched " ng-model="searchText" />
+        <!-- <input type="text " class="asset-search ng-pristine ng-valid ng-empty ng-touched " placeholder="Search for Product " ng-model="txtSearch " ng-change="(txtSearch.length < 1)?searchData():0 " style="margin-top: 0px; "> -->
         <button class="btnflat waves-effect " uib-tooltip="Close "><img ng-click="search=false " src="./images/icon/ic_close_white_24px.svg "></button>
     </div>
-    <div ng-show="View">
+    <div id="receivings" ng-show="View">
         <div class="divider ">Received Orders</div>
         <div class="box-body table-responsive padding p-0 ">
             <table class="table table-hover ">
@@ -42,67 +43,25 @@
                         <img ng-show="codeQtySort " src="./images/icon/sort-ascending.svg ">
                     </th>
                 </thead>
-                <tr>
+                <tr ng-repeat="receive in receives | filter:searchText">
                     <td class="text-center " style="text-align: left !important; ">
-                        <a ng-click="View = false; viewMore = true;">2170989977</a>
+                        <a href="" ng-click="showMoreinfo(receive.row_id, receive.receive_number,receive.receive_date);">{{receive.receive_number}}</a>
                     </td>
                     <td class="text-right ">
-                        01 Feb 2017
+                        {{receive.receive_date}}
                     </td>
                     <td class="text-right ">
-                        50000.00
+                        0.00
                     </td>
                     <td class="text-right ">
-                        AIM HO
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center " style="text-align: left !important; ">
-                        <a ng-click="View = false; viewMore = true;">2170989977</a>
-                    </td>
-                    <td class="text-right ">
-                        01 Feb 2017
-                    </td>
-                    <td class="text-right ">
-                        50000.00
-                    </td>
-                    <td class="text-right ">
-                        AIM HO
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center " style="text-align: left !important; ">
-                        <a ng-click="View = false; viewMore = true;">2170989977</a>
-                    </td>
-                    <td class="text-right ">
-                        01 Feb 2017
-                    </td>
-                    <td class="text-right ">
-                        50000.00
-                    </td>
-                    <td class="text-right ">
-                        AIM HO
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center " style="text-align: left !important; ">
-                        <a ng-click="View = false; viewMore = true;">2170989977</a>
-                    </td>
-                    <td class="text-right ">
-                        01 Feb 2017
-                    </td>
-                    <td class="text-right ">
-                        50000.00
-                    </td>
-                    <td class="text-right ">
-                        AIM HO
+                        Company
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-    <div ng-show="viewMore">
-        <div class="divider ">0030912802 <span> (11:24AM)</span></div>
+    <div id="codeinventory" ng-show="viewMore">
+        <div class="divider ">{{receivenumber}} <span> ({{parseDate(receivedate)}})</span></div>
         <div class="box-body table-responsive padding p-0 ">
             <table class="table table-hover ">
                 <thead>
@@ -126,63 +85,30 @@
                         <img ng-show="!diffSort " src="./images/icon/sort-descending.svg ">
                         <img ng-show="diffSort " src="./images/icon/sort-ascending.svg "></th>
                 </thead>
-                <tr>
+                <tr ng-repeat="product in products | filter:searchText">
                     <td class="text-center " style="text-align: left !important; ">
-                        Liven Coffe
+                        {{product.product_name}}
                     </td>
                     <td class="text-right ">
-                        MN987J
+                        <input class="form-control " type="text " ng-model="product.codename " uib-tooltip="Click to Edit" tooltip-enable="codeinventoryVal.$invalid" ng-disabled="is_disable" required>
                     </td>
                     <td class="text-right ">
-                        300
+                        {{product.newquantity || 0}}
                     </td>
                     <td class="text-right ">
-                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
+                        <input name="codeqty" ng-change="checkValue(product.codes_on_hand,product.newquantity,product.row_id)" class="form-control" type="text " ng-model="product.codes_on_hand" uib-tooltip="Click to Edit" ng-change="check()" tooltip-enable="codeinventoryVal.$invalid" valid-number ng-disabled="is_disable" required>
+                        <span ng-show="product.val3" class="errors" style="font-size: 9px;">Amount is greater than the actual value.</span>
                     </td>
                     <td class="text-right ">
-                        1
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center " style="text-align: left !important; ">
-                        Liven Coffe
-                    </td>
-                    <td class="text-right ">
-                        MN987J
-                    </td>
-                    <td class="text-right ">
-                        300
-                    </td>
-                    <td class="text-right ">
-                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
-                    </td>
-                    <td class="text-right ">
-                        1
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center " style="text-align: left !important; ">
-                        Liven Coffe
-                    </td>
-                    <td class="text-right ">
-                        MN987J
-                    </td>
-                    <td class="text-right ">
-                        300
-                    </td>
-                    <td class="text-right ">
-                        <input class="form-control " type="text " ng-model="codeQtyReceived " uib-tooltip="Click to Edit " required valid-number ng-disabled="is_disable" required>
-                    </td>
-                    <td class="text-right ">
-                        1
+                        {{product.newquantity - product.codes_on_hand}}
                     </td>
                 </tr>
             </table>
             <div class="footer">
                 <div class="pull-right ">
-                    <button class="btnflat primary-color fr waves-effect mr-10 " angular-ripple="">Save</button>
-                    <button ng-click="" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Edit</button>
-                    <button ng-click="View = true; viewMore = false;" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Cancel</button>
+                    <button ng-click="save()" class="btnflat primary-color fr waves-effect mr-10 " angular-ripple="">Save</button>
+                    <!-- <button ng-click="" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Edit</button> -->
+                    <button ng-click="back();" class="btnflat  waves-effect fr mr-10 " angular-ripple="">Cancel</button>
                 </div>
             </div>
         </div>
