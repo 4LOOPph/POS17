@@ -1,0 +1,658 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+            Dashboard
+            
+          </h1>
+    <ol class="breadcrumb">
+        <li><a href="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- <div class="row">
+        <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-blue ">
+                <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">{{totalItems}}</span>
+                    <span class="info-box-text">Total Products</span>
+                </div>
+            </div>
+        </div>
+        <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-green ">
+                <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">{{totalPersonel}}</span>
+                    <span class="info-box-text">Personels</span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class='ui'>
+        <div class='ui_box'>
+            <div class='ui_box__inner'>
+                <h2>
+        Total Products
+      </h2>
+                <p>Total Products</p>
+                <div class='stat' style="height: 51px;">
+                    <span>{{totalItems}}</span>
+                </div>
+                <!-- <div class='progress'>
+                    <div class='progress_bar'></div>
+                </div> -->
+                <div class='progress_graph'>
+                    <div class='progress_graph__bar--1'></div>
+                    <div class='progress_graph__bar--2'></div>
+                    <div class='progress_graph__bar--3'></div>
+                    <div class='progress_graph__bar--4'></div>
+                </div>
+                <p>Product Recorded in This Year</p>
+            </div>
+            <div class='drop' ui-sref="main.products">
+                <p>View Details</p>
+                <div class='arrow'></div>
+            </div>
+        </div>
+        <div class='ui_box'>
+            <div class='ui_box__inner'>
+                <h2>
+        Personels
+      </h2>
+                <p>Total Personels</p>
+                <div class='stat' style="height: 51px;">
+                    <span>{{totalPersonel}}</span>
+                </div>
+                <!-- <div class='progress'>
+                    <div class='progress_bar--two'></div>
+                </div> -->
+                <div class='progress_graph'>
+                    <div class='progress_graph__bar--1'></div>
+                    <div class='progress_graph__bar--2'></div>
+                    <div class='progress_graph__bar--3'></div>
+                    <div class='progress_graph__bar--4'></div>
+                </div>
+                <p>Subscribers This Year</p>
+            </div>
+            <div class='drop' ui-sref="main.settings-humanresource">
+                <p>View Details</p>
+                <div class='arrow'></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <!-- PRODUCT LIST -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Recently Added Products</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="">
+                    <ul class="products-list product-list-in-box example-animate-container">
+                        <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
+                            <div class="product-img">
+                                <img src="./images/icon/product-icon-300x300.png" alt="Product Image" />
+                            </div>
+                            <div class="product-info">
+                                <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
+                                    <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
+                                </a>
+                                <div class="product-description">
+                                    <p>{{product.brand}}</p>
+                                </div>
+                                <div class="product-description">
+                                    <p>{{product.product_code}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                    </ul>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a ui-sref="main.products" class="uppercase">View All Products</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Personel</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body bg">
+                    <ul class="users-lista clearfix">
+                        <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
+                            <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
+                            <a ui-sref="main.settings-humanresource-detail({id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                            <span class="users-list-date" am-time-ago="person.date_created"></span>
+                        </li>
+                    </ul>
+                    <!-- /.users-list -->
+                </div>
+                <div class="box-body sm">
+                    <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
+                        <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
+                        <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                            <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                    </div>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a ui-sref="main.settings-humanresource" class="uppercase">View All Users</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+        <!-- <div class="col-md-8 col-sm-6 col-xs-12">
+           
+        </div> -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="box box-success tab">
+                <div class="box-header ">
+                    <h3 class="box-title">Recently Added User Account</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>User Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
+                                    <td>{{user.EmpName}}</td>
+                                    <td>
+                                        <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
+                                    </td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+                <!-- /.box-body -->
+                <!--   <div class="box-footer no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                        <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
+                        <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                    </ul>
+                </div> -->
+                <!-- /.footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+<style type="text/css">
+@media only screen and (max-width: 320px) {
+    body .ui_box {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+    body .ui .drop {
+        width: 100% !important;
+    }
+    p {
+        margin: 0px !important;
+        width: 100% !important;
+        white-space: pre;
+    }
+    body .ui {
+        width: inherit !important;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+    body .ui_box {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+    body .ui {
+        width: inherit !important;
+    }
+}
+
+@media only screen and (min-width: 380px) and (max-width: 568px) {
+    body .ui {
+        width: inherit !important;
+    }
+    body .ui_box {
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+    body .ui .drop {
+        width: 100% !important;
+    }
+    p {
+        margin: 0px !important;
+        white-space: pre;
+    }
+}
+
+
+/*iphone6 view*/
+
+
+/*iphone6 view*/
+
+
+/*iphone6 view*/
+
+
+/*iphone6 view*/
+
+@media only screen and (min-width: 571px) and (max-width: 670px) {
+    body .ui_box {
+        width: 319px!important;
+    }
+    body .ui .drop {
+        width: 319px !important;
+    }
+}
+
+@media only screen and (min-width: 635px) and (max-width: 640px) {
+    body .ui_box {
+        width: 305px !important;
+    }
+    body .ui .drop {
+        width: 305px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .content-header>.breadcrumb {
+        background: transparent !important;
+    }
+}
+
+@media only screen and (min-width: 410px) and (max-width: 415px) {
+    body .ui_box {
+        width: 100% !important;
+    }
+    body .ui .drop {
+        width: 100% !important;
+    }
+}
+
+
+/*ipad view*/
+
+
+/*ipad view*/
+
+
+/*ipad view*/
+
+@media only screen and (min-width: 740px) and (max-width: 800px) {
+    body .ui_box {
+        width: 254px!important;
+    }
+    body .ui .drop {
+        width: 254px !important;
+    }
+    .content-header>.breadcrumb {
+        background: transparent !important;
+    }
+    p {
+        margin: 0px !important;
+        white-space: pre;
+    }
+}
+
+body .ui {
+    width: 700px;
+    margin: 0 auto;
+    /*margin-bottom: 50px;*/
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    color: white;
+    box-shadow: none;
+}
+
+body .ui ul {
+    margin: 0px 30px 10px 0px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+body .ui .drop {
+    z-index: -3;
+    opacity: 0;
+    width: 350px;
+    height: 10px;
+    background: #1a5350;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    padding: 6px 20px 21px 20px;
+    -webkit-transition-property: bottom, opacity;
+    transition-property: bottom, opacity;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+body .ui .drop p {
+    color: #f8fbfa;
+}
+
+body .ui_box {
+    width: 350px;
+    height: 130px;
+    margin-bottom: 30px;
+    margin-top: -5px;
+    position: relative;
+    background: #fff;
+    color: #555;
+    float: left;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    cursor: pointer;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-property: background, -webkit-transform;
+    transition-property: background, -webkit-transform;
+    transition-property: transform, background;
+    transition-property: transform, background, -webkit-transform;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+body .ui_box__inner {
+    padding: 20px;
+}
+
+body .ui_box__inner span {
+    font-size: 36px;
+    font-weight: 200;
+}
+
+body .ui_box__inner .progress {
+    width: 100%;
+    margin-top: 10px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+body .ui_box__inner .progress_graph {
+    float: right;
+    border-bottom: 1px solid rgba(97, 97, 97, 0.19);
+    width: 110px;
+    text-align: center;
+    position: relative;
+    padding-left: 20px;
+    top: -42px;
+}
+
+body .ui_box__inner .progress_graph__bar--1 {
+    width: 10px;
+    height: 20px;
+    background: #247371;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    bottom: -10px;
+    -webkit-animation: graph 1s;
+}
+
+body .ui_box__inner .progress_graph__bar--2 {
+    width: 10px;
+    -webkit-animation: graph2 1s;
+    height: 30px;
+    float: left;
+    margin-right: 10px;
+    background: #247371;
+}
+
+body .ui_box__inner .progress_graph__bar--3 {
+    width: 10px;
+    height: 24px;
+    margin-right: 10px;
+    -webkit-animation: graph3 1s;
+    background: #247371;
+    float: left;
+    position: relative;
+    bottom: -6px;
+}
+
+body .ui_box__inner .progress_graph__bar--4 {
+    width: 10px;
+    height: 14px;
+    -webkit-animation: graph4 1s;
+    bottom: -16px;
+    position: relative;
+    background: #247371;
+    float: left;
+}
+
+body .ui_box__inner .progress_bar {
+    height: 6px;
+    float: left;
+    width: 58%;
+    background: #35aaa6;
+    -webkit-animation: bar 2s;
+}
+
+body .ui_box__inner .progress_bar--two {
+    height: 6px;
+    float: left;
+    width: 78%;
+    background: #35aaa6;
+    -webkit-animation: bar2 2s;
+}
+
+body .ui_box h2 {
+    font-weight: normal;
+    font-size: 16px;
+    margin: -4px 0px 3px 0px;
+}
+
+body .ui_box p {
+    font-size: 11px;
+    color: #565656;
+    clear: left;
+    font-weight: 300;
+    width: 100%;
+    margin: 2px 0px 15px 0px;
+}
+
+body .ui_box:hover {
+    background: #247672;
+    color: #fff;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition-property: background, -webkit-transform;
+    transition-property: background, -webkit-transform;
+    transition-property: transform, background;
+    transition-property: transform, background, -webkit-transform;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    position: relative;
+    z-index: 1;
+}
+
+.ui_box:hover > .ui_box__inner p {
+    color: #b3dacb;
+}
+
+.ui_box:hover > .drop {
+    -webkit-transition-property: bottom, opacity;
+    transition-property: bottom, opacity;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    bottom: -27px;
+    opacity: 1;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+}
+
+.ui_box:hover > .drop .arrow {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transform: rotate(765deg);
+    transform: rotate(765deg);
+}
+
+.ui_box:hover > .ui_box__inner .progress_graph > div {
+    background: white;
+}
+
+.ui_box:hover > .ui_box__inner .progress .progress_bar,
+.ui_box:hover > .ui_box__inner .progress .progress_bar--two {
+    background: white;
+}
+
+.stat_left {
+    float: left;
+}
+
+.arrow {
+    width: 5px;
+    height: 5px;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-top: 1px solid #CDEAD3;
+    border-right: 1px solid #CDEAD3;
+    float: right;
+    position: relative;
+    top: -10px;
+    right: 0px;
+}
+
+@-webkit-keyframes bar {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 58%;
+    }
+}
+
+@keyframes bar {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 58%;
+    }
+}
+
+@-webkit-keyframes bar2 {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 78%;
+    }
+}
+
+@keyframes bar2 {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 78%;
+    }
+}
+
+@-webkit-keyframes graph {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 20px;
+    }
+}
+
+@keyframes graph {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 20px;
+    }
+}
+
+@-webkit-keyframes graph2 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+@keyframes graph2 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+@-webkit-keyframes graph3 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 24px;
+    }
+}
+
+@keyframes graph3 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 24px;
+    }
+}
+
+@-webkit-keyframes graph4 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 13px;
+    }
+}
+
+@keyframes graph4 {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 13px;
+    }
+}
+</style>
