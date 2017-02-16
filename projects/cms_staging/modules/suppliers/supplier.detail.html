@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <form role="form" name="supplierForm" ng-submit="saveSupplier()">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="box box-warning">
                     <div class="box-header">
                         <h3 class="box-title">General Info</h3>
@@ -20,41 +20,41 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
-                        <div class="form-group">
-                            <label>Supplier Name</label>
-                            <input type="text" ng-model="details.name" class="form-control" placeholder="Supplier Name" required />
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>Supplier Name</label>
+                                <input type="text" ng-model="details.name" class="form-control" placeholder="Supplier Name" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Person</label>
+                                <input type="text" ng-model="details.contact_person" class="form-control" placeholder="Contact Person" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="text" ng-model="details.contact_number" numbers-only ng-maxlength="11" class="form-control" placeholder="Contact Number" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Supplier Address</label>
+                                <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Supplier Address" required /></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tags <i class="fa fa-tags"></i></label>
+                                <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
+                                    <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
+                                    <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                        <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Contact Person</label>
-                            <input type="text" ng-model="details.contact_person" class="form-control" placeholder="Contact Person" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <input type="text"  ng-model="details.contact_number" numbers-only ng-maxlength="11"  class="form-control" placeholder="Contact Number" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Supplier Address</label>
-                            <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Supplier Address" required /></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Tags <i class="fa fa-tags"></i></label>
-                            <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" theme="bootstrap" close-on-select="false">
-                                <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
-                                <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
-                                    <div ng-bind-html="tag.tags | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
+                        <div class="col-md-3">
+                            <div class=" box-warning">
+                                <button ng-click="goBack()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Cancel</button>
+                                <button type="submit" ng-disabled="supplierForm.$invalid" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple="">Save Entry</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box box-warning">
-                    <div class="box-body">
-                        <button type="submit" ng-disabled="supplierForm.$invalid" class="btn btn-primary btn-block">Save Entry</button>
-                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
-                    </div>
                 </div>
             </div>
         </form>

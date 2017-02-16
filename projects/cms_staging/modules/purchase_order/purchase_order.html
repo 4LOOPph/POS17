@@ -91,7 +91,7 @@
                             <td class="">
                                 <div class="disp-inline-flex">
                                     <a ui-sref="main.view_savepo({selected_id:item.po_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Open"><img src="./images/icon/ic_visibility_black_24px.svg"></a>
-                                    <a ng-disabled="item.date_closed != null || item.po_status == 'Sent' || item.po_status == 'Cancelled'" ui-sref="main.add_order({selected_id:item.po_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-disabled="item.date_closed != null || item.po_status == 'Sent' || item.po_status == 'Cancelled'" ui-sref="main.add_order({selected_id:item.po_id})" ui-sref-opts="{reload: true}" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                     <!-- <a ng-disabled="item.date_closed == null" ng-click="toggleModal(item.po_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a> -->
                                 </div>
                             </td>

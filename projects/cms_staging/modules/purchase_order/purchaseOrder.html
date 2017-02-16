@@ -63,16 +63,16 @@
                         <tbody>
                             <tr ng-repeat="item in details.details">
                                 <td>
-                                    {{ item.item_name }}
+                                    {{ item.item_name || item.product_name}}
                                 </td>
                                 <td>
-                                    {{ item.quantity | number}}
+                                    {{ (item.quantity | number) || (item.quantity_ordered) }}
                                 </td>
                                 <td>
                                     {{ item.price | number:2 }}
                                 </td>
                                 <td>
-                                    {{ ( item.quantity * item.price ) | number:2 }}
+                                    {{ (( item.quantity * item.price ) | number:2) || (( item.quantity_ordered * item.price ) | number:2) }}
                                 </td>
                                 <td class="text-right">
                                     <div class="disp-inline-flex">

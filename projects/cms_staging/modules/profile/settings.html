@@ -1,44 +1,69 @@
-<div><br>
+<div class="settingzz">
+    <br>
     <div>
         <label class="modlabel" style="font-weight: 600;">
-        <img src="./images/icon/map-marker.svg" style="width: 18px;margin-right: 15px;"> 
-    Show my location</label>
+            <img src="./images/icon/facebook.svg" style="width: 18px;margin-right: 15px;"><span>Connect Facebook account</span></label>
         <div class="" style="float: right;">
-            <input type="checkbox" id="unchecked" class="cbx hidden" />
-            <label for="unchecked" class="lbl" style="top: -23px;"></label>
+            <a class="fb-bar" ng-click="authenticate('facebook')" ng-if="!showFacebook">
+                 Link
+            </a>
+            <a class="fb-bar" ng-click="unlinkAccount('facebook')" ng-if="showFacebook">
+                 Unlink
+            </a>
+            <a class="fb-bar" style="margin-right: 10px;" ng-click="viewProfile('facebook',social.facebook_uuid)" ng-if="showFacebook">
+                 View Profile
+            </a>
         </div>
     </div>
     <br>
     <br>
     <div>
         <label class="modlabel" style="font-weight: 600;">
-        <img src="./images/icon/face.svg" style="width: 18px;margin-right: 15px;"> 
-    Show my avatar</label>
+            <img src="./images/icon/google.svg" style="width: 18px;margin-right: 15px;"><span>Connect Google account</span></label>
         <div class="" style="float: right;">
-            <input type="checkbox" id="checked" class="cbx hidden" checked/>
-            <label for="checked" class="lbl" style="top: -23px;"></label>
+            <a class="google-bar" ng-click="authenticate('google')" ng-if="!showGoogle">
+               Link 
+            </a>
+            <a class="google-bar" ng-click="unlinkAccount('google')" ng-if="showGoogle">
+               Unlink 
+            </a>
+            <a class="google-bar" style="margin-right: 10px;" ng-click="viewProfile('google',social.google_uuid)" ng-if="showGoogle">
+               View Profile
+            </a>
         </div>
     </div>
     <br>
     <br>
     <div>
         <label class="modlabel" style="font-weight: 600;">
-        <img src="./images/icon/bell-ring.svg" style="width: 18px;margin-right: 15px;"> 
-    Send me notifications</label>
+            <img src="./images/icon/twitter.svg" style="width: 18px;margin-right: 15px;"><span>Connect Twitter account</span></label>
         <div class="" style="float: right;">
-            <input type="checkbox" id="check" class="cbx hidden" checked/>
-            <label for="check" class="lbl" style="top: -23px;"></label>
+            <a class="twitter-bar" ng-click="authenticate('twitter')" ng-if="!showTwitter">
+              Link
+            </a>
+            <a class="twitter-bar" ng-click="unlinkAccount('twitter')" ng-if="showTwitter">
+               Unlink
+            </a>
+            <a class="twitter-bar" style="margin-right: 10px;" ng-click="viewProfile('twitter',social.twitter_uuid)" ng-if="showTwitter">
+               View Profile
+            </a>
         </div>
     </div>
     <br>
     <br>
     <div>
         <label class="modlabel" style="font-weight: 600;">
-        <img src="./images/icon/cloud-upload.svg" style="width: 18px;margin-right: 15px;"> 
-    Allow cloud backups</label>
-        <div class="" style="float: right;" >
-            <input type="checkbox" id="checka" class="cbx hidden" checked />
-            <label for="checka" class="lbl" style="top: -23px;" ></label>
+            <img src="./images/icon/linkedin.svg" style="width: 18px;margin-right: 15px;"><span>Connect LinkedIn account</span></label>
+        <div class="" style="float: right;">
+            <a class="linkedin-bar" ng-click="authenticate('linkedin')" ng-if="!showLinkedin">
+                Link
+            </a>
+            <a class="linkedin-bar" ng-click="unlinkAccount('linkedin')" ng-if="showLinkedin">
+               Unlink
+            </a>
+            <a class="linkedin-bar" style="margin-right: 10px;" ng-click="viewProfile('linkedin',social.linkedin_uuid)" ng-if="showLinkedin">
+                View Profile
+            </a>
         </div>
     </div>
 </div>

@@ -133,8 +133,8 @@
         </div>
         <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
             <a ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</a>
-            <button ng-click="archiveProduct(details.p_id)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
-            <button ng-show="showPublish" ng-click="publishProduct(details.p_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
+            <button ng-click="archiveProduct(details.p_id)" type="button" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Archive</button>
+            <button ng-show="showPublish" type="button" ng-click="publishProduct(details.p_id)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple>Publish</button>
             <button ng-disabled="loading1" type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>{{saveText}} <span ng-show="loading1 == true"></button>
         </div>
     </form>

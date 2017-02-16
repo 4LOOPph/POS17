@@ -13,7 +13,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Customer ID</label>
-                        <input type="number" ng-model="details.id" class="form-control" placeholder="Customer ID" required />
+                        <input type="text" ng-model="details.company_username" class="form-control" placeholder="Customer ID" />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Email Address</label>
@@ -34,8 +34,19 @@
                         <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name" required />
                     </div>
                     <div class="form-group col-md-6">
+                        <label>Middle Name</label>
+                        <input type="text" ng-model="details.middlename" class="form-control" placeholder="Middle Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>Last Name</label>
                         <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Person Type</label>
+                        <div class="col">
+                            <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required />
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Start Term: </label>
@@ -64,28 +75,21 @@
                                 <option disabled value="">Choose Store Name</option>
                             </select>
                         </div> -->
-                    <div class="form-group col-md-6">
-                        <label>Person Type</label>
-                        <div class="col">
-                            <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required />
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group col-md-12">
                         <label>Address </label>
-                        <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..." required /></textarea>
+                        <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..." /></textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label>State</label>
-                        <input type="text" ng-model="details.state" class="form-control" placeholder="State ..." required />
+                        <input type="text" ng-model="details.state" class="form-control" placeholder="State ..." />
                     </div>
                     <div class="form-group col-md-6">
                         <label>City</label>
-                        <input type="text" ng-model="details.city" class="form-control" placeholder="City ..." required />
+                        <input type="text" ng-model="details.city" class="form-control" placeholder="City ..." />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Zip Code</label>
-                        <input type="text" ng-model="details.zipcode" class="form-control" placeholder="Zip Code.." required />
+                        <input type="text" ng-model="details.zipcode" class="form-control" placeholder="Zip Code.." />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Country</label>
@@ -99,8 +103,8 @@
         <div class="col-md-3">
             <div class=" box-warning">
                 <div class="box-body">
-                    <button type="submit" ng-disabled="false" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple="">Save Entry</button>
-                    <button ng-click="goBack()" class="btnflat  waves-effect fl mr-10 " angular-ripple="">Cancel</button>
+                    <button type="submit" ng-disabled="personForm.$invalid" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple="">Save Entry</button>
+                    <button type="button" ng-click="goBack()" class="btnflat  waves-effect fl mr-10 " angular-ripple="">Cancel</button>
                 </div>
             </div>
             <div class="form-group">

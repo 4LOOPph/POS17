@@ -11,17 +11,19 @@
     <!-- /.row -->
     <div class="row">
         <script type="text/ng-template" id="checkboxheader.html">
-            <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+            <input class="checkbox" type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
         </script>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
                     <div class="pull-left">
-                        <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
-                            <i class="fa fa-refresh"></i>
-                        </button>
+                        <form class="form-inline  ng-pristine ng-valid">
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                                <img src="./images/icon/refresh.svg">
+                            </button>
+                        </form>
                     </div>
-                    <div class="pull-right">
+                    <!-- <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -34,13 +36,29 @@
                                 </div>
                             </div>
                         </form>
+                    </div> -->
+                </div>
+                <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;height: 60px;">
+                    <div class="form-group">
+                        <button class="btnflat  waves-effect fl mr-10 " ui-sref="main.settings-attributes" angular-ripple=""><img src="../images/icon/ic_arrow_back_black_24px.svg"> Back</button>
+                    </div>
+                    <div class="pull-right searchposition b">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="pt-5">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="box-body p-0 table-responsive ">
                     <table class="table table-hover" ng-table="attributeTypesTable">
                         <tr ng-repeat="type in $data">
                             <td data-header="'checkboxheader.html'" class="text-center center-td-table">
-                                <input type="checkbox" ng-model="type.selected" ng-change="checkDataChanges(type)">
+                                <input class="checkbox" type="checkbox" ng-model="type.selected" ng-change="checkDataChanges(type)">
                             </td>
                             <td class="text-center" data-title="'Name'">
                                 {{type.name}}
@@ -56,7 +74,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="attribisLoading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>
