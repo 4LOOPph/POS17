@@ -14,7 +14,7 @@
                     <div class=" box-warning">
                         <div class="box-body">
                             <div class="p-15" style="line-height: 30px;">
-                                <strong class="f18">Sample Order</strong>
+                                <strong class="f18">{{parent_details.po_name}}</strong>
                                 <br>
                                 <b>Purchase Order No.</b> <small>{{parent_details.po_number}}</small>
                                 <br>
@@ -89,12 +89,12 @@
                                         </td>
                                         <td class="vam">
                                             <div class="form-group">
-                                                <input ng-keyup="specialVar1[$index] != null ? (specialVar1[$index] <= item.quantity_ordered ? updateReceiveItemScope(item,$index) : promptMsg1($index) ) : ''" ng-model="specialVar1[$index]" ng-disabled="po_status == 'Saved' || po_status=='Cancelled'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)" />
+                                                <input ng-keyup="specialVar1[$index] != null ? (specialVar1[$index] <= (item.quantity_ordered - item.total_received) ? updateReceiveItemScope(item,$index) : promptMsg1($index) ) : ''" ng-model="specialVar1[$index]" ng-disabled="po_status == 'Saved' || po_status=='Cancelled'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)" />
                                             </div>
                                         </td>
                                         <td class="vam">
                                             <div class="form-group">
-                                                <input ng-keyup="updateSupplyCostScope(item,$index)" ng-model="specialVar2[$index]" ng-disabled="po_status == 'Saved'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)" />
+                                                <input ng-keyup="updateSupplyCostScope(item,$index)" ng-value="item.price" ng-model="specialVar2[$index]" ng-disabled="po_status == 'Saved'" type="text" class="form-control" placeholder="" numbers-only required style="background:rgba(0, 0, 0, 0.08)" />
                                             </div>
                                         </td>
                                         <td class="vam">

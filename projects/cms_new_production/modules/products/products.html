@@ -55,9 +55,7 @@
                             <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh">
                                 <img src="./images/icon/refresh.svg">
                             </button>
-                            <a ng-click="search=true " class="pull-right s" uib-tooltip="more " style="position: absolute;
-    right: 12px;
-    top: 17px;"><img src="./images/icon/ic_more_vert_black_24px.svg"></a>
+                            <!--  <a ng-click="search=true " class="pull-right s" uib-tooltip="more " style="position: absolute;right: 12px;top: 17px;"><img src="./images/icon/ic_more_vert_black_24px.svg"></a> -->
                         </form>
                     </div>
                 </div>
@@ -124,9 +122,19 @@
                     </div>
                 </div>
                 <div class="form-inline w100p disp-inline-flex box-header s">
-                    <div class="pull-right disp-inline-flex ">
+                    <div class="pull-left disp-inline-flex ">
                         <button ng-click="search=true " class="btnflat waves-effect fl " uib-tooltip="Search"><img src="./images/icon/ic_search_black_24px.svg "></button>
                     </div>
+                    <a class="btn btn-sm btn-flat pull-right dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                        <img src="./images/icon/ic_more_vert_black_24px.svg">
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>Filter By:</li>
+                        <li><a>{{filterStatus}}</a>
+                        </li>
+                        <li><a>{{applicationStatus}}</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="box-body table-responsive padding p-0" ng-show="!isList">
                     <table class="table table-striped table-hover" ng-table="productTable">
@@ -229,5 +237,10 @@
     td:nth-of-type(8):before {
         content: "Last Updated";
     }
+}
+
+.open>.dropdown-menu {
+    min-width: 100% !important;
+    right: 0px !important;
 }
 </style>
