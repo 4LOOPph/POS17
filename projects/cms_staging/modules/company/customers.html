@@ -4,62 +4,51 @@
     </script>
     <div class="col-xs-12">
         <div class="">
-            <div class="box-header">
-                <div class="">
-                    <button ui-sref="main.settings-humanresource-detail" class="btnflat primary-color waves-effect ml-10 fl" angular-ripple="">Add New</button>
-                    <button ng-click="deleteSelected()" ng-disabled="!deleteSomeData" class="btnflat danger-color waves-effect ml-10 fl" angular-ripple="">Delete</button>
-                    <button ng-click="refresh()" class="btnflat waves-effect ml-10 fl" angular-ripple="">Refresh</button>
-                    <button ui-sref="main.settings-customergroup" class="btnflat waves-effect ml-10 fr" angular-ripple="">Customer Groups</button>
+            <div class="box-header" style="padding: 8px 15px;">
+                <div class="pull-left">
+                    <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
+                        <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-humanresource-detail" uib-tooltip="Add New">
+                            <img src="./images/icon/ic_add_white_24px.svg">
+                        </button>
+                        <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
+                            <img src="./images/icon/ic_delete_black_24px.svg">
+                        </button>
+                        <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                            <img src="./images/icon/refresh.svg">
+                        </button>
+                    </form>
                 </div>
-                <!-- <div class="pull-right">
-                    <form class="form-inline">
+                <div class="pull-right">
+                    <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
+                        <button class="actbuttonassets" ui-sref="main.settings-customergroup" tooltip-placement="left" uib-tooltip="Customer Groups"><img src="./images/icon/ic_list_black_24px (1).svg"></button>
+                    </form>
+                </div>
+            </div>
+            <div class="box-header form-inline w100p disp-inline-flex company " style="padding: 8px 15px;">
+                <div class=" btn-group mailbox-controls sdropdisp ">
+                    <form class=" datepickar">
                         <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
-                                        {{applicationStatus}}
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a ng-click="updateStatus('All')">All</a>
-                                        </li>
-                                        <li><a ng-click="updateStatus('Employee')">Employee</a>
-                                        </li>
-                                        <li><a ng-click="updateStatus('Customer')">Customer</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="input-group">
+                                <label>Filter by Application Status:</label>
+                                <button class="dropdown-toggle" data-toggle="dropdown">
+                                    {{applicationStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <span class="barzz"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </form>
-                </div> -->
-            </div>
-            <div class="box-header company pl-25" style="padding: 8px 15px;">
-                <div class="pull-left">
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
-                            {{applicationStatus}}
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="updateStatus('All')">All</a>
-                            </li>
-                            <li><a ng-click="updateStatus('Employee')">Employee</a>
-                            </li>
-                            <li><a ng-click="updateStatus('Customer')">Customer</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="pull-right">
+                <div class="pull-right searchposition">
                     <form class="form-inline">
                         <div class="form-group">
                             <div class="input-group imput">
@@ -97,7 +86,9 @@
                             <span class="label label-default" ng-if="person.isActiveAcnt != true">In Active</span>
                         </td>
                         <td class="text-right">
-                            <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                            <div class="disp-inline-flex">
+                                <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                            </div>
                         </td>
                     </tr>
                 </table>

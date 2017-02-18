@@ -31,15 +31,16 @@
                 </div>
                 <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;height: 60px;">
                     <div class="form-group">
-                        <button class="btnflat  waves-effect fl mr-10 " ui-sref="main.settings-attributes-groups" angular-ripple><img src="../images/icon/group.svg"> Groups</button>
-                        <button class="btnflat  waves-effect fl mr-10 " ui-sref="main.settings-attributes-types" angular-ripple><img src="../images/icon/format-list-bulleted-type.svg"> Types</button>
+                        <button class="actbuttonassets" ui-sref="main.settings-attributes-groups" angular-ripple>Groups</button>
+                        |
+                        <button class="actbuttonassets" ui-sref="main.settings-attributes-types" angular-ripple>Types</button>
                     </div>
                     <div class="pull-right searchposition b">
                         <form class="form-inline">
                             <div class="form-group">
-                                <div class="pt-5">
+                                <div class="">
                                     <div class="input-group imput">
-                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple style="margin-top: 0px;">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +73,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="attribisLoading">
-                   <div class="loader"></div>
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>

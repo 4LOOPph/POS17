@@ -12,42 +12,33 @@
         <div class="col-md-12 col-xs-12">
             <div class="box box-warning">
                 <div class="box-header">
-                    <h3 class="box-title">User Logs</h3>
-                    <br>
-                    <br>
+                    <button class="actbuttonassets" ui-sref="main.settings-app" angular-ripple><img src="../images/icon/ic_arrow_back_black_24px.svg"> Back</button>
+                    <div class="fr">
+                        <button class="actbuttonassets" uib-tooltip="Refresh" ng-click="searchData()"><img src="./images/icon/refresh.svg"></button>
+                        <button class="actbuttonassets" uib-tooltip="Print" ng-click="searchData()"><img src="../images/icon/ic_print_black_24px.svg"></button>
+                    </div>
+                </div>
+                <div class="box-header">
                     <div class="pull-left">
-                        <form class="form-inline">
-                            <div class="form-group" style="margin-left: 10px;">
-                                <label>From</label>
+                        <form class="form-inline datepicka">
+                            <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="details.dateFrom" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker />
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
+                                    <label>From</label>
+                                    <input type="text" ng-model="details.dateFrom" data-date-format="MMMM dd, yyyy" useNative="true" autoclose="true" bs-datepicker />
+                                    <span class="barzz"></span>
                                 </div>
-                                -
-                                <label>To</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="details.dateEnd" data-date-format="MM-dd-yyyy" useNative="true" autoclose="true" bs-datepicker/>
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
+                                    <label>To</label>
+                                    <input type="text" ng-model="details.dateEnd" data-date-format="MMMM-dd, yyyy" useNative="true" autoclose="true" bs-datepicker/>
+                                    <span class="barzz"></span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <a class="btn btn-flat btn-info btn-xs" uib-tooltip="Filter Logs" ng-click="searchData()"><span class="glyphicon glyphicon-filter"></span></a>
-                            </div>
-                            <div class="form-group">
-                                <a ng-click="searchData()" class="btn btn-flat btn-sm btn-success">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </a>
-                                <a class="btn btn-flat btn-sm btn-success">
-                                    <i class="fa fa-print"></i> Print
-                                </a>
+                            <div class="form-group pt-20">
+                                <button class="actbuttonassets" uib-tooltip="Filter Logs" ng-click="searchData()"><img src="./images/icon/filter-variant.svg"></button>
                             </div>
                         </form>
                     </div>
-                    <div class="pull-right">
+                    <!--  <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="input-group">
@@ -60,9 +51,20 @@
                                 </div>
                             </div>
                         </form>
+                    </div> -->
+                    <div class="pull-right searchposition b">
+                        <form class="form-inline ng-pristine ng-valid">
+                            <div class="form-group">
+                                <div style="padding-top: 10px !important;">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearchUser" ng-change="(txtSearchUser.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="p-0 box-body table-responsive ">
                     <table class="table table-hover" ng-table="usersTable">
                         <tr ng-repeat="row in $data  track by $index">
                             <td class="text-center" data-title="'Log Date'">
