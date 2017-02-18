@@ -30,12 +30,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body p-0">
                     <table class="table table-striped footable" data-page-size="10" id="tblCategory">
                         <thead>
                             <tr>
                                 <th width="30" data-sort-ignore="true">
-                                    <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
+                                    <input class="checkbox" type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Company/Customer</th>
@@ -45,7 +45,7 @@
                         <tbody>
                             <tr ng-repeat="var in groups" repeat-end="paginate()">
                                 <td>
-                                    <input type="checkbox" ng-model="var.selected" ng-change="checkDataChanges(var)">
+                                    <input class="checkbox" type="checkbox" ng-model="var.selected" ng-change="checkDataChanges(var)">
                                 </td>
                                 <td>
                                     {{var.name}}

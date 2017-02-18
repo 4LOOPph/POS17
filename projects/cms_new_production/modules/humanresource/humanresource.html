@@ -31,7 +31,7 @@
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group rightstablebutton" style="margin-bottom: -12px;">
-                                <button class="actbuttonassets" ui-sref="main.settings-customergroup" uib-tooltip="Customer Groups"><img src="./images/icon/ic_list_black_24px (1).svg"></button>
+                                <button class="actbuttonassets" ui-sref="main.settings-customergroup" tooltip-placement="left" uib-tooltip="Customer Groups"><img src="./images/icon/ic_list_black_24px (1).svg"></button>
                             </div>
                         </form>
                     </div>
@@ -83,23 +83,25 @@
                             <td class="text-center" data-title="'Address '">
                                 {{person.address}}
                             </td>
-                            <td class="text-center" data-title="'Person Type'">
+                            <td class="text-center" data-title="'Person Type'" style="text-align: center !important;">
                                 <span ng-if="person.per_type_id == '1' && person.isSubscriber == '0'" class="label label-success">Employee</span>
                                 <span ng-if="person.per_type_id == '2' && person.isSubscriber == '0'" class="label label-info">Customer</span>
                                 <span ng-if="person.isSubscriber == '1'" class="label label-warning">Owner</span>
                             </td>
-                            <td class="text-center" data-title="'Status'">
+                            <td class="text-center" data-title="'Status'" style="text-align: center !important;">
                                 <span class="label label-primary" ng-if="person.isActiveAcnt == true">Active</span>
                                 <span class="label label-default" ng-if="person.isActiveAcnt != true">In Active</span>
                             </td>
                             <td class="text-right">
-                                <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                <div class="disp-inline-flex">
+                                    <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                </div>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="overlay" ng-show="personisLoading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>
