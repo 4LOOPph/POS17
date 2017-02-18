@@ -38,23 +38,27 @@
                 </div>
                 <div class="prod form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
                     <div class=" btn-group mailbox-controls sdropdisp ">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{applicationStatus}}
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a ng-click="updateStatus('All')">All</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Employee')">Employee</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Customer')">Customer</a>
-                                    </li>
-                                </ul>
+                        <form class=" datepickar">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Application Status:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown">
+                                        {{applicationStatus}}
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateStatus('All')">All</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="pull-right searchposition b">
                         <form class="form-inline">

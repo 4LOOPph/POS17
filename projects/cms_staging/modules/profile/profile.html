@@ -18,14 +18,14 @@
                                 <img class="profilepic" ngf-src="details.image || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" alt="User profile picture">
                                 <div class="image-preview" style="width: 100%;height: 0;">
                                     <div class="uploadbuttonHolder">
-                                        <button type="button" class="uploadbutton image-preview-clear" ng-click="removethumb()" ng-show="showUpload" uib-tooltip="Remove" tooltip-placement="bottom"><img src="../images/icon/ic_close_white_24px.svg">
+                                        <button type="button" class="uploadbutton image-preview-clear" ng-click="removethumb()" ng-show="showUpload" uib-tooltip="Remove" tooltip-placement="bottom"><img src="./images/icon/ic_close_white_24px.svg">
                                         </button>
                                         <div class="uploadbutton image-preview-input" ng-show="!showUpload">
-                                            <img class="img" src="../images/icon/ic_camera_alt_black_24px.svg">
+                                            <img class="img" src="./images/icon/ic_camera_alt_black_24px.svg">
                                             <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
                                         </div>
                                         <button class="uploadbutton image-preview-input" type="submit" ng-show="showUpload" uib-tooltip="Upload" tooltip-placement="bottom">
-                                            <img src="../images/icon/upload copy.svg">
+                                            <img src="./images/icon/upload copy.svg">
                                         </button>
                                     </div>
                                 </div>
@@ -540,6 +540,30 @@ textarea:valid ~ label {
     transition: all 0.125s ease;
 }
 
+.settingzz .active,
+.settingzz .inactive {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.settingzz .active,
+.settingzz .inactive {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.settingzz i.active {
+    color: #1fb1aa;
+}
+
+.settingzz i.inactive {
+    color: #c2c2c2;
+}
+
+.settingzz i {
+    margin-top: -10px;
+}
+
 .fb-bar {
     color: #3b5998 !important;
     font-weight: 500;
@@ -679,6 +703,27 @@ input:focus ~ .highlighten {
     width: 100%;
     bottom: 150px;
     position: absolute;
+}
+
+.social div {
+    float: right;
+    margin-top: -6px;
+}
+
+.settingzz a {
+    margin-right: 35px !important;
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+    color: #868686 !important;
+}
+
+.settingzz a:hover {
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7645ce !important;
+    text-decoration: underline;
 }
 
 .btn {

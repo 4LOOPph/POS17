@@ -15,7 +15,7 @@
                             <ui-select-match>
                                 {{$select.selected.item_name}}
                             </ui-select-match>
-                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (products | filter: $select.search) track by emp.p_id">
+                            <ui-select-choices infinite-scroll="addMoreItems()" infinite-scroll-distance="2" repeat="emp in (filteredProducts | filter: $select.search) track by emp.p_id">
                                 {{emp.item_name}}
                                 <small>{{emp.product_code}}</small>
                             </ui-select-choices>

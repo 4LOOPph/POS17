@@ -17,16 +17,24 @@
     </div>
 </div>
  -->
-        <div class="pull-left disp-inline-flex">
+        <!-- <div class="pull-left disp-inline-flex">
             <button ng-click="newUserGroup()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple="">Add New</button>
             <button ng-click="refreshUserGroup()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
-        </div>
+        </div> -->
+        <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
+            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ng-click="newUserGroup()" uib-tooltip="Add New">
+                <img src="./images/icon/ic_add_white_24px.svg">
+            </button>
+            <button ng-click="refreshUserGroup()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                <img src="./images/icon/refresh.svg">
+            </button>
+        </form>
         <div class="pull-right box-tools">
             <form class="form-inline">
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="input-group pull-right imput" style="width: 250px;">
-                            <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
+                            <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" style="margin-top: 0px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                             </div>

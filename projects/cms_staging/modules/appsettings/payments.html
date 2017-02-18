@@ -1,4 +1,4 @@
-<div class="box box-warning" ng-controller="appSettingsPaymentController">
+<div class="brColor br-left box-warning" ng-controller="appSettingsPaymentController">
     <div class="box-header">
         <h3 class="box-title">Payment Gateways<br>
         <small>Configure payment gateway providers and settings.</small>
@@ -234,4 +234,8 @@
                             </div>
                         </form>
                     </div>
-       7
+                    <div class="box-footer">
+                        <button ng-if="!twitter.activated" ng-click="enableSocialAuth('twitter')" class="btnflat primary-color waves-effect fl" angular-ripple="">Activate</button>
+                    </div>
+                </div>
+            </div>
