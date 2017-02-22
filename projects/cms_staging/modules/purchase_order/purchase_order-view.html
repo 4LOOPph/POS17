@@ -126,7 +126,7 @@
         <button ng-show="scndpage && (!checkSpecialVar1()) && (po_status=='Sent')" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ng-click="receivePO()" angular-ripple>Received Order</button>
         <button ng-show="scndpage && (po_status!='Saved') && (po_status!='Cancelled')" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Resend Order</button>
         
-        <button ng-show="scndpage" class="btnflat default-color waves-effect fl ml-15" ng-click="po_status!='Cancelled' ? cancelPO() : reactivatePO()" angular-ripple>{{ po_status!='Cancelled' ? 'Cancel Order' : 'Reactivate Order' }}</button>
+        <button ng-show="scndpage && (po_status!='Sent' && po_status!='Completed')" class="btnflat default-color waves-effect fl ml-15" ng-click="po_status!='Cancelled' ? cancelPO() : reactivatePO()" angular-ripple>{{ po_status!='Cancelled' ? 'Cancel Order' : 'Reactivate Order' }}</button>
         
         <div class="sendcontainer" ng-show="showMessage">
             <div class="head">Sending..</div>
