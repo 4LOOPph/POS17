@@ -13,7 +13,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Customer ID</label>
-                        <input type="text" ng-model="details.company_username" class="form-control" placeholder="Customer ID" required />
+                        <input type="text" ng-model="details.company_username" class="form-control" placeholder="Customer ID" />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Email Address</label>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Company Name</label>
-                        <input type="text" ng-model="details.company" class="form-control" placeholder="Company Name" required />
+                        <input type="text" ng-model="details.company_name" class="form-control" placeholder="Company Name" required />
                     </div>
                     <div class="form-group col-md-6 ">
                         <label>Time Zone</label>
@@ -34,8 +34,19 @@
                         <input type="text" ng-model="details.firstname" class="form-control" placeholder="First Name" required />
                     </div>
                     <div class="form-group col-md-6">
+                        <label>Middle Name</label>
+                        <input type="text" ng-model="details.middlename" class="form-control" placeholder="Middle Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>Last Name</label>
                         <input type="text" ng-model="details.lastname" class="form-control" placeholder="Last Name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Person Type</label>
+                        <div class="col">
+                            <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required />
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Start Term: </label>
@@ -64,13 +75,6 @@
                                 <option disabled value="">Choose Store Name</option>
                             </select>
                         </div> -->
-                    <div class="form-group col-md-6">
-                        <label>Person Type</label>
-                        <div class="col">
-                            <select class="form-control" ng-model="details.per_type_id" ng-options="item.per_type_id as item.name for item in persons" required />
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group col-md-12">
                         <label>Address </label>
                         <textarea ng-model="details.address" class="form-control" rows="3" placeholder="Address ..." /></textarea>

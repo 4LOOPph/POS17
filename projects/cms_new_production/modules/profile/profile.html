@@ -7,202 +7,6 @@
         <li class="active">User profile</li>
     </ol>
 </section>
-<!-- <section class="content">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="box box-primary">
-                <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User profile picture">
-                    <h3 class="profile-username text-center" data-ng-bind="profile.EmpName"></h3>
-                    <p class="text-muted text-center" data-ng-bind="profile.profile.email"></p>
-                    <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block"><b>Update Profile</b></a>
-                </div>
-            </div>
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">About Me</h3>
-                </div>
-                <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-                    <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
-                    </p>
-                    <hr>
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-                    <p class="text-muted" data-ng-bind="profile.profile.address"></p>
-                    <hr>
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="nav-tabs-custom" bs-tabs>
-                <div data-title="Activity" bs-pane>
-                    <div class="post">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="user image">
-                            <span class="username">
-                                  <a href="">Jonathan Burke Jr.</a>
-                                  <a href="" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                                </span>
-                            <span class="description">Shared publicly - 7:30 PM today</span>
-                        </div>
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
-                        </p>
-                        <ul class="list-inline">
-                            <li><a href="" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                            <li><a href="" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                            </li>
-                            <li class="pull-right">
-                                <a href="" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-                        </ul>
-                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <div class="post clearfix">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User Image">
-                            <span class="username">
-                          <a href="">Sarah Ross</a>
-                          <a href="" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                            <span class="description">Sent you a message - 3 days ago</span>
-                        </div>
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
-                        </p>
-                        <form class="form-horizontal">
-                            <div class="form-group margin-bottom-none">
-                                <div class="col-sm-9">
-                                    <input class="form-control input-sm" placeholder="Response">
-                                </div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div data-title="Timeline" bs-pane>
-                    <div class="tab-pane" id="timeline">
-                        <ul class="timeline timeline-inverse">
-                            <li class="time-label">
-                                <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope bg-blue"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                    <h3 class="timeline-header"><a href="">Support Team</a> sent you an email</h3>
-                                    <div class="timeline-body">
-                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...
-                                    </div>
-                                    <div class="timeline-footer">
-                                        <a class="btn btn-primary btn-xs">Read more</a>
-                                        <a class="btn btn-danger btn-xs">Delete</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-user bg-aqua"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                                    <h3 class="timeline-header no-border"><a href="">Sarah Young</a> accepted your friend request
-                      </h3>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-comments bg-yellow"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-                                    <h3 class="timeline-header"><a href="">Jay White</a> commented on your post</h3>
-                                    <div class="timeline-body">
-                                        Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
-                                    </div>
-                                    <div class="timeline-footer">
-                                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="time-label">
-                                <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                            </li>
-                            <li>
-                                <i class="fa fa-camera bg-purple"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                                    <h3 class="timeline-header"><a href="">Mina Lee</a> uploaded new photos</h3>
-                                    <div class="timeline-body">
-                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
-                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
-                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
-                                        <img ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="..." class="margin">
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-clock-o bg-gray"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div data-title="Settings" bs-pane>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> I agree to the <a href="">terms and conditions</a>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-danger">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <section class="content forprof" ng-init="basicInfo = true;">
     <div class="col-sm-12 p-0">
         <div class="">
@@ -210,71 +14,159 @@
                 <div class="box">
                     <div class="panel-body autoscroll profholder">
                         <div>
-                            <img class="profilepic" ng-src="{{profile.profile.image}}" err-src="../images/avatar5.png" alt="User profile picture">
-                            <!-- <img src="./images/avatar3.png" class="profilepic"> -->
-                            <div style="width: 100%;height: 0;">
-                                <button class="uploadbutton"><img class="img" src="./images/icon/ic_camera_alt_black_24px.svg" style="width: 80%;margin-top: 2px;"></button>
-                            </div>
-                            <div class="profpic">
-                                {{profile.EmpName}}
-                                <br>
-                                <small>{{activeSub}}</small>
-                                <br>
-                                <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block" href="#/main/settings/profile/details/" angular-ripple><b>Update Profile</b></a>
-                            </div>
+                            <form role="form" ng-submit="savePersonDetail()">
+                                <img class="profilepic" ngf-src="details.image || 'http://placehold.it/250x250'" err-src="http://placehold.it/250x250" alt="User profile picture">
+                                <div class="image-preview" style="width: 100%;height: 0;">
+                                    <div class="uploadbuttonHolder">
+                                        <button type="button" class="uploadbutton image-preview-clear" ng-click="removethumb()" ng-show="showUpload" uib-tooltip="Remove" tooltip-placement="bottom"><img src="../images/icon/ic_close_white_24px.svg">
+                                        </button>
+                                        <div class="uploadbutton image-preview-input" ng-show="!showUpload">
+                                            <img class="img" src="../images/icon/ic_camera_alt_black_24px.svg">
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                        </div>
+                                        <button class="uploadbutton image-preview-input" type="submit" ng-show="showUpload" uib-tooltip="Upload" tooltip-placement="bottom">
+                                            <img src="../images/icon/upload copy.svg">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="profpic">
+                                    {{profile.EmpName}}
+                                    <br>
+                                    <small>{{activeSub}}</small>
+                                    <br>
+                                    <!--   <a ui-sref="main.settings-profile-details" class="btn btn-primary btn-block" href="#/main/settings/profile/details/" angular-ripple><b>Update Profile</b></a> -->
+                                </div>
+                            </form>
                         </div>
                         <br>
                         <div>
                             <h4>Social Accounts</h4>
                             <br>
-                            <div>
+                            <div class="flexx">
                                 <div>
-                                    <img src="./images/icon/email.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.profile.email"></small>
+                                    <img src="./images/icon/email.svg" style="margin-right: 10px;">
+                                    <div data-ng-bind="profile.profile.email"></div>
                                 </div>
                                 <br>
                                 <div>
-                                    <img src="./images/icon/facebook-box.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.EmpName"></small>
+                                    <img src="./images/icon/facebook-box.svg" style="margin-right: 10px;">
+                                    <div data-ng-bind="profile.EmpName"></div>
                                 </div>
                                 <br>
                                 <div>
-                                    <img src="./images/icon/twitter.svg" style="margin-right: 10px;"> <small>@jane (twitter.com/jane)</small>
+                                    <img src="./images/icon/twitter2.svg" style="margin-right: 10px;">
+                                    <div>@twitter.com</div>
                                 </div>
                                 <br>
                                 <div>
-                                    <img src="./images/icon/map-marker.svg" style="margin-right: 10px;"> <small data-ng-bind="profile.profile.address"></small>
+                                    <img src="./images/icon/map-marker.svg" style="margin-right: 10px;">
+                                    <div data-ng-bind="profile.profile.address"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9 p-0" style="padding-left: 0px;border-left: thin solid rgba(212, 211, 211, 0.15);">
+            <div class="col-sm-9 p-0" style="padding-left: 0px;">
                 <div class="box" style="margin-bottom: 0px;">
                     <div class="panel-body" style="padding: 0;">
                         <div class="tab-wrap">
                             <input type="radio" name="tabs" id="tab1" checked>
                             <div class="tab-label-content" id="tab1-content">
-                                <label class="tab-label-header" for="tab1" angular-ripple>Basic Information</label>
+                                <label class="tab-label-header" for="tab1" angular-ripple>General Information</label>
                                 <div class="tab-content">
                                     <span class="btn-group" style="float: right;top: 10px;">
-                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
+                                    <span data-toggle="dropdown" style="color: #555;cursor: pointer;" uib-tooltip="More Action" tooltip-placement="left">
                                     <img src="./images/icon/ic_more_vert_black_24px.svg" style="width: 21px;"> 
                                     </span>
-                                    <ul class="dropdown-menu" role="menu" style="float: right !important;">
-                                        <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
+                                    <ul class="dropdown-menu" role="menu" style="margin-left: -140px;">
+                                        <li><a ng-click="showbutton = true; button=false;">Edit</a>
                                         </li>
                                     </ul>
                                     </span>
-                                    <span style="display: inline-flex;"><img src="./images/icon/ic_person_black_24px.svg" style="margin-right: 10px;"><h4>Basic Information</h4></span>
-                                    <ng-include src="'./modules/profile/basicinfo.html'" ng-show="basicInfo"></ng-include>
-                                    <ng-include src="'./modules/profile/basicinfoedit.html'" ng-show="basicinfoEdit"></ng-include>
+                                    <span style="display: inline-flex;"><img src="./images/icon/ic_person_black_24px.svg" style="margin-right: 10px;"><h4>General Information</h4></span>
+                                    <form role="form" ng-submit="savePersonDetail()">
+                                        <div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">First Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" ng-model="details.firstname" ng-disabled="button" ng-init="button=true">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Last Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" ng-model="details.lastname" ng-disabled="button">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Display Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" ng-model="details.displayName" ng-disabled="button">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Email Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="email" ng-model="details.email" ng-disabled="button">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" ng-model="details.address" ng-disabled="button">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Mobile Number</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" ng-model="details.mobile" ng-disabled="button">
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 modlabel">Time Zone</label>
+                                                <div class="col-sm-9">
+                                                    <select ng-model="details.timeZone" ng-options="item.text as item.text for item in timezone" ng-disabled="button">
+                                                        <option disabled value="">Choose Time Zone</option>
+                                                    </select>
+                                                    <span class="barzz"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="">
+                                            <button ng-show="showbutton" type="submit" class="btn btn-primary" style="margin-left: 4%;" angular-ripple>Save</button>
+                                            <button ng-show="showbutton" ng-click="refresh(); showbutton = false; button=true;" class="btn btn-default" type="button" angular-ripple>Cancel</button>
+                                        </div>
+                                    </form>
+                                    <!-- <ng-include src="'./modules/profile/basicinfoedit.html'" ng-show="basicinfoEdit"></ng-include> -->
                                 </div>
                             </div>
                             <input type="radio" name="tabs" id="tab2">
                             <div class="tab-label-content" id="tab2-content">
-                                <label class="tab-label-header" for="tab2" angular-ripple>Contact Information</label>
+                                <label class="tab-label-header" for="tab2" angular-ripple>User Accounts</label>
                                 <div class="tab-content">
-                                    <span class="btn-group" style="float: right;top: 10px;">
+                                    <!-- <span class="btn-group" style="float: right;top: 10px;">
                                     <span data-toggle="dropdown" style="color: #555;cursor: pointer;">
                                     <img src="./images/icon/ic_more_vert_black_24px.svg" style="width: 21px;"> 
                                     </span>
@@ -282,13 +174,13 @@
                                         <li><a ng-click="basicinfoEdit = true; basicInfo = false;">Edit</a>
                                         </li>
                                     </ul>
-                                    </span>
-                                    <span style="display: inline-flex;"><img src="./images/icon/phone.svg" style="margin-right: 10px;"><h4>Contact Information</h4></span>
-                                    <ng-include src="'./modules/profile/contactinfo.html'" ng-show="basicInfo"></ng-include>
-                                    <ng-include src="'./modules/profile/contactinfoEdit.html'" ng-show="basicinfoEdit"></ng-include>
+                                    </span> -->
+                                    <span style="display: inline-flex;"><img src="./images/icon/account-key.svg" style="margin-right: 10px;"><h4>User Accounts</h4></span>
+                                    <ng-include src="'./modules/profile/contactinfo.html'"></ng-include>
+                                    <!-- <ng-include src="'./modules/profile/contactinfoEdit.html'" ng-show="basicinfoEdit"></ng-include> -->
                                 </div>
                             </div>
-                            <input type="radio" name="tabs" id="tab3">
+                            <!-- <input type="radio" name="tabs" id="tab3">
                             <div class="tab-label-content" id="tab3-content">
                                 <label class="tab-label-header" for="tab3" angular-ripple>Summary</label>
                                 <div class="tab-content">
@@ -305,7 +197,7 @@
                                     <ng-include src="'./modules/profile/summary.html'" ng-show="basicInfo"></ng-include>
                                     <ng-include src="'./modules/profile/summaryedit.html'" ng-show="basicinfoEdit"></ng-include>
                                 </div>
-                            </div>
+                            </div> -->
                             <input type="radio" name="tabs" id="tab4">
                             <div class="tab-label-content" id="tab4-content">
                                 <label class="tab-label-header" for="tab4" angular-ripple>Profile Settings</label>
@@ -355,20 +247,21 @@ input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
-    left: calc((100% / 4) * 0);
+    left: calc((100% / 3) * 0);
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
-    left: calc((100% / 4) * 1);
+    left: calc((100% / 3) * 1);
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
-    left: calc((100% / 4) * 2);
+    left: calc((100% / 3) * 2);
 }
 
-input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+
+/*input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
     left: calc((100% / 4) * 3);
-}
+}*/
 
 input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     left: 0;
@@ -403,7 +296,7 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
 
 .slide {
     background: #247571;
-    width: calc(100% / 4);
+    width: calc(100% / 3);
     height: 4px;
     position: absolute;
     left: 0;
@@ -426,7 +319,7 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     background: #fff;
     padding: 30px;
     width: 100%;
-    height: 475px;
+    height: 586px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
 }
 
@@ -443,7 +336,7 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     height: 0;
     text-align: left !important;
     padding: 0;
-    padding-top: 7px;
+    /*padding-top: 7px;*/
     margin-bottom: 0;
     text-transform: none;
     justify-content: flex-start !important;
@@ -455,17 +348,31 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     color: #5E5E5E !important;
 }
 
+select,
 input {
     font-size: 14px;
     display: block;
-    width: 300px;
+    width: 400px;
     border: none;
     margin-top: -1px;
     border-bottom: 1px solid #ababab;
 }
 
+select:focus,
 input:focus {
     outline: none;
+}
+
+select {
+    border-radius: 0;
+    -webkit-appearance: none;
+    background-color: #fff;
+}
+
+.uploadbutton img {
+    width: 100%;
+    margin: auto;
+    padding: 6px;
 }
 
 
@@ -488,6 +395,8 @@ input:focus {
 
 /* active state */
 
+select:focus ~ label,
+select:valid ~ label,
 input:focus ~ label,
 input:valid ~ label {
     top: -20px;
@@ -495,13 +404,96 @@ input:valid ~ label {
     color: #262b33;
 }
 
+button[disabled],
+html select[disabled],
+html input[disabled] {
+    cursor: default;
+    border-bottom: transparent;
+    background: transparent !important;
+}
+
 
 /* BOTTOM BARS ================================= */
+
+.flexx div {
+    display: flex;
+    font-size: 13px;
+    padding-top: 3px;
+}
+
+.settingzz img {
+    width: 18px;
+    margin-right: 15px;
+    margin-top: -4px;
+}
+
+.useraccountbox {
+    padding: 15px 35px 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    position: relative;
+    min-height: 150px;
+    margin-top: 35px;
+}
+
+.useraccountbox label {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.useraccountbox .fa {
+    float: right;
+}
+
+.useraccountbox .form-group {
+    margin-bottom: 20px;
+}
+
+.useraccountbox select,
+.useraccountbox input {
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    border: none;
+    margin-top: -1px;
+    border-bottom: 1px solid #ababab;
+}
+
+.useraccountbox .barzz {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.useraccountbox button[disabled] {
+    cursor: default;
+    border-bottom: transparent;
+    background: #2196f3 !important;
+}
+
+.errors {
+    font-size: small;
+    color: #dd4b39;
+}
+
+.success {
+    font-size: small;
+    color: #00a65a;
+}
+
+.fa-check:before {
+    content: "\f00c";
+    color: #00a65a;
+}
 
 .barzz {
     position: relative;
     display: block;
-    width: 300px;
+    width: 400px;
+}
+
+.profholder {
+    height: 647px;
 }
 
 .barzz:before,
@@ -511,7 +503,7 @@ input:valid ~ label {
     width: 0;
     bottom: 0px;
     position: absolute;
-    background: #262b33;
+    background: #257773;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -525,6 +517,20 @@ input:valid ~ label {
     right: 50%;
 }
 
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+    content: "\f00d";
+    color: #de5140;
+}
+
+.uploadbuttonHolder {
+    width: 70%;
+    position: relative;
+    display: flex;
+    margin: auto;
+}
+
 textarea:focus ~ label,
 textarea:valid ~ label {
     font-size: 0.75em;
@@ -532,6 +538,30 @@ textarea:valid ~ label {
     top: -2.25rem;
     -webkit-transition: all 0.125s ease;
     transition: all 0.125s ease;
+}
+
+.fb-bar {
+    color: #3b5998 !important;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.google-bar {
+    color: #dd4b39;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.twitter-bar {
+    color: #55acee;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.linkedin-bar {
+    color: #007bb6;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .styled-input {
@@ -596,6 +626,8 @@ textarea {
 
 /* active state */
 
+select:focus ~ .barzz:before,
+select:focus ~ .barzz:after,
 input:focus ~ .barzz:before,
 input:focus ~ .barzz:after {
     width: 50%;
@@ -617,6 +649,7 @@ input:focus ~ .barzz:after {
 
 /* active state */
 
+select:focus ~ .highlighten,
 input:focus ~ .highlighten {
     -webkit-animation: inputHighlighter 0.3s ease;
     -moz-animation: inputHighlighter 0.3s ease;
@@ -671,6 +704,7 @@ input:focus ~ .highlighten {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    outline: none;
 }
 
 .btn.btn-default {
