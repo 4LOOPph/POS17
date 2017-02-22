@@ -13,7 +13,7 @@
                                     <div class="input-group ">
                                         <div class="box-tools " ng-hide="list.listName === 'Package'">
                                             <div class="input-group b imput " style="margin-bottom: 10px;">
-                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0" style="margin-top: 0px;">
+                                                <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch " disable-valid-styling="true " disable-validation-message=" " ng-change="(txtSearch.length < 1)? searchData(txtSearch):0 " ng-keypress="($event.which===13)?searchData(txtSearch):0" style="margin-top: 0px;margin-bottom: 3px;">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData(txtSearch)" uib-tooltip="Search" angular-ripple style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
                                                 </div>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="box-body p-0 mt-10 mlf-3">
-                            <div class="panel panel-default">
+                            <div class="panelcustom panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">List of {{list.listName}}</h3>
                                 </div>

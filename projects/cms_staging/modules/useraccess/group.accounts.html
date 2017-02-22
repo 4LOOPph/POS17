@@ -22,10 +22,10 @@
             <button ng-click="refreshUserGroup()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
         </div> -->
         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
-            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ng-click="newUserGroup()" uib-tooltip="Add New">
+            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ng-click="newUserGroup()" uib-tooltip="Add New" angular-ripple>
                 <img src="./images/icon/ic_add_white_24px.svg">
             </button>
-            <button ng-click="refreshUserGroup()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+            <button ng-click="refreshUserGroup()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh" angular-ripple>
                 <img src="./images/icon/refresh.svg">
             </button>
         </form>
@@ -65,9 +65,9 @@
                 </td> -->
                 <td class="text-right" data-title="'Action'">
                     <div class="disp-inline-flex">
-                        <a ui-sref="main.settings-permissions({groupId:group.role_id})" ng-show="profile.isOwner == 1 && profile.uc_id !== row.uc_id" class="btn ml-10 bgscreen btn-info actbutton btn-xs btn-flat" uib-tooltip="Subscription"><img src="./images/icon/ic_vpn_key_black_24px.svg"></a>
-                        <a ng-click="newUserGroup(group.role_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
-                        <a ng-click="toggleModal(group.role_id,$index,'groups')" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                        <a ui-sref="main.settings-permissions({groupId:group.role_id})" ng-show="profile.isOwner == 1 && profile.uc_id !== row.uc_id" class="btn ml-10 bgscreen btn-info actbutton btn-xs btn-flat" uib-tooltip="Subscription" angular-ripple><img src="./images/icon/ic_vpn_key_black_24px.svg"></a>
+                        <a ng-click="newUserGroup(group.role_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                        <a ng-click="toggleModal(group.role_id,$index,'groups')" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete" angular-ripple><img src="./images/icon/ic_delete_black_24px.svg"></a>
                     </div>
                     <a ui-sref="main.settings-permissions({groupId:group.role_id})" class="smscreen r200">
                         <button class="btn btn-info  actbutton btn-xs btn-flat"><img src="./images/icon/ic_list_black_24px (1).svg"></button> Subscription</a>

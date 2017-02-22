@@ -21,7 +21,7 @@
     <!-- <table class="table table-condensed"> -->
     <thead>
         <tr>
-            <th style="width: 60%">Item</th> 
+            <th style="width: 60%">Item</th>
             <th style="width: 35%" ng-if="list.listName=='Package'">Quantity</th>
             <th style="width: 10%" ng-if="list.listName=='Package'"></th>
         </tr>
@@ -37,16 +37,16 @@
                     <input type="text" ng-model="item.quantity" class="form-control" />
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <button ng-click="minusbutton(item)" class="btn bg-dgray m-0 br-0"><i class="fa fa-minus"></i></button>
+                            <button ng-click="minusbutton(item)" class="btn bg-dgray m-0 br-0" angular-ripple><i class="fa fa-minus"></i></button>
                         </div>
                         <div class="input-group-btn">
-                            <button ng-click="addbutton(item)" class="btn bg-dgray" type="button"><i class="fa fa-plus"></i></button>
+                            <button ng-click="addbutton(item)" class="btn bg-dgray" type="button" angular-ripple><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
             </td>
             <td style="width: 10%" class="mt-40" ng-if="list.listName=='Package'">
-                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right mt-21" ng-click="remove(list,item)" style="    padding: 7px 7px !important;">
+                <button ng-if="list.listName=='Package'" class="btn btn-danger btn-xs btn-flat pull-right mt-21" ng-click="remove(list,item)" angular-ripple>
                     <img src="./images/icon/ic_close_white_18px.svg">
                 </button>
             </td>

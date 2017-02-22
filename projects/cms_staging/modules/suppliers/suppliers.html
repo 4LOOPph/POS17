@@ -17,13 +17,13 @@
                 <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-suppliers-add" uib-tooltip="Add New" href="#/main/settings/humanresource/">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-suppliers-add" uib-tooltip="Add New" angular-ripple>
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete" angular-ripple>
                                 <img src="./images/icon/ic_delete_black_24px.svg">
                             </button>
-                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh" angular-ripple>
                                 <img src="./images/icon/refresh.svg">
                             </button>
                         </form>
@@ -65,7 +65,7 @@
                             </td>
                             <td class="text-right">
                                 <div class="disp-inline-flex">
-                                    <a ng-click="edit(supplier.s_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-click="edit(supplier.s_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                 </div>
                             </td>
                         </tr>

@@ -41,19 +41,19 @@
                     </div>
                     <div class="pull-left pt-3">
                         <form class="form-inline p-3 pl-15">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.products-add" uib-tooltip="Add New">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.products-add" uib-tooltip="Add New" angular-ripple>
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <button class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                            <button class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish" angular-ripple>
                                 <img src="./images/icon/file-export2.svg">
                             </button>
-                            <button class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                            <button class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft" angular-ripple>
                                 <img src="./images/icon/pencil-box-outline.svg">
                             </button>
-                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive">
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="deleteSelected()" uib-tooltip="Archive" angular-ripple>
                                 <img src="./images/icon/archive.svg">
                             </button>
-                            <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh" angular-ripple>
                                 <img src="./images/icon/refresh.svg">
                             </button>
                             <!--  <a ng-click="search=true " class="pull-right s" uib-tooltip="more " style="position: absolute;right: 12px;top: 17px;"><img src="./images/icon/ic_more_vert_black_24px.svg"></a> -->
@@ -162,9 +162,9 @@
                             </td>
                             <td class="">
                                 <div class="disp-inline-flex">
-                                    <a ng-click="updateHistory(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></a>
-                                    <a ng-click="edit(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
-                                    <a ng-click="toggleModal(article.article_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                    <a ng-click="updateHistory(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Update History" angular-ripple><img src="./images/icon/history.svg"></a>
+                                    <a ng-click="edit(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-click="toggleModal(article.article_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete" angular-ripple><img src="./images/icon/ic_delete_black_24px.svg"></a>
                                 </div>
                                 <a ng-click="updateHistory(product.p_id)" class="smscreen r200">
                                     <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
