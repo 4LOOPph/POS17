@@ -1,5 +1,6 @@
 <section class="list content" ng-click="clearSelection()" style="padding: 0;">
     <table class="table assets-folders" contextmenu-container="meta.contextmenu">
+        <div class="sm p-10">Folders</div>
         <thead>
             <tr>
                 <th width="5%"></th>
@@ -15,7 +16,7 @@
             <tr contextmenu-item="file" ng-repeat="file in assets.folders" ng-click="activeSelected(file,$event)" ng-dblclick="openFolder(file)" ng-class="{'active':file.isActive}" ng-if="assets.folders.length > 0">
                 <td class="mailbox-star folder">
                 </td>
-                <td class="mailbox-star">
+                <td class="mailbox-star awp">
                     <!-- STARRED -->
                     <div style="display: inline-flex;letter-spacing: 2px;">
                         <i class="fa fa-users" ng-if="file.isPublic == 1"></i>
@@ -24,12 +25,27 @@
                         <i class="fa fa-star-o" ng-if="!file.isStarred"></i>
                     </div>
                 </td>
-                <td class="mailbox-subject">{{file.folder_name}}</td>
-                <td class="mailbox-name">{{file.created_by.displayName}}</td>
+                <td class="mailbox-subject">{{file.folder_name}}
+                    <br>
+                    <span class="sm">
+                    <div  style="display: inline-flex;letter-spacing: 2px;">
+                        <i class="fa fa-users" ng-if="file.isPublic == 1"></i>
+                        <i class="fa fa-lock" ng-if="file.isPublic == 0"></i>
+                        <i class="fa fa-star text-yellow" ng-if="file.isStarred"></i>
+                        <i class="fa fa-star-o" ng-if="!file.isStarred"></i>
+                    </div>
+                    <small am-time-ago="file.date_created"></small>
+                    </span>
+                </td>
+                <td class="mailbox-name awp">{{file.created_by.displayName}}</td>
                 <!-- <td class="mailbox-attachment">{{ file.folder_filesize/1024/1024|number:2 }} MB</td> -->
-                <td class="mailbox-attachment">{{ file.folder_filesize }} </td>
-                <td class="mailbox-date" am-time-ago="file.date_created"></td>
-                <td class="mailbox-name"></td>
+                <td class="mailbox-attachment awp">{{ file.folder_filesize }} </td>
+                <td class="mailbox-date awp" am-time-ago="file.date_created"></td>
+                <td class="mailbox-name awp"></td>
+                <td ng-click="actionsheet = true;"> <span class="sm tablefloater">
+                     <div> <img src="./images/icon/ic_more_vert_black_24px.svg "></div>
+                    </span>
+                </td>
             </tr>
             <tr contextmenu-item="files" ng-repeat="files in assets.assets" ng-click="activeSelected(files,$event)" ng-dblclick="openFile(files)" ng-class="{'active':files.isActive}" ng-if="assets.assets.length > 0">
                 <td class="mailbox-star">
@@ -55,7 +71,7 @@
                     <!-- IMAGE -->
                     <img src="{{files.asset_url}}" alt="Attachment" style="width: 100%;height: 24px;margin-top: -3px;" ng-if="files.asset_mimetype == 'image/jpeg' || files.asset_mimetype == 'image/jpg' || files.asset_mimetype == 'image/gif' || files.asset_mimetype == 'image/x-ms-bmp' || files.asset_mimetype == 'image/png'" />
                 </td>
-                <td class="mailbox-star">
+                <td class="mailbox-star awp">
                     <!-- STARRED -->
                     <div style="display: inline-flex;letter-spacing: 2px;">
                         <i class="fa fa-users" ng-if="files.isPublic == 1"></i>
@@ -64,16 +80,58 @@
                         <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
                     </div>
                 </td>
-                <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}</td>
-                <td class="mailbox-name">{{files.created_by.displayName}}</td>
+                <td class="mailbox-subject">{{files.asset_name | ellipsis:true:30:'...'}}
+                    <br>
+                    <span class="sm">
+                    <div style="display: inline-flex;letter-spacing: 2px;">
+                        <i class="fa fa-users" ng-if="files.isPublic == 1"></i>
+                        <i class="fa fa-lock" ng-if="files.isPublic == 0"></i>
+                        <i class="fa fa-star text-yellow" ng-if="files.isStarred"></i>
+                        <i class="fa fa-star-o" ng-if="!files.isStarred"></i>
+                    </div>
+                    <small am-time-ago="files.date_created"></small>
+                    </span></td>
+                <td class="mailbox-name awp">{{files.created_by.displayName}}</td>
                 <!-- <td class="mailbox-attachment">{{ files.asset_filesize/1024/1024|number:2 }} MB</td> -->
-                <td class="mailbox-attachment">{{ files.asset_filesize }}</td>
-                <td class="mailbox-date" am-time-ago="files.date_created"></td>
-                <td class="mailbox-name">
+                <td class="mailbox-attachment awp">{{ files.asset_filesize }}</td>
+                <td class="mailbox-date awp" am-time-ago="files.date_created"></td>
+                <td class="mailbox-name awp">
                     <span ng-if="files.isPublished == 0" class="label label-warning">draft</span>
                     <span ng-if="files.isPublished == 1" class="label label-success">published</span>
+                </td>
+                <td ng-click="actionsheet = true;"> <span class="sm tablefloater">
+                     <div> <img src="./images/icon/ic_more_vert_black_24px.svg "></div>
+                    </span>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="action-sheet-backdrop active" buttons="buttons" ng-show="showDrop">
+        <div class="action-sheet-wrapper action-sheet-up">
+            <div class="action-sheet action-sheet-has-icons" style="">
+                <div class="action-sheet-group action-sheet-options">
+                    <div class="action-sheet-title ng-binding">New</div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="holder" ng-click="createNewFolder(); actionsheet = false;">
+                                    <img src="./images/icon/ic_folder_black_24px.svg">
+                                    <br>Folder
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="holder" ng-click="newUploader(); actionsheet = false;">
+                                    <img src="./images/icon/ic_file_upload_black_24px.svg">
+                                    <br>Upload
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-sheet-group action-sheet-cancel">
+                    <button class="button" ng-click="actionsheet = false;" angualr-ripple>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

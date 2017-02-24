@@ -124,6 +124,37 @@
     </div>
     <!-- /.row -->
 </section>
+<button class="btn smAddnewbtn sm btn-primary" ng-click="actionsheet = true;">
+    <img class="rotate" tabindex="1" src="../images/icon/ic_add_white_24px.svg">
+</button>
+<div class="action-sheet-backdrop active" buttons="buttons" ng-show="actionsheet">
+    <div class="action-sheet-wrapper action-sheet-up">
+        <div class="action-sheet action-sheet-has-icons" style="">
+            <div class="action-sheet-group action-sheet-options">
+                <div class="action-sheet-title ng-binding">New</div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="holder" ng-click="createNewFolder(); actionsheet = false;">
+                                <img src="./images/icon/ic_folder_black_24px.svg">
+                                <br>Folder
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="holder" ng-click="newUploader(); actionsheet = false;">
+                                <img src="./images/icon/ic_file_upload_black_24px.svg">
+                                <br>Upload
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-sheet-group action-sheet-cancel">
+                <button class="button" ng-click="actionsheet = false;" angualr-ripple>Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 <style type="text/css">
 .successlabel {
     font-size: 17px;
@@ -203,4 +234,6 @@
     color: #fff;
     font-weight: 500;
 }
+
+
 </style>

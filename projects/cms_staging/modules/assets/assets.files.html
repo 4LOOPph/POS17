@@ -17,7 +17,7 @@
                 <button class="actbuttonassets " ng-if="!isList " ng-click="changeDisplay() " uib-tooltip="List View " style="padding: 2px 3px 3px; " angular-ripple><img src="./images/icon/list.svg " style="width: 18px; "></button>
                 <button class="actbuttonassets " uib-tooltip="Settings " angular-ripple><img src="./images/icon/ic_settings_black_24px.svg "></button>
             </div>
-            <div class="btn-group pull-right pt-5" uib-dropdown is-open="status.isopen" ng-if="showBarMore ">
+            <div class="btn-group pull-right pt-5 bg" uib-dropdown is-open="status.isopen" ng-if="showBarMore ">
                 <button class="actbuttonassets dropdown-toggle " data-toggle="dropdown " id="single-button" uib-tooltip="More actions " uib-dropdown-toggle angular-ripple>
                     <img src="./images/icon/ic_more_vert_black_24px.svg ">
                 </button>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="btn-group pull-right pt-5 ">
+            <div class="btn-group pull-right pt-5 bg">
                 <button class="actbuttonassets " uib-tooltip="Restore " ng-click="restoreSelected() " ng-if="showBarRestore " angular-ripple><img src="./images/icon/history.svg "></button>
                 <button class="actbuttonassets " uib-tooltip="Share... " ng-click="shareToOthers() " ng-if="showBarShare " angular-ripple><img src="./images/icon/account-plus.svg "></button>
                 <button class="actbuttonassets " uib-tooltip="Remove " ng-click="deleteSelected() " ng-if="showBarDelete " angular-ripple><img src="./images/icon/ic_delete_black_24px.svg "></button>
@@ -68,7 +68,7 @@
             </ol>
         </div>
         <div class="table-responsive justcont ">
-            <div contextmenu="meta.contextmenu " class="dropdown contextmenu ">
+            <div contextmenu="meta.contextmenu " class="dropdown contextmenu">
                 <ul class="dropdown-menu " role="menu ">
                     <li ng-if="meta.contextmenu.item.isFolder==false && meta.contextmenu.item.isDeleted==0 ">
                         <a role="menuitem " href ng-click="previewSelected() " ng-if="showToolPreview " angular-ripple>

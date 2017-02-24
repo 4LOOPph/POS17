@@ -52,7 +52,7 @@
                     </span>
                     <div class="mailbox-attachment-info" ng-click="activeSelected(files)">
                         <a href="" ng-click="activeSelected(files)" ng-dblclick="openFile(files)" class="mailbox-attachment-name" uib-tooltip="{{files.asset_name}}"><i class="fa fa-paperclip"></i> {{files.asset_name | ellipsis:true:15:'...'}}</a>
-                        <span class="mailbox-attachment-size">
+                        <span class="mailbox-attachment-size bg">
                           <!-- {{ files.asset_filesize/1024/1024|number:2 }} MB -->
                           {{ files.asset_filesize }}
                         </span>
