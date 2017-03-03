@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ENGAGIS-TESSA</title>
+</head>
+
+<body class="full-padding" style="margin: 0px;padding: 0;-webkit-text-size-adjust: 100%;background-color: #ffffff;">
+    <div class="wrapper" style="background-color: #ffffff;">
+        <table class="layout layout--no-gutter" style="border-collapse: collapse;table-layout: fixed;margin-left: auto;margin-right: auto;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;" align="left">
+            <tbody>
+                <tr>
+                    <td class="preheader__webversion" style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="preheader__webversion" style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column" style="padding-left:20px;width: 800px;">
+                        <a href="http://engagis.com.au/" title="Engagis Home"><img src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png" width="268" height="62"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="preheader__webversion" style="text-align: right;padding: 10px 0 5px 0;vertical-align: top;width: 280px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="preheader__webversion" style="padding-left: 25px;width: 800px;">
+                        <h3 style="color: #3b7ff0;font-family:'Open Sans',sans-serif;font-weight:700; font-size:20px;">
+                            {{selected.title}}
+                        </h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="layout layout--no-gutter" style="border-collapse: collapse;table-layout: fixed;margin-left: auto;margin-right: auto;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;" align="center">
+            <tbody>
+                <tr *ngIf="selected.media_mimetype == 'video/mp4'">
+                    <td class="column" style="padding-top: 20px;padding-left:20px;text-align: left;vertical-align: middle; width: 800px;">
+                        Open this link for the video <a (click)="newtab(selected.mediafiles)">{{selected.mediafiles}}</a>
+                    </td>
+                </tr>
+                <tr *ngIf="selected.media_mimetype == 'image/jpeg' || selected.media_mimetype == 'image/png' || selected.media_mimetype == 'image/jpg'">
+                    <td class="column" style="padding-top: 20px;padding-left:20px;text-align: left;vertical-align: middle; width: 800px;">
+                        <img src="{{selected.mediafiles}}" width="700px">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column" style="text-align: left;vertical-align: top;color: #60666d;font-size: 14px;line-height: 21px;font-family:'Open Sans',sans-serif;width: 800px;">
+                        <div style="margin-left:20px;margin-right:20px;padding-top: 30px;" [innerHTML]="selected.description | sanitizeHtml"></div>
+                    </td>
+                </tr>
+                <td style="padding:15px 20px;">
+                    <b style="font-weight: 800;">TESSA</b>
+                    <p style="font-weight: 800; margin: 0;">The Engagis Sales and Solutions App</p>
+                    <div style="font-size: 14px; ">
+                        <p style="margin: 0;"> <a href="mailto:leon.condon@engagis.com">tessa@engagis.com</a>
+                        </p>
+                        <p style="margin-top:10px;">
+                            <a href="http://wwww.engagis.com">
+                                <img src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png" style="width: 230px;" alt="Engagis" />
+                            </a>
+                        </p>
+                        <div style=" margin-top:10px;">
+                            <div style="font-family:'Roboto Medium'; font-size:14px; margin: 0;color: #bdbdbd;">Engagis Pty Ltd</div>
+                            <p style="margin: 0;">ABN 98 098 945 469</p>
+                            <p style="margin: 0;">Level 12, 213 Miller Street</p>
+                            <p style="margin: 0;">North Sydney NSW 2060</p>
+                            <p style="margin: 0;"><a href="http://wwww.engagis.com">engagis.com</a></p>
+                        </div>
+                        <div style=" margin-top:15px;">
+                            <div style="font-family:'Roboto Medium'; font-size:14px;margin: 0;color: #bdbdbd;">Customer Support</div>
+                            <p style="margin: 0;">1300 203 810 | <a href="mailto:support@engagis.com">support@engagis.com</a></p>
+                            <p style="margin-top:10px; font-size: 12px;color: #616161;">This email and any files transmitted with it are privileged and confidential information intended for the use of the addressee. The confidentiality and/or privilege in this email is not waived, lost or destroyed if it has been transmitted to you in error. If you have received this email in error you must (a) not disseminate, copy or take any action in reliance on it; (b) please notify Engagis Pty Ltd immediately by return email to the sender; and (c) please delete the original email.</p>
+                        </div>
+                    </div>
+                </td>
+                <tr>
+                    <td>
+                        <div style="border-top: solid thin #bdbdbd; margin: 20px 0;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="padding: 30px 30px 20px 20px; font-weight:800;color:#bdbdbd;">CONNECT WITH US</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800; color:#308ecc;">Leon Condon</p>
+                                <p style="margin:0;">CEO</p>
+                                <p style="margin:0;">0414 266 366</p>
+                                <p style="margin:0;"><a style="text-decoration: underline; color: black;" href="mailto:leon.condon@engagis.com">leon.condon@engagis.com</a>
+                                </p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800;color:#308ecc;">Milos Pejovic</p>
+                                <p style="margin:0;">GM Operations</p>
+                                <p style="margin:0;">0414 135 297</p>
+                                <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:milos.pejovic@engagis.com">milos.pejovic@engagis.com</a>
+                                </p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800;color:#308ecc;">Thor Turrecha</p>
+                                <p style="margin:0;">Head of Solutions</p>
+                                <p style="margin:0;">0467 654 033</p>
+                                <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:thor.turrecha@engagis.com">thor.turrecha@engagis.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                            <div style="border-left: solid 5px #fafafa;font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800; color:#308ecc;">Georges Sabbagh</p>
+                                <p style="margin:0;">Business Strategist</p>
+                                <p style="margin:0;">047 124 483</p>
+                                <p style="margin:0;"><a style="text-decoration: underline; color: black;" href="mailto:georges.sabbagh@engagis.com">georges.sabbagh@engagis.com</a>
+                                </p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa;font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800;color:#308ecc;">Benjamin Smith</p>
+                                <p style="margin:0;">Business Strategist</p>
+                                <p style="margin:0;">+612 8039 0648</p>
+                                <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:jay.daley@engagis.com">ben.smith@engagis.com</a>
+                                </p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; display: table-cell;padding:10px;">
+                                <p style="margin:0; font-weight: 800;color:#308ecc;">Holly Booty</p>
+                                <p style="margin:0;">Sales Program Manager</p>
+                                <p style="margin:0;">02 6038 0645</p>
+                                <p style="margin:0;"><a style="text-decoration: underline;color: black;" href="mailto:holly.booty@engagis.com">holly.booty@engagis.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: #fafafa;">
+                    <td>
+                        <div style="display: table; width: 100%; table-layout: fixed; margin:20px;">
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                                <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Sydney</p>
+                                <p style="margin:0;">Level 12, 213 Miller Street,</p>
+                                <p style="margin:0;">North Sydney, NSW 2060</p>
+                                <p style="margin:0;">Australia</p>
+                                <br/>
+                                <p style="margin:0;">Ph: 1300 203 810 </p>
+                                <p style="margin:0;">Ph: +61 2 8039 0651 </p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                                <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Melbourne</p>
+                                <p style="margin:0;">2/39 Laser Drive, Rowville, </p>
+                                <p style="margin:0;">Melbourne, VIC 3178</p>
+                                <p style="margin:0;">Australia</p>
+                                <br/>
+                                <p style="margin:0;">Ph: +61 3 9763 6144</p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px; vertical-align:top;display: table-cell;padding:10px;">
+                                <p style="margin:0;font-family: 'Roboto Black';color:#bdbdbd;">Auckland</p>
+                                <p style="margin:0;">300 Richmond Road</p>
+                                <p style="margin:0;">Grey Lynn, Auckland 1021</p>
+                                <p style="margin:0;">Australia</p>
+                                <br/>
+                                <p style="margin:0;">Ph: 0800 364 244</p>
+                                <p style="margin:0;">Ph: +64 9 950 3801</p>
+                            </div>
+                            <div style="border-left: solid 5px #fafafa; font-size: 12px;vertical-align:top; display: table-cell;padding:10px;">
+                                <a href="http://www.engagis.com"><img src="http://engagis.com/wp-content/uploads/2014/05/Logo_400x96.png" style="width: 120px;" alt="Engagis" /> </a>
+                                <p style="margin:0;">www.engagis.com</p>
+                                <p style="margin:0;">1300 2003 (AU)</p>
+                                <p style="margin:0;">info@engagis.com</p>
+                                <br/>
+                                <p style="margin:0;">0002 0213 465</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

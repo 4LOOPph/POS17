@@ -1,0 +1,146 @@
+<html>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<!-- Bootstrap 3.3.2 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="https://blackrockdigital.github.io/startbootstrap-freelancer/css/freelancer.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    $.urlParam = function(name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    $(document).ready(function() {
+        var url = 'app/';
+        $('#appview').attr('src', url + '?production=true&ionicplatform=ios')
+        $('#appview1').attr('src', url + '?production=true&ionicplatform=android')
+        $('#appview2').attr('src', url + '?production=true&ionicplatform=windows')
+    });
+    </script>
+    <style>
+    #container-ios {
+        margin: 0 auto;
+        position: relative;
+        width: 1600px;
+    }
+    
+    #container-ios img {
+        width: 1200px;
+    }
+    
+    #appview {
+        border: none;
+        height: 663px;
+        left: 70px;
+        position: absolute;
+        top: 73px;
+        width: 1060px;
+    }
+    
+    #appview1 {
+        border: none;
+        height: 663px;
+        left: 70px;
+        position: absolute;
+        top: 73px;
+        width: 1060px;
+    }
+    
+    #appview2 {
+        border: none;
+        height: 685px;
+        left: 70px;
+        position: absolute;
+        top: 70px;
+        width: 1042px;
+    }
+    </style>
+</head>
+
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#ios">iOS</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#android">Android</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#windows">Windows</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="ios">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>iOS</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12portfolio-item">
+                    <div id="container-ios">
+                        <iframe id="appview"></iframe>
+                        <img src="../../dist/img/tabdevice.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="android">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Android</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 portfolio-item">
+                    <div id="container-ios">
+                        <iframe id="appview1"></iframe>
+                        <img src="../../dist/img/tabdevice.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="windows">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Windows</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 portfolio-item">
+                    <div id="container-ios">
+                        <iframe id="appview2"></iframe>
+                        <img src="../../dist/img/windowssurface.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
