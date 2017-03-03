@@ -1,0 +1,99 @@
+/* Empty. Add your own CSS if you like */
+
+.right_item {
+    float: right;
+    color: #fff;
+    margin-top: 1.5in;
+}
+
+.right_item span {
+    font-weight: 800;
+    font-size: 2in;
+}
+
+.left_item .icon {
+    font-size: 1.5in;
+    margin-left: 0.5in;
+}
+
+.custom_item .item-note {
+    font-size: 1in;
+    font-weight: 600;
+    margin-top: 1.5in;
+    margin-right: 20px;
+}
+
+ion-list {
+    height: 100%;
+}
+
+.custom_item {
+    height: 3.5in;
+    border-bottom: 2px solid #f0a119;
+    padding-right: 20px;
+    padding-left: 35px;
+}
+
+.bar-header {
+    height: 2in !important;
+    min-height: 2in !important;
+}
+
+.bar .title {
+    min-height: 2in !important;
+    font-size: 0.75in;
+    font-weight: 800;
+}
+
+.custom_toolbar .title {
+    padding-top: 0.6in;
+}
+
+.custom_toolbar2 .title {
+    padding-top: 0.2in;
+    font-size: 0.45in !important;
+}
+
+.bar-subheader {
+    top: 2in !important;
+    min-height: 1in !important;
+}
+
+.has-subheader {
+    top: 3in !important;
+}
+
+.custom_item.item-balanced {
+    border-color: #f0a119 !important;
+}
+
+/* .custom_item.ng-enter {
+    -webkit-animation: fadeInLeft 1s;
+    animation: fadeInLeft 1s;
+}
+
+.custom_item.ng-enter.ng-enter-stagger {
+  -webkit-animation-delay:200ms;
+  animation-delay:200ms;
+
+  -webkit-animation-duration:0;
+  animation-duration:0;
+} */
+
+.custom_item.ng-enter{
+    -webkit-transition:all linear 0.5s;
+    transition: all linear 0.5s ;
+    opacity:0;
+}
+
+.custom_item.ng-enter-stagger{
+    -webkit-transition-delay:300ms;
+    transition-delay:300ms;
+
+    -webkit-transition-duration:0s;
+    transition-duration:0s;
+}
+
+.custom_item.ng-enter.ng-enter-active{
+    opacity:1;
+}

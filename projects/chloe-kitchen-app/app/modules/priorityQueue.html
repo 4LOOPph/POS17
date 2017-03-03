@@ -1,0 +1,55 @@
+<div class="holder">
+    <div class="card " ng-class="{'checked': card.checked, 'unchecked' : !card.checked}" ng-repeat="card in menuRecords | limitTo: limit">
+        <div class="cardHead" ng-class="{'takeout': card.name == 'Take out','deliver': card.name == 'Deliver',}">
+            # {{card.transactionCode}}
+            <div><small>{{card.name}}</small></div>
+            <div>
+                <span ng-repeat="que in card.orDerz" ng-class="{
+                                'yellow': que.colorCode == '01',
+                                'red': que.colorCode == '02',
+                                'blue': que.colorCode == '03',
+                                'green': que.colorCode == '04',
+                                'violet': que.colorCode == '05',}">
+             </span>
+            </div>
+        </div>
+        <div class="menu" ng-class="{'borderChecked': card.checked, 'borderUnchecked' : !card.checked}">
+            IN: 10:15 AM
+        </div>
+        <div class="timeLapse" ng-show="que.checked">Waiting for 15 min already.</div>
+        <div class="cardBody">
+            <div ng-repeat="que in card.orDerz">
+                <div class="pure-checkbox" ng-class="{
+                                'bCyellow': que.colorCode == '01',
+                                'bCred': que.colorCode == '02',
+                                'bCblue': que.colorCode == '03',
+                                'bCgreen': que.colorCode == '04',
+                                'bCviolet': que.colorCode == '05',}">
+                    <input id="aw-{{$index}}-{{card.transactionCode}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked(); timelapse = true;">
+                    <label for="aw-{{$index}}-{{card.transactionCode}}" ng-class="{'colorChecked': que.checked, 'colorUnchecked' : !que.checked}">
+                        <div>{{que.Qty}}</div>{{que.menuNamezz}}
+                    </label>
+                    <small>{{que.menuAdd}}</small>
+                    <span ng-if="que.checked">Ready</span>
+                </div>
+            </div>
+        </div>
+        <div class="cardFooter" ng-class="{'borderChecked': card.checked == true, 'borderUnchecked' : !card.checked}">
+            {{card.cooker}}
+        </div>
+        <div class="cardFooterServe" ng-show="que.checked" ng-class="{'borderChecked': card.checked == true, 'borderUnchecked' : !card.checked}">
+            {{card.cooker}}
+            <div>Serve</div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="holderzz">
+        <img class="left" src="../images/right-arrow_318-133548.png">
+        <div class="prio">Priority Queue</div>
+        <img class="right" src="../images/arrow.png">
+        <span ng-if="nextQue.transactionCode>limit" ng-repeat="nextQue in menuRecords">
+            <div class="smCard"># {{nextQue.transactionCode}}</div>
+        </span>
+    </div>
+</div>
