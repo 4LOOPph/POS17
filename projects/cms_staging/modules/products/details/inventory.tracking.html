@@ -18,7 +18,10 @@
                     <div class="">
                         <div class="form-inline w100p disp-inline-flex ">
                             <div class="input-group">
-                                <button ng-click="trackThisProduct()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                                <button ng-click="trackThisProduct()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple><i ng-show="istrackingloader" class="fa fa-spinner fa-spin"></i>  Save</button>
+                            </div>
+                            <div class="input-group">
+                                <button class="btn" ng-click="init()"><i ng-show="isloadingstores" class="fa fa-spinner fa-spin"></i>  Refresh</button>
                             </div>
                         </div>
                     </div>
