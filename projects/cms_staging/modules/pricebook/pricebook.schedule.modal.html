@@ -7,7 +7,7 @@
                     <label class="col-sm-3 control-label">On</label>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <select class="form-control" ng-options="item as item.label for item in pricebook.days track by item.id" ng-model="pricebook.days.selected"></select>
+                            <select class="form-control" ng-model="pricebook.days.selected"  ng-options="item as item.label for item in pricebook.days track by item.id"></select>
                         </div>
                     </div>
                 </div>
@@ -15,7 +15,8 @@
                     <label class="col-sm-3 control-label">Date From:</label>
                     <div class="col-sm-3" style="margin-top: 1.2%;">
                         <div class="input-group">
-                            <div>{{ parseDateFormat(details.valid_from) }}</div>
+                            <!-- <div>{{ parseDateFormat(details.valid_from) }}</div> -->
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.valid_from" data-min-date="{{details.start_date}}" bs-datepicker/>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -28,7 +29,8 @@
                     <label class="col-sm-3 control-label">Date To:</label>
                     <div class="col-sm-3" style="margin-top: 1.2%;">
                         <div class="input-group">
-                            <div>{{ parseDateFormat( details.valid_until ) }}</div>
+                            <!-- <div>{{ parseDateFormat( details.valid_until ) }}</div> -->
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.valid_until" data-min-date="{{details.start_date}}" bs-datepicker/>
                         </div>
                     </div>
                     <div class="col-sm-4">

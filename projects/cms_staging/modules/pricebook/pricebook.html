@@ -19,10 +19,10 @@
                             <img src="./images/icon/ic_list_black_24px (1).svg">
                         </button>
                     </div> -->
-                    <div class="pull-left ">
+                    <div class="pull-left">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="">
-                                <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New" href="#/main/articles/">
+                                <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </button>
                                 <a class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-click="publishSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Publish" disabled="disabled">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
-                    <div class=" btn-group mailbox-controls sdropdisp ">
+                    <div class=" btn-group mailbox-controls sdropdisp">
                         <form class=" datepickar">
                             <div class="form-group">
                                 <div class="input-group">
@@ -102,89 +102,89 @@
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id:pricebook.pricebook_id})">{{pricebook.name}}</a>
                                 </td>
                                 <td class="text-center" data-title="'Type'">
                                     {{pricebook.pricebook_type_info.name}}
                                 </td>
-                                <td class="text-center " data-title=" 'Description' ">
-                                    <span ng-bind-html="pricebook.description "></span>
+                                <td class="text-center" data-title=" 'Description'">
+                                    <span ng-bind-html="pricebook.description"></span>
                                 </td>
-                                <td class="text-center " data-title=" 'Status' ">
-                                    <span ng-if="pricebook.isActive==1 " class="label label-success ">Active</span>
-                                    <span ng-if="pricebook.isActive !=1 " class="label label-warning ">In-active</span>
+                                <td class="text-center" data-title=" 'Status'">
+                                    <span ng-if="pricebook.isActive==1" class="label label-success">Active</span>
+                                    <span ng-if="pricebook.isActive !=1" class="label label-warning">In-active</span>
                                 </td>
-                                <td class="text-center " data-title=" 'Published' ">
-                                    <span ng-if="pricebook.date_approved !=null " class="label label-success ">published</span>
-                                    <span ng-if="pricebook.date_approved==null " class="label label-warning ">draft</span>
-                                    <!-- <input type="checkbox " ng-model="Published.selected " ng-change="checkDataChanges(pricebook) "> -->
+                                <td class="text-center" data-title=" 'Published'">
+                                    <span ng-if="pricebook.date_approved !=null" class="label label-success">published</span>
+                                    <span ng-if="pricebook.date_approved==null" class="label label-warning">draft</span>
+                                    <!-- <input type="checkbox" ng-model="Published.selected" ng-change="checkDataChanges(pricebook)"> -->
                                 </td>
-                                <td class="text-center " data-title=" 'Date From' ">
+                                <td class="text-center" data-title=" 'Date From'">
                                     {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
                                 </td>
-                                <td class="text-center " data-title=" 'Date To' ">
+                                <td class="text-center" data-title=" 'Date To'">
                                     {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
                                 </td>
                                 <td class="text-center" data-title="'Tags'">
                                     <span class="label label-default label-tags" ng-repeat="tag in pricebook.tags">{{tag.tags}}</span>
                                 </td>
-                                <td class="text-right ">
-                                    <div class="disp-inline-flex ">
+                                <td class="text-right">
+                                    <div class="disp-inline-flex">
                                         <a ng-click="updateHistory(pricebook.pricebook_id)" class="btn ml-10 bgscreen btn-info actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></a>
-                                        <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " uib-tooltip="Edit "><img src="./images/icon/ic_mode_edit_white_18px.svg "></a>
-                                        <a class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " ng-click="publishSelectedItem(pricebook) " uib-tooltip="Publish "><img src="./images/icon/file-export (1).svg ">
+                                        <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                        <a class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish"><img src="./images/icon/file-export (1).svg">
                                         </a>
-                                        <a ng-click="copyDuplicatePricebook(pricebook) " class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " uib-tooltip="Copy/Duplicate "><img src="./images/icon/file-multiple.svg "></a>
+                                        <a ng-click="copyDuplicatePricebook(pricebook)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Copy/Duplicate"><img src="./images/icon/file-multiple.svg"></a>
                                     </div>
                                     <a ng-click="updateHistory(pricebook.pricebook_id)" class="smscreen" style="right: 265px">
                                         <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="smscreen r200 ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_mode_edit_white_18px.svg "></button> Edit</a>
-                                    <a ng-click="publishSelectedItem(pricebook) " class="smscreen r100 ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_delete_black_24px.svg "></button> Publish</a>
-                                    <a ng-click="copyDuplicatePricebook(pricebook) " class="smscreen ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit ">
-                                            <img src="../images/icon/file-multiple.svg " ">
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="smscreen r200">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
+                                    <a ng-click="publishSelectedItem(pricebook)" class="smscreen r100">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit"><img src="./images/icon/ic_delete_black_24px.svg"></button> Publish</a>
+                                    <a ng-click="copyDuplicatePricebook(pricebook)" class="smscreen">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit">
+                                            <img src="../images/icon/file-multiple.svg"">
                         </button> Copy</a>
                         </td>
                         </tr>
                         </table>
                     </div>
                 </div>
-                <div class="overlay " ng-show="pricebookLoading ">
-                    <div class="loader "></div>
+                <div class="overlay" ng-show="pricebookLoading">
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- /.content -->
-<style type="text/css ">
+<style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
     td:nth-of-type(2):before {
-        content: "Name ";
+        content:"Name";
     }
     td:nth-of-type(3):before {
-        content: "Type ";
+        content:"Type";
     }
     td:nth-of-type(4):before {
-        content: "Description ";
+        content:"Description";
     }
     td:nth-of-type(5):before {
-        content: "Status ";
+        content:"Status";
     }
     td:nth-of-type(6):before {
-        content: "Published ";
+        content:"Published";
     }
     td:nth-of-type(7):before {
-        content: "Date From ";
+        content:"Date From";
     }
     td:nth-of-type(8):before {
-        content: "Date To ";
+        content:"Date To";
     }
     td:nth-of-type(9):before {
-        content: "Tags ";
+        content:"Tags";
     }
 }
 </style>
