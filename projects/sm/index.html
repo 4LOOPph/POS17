@@ -1,135 +1,332 @@
 <!doctype html>
-<html lang="en">
+<html ng-app="tessaApp">
 
 <head>
     <meta charset="utf-8">
-    <title>SM CDO Downtown Premier | Tenant Preview Pre-registration Form</title>
-    <meta name="description" content="SM Tenant Preview Pre-registration Form">
-    <meta name="author" content="SitePoint">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
-    <!--script src='https://www.google.com/recaptcha/api.js'></script-->
+    <title>SM</title>
+    <meta name="description" content="">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="viewport" content="user-scalable=0, initial-scale=1.0">
+    <meta name="viewport" id="metaViewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+    body {
+        background-color: #d3edff;
+        overflow: hidden;
+    }
+    
+    h1 {
+        position: absolute;
+        font-family: 'Open Sans';
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        left: 49%;
+        top: 58%;
+        margin-left: -20px;
+    }
+    
+    .body {
+        position: absolute;
+        top: 50%;
+        margin-left: -50px;
+        left: 50%;
+        animation: speeder .4s linear infinite;
+    }
+    
+    .body > span {
+        height: 5px;
+        width: 35px;
+        background: #000;
+        position: absolute;
+        top: -19px;
+        left: 60px;
+        border-radius: 2px 10px 1px 0;
+    }
+    
+    .base span {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-right: 100px solid #000;
+        border-bottom: 6px solid transparent;
+    }
+    
+    .base span:after {
+        content: "";
+        height: 22px;
+        width: 22px;
+        border-radius: 50%;
+        background: #000;
+        position: absolute;
+        right: -110px;
+        top: -16px;
+    }
+    
+    .base span:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 0 solid transparent;
+        border-right: 55px solid #000;
+        border-bottom: 16px solid transparent;
+        top: -16px;
+        right: -98px;
+    }
+    
+    .face {
+        position: absolute;
+        height: 12px;
+        width: 20px;
+        background: #000;
+        border-radius: 20px 20px 0 0;
+        transform: rotate(-40deg);
+        right: -125px;
+        top: -15px;
+    }
+    
+    .face:after {
+        content: "";
+        height: 12px;
+        width: 12px;
+        background: #000;
+        right: 4px;
+        top: 7px;
+        position: absolute;
+        transform: rotate(40deg);
+        transform-origin: 50% 50%;
+        border-radius: 0 0 0 2px;
+    }
+    
+    .body > span > span:nth-child(1),
+    .body > span > span:nth-child(2),
+    .body > span > span:nth-child(3),
+    .body > span > span:nth-child(4) {
+        width: 30px;
+        height: 1px;
+        background: #000;
+        position: absolute;
+        animation: fazer1 .2s linear infinite;
+    }
+    
+    .body > span > span:nth-child(2) {
+        top: 3px;
+        animation: fazer2 .4s linear infinite;
+    }
+    
+    .body > span > span:nth-child(3) {
+        top: 1px;
+        animation: fazer3 .4s linear infinite;
+        animation-delay: -1s;
+    }
+    
+    .body > span > span:nth-child(4) {
+        top: 4px;
+        animation: fazer4 1s linear infinite;
+        animation-delay: -1s;
+    }
+    
+    @keyframes fazer1 {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: -80px;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fazer2 {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: -100px;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fazer3 {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: -50px;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fazer4 {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: -150px;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes speeder {
+        0% {
+            transform: translate(2px, 1px) rotate(0deg);
+        }
+        10% {
+            transform: translate(-1px, -3px) rotate(-1deg);
+        }
+        20% {
+            transform: translate(-2px, 0px) rotate(1deg);
+        }
+        30% {
+            transform: translate(1px, 2px) rotate(0deg);
+        }
+        40% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+            transform: translate(-1px, 3px) rotate(-1deg);
+        }
+        60% {
+            transform: translate(-1px, 1px) rotate(0deg);
+        }
+        70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+        }
+        80% {
+            transform: translate(-2px, -1px) rotate(1deg);
+        }
+        90% {
+            transform: translate(2px, 1px) rotate(0deg);
+        }
+        100% {
+            transform: translate(1px, -2px) rotate(-1deg);
+        }
+    }
+    
+    .longfazers {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .longfazers span {
+        position: absolute;
+        height: 2px;
+        width: 20%;
+        background: #000;
+    }
+    
+    .longfazers span:nth-child(1) {
+        top: 20%;
+        animation: lf .6s linear infinite;
+        animation-delay: -5s;
+    }
+    
+    .longfazers span:nth-child(2) {
+        top: 40%;
+        animation: lf2 .8s linear infinite;
+        animation-delay: -1s;
+    }
+    
+    .longfazers span:nth-child(3) {
+        top: 60%;
+        animation: lf3 .6s linear infinite;
+    }
+    
+    .longfazers span:nth-child(4) {
+        top: 80%;
+        animation: lf4 .5s linear infinite;
+        animation-delay: -3s;
+    }
+    
+    @keyframes lf {
+        0% {
+            left: 200%;
+        }
+        100% {
+            left: -200%;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes lf2 {
+        0% {
+            left: 200%;
+        }
+        100% {
+            left: -200%;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes lf3 {
+        0% {
+            left: 200%;
+        }
+        100% {
+            left: -100%;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes lf4 {
+        0% {
+            left: 200%;
+        }
+        100% {
+            left: -100%;
+            opacity: 0;
+        }
+    }
+    </style>
 </head>
 
 <body>
-    <div class="bgFixed">&nbsp;</div>
-    <div class="successArea">
-        <div class="successAreaContent">
-            <img class="successSMLogo" src="assets/smCDO2.svg" width="270" height="auto" alt="sm cdo 2 logo" />
-            <div class="icoTenantPreview">
-                <img src="assets/smTitle.svg" alt="sm tenant preview" />
-            </div>
-            <div class="regoSuccess">
-                <h2>You have successfully registered.&nbsp;<img src="assets/chkSVG.svg" width="36" height="auto" /></h2>
-                <span>(You may exit or close this page.)</span>
-            </div>
-            <div class="regoErr hide">
-                <h2>Registration unsuccessful, please try again.</h2>
-                <span>There was a problem in the connection. Click on the back button to register again.</span>
-                <br />
-                <button class="back"><i class="fa fa-arrow-left"></i> Back</button>
-            </div>
+    <!--
+    *
+    *
+    *
+    Angular View
+    *
+    *
+    *
+    -->
+    <div class='body'>
+        <span>
+    <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </span>
+        <div class='base'>
+            <span></span>
+            <div class='face'></div>
         </div>
     </div>
-    <div class="content container-fluid">
-        <div class="row">
-            <div class="logoArea col-sm-6">
-                <div class="logo">
-                    <img src="assets/smCDO2.svg" alt="sm cdo 2 logo" />
-                </div>
-            </div>
-            <div class="formArea col-sm-6">
-                <div class="form">
-                    <form>
-                        <fieldset class="title">
-                            <img src="assets/smTitle.svg" alt="sm tenant preview" />
-                            <h2>Pre-registration Form</h2>
-                            <h3 class="errMsg hide">There is an error in your input.</h3>
-                        </fieldset>
-                        <fieldset class="input">
-                            <div class="form-group row">
-                                <div class="inGrp">
-                                    <label for="inFName" class="col-xs-12 col-sm-3 col-form-label">Firstname<span class="requiredInput">*</span></label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="text" value="" id="inFName" placeholder="ie. John" rgxp="rgxp_address" maxlength="32" required>
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="inGrp">
-                                    <label for="inLName" class="col-xs-12 col-sm-3 col-form-label">Lastname<span class="requiredInput">*</span></label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="text" value="" id="inLName" placeholder="ie. Doe" rgxp="rgxp_address" maxlength="32" required>
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="inGrp">
-                                    <label for="inMInitial" class="col-xs-12 col-sm-3 col-form-label">Middle Initial</label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="text" value="" id="inMInitial" rgxp="rgxp_address" maxlength="3" placeholder="ie. I.">
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="inGrp">
-                                    <label for="inCName" class="col-xs-12 col-sm-3 col-form-label">Company Name<span class="requiredInput">*</span></label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="text" value="" id="inCName" placeholder="ie. SM Premier" maxlength="72" rgxp="rgxp_address" required>
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid Input, no special characters allowed</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="inGrp">
-                                    <label for="inContactNum" class="col-xs-12 col-sm-3 col-form-label">Contact No.<span class="requiredInput">*</span></label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="text" value="" id="inContactNum" placeholder="ie. +00 123 456 7890" maxlength="32" rgxp="rgxp_phone_num" required>
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid contact number</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="inGrp">
-                                    <label for="inEmail" class="col-xs-12 col-sm-3 col-form-label">Email<span class="requiredInput">*</span></label>
-                                    <div class="inputArea col-sm-9">
-                                        <input class="form-control regoIn" type="email" value="" id="inEmail" placeholder="ie. john.doe@sampleemail.com" rgxp="rgxp_email" maxlength="255" required>
-                                        <i class="error fa fa-exclamation-triangle hide" aria-hidden="false"></i>
-                                        <label class="errorMsg hide">Invalid email address</label>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                               <!--div class="gRecaptcha col-sm-12">
-                                    <div class="g-recaptcha" data-sitekey="6LeijQkUAAAAAH3tAwiQzdZpir9mHxar4mVj7g3o"></div>
-                                </div-->
-                                <div class="clearfix"></div>
-                                <div class="requiredNote col-sm-12">
-                                    <p>* Denotes required input</p>
-                                </div>
-                                <div class="clearfix"></div>
-                                <br />
-                                <div id="submitArea" class="col-sm-12">
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <div class="formLoader hide"><img src="assets/ring-alt.svg" alt="loader submit" /></div>
-                </div>
-            </div>
-        </div>
+    <div class='longfazers'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mod.js"></script>
+    <h1>Redirecting...</h1>
+    <!--
+    *
+    *
+    *
+    Angular View
+    *
+    *
+    *
+    -->
+    <script type="text/javascript">
+        setTimeout(function(){
+            window.location = "http://engagiscreatives.com.au/sm/cdo/tenant-preview/";
+        },3000);
+    </script>
 </body>
 
 </html>
