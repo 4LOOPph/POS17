@@ -382,7 +382,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.1",
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-sqlite-legacy-build-support": "1.3.4",
-    "cordova-plugin-file-opener2": "2.0.8"
+    "cordova-plugin-file-opener2": "2.0.8",
+    "cordova-plugin-wkwebview-engine": "1.1.2-dev"
 }
 // BOTTOM OF METADATA
 });
