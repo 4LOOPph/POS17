@@ -27,19 +27,14 @@
                         </select>
                     </div>
                 </div>
-                <!-- <div class="form-group col-sm-12" style="padding: 0;">
+                <div class="form-group col-sm-12" style="padding: 0;">
                     <label class="col-sm-2 control-label">Date From:</label>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <input type="text" class="form-control" ng-model="details.valid_from" data-date-format="MM-dd-yyyy" data-max-date="{{details.end_date}}" bs-datepicker/>
+                            <input type="text" class="form-control" ng-model="details.valid_from" data-date-format="MM-dd-yyyy" data-max-date="{{details.valid_until}}" bs-datepicker/>
                             <div class="input-group-addon">
                                 <img src="./images/icon/calendar-today.svg" style="width: 20px;">
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="input-group">
-                            <kk-timepicker settings="settings" ng-model="time"></kk-timepicker>
                         </div>
                     </div>
                 </div>
@@ -47,18 +42,13 @@
                     <label class="col-sm-2 control-label">Date To:</label>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.valid_until" data-min-date="{{details.start_date}}" bs-datepicker/>
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.valid_until" data-min-date="{{details.valid_from}}" bs-datepicker/>
                             <div class="input-group-addon">
                                 <img src="./images/icon/calendar.svg" style="width: 20px;">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5">
-                        <div class="input-group">
-                            <kk-timepicker settings="settings" ng-model="time"></kk-timepicker>
-                        </div>
-                    </div>
-                </div> -->
+                </div>
                 <div class="form-group col-md-12" style="padding: 0;">
                     <label class="col-sm-2 control-label">Apply To:</label>
                     <div class="col-sm-10">
