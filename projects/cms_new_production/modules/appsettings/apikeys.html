@@ -1,21 +1,10 @@
-<div class="box box-warning" ng-controller="appSettingsKeysController">
+<div class="brColor br-left box-warning" ng-controller="appSettingsKeysController">
     <div class="box-header">
         <h3 class="box-title">
             API Tokens <br>
             <small>API keys allow your application to communicate with the symphony services. You can create multiple API keys that have different permissions to restrict the actions your apps can perform.</small>
         </h3>
-        <br>
-        <br>
-        <div class="pull-left">
-            <form class="form-inline">
-                <div class="form-group">
-                    <!-- <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                        <i class="fa fa-refresh"></i> Refresh
-                    </a> -->
-                     <button ng-click="refresh()" class="btnflat  waves-effect ml-10 fr" angular-ripple="">Refresh</button>
-                </div>
-            </form>
-        </div>
+        <button class="actbuttonassets fr" uib-tooltip="Refresh" ng-click="refresh()"><img class="rotate" tabindex="1" src="./images/icon/refresh.svg"></button>
     </div>
     <div class="box-body table-responsive padding p-0">
         <table class="table table-striped footable" id="tblAttributes">
@@ -40,9 +29,9 @@
                         {{var.valid_from | date:'MM/d/yyyy'}} - {{var.valid_to | date:'MM/d/yyyy'}}
                     </td>
                     <td>
-                        <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat">RENEW KEY</button> 
+                        <button ng-click="newAPIKeys(var.gk_id)" class="btn btn-info btn-xs pull-right btn-flat">RENEW KEY</button>
                     </td>
-                </tr>                
+                </tr>
             </tbody>
             <tfoot class="hide-if-no-paging">
                 <tr>

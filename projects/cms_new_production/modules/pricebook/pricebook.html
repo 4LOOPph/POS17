@@ -19,10 +19,10 @@
                             <img src="./images/icon/ic_list_black_24px (1).svg">
                         </button>
                     </div> -->
-                    <div class="pull-left ">
+                    <div class="pull-left">
                         <form class="form-inline p-5 pl-10 ng-pristine ng-valid">
                             <div class="">
-                                <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New" href="#/main/articles/">
+                                <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.pricebook-detail" uib-tooltip="Add New">
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </button>
                                 <a class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-click="publishSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Publish" disabled="disabled">
@@ -37,51 +37,46 @@
                             </div>
                         </form>
                     </div>
-                    <!-- <div class="pull-right b">
-                        <form class="form-inline">
+                </div>
+                <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
+                    <div class=" btn-group mailbox-controls sdropdisp">
+                        <form class=" datepickar">
                             <div class="form-group">
-                                <div class="pt-5">
-                                    <div class="input-group pull-right imput w250">
-                                        <input type="text" name="q" class="form-control  input-sm " placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-flat gobutton btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" uib-tooltip="Search" angular-ripple="" style="padding: 4px 20px !important;margin-right: 10px;border: 1px solid #d2d6de;">GO</button>
-                                        </div>
-                                    </div>
+                                <div class="input-group">
+                                    <label>Filter by Tags:</label>
+                                    <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkbox xtend" checkboxes="true" extra-settings="example8settings" events="selectEvents"></div><span class="barzz"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Status:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                        {{status}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateStatus('All')">All</a></li>
+                                        <li><a ng-click="updateStatus('Published')">Published</a></li>
+                                        <li><a ng-click="updateStatus('Unpublished')">Unpublished</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Name:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                        {{name}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateType('-Type-')">-Type-</a></li>
+                                        <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </form>
-                    </div> -->
-                </div>
-                <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 5px;">
-                    <div class="btn-group mailbox-controls smfr pl-10">
-                       <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="example8settings" events="selectEvents"></div>
-                    </div>
-                    <div class=" btn-group mailbox-controls sdropdisp ">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{status}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateStatus('All')">All</a></li>
-                                <li><a ng-click="updateStatus('Published')">Published</a></li>
-                                <li><a ng-click="updateStatus('Unpublished')">Unpublished</a></li>
-                            </ul>
-                            </div>
-                        </div>
-                        <div class="input-group ml-10">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{name}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateType('-Type-')">-Type-</a></li>
-                                <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
-                            </ul>
-                            </div>
-                        </div>
                     </div>
                     <div class="pull-right searchposition b">
                         <form class="form-inline">
@@ -100,44 +95,6 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <!-- <div class="pull-right">
-                        <form class="form-inline">
-                            <div class="form-group " style="margin-bottom: -40px;margin-right: 9px;">
-                                <button class="btn btn-default actbutton" uib-tooltip="Publish" ng-click="publishSelected()" style="font-size: 16px;font-weight: 500;padding: 1px 7px !important;margin-right: 17px;" ng-disabled="!pusblishSomeData">P</button>
-                                <span class="badge2" ng-if="selectedToPublish.length > 0">{{selectedToPublish.length}}</span>
-                                <button class="btn btn-default actbutton btn-xs btn-flat mr-5" uib-tooltip="Delete" ng-click="deleteSelected()" ng-disabled="!deleteSomeData">
-                                    <img src="./images/icon/ic_clear_black_24px.svg">
-                                </button>
-                                <span class="badge1" ng-if="selectedDatas.length > 0">{{selectedDatas.length}}</span>
-                            </div>
-                        </form>
-                    </div> -->
-                   <!--  <div class="mailbox-controls mt-40 pl-10">
-                        <div class="btn-group w50-p rr">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                {{status}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateStatus('All')">All</a></li>
-                                <li><a ng-click="updateStatus('Published')">Published</a></li>
-                                <li><a ng-click="updateStatus('Unpublished')">Unpublished</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group w50-p">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                {{name}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateType('-Type-')">-Type-</a></li>
-                                <li ng-repeat="type in pricebooktype"><a ng-click="updateType(type)">{{type.name}}</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group w50-p">
-                            <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '-Tags-'}" extra-settings="example8settings" events="selectEvents"></div>
-                        </div>
-                    </div> -->
                     <div class="box-body table-responsive  padding p-0 pt-5">
                         <table class="table  table-hover" ng-table="pricebooksTable">
                             <tr ng-repeat="pricebook in $data  track by $index">
@@ -145,89 +102,89 @@
                                     <input type="checkbox" class="checkbox" ng-model="pricebook.selected" ng-change="checkDataChanges(pricebook)">
                                 </td>
                                 <td class="text-center" data-title="'Name'">
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})">{{pricebook.name}}</a>
+                                    <a ui-sref="main.pricebook-detail({pricebook_id:pricebook.pricebook_id})">{{pricebook.name}}</a>
                                 </td>
                                 <td class="text-center" data-title="'Type'">
                                     {{pricebook.pricebook_type_info.name}}
                                 </td>
-                                <td class="text-center " data-title=" 'Description' ">
-                                    <span ng-bind-html="pricebook.description "></span>
+                                <td class="text-center" data-title=" 'Description'">
+                                    <span ng-bind-html="pricebook.description"></span>
                                 </td>
-                                <td class="text-center " data-title=" 'Status' ">
-                                    <span ng-if="pricebook.isActive==1 " class="label label-success ">Active</span>
-                                    <span ng-if="pricebook.isActive !=1 " class="label label-warning ">In-active</span>
+                                <td class="text-center" data-title=" 'Status'">
+                                    <span ng-if="pricebook.isActive==1" class="label label-success">Active</span>
+                                    <span ng-if="pricebook.isActive !=1" class="label label-warning">In-active</span>
                                 </td>
-                                <td class="text-center " data-title=" 'Published' ">
-                                    <span ng-if="pricebook.date_approved !=null " class="label label-success ">published</span>
-                                    <span ng-if="pricebook.date_approved==null " class="label label-warning ">draft</span>
-                                    <!-- <input type="checkbox " ng-model="Published.selected " ng-change="checkDataChanges(pricebook) "> -->
+                                <td class="text-center" data-title=" 'Published'">
+                                    <span ng-if="pricebook.date_approved !=null" class="label label-success">published</span>
+                                    <span ng-if="pricebook.date_approved==null" class="label label-warning">draft</span>
+                                    <!-- <input type="checkbox" ng-model="Published.selected" ng-change="checkDataChanges(pricebook)"> -->
                                 </td>
-                                <td class="text-center " data-title=" 'Date From' ">
+                                <td class="text-center" data-title=" 'Date From'">
                                     {{pricebook.valid_from | amDateFormat:'YYYY-MM-DD'}}
                                 </td>
-                                <td class="text-center " data-title=" 'Date To' ">
+                                <td class="text-center" data-title=" 'Date To'">
                                     {{pricebook.valid_until | amDateFormat:'YYYY-MM-DD'}}
                                 </td>
                                 <td class="text-center" data-title="'Tags'">
                                     <span class="label label-default label-tags" ng-repeat="tag in pricebook.tags">{{tag.tags}}</span>
                                 </td>
-                                <td class="text-right ">
-                                    <div class="disp-inline-flex ">
+                                <td class="text-right">
+                                    <div class="disp-inline-flex">
                                         <a ng-click="updateHistory(pricebook.pricebook_id)" class="btn ml-10 bgscreen btn-info actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></a>
-                                        <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " uib-tooltip="Edit "><img src="./images/icon/ic_mode_edit_white_18px.svg "></a>
-                                        <a class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " ng-click="publishSelectedItem(pricebook) " uib-tooltip="Publish "><img src="./images/icon/file-export (1).svg ">
+                                        <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                        <a class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" ng-click="publishSelectedItem(pricebook)" uib-tooltip="Publish"><img src="./images/icon/file-export (1).svg">
                                         </a>
-                                        <a ng-click="copyDuplicatePricebook(pricebook) " class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat " uib-tooltip="Copy/Duplicate "><img src="./images/icon/file-multiple.svg "></a>
+                                        <a ng-click="copyDuplicatePricebook(pricebook)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Copy/Duplicate"><img src="./images/icon/file-multiple.svg"></a>
                                     </div>
                                     <a ng-click="updateHistory(pricebook.pricebook_id)" class="smscreen" style="right: 265px">
                                         <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
-                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id}) " class="smscreen r200 ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_mode_edit_white_18px.svg "></button> Edit</a>
-                                    <a ng-click="publishSelectedItem(pricebook) " class="smscreen r100 ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit "><img src="./images/icon/ic_delete_black_24px.svg "></button> Publish</a>
-                                    <a ng-click="copyDuplicatePricebook(pricebook) " class="smscreen ">
-                                        <button class="btn btn-info actbutton btn-xs btn-flat " uib-tooltip="edit ">
-                                            <img src="../images/icon/file-multiple.svg " ">
+                                    <a ui-sref="main.pricebook-detail({pricebook_id: pricebook.pricebook_id})" class="smscreen r200">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
+                                    <a ng-click="publishSelectedItem(pricebook)" class="smscreen r100">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit"><img src="./images/icon/ic_delete_black_24px.svg"></button> Publish</a>
+                                    <a ng-click="copyDuplicatePricebook(pricebook)" class="smscreen">
+                                        <button class="btn btn-info actbutton btn-xs btn-flat" uib-tooltip="edit">
+                                            <img src="../images/icon/file-multiple.svg"">
                         </button> Copy</a>
                         </td>
                         </tr>
                         </table>
                     </div>
                 </div>
-                <div class="overlay " ng-show="pricebookLoading ">
-                    <div class="loader "></div>
+                <div class="overlay" ng-show="pricebookLoading">
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- /.content -->
-<style type="text/css ">
+<style type="text/css">
 @media only screen and (max-width: 736px),
 (min-device-width: 200px) and (max-device-width: 736px) {
     td:nth-of-type(2):before {
-        content: "Name ";
+        content:"Name";
     }
     td:nth-of-type(3):before {
-        content: "Type ";
+        content:"Type";
     }
     td:nth-of-type(4):before {
-        content: "Description ";
+        content:"Description";
     }
     td:nth-of-type(5):before {
-        content: "Status ";
+        content:"Status";
     }
     td:nth-of-type(6):before {
-        content: "Published ";
+        content:"Published";
     }
     td:nth-of-type(7):before {
-        content: "Date From ";
+        content:"Date From";
     }
     td:nth-of-type(8):before {
-        content: "Date To ";
+        content:"Date To";
     }
     td:nth-of-type(9):before {
-        content: "Tags ";
+        content:"Tags";
     }
 }
 </style>

@@ -11,26 +11,45 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header">
+                <!--  <div class="box-header">
                     <div class="pull-right">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message=""  ng-change="(txtSearch.length < 1)?searchData():0">
+                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0">
                                         <div class="input-group-btn">
                                             <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button ng-click="refresh()" class="btn btn-flat btn-sm btn-success">
-                                <i class="fa fa-refresh"></i> Refresh
+                        </form>
+                    </div>
+                </div> -->
+                <div class="box-header" style="padding: 8px 0px;">
+                    <div class="pull-left pt-3">
+                        <form class="form-inline p-3 pl-15">
+                            <button class="btn btn-default actbutton btn-xs btn-flat mr-10" ng-click="refresh()" uib-tooltip="Refresh" angular-ripple>
+                                <img src="./images/icon/refresh.svg">
                             </button>
                         </form>
                     </div>
+                    <div class="pull-right searchposition b">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="">
+                                    <div class="input-group imput">
+                                        <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" disable-valid-styling="true" disable-validation-message="" ng-change="(txtSearch.length < 1)?searchData():0" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="box-body table-responsive padding">
+                <div class="form-inline w100p disp-inline-flex box-header b" style="padding: 8px 15px;">
+                </div>
+                <div class="box-body table-responsive p-0">
                     <table class="table table-hover" ng-table="currenciesTable">
                         <tr ng-repeat="currency in $data  track by $index">
                             <td class="text-center" data-title="'Country '">
@@ -49,7 +68,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="currencyisLoading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <div class="loader "></div>
                 </div>
             </div>
         </div>

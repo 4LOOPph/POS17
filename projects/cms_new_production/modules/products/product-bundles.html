@@ -19,19 +19,19 @@
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10">
                             <div class="form-group">
-                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.products-bundle-add" uib-tooltip="Add New">
+                                <a class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.products-bundle-add" uib-tooltip="Add New" angular-ripple>
                                     <img src="./images/icon/ic_add_white_24px.svg">
                                 </a>
-                                <a class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish">
+                                <a class="btn btn-success actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="publishSelected()" uib-tooltip="Publish" angular-ripple>
                                     <img src="./images/icon/file-export2.svg">
                                 </a>
-                                <a class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft">
+                                <a class="btn btn-warning actbutton btn-xs btn-flat mr-10" ng-disabled="selectedArchivedDatas.length < 1 && selectedPublishedDatas.length < 1" ng-click="draftSelected()" uib-tooltip="Draft" angular-ripple>
                                     <img src="./images/icon/pencil-box-outline.svg">
                                 </a>
-                                <a class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive">
+                                <a class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-disabled="selectedPublishedDatas.length < 1 && selectedDraftedDatas.length < 1" ng-click="archiveSelected()" uib-tooltip="Archive" angular-ripple>
                                     <img src="./images/icon/archive.svg">
                                 </a>
-                                <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                                <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh" angular-ripple>
                                     <img src="./images/icon/refresh.svg">
                                 </button>
                             </div>
@@ -39,48 +39,57 @@
                     </div>
                 </div>
                 <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
-                    <div class="btn-group mailbox-controls smfr pl-10">
-                        <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes" checkboxes="true" translation-texts="{buttonDefaultText: '- Filter By Tags -'}" extra-settings="example8settings" events="selectEvents"></div>
-                    </div>
                     <div class=" btn-group mailbox-controls sdropdisp ">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{applicationStatus}}
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a ng-click="updateStatus('All')">All</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Publish')">Published</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Archived')">Archived</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Draft')">Draft</a>
-                                    </li>
-                                </ul>
+                        <form class=" datepickar">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Tags:</label>
+                                    <div ng-dropdown-multiselect="" options="tagsArr" selected-model="tagsFilter" class="checkboxes xtend" checkboxes="true" extra-settings="example8settings" events="selectEvents"></div><span class="barzz"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="input-group ml-10">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{filterStatus}}
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a ng-click="updateFilterStatus('Relevance')">Relevance</a>
-                                    </li>
-                                    <li><a ng-click="updateFilterStatus('Most Viewed')">Most Viewed</a>
-                                    </li>
-                                    <li><a ng-click="updateFilterStatus('Price: High to Low')">Price: High to Low</a>
-                                    </li>
-                                    <li><a ng-click="updateFilterStatus('Price: Low to High')">Price: Low to High</a>
-                                    </li>
-                                </ul>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Status:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                        {{filterStatus}}
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateFilterStatus('Relevance')">Relevance</a>
+                                        </li>
+                                        <li><a ng-click="updateFilterStatus('Most Viewed')">Most Viewed</a>
+                                        </li>
+                                        <li><a ng-click="updateFilterStatus('Price: High to Low')">Price: High to Low</a>
+                                        </li>
+                                        <li><a ng-click="updateFilterStatus('Price: Low to High')">Price: Low to High</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Application Status:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
+                                        {{applicationStatus}}
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateStatus('All')">All</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Publish')">Published</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Archived')">Archived</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Draft')">Draft</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="pull-right searchposition ">
                         <form class="form-inline">
@@ -128,9 +137,9 @@
                             </td>
                             <td class="text-right">
                                 <div class="disp-inline-flex">
-                                    <a ng-click="updateHistory(bundle.pb_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></a>
-                                    <a ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
-                                    <a ng-click="toggleModal(bundle.pb_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                    <a ng-click="updateHistory(bundle.pb_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Update History" angular-ripple><img src="./images/icon/history.svg"></a>
+                                    <a ui-sref="main.products-bundle-add({pb_id: bundle.pb_id})" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-click="toggleModal(bundle.pb_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete" angular-ripple><img src="./images/icon/ic_delete_black_24px.svg"></a>
                                 </div>
                                 <a ng-click="updateHistory(bundle.pb_id)" class="smscreen r200">
                                     <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Update History"><img src="./images/icon/history.svg"></button> History</a>
@@ -143,7 +152,7 @@
                     </table>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
-                     <div class="loader"></div>
+                    <div class="loader"></div>
                 </div>
             </div>
         </div>

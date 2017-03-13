@@ -9,7 +9,7 @@
 <section class="content">
     <div class="boxbodyzzz">
         <div class="row">
-            <form role="form">
+            <form ng-if="parent_details.date_closed == null ? true : false" role="form">
                 <div class="col-md-12">
                     <div class=" box-warning">
                         <div class="box-body">
@@ -19,7 +19,7 @@
                                 <b>Purchase Order No.</b> <small>{{parent_details.po_number}}</small>
                                 <br>
                                 <img src="../images/icon/ic_clear_all_black_24px.svg" style="width: 23px; margin-top: -3px;margin-right: -5px;">
-                                <i style="color: #247571;">{{ po_status }}</i>
+                                <i style="color: #247571;">{{ parent_details.date_closed ? 'Completed' : po_status }}</i>
                                 <br>
                                 <br>
                                 <div class="row">
@@ -117,16 +117,112 @@
                     </div>
                 </div>
             </form>
+            <form role="form" ng-if="parent_details.date_closed == null ? false : true">
+                <div class="col-md-12">
+                    <div class=" box-warning">
+                        <div class="box-body">
+                            <div class="p-15" style="line-height: 30px;">
+                                <strong class="f18">{{parent_details.po_name}}</strong>
+                                <br>
+                                <b>Purchase Order No.</b> <small>{{parent_details.po_number}}</small>
+                                <br>
+                                <img src="../images/icon/ic_clear_all_black_24px.svg" style="width: 23px; margin-top: -3px;margin-right: -5px;">
+                                <i style="color: #247571;">{{ parent_details.date_closed ? 'Completed' : po_status }}</i>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4">
+                                            <strong>Supplier</strong>
+                                            <br>
+                                            <strong>Deliver to</strong>
+                                        </div>
+                                        <div class="col-sm-6 pl-0">
+                                            <span>{{parent_details.supplier.name}}</span>
+                                            <br>
+                                            <span>{{parent_details.deliver_to}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 row">
+                                        <div class="col-sm-3">
+                                            <strong>Date Created</strong>
+                                            <br>
+                                            <strong>Delivery Date</strong>
+                                        </div>
+                                        <div class="col-sm-6 pl-0">
+                                            <span>{{datenow}}</span>
+                                            <br>
+                                            <span>{{parseDate(parent_details.delivery_date)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 row">
+                                        <div class="col-sm-12 POdesc">
+                                            <span ng-bind-html="parent_details.shipping_terms">
+                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group bt-1 table-responsive" style="min-height: 100px;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Stock on Hand</th>
+                                        <th>Unit</th>
+                                        <th>Qty. Ordered</th>
+                                        <th>Total Received</th>
+                                        <th>Total Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in details">
+                                        <td class="vam">
+                                            {{ item.product_name }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.stock_on_hand }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.sales_unit }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.quantity_ordered}}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.total_received }}
+                                        </td>
+                                        <td class="vam">
+                                            {{ item.quantity_ordered * item.price | number:2 }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4  fr">
+                    <div class="">
+                        <div class="form-group">
+                            <div class=" bt-1">
+                                <div class="w100p disp-inline-flex">
+                                    <h4>Total</h4><span><h4 class="text-center ">{{ overalltotal | number:2}}</h4></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <button ng-show="scndpage && (po_status=='Saved')" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ui-sref="main.add_order({selected_id:po_id})" angular-ripple>Edit Purchase Order</button>
-        <button ng-show="scndpage && (po_status=='Saved')" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple ng-click="doExport()">Export CSV</button>
-        <button ng-show="scndpage && (po_status=='Saved')" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Send Order</button>
+        <button ng-show="scndpage && (po_status=='Saved') && (parent_details.date_closed ? false : true)" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ui-sref="main.add_order({selected_id:po_id})" angular-ripple>Edit Purchase Order</button>
+        <button ng-show="scndpage && (po_status=='Saved') && (parent_details.date_closed ? false : true)" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple ng-click="doExport()">Export CSV</button>
+        <button ng-show="scndpage && (po_status=='Saved') && (parent_details.date_closed ? false : true)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Send Order</button>
         
-        <button ng-show="scndpage && (!checkSpecialVar1()) && (po_status=='Sent')" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ng-click="receivePO()" angular-ripple>Received Order</button>
-        <button ng-show="scndpage && (po_status!='Saved') && (po_status!='Cancelled')" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Resend Order</button>
+        <button ng-show="scndpage && (!checkSpecialVar1()) && (po_status=='Sent')  && (parent_details.date_closed ? false : true)" class="btnflat primary-color waves-effect ml-10 mr-20 fr" ng-click="receivePO()" angular-ripple>Received Order</button>
+        <button ng-show="scndpage && (po_status!='Saved') && (po_status!='Cancelled')  && (parent_details.date_closed ? false : true)" class="btnflat success-color waves-effect ml-10 fr" angular-ripple ng-click="openPOUpdateModal2(true)">Resend Order</button>
         
-        <button ng-show="scndpage" class="btnflat default-color waves-effect fl ml-15" ng-click="po_status!='Cancelled' ? cancelPO() : reactivatePO()" angular-ripple>{{ po_status!='Cancelled' ? 'Cancel Order' : 'Reactivate Order' }}</button>
+        <button ng-show="scndpage && (po_status!='Sent' && po_status!='Completed')  && (parent_details.date_closed ? false : true)" class="btnflat default-color waves-effect fl ml-15" ng-click="po_status!='Cancelled' ? cancelPO() : reactivatePO()" angular-ripple>{{ po_status!='Cancelled' ? 'Cancel Order' : 'Reactivate Order' }}</button>
         
         <div class="sendcontainer" ng-show="showMessage">
             <div class="head">Sending..</div>

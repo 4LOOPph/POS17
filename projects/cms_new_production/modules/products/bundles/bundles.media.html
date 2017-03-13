@@ -8,14 +8,10 @@
                 </div>
             </div>
             <div class="box-body bundimg">
-                <div class="row">
-                    <div ng-repeat="files in product_image" class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="box">
-                            <div class="box-body text-center">
-                                <button class="actbuttonassets btn-box-tool pull-right" ng-click="deleteSelected(files)"><img src="./images/icon/ic_delete_black_24px.svg"></button>
-                                <img class="img-rounded" ngf-src="files.image_path" err-src="http://placehold.it/750x450" style="width: 100%;" height="150px">
-                            </div>
-                        </div>
+                <div ng-repeat="files in product_image" class="thumbnailBox col-md-3 col-sm-6 col-xs-12 p-0">
+                    <img ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px" style=" width: 100% !important;">
+                    <div class="thumfooter ">
+                        <button class="pull-right actbuttonassets btn-box-tool" ng-click="deleteSelected(files)" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg "></button>
                     </div>
                 </div>
             </div>
