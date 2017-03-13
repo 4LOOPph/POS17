@@ -1,0 +1,127 @@
+{
+  "response": {
+    "pagination": {
+      "results": 7,
+      "page": 0,
+      "page_size": 0,
+      "pages": 0
+    },
+    "result": [
+      {
+        "c_id": 1,
+        "name": "Functional Beverage",
+        "label": "Nutritional Support",
+        "description": "Nutritional Support",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830672768_functional.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 1,
+          "name": "Functional Beverage",
+          "label": "Nutritional Support",
+          "description": "Nutritional Support",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830672768_functional.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 2,
+        "name": "Nutritional Support",
+        "label": "Nutritional Support",
+        "description": "Nutritional Support",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830688795_nutri-support.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 2,
+          "name": "Nutritional Support",
+          "label": "Nutritional Support",
+          "description": "Nutritional Support",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830688795_nutri-support.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 3,
+        "name": "Nutritional CosmeCeuticals",
+        "label": "Nutritional CosmeCeuticals",
+        "description": "Nutritional CosmeCeuticals",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830711812_nutritional.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 3,
+          "name": "Nutritional CosmeCeuticals",
+          "label": "Nutritional CosmeCeuticals",
+          "description": "Nutritional CosmeCeuticals",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830711812_nutritional.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 4,
+        "name": "NaturaCentials",
+        "label": "NaturaCentials",
+        "description": "NaturaCentials",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830730802_nutricential.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 4,
+          "name": "NaturaCentials",
+          "label": "NaturaCentials",
+          "description": "NaturaCentials",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830730802_nutricential.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 5,
+        "name": "iProtect",
+        "label": "iProtect",
+        "description": "iProtect",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830807033_iprotect.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 5,
+          "name": "iProtect",
+          "label": "iProtect",
+          "description": "iProtect",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487830807033_iprotect.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 6,
+        "name": "Package",
+        "label": "Package",
+        "description": "Package",
+        "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487831056526_global.PNG",
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 6,
+          "name": "Package",
+          "label": "Package",
+          "description": "Package",
+          "c_image": "https://symphonyprod.s3-ap-southeast-2.amazonaws.com/public/uploads/categories/1487831056526_global.PNG"
+        },
+        "tags": []
+      },
+      {
+        "c_id": 8,
+        "name": "Marketing Material",
+        "label": "Marketing Material",
+        "description": "Marketing Material",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 8,
+          "name": "Marketing Material",
+          "label": "Marketing Material",
+          "description": "Marketing Material",
+          "c_image": null
+        },
+        "tags": []
+      }
+    ],
+    "msg": "",
+    "success": true
+  },
+  "statusCode": 200
+}

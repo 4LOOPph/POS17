@@ -1,0 +1,50 @@
+<html>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<!-- Bootstrap 3.3.2 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    $.urlParam = function(name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    $(document).ready(function() {
+        var url = 'app/';
+        $('#appview').attr('src', url)
+    });
+    </script>
+    <style>
+    #container {
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        /* width: 507px; */
+        width: 1600px;
+    }
+    
+    #container img {
+        width: 100%;
+    }
+    
+    #appview {
+        border: none;
+        height: 775px;
+        left: 70px;
+        position: absolute;
+        top: 70px;
+        width: 1455px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <iframe id="appview"></iframe>
+        <img src="../../dist/img/screenland.png" alt="" />
+    </div>
+</body>
+
+</html>
