@@ -17,13 +17,13 @@
                 <div class="box-header" style="padding: 8px 5px;">
                     <div class="pull-left">
                         <form class="form-inline p-5 pl-10">
-                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-humanresource-detail" uib-tooltip="Add New">
+                            <button class="btn btn-primary actbutton btn-xs btn-flat mr-10" ui-sref="main.settings-humanresource-detail" uib-tooltip="Add New" angular-ripple>
                                 <img src="./images/icon/ic_add_white_24px.svg">
                             </button>
-                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete">
+                            <button class="btn btn-danger actbutton btn-xs btn-flat mr-10" ng-click="deleteSelected()" ng-disabled="!deleteSomeData" uib-tooltip="Delete" angular-ripple>
                                 <img src="./images/icon/ic_delete_black_24px.svg">
                             </button>
-                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh">
+                            <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh" angular-ripple>
                                 <img src="./images/icon/refresh.svg">
                             </button>
                         </form>
@@ -38,23 +38,27 @@
                 </div>
                 <div class="prod form-inline w100p disp-inline-flex box-header" style="padding: 8px 15px;">
                     <div class=" btn-group mailbox-controls sdropdisp ">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                    {{applicationStatus}}
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a ng-click="updateStatus('All')">All</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Employee')">Employee</a>
-                                    </li>
-                                    <li><a ng-click="updateStatus('Customer')">Customer</a>
-                                    </li>
-                                </ul>
+                        <form class=" datepickar">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label>Filter by Application Status:</label>
+                                    <button class="dropdown-toggle ng-binding" data-toggle="dropdown">
+                                        {{applicationStatus}}
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <span class="barzz"></span>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="updateStatus('All')">All</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Employee')">Employee</a>
+                                        </li>
+                                        <li><a ng-click="updateStatus('Customer')">Customer</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="pull-right searchposition b">
                         <form class="form-inline">
@@ -94,7 +98,7 @@
                             </td>
                             <td class="text-right">
                                 <div class="disp-inline-flex">
-                                    <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info actbutton btn-xs btn-flat"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                    <button ui-sref="main.settings-humanresource-detail({person_id: person.person_id})" class="btn btn-info actbutton btn-xs btn-flat" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
                                 </div>
                             </td>
                         </tr>

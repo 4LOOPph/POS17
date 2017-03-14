@@ -1,33 +1,38 @@
-<div class="box box-warning" ng-controller="appSettingsDeviceController" ng-init="init()">
-    <div class="prod box-header" style="padding: 10px 20px;">
+<div class="brColor br-left box-warning" ng-controller="appSettingsDeviceController" ng-init="init()">
+    <div class="prod box-header" style="padding: 15px 20px 10px;">
         <h3 class="box-title">Device Management</h3>
+        <button class="actbuttonassets fr" uib-tooltip="Refresh" ng-click="refresh()"><img class="rotate" tabindex="1" src="./images/icon/refresh.svg"></button>
         <div class="">
             <div class="form-inline w100p disp-inline-flex ">
                 <div class=" btn-group mailbox-controls  ">
-                    <button ng-click="refresh()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
-                                <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">
+                    <!-- <button ng-click="refresh()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button> -->
+                    <form class="form-inline datepickar">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label>Filter by Status:</label>
+                                <button class="dropdown-toggle ng-binding" data-toggle="dropdown">
+                                    <span ng-if="applicationStatus == ''">All</span><span ng-if="applicationStatus != ''">
                                 {{applicationStatus}}
                                     <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateStatus('All')">All</a>
-                                </li>
-                                <li><a ng-click="updateStatus('Online')">Online</a>
-                                </li>
-                                <li><a ng-click="updateStatus('Offline')">Offline</a>
-                                </li>
-                            </ul>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <span class="barzz"></span>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Online')">Online</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Offline')">Offline</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="pull-right searchposition b">
                     <form class="form-inline">
                         <div class="form-group">
-                            <div class="pt-5">
+                            <div style="padding-top: 6px;">
                                 <div class="input-group imput">
                                     <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple>
                                 </div>
@@ -40,7 +45,7 @@
     </div>
     <div class="box-body padding">
         <div class="row">
-            <div class="col-md-4" ng-repeat="device in devices">
+            <div class="col-md-6" ng-repeat="device in devices">
                 <div class="box box-info">
                     <div class="box-header p-10 with-border">
                         <h4 class="box-title">{{device.deviceName}}</h4>

@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a ui-sref="main.pricebook">Pricebook</a></li>
-        <li class="active">Pricebook Entry</li> 
+        <li class="active">Pricebook Entry</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -26,24 +26,24 @@
         <div class="tab-label-content" id="tab1-content">
             <label class="tab-label-header" for="tab1" angular-ripple>General Info</label>
             <div class="tab-content">
-                 <div ng-include="'modules/pricebook/pricebooks.html'"></div>
+                <div ng-include="'modules/pricebook/pricebooks.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab2">
-        <div class="tab-label-content" id="tab2-content">
+        <div class="tab-label-content" id="tab2-content" ng-if="displaySchedule">
             <label class="tab-label-header" for="tab2" angular-ripple>Products</label>
             <div class="tab-content">
                 <div ng-include="'modules/pricebook/products.html'"></div>
             </div>
         </div>
         <input type="radio" name="tabs" id="tab3">
-        <div class="tab-label-content" id="tab3-content">
+        <div class="tab-label-content" id="tab3-content" ng-if="displaySchedule">
             <label class="tab-label-header" for="tab3" angular-ripple>Schedule</label>
             <div class="tab-content">
                 <div ng-include="'modules/pricebook/assignedto.html'"></div>
             </div>
         </div>
-        <div class="slide"></div>
+        <div class="slide"  ng-class="{'slidecust': displaySchedule == false}"></div>
     </div>
 </section>
 <section class="content s pryxbuk">
@@ -166,6 +166,10 @@ input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
     top: calc(100% - 6px);
     -webkit-transition: left 0.3s ease-out;
     transition: left 0.3s ease-out;
+}
+
+.slidecust {
+    width: 100% !important;
 }
 
 .tab-label-content {

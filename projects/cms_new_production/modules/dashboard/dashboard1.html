@@ -127,7 +127,7 @@
                     <ul class="users-lista clearfix">
                         <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
                             <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
-                            <a ui-sref="main.settings-humanresource-detail({id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                            <a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
                             <span class="users-list-date" am-time-ago="person.date_created"></span>
                         </li>
                     </ul>
@@ -136,7 +136,7 @@
                 <div class="box-body sm">
                     <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
                         <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
-                        <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                        <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
                             <span class="users-list-date" am-time-ago="person.date_created"></span></div>
                     </div>
                 </div>
@@ -219,10 +219,13 @@
 @media only screen and (min-width: 321px) and (max-width: 375px) {
     body .ui_box {
         width: 100% !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 0px !important;
     }
     body .ui {
         width: inherit !important;
+    }
+    body .ui .drop {
+        width: 100% !important;
     }
 }
 

@@ -5,8 +5,8 @@
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li class="dropdown messages-menu">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                    <div class="notbtnback">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                    <div class="notbtnback" angular-ripple>
                         <img src="./images/icon/ic_message_black_24px.svg">
                     </div><span class="headbadge">2</span>
                 </a>
@@ -41,7 +41,7 @@
             </li>
             <li>
                 <a ui-sref="main.assets" class="dropdown-toggle" data-toggle="dropdown">
-                    <div class="notbtnback">
+                    <div class="notbtnback" angular-ripple>
                         <img src="./images/icon/ic_storage_black_24px.svg">
                     </div>
                 </a>
@@ -59,7 +59,7 @@
             </li> -->
             <li class="dropdown user user-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                    <div class="notbtnback" style="padding: 6px 6px 6px;">
+                    <div class="notbtnback" style="padding: 6px 6px 6px;" angular-ripple>
                         <img ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" class="img-circle" alt="User Image" style="width: 32px;height: 32px;">
                         <span class="hidden-xs"></span>
                         <!-- <span class="hidden-xs" ng-bind="profile.EmpName"></span> -->
@@ -110,7 +110,7 @@
             </li>
             <li class="dropdown messages-menu">
                 <a href="" ng-click="openSubscription()" ng-show="profile.isOwner == 1" style="border-left: 1px solid #ccc;">
-                    <div class="notbtnback">
+                    <div class="notbtnback" angular-ripple>
                         <img src="./images/icon/ic_list_black_24px.svg">
                     </div>
                     <!-- <span class="label label-danger" ng-show="profile.subscriptions.length > 0">{{profile.subscriptions.length}}</span> -->

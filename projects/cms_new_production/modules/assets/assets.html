@@ -7,143 +7,154 @@
 </section>
 <!-- Main content -->
 <section class="content" ng-init="refreshAssets()">
-    <div class="row">
-        <div class="col-md-2 col-xs-2 pr-0" style="margin-right: -15px;">
-            <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder">New</a>
-            <div class="btn-group btn-block margin-bottom" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
-                <div class="asset-newButtonholder">
-                    <button id="simple-btn-keyboard-nav" class="btn w100p newbutton btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder">
-                        NEW
-                    </button>
-                </div>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav" style="width: 100%;">
-                    <li role="menuitem">
-                        <a href="" ng-click="createNewFolder()"><img src="./images/icon/folder-plus.svg"> Folder</a>
-                    </li>
-                    <li class="divider "></li>
-                    <li role="menuitem">
-                        <a href="" ng-click="newUploader()"><img src="./images/icon/upload.svg" style="width: 19px;margin: 0 2px;"> File Upload</a>
-                        <!-- <div class=" image-preview">
-                            <div class="btn btn-primary image-preview-input" ng-click="doGreeting()"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                <input type="file" accept="image/png,image/jpeg, image/gif, image/jpeg, image/x-ms-bmp, 
-                                        audio/mp3, audio/mp4, 
-                                        video/mp4, video/x-flv, video/3gpp, video/x-msvideo, video/x-ms-wmv, video/quicktime, 
-                                        application/pdf, 
-                                        application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, 
-                                        application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-                                        text/csv,text/plain,
-                                        application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                                        application/zip" nv-file-select="" uploader="uploader" multiple />
+    <div class="">
+        <div class="col-md-12 box p-0">
+            <div class="col-md-2 bg p-0">
+                <div class="">
+                    <a href="" class="btn btn-flat btn-primary btn-block margin-bottom" ng-click="newUploader()" ng-if="!showToolNewFolder" ng-disabled="disableToolNewFolder">New</a>
+                    <div class="btn-group btn-block" uib-dropdown keyboard-nav ng-if="showToolNewFolder">
+                        <div class="asset-newButtonholder">
+                            <button id="simple-btn-keyboard-nav" class="btn w100p newbutton btn-primary btn-block btn-flat" uib-dropdown-toggle ng-disabled="disableToolNewFolder" angular-ripple>
+                                NEW
+                            </button>
+                        </div>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav" style="width: 100%;">
+                            <li role="menuitem">
+                                <a href="" ng-click="createNewFolder()" angular-ripple><img src="./images/icon/folder-plus.svg"> Folder</a>
+                            </li>
+                            <li class="divider "></li>
+                            <li role="menuitem">
+                                <a href="" ng-click="newUploader()" angular-ripple><img src="./images/icon/upload.svg" style="width: 19px;margin: 0 2px;"> File Upload</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="assets box-solid mt-20">
+                        <div class="box-body no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-class="{'active': activeAllFiles}" ng-click="showAllFiles()" angular-ripple>
+                                    <a><img src="./images/icon/ic_folder_black_24px.svg">
+                                        <div>Files</div>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active': activeSharedFiles}" ng-click="showAllShared()" angular-ripple>
+                                    <a><img src="./images/icon/ic_people_black_24px.svg">
+                                        <div>Shared with me</div>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active': activeStarredFiles}" ng-click="showAllStarred()" angular-ripple>
+                                    <a><img src="./images/icon/ic_star_black_24px.svg">
+                                        <div>Starred</div>
+                                    </a>
+                                </li>
+                                <li ng-class="{'active': activeTrashFiles}" ng-click="showAllTrash()" angular-ripple>
+                                    <a><img src="./images/icon/ic_delete_black_24px.svg">
+                                        <div>Trash</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-20 box-solid" ng-controller="assetsStorageCtrl" ng-init="initStorage()">
+                        <div class="brColor br-top with-border minisidebarbg">
+                            <h3 class="box-title default-color p-15" style="font-size: 15px;">Storage 
+                            <br><small>{{ filesize }} of 2GB used</small></h3>
+                        </div>
+                        <div class=" no-padding">
+                            <div class="chart-responsive p-10">
+                                <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-legend="true" chart-data="chart.data" chart-labels="chart.labels" chart-colors="chart.colors" chart-options="chart.options" chart-dataset-override="chart.options"></canvas>
                             </div>
-                        </div> -->
-                    </li>
-                </ul>
-            </div>
-            <div class="assets box-solid">
-                <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li ng-class="{'active': activeAllFiles}">
-                            <a href="" ng-click="showAllFiles()"><img src="./images/icon/ic_folder_black_24px.svg">
-                                <div>Files</div>
-                            </a>
-                        </li>
-                        <li ng-class="{'active': activeSharedFiles}">
-                            <a href="" ng-click="showAllShared()"><img src="./images/icon/ic_people_black_24px.svg">
-                                <div>Shared with me</div>
-                            </a>
-                        </li>
-                        <li ng-class="{'active': activeStarredFiles}">
-                            <a href="" ng-click="showAllStarred()"><img src="./images/icon/ic_star_black_24px.svg">
-                                <div>Starred</div>
-                            </a>
-                        </li>
-                        <li ng-class="{'active': activeTrashFiles}">
-                            <a href="" ng-click="showAllTrash()"><img src="./images/icon/ic_delete_black_24px.svg">
-                                <div>Trash</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- <div class="box box-solid" style="margin-top: 20px;">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Labels</h3>
-                </div>
-                <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href=""><i class="fa fa-circle-o text-red"></i> Important</a></li>
-                        <li><a href=""><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
-                        <li><a href=""><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
-                    </ul>
-                </div>
-            </div> -->
-            <div class=" box-solid" ng-controller="assetsStorageCtrl" ng-init="initStorage()" style="margin-top: 60px;">
-                <div class=" with-border">
-                    <h3 class="box-title prime-color" style="font-size: 15px;">Storage <small>&nbsp {{ filesize }} of 2GB used</small></h3>
-                </div>
-                <div class=" no-padding">
-                    <div class="chart-responsive" style="margin-top: 10px;">
-                        <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-legend="true" chart-data="chart.data" chart-labels="chart.labels" chart-colors="chart.colors" chart-options="chart.options" chart-dataset-override="chart.options"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-md-10 pr-0">
-            <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
-        </div>
-        <div class="sendcontainer" ng-show="upload">
-            <div class="head">Sending..</div>
-            <div class="body">
-                <img src="../images/icon/note-text.svg" style="width: 27px;height: 27px;">
-                <div style="margin-left: 10px;"><b>Purchase Order No.</b> <small>00011</small>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Name</th>
-                                <th ng-show="uploader.isHTML5">Size</th>
-                                <th ng-show="uploader.isHTML5">Progress</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in uploader.queue" ng-hide="item.isValid">
-                                <td>
-                                    <strong>{{ item.file.name }}</strong>
-                                </td>
-                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                                <td ng-show="uploader.isHTML5">
-                                    <div class="progress" style="margin-bottom: 0;">
-                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                                </td>
-                                <td nowrap>
-                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                        <span class="glyphicon glyphicon-upload"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                                        <span class="glyphicon glyphicon-ban-circle"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- /.col -->
+            <div class="col-md-10 p-0 br-left brColor">
+                <ng-include src="'./modules/assets/assets.files.html'"></ng-include>
+            </div>
+            <div class="sendcontainer" ng-show="upload">
+                <div class="head">Sending..</div>
+                <div class="body">
+                    <img src="../images/icon/note-text.svg" style="width: 27px;height: 27px;">
+                    <div style="margin-left: 10px;"><b>Purchase Order No.</b> <small>00011</small>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Name</th>
+                                    <th ng-show="uploader.isHTML5">Size</th>
+                                    <th ng-show="uploader.isHTML5">Progress</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in uploader.queue" ng-hide="item.isValid">
+                                    <td>
+                                        <strong>{{ item.file.name }}</strong>
+                                    </td>
+                                    <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td ng-show="uploader.isHTML5">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            <span class="glyphicon glyphicon-upload"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
     </div>
     <!-- /.row -->
 </section>
+<button class="btn smAddnewbtn sm btn-primary" ng-click="actionsheet = true;">
+    <img class="rotate" tabindex="1" src="../images/icon/ic_add_white_24px.svg">
+</button>
+<div class="action-sheet-backdrop active" buttons="buttons" ng-show="actionsheet">
+    <div class="action-sheet-wrapper action-sheet-up">
+        <div class="action-sheet action-sheet-has-icons" style="">
+            <div class="action-sheet-group action-sheet-options">
+                <div class="action-sheet-title ng-binding">New</div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="holder" ng-click="createNewFolder(); actionsheet = false;">
+                                <img src="./images/icon/ic_folder_black_24px.svg">
+                                <br>Folder
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="holder" ng-click="newUploader(); actionsheet = false;">
+                                <img src="./images/icon/ic_file_upload_black_24px.svg">
+                                <br>Upload
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-sheet-group action-sheet-cancel">
+                <button class="button" ng-click="actionsheet = false;" angualr-ripple>Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 <style type="text/css">
 .successlabel {
     font-size: 17px;
@@ -187,6 +198,12 @@
     float: left;
 }
 
+.box .nav-stacked>li {
+    border-bottom: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
 .sendcontainer .body {
     padding: 15px;
     display: flex;
@@ -217,4 +234,6 @@
     color: #fff;
     font-weight: 500;
 }
+
+
 </style>
