@@ -9,8 +9,8 @@
                     <div class="">
                         <div class="form-inline w100p disp-inline-flex ">
                             <div class=" btn-group mailbox-controls  ">
-                                <button ng-click="saveStore()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple><i ng-show="isStoreloader" class="fa fa-spinner fa-spin"></i> Save</button>
-                                <button ng-click="getAllStore()" class="btnflat  waves-effect fl mr-10 " angular-ripple><i ng-show="isRefreshloader1" class="fa fa-spinner fa-spin"></i> Refresh</button>
+                                <button ng-click="saveStore()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Save</button>
+                                <button ng-click="getAllStore()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
                                 <div class="input-group">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-flat btn-default  dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple>
@@ -44,7 +44,7 @@
                         <thead>
                             <tr>
                                 <th width="10" data-sort-ignore="true">
-                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll();">
+                                    <input type="checkbox" class="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
                                 </th>
                                 <th class="">Name</th>
                                 <th class="">Address</th>
@@ -57,7 +57,7 @@
                         <tbody>
                             <tr ng-repeat="var in itemArray" repeat-end="paginate()">
                                 <td angular-ripple>
-                                    <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var);">
+                                    <input type="checkbox" class="checkbox" ng-model="var.selected" ng-change="checkStoresChanges(var)">
                                 </td>
                                 <td>
                                     {{var.name}}
