@@ -42,7 +42,7 @@
                                     {{var.name}}
                                 </td>
                                 <td>
-                                    <input ng-init="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-disabled="!var.selected" type="number" class="form-control" name="" style="margin-top: 7px;border-color: aquamarine;" ng-model="stockTrackQty[$index]" ng-keyup="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])">
+                                    <input ng-init="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-disabled="!var.selected" type="number" min="0" class="form-control" name="" style="margin-top: 7px;border-color: aquamarine;" ng-model="stockTrackQty[$index]" ng-keyup="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])">
                                 </td>
                                 <td>
                                     <ui-select ng-init="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-disabled="!var.selected" on-select="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-model="stockTrackUnit[$index].selected" theme="bootstrap" ng-disabled="inv.unit.disabled" style="width: 150px;" title="Choose a unit">
@@ -53,7 +53,7 @@
                                     </ui-select>
                                 </td>
                                 <td>
-                                    <input ng-init="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-disabled="!var.selected" type="number" class="form-control" name="" style="margin-top: 7px;border-color: aquamarine;" ng-model="stockTrackLevel[$index]" ng-keyup="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])">
+                                    <input ng-init="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])" ng-disabled="!var.selected" type="number" min="0" class="form-control" name="" style="margin-top: 7px;border-color: aquamarine;" ng-model="stockTrackLevel[$index]" ng-keyup="_pushToStockTrack($index,var.store_id,stockTrackQty[$index],stockTrackLevel[$index],stockTrackUnit[$index])">
                                 </td>
                             </tr>
                         </tbody>
