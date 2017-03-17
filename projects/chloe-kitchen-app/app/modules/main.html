@@ -5,16 +5,6 @@
     <div class="queHeader" ng-click="Categorization = true; PriorityQue = false; Categorization = 1;" ng-class="{'activeHead': Categorization == 1}">
         Order Summary
     </div>
-    <!-- <div class="profileHolder">
-        <div class="profileDetails">Walter White
-            <br>
-            <small>Cashier</small>
-        </div>
-        <div>
-            <img src="../images/breaking-bad32.jpg">
-            <img src="../images/ic_lock_outline_black_24px.svg">
-        </div>
-    </div> -->
     <div class="headerTime">{{CurrentDate | date:'hh:mm:ss a'}}</div>
 </nav>
 <!-- PRIORITY QUEUE -->
@@ -23,46 +13,46 @@
 <!-- PRIORITY QUEUE -->
 <!-- PRIORITY QUEUE -->
 <div class="holder" ng-show="PriorityQue">
-    <div class="card " ng-class="{'checked': card.checked, 'unchecked' : !card.checked}" ng-repeat="card in menuRecords | orderBy:'-' | limitTo : 10">
-        <div class="cardHead" ng-class="{'takeout': card.name == 'Take out','deliver': card.name == 'Deliver',}">
-            # {{card.transactionCode}}
-            <div><small>{{card.name}}</small></div>
+    <div class="card " ng-class="{'checked': card.checked, 'unchecked' : !card.checked}" ng-repeat="card in menuRecords | limitTo : 10 track by $index ">
+        <div class="cardHead" ng-class="[{'takeout': card.orderstatus == 'Take-Out'},{'dineIn': card.orderstatus == 'Dine - In'},{'deliver': card.orderstatus == 'Deliver'}]">
+            # {{card.tableno}}
+            <div><small>{{card.orderstatus}}</small></div>
             <div>
-                <span ng-repeat="que in card.orDerz" ng-class="{
-                                'yellow': que.colorCode == '01',
-                                'red': que.colorCode == '02',
-                                'blue': que.colorCode == '03',
-                                'green': que.colorCode == '04',
-                                'violet': que.colorCode == '05',}">
+                <span ng-repeat="que in card.orders" ng-class="{
+                                'blue': que.producttypeId == '1',
+                                'violet ': que.producttypeId == '2',
+                                'green': que.producttypeId == '3',
+                                'red': que.producttypeId == '4',
+                                'yellow': que.producttypeId == '5'}">
              </span>
             </div>
         </div>
-        <div class="menu" ng-class="{'borderChecked': card.checked, 'borderUnchecked' : !card.checked}">
-            IN: {{CurrentDate | date:'hh:mm a'}}
+        <div class="menu" ng-class="{'borderChecked': card.ready, 'borderUnchecked' : !card.ready}">
+            IN: {{card.datetime1}}
         </div>
         <div class="timeLapse" ng-show="que.checked">Waiting for 15 min already.</div>
         <div class="cardBody">
-            <div ng-repeat="que in card.orDerz">
+            <div ng-repeat="que in card.orders" hm-swipeleft="hmSwipeleft(que)" hm-swiperight="hmSwipeleft(que)">
                 <div class="pure-checkbox" ng-class="{
-                                'bCyellow': que.colorCode == '01',
-                                'bCred': que.colorCode == '02',
-                                'bCblue': que.colorCode == '03',
-                                'bCgreen': que.colorCode == '04',
-                                'bCviolet': que.colorCode == '05',}">
-                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{transactionCode}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked()" ng-click="timelapse == true">
-                    <label for="aw-{{$index}}-{{card}}-{{que}}-{{transactionCode}}" ng-class="{'colorChecked': que.checked, 'colorUnchecked' : !que.checked}">
-                        <div>{{que.Qty}}</div>{{que.menuNamezz}}
+                                'bCblue': que.producttypeId == '1',
+                                'bCviolet': que.producttypeId == '2',
+                                'bCgreen': que.producttypeId == '3',
+                                'bCred': que.producttypeId == '4',
+                                'bCyellow': que.producttypeId == '5'}">
+                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked()">
+                    <label for="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" ng-class="{'colorChecked': que.checked, 'colorUnchecked' : !que.checked}">
+                        <div>{{que.quantity}}</div>{{que.item_name}}
                     </label>
-                    <small>{{que.menuAdd}}</small>
-                    <span ng-if="">Ready</span>
+                    <!-- <small>{{que.menuAdd}}</small> -->
+                    <span ng-if="que.isDone">Ready</span>
                 </div>
             </div>
         </div>
-        <div class="cardFooter" ng-class="{'borderChecked': card.checked == true, 'borderUnchecked' : !card.checked}">
-            {{card.cooker}}
+        <div class="cardFooter" ng-class="{'borderChecked': card.ready == true, 'borderUnchecked' : !card.ready}">
+            {{card.waitername}}
         </div>
-        <div class="cardFooterServe" ng-show="timelapse" ng-class="{'borderChecked': card.checked == true, 'borderUnchecked' : !card.checked}">
-            {{card.cooker}}
+        <div class="cardFooterServe" ng-show="card.ready" ng-class="{'borderChecked': card.ready == true, 'borderUnchecked' : !card.ready}" ng-click="serveOrder(card)">
+            {{card.waitername}}
             <div>Serve</div>
         </div>
     </div>
@@ -105,25 +95,25 @@
                                 'cardHeadBg-Green': menus.menuCode == '3',
                                 'cardHeadBg-Red': menus.menuCode == '4',
                                 'cardHeadBg-Orange': menus.menuCode == '5',}">
-                    # {{order.transactionCode}}
+                    # {{order.tableno}}
                     <div><small>{{order.name}}</small></div>
                 </div>
                 <div class="colorwyt" ng-class="{'colorTransparent': order.checked}">
                     <div class="menu" ng-class="{'borderChecked': order.checked, 'borderUnchecked' : !order.checked}">
-                        IN: {{CurrentDate | date:'hh:mm a'}}
+                        IN: {{order.datetime1 | date:'hh:mm a'}}
                     </div>
                     <div class="cardBody">
-                        <div ng-repeat="orderzz in order.orDerz">
+                        <div ng-repeat="orderzz in order.orders" ng-if="orderzz.producttypeId == menus.menuCode">
                             <div class="pure-checkbox">
-                                <input id="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{transactionCode}}" name="checkbox" type="checkbox" ng-model="orderzz.checked" ng-click="transparentcheck(orderzz)">
-                                <label for="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{transactionCode}}" ng-class="{'colorChecked': orderzz.checked, 'colorUnchecked' : !orderzz.checked}">
-                                    <div>{{orderzz.Qty}}</div>{{orderzz.menuNamezz}}
+                                <input id="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="orderzz.checked" ng-click="transparentcheck(orderzz)">
+                                <label for="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{tableno}}" ng-class="{'colorChecked': orderzz.checked, 'colorUnchecked' : !orderzz.checked}">
+                                    <div>{{orderzz.quantity}}</div>{{orderzz.item_name}}
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="cardFooter" ng-class="{'borderChecked': order.checked, 'borderUnchecked' : !order.checked}">
-                        {{order.cooker}}
+                        {{order.waitername}}
                     </div>
                 </div>
             </div>
@@ -133,10 +123,10 @@
 <div class="footer">
     <div class="holderzz">
         <img class="left" src="./images/right-arrow_318-133548.png">
-        <div class="prio">Priority Queue</div>
+        <div class="prio" ng-click="generateRandomData()">Priority Queue</div>
         <img class="right" src="./images/arrow.png">
-        <span ng-if="nextQue.transactionCode>limit" ng-repeat="nextQue in menuRecords">
-            <div class="smCard"># {{nextQue.transactionCode}}</div>
+        <span ng-if="($index + 1) > limit" ng-repeat="nextQue in menuRecords">
+            <div class="smCard"># {{nextQue.tableno}}</div>
         </span>
     </div>
 </div>
