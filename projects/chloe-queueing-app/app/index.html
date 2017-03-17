@@ -19,7 +19,12 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!-- ionic/angularjs js -->
+    <script src="lib/lodash/dist/lodash.min.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/socket.io-client/dist/socket.io.min.js"></script>
+    <script src="lib/angular-moment/angular-moment.min.js"></script>
+    <script src="lib/angular-socket-io/socket.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <!-- your app's js -->
@@ -36,12 +41,12 @@
         </div>
         <ion-content class="has-subheader">
             <ion-list>
-                <ion-item class="item-remove-animate item-icon-left item-balanced custom_item" ng-repeat="item in items" ng-click="item.isReady = !item.isReady" ng-class="{'animated infinite shake': item.isReady == true}">
+                <ion-item class="item-remove-animate item-icon-left item-balanced custom_item" ng-repeat="item in items track by $index" ng-class="{'animated infinite shake': item.isReady == true}">
                     <div item-left class="left_item">
                         <i class="icon ion-checkmark"></i>
                     </div>
                     <div item-right class="right_item">
-                        <span>{{item.number}}</span>
+                        <span>{{item.tableno}}</span>
                     </div>
                     <span class="item-note energized">#</span>
                 </ion-item>

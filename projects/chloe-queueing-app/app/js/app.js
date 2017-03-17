@@ -1,27 +1,23 @@
 (function() {
     'use strict';
 
-    angular.module('starter', ['ionic'])
-        .run(['$ionicPlatform', function($ionicPlatform) {
-            $ionicPlatform.ready(function() {
-                if (window.cordova && window.cordova.plugins.Keyboard) {
-                    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-                    // for form inputs)
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-                    // Don't remove this line unless you know what you are doing. It stops the viewport
-                    // from snapping when text inputs are focused. Ionic handles this internally for
-                    // a much nicer keyboard experience.
-                    cordova.plugins.Keyboard.disableScroll(true);
-                }
-                if (window.StatusBar) {
-                    StatusBar.styleDefault();
-                }
-            });
+    angular.module('starter', [
+            'ionic',
+            'angularMoment',
+            'btford.socket-io'
+        ])
+        // .constant('baseURL', 'http://54.206.38.223:5006')
+        .constant('baseURL', 'http://localhost:3000')
+        .factory('io', ['$window', function($window) {
+            return $window.io; // assumes socket.io has already been loaded on the page
         }])
-        .controller('appCtrl', ['$scope', '$timeout','$interval', function($scope, $timeout,$interval) {
+        .factory('moment', ['$window', function($window) {
+            return $window.moment; // assumes socket.io has already been loaded on the page
+        }])
+        .controller('appCtrl', ['$scope', '$timeout', '$interval', 'mySocket', '$window', function($scope, $timeout, $interval, mySocket, $window) {
             console.log('appCtrl');
             $scope.interval = null;
+            $scope.items = [];
 
             function pad(num, size) {
                 var s = num + "";
@@ -29,24 +25,44 @@
                 return s;
             }
 
-            $scope.initApp = function(){
-                $timeout(function() {
-                    $scope.items = [];
-                    for (var i = 0; i < 30; ++i) {
+
+            mySocket.on('connect', function() {
+                console.log('connected....');
+
+                mySocket.emit('register:device', 'Chloe');
+                mySocket.on('sendto:Que', function(data) {
+                    var result = _.find($scope.items, { 'tableno': data.tableno });
+                    if (result) {
+                        if (data.serve) {
+                            $scope.items = _.reject($scope.items,{'tableno': result.tableno});
+                            console.log('$scope.items: ',$scope.items);
+                        }
+                    } else {
                         $scope.items.push({
-                            isReady: false,
-                            number: pad(i + 1, 2)
-                        })
+                            isServe: data.serve,
+                            tableno: data.tableno,
+                            datetime: data.datetime
+                        });
                     }
-                }, 100);
+                    console.log('items: ', $scope.items);
+                    $window.localStorage.setItem('kitchen_queue', JSON.stringify($scope.items));
+                });
+            });
+
+            $scope.initApp = function() {
+                var items = JSON.parse($window.localStorage.getItem('kitchen_queue')) || [];
+                if(!_.isEmpty(items)){
+                    $scope.items = items;
+                }
             };
-
-            $scope.interval = $interval(function(){
-                $scope.initApp();
-            },10000);
-
-
         }])
+        .factory('mySocket', function(socketFactory, io, baseURL) {
+            var myIoSocket = io.connect(baseURL);
+            var socket = socketFactory({
+                ioSocket: myIoSocket
+            });
+            return socket;
+        })
         .directive('animateOnLoad', ['$animateCss', function($animateCss) {
             return {
                 'link': function(scope, element) {
