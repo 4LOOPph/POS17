@@ -6,8 +6,8 @@
             'angularMoment',
             'btford.socket-io'
         ])
-        // .constant('baseURL', 'http://54.206.38.223:5006')
-        .constant('baseURL', 'http://localhost:3000')
+        .constant('baseURL', 'http://54.206.38.223:5006')
+        // .constant('baseURL', 'http://localhost:3000')
         .factory('io', ['$window', function($window) {
             return $window.io; // assumes socket.io has already been loaded on the page
         }])
