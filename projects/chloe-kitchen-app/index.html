@@ -1,50 +1,64 @@
-<html>
-<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-<!-- Bootstrap 3.3.2 -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>
-    $.urlParam = function(name) {
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
-
-    $(document).ready(function() {
-        var url = 'app/';
-        $('#appview').attr('src', url)
-    });
-    </script>
-    <style>
-    #container {
-        margin: 0 auto;
-        position: relative;
-        text-align: center;
-        /* width: 507px; */
-        width: 1600px;
-    }
-    
-    #container img {
-        width: 100%;
-    }
-    
-    #appview {
-        border: none;
-        height: 775px;
-        left: 70px;
-        position: absolute;
-        top: 70px;
-        width: 1455px;
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Chloe</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+        padding-bottom: 70px;
     }
     </style>
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 
 <body>
-    <div id="container">
-        <iframe id="appview"></iframe>
-        <img src="../../dist/img/screenland.png" alt="" />
+    <div class="jumbotron">
+        <div class="container">
+            <div class="text-center">
+                <img src="../../dist/img/chloeLogo.png" style="width: 512px">
+            </div>
+            <h2 class="text-center">Restaurant | Chef</h2>
+            <p>Orders are queued how you need to be.. Each order are displayed in your kitchen screens such that your staff  easily knows what to start cooking at the exact moment. Food is not great if not served hot. Chloe makes sure that your staff are aware if food is already ready to serve.</p>
+        </div>
     </div>
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h2>Browser</h2>
+                <p>
+                    <img src="../../dist/img/browser.png" style="width: 256px;">
+                </p>
+                <p><a class="btn btn-default" href="./app/index.html" role="button">View App &raquo;</a></p>
+            </div>
+            <div class="col-md-6 text-center">
+                <h2>Screen Monitor</h2>
+                <p>
+                    <img src="../../dist/img/www.png" style="width: 256px;">
+                </p>
+                <p><a class="btn btn-default" href="screen.html" role="button">View App &raquo;</a></p>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; 2016 4LOOP, Inc.</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
