@@ -31,6 +31,77 @@
             </div>
         </div>
     </div> -->
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Revenue</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="">
+                    <canvas
+                        chart-options="chartLineOptions" 
+                        id="line" 
+                        class="chart chart-line" 
+                        chart-data="chartLineCharts" 
+                        chart-labels="chartLineLabels" 
+                        chart-legend="true" 
+                        chart-series="chartLineSeries" 
+                        chart-colours="chartLineColours">
+                    </canvas>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sale Count</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="">
+                    <canvas
+                        chart-options="chartLineOptions" 
+                        id="line" 
+                        class="chart chart-line" 
+                        chart-data="chartLineCharts" 
+                        chart-labels="chartLineLabels" 
+                        chart-legend="true" 
+                        chart-series="chartLineSeries" 
+                        chart-colours="chartLineColours">
+                    </canvas>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer Count</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="">
+                    <canvas 
+                        chart-options="chartLineOptions" 
+                        id="line" 
+                        class="chart chart-line" 
+                        chart-data="chartLineCharts" 
+                        chart-labels="chartLineLabels" 
+                        chart-legend="true" 
+                        chart-series="chartLineSeries" 
+                        chart-colours="chartLineColours">
+                    </canvas>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class='ui'>
         <div class='ui_box'>
             <div class='ui_box__inner'>
