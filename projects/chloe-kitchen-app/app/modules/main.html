@@ -30,21 +30,21 @@
         <div class="menu" ng-class="{'borderChecked': card.ready, 'borderUnchecked' : !card.ready}">
             IN: {{card.datetime1}}
         </div>
-        <div class="timeLapse" ng-show="que.checked">Waiting for 15 min already.</div>
+        <div class="timeLapse" ng-show="card.isLapsed">Waiting for {{card.lapsedTime}} mins already.</div>
         <div class="cardBody">
-            <div ng-repeat="que in card.orders" hm-swipeleft="hmSwipeleft(que)" hm-swiperight="hmSwipeleft(que)">
+            <div ng-repeat="que in card.orders" ng-dblclick="hmSwipeleft(que,$event)">
                 <div class="pure-checkbox" ng-class="{
                                 'bCblue': que.producttypeId == '1',
                                 'bCviolet': que.producttypeId == '2',
                                 'bCgreen': que.producttypeId == '3',
                                 'bCred': que.producttypeId == '4',
                                 'bCyellow': que.producttypeId == '5'}">
-                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked()">
+                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked($event)">
                     <label for="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" ng-class="{'colorChecked': que.checked, 'colorUnchecked' : !que.checked}">
                         <div>{{que.quantity}}</div>{{que.item_name}}
                     </label>
                     <!-- <small>{{que.menuAdd}}</small> -->
-                    <span ng-if="que.isDone">Ready</span>
+                    <span ng-if="que.isDone" class="span1">Ready</span>
                 </div>
             </div>
         </div>
@@ -54,6 +54,10 @@
         <div class="cardFooterServe" ng-show="card.ready" ng-class="{'borderChecked': card.ready == true, 'borderUnchecked' : !card.ready}" ng-click="serveOrder(card)">
             {{card.waitername}}
             <div>Serve</div>
+        </div>
+        <div class="cardFooterDone" ng-show="card.serve" ng-class="{'borderChecked': card.ready == true, 'borderUnchecked' : !card.ready}" ng-click="doneOrder(card)">
+            {{card.waitername}}
+            <div><i class="fa fa-check" aria-hidden="true"></i> Done</div>
         </div>
     </div>
 </div>
@@ -125,9 +129,9 @@
         <img class="left" src="./images/right-arrow_318-133548.png">
         <div class="prio" ng-click="generateRandomData()">Priority Queue</div>
         <img class="right" src="./images/arrow.png">
-
-        <div dir="rtl" ng-if="($index + 1) > limit" ng-repeat="nextQue in menuRecords">
+        <div ng-if="($index + 1) > limit" ng-repeat="nextQue in menuRecords">
             <div class="smCard"># {{nextQue.tableno}}</div>
         </div>
     </div>
+    <button class="clearBtn" ng-class="{'clearBtnReady': clearDone, 'clearBtnHalt' : !clearDone}" ng-disabled="!clearDone" ng-click="removeAllDone()">Remove All Done</button>
 </div>

@@ -34,16 +34,16 @@
 <body ng-app="starter" ng-animate-children="true">
     <ion-pane ng-controller="appCtrl" ng-init="initApp()">
         <div class="bar bar-header bar-positive custom_toolbar">
-            <h1 class="title">Order Queue Number</h1>
+            <h1 class="title">READY</h1>
         </div>
         <div class="bar bar-subheader bar-calm custom_toolbar2">
             <h2 class="title">Instruction on how to take order..</h2>
         </div>
         <ion-content class="has-subheader">
             <ion-list>
-                <ion-item class="item-remove-animate item-icon-left item-balanced custom_item" ng-repeat="item in items track by $index" ng-class="{'animated infinite shake': item.isReady == true}">
+                <ion-item class="item-remove-animate item-icon-left item-balanced custom_item" ng-repeat="item in items track by $index">
                     <div item-left class="left_item">
-                        <i class="icon ion-checkmark"></i>
+                        <i class="icon ion-checkmark" ng-class="{'animated infinite tada': item.isServe == true}"></i>
                     </div>
                     <div item-right class="right_item">
                         <span>{{item.tableno}}</span>
