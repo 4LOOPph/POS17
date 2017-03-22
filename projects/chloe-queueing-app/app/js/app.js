@@ -33,13 +33,21 @@
                 mySocket.on('sendto:Que', function(data) {
                     var result = _.find($scope.items, { 'tableno': data.tableno });
                     if (result) {
-                        if (data.serve) {
-                            $scope.items = _.reject($scope.items,{'tableno': result.tableno});
-                            console.log('$scope.items: ',$scope.items);
+                        if (data.done) {
+                            $scope.items = _.reject($scope.items, { 'tableno': result.tableno });
+                            console.log('$scope.items: ', $scope.items);
+                        } else if (data.serve) {
+                            _.each($scope.items, function(row) {
+                                if (row.tableno = data.tableno) {
+                                    row.isServe = data.serve;
+                                    row.isDone = data.done;
+                                }
+                            });
                         }
                     } else {
                         $scope.items.push({
                             isServe: data.serve,
+                            isDone: data.done,
                             tableno: data.tableno,
                             datetime: data.datetime
                         });
@@ -51,7 +59,7 @@
 
             $scope.initApp = function() {
                 var items = JSON.parse($window.localStorage.getItem('kitchen_queue')) || [];
-                if(!_.isEmpty(items)){
+                if (!_.isEmpty(items)) {
                     $scope.items = items;
                 }
             };
