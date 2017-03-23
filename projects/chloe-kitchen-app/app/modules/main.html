@@ -32,7 +32,7 @@
         </div>
         <div class="timeLapse" ng-show="card.isLapsed">Waiting for {{card.lapsedTime}} mins already.</div>
         <div class="cardBody">
-            <div ng-repeat="que in card.orders" ng-dblclick="hmSwipeleft(que,$event)">
+            <div ng-repeat="que in card.orders track by $index" ng-dblclick="hmSwipeleft(que,$event)">
                 <div class="pure-checkbox" ng-class="{
                                 'bCblue': que.producttypeId == '1',
                                 'bCviolet': que.producttypeId == '2',
@@ -72,7 +72,7 @@
 <!-- ORDER SUMMARY
  -->
 <div class="holder2" ng-show="Categorization">
-    <div class="cardPlace" ng-repeat="menus in orderSum" ng-class="{
+    <div class="cardPlace" ng-repeat="menus in orderSum track by $index" ng-class="{
                                 'cardPlaceBg-Blue': menus.menuCode == '1',
                                 'cardPlaceBg-Violet': menus.menuCode == '2',
                                 'cardPlaceBg-Green': menus.menuCode == '3',
@@ -87,7 +87,7 @@
             {{menus.menuType}}
         </div>
         <div class="cardPladeHolder">
-            <div class="card" ng-repeat="order in menus.menu" ng-class="{
+            <div class="card" ng-repeat="order in menus.menu track by $index" ng-class="{
                                 'cardBg-Blue': menus.menuCode == '1',
                                 'cardBg-Violet': menus.menuCode == '2',
                                 'cardBg-Green': menus.menuCode == '3',
@@ -107,7 +107,7 @@
                         IN: {{order.datetime1 | date:'hh:mm a'}}
                     </div>
                     <div class="cardBody">
-                        <div ng-repeat="orderzz in order.orders" ng-if="orderzz.producttypeId == menus.menuCode">
+                        <div ng-repeat="orderzz in order.orders track by $index" ng-if="orderzz.producttypeId == menus.menuCode">
                             <div class="pure-checkbox">
                                 <input id="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="orderzz.checked" ng-click="transparentcheck(orderzz)">
                                 <label for="aw-{{$index}}-{{menus}}-{{order}}-{{orderzz}}-{{tableno}}" ng-class="{'colorChecked': orderzz.checked, 'colorUnchecked' : !orderzz.checked}">
