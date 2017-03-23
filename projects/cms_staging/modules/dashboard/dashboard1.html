@@ -32,6 +32,49 @@
         </div>
     </div> -->
     <div class="row">
+        <div class="form-group col-md-4">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn active btn-default" ng-click="setActive('day')">
+                    <input name="day" id="day" value="day" class="active" type="radio" data-ng-model="cssPre">Day
+                </label>
+                <label class="btn btn-default" ng-click="setActive('week')">
+                    <input name="week" id="week" value="week" type="radio" data-ng-model="cssPre">Week
+                </label>
+                <label class="btn btn-default" ng-click="setActive('month')">
+                    <input name="month" id="month" value="month" type="radio" checked="checked" data-ng-model="cssPre">Month
+                </label>
+                <label class="btn btn-default" ng-click="setActive('year')">
+                    <input name="year" id="year" value="year" type="radio" data-ng-model="cssPre">Year
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Date From: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="dateFrom" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
+                <div class="input-group-addon">
+                    <img src="./images/icon/calendar-today.svg">
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Date To: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="dateTo" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
+                <div class="input-group-addon">
+                    <img src="./images/icon/calendar-today.svg">
+                </div>
+            </div>
+        </div>
+        <div class="input-group col-md-2">
+            <label style="visibility: hidden">Click to reload: </label>
+            <div class="input-group">
+                <button ng-click="getDashboardReports()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> reload</button>
+            </div>
+        </div>
+        <br></br>
+    </div>
+    <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="box">
                 <div class="box-header with-border">
@@ -39,9 +82,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_revenue" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_revenue" chart-labels="chartLineLabels_revenue" 
-                    chart-legend="true" chart-series="chartLineSeries_revenue" chart-colours="chartLineColours_revenue">
+                    <canvas chart-options="chartLineOptions_revenue" id="line" class="chart chart-line" chart-data="chartLineCharts_revenue" chart-labels="chartLineLabels_revenue" chart-legend="true" chart-series="chartLineSeries_revenue" chart-colours="chartLineColours_revenue">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -56,9 +97,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" 
-                    chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
+                    <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -73,9 +112,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" 
-                    chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
+                    <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -92,9 +129,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts" chart-labels="chartLineLabels" 
-                    chart-legend="true" chart-series="chartLineSeries" chart-colours="chartLineColours">
+                    <canvas chart-options="chartLineOptions" id="line" class="chart chart-line" chart-data="chartLineCharts" chart-labels="chartLineLabels" chart-legend="true" chart-series="chartLineSeries" chart-colours="chartLineColours">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -109,9 +144,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_discount" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_discount" chart-labels="chartLineLabels_discount" 
-                    chart-legend="true" chart-series="chartLineSeries_discount" chart-colours="chartLineColours_discount">
+                    <canvas chart-options="chartLineOptions_discount" id="line" class="chart chart-line" chart-data="chartLineCharts_discount" chart-labels="chartLineLabels_discount" chart-legend="true" chart-series="chartLineSeries_discount" chart-colours="chartLineColours_discount">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -126,9 +159,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_discount_percent" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_discount_percent" chart-labels="chartLineLabels_discount_percent"
-                    chart-legend="true" chart-series="chartLineSeries_discount_percent" chart-colours="chartLineColours_discount_percent">
+                    <canvas chart-options="chartLineOptions_discount_percent" id="line" class="chart chart-line" chart-data="chartLineCharts_discount_percent" chart-labels="chartLineLabels_discount_percent" chart-legend="true" chart-series="chartLineSeries_discount_percent" chart-colours="chartLineColours_discount_percent">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -145,9 +176,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" 
-                    chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
+                    <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -162,9 +191,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="">
-                    <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" 
-                    chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" 
-                    chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
+                    <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
