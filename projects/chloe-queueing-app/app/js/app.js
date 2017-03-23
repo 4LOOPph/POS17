@@ -30,15 +30,15 @@
                 console.log('connected....');
 
                 mySocket.emit('register:device', 'Chloe');
+
                 mySocket.on('sendto:Que', function(data) {
                     var result = _.find($scope.items, { 'tableno': data.tableno });
                     if (result) {
                         if (data.done) {
                             $scope.items = _.reject($scope.items, { 'tableno': result.tableno });
-                            console.log('$scope.items: ', $scope.items);
                         } else if (data.serve) {
                             _.each($scope.items, function(row) {
-                                if (row.tableno = data.tableno) {
+                                if (row.tableno == data.tableno) {
                                     row.isServe = data.serve;
                                     row.isDone = data.done;
                                 }
@@ -52,7 +52,6 @@
                             datetime: data.datetime
                         });
                     }
-                    console.log('items: ', $scope.items);
                     $window.localStorage.setItem('kitchen_queue', JSON.stringify($scope.items));
                 });
             });
