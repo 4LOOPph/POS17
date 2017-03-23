@@ -39,7 +39,7 @@
                                 'bCgreen': que.producttypeId == '3',
                                 'bCred': que.producttypeId == '4',
                                 'bCyellow': que.producttypeId == '5'}">
-                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked($event)">
+                    <input id="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" name="checkbox" type="checkbox" ng-model="que.checked" ng-click="checkChecked($event)" ng-disabled="que.isDone">
                     <label for="aw-{{$index}}-{{card}}-{{que}}-{{tableno}}" ng-class="{'colorChecked': que.checked, 'colorUnchecked' : !que.checked}">
                         <div>{{que.quantity}}</div>{{que.item_name}}
                     </label>
