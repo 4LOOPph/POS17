@@ -67,9 +67,9 @@
             </div>
         </div>
         <div class="input-group col-md-2">
-            <label style="visibility: hidden">Click to reload: </label>
+            <label style="visibility: hidden">Click to refresh: </label>
             <div class="input-group">
-                <button ng-click="getDashboardReports()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> reload</button>
+                <button ng-click="getDashboardReports()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> refresh</button>
             </div>
         </div>
         <br></br>
@@ -80,7 +80,15 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Revenue</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>$ {{getOverall_Revenue | number:2}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
                 <div class="">
                     <canvas chart-options="chartLineOptions_revenue" id="line" class="chart chart-line" chart-data="chartLineCharts_revenue" chart-labels="chartLineLabels_revenue" chart-legend="true" chart-series="chartLineSeries_revenue" chart-colours="chartLineColours_revenue">
                     </canvas>
@@ -93,11 +101,19 @@
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Sale Count</h3>
+                    <h3 class="box-title">Gross Profit</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>$ {{getOverall_Grossprofit | number:2}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">{{getOverall_Grossprofit | number:2}}</span>
+                    </div>
+                </div>
                 <div class="">
-                    <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
+                    <canvas chart-options="chartLineOptions_gross_profit" id="line" class="chart chart-line" chart-data="chartLineCharts_gross_profit" chart-labels="chartLineLabels_gross_profit" chart-legend="true" chart-series="chartLineSeries_gross_profit" chart-colours="chartLineColours_gross_profit">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -108,11 +124,19 @@
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Customer Count</h3>
+                    <h3 class="box-title">Sale Count</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>{{getOverall_Salecount | number:0}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
                 <div class="">
-                    <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
+                    <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -125,11 +149,19 @@
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Gross Profit</h3>
+                    <h3 class="box-title">Customers</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>{{getOverall_Customercount | number:0}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
                 <div class="">
-                    <canvas chart-options="chartLineOptions" id="line" class="chart chart-line" chart-data="chartLineCharts" chart-labels="chartLineLabels" chart-legend="true" chart-series="chartLineSeries" chart-colours="chartLineColours">
+                    <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -140,9 +172,68 @@
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="box">
                 <div class="box-header with-border">
+                    <h3 class="box-title">Basket Size</h3>
+                </div>
+                <div class="col-sm-12">
+                    <h3>{{getOverall_Basketsize | number: 2}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
+                <div class="">
+                    <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
+                    </canvas>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Basket Value</h3>
+                </div>
+                <div class="col-sm-12">
+                    <h3>$ {{getOverall_Basketvalue | number:2}}</h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
+                <div class="">
+                    <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
+                    </canvas>
+                </div>
+                <div class="overlay" ng-show="productIsLoading">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box">
+                <div class="box-header with-border">
                     <h3 class="box-title">Discount</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>$ {{getOverall_Discount | number:2}} </h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
                 <div class="">
                     <canvas chart-options="chartLineOptions_discount" id="line" class="chart chart-line" chart-data="chartLineCharts_discount" chart-labels="chartLineLabels_discount" chart-legend="true" chart-series="chartLineSeries_discount" chart-colours="chartLineColours_discount">
                     </canvas>
@@ -157,41 +248,17 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Discount %</h3>
                 </div>
-                <!-- /.box-header -->
+                <div class="col-sm-12">
+                    <h3>{{getOverall_Discountpercent | number:2}} </h3>
+                    <div class="progress" ng-repeat="d2 in data2">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}}
+                        </div>
+                        <span style="float:right">xxx</span>
+                    </div>
+                </div>
                 <div class="">
                     <canvas chart-options="chartLineOptions_discount_percent" id="line" class="chart chart-line" chart-data="chartLineCharts_discount_percent" chart-labels="chartLineLabels_discount_percent" chart-legend="true" chart-series="chartLineSeries_discount_percent" chart-colours="chartLineColours_discount_percent">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Basket Value</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="">
-                    <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Basket Size</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="">
-                    <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
                     </canvas>
                 </div>
                 <div class="overlay" ng-show="productIsLoading">
@@ -207,7 +274,7 @@
                 <!-- /.box-header -->
                 <div class="">
                     <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"> chart-series="series"
-                    </canvas </div>
+                    </canvas>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
                     </div>
