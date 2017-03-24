@@ -13,7 +13,7 @@
 <!-- PRIORITY QUEUE -->
 <!-- PRIORITY QUEUE -->
 <div class="holder" ng-show="PriorityQue">
-    <div class="card " ng-class="{'checked': card.checked, 'unchecked' : !card.checked}" ng-repeat="card in menuRecords | limitTo : 10 track by $index ">
+    <div class="card " ng-class="{'checked': card.checked, 'unchecked' : !card.checked}" ng-repeat="card in menuRecords | limitTo : 10 track by $index " ng-if="!card.isDone">
         <div class="cardHead" ng-class="[{'takeout': card.orderstatus == 'Take - Out'},{'dineIn': card.orderstatus == 'Dine - In'},{'deliver': card.orderstatus == 'Deliver'}]">
             # {{card.tableno}}
             <div><small>{{card.orderstatus}}</small></div>
