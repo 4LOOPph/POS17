@@ -83,10 +83,9 @@
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Revenue | number:2}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_revenue_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_revenue_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Revenue | number:2}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
                     </div>
                 </div>
                 <div class="">
@@ -106,10 +105,10 @@
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Grossprofit | number:2}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_gross_profit_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_gross_profit_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Grossprofit | number:2}}</span>
                         </div>
-                        <span style="float:right">{{getOverall_Grossprofit | number:2}}</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -129,10 +128,10 @@
                 <div class="col-sm-12">
                     <h3>{{getOverall_Salecount | number:0}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_items_sold_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_items_sold_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Salecount | number:0}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -154,10 +153,10 @@
                 <div class="col-sm-12">
                     <h3>{{getOverall_Customercount | number:0}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_customers_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_customers_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Customercount | number:0}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -177,10 +176,10 @@
                 <div class="col-sm-12">
                     <h3>{{getOverall_Basketsize | number: 2}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_size_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_size_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Basketsize | number: 2}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -200,10 +199,10 @@
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Basketvalue | number:2}}</h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_value_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_value_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Basketvalue | number:2}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -214,9 +213,7 @@
                     <div class="loader"></div>
                 </div>
             </div>
-        </div>
-
-        
+        </div>    
         
     </div>
     <div class="row">
@@ -228,10 +225,10 @@
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Discount | number:2}} </h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Discount | number:2}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
@@ -251,10 +248,10 @@
                 <div class="col-sm-12">
                     <h3>{{getOverall_Discountpercent | number:2}} </h3>
                     <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}}
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_percent_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_percent_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Discountpercent | number:2}}</span>
                         </div>
-                        <span style="float:right">xxx</span>
+                        
                     </div>
                 </div>
                 <div class="">
