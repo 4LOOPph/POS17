@@ -47461,6 +47461,10 @@ cartQuote quotes-sharer {
   display: none;
 }
 
+cartQuote pdf-quotes-sharer {
+  display: none;
+}
+
 @media only screen and (max-width: 667px) {
   cartQuote ion-row {
     display: block !important;
@@ -47624,7 +47628,13 @@ page-compare ion-fab[top] {
   top: 0px !important;
 }
 
-page-compare .grid-basic-page ion-col {
+page-compare .grid-basic-page {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-compare .grid-basic-page .compare-card {
   background-color: #F8F8F8;
   padding: 5px;
   border: 1px solid #E0E0E0;
@@ -47632,6 +47642,7 @@ page-compare .grid-basic-page ion-col {
   text-align: center;
   margin: 3px;
   border-radius: 5px;
+  width: 300px;
 }
 
 page-compare .grid-basic-page .adv-map {
@@ -48565,11 +48576,8 @@ page-page1 .bar-button-ios[icon-only] {
   margin-right: 3px;
 }
 
-page-popover .item-ios ion-icon[item-right] {
-  margin: 0;
-  color: #3474e1;
-  font-size: 35px;
-  margin-right: 10px;
+filter-modal-page ion-footer .button-full {
+  margin: 0 !important;
 }
 
 page1-detail .article-thumbnails img {
@@ -48764,6 +48772,14 @@ page1-detail .p-20 {
   page-page2 .button-ios.filterIcon {
     height: 1.5em;
   }
+}
+
+page-page2 bundle-sharer {
+  display: none;
+}
+
+page-page2 product-sharer {
+  display: none;
 }
 
 page-page2 ion-card {
@@ -49357,6 +49373,19 @@ page2-filter-modal ion-footer .button-full {
   }
   page2-1-detail .p-15 {
     padding: 15px !important;
+  }
+  page2-1-detail .fab-list-active {
+    min-height: 47px;
+    min-width: 47px;
+  }
+  page2-1-detail .fab-close-icon {
+    line-height: 45px !important;
+  }
+  page2-1-detail ion-fab {
+    display: inherit !important;
+  }
+  page2-1-detail .fab-in-list {
+    margin: 3px 0;
   }
 }
 

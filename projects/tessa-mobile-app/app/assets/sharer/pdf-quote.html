@@ -48,7 +48,7 @@
                 <p>{{selected.bill_to_name}}</p>
                 <p>{{selected.bill_to_address}}</p>
                 <p>{{selected.bill_to_city}} {{selected.bill_to_state}}</p>
-                <p{{selected.bill_to_country}} {{selected.bill_to_zipcode}}</p>
+                <p>{{selected.bill_to_country}} {{selected.bill_to_zipcode}}</p>
                 <br>
                 <p style="font-size:10px; font-weight: bold;">
                     Ship To
@@ -59,7 +59,7 @@
                 <p>{{selected.ship_to_country}} {{selected.ship_to_zipcode}}</p>
             </div>
         </div>
-        <div style="  display: table-cell;vertical-align:top;text-align: right">
+        <div style="display: table-cell;vertical-align:top;text-align: right">
             <div style="font-size:16px;font-weight: bold; ">
                 Quotation
             </div>
@@ -67,10 +67,10 @@
             <table style="margin-top:25px;">
                 <tr style="font-size: 10px">
                     <th style="text-align: right">Quote No</th>
-                    <td style="padding-left:10px;text-align: left" ng-if="selected.type == 'Capex'">
+                    <td style="padding-left:10px;text-align: left" *ngIf="selected.type == 'CAPEX'">
                         CPX-{{selected.quote_number}}
                     </td>
-                    <td style="padding-left:10px;text-align: left" ng-if="selected.type == 'Opex'">
+                    <td style="padding-left:10px;text-align: left" *ngIf="selected.type == 'OPEX'">
                         OPX-{{selected.quote_number}}
                     </td>
                 </tr>
@@ -87,7 +87,7 @@
                     <td style="padding-left:10px;text-align: left">TESSA</td>
                 </tr>
                 <tr style="font-size:10px;">
-                    <th style="font-weight: normal;text-align: right">Currency</th>
+                    <th style="font-weight: normal;text-align: right">number: '1.2-2'</th>
                     <td style="padding-left:10px;text-align: left">Australian Dollar</td>
                 </tr>
                 <tr style="font-size:10px;">
@@ -123,10 +123,10 @@
         <tr>
             <th style="padding:7px ;width:auto; text-align: center;white-space: nowrap;">Item</th>
             <th style="padding:7px ;width:auto; text-align: center;white-space: nowrap;"
-                ng-if="selected.type == 'Capex'">Upfront Cost
+                *ngIf="selected.type == 'CAPEX'">Upfront Cost
             </th>
             <th style="padding:7px ;width:auto; text-align: center;white-space: nowrap;"
-                ng-if="selected.type == 'Opex'">On-giong Cost
+                *ngIf="selected.type == 'OPEX'">On-giong Cost
             </th>
             <th style="padding:7px ;width:auto; text-align: center;white-space: nowrap;">Monthly Cost</th>
             <th style="padding:7px ;width:auto; text-align: center;white-space: nowrap;">Qty</th>
@@ -134,83 +134,77 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="items in selected.quote_item_list" style="font-size:8px;">
-            <td style="border-bottom:solid thin dimgrey; padding: 5px 0;" ng-if="items.bundle_id != null">
+        <tr *ngFor="let items of selected.quote_item_list" style="font-size:8px;">
+            <td style="border-bottom:solid thin dimgrey; padding: 5px 0;" *ngIf="items.bundle_id != null">
                 <div>
                     {{items.bundle_details.bundle_name}}
-                    <ul style="margin:0;" ng-repeat="item in items.products">
+                    <ul style="margin:0;" *ngFor="let item of items.products">
                         <li>{{item.product_detail.item_name}}</li>
                     </ul>
                 </div>
             </td>
-                <td style="border-bottom:solid thin dimgrey; padding: 5px 0;" ng-if="items.product_id !=null">
+                <td style="border-bottom:solid thin dimgrey; padding: 5px 0;" *ngIf="items.product_id != null">
                 <div>
                     {{items.product_details.item_name}}
                     <ul style="margin:0;">
-                        <li ng-bind-html="items.product_details.item_description">
+                        <li ng-bind-html="items.product_details.item_description | sanitizeHtml">
                         </li>
                     </ul>
                 </div>
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="selected.type == 'Capex'">
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="selected.type == 'CAPEX'">
                 {{items.price}}
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="selected.type == 'Opex'">
-                {{(items.price * 31.111)/1000 | number:2}}
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="selected.type == 'OPEX'">
+                {{(items.price * 31.111)/1000 | number: '1.2-2'}}
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="items.spprices">
-                {{items.spprices | number:2}}
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="items.spprices">
+                {{items.spprices | number: '1.2-2'}}
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="items.product_id !=null">
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="items.product_id != null">
                 0
             </td>
             <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;">
                 {{items.quantity}}
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="selected.type == 'Capex'">
-                {{(items.price +items.spprices)* items.quantity | number:2}}
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="selected.type == 'CAPEX'">
+                {{(items.price +items.spprices)* items.quantity | number: '1.2-2'}}
             </td>
-            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;"
-                ng-if="selected.type == 'Opex'">
-                {{((((items.price *31.111)/1000)+items.spprices)*items.quantity) | number:2}}
+            <td style="vertical-align: top;border-bottom:solid thin dimgrey;padding: 5px 0;text-align: center;" *ngIf="selected.type == 'OPEX'">
+                {{((((items.price *31.111)/1000)+items.spprices)*items.quantity) | number: '1.2-2'}}
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 <div style="padding: 10px; width:100%; text-align: right;font-size:10px;">
-    <table style="margin-left:auto; font-size:10px;" ng-if="selected.type == 'Capex'">
+    <table style="margin-left:auto; font-size:10px;" *ngIf="selected.type == 'CAPEX'">
         <tr>
             <th style="font-size:10px;padding: 0 10px; text-align: left; ">Subtotal</th>
-            <td>{{subtotal + spprice | number:2}}</td>
+            <td>{{subtotal + spprice | number: '1.2-2'}}</td>
         </tr>
         <tr>
             <th style="padding: 0 10px; text-align: left; ">Tax Total (10%)</th>
-            <td>{{((subtotal + spprice) * 0.10) | number:2}}</td>
+            <td>{{((subtotal + spprice) * 0.10) | number: '1.2-2'}}</td>
         </tr>
         <tr>
             <th style="padding: 0 10px;text-align: left; ">Total</th>
-            <td>{{(((subtotal + spprice) * 0.10) + (subtotal + spprice)) | currency }}</td>
+            <td>{{(((subtotal + spprice) * 0.10) + (subtotal + spprice)) | number: '1.2-2' }}</td>
         </tr>
     </table>
-    <table style="font-size:10px;margin-left:auto;" ng-if="selected.type == 'Opex'">
+    <table style="font-size:10px;margin-left:auto;" *ngIf="selected.type == 'OPEX'">
         <tr>
             <th style="padding: 0 10px; text-align: left; ">Subtotal</th>
-            <td>{{subtotalOpex | number:2}}</td>
+            <td>{{subtotalOpex | number: '1.2-2'}}</td>
         </tr>
         <tr>
             <th style="padding: 0 10px;text-align: left; ">Tax Total (10%)</th>
-            <td>{{((subtotalOpex) * 0.10) | number:2}}</td>
+            <td>{{((subtotalOpex) * 0.10) | number: '1.2-2'}}</td>
         </tr>
         <tr>
             <th style="padding: 0 10px;text-align: left; ">Total</th>
 
-            <td>{{(((subtotalOpex)* 0.10) + (subtotalOpex)) | currency }}</td>
+            <td>{{(((subtotalOpex)* 0.10) + (subtotalOpex)) | number: '1.2-2' }}</td>
 
         </tr>
     </table>
