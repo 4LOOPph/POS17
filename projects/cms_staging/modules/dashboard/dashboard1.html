@@ -82,6 +82,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Revenue | number:2}}</h3>
+                    <small ng-show="changeOf_revenue_Stat >= 0" style="color:green" >{{changeOf_revenue_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_revenue_Stat < 0" style="color:red" >{{changeOf_revenue_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_revenue_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_revenue_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Revenue | number:2}}</span>
@@ -104,6 +106,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Grossprofit | number:2}}</h3>
+                    <small ng-show="changeOf_gross_profit_Stat >= 0" style="color:green" >{{changeOf_gross_profit_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_gross_profit_Stat < 0" style="color:red" >{{changeOf_gross_profit_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_gross_profit_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_gross_profit_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Grossprofit | number:2}}</span>
@@ -127,6 +131,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>{{getOverall_Salecount | number:0}}</h3>
+                    <small ng-show="changeOf_items_sold_Stat >= 0" style="color:green" >{{changeOf_items_sold_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_items_sold_Stat < 0" style="color:red" >{{changeOf_items_sold_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_items_sold_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_items_sold_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Salecount | number:0}}</span>
@@ -152,6 +158,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>{{getOverall_Customercount | number:0}}</h3>
+                    <small ng-show="changeOf_customers_Stat >= 0" style="color:green" >{{changeOf_customers_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_customers_Stat < 0" style="color:red" >{{changeOf_customers_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_customers_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_customers_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Customercount | number:0}}</span>
@@ -175,6 +183,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>{{getOverall_Basketsize | number: 2}}</h3>
+                    <small ng-show="changeOf_basket_size_Stat >= 0" style="color:green" >{{changeOf_basket_size_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_basket_size_Stat < 0" style="color:red" >{{changeOf_basket_size_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_size_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_size_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Basketsize | number: 2}}</span>
@@ -198,6 +208,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Basketvalue | number:2}}</h3>
+                    <small ng-show="changeOf_basket_value_Stat >= 0" style="color:green" >{{changeOf_basket_value_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_basket_value_Stat < 0" style="color:red" >{{changeOf_basket_value_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_value_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_value_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Basketvalue | number:2}}</span>
@@ -224,6 +236,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>$ {{getOverall_Discount | number:2}} </h3>
+                    <small ng-show="changeOf_discount_Stat >= 0" style="color:green" >{{changeOf_discount_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_discount_Stat < 0" style="color:red" >{{changeOf_discount_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Discount | number:2}}</span>
@@ -247,6 +261,8 @@
                 </div>
                 <div class="col-sm-12">
                     <h3>{{getOverall_Discountpercent | number:2}} </h3>
+                    <small ng-show="changeOf_discount_percent_Stat >= 0" style="color:green" >{{changeOf_discount_percent_Stat}}% from previous day</small>
+                    <small ng-show="changeOf_discount_percent_Stat < 0" style="color:red" >{{changeOf_discount_percent_Stat}}% from previous day</small>
                     <div class="progress" ng-repeat="d2 in data2">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_percent_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_percent_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
                             {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Discountpercent | number:2}}</span>
