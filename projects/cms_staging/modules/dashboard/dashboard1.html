@@ -11,455 +11,154 @@
 </section>
 <!-- Main content -->
 <section class="content">
-    <!-- <div class="row">
-        <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-blue ">
-                <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
-                <div class="info-box-content">
-                    <span class="info-box-number">{{totalItems}}</span>
-                    <span class="info-box-text">Total Products</span>
-                </div>
-            </div>
-        </div>
-        <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-green ">
-                <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
-                <div class="info-box-content">
-                    <span class="info-box-number">{{totalPersonel}}</span>
-                    <span class="info-box-text">Personels</span>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="row">
-        <div class="form-group col-md-4">
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn active btn-default" ng-click="setActive('day')">
-                    <input name="day" id="day" value="day" class="active" type="radio" data-ng-model="cssPre">Day
-                </label>
-                <label class="btn btn-default" ng-click="setActive('week')">
-                    <input name="week" id="week" value="week" type="radio" data-ng-model="cssPre">Week
-                </label>
-                <label class="btn btn-default" ng-click="setActive('month')">
-                    <input name="month" id="month" value="month" type="radio" checked="checked" data-ng-model="cssPre">Month
-                </label>
-                <label class="btn btn-default" ng-click="setActive('year')">
-                    <input name="year" id="year" value="year" type="radio" data-ng-model="cssPre">Year
-                </label>
-            </div>
-        </div>
-        <div class="form-group col-md-3">
-            <label>Date From: </label>
-            <div class="input-group">
-                <input type="text" class="form-control" ng-model="dateFrom" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
-                <div class="input-group-addon">
-                    <img src="./images/icon/calendar-today.svg">
-                </div>
-            </div>
-        </div>
-        <div class="form-group col-md-3">
-            <label>Date To: </label>
-            <div class="input-group">
-                <input type="text" class="form-control" ng-model="dateTo" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
-                <div class="input-group-addon">
-                    <img src="./images/icon/calendar-today.svg">
-                </div>
-            </div>
-        </div>
-        <div class="input-group col-md-2">
-            <label style="visibility: hidden">Click to refresh: </label>
-            <div class="input-group">
-                <button ng-click="getDashboardReports()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> refresh</button>
-            </div>
-        </div>
-        <br></br>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Revenue</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>$ {{getOverall_Revenue | number:2}}</h3>
-                    <small ng-show="changeOf_revenue_Stat >= 0" style="color:green" >{{changeOf_revenue_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_revenue_Stat < 0" style="color:red" >{{changeOf_revenue_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_revenue_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_revenue_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Revenue | number:2}}</span>
+        <div class="col-md-12">
+            <div class='ui'>
+                <div class='ui_box'>
+                    <div class='ui_box__inner'>
+                        <h2>Total Products</h2>
+                        <p>Total Products</p>
+                        <div class='stat' style="height: 51px;">
+                            <span>{{totalItems}}</span>
                         </div>
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_revenue" id="line" class="chart chart-line" chart-data="chartLineCharts_revenue" chart-labels="chartLineLabels_revenue" chart-legend="true" chart-series="chartLineSeries_revenue" chart-colours="chartLineColours_revenue">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Gross Profit</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>$ {{getOverall_Grossprofit | number:2}}</h3>
-                    <small ng-show="changeOf_gross_profit_Stat >= 0" style="color:green" >{{changeOf_gross_profit_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_gross_profit_Stat < 0" style="color:red" >{{changeOf_gross_profit_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_gross_profit_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_gross_profit_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Grossprofit | number:2}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_gross_profit" id="line" class="chart chart-line" chart-data="chartLineCharts_gross_profit" chart-labels="chartLineLabels_gross_profit" chart-legend="true" chart-series="chartLineSeries_gross_profit" chart-colours="chartLineColours_gross_profit">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Sale Count</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>{{getOverall_Salecount | number:0}}</h3>
-                    <small ng-show="changeOf_items_sold_Stat >= 0" style="color:green" >{{changeOf_items_sold_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_items_sold_Stat < 0" style="color:red" >{{changeOf_items_sold_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_items_sold_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_items_sold_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Salecount | number:0}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Customers</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>{{getOverall_Customercount | number:0}}</h3>
-                    <small ng-show="changeOf_customers_Stat >= 0" style="color:green" >{{changeOf_customers_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_customers_Stat < 0" style="color:red" >{{changeOf_customers_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_customers_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_customers_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Customercount | number:0}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Basket Size</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>{{getOverall_Basketsize | number: 2}}</h3>
-                    <small ng-show="changeOf_basket_size_Stat >= 0" style="color:green" >{{changeOf_basket_size_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_basket_size_Stat < 0" style="color:red" >{{changeOf_basket_size_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_size_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_size_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Basketsize | number: 2}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Basket Value</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>$ {{getOverall_Basketvalue | number:2}}</h3>
-                    <small ng-show="changeOf_basket_value_Stat >= 0" style="color:green" >{{changeOf_basket_value_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_basket_value_Stat < 0" style="color:red" >{{changeOf_basket_value_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_value_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_value_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Basketvalue | number:2}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>    
-        
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Discount</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>$ {{getOverall_Discount | number:2}} </h3>
-                    <small ng-show="changeOf_discount_Stat >= 0" style="color:green" >{{changeOf_discount_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_discount_Stat < 0" style="color:red" >{{changeOf_discount_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Discount | number:2}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_discount" id="line" class="chart chart-line" chart-data="chartLineCharts_discount" chart-labels="chartLineLabels_discount" chart-legend="true" chart-series="chartLineSeries_discount" chart-colours="chartLineColours_discount">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Discount %</h3>
-                </div>
-                <div class="col-sm-12">
-                    <h3>{{getOverall_Discountpercent | number:2}} </h3>
-                    <small ng-show="changeOf_discount_percent_Stat >= 0" style="color:green" >{{changeOf_discount_percent_Stat}}% from previous day</small>
-                    <small ng-show="changeOf_discount_percent_Stat < 0" style="color:red" >{{changeOf_discount_percent_Stat}}% from previous day</small>
-                    <div class="progress" ng-repeat="d2 in data2">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_percent_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_percent_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
-                            {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Discountpercent | number:2}}</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="">
-                    <canvas chart-options="chartLineOptions_discount_percent" id="line" class="chart chart-line" chart-data="chartLineCharts_discount_percent" chart-labels="chartLineLabels_discount_percent" chart-legend="true" chart-series="chartLineSeries_discount_percent" chart-colours="chartLineColours_discount_percent">
-                    </canvas>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Report Summary</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="">
-                    <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"> chart-series="series"
-                    </canvas>
-                    <div class="overlay" ng-show="productIsLoading">
-                        <div class="loader"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='ui'>
-            <div class='ui_box'>
-                <div class='ui_box__inner'>
-                    <h2>Total Products</h2>
-                    <p>Total Products</p>
-                    <div class='stat' style="height: 51px;">
-                        <span>{{totalItems}}</span>
-                    </div>
-                    <!-- <div class='progress'>
+                        <!-- <div class='progress'>
                     <div class='progress_bar'></div>
                 </div> -->
-                    <div class='progress_graph'>
-                        <div class='progress_graph__bar--1'></div>
-                        <div class='progress_graph__bar--2'></div>
-                        <div class='progress_graph__bar--3'></div>
-                        <div class='progress_graph__bar--4'></div>
+                        <div class='progress_graph'>
+                            <div class='progress_graph__bar--1'></div>
+                            <div class='progress_graph__bar--2'></div>
+                            <div class='progress_graph__bar--3'></div>
+                            <div class='progress_graph__bar--4'></div>
+                        </div>
+                        <p>Product Recorded in This Year</p>
                     </div>
-                    <p>Product Recorded in This Year</p>
-                </div>
-                <div class='drop' ui-sref="main.products">
-                    <p>View Details</p>
-                    <div class='arrow'></div>
-                </div>
-            </div>
-            <div class='ui_box'>
-                <div class='ui_box__inner'>
-                    <h2>Personels</h2>
-                    <p>Total Personels</p>
-                    <div class='stat' style="height: 51px;">
-                        <span>{{totalPersonel}}</span>
+                    <div class='drop' ui-sref="main.products">
+                        <p>View Details</p>
+                        <div class='arrow'></div>
                     </div>
-                    <!-- <div class='progress'>
+                </div>
+                <div class='ui_box'>
+                    <div class='ui_box__inner'>
+                        <h2>Personels</h2>
+                        <p>Total Personels</p>
+                        <div class='stat' style="height: 51px;">
+                            <span>{{totalPersonel}}</span>
+                        </div>
+                        <!-- <div class='progress'>
                     <div class='progress_bar--two'></div>
                 </div> -->
-                    <div class='progress_graph'>
-                        <div class='progress_graph__bar--1'></div>
-                        <div class='progress_graph__bar--2'></div>
-                        <div class='progress_graph__bar--3'></div>
-                        <div class='progress_graph__bar--4'></div>
+                        <div class='progress_graph'>
+                            <div class='progress_graph__bar--1'></div>
+                            <div class='progress_graph__bar--2'></div>
+                            <div class='progress_graph__bar--3'></div>
+                            <div class='progress_graph__bar--4'></div>
+                        </div>
+                        <p>Subscribers This Year</p>
                     </div>
-                    <p>Subscribers This Year</p>
-                </div>
-                <div class='drop' ui-sref="main.settings-humanresource">
-                    <p>View Details</p>
-                    <div class='arrow'></div>
+                    <div class='drop' ui-sref="main.settings-humanresource">
+                        <p>View Details</p>
+                        <div class='arrow'></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-sm-12 col-xs-12">
-                <!-- PRODUCT LIST -->
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Recently Added Products</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="">
-                        <ul class="products-list product-list-in-box example-animate-container">
-                            <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
-                                <div class="product-img">
-                                    <img src="./images/icon/product-icon-300x300.png" alt="Product Image" />
-                                </div>
-                                <div class="product-info">
-                                    <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
-                                    <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Recently Added Products</h3>
+                        </div>
+                        <div class="">
+                            <ul class="products-list product-list-in-box example-animate-container">
+                                <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
+                                    <div class="product-img">
+                                        <img src="./images/icon/product-icon-300x300.png" alt="Product Image" />
+                                    </div>
+                                    <div class="product-info">
+                                        <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
+                                        <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
                                 </a>
-                                    <div class="product-description">
-                                        <p>{{product.brand}}</p>
+                                        <div class="product-description">
+                                            <p>{{product.brand}}</p>
+                                        </div>
+                                        <div class="product-description">
+                                            <p>{{product.product_code}}</p>
+                                        </div>
                                     </div>
-                                    <div class="product-description">
-                                        <p>{{product.product_code}}</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                        </ul>
-                    </div>
-                    <div class="overlay" ng-show="productIsLoading">
-                        <div class="loader"></div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                        <a ui-sref="main.products" class="uppercase">View All Products</a>
-                    </div>
-                    <!-- /.box-footer -->
-                </div>
-                <!-- /.box -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Latest Personel</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body bg">
-                        <ul class="users-lista clearfix">
-                            <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
-                                <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
-                                <a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
-                                <span class="users-list-date" am-time-ago="person.date_created"></span>
-                            </li>
-                        </ul>
-                        <!-- /.users-list -->
-                    </div>
-                    <div class="box-body sm">
-                        <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
-                            <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
-                            <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
-                                <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                        <div class="box-footer text-center">
+                            <a ui-sref="main.products" class="uppercase">View All Products</a>
                         </div>
                     </div>
-                    <div class="overlay" ng-show="productIsLoading">
-                        <div class="loader"></div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                        <a ui-sref="main.settings-humanresource" class="uppercase">View All Users</a>
-                    </div>
-                    <!-- /.box-footer -->
-                </div>
-            </div>
-            <!-- <div class="col-md-8 col-sm-6 col-xs-12">
-           
-        </div> -->
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="box box-success tab">
-                    <div class="box-header ">
-                        <h3 class="box-title">Recently Added User Account</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>User Role</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
-                                        <td>{{user.EmpName}}</td>
-                                        <td>
-                                            <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
-                                        </td>
-                                </tbody>
-                            </table>
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Latest Personel</h3>
                         </div>
-                        <!-- /.row -->
+                        <!-- /.box-header -->
+                        <div class="box-body bg">
+                            <ul class="users-lista clearfix">
+                                <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
+                                    <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
+                                    <a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                                    <span class="users-list-date" am-time-ago="person.date_created"></span>
+                                </li>
+                            </ul>
+                            <!-- /.users-list -->
+                        </div>
+                        <div class="box-body sm">
+                            <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
+                                <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
+                                <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                                    <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                            </div>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer text-center">
+                            <a ui-sref="main.settings-humanresource" class="uppercase">View All Users</a>
+                        </div>
+                        <!-- /.box-footer -->
                     </div>
-                    <div class="overlay" ng-show="productIsLoading">
-                        <div class="loader"></div>
-                    </div>
-                    <!-- /.box-body -->
-                    <!--   <div class="box-footer no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
-                        <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
-                        <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
-                    </ul>
-                </div> -->
-                    <!-- /.footer -->
                 </div>
-                <!-- /.box -->
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="box box-success tab">
+                        <div class="box-header ">
+                            <h3 class="box-title">Recently Added User Account</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>User Role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
+                                            <td>{{user.EmpName}}</td>
+                                            <td>
+                                                <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 </section>
-<!-- /.content -->
 <style type="text/css">
 @media only screen and (max-width: 320px) {
     body .ui_box {

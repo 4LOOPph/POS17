@@ -36,7 +36,7 @@
                     <div class="pull-right searchposition b">
                         <form class="form-inline">
                             <div class="form-group">
-                                <div >
+                                <div>
                                     <div class="input-group imput">
                                         <input type="text" name="q" class="form-control  input-sm" placeholder="Search" ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0" ng-keypress="($event.which === 13)?searchData():0" angular-ripple style="margin-bottom: 0px;">
                                     </div>
@@ -63,12 +63,13 @@
                             <!-- <td class="text-right">
                                 <button ng-click="addNewEntry(type.pt_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
                             </td> -->
-                            <td class="text-right">
+                            <td >
                                 <div class="disp-inline-flex">
-                                    <a ng-click="addNewEntry(type.pt_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                    <a ng-click="addNewEntry(type.pt_id)" class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                 </div>
-                                <a ng-click="addNewEntry(type.pt_id)" class="smscreen">
-                                    <button class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button> Edit</a>
+                                <div class="smscreen">
+                                    <button ng-click="addNewEntry(type.pt_id)" class="btn btn-info  actbutton btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></button>
+                                </div>
                             </td>
                         </tr>
                     </table>
