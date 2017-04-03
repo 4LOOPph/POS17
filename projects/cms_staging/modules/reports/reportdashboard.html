@@ -58,6 +58,54 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Revenue</h3>
                     </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data0" options="__options0" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Gross Profit</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data7" options="__options7" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Sale Count</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data1" options="__options1" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PLEASE DO NOT DELETE -->
+        <!-- <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Revenue</h3>
+                    </div>
                     <div class="col-sm-12">
                         <h3 style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_revenue_Stat)}}"  class="{{pickAnArrow(changeOf_revenue_Stat)}}"></i>
@@ -128,8 +176,56 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Customers</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data2" options="__options2" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Basket Size</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data6" options="__options6" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Basket Value</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data5" options="__options5" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PLEASE DO NOT DELETE -->
+        <!-- <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="box">
                     <div class="box-header with-border">
@@ -205,8 +301,41 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Discount</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data3" options="__options3" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Discount %</h3>
+                    </div>
+                    <div class="">
+                        <div class="my-chart">
+                            <linechart style="height: 200px;" data="__data4" options="__options4" class="hideOnHover"></linechart>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PLEASe DO NOT DELETE-->
+        <!-- <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="box">
                     <div class="box-header with-border">
@@ -271,6 +400,45 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+    </div>
+    </div>
+    </div>
+    
 </section>
 <div class="clearfix"></div>
+<style type="text/css">
+.chart {
+    background: #eee;
+    padding: 3px;
+}
+
+.chart div {
+    width: 0;
+    transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+.chart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 5px;
+    color: white;
+    box-shadow: 2px 2px 2px #666;
+}
+
+div .hideOnHover:hover {
+    overflow: auto;
+}
+
+.y2-axis {
+    Display: none;
+}
+
+.chart-legend {
+    Display: none;
+}
+</style>

@@ -30,9 +30,6 @@
                     <li angular-ripple>
                         <a ui-sref="main.settings-producttype">Product Type</a>
                     </li>
-                    <!-- <li angular-ripple>
-                        <a href="">Product Tags</a>
-                    </li> -->
                 </ul>
             </li>
             <li angular-ripple>
@@ -65,37 +62,32 @@
                 </a>
                 <ul class="treeview-menu">
                     <li angular-ripple><a ui-sref="main.purchase_order">Purchase Order</a></li>
-                    <!-- <li angular-ripple><a ui-sref="main.received_order">Receive Order</a></li>
-                    <li angular-ripple><a ui-sref="main.return_order">Return Order</a></li>
-                    <li angular-ripple><a ui-sref="main.stock">Stocks</a></li> -->
                 </ul>
             </li>
             <li class="treeview">
                 <a angular-ripple>
                     <img src="./images/icon/note-outline.svg">
-                    <span>Reports / Insights</span>
+                    <span>Reports</span>
                     <span class="pull-right-container"><i class="fa fa-angle-down pull-right"></i></span>
                 </a>
-                <ul class="treeview-menu">
+                <!--  <ul class="treeview-menu">
                     <li angular-ripple><a ui-sref="main.reports-invoice">Invoice</a></li>
                     <li angular-ripple><a ui-sref="main.analytics-overview">Analytics</a></li>
-                    <li angular-ripple><a ui-sref="main.reports-dashboard">Reports</a></li>
-                   <!--  <li angular-ripple><a href="#">Categories</a></li>
-                    <li angular-ripple><a href="#">Closeout</a></li>
-                    <li angular-ripple><a href="#">Commission</a></li>
-                    <li angular-ripple><a href="#">Customers</a></li>
-                    <li angular-ripple><a href="#">Discounts</a></li>
-                    <li angular-ripple><a href="#">Employees</a></li>
-                    <li angular-ripple><a href="#">Expenses</a></li>
-                    <li angular-ripple><a href="#">Giftcards</a></li>
-                    <li angular-ripple><a href="#">Inventory Reports</a></li>
-                    <li angular-ripple><a href="#">Payments</a></li>
-                    <li angular-ripple><a href="#">Profit and Loss</a></li>
-                    <li angular-ripple><a href="#">Receivings</a></li>
-                    <li angular-ripple><a href="#">Sales</a></li>
-                    <li angular-ripple><a href="#">Suppliers</a></li>
-                    <li angular-ripple><a href="#">Suspended Sales</a></li>
-                    <li angular-ripple><a href="#">Taxes</a></li> -->
+                </ul> -->
+                <ul class="treeview-menu">
+                    <li angular-ripple><a ui-sref="main.reports-dashboard">Dashboard</a></li>
+                    <li class="treeview">
+                        <a angular-ripple>
+                            <span>Sales</span>
+                            <span class="pull-right-container"><i class="fa fa-angle-down pull-right"></i></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li angular-ripple><a ui-sref="">Users</a></li>
+                            <li angular-ripple><a ui-sref="">Products</a></li>
+                            <li angular-ripple><a ui-sref="">Customers</a></li>
+                        </ul>
+                    </li>
+                    <li angular-ripple><a ui-sref="main.reports-invoice">Inventory</a></li>
                 </ul>
             </li>
             <li class="header">SETTINGS</li>
@@ -173,28 +165,9 @@
                 </a>
             </li>
             <li class="header">OTHERS</li>
-            <!-- <li angular-ripple>
-                <a ui-sref="main.calendars">
-                    <img src="./images/icon/calendar-text.svg">
-                    <span>Appointment/Booking</span>
-                    <small class="label pull-right bg-red">3</small>
-                </a>
-            </li> -->
             <li angular-ripple ng-class="{'active': active === true}" ng-click="active = !active">
                 <a ui-sref="main.aim-tab" ng-click="hideOther = false"><img src="./images/icon/feather.svg"> AIM Item Code Inventory</a>
             </li>
-            <!-- <li angular-ripple>
-                <a ui-sref="main.mailbox">
-                    <img src="./images/icon/ic_email_white_24px.svg">
-                    <span>Mailbox</span>
-                    <small class="label pull-right bg-yellow">12</small>
-                </a>
-            </li> -->
-            <!-- <li class="header">SUPPORT</li> -->
-            <!-- <li><a href=""><i class="fa fa-book"></i> Documentation</a></li> -->
-            <!-- <li angular-ripple>
-                <a href=""><img src="./images/icon/headset.svg"> Customer Service</a>
-            </li> -->
             <li class="header"></li>
             <li class="header"></li>
             <li class="header"></li>
