@@ -257,14 +257,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Report Summary</h3>
                     </div>
                     <div class="">
-                        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"> chart-series="series"
-                        </canvas>
+                        <div id="myDivSummary" style="height: 400px;">  
+                        </div>
                         <div class="overlay" ng-show="productIsLoading">
                             <div class="loader"></div>
                         </div>
