@@ -47,7 +47,7 @@
             <div class="input-group col-md-2">
                 <label style="visibility: hidden">Click to refresh: </label>
                 <div class="input-group">
-                    <button ng-click="getDashboardReports()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> refresh</button>
+                    <button ng-click="refresh()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> refresh</button>
                 </div>
             </div>
             <br></br>
@@ -58,55 +58,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Revenue</h3>
                     </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data0" options="__options0" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Gross Profit</h3>
-                    </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data7" options="__options7" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Sale Count</h3>
-                    </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data1" options="__options1" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- PLEASE DO NOT DELETE -->
-        <!-- <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Revenue</h3>
-                    </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_revenue_Stat)}}"  class="{{pickAnArrow(changeOf_revenue_Stat)}}"></i>
                             <small>( {{changeOf_revenue_Stat | number:2}}% )</small>
@@ -118,8 +70,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_revenue" id="line" class="chart chart-line" chart-data="chartLineCharts_revenue" chart-labels="chartLineLabels_revenue" chart-legend="true" chart-series="chartLineSeries_revenue" chart-colours="chartLineColours_revenue">
-                        </canvas>
+                        <div id="myDiv1" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -131,7 +83,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Gross Profit</h3>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">$ {{getOverall_Grossprofit | number:2}}
                             <i style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}"  class="{{pickAnArrow(changeOf_gross_profit_Stat)}}"></i>
                             <small>( {{changeOf_gross_profit_Stat | number:2}}% )</small>
@@ -143,8 +95,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_gross_profit" id="line" class="chart chart-line" chart-data="chartLineCharts_gross_profit" chart-labels="chartLineLabels_gross_profit" chart-legend="true" chart-series="chartLineSeries_gross_profit" chart-colours="chartLineColours_gross_profit">
-                        </canvas>
+                        <div id="myDiv2" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -156,7 +108,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Sale Count</h3>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">{{getOverall_Salecount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_items_sold_Stat)}}"  class="{{pickAnArrow(changeOf_items_sold_Stat | number:2)}}"></i>
                             <small>( {{changeOf_items_sold_Stat | number:2}}% )</small>
@@ -168,70 +120,22 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_items_sold" id="line" class="chart chart-line" chart-data="chartLineCharts_items_sold" chart-labels="chartLineLabels_items_sold" chart-legend="true" chart-series="chartLineSeries_items_sold" chart-colours="chartLineColours_items_sold">
-                        </canvas>
+                        <div id="myDiv3" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Customers</h3>
                     </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data2" options="__options2" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"> Basket Size</h3>
-                    </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data6" options="__options6" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Basket Value</h3>
-                    </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data5" options="__options5" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- PLEASE DO NOT DELETE -->
-        <!-- <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Customers</h3>
-                    </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_customers_Stat)}}">{{getOverall_Customercount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_customers_Stat)}}" class="{{pickAnArrow(changeOf_customers_Stat)}}"></i>
                             <small>( {{changeOf_customers_Stat | number:2}}% )</small>
@@ -243,8 +147,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_customers" id="line" class="chart chart-line" chart-data="chartLineCharts_customers" chart-labels="chartLineLabels_customers" chart-legend="true" chart-series="chartLineSeries_customers" chart-colours="chartLineColours_customers">
-                        </canvas>
+                        <div id="myDiv4" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -256,7 +160,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Basket Size</h3>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">{{getOverall_Basketsize | number: 2}}
                             <i style="color:{{pickAcolor(changeOf_basket_size_Stat)}}" class="{{pickAnArrow(changeOf_basket_size_Stat)}}"></i>
                             <small>( {{changeOf_basket_size_Stat | number:2}}% )</small>
@@ -268,8 +172,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_basket_size" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_size" chart-labels="chartLineLabels_basket_size" chart-legend="true" chart-series="chartLineSeries_basket_size" chart-colours="chartLineColours_basket_size">
-                        </canvas>
+                        <div id="myDiv5" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -281,7 +185,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Basket Value</h3>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">$ {{getOverall_Basketvalue | number:2}}
                             <i style="color:{{pickAcolor(changeOf_basket_value_Stat)}}" class="{{pickAnArrow(changeOf_basket_value_Stat)}}"></i>
                             <small>( {{changeOf_basket_value_Stat | number:2}}% )</small>
@@ -293,55 +197,22 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_basket_value" id="line" class="chart chart-line" chart-data="chartLineCharts_basket_value" chart-labels="chartLineLabels_basket_value" chart-legend="true" chart-series="chartLineSeries_basket_value" chart-colours="chartLineColours_basket_value">
-                        </canvas>
+                        <div id="myDiv6" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Discount</h3>
                     </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data3" options="__options3" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Discount %</h3>
-                    </div>
-                    <div class="">
-                        <div class="my-chart">
-                            <linechart style="height: 200px;" data="__data4" options="__options4" class="hideOnHover"></linechart>
-                        </div>
-                        <div class="overlay" ng-show="productIsLoading">
-                            <div class="loader"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- PLEASe DO NOT DELETE-->
-        <!-- <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Discount</h3>
-                    </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_discount_Stat)}}">$ {{getOverall_Discount | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_discount_Stat)}}" class="{{pickAnArrow(changeOf_discount_Stat)}}"></i>
                             <small>( {{changeOf_discount_Stat | number:2}}% )</small>
@@ -353,8 +224,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_discount" id="line" class="chart chart-line" chart-data="chartLineCharts_discount" chart-labels="chartLineLabels_discount" chart-legend="true" chart-series="chartLineSeries_discount" chart-colours="chartLineColours_discount">
-                        </canvas>
+                        <div id="myDiv7" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -366,7 +237,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Discount %</h3>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="" style="margin: 5%;">
                         <h3 style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">{{getOverall_Discountpercent | number:2}} 
                         <i style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}" class="{{pickAnArrow(changeOf_discount_percent_Stat)}}"></i>
                             <small>( {{changeOf_discount_percent_Stat | number:2}}% )</small>
@@ -378,8 +249,8 @@
                         </div>
                     </div>
                     <div class="">
-                        <canvas chart-options="chartLineOptions_discount_percent" id="line" class="chart chart-line" chart-data="chartLineCharts_discount_percent" chart-labels="chartLineLabels_discount_percent" chart-legend="true" chart-series="chartLineSeries_discount_percent" chart-colours="chartLineColours_discount_percent">
-                        </canvas>
+                        <div id="myDiv8" style="height: 400px;">
+                        </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -400,7 +271,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     </div>
     </div>
@@ -440,5 +311,8 @@ div .hideOnHover:hover {
 
 .chart-legend {
     Display: none;
+}
+.modebar--hover {
+    display: none;
 }
 </style>
