@@ -1,23 +1,18 @@
+<div class="overTop"></div>
 <section class="content-header">
     <h1>
-                        Calendar
-                        <small>Control panel</small>
-                    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Calendar</li>
-    </ol>
+       Calendar
+    </h1>
 </section>
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div class="box box-primary">
                 <div class="box-header">
                     <h4 class="box-title">Draggable Events</h4>
                 </div>
                 <div class="box-body">
-                    <!-- the events -->
                     <div id='external-events'>
                         <div class='external-event bg-green'>Lunch</div>
                         <div class='external-event bg-red'>Go home</div>
@@ -30,9 +25,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /. box -->
             <div class="box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Create Event</h3>
@@ -52,24 +45,21 @@
                             <li><a class="text-purple" href="#"><i class="fa fa-square"></i> Purple</a></li>
                         </ul>
                     </div>
-                    <!-- /btn-group -->
                     <div class="input-group">
                         <input id="new-event" type="text" class="form-control" placeholder="Event Title">
                         <div class="input-group-btn">
-                            <button id="add-new-event" type="button" class="btn btn-default btn-flat">Add</button>
+                            <button  type="button" class="btn btn-default btn-flat">Add</button>
                         </div>
-                        <!-- /btn-group -->
                     </div>
-                    <!-- /input-group -->
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-body no-padding">
                     <!-- THE CALENDAR -->
-                    <div id="calendar"></div>
+                    <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources" editable></div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -77,5 +67,135 @@
         </div>
         <!-- /.col -->
     </div>
+    <div class="instruct" ng-hide="AlertMessage">Tap date to add event <div class="shake">!</div></div>
     <!-- /.row -->
 </section>
+<style type="text/css">
+.box-body .fc {
+    margin-top: 0px;
+}
+
+.fc-toolbar {
+    padding: 0px;
+    margin: 0;
+    background-image: url(/images/dateBg.png);
+    height: 200px;
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: 56%;
+}
+
+.fc-toolbar h2 {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    margin-top: 158px;
+    padding: 10px;
+    font-size: 21px;
+    color: #fff;
+}
+
+.fc-today-button {
+    display: none;
+}
+
+.fc-prev-button {
+    position: absolute !important;
+    left: 37%;
+    margin-top: 162px !important;
+}
+
+.fc-next-button {
+    position: absolute !important;
+    right: 37%;
+    margin-top: 162px !important;
+}
+
+.fc button {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    height: 2.4em;
+    padding: 0 .4em;
+    border-radius: 50% !important;
+    font-size: 1em;
+    white-space: nowrap;
+    cursor: pointer;
+    background: transparent !important;
+    border: transparent;
+    box-shadow: none;
+    color: #fff !important;
+    text-shadow: none;
+}
+
+.fc button:hover {
+    background: rgba(162, 162, 162, 0.53) !important;
+}
+
+.fc-unthemed th,
+.fc-unthemed td,
+.fc-unthemed thead,
+.fc-unthemed tbody,
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-row,
+.fc-unthemed .fc-content,
+.fc-unthemed .fc-popover {
+    border-color: transparent;
+}
+
+.fc-widget-header {
+    background: #fff;
+}
+
+.fc th,
+.fc td {
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px;
+    color: #808080;
+    vertical-align: top;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.fc-ltr .fc-basic-view .fc-day-number {
+    text-align: left;
+    /*padding-left: 5px;*/
+}
+
+.fc-widget-content {
+    padding: 5px 10px !important;
+}
+
+.fc-head-container {
+    padding: 5px 20px !important;
+}
+
+.fc-widget-content table {
+    background-color: transparent;
+}
+
+.fc-unthemed .fc-today {
+    color: #ffc107 !important;
+    background: transparent !important;
+}
+
+.fc-event {
+    position: relative;
+    display: block;
+    font-size: .85em;
+    line-height: 1.4;
+    border-radius: 2px;
+    border: 1px solid #2196F3;
+    background-color: #2196F3;
+    font-weight: normal;
+    padding: 0 5px !important;
+}
+</style>

@@ -1,0 +1,45 @@
+<div ng-controller="AccountSymphonyProductsCtrl">
+    <div class="actionBar">
+        <div class="searching form-group">
+            <span class="zmdi zmdi-search"></span>
+            <input type="text" ng-model="searchText" class="search-field form-control" placeholder="Search...">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="slider" slider-nav class="clearfix slider">
+                <div class="slider-content" id="searchTextResult" style="height: 610px;">
+                    <ul class="list-unstyled">
+                        <li id="{{let.letter}}" class="selected" ng-repeat="let in letters ">
+                            <a name="{{let.letter}}" ng-if="let.products.length != ''" class="title">{{let.ucase}}</a>
+                           <!--  <ul class="list-unstyled">
+                                <li ng-value="contact._id" ng-repeat="contact in let.products | filter: searchText ">
+                                    <a ng-click="getProductDetails(contact._id)">{{contact.item_name}}</a>
+                                </li>
+                            </ul> -->
+                            <div class="" ng-value="contact._id" ng-repeat="contact in let.products | filter: searchText ">
+                                <div class="list-group-item media contact" ng-click="getContactDetail(contact._id)">
+                                    <div class="col-sm-1">
+                                        <ng-letter-avatar data="{{contact.item_name}}" shape="round" height="40" width="40" fontsize="25" fontWeight="100"></ng-letter-avatar>
+                                    </div>
+                                    <div class="col-sm-11" style="padding-left: 0">
+                                        <div class="media-body ns-item" style="display: block;">
+                                            <h3>{{contact.item_name}}</h3>
+                                            <small>{{contact.item_name}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slider-nav" style="height:610px; top: 20px;">
+                    <ul>
+                        <li ng-repeat="let in letters"> <a alt="{{let.url}}">{{let.letter}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

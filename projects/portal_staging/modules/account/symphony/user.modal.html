@@ -1,0 +1,282 @@
+<div class="modal-header">
+    <h4>Manage User Account</h4>
+</div>
+<div class="modal-body" style="min-height: 350px;">
+    <form novalidate>
+        <div class="col-md-12" style="padding:0">
+            <div class="tab-wrap">
+                <input type="radio" name="tabs" id="tab1" checked>
+                <div class="tab-label-content" id="tab1-content">
+                    <label class="tab-label-header" for="tab1">Account Information</label>
+                    <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <p>User Roles</p>
+                                            <ui-select multiple ng-model="account.role">
+                                                <ui-select-match placeholder="Select User Role...">{{$item.name}}</ui-select-match>
+                                                <ui-select-choices repeat="{role_id: row.role_id} as row in usergroups | propsFilter:{name:$select.search,description:'$select.search'}" infinite-scroll="addMoreItems()" infinite-scroll-distance="2">
+                                                    <div ng-bind-html="row.name | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                        <!--  <div class="form-group">
+                                    <p>Valid Until</p>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="account.valid_until" bs-datepicker/>
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                        <div class="daterange">
+                                            <div class="form-group width">
+                                                <label>Valid Until</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control searchInput" data-date-format="MMM dd yyyy" ng-model="account.valid_until" bs-datepicker/>
+                                                    <div class="input-group-addon inputAdd">
+                                                        <i class="zmdi zmdi-network"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button ng-click="saveUser()" class="btnss palette-Blue bg waves-effect">Save Changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tab2">
+                <div class="tab-label-content" id="tab2-content">
+                    <label class="tab-label-header" for="tab2">Username</label>
+                    <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12">
+                                <!-- <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" class="form-control" placeholder="Username" ng-model="account.username" />
+                                </div> -->
+                                <div class="p-0  col-sm-12">
+                                    <div class="form-group col-sm-6 p-0 ">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-account"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="Username" placeholder="Company Name" ng-model="account.username">
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12 paddforBtninmodal">
+                                    <button class="btnss palette-Blue bg waves-effect" ng-click="saveUserName()">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tab3">
+                <div class="tab-label-content" id="tab3-content">
+                    <label class="tab-label-header" for="tab3">Password</label>
+                    <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12">
+                                <!-- <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" ng-model="account.password" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" ng-model="account.confirm_password" />
+                                </div> -->
+                                <div class="p-0  col-sm-12">
+                                    <div class="form-group col-sm-6 p-0 ">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-account-o"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="Username" placeholder="Password" ng-model="account.password">
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-0  col-sm-12">
+                                    <div class="form-group col-sm-6 p-0 ">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-account-o"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="Username" placeholder="Confirm Password" ng-model="account.confirm_password">
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12 paddforBtninmodal">
+                                    <button class="btnss palette-Blue bg waves-effect" ng-click="saveUserPassword()">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tab4">
+                <div class="tab-label-content" id="tab4-content">
+                    <label class="tab-label-header" for="tab4">Email Recovery</label>
+                    <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12">
+                                <!-- <div class="form-group">
+                                    <label>Email Recovery</label>
+                                    <input type="email" class="form-control" placeholder="Required" ng-model="account.recovery_email" />
+                                </div> -->
+                                <div class="p-0  col-sm-12">
+                                    <div class="form-group col-sm-6 p-0 ">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-email"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="Username" placeholder="Email Recovery" ng-model="account.recovery_email">
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12 paddforBtninmodal">
+                                    <button class="btnss palette-Blue bg waves-effect" ng-click="saveUserEmailRecovery()">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="tab5">
+                <div class="tab-label-content" id="tab5-content">
+                    <label class="tab-label-header" for="tab5">PIN</label>
+                    <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12">
+                                <!-- <div class="form-group">
+                                    <label>Personal Identification Number</label>
+                                    <input type="text" class="form-control" placeholder="Required" ng-model="account.pos_pin" />
+                                </div> -->
+                                <div class="p-0  col-sm-12">
+                                    <div class="form-group col-sm-6 p-0 ">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-account-box"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" placeholder="Personal ID Number" ng-model="account.pos_pin">
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12 paddforBtninmodal">
+                                    <button class="btnss palette-Blue bg waves-effect" ng-click="saveUserPIN()">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide"></div>
+            </div>
+        </div>
+        <!-- <div class="nav-tabs-custom" bs-tabs>
+            <div data-title="<i class='fa fa-user'></i> Account Information" bs-pane>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>User Roles</label>
+                            <ui-select multiple ng-model="account.role">
+                                <ui-select-match placeholder="Select User Role...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="{role_id: row.role_id} as row in usergroups | propsFilter:{name:$select.search,description:'$select.search'}" infinite-scroll="addMoreItems()" infinite-scroll-distance="2">
+                                    <div ng-bind-html="row.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valid Until</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="account.valid_until" bs-datepicker/>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-flat btn-primary" ng-click="saveUser()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-title="<i class='fa fa-user'></i> Username" bs-pane>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Username" ng-model="account.username" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-flat btn-primary" ng-click="saveUserName()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-title="<i class='fa fa-user'></i> Password" bs-pane>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" ng-model="account.password" />
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Password" ng-model="account.confirm_password" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-flat btn-primary" ng-click="saveUserPassword()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-title="<i class='fa fa-user'></i> Email Recovery" bs-pane>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Email Recovery</label>
+                            <input type="email" class="form-control" placeholder="Required" ng-model="account.recovery_email" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-flat btn-primary" ng-click="saveUserEmailRecovery()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-title="<i class='fa fa-building'></i> PIN" bs-pane>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Personal Identification Number</label>
+                            <input type="text" class="form-control" placeholder="Required" ng-model="account.pos_pin" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-flat btn-primary" ng-click="saveUserPIN()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="cancel()" class="btnss  waves-effect">Close</button>
+</div>
+<style type="text/css">
+.tab-label-content .tab-content {
+    box-shadow: none !important;
+}
+
+.modal-body .form-group:first-child {
+    margin-top: 40px
+}
+</style>

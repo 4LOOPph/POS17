@@ -1,41 +1,37 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Dashboard
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-    </ol>
-</section>
-<!-- Main content -->
+<div class="overTop"></div>
 <section class="content">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"> <i class="fa fa-users"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Subscribers</span>
-                    <h2>{{dashboard.subscribers}}</h2>
+    <div class="c-analytics row hidden-xs">
+        <div class="col-sm-4">
+            <div class="mini-charts-item bgm-lightgreen">
+                <div class="dispFlex">
+                    <div class="imgholderzz"><img src="/images/ic_person_white_24px.svg"></div>
+                    <div class="count">
+                        <small>Subscribers</small>
+                        <h2>{{dashboard.subscribers}}</h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion ion-stats-bars"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Active Subscription</span>
-                    <h2>{{dashboard.active_sub}}</h2>
+        <div class="col-sm-4">
+            <div class="mini-charts-item bgm-lightgreen">
+                <div class="dispFlex">
+                    <div class="imgholderzz"><img src="/images/ic_equalizer_white_24px.svg"></div>
+                    <div class="count">
+                        <small>Active Subscription</small>
+                        <h2>{{dashboard.active_sub}}</h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="ion ion-person-add"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Active Request</span>
-                    <h2>{{dashboard.active_req}}</h2>
+        <div class="col-sm-4">
+            <div class="mini-charts-item bgm-lightgreen">
+                <div class="dispFlex">
+                    <div class="imgholderzz"><img src="/images/ic_person_add_white_24px.svg"></div>
+                    <div class="count">
+                        <small>Active Request</small>
+                        <h2>{{dashboard.active_req}}</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,48 +41,69 @@
     <div class="row">
         <section class="col-lg-6 connectedSortable">
             <div class="box box-primary">
-                <div class="box-header">
-                    <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">Subscription Requests</h3>
+                <div class="box-header palette-Light-Blue">
+                    <h3 class="box-title">Subscription Requests
+                    <small>List of group requesting for subscription</small></h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <ul class="todo-list">
-                        <li ng-repeat="req in request | orderBy:'-date_created' | limitTo:5">
-                            <a href="" ng-click="getSubscriptionRequestDetail(req.sr_id)">
-                                <span class="text">{{req.company_name}} <small>{{req.firstname}} {{req.lastname}}</small></span>
-                            </a>
-                            <!-- Emphasis label -->
-                            <small class="pull-right label label-success" ng-if="req.is_approved == 1 && req.deny_date == null">Approved ( <i class="fa fa-clock-o"></i> {{req.approved_date | amDateFormat:'MM.DD.YYYY'}})</small>
-                            <small class="pull-right label label-danger" ng-if="req.is_approved == 0 && req.deny_date != null">Denied</small>
-                            <small class="pull-right label label-danger" ng-if="req.is_approved == 1 && req.approved_date !=null && req.deny_date != null">Denied</small>
-                            <small class="pull-right label label-warning" ng-if="req.is_approved == 0 && req.deny_date == null && req.approved_date ==null">Pending</small>
-                        </li>
-                    </ul>
+                <div class="box-body ">
+                    <div class="list-group lg-alt lg-even-white" ng-repeat="req in request | orderBy:'-date_created' | limitTo:6">
+                        <div class="list-group-item media" ng-click="getSubscriptionRequestDetail(req.sr_id)">
+                            <div class="col-sm-1 pi-0">
+                                <ng-letter-avatar data="{{req.company_name}}" shape="round" fontsize="25" fontWeight="100"></ng-letter-avatar>
+                            </div>
+                            <div class="col-sm-11">
+                                <div class="media-body ns-item">
+                                    <h3>{{req.company_name}}</h3>
+                                    <small>{{req.firstname}} {{req.lastname}}</small>
+                                    <ul class="lgi-attrs">
+                                        <li ng-if="req.is_approved == 1 && req.deny_date == null">Approved Date: <span style="color:green">{{req.approved_date | amDateFormat:'MM/DD/YYYY'}}</span></li>
+                                        <li ng-if="req.is_approved == 0 && req.deny_date != null"><span style="color:red;">Denied</span></li>
+                                        <li ng-if="req.is_approved == 1 && req.approved_date !=null && req.deny_date != null" style="color:red;">Denied</li>
+                                        <li ng-if="req.is_approved == 0 && req.deny_date == null && req.approved_date ==null" style="color:green;"><span style="color:red;">Approved</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="col-lg-6 connectedSortable">
             <div class="box box-primary">
-                <div class="box-header">
-                    <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">New Subscribers</h3>
+                <div class="box-header palette-Purple-300">
+                    <h3 class="box-title">New Subscribers
+                    <small>List of group subscribing the app</small></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <ul class="todo-list">
-                        <li ng-repeat="req in accounts | orderBy:'-date_created' | limitTo:5">
-                            <a href="" ng-click="getAccountDetails(req.sub_id)">
-                                <span class="text">{{req.company_name}} <small>{{req.firstname}} {{req.lastname}}</small></span>
-                            </a>
-                            <!-- Emphasis label -->
-                            <small class="pull-right label label-success"><i class="fa fa-clock-o"></i> {{req.approved_date | amDateFormat:'MM.DD.YYYY'}}</small>
-                        </li>
-                    </ul>
+                    <div class="list-group lg-alt lg-even-white" ng-repeat="req in accounts | orderBy:'-date_created' | limitTo:6">
+                        <div class="list-group-item media" ng-click="getAccountDetails(req.sub_id)">
+                            <div class="col-sm-1 pi-0">
+                                <ng-letter-avatar data="{{req.company_name}}" shape="round" fontsize="25" fontWeight="100"></ng-letter-avatar>
+                            </div>
+                            <div class="col-sm-11">
+                                <div class="media-body ns-item">
+                                    <h3>{{req.company_name}}</h3>
+                                    <small>{{req.firstname}} {{req.lastname}}</small>
+                                    <ul class="lgi-attrs">
+                                        <li>Approved Date: <span style="color:green">{{req.approved_date | amDateFormat:'MM.DD.YYYY'}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
     <!-- /.row (main row) -->
 </section>
-<!-- /.content -->
+<!-- <div class="alertZ" ng-hide="AlertMessage">Welcome back boss.</div> -->
+<div class="showbox" ng-hide="loginAlertMessage" style="height: 150vh">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div>

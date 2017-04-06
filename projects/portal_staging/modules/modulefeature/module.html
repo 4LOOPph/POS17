@@ -1,63 +1,72 @@
-<div class="row" ng-controller="ModuleCtrl">
-    <section class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
-                <!-- tools box -->
-                <div class="pull-right box-tools">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-info">Action</button>
-                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Export All</a>
-                            </li>
-                            <li><a href="#">Export Selected</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="btn btn-sm btn-primary" ng-click="createModule()">New Module</button>
-                </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <table class="table table-hover footable" data-page-size="20">
-                    <thead>
-                        <tr>
-                            <th data-sort-ignore="true">
-                                <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                            </th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th data-type="numeric" data-sort-initial="true">Module Sort</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="module in modules">
-                            <td>
-                                <input type="checkbox" ng-model="module.selected" ng-change="checkDataChanges(module)">
-                            </td>
-                            <td>{{module.name}}</td>
-                            <td>{{module.description}}</td>
-                            <td>{{module.sortorder}}</td>
-                            <td class="text-right">
-                                <button ng-click="editModule(module._id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button ng-click="deleteModule(module._id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-trash"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="hide-if-no-paging">
-                        <tr>
-                            <td colspan="6" align="center">
-                                <ul class="pagination"></ul>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <!-- /.box-body -->
+<div ng-controller="ModuleCtrl">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Modules
+         <small>List of modules</small>
+        </h3>
+    </div>
+    <div class="boxSubheader">
+        <div class="input-group" style="width: 30%">
+            <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
+            <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
         </div>
-        <!-- /.box -->
-    </section>
+        <div class="btn-group customBtnGroup">
+            <label class="btnss palette-Blue bg waves-effect" ng-model="checkModel.model" uib-btn-radio="app.app_name" ng-repeat="app in applist" ng-click="sampleClick()">{{app.app_name | uppercase}}</label>
+        </div>
+        <div class="actionBtnHolder" style=" margin-top: -5px;">
+            <div class="actionBtnHolder" style="display: inline-flex;">
+                <button uib-tooltip="Create New" ng-click="createModule()" class="actionBtn" style="padding: 4px 6px !important;"><i class="zmdi zmdi-playlist-plus"></i></button>
+                <button uib-tooltip="More" ng-click="refreshPlan()" class="actionBtn dropdown-toggle" data-toggle="dropdown" style="padding: 3px 12px !important;"><i class="zmdi zmdi-more-vert"></i></button>
+                <ul class="dropdown-menu search" role="menu" style=" min-width: 100%;left: -65px;">
+                    <li><a href="">Export All</a>
+                    </li>
+                    <li><a href="">Export Selected</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <table class="table table-hover footable table-module" data-page-size="20" style="margin-bottom: 0">
+            <thead>
+                <tr>
+                    <th data-sort-ignore="true">
+                        <label>
+                            <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                            <label for="cbxHead" class="lbl positionCheckbox"></label>
+                        </label>
+                    </th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>App Name</th>
+                    <th data-type="numeric" data-sort-ignore="true">Module Sort</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="module in modules | filter:searchText" ng-repeat-end-watch="myFunction">
+                    <td>
+                        <label>
+                            <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="module.selected" ng-change="checkDataChanges(module)" />
+                            <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                        </label>
+                    </td>
+                    <td>{{module.name}}</td>
+                    <td>{{module.description}}</td>
+                    <td>{{module.app_name | uppercase}}</td>
+                    <td>{{module.sortorder}}</td>
+                    <td class="text-right">
+                        <button ng-click="editModule(module._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-edit"></span></button>
+                        <button ng-click="deleteModule(module._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-delete"></span></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.box-body -->
 </div>

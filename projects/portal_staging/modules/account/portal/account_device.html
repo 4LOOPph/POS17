@@ -1,0 +1,160 @@
+<div class="" ng-controller="AccountDeviceCtrl">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Active Devices
+                    <small>List for active devices</small></h3>
+    </div>
+    <div class="boxSubheader">
+        <div class="subHeaderLabel">Search by Status</div>
+        <div class="input-group" style="width: 50%;">
+            <div class="input-group-btn">
+                <button class="btn searchBtn dropdown-toggle" data-toggle="dropdown">
+                    {{applicationStatus}}
+                    <i class="zmdi zmdi-network"></i>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu search" role="menu">
+                    <li><a ng-click="updateStatus('All')">All</a>
+                    </li>
+                    <li><a ng-click="updateStatus('Online')">Online</a>
+                    </li>
+                    <li><a ng-click="updateStatus('Offline')">Offline</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="actionBtnHolder">
+            <button class="actionBtn" ng-click="Search = true;"><i class="zmdi zmdi-search"></i></button>
+            <button class="actionBtn" ng-click="refresh()"><i class="zmdi zmdi-refresh-sync"></i></button>
+        </div>
+    </div>
+    <div class="ah-search" ng-show="Search">
+        <input type="text" placeholder="Start typing..." class="ahs-input" autofocus="Search">
+        <i class="ah-search-close zmdi zmdi-long-arrow-left" ng-click="Search = false;"></i>
+    </div>
+    <!--     <div class="box-header">
+        <h3 class="box-title">Device Management</h3>
+        <br>
+        <br>
+        <div class="pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <a ng-click="refresh()" class="btn btn-flat btn-sm btn-success" uib-tooltip="Refresh">
+                         Refresh
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                            <div class="input-group-btn">
+                                <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">
+                                    {{applicationStatus}}
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="updateStatus('All')">All</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Online')">Online</a>
+                                    </li>
+                                    <li><a ng-click="updateStatus('Offline')">Offline</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <div class="box-body padding">
+        <!--  <div class="row">
+            <div class="col-md-3" ng-repeat="device in devices">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">{{device.deviceName}}</h4>
+                        <div class="box-tools pull-right">
+                            <div class="btn-group" uib-dropdown>
+                                <button class="btn btn-box-tool dropdown-toggle" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li><a href="" ng-click="syncData()">Sync Data</a></li>
+                                    <li><a href="" ng-click="backupData()">Backup</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="" ng-click="openDeviceNotification()">Notify</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <span class="info-box-icon bg-aqua" ng-if="device.isOnline"><i class="fa fa-tablet"></i></span>
+                        <span class="info-box-icon bg-gray" ng-if="!device.isOnline"><i class="fa fa-tablet"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-number">UUID:</span>
+                            <small class="info-box-text">{{device.deviceUUID}}</small>
+                            <span class="info-box-number">Brand:</span>
+                            <small class="info-box-text">{{device.deviceBrand}}</small>
+                            <span class="info-box-number">Model:</span>
+                            <small class="info-box-text">{{device.deviceModel}}</small>
+                        </div>
+                        <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <div class="overlay" ng-show="device.isSyncing">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <div class="overlay" ng-show="device.isBackup">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="card-body table-responsive">
+            <table class="table table-hover devices">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Device</th>
+                        <th>UUID</th>
+                        <th>Brand</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="device in devices">
+                        <div class="overlay" ng-show="device.isSyncing">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                        <div class="overlay" ng-show="device.isBackup">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                        <td>
+                            <i class="zmdi zmdi-devices" ng-class="{'online': device.isOnline, 'offline': !device.isOnline}"></i>
+                            <!-- <i class="zmdi zmdi-laptop-mac" ng-if="device.deviceMode == 'Surface Pro 3'"></i> -->
+                        </td>
+                        <td>{{device.deviceModel}}</td>
+                        <td>{{device.deviceUUID}}</td>
+                        <td>{{device.deviceBrand}}</td>
+                        <td>
+                            <div class="device" uib-dropdown>
+                                <button class="actionBtn dropdown-toggle" uib-dropdown-toggle><i class="zmdi zmdi-more-vert"></i></button>
+                                <ul class="dropdown-menu " uib-dropdown-menu>
+                                    <li><a href="" ng-click="syncData()">Sync Data</a></li>
+                                    <li><a href="" ng-click="backupData()">Backup</a></li>
+                                    <li><a href="" ng-click="openDeviceNotification()">Notify</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

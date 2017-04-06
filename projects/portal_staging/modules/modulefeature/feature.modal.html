@@ -1,77 +1,186 @@
 <div class="modal-header">
-    <h3 class="modal-title">Manage User Roles</h3>
+    <h4>Manage User Roles</h4>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal" novalidate>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputGroupName" placeholder="Name" ng-model="feature.item_name" ng-required="true">
+    <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-star-circle"></i>
+                    </div>
+                    <div class="col-sm-8">
+
+                        <input type="text" required="required" placeholder="Feature Name" ng-model="feature.item_name" />
+                        <i class="bar"></i>
+                        <small>(Feature Name)</small>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupDesc" class="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
-                <textarea class="form-control" id="inputGroupDesc" placeholder="Description" ng-model="feature.item_description" ng-required="true"></textarea>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <img>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea placeholder="Description" ng-model="feature.item_description"></textarea>
+                        <i class="bar"></i>
+                        <small>(Feature Description)</small>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Module</label>
-            <div class="col-sm-9">
-                <ui-select ng-model="feature.module">
-                    <ui-select-match>
-                        {{$select.selected.name}}
-                    </ui-select-match>
-                    <ui-select-choices repeat="emp in modules | filter: $select.search track by $index">
-                        {{emp.name}}
-                    </ui-select-choices>
-                </ui-select>
+            <div class="form-group col-sm-12" style="padding-left: 51px;">
+                <div class="col-sm-12">Module</div>
+                <div class="form-group col-sm-4">
+                    <div class="">
+                        <ui-select ng-model="feature.module">
+                            <ui-select-match>
+                                {{$select.selected.name}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="emp in modules | filter: $select.search track by $index">
+                                {{emp.name}}
+                            </ui-select-choices>
+                        </ui-select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Node</label>
-            <div class="col-sm-9">
-                <input type="Number" class="form-control" id="inputGroupName" placeholder="Node" ng-model="feature.nodes" ng-required="true">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-device-hub"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" required="required" placeholder="Node" ng-model="feature.nodes" />
+                        <i class="bar"></i>
+                        <small>(Node)</small>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Inactive</label>
-            <div class="col-sm-9">
-                <div class="checkbox">
+            <div class="form-group col-sm-12">
+                <div class="checkbox" style="margin-left: 50px;">
                     <label>
-                        <input type="checkbox" ng-model="feature.inactive">
+                        <input type="checkbox" checked="checked" ng-model="feature.inactive" /><i class="helper"></i>Inactive
                     </label>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Default</label>
-            <div class="col-sm-9">
-                <div class="checkbox">
+            <div class="form-group col-sm-12">
+                <div class="checkbox" style="margin-left: 50px;">
                     <label>
-                        <input type="checkbox" ng-model="feature.DefaultRead"> Read
+                        <input type="checkbox" checked="checked" ng-model="feature.isOthers" /><i class="helper"></i>Display on Other (Symphony)
                     </label>
                 </div>
-                <div class="checkbox">
+            </div>
+             <div class="form-group col-sm-12" ng-show="feature.isOthers">
+                <div class="checkbox" style="margin-left: 50px;">
                     <label>
-                        <input type="checkbox" ng-model="feature.DefaultWrite"> Write
+                        <input type="checkbox" checked="checked" ng-model="feature.is3rdParty" /><i class="helper"></i> 3rd Party Feature?
                     </label>
                 </div>
-                <div class="checkbox">
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-link"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="URL" ng-model="feature.item_url" />
+                        <i class="bar"></i>
+                        <small>(InApp URL)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12" style="margin-left: 25px;">
+                <div class="defaultCheckHolder">Default</div>
+                <div class="checkbox" style="margin-left: 50px;">
                     <label>
-                        <input type="checkbox" ng-model="feature.DefaultDelete"> Delete
+                        <input type="checkbox" checked="checked" ng-model="feature.DefaultRead" /><i class="helper"></i>Read
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" checked="checked" ng-model="feature.DefaultWrite" /><i class="helper"></i>Write
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" checked="checked" ng-model="feature.DefaultDelete" /><i class="helper"></i>Delete
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" checked="checked" ng-model="feature.DefaultPrint" /><i class="helper"></i>Print
                     </label>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" ng-model="feature.DefaultPrint"> Print
-                    </label>
+            </div>
+            <div class="moduleIcon form-group col-sm-12">
+                <i class="zmdi zmdi-{{open.icon}}"></i>
+                <p>{{open.name}}</p>
+            </div>
+            <div class="form-group col-sm-12 iconset" style="padding-left: 51px;margin-top: 20px;">
+                <div class="col-sm-12">Select Feature Icon</div>
+                <input class="iconSearch" type="search" placeholder="Search Icon" ng-model="searchText">
+                <div class="form-group col-sm-12">
+                    <div class="iconHolder" ng-repeat="iconss in iconset">
+                        <div class="iconHeader col-md-12">Web Application</div>
+                        <div ng-repeat="icons in iconss.WebApplication | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Notifications</div>
+                        <div ng-repeat="icons in iconss.Notification | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">View</div>
+                        <div ng-repeat="icons in iconss.View | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Comments</div>
+                        <div ng-repeat="icons in iconss.Comment | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Forms</div>
+                        <div ng-repeat="icons in iconss.Form | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Person</div>
+                        <div ng-repeat="icons in iconss.Person | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">File</div>
+                        <div ng-repeat="icons in iconss.File | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Date / Time</div>
+                        <div ng-repeat="icons in iconss.DateTime | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Social</div>
+                        <div ng-repeat="icons in iconss.Social | filter:searchText">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-flat btn-primary" ng-click="saveFeature()">Save</button>
-    <button class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+    <button ng-click="saveFeature()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
 </div>

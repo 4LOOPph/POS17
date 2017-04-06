@@ -1,60 +1,112 @@
-<div class="row" >
-    <section class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
-                <!-- tools box -->
-                <div class="pull-left">
+<div class="box-header palette-Light">
+    <h3 class="box-title">Features
+         <small>List of feature</small>
+        </h3>
+</div>
+<div class="">
+    <section class="">
+        <div class="boxSubheader">
+            <div class="input-group" style="width: 30%">
+                <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
+                <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
+            </div>
+            <div class="actionBtnHolder" style=" margin-top: -5px;">
+                <div class="actionBtnHolder" style="display: inline-flex;">
                     <button class="btn btn-sm btn-primary" ng-disabled="!deleteSomeData1" ng-click="savePlanFeatures()">Save Selected</button>
                 </div>
             </div>
-            <!-- /.box-header -->
+        </div>
+        <div class="">
             <div class="box-body">
-                <table class="table table-hover footable" data-page-size="15">
+                <table class="table table-hover table-features footable" data-page-size="10">
                     <thead>
                         <tr>
                             <th data-sort-ignore="true">
-                                <input type="checkbox" ng-model="selectDeselectAll1" ng-change="changeSelectDeselectAll1()">
+                                <label>
+                                    <input id="cbxHead2" type="checkbox" class="cbx" ng-model="selectDeselectAll1" ng-change="changeSelectDeselectAll1()" />
+                                    <label for="cbxHead2" class="lbl positionCheckbox"></label>
+                                </label>
                             </th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Module</th>
                             <th>Node</th>
                             <th>Inactive</th>
-                            <th>Default Read</th>
-                            <th>Default Write</th>
-                            <th>Default Delete</th>
-                            <th>Default Print</th>
+                            <th>Read</th>
+                            <th>Write</th>
+                            <th>Delete</th>
+                            <th>Print</th>
+                            <th>Others</th>
+                            <th>3rd Party</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="feature in features">
+                        <tr ng-repeat="feature in features | filter:searchText" ng-repeat-end-watch="myFunction1">
                             <td>
-                                <input type="checkbox" ng-model="feature.selected" ng-change="checkDataChanges1(feature)">
+                                <!-- <input type="checkbox" ng-model="feature.selected" ng-change="checkDataChanges1(feature)"> -->
+                                <label>
+                                    <input id="cbxBody2-{{$index}}" type="checkbox" class="cbx" ng-model="feature.selected" ng-change="checkDataChanges1(feature)" />
+                                    <label for="cbxBody2-{{$index}}" class="lbl positionCheckbox"></label>
+                                </label>
                             </td>
                             <td>{{feature.item_name}}</td>
                             <td>{{feature.item_description}}</td>
                             <td>{{feature.modulename}}</td>
                             <td>{{feature.nodes}}</td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.inactive" ng-disabled="true">
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.inactive" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
                             </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultRead" ng-disabled="true">
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.DefaultRead" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
                             </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultWrite" ng-disabled="true">
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.DefaultWrite" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
                             </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultDelete" ng-disabled="true">
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.DefaultDelete" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
                             </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultPrint" ng-disabled="true">
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.DefaultPrint" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.isOthers" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="feature.is3rdParty" ng-disabled="true" /><i class="helper"></i>
+                                    </label>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                     <tfoot class="hide-if-no-paging">
                         <tr>
-                            <td colspan="6" align="center">
+                            <td colspan="6">
                                 <ul class="pagination"></ul>
                             </td>
                         </tr>

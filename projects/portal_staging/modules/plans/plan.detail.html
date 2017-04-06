@@ -1,62 +1,429 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Plans
-        <small>Details</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li><a ui-sref="main.plan">Plans</a>
-        </li>
-        <li class="active">Plans</li>
-    </ol>
-</section>
-<!-- Main content -->
-<section class="content">
-    <div class="nav-tabs-custom" bs-tabs>
-        <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
-        <div data-title="<i class='fa fa-info'></i> Information" bs-pane>
-            <div class="tab-pane active" id="profile">
-                <!-- title row -->
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2 class="page-header">
-                            <i class="glyphicon glyphicon-info-sign"></i> Plan Information
-                            
-                        </h2>
+<div class="overTop"></div>
+<section class="content" ng-init="isActiveTab('info')">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box box-primary">
+                <div class="tab-wrap">
+                    <input type="radio" name="tabs" id="tab1" ng-model="activeTab.name" value="info" ng-click="setActiveTab('info')">
+                    <div class="tab-label-content" id="tab1-content">
+                        <label class="tab-label-header" for="tab1">Information</label>
+                        <div class="tab-content">
+                            <div class="box-header palette-Light">
+                                <h3 class="box-title">Plan Information
+                                <small>Plan Details and Information</small>
+                                </h3>
+                            </div>
+                            <div class="form-body">
+                                <dl class="dl-horizontal">
+                                    <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
+                                            <div class="imgInput">
+                                                <i class="zmdi zmdi-file-text"></i>
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <input type="text" disabled required="required" placeholder="Plan" ng-model="details.name" />
+                                                <i class="bar"></i>
+                                                <small>(Plan)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
+                                            <div class="imgInput">
+                                               <i class="zmdi zmdi-label-alt"></i>
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <input type="text" disabled required="required" placeholder="Label" ng-model="details.label" />
+                                                <i class="bar"></i>
+                                                <small>(Label)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
+                                            <div class="imgInput">
+                                               <i class="zmdi zmdi-format-align-left"></i>
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <input type="text" disabled required="required" placeholder="Description" ng-model="details.description" />
+                                                <i class="bar"></i>
+                                                <small>(Description)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
+                                            <div class="imgInput">
+                                                <i class="zmdi zmdi-label"></i>
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <input type="text" disabled required="required" placeholder="Price" ng-model="details.price" />
+                                                <i class="bar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dl>
+                            </div>
+                            <div class="row no-print">
+                                <div class="col-xs-12 btnHolder">
+                                    <button class="btnss palette-Blue bg waves-effect" ng-click="updatePlan()">Update</button>
+                                    <button class="btnss palette-Red bg waves-effect" ng-click="deletePlan()">Delete</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.col -->
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <dl class="dl-horizontal">
-                            <dt class="text-muted">Plan:</dt>
-                            <dd>{{details.name}}</dd>
-                            <dt class="text-muted">Label:</dt>
-                            <dd>{{details.label}}</dd>
-                            <dt class="text-muted">Description:</dt>
-                            <dd>{{details.description}}</dd>
-                            <dt class="text-muted">Price:</dt>
-                            <dd>{{details.price | currency : "Php "}}</dd>
-                        </dl>
+                    <input type="radio" name="tabs" id="tab2" ng-model="activeTab.name" value="modules" ng-click="setActiveTab('modules')">
+                    <div class="tab-label-content" id="tab2-content">
+                        <label class="tab-label-header" for="tab2">Modules</label>
+                        <div class="tab-content">
+                            <ng-include src="'./modules/plans/plan.module.html'" scope="" onload=""></ng-include>
+                        </div>
                     </div>
-                    <!-- /.col -->
-                </div>
-                <div class="row no-print">
-                    <div class="col-xs-12">
-                        <button class="btn btn-sm btn-default btn-flat" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                        <button class="btn btn-sm btn-primary btn-flat" ng-click="updatePlan()"><i class="fa fa-pencil"></i> Update</button>
-                        <button class="btn btn-sm btn-danger btn-flat" ng-click="deletePlan()"><i class="fa fa-trash"></i> Delete</button>
+                    <input type="radio" name="tabs" id="tab3" ng-model="activeTab.name" value="features" ng-click="setActiveTab('features')">
+                    <div class="tab-label-content" id="tab3-content">
+                        <label class="tab-label-header" for="tab3">Features</label>
+                        <div class="tab-content">
+                            <ng-include src="'./modules/plans/plan.feature.html'" scope="" onload=""></ng-include>
+                        </div>
                     </div>
+                    <div class="slide"></div>
                 </div>
             </div>
-        </div>
-        <div data-title="<i class='fa fa-home'></i> Modules" bs-pane>
-           <ng-include src="'./modules/plans/plan.module.html'" scope="" onload=""></ng-include>
-        </div>
-        <div data-title="<i class='fa fa-list'></i> Features" bs-pane>
-            <ng-include src="'./modules/plans/plan.feature.html'" scope="" onload=""></ng-include>
-        </div>
+        </section>
     </div>
 </section>
+<style type="text/css">
+.tab-wrap {
+    /* width: 50%;*/
+    /* margin-left: 20%; */
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 1px;
+    box-shadow: inset 0 -2px 0 0 #e2e2e2;
+}
+
+input[type="radio"][name="tabs"] {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content label {
+    color: rgb(72, 72, 72);
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+    display: block;
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+    left: calc((100% / 3) * 0);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+    left: calc((100% / 3) * 1);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+    left: calc((100% / 3) * 2);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+    left: calc((100% / 3) * 3);
+}
+
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+    left: 0;
+}
+
+.tab-label-header {
+    cursor: pointer;
+    color: #777777;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 57px;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.slide {
+    background: #2196f3;
+    width: calc(100% / 3);
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 2px);
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+}
+
+.tab-label-content {
+    width: 100%;
+}
+
+.tab-label-content .tab-content {
+    position: absolute;
+    top: 62px;
+    left: 16px;
+    line-height: 130%;
+    display: none;
+    margin-left: -16px;
+    background: #fff;
+    padding: 0px;
+    width: 100%;
+    /*height: 475px;*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        padding: 40px 0 90px 10%;
+    }
+    .tab-wrap {
+        width: 100%;
+    }
+}
+
+.form-radio,
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group small {
+    font-size: 11px;
+    color: #a5a5a5;
+    position: absolute;
+}
+
+.form-inline > .form-group,
+.form-inline > .btn {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.form-help {
+    margin-top: 0.125rem;
+    margin-left: 0.125rem;
+    color: #b3b3b3;
+    font-size: 0.8rem;
+}
+
+.checkbox .form-help,
+.form-radio .form-help,
+.form-group .form-help {
+    position: absolute;
+    width: 100%;
+}
+
+.checkbox .form-help {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-radio .form-help {
+    padding-top: 0.25rem;
+    margin-top: -1rem;
+}
+
+.form-group input {
+    /*height: 1.9rem;*/
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.form-group select {
+    height: 2.8rem;
+    border: none;
+    display: block;
+    background: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group .control-label {
+    position: absolute;
+    top: 0.25rem;
+    pointer-events: none;
+    padding-left: 0.125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: normal;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+}
+
+.form-group .bar {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    display: block;
+}
+
+.form-group .bar::before {
+    content: '';
+    height: 0.100rem;
+    width: 0;
+    left: 50%;
+    bottom: -0.0625rem;
+    position: absolute;
+    background: #2196f3;
+    -webkit-transition: left 0.28s ease, width 0.28s ease;
+    transition: left 0.28s ease, width 0.28s ease;
+    z-index: 2;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    background: none;
+    padding: 0.125rem 0.125rem 0.0625rem;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group input[type="file"] {
+    line-height: 1;
+}
+
+.form-group input[type="file"] ~ .bar {
+    display: none;
+}
+
+.form-group select,
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value,
+.form-group textarea:focus,
+.form-group textarea:valid,
+.form-group textarea.form-file,
+.form-group textarea.has-value {
+    color: #333;
+}
+
+.form-group select ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
+.form-group textarea:valid ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label {
+    font-size: 0.8rem;
+    color: gray;
+    top: -1rem;
+    left: 0;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+}
+
+.form-group select:focus ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group textarea:focus ~ .control-label {
+    color: #337ab7;
+}
+
+.form-group select:focus ~ .bar::before,
+.form-group input:focus ~ .bar::before,
+.form-group textarea:focus ~ .bar::before {
+    width: 100%;
+    left: 0;
+}
+
+.checkbox label,
+.form-radio label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 2rem;
+    text-align: left;
+    color: #333;
+    display: block;
+}
+
+.has-error .legend.legend,
+.has-error.form-group .control-label.control-label {
+    color: #d9534f;
+}
+
+.has-error.form-group .form-help,
+.has-error.form-group .helper,
+.has-error.checkbox .form-help,
+.has-error.checkbox .helper,
+.has-error.radio .form-help,
+.has-error.radio .helper,
+.has-error.form-radio .form-help,
+.has-error.form-radio .helper {
+    color: #d9534f;
+}
+
+.has-error .bar::before {
+    background: #d9534f;
+    left: 0;
+    width: 100%;
+}
+
+.content-wrapper,
+.right-side {
+    min-height: 5000px !important;
+    background-color: #edecec;
+    z-index: 800;
+}
+
+.defaultCheckHolder {
+    font-size: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 95%;
+    margin-bottom: 15px
+}
+
+.modal-body .checkbox .helper {
+    top: 3px;
+}
+</style>

@@ -1,29 +1,136 @@
 <div class="modal-header">
-    <h3 class="modal-title">Manage Modules</h3>
+    <h4>Manage Modules</h4>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal" novalidate>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Name" ng-model="module.name" ng-required="true" >
+    <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-view-module"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" required="required" placeholder="Module Name" ng-model="module.name" />
+                        <i class="bar"></i>
+                        <small>(Module Name)</small>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupDesc" class="col-sm-3 control-label">Description</label>
-            <div class="col-sm-9">
-                <textarea class="form-control" placeholder="Description" ng-model="module.description" ng-required="true" ></textarea>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <img>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea placeholder="Description" ng-model="module.description"></textarea>
+                        <i class="bar"></i>
+                        <small>(Module Description)</small>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Sort Order</label>
-            <div class="col-sm-9">
-                <input type="number" class="form-control" placeholder="Sort Order" ng-model="module.sortorder" ng-required="true" >
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-sort-asc"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" required="required" placeholder="Sort Order" ng-model="module.sortorder" />
+                        <i class="bar"></i>
+                        <small>(Sort Order)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12" style="padding-left: 51px;">
+                <div class="col-sm-12">Application</div>
+                <div class="form-group col-sm-4">
+                    <div class="">
+                        <ui-select ng-model="module.app">
+                            <ui-select-match>
+                                {{$select.selected.app_name | uppercase}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="emp in applist | filter: $select.search track by $index">
+                                {{emp.app_name | uppercase}}
+                            </ui-select-choices>
+                        </ui-select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="moduleIcon form-group col-sm-12">
+                <i class="zmdi zmdi-{{open.icon}}"></i>
+                <p>{{open.name}}</p>
+            </div>
+            <!-- <div class="form-group col-sm-12">
+                <button ng-show="setBtn" class="btnnzzed" ng-model="setbtn"><span>Set Icon</span><img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="62" width="62"></button>
+            </div> -->
+            <div class="form-group col-sm-12 iconset" style="padding-left: 51px;margin-top: 20px;">
+                <div class="col-sm-12">Select Module Icon</div>
+                <input class="iconSearch" type="search" placeholder="Search Icon" ng-model="searchText">
+                <div class="form-group col-sm-12">
+                    <div class="iconHolder" ng-repeat="iconss in iconset">
+                        <div class="iconHeader col-md-12">Web Application</div>
+                        <div ng-repeat="icons in iconss.WebApplication | filter:searchText" ng-if="iconss.WebApplication.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Notifications</div>
+                        <div ng-repeat="icons in iconss.Notification | filter:searchText" ng-if="iconss.Notification.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">View</div>
+                        <div ng-repeat="icons in iconss.View | filter:searchText" ng-if="iconss.View.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Comments</div>
+                        <div ng-repeat="icons in iconss.Comment | filter:searchText" ng-if="iconss.Comment.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Forms</div>
+                        <div ng-repeat="icons in iconss.Form | filter:searchText" ng-if="iconss.Form.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Person</div>
+                        <div ng-repeat="icons in iconss.Person | filter:searchText" ng-if="iconss.Person.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">File</div>
+                        <div ng-repeat="icons in iconss.File | filter:searchText" ng-if="iconss.File.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Date / Time</div>
+                        <div ng-repeat="icons in iconss.DateTime | filter:searchText" ng-if="iconss.DateTime.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                        <div class="iconHeader col-md-12">Social</div>
+                        <div ng-repeat="icons in iconss.Social | filter:searchText" ng-if="iconss.Social.length > 0">
+                            <div class="col-md-3">
+                                <button ng-click="toggle(icons.icon, icons.Name);" class="btnss iconBtn"><i class="zmdi zmdi-{{icons.icon}}"></i>{{icons.Name}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-flat btn-primary" ng-click="saveModule()">Save</button>
-    <button class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+    <button ng-click="saveModule()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
 </div>
+

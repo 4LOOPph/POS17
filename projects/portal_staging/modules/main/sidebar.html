@@ -2,123 +2,48 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <ul class="sidebar-menu">
-            <li class="active">
+            <div class="sidebarDiv">
+                <button class="btn sidebarBtn r-round" ripple onclick="openNav()"><i class="zmdi zmdi-email"></i></button>
+                <button class="btn sidebarBtn r-round" ripple onclick="openNav()"><i class="zmdi zmdi-notifications"></i></button>
+                <button class="btn sidebarBtn r-round" ripple onclick="openNav()"><i class="zmdi zmdi-format-list-bulleted"></i></button>
+            </div>
+            <!--  <li class="active"> -->
+            <li>
                 <a ui-sref="main.dashboard">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Dashboard</span>
+                    <i class="zmdi zmdi-view-dashboard"></i> Dashboard
                 </a>
             </li>
             <li class="treeview">
                 <a href="">
-                    <i class="fa fa-user"></i>
-                    <span>Customer</span>
+                    <i class="zmdi zmdi-account"></i> Customers
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a ui-sref="main.subscriptionrequest"><i class="fa fa-angle-double-right"></i>Subscription Request</a>
+                    <li><a ui-sref="main.subscriptionrequest">Subscription Request</a>
                     </li>
-                    <li><a ui-sref="main.account"><i class="fa fa-angle-double-right"></i>Subscribers</a>
+                    <li><a ui-sref="main.account">Subscribers</a>
                     </li>
-                    <li><a ui-sref="main.contact"><i class="fa fa-angle-double-right"></i>Contact List</a>
+                    <li><a ui-sref="main.contact">Contact List</a>
                     </li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span>Billing Management</span>
+                    <i class="zmdi zmdi-shopping-basket"></i> Billing Management
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a ui-sref="main.lead"><i class="fa fa-angle-double-right"></i> Billing and Payment</a>
+                    <li><a ui-sref="main.lead">Billing & Payment</a>
                     </li>
-                    <li><a ui-sref="main.opportunity"><i class="fa fa-angle-double-right"></i> Customer Ledger and SOA</a>
+                    <li><a ui-sref="main.opportunity">Customer Ledger & SOA</a>
                     </li>
-                    <li><a ui-sref="main.campaign"><i class="fa fa-angle-double-right"></i> Collections and Transactions</a>
+                    <li><a ui-sref="main.campaign">Collections & Transactions</a>
                     </li>
-                    <li><a ui-sref="main.campaign"><i class="fa fa-angle-double-right"></i> Payment Configuration</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="">
-                    <i class="fa fa-gift"></i>
-                    <span>Reports</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a ui-sref="main.quote"><i class="fa fa-angle-double-right"></i> Charts of Accounts</a>
-                    </li>
-                    <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Cash Count Sheet</a>
-                    </li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Report of Collections</a>
-                    </li>
-                    <li><a ui-sref="main.contract"><i class="fa fa-angle-double-right"></i> Transaction Summary List</a>
+                    <li><a ui-sref="main.campaign">Payment Configuration</a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="">
-                    <i class="fa fa-line-chart"></i>
-                    <span>Analytics</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a ui-sref="main.analytics-dashboard"><i class="fa fa-angle-double-right"></i> Dashboard</a>
-                    </li>
-                    <li class="treeview">
-                        <a href="">
-                            <i class="fa fa-angle-double-right"></i> App Overview
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="main.analytics-app"><i class="fa fa-caret-right"></i> Overview</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-app-screens"><i class="fa fa-caret-right"></i> Screens</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-app-events"><i class="fa fa-caret-right"></i> Events</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="">
-                            <i class="fa fa-angle-double-right"></i> Audience
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="main.analytics-audience"><i class="fa fa-caret-right"></i> Overview</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-audience-screens"><i class="fa fa-caret-right"></i> Users</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-audience-geo-language"><i class="fa fa-caret-right"></i> Geo-Language</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-audience-location"><i class="fa fa-caret-right"></i> Geo-Location</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-audience-network"><i class="fa fa-caret-right"></i> Network</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-audience-devices"><i class="fa fa-caret-right"></i> Devices</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="">
-                            <i class="fa fa-angle-double-right"></i> Behavior
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="main.analytics-behavior"><i class="fa fa-caret-right"></i> Overview</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-behavior-screens"><i class="fa fa-caret-right"></i> Screens</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-behavior-events"><i class="fa fa-caret-right"></i> Events</a>
-                            </li>
-                            <li><a ui-sref="main.analytics-behavior-pages"><i class="fa fa-caret-right"></i> Pages</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
+            <!-- <li class="treeview">
                 <a href="">
                     <i class="fa fa-qrcode"></i>
                     <span>Products</span>
@@ -130,24 +55,26 @@
                     <li><a href="" ui-sref="main.plan"><i class="fa fa-angle-double-right"></i>Subscription Plans</a>
                     </li>
                 </ul>
+            </li> -->
+            <li>
+                <a href="" ui-sref="main.plan">
+                    <i class="zmdi zmdi-rss"></i> Subscription Plans
+                </a>
             </li>
             <li>
                 <a href="" ui-sref="main.modulefeature">
-                    <i class="fa fa-home"></i>
-                    <span>Modules/Features</span>
+                    <i class="zmdi zmdi-view-module"></i> Modules/Features
                 </a>
             </li>
             <li>
                 <a href="" ui-sref="main.calendar">
-                    <i class="fa fa-calendar"></i>
-                    <span>Calendar</span>
+                    <i class="zmdi zmdi-calendar-alt"></i> Calendar
                     <small class="badge pull-right bg-red">3</small>
                 </a>
             </li>
             <li>
                 <a href="" ui-sref="main.mailbox">
-                    <i class="fa fa-envelope"></i>
-                    <span>Mailbox</span>
+                    <i class="zmdi zmdi-markunread-mailbox"></i> Mailbox
                     <small class="badge pull-right bg-yellow">12</small>
                 </a>
             </li>
@@ -155,3 +82,37 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+<div id="mySidenav" class="sidenav" onclick="closeNav()"></div>
+    <div id="dropShow" class="dropShow sidenav" ng-init="messages = true">
+        <ul class="tab-nav tn-justified tn-icon m-t-10">
+            <li><a ng-click="messages = true; notifications = false; tasks = false" class="sua-messages actived1"><i class="zmdi zmdi-email"></i></a></li>
+            <li><a ng-click="notifications = true; messages = false; tasks = false" class="sua-notifications actived2"><i class="zmdi zmdi-notifications"></i></a></li>
+            <li><a ng-click="tasks = true; messages = false; notifications = false" class="sua-tasks actived3"><i class="zmdi zmdi-view-list-alt"></i></a></li>
+        </ul>
+        <!--   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+        <div class="tabnavPaddingotp" ng-show="messages">
+            <ul class="sua-menu list-inline list-unstyled palette-Blue">
+                <li><a href=""><i class="zmdi zmdi-check-all"></i> Mark all</a></li>
+                <li><a href=""><i class="zmdi zmdi-long-arrow-tab"></i> View all</a></li>
+                <li><a onclick="closeNav()"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+            <div>fdgdfgdfg</div>
+        </div>
+        <div class="tabnavPaddingotp" ng-show="notifications">
+            <ul class="sua-menu list-inline list-unstyled palette-Orange bg">
+                <li><a href=""><i class="zmdi zmdi-volume-off"></i> Mute</a></li>
+                <li><a href=""><i class="zmdi zmdi-long-arrow-tab"></i> View all</a></li>
+                <li><a onclick="closeNav()"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+            <div>sdfsdfsdf</div>
+        </div>
+        <div class="tabnavPaddingotp" ng-show="tasks">
+            <ul class="sua-menu list-inline list-unstyled palette-Green-400 bg">
+                <li><a href=""><i class="zmdi zmdi-time"></i> Archived</a></li>
+                <li><a href=""><i class="zmdi zmdi-check-all"></i> Mark all</a></li>
+                <li><a onclick="closeNav()"><i class="zmdi zmdi-close"></i> Close</a></li>
+            </ul>
+            <div>dsfsdfds</div>
+        </div>
+    </div>
+

@@ -1,0 +1,229 @@
+<div class="">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Basic Information
+        <small>Tab for Basic information</small></h3>
+    </div>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <dl class="dl-horizontal">
+                    <div class="col-sm-12">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/domain.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Company Name" ng-model="details.company_name" />
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/ic_person_black_24px.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="First Name" ng-model="details.firstname" />
+                                            <i class="bar"></i>
+                                            <small>(First Name)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Last Name" ng-model="details.lastname" />
+                                            <i class="bar"></i>
+                                            <small>(Last Name)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/ic_email_black_24px.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Email" ng-model="details.email" />
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/ic_location_on_black_24px.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Address" ng-model="details.address1" />
+                                            <i class="bar"></i>
+                                            <small>(Primary Address)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Address" ng-model="details.address2" />
+                                            <i class="bar"></i>
+                                            <small>(Secondary Address)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Country" ng-model="details.country" />
+                                            <i class="bar"></i>
+                                            <small>(Country)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="State" ng-model="details.state" />
+                                            <i class="bar"></i>
+                                            <small>(State)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="City" ng-model="details.city" />
+                                            <i class="bar"></i>
+                                            <small>(City)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Zipcode" ng-model="details.zipcode" />
+                                            <i class="bar"></i>
+                                            <small>(Zipcode)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  divider -->
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12 rowDivider">
+                                        <button class="btnss palette-Blue bg waves-effect" ng-click="updateAccount()">Update</button>
+                                        <button class="btnss  waves-effect">Print</button>
+                                    </div>
+                                </div>
+                                <!--  divider -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/arrow-right-bold-box.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Requested Plan" ng-model="details.requestedPlan.name" />
+                                            <i class="bar"></i>
+                                            <small>(Requested Plan)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-10">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <textarea disabled placeholder="Description" ng-model="details.requestedPlan.description"></textarea>
+                                            <i class="bar"></i>
+                                            <small>(Requested Plan Description)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  divider -->
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12 rowDivider" style="padding-top: 0px;">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/signal-variant.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Subscribed Plan" ng-model="details.subscribedPlan.name" />
+                                            <i class="bar"></i>
+                                            <small>(Subscribed Plan)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-10">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <textarea disabled placeholder="Description" ng-model="details.subscribedPlan.description"></textarea>
+                                            <i class="bar"></i>
+                                            <small>(Subscribed Plan Description)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12 rowDivider">
+                                        <button class="btnss palette-Blue bg waves-effect" ng-click="updateAccountPlan()">Update</button>
+                                        <button class="btnss palette-Blue-Grey bg waves-effect" ng-click="viewAccountPlanHistory()">Plan History</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <form role="form" class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/code-array.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" disabled placeholder="Gk Code" ng-model="details.gk_code" />
+                                            <i class="bar"></i>
+                                            <small>(Gk Code)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12" style="margin-bottom: 60px;">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img src="/images/key-variant.svg">
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="{{inputType}}" disabled placeholder="Gk SecretKey" ng-model="details.gk_secretKey" />
+                                            <i class="bar"></i>
+                                            <small>(Gk SecretKey)</small>
+                                        </div>
+                                        <a class="showHidden" role="button" ng-click="hideShowPassword()">{{buttonLabel}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.content-wrapper,
+.right-side {
+    min-height: 1700px !important;
+    background-color: #edecec;
+    z-index: 800;
+}
+</style>

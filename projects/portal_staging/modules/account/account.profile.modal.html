@@ -1,47 +1,162 @@
 <div class="modal-header">
-    <h3 class="modal-title">Manage Subscriber Account</h3>
+    <h4>Manage Subscriber Account</h4>
 </div>
 <div class="modal-body">
-    <form novalidate>
+    <form novalidate> 
         <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img src="/images/domain.svg">
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Company Name" ng-model="details.company_name" />
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img src="/images/ic_person_black_24px.svg">
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="First Name" ng-model="details.firstname" />
+                        <i class="bar"></i>
+                        <small>(First Name)</small>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Last Name" ng-model="details.lastname" />
+                        <i class="bar"></i>
+                        <small>(Last Name)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img src="/images/ic_email_black_24px.svg">
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Email" ng-model="details.email" />
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img src="/images/ic_location_on_black_24px.svg">
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Address" ng-model="details.address1" />
+                        <i class="bar"></i>
+                        <small>(Primary Address)</small>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Address" ng-model="details.address2" />
+                        <i class="bar"></i>
+                        <small>(Secondary Address)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img>
+                    </div>
+                    <div class="col-sm-11">
+                        <select ng-model="details.country" ng-options="item.id as item.name for item in countries" ng-change="getStateDetails(details.country)">
+                            <option value="" disabled selected style="display: none;">Select</option>
+                        </select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                        <small>(Country)</small>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="col-sm-11">
+                        <select ng-model="details.state" ng-options="item.id as item.name for item in states" ng-change="getCitiesDetails(details.state)">
+                            <option value="" disabled selected style="display: none;">Select</option>
+                        </select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                        <small>(State)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <img>
+                    </div>
+                    <div class="col-sm-11">
+                        <select ng-model="details.city" ng-options="item.id as item.name for item in cities">
+                            <option value="" disabled selected style="display: none;">Select</option>
+                        </select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                        <small>(City)</small>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Zip Code" ng-model="details.zipcode" />
+                        <i class="bar"></i>
+                        <small>(Zip Code)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-phone"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Contact" ng-model="details.phone" />
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group">
                     <label>Company Name</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.company_name" required />
-                </div>
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.firstname" />
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.lastname" />
-                </div>
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" placeholder="Required" ng-model="details.email" />
-                </div>
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>Address</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.address1" />
                 </div>
                 <div class="form-group">
                     <label>Current Address</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.address2" />
-                </div>
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>Country</label>
                     <select class="form-control" ng-model="details.country" ng-options="item.id as item.name for item in countries" ng-change="getStateDetails(details.country)">
                     </select>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>State</label>
                     <select class="form-control" ng-model="details.state" ng-options="item.id as item.name for item in states" ng-change="getCitiesDetails(details.state)">
                     </select>
-                </div>
-                <div class="form-group">
+                </div> -->
+            <!-- <div class="form-group">
                     <label>City</label>
                     <select class="form-control" ng-model="details.city" ng-options="item.id as item.name for item in cities">
                     </select>
@@ -53,12 +168,11 @@
                 <div class="form-group">
                     <label>Phone</label>
                     <input type="text" class="form-control" placeholder="Required" ng-model="details.phone" />
-                </div>
-            </div>
+                </div> -->
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-flat btn-primary" ng-click="saveFeature()">Save</button>
-    <button class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+    <button ng-click="saveFeature()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
 </div>

@@ -1,85 +1,134 @@
-<div class="row" ng-controller="FeatureCtrl">
-    <section class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
-                <!-- tools box -->
-                <div class="pull-right box-tools">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-info">Action</button>
-                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Export All</a>
-                            </li>
-                            <li><a href="#">Export Selected</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="btn btn-sm btn-primary" ng-click="createFeature()">New Module Feature</button>
-                </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <table class="table table-hover footable" data-page-size="15">
-                    <thead>
-                        <tr>
-                            <th data-sort-ignore="true">
-                                <input type="checkbox" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()">
-                            </th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Module</th>
-                            <th>Node</th>
-                            <th>Inactive</th>
-                            <th>Default Read</th>
-                            <th>Default Write</th>
-                            <th>Default Delete</th>
-                            <th>Default Print</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="feature in features">
-                            <td>
-                                <input type="checkbox" ng-model="feature.selected" ng-change="checkDataChanges(feature)">
-                            </td>
-                            <td>{{feature.item_name}}</td>
-                            <td>{{feature.item_description}}</td>
-                            <td>{{feature.modulename}}</td>
-                            <td>{{feature.nodes}}</td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.inactive" ng-disabled="true">
-                            </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultRead" ng-disabled="true">
-                            </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultWrite" ng-disabled="true">
-                            </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultDelete" ng-disabled="true">
-                            </td>
-                            <td>
-                                <input type="checkbox" ng-model="feature.DefaultPrint" ng-disabled="true">
-                            </td>
-                            <td class="text-right">
-                                <button ng-click="editFeature(feature._id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button ng-click="deleteFeature(feature._id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-trash"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="hide-if-no-paging">
-                        <tr>
-                            <td colspan="6" align="center">
-                                <ul class="pagination"></ul>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <!-- /.box-body -->
+<div ng-controller="FeatureCtrl">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Features
+         <small>List of features</small>
+        </h3>
+    </div>
+    <div class="boxSubheader">
+        <div class="input-group" style="width: 30%">
+            <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
+            <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText2">
         </div>
-        <!-- /.box -->
-    </section>
+        <div class="btn-group customBtnGroup">
+            <label class="btnss palette-Blue bg waves-effect" ng-model="checkModel.model" uib-btn-radio="app.app_name" ng-repeat="app in applist" ng-click="sampleClick()">{{app.app_name | uppercase}}</label>
+        </div>
+        <div class="actionBtnHolder" style=" margin-top: -5px;">
+            <div class="actionBtnHolder" style="display: inline-flex;">
+                <button uib-tooltip="Create New" ng-click="createFeature()" class="actionBtn" style="padding: 4px 6px !important;"><i class="zmdi zmdi-playlist-plus"></i></button>
+                <button uib-tooltip="More" ng-click="refreshPlan()" class="actionBtn dropdown-toggle" data-toggle="dropdown" style="padding: 3px 12px !important;"><i class="zmdi zmdi-more-vert"></i></button>
+                <ul class="dropdown-menu search" role="menu" style=" min-width: 100%;left: -65px;">
+                    <li><a href="">Export All</a>
+                    </li>
+                    <li><a href="">Export Selected</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <table class="table table-hover table-feature footable" data-page-size="10" data-paging="true">
+            <thead>
+                <tr>
+                    <th data-sort-ignore="true">
+                        <label>
+                            <input id="cbxHead-{{feature}}" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                            <label for="cbxHead-{{feature}}" class="lbl positionCheckbox"></label>
+                        </label>
+                    </th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Module</th>
+                    <th data-sort-ignore="true">Node</th>
+                    <th data-sort-ignore="true">App</th>
+                    <th data-sort-ignore="true">Inactive</th>
+                    <th data-sort-ignore="true">Read</th>
+                    <th data-sort-ignore="true">Write</th>
+                    <th data-sort-ignore="true">Delete</th>
+                    <th data-sort-ignore="true">Print</th>
+                    <th data-sort-ignore="true">Other</th>
+                    <th data-sort-ignore="true">3rd Party</th>
+                    <th data-sort-ignore="true">Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="feature in features | filter:searchText2" ng-repeat-end-watch="myFunction">
+                    <td>
+                        <label>
+                            <input id="cbxBody-{{$index}}-{{feature}}" type="checkbox" class="cbx" ng-model="feature.selected" ng-change="checkDataChanges(feature)" />
+                            <label for="cbxBody-{{$index}}-{{feature}}" class="lbl positionCheckbox"></label>
+                        </label>
+                    </td>
+                    <td>{{feature.item_name}}</td>
+                    <td>{{feature.item_description}}</td>
+                    <td>{{feature.modulename}}</td>
+                    <td>{{feature.nodes}}</td>
+                    <td>{{feature.app_name | uppercase}}</td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.inactive" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.DefaultRead" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.DefaultWrite" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.DefaultDelete" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.DefaultPrint" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.isOthers" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="feature.is3rdParty" ng-disabled="true" /><i class="helper"></i>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <i class="zmdi zmdi-{{feature.item_icon}} zmdi-hc-2x"></i>
+                    </td>
+                    <td class="text-right" style="display: flex;">
+                        <button ng-click="editFeature(feature._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-edit"></span></button>
+                        <button ng-click="deleteFeature(feature._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-delete"></span></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.box-body -->
 </div>

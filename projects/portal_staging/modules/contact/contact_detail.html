@@ -1,104 +1,2170 @@
 <!-- Content Header (Page header) -->
+<div class="overTop"></div>
 <section class="content-header">
     <h1>
-        Contact  
-        <small>Details</small>
+        Contact Details
     </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li><a ui-sref="main.contact">Contact</a>
-        </li>
-        <li class="active">Subscription Detail</li>
-    </ol>
 </section>
 <!-- Main content -->
 <section class="content">
-    <div class="nav-tabs-custom" bs-tabs>
-        <!-- use data-title instead of title attribute to avoid the default browser behavior of title -->
-        <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
-            <div class="tab-pane active" id="profile">
-                <!-- title row -->
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2 class="page-header">
-                            <i class="glyphicon glyphicon-info-sign"></i>Contact Information
-                            
-                        </h2>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <form role="form" class="form-horizontal">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <dl class="dl-horizontal">
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label"> Person ID: </label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.person_id" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">Last Name: </label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.lastname" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">First Name :</label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.firstname" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">Address:</label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.address" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">Email:</label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.email" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">Mobile Number:</label>
-                                    <div class="col-sm-8">
-                                        <input disabled class="form-control" ng-model="contacts.mobile" />
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label class="col-sm-4 control-label">Image:</label>
-                                    <div class="col-sm-8">
-                                        <img ng-src="{{contacts.image}}" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
-                                        <div class="input-group image-preview">
-                                            <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
-                                            <span class="input-group-btn"> 
-                                        <button type="button" class="btn btn-warning image-preview-clear"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
-                                            <div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
-                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.product_variant_imgPath" ngf-max-size="8MB" ngf-select="upload($files)" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box box-primary">
+                <div class="card" id="profile-main">
+                    <div class="pm-overview c-overflow mCustomScrollbar _mCS_4 mCS-autoHide" style="overflow: visible;">
+                        <div id="mCSB_4" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0">
+                            <div id="mCSB_4_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                                <div class="pmo-pic">
+                                    <div class="p-relative">
+                                        <a href="">
+                                            <img class="img-responsive mCS_img_loaded" ng-src="{{contacts.image}}" err-src="http://placehold.it/250x250">
+                                        </a>
+                                        <div class="dropdown pmop-message">
+                                            <a data-toggle="dropdown" href="" class="btn palette-White bg btn-float z-depth-1 waves-effect waves-circle waves-float">
+                                                <i class="zmdi zmdi-comment-text-alt"></i>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <textarea placeholder="Write something..."></textarea>
+                                                <button class="btn bgm-green btn-float waves-effect waves-circle waves-float"><i class="zmdi zmdi-mail-send"></i></button>
                                             </div>
-                                            </span>
+                                        </div>
+                                        <form role="form" <a class="pmop-edit" type="button">
+                                            <div class="input-group image-preview" style="margin: auto;">
+                                                <div class="image-preview-input"> <i class="zmdi zmdi-camera"></i> <span class="image-preview-input-title">Update Profile Picture</span>
+                                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.product_variant_imgPath" ngf-max-size="8MB" ngf-select="upload($files)" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </form>
+                                    </div>
+                                    <div class="pmo-stat">
+                                        <h2 class="m-0 c-white">{{contacts.firstname}}</h2> Name
+                                    </div>
+                                </div>
+                                <div class="pmo-block pmo-contact hidden-xs">
+                                    <h2>Contact</h2>
+                                    <ul>
+                                        <li><i class="zmdi zmdi-phone"></i> +63{{contacts.mobile}}</li>
+                                        <li><i class="zmdi zmdi-email"></i> {{contacts.email}}</li>
+                                        <li><i class="zmdi zmdi-facebook-box"></i> {{contacts.lastname}} {{contacts.firstname}}</li>
+                                        <li><i class="zmdi zmdi-twitter"></i> @{{contacts.firstname}} (twitter.com/{{contacts.firstname}})</li>
+                                        <li>
+                                            <i class="zmdi zmdi-pin"></i>
+                                            <address class="m-b-0 ng-binding">
+                                                {{contacts.address}}
+                                            </address>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-wrap">
+                        <input type="radio" name="tabs" id="tab1" checked>
+                        <div class="tab-label-content" id="tab1-content">
+                            <label class="tab-label-header" for="tab1">About</label>
+                            <div class="tab-content">
+                                <form role="form" class="form-horizontal" ng-init="view = true">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="pmb-block">
+                                                <div class="pmbb-header">
+                                                    <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
+                                                    <div class="actions" ng-show="view">
+                                                        <button ng-click="edit = true; view = false" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="pmbb-body p-l-30">
+                                                    <div class="pmbb-view" ng-show="view">
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Last Name</dt>
+                                                            <dd>{{contacts.lastname}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>First Name</dt>
+                                                            <dd>{{contacts.firstname}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Middle Name</dt>
+                                                            <dd>{{contacts.middlename}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Customer ID</dt>
+                                                            <dd>{{contacts.company_username}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Company Name</dt>
+                                                            <dd>{{contacts.company_name}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Type</dt>
+                                                            <dd>{{contacts.person_type}}</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="pmbb-edit" ng-show="edit">
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Last Name</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" required="required" ng-model="contacts.lastname" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">First Name</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" required="required" ng-model="contacts.firstname" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Middle Name</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.middlename" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Customer ID</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.company_username" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Company Name</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.company_name" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Type</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.person_type" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <!-- <div class="m-t-30">
+                                                            <button class="btn btn-primary btn-sm waves-effect">Save</button>
+                                                            <button ng-click="edit = false; view = true" class="btn btn-link btn-sm waves-effect">Cancel</button>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pmb-block">
+                                                <div class="pmbb-header">
+                                                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact Information</h2>
+                                                </div>
+                                                <div class="pmbb-body p-l-30">
+                                                    <div class="pmbb-view" ng-show="view">
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Mobile Phone</dt>
+                                                            <dd>{{contacts.mobile}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Email Address</dt>
+                                                            <dd>{{contacts.email}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Address</dt>
+                                                            <dd>{{contacts.address}}, {{contacts.state}} {{contacts.city}} {{contacts.zipcode}}</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="pmbb-edit" ng-show="edit">
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Mobile Phone</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.mobile" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Email Address</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.email" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Address</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.address" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pmb-block">
+                                                <div class="pmbb-header">
+                                                    <h2><i class="zmdi zmdi-rss m-r-5"></i> Subscription</h2>
+                                                </div>
+                                                <div class="pmbb-body p-l-30">
+                                                    <div class="pmbb-view" ng-show="view">
+                                                        <dl class="dl-horizontal">
+                                                            <dt>Start Term</dt>
+                                                            <dd>{{contacts.date_start}}</dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>End Term</dt>
+                                                            <dd>{{contacts.date_end}}</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="pmbb-edit" ng-show="edit">
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">Start Term</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.date_start" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt class="p-t-10">End Term</dt>
+                                                            <dd>
+                                                                <div class="form-group">
+                                                                    <input type="text" ng-model="contacts.date_end" />
+                                                                    <i class="bar"></i>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="m-t-30 updateBtnHolder">
+                                                            <button ng-click="updateAccount()" class="btnss palette-Blue bg waves-effect">Save</button>
+                                                            <button ng-click="edit = false; view = true" class="btnss  waves-effect">Discard</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <dl class="dl-horizontal">
+                                                <div class="pmb-block">
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label"> Customer ID: </label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.company_username" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label"> Company Name: </label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.company_name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Last Name: </label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.lastname" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">First Name :</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.firstname" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Middle Name :</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.middlename" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Type :</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.person_type" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Email:</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Mobile Number:</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.mobile" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Address:</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea disabled ng-model="contacts.address" class="form-control" rows="3" placeholder="Address ..." /></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">State:</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.state" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">City:</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.city" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <label class="col-sm-4 control-label">Zip Code:</label>
+                                                        <div class="col-sm-8">
+                                                            <input disabled class="form-control" ng-model="contacts.zipcode" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label class="col-sm-4 control-label">Start Term: </label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <input type="text" disabled class="form-control" data-date-format="MM-dd-yyyy" ng-model="contacts.date_start" bs-datepicker/>
+                                                                <div class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label class="col-sm-4 control-label">End Term: </label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <input type="text" disabled class="form-control" ng-disabled="!enableEndTerm" data-date-format="MM-dd-yyyy" ng-model="contacts.date_end" bs-datepicker/>
+                                                                <div class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </dl> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Image:</label>
+                                                <div class="col-sm-8">
+                                                    <img ng-src="{{contacts.image}}" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                                                    <div class="input-group image-preview">
+                                                        <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-warning image-preview-clear"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                                                            <div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.product_variant_imgPath" ngf-max-size="8MB" ngf-select="upload($files)" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div> -->
+                                    <!-- <hr>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <dl class="dl-horizontal">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-4 control-label"></div>
+                                                    <div class="col-sm-8">
+                                                        <button class="btn btn-sm btn-primary" ng-click="updateAccount()"><i class="fa fa-edit"></i> Update</button>
+                                                    </div>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div> -->
+                                </form>
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab2">
+                        <div class="tab-label-content" id="tab2-content" ng-controller="ContactAccountCtrl">
+                            <label class="tab-label-header" for="tab2">Message</label>
+                            <div class="tab-content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="pmb-block" ng-init="view2 = true">
+                                            <div class="pmbb-header">
+                                                <h2><i class="zmdi zmdi-assignment-check m-r-5"></i> Validations</h2>
+                                                <div class="actions" ng-show="view2">
+                                                    <button ng-click="edit2 = true; view2 = false;" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="pmbb-body p-l-30">
+                                                <div class="pmbb-view" ng-show="view2">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>User Roles</dt>
+                                                        <dd>{{tag.name}}</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Valid Until</dt>
+                                                        <dd>{{account.valid_until}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="pmbb-edit" ng-show="edit2">
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">User Roles</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="tag.name" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">Valid Until</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="account.valid_until" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pmb-block">
+                                            <div class="pmbb-header">
+                                                <h2><i class="zmdi zmdi-account-o m-r-5"></i> Account Information</h2>
+                                            </div>
+                                            <div class="pmbb-body p-l-30">
+                                                <div class="pmbb-view" ng-show="view2">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Username</dt>
+                                                        <dd>{{account.username}}</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>User Password</dt>
+                                                        <dd>{{account.password}}</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Recovery Email</dt>
+                                                        <dd>{{account.recovery_email}}</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Personal ID Number</dt>
+                                                        <dd>{{account.pos_pin}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="pmbb-edit" ng-show="edit2">
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">Username</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="account.username" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">User Password</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="account.password" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">Recovery Email</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="account.recovery_email" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="p-t-10">Personal ID Number</dt>
+                                                        <dd>
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="account.pos_pin" />
+                                                                <i class="bar"></i>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                    <div class="m-t-30 updateBtnHolder">
+                                                        <button ng-click="updateAccount()" class="btnss palette-Blue bg waves-effect">Save</button>
+                                                        <button ng-click="edit2 = false; view2 = true" class="btnss  waves-effect">Discard</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> User Roles: </label>
+                                                <div class="col-sm-8">
+                                                    <span ng-if="account.role.length > 0" class="role-tag label label-primary" ng-repeat="tag in account.role">{{tag.name}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="col-sm-4 control-label">Valid Until: </label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input type="text" disabled class="form-control" data-date-format="MM-dd-yyyy" ng-model="account.valid_until" bs-datepicker/>
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dl> -->
+                                    </div>
+                                </div>
+                                <!--  <div class="row">
+                                    <div class="col-xs-12">
+                                        <h2 class="page-header"></h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> Username: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="account.username" />
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> User Password: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="password" disabled class="form-control" ng-model="account.password" />
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> Recovery Email: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="account.recovery_email" />
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> Personal Identification Number: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="account.pos_pin" />
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-4 control-label"></div>
+                                                <div class="col-sm-8">
+                                                    <button class="btn btn-sm btn-primary" ng-click="updateAccount()"><i class="fa fa-edit"></i> Update</button>
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab3">
+                        <div class="tab-label-content" id="tab3-content" ng-controller="ContactLogsCtrl">
+                            <label class="tab-label-header" for="tab3">Payment History</label>
+                            <div class="tab-content">
+                                <div class="pmb-block">
+                                    <div class="pmbb-header">
+                                        <h2><i class="zmdi zmdi-time-restore"></i> Payment History </h2>
+                                    </div>
+                                </div>
+                                <div id="data-table-basic-header" class="bootgrid-header container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-12 actionBar">
+                                            <div class="search form-group">
+                                                <div class="input-group"><span class="zmdi icon input-group-addon zmdi-search"></span>
+                                                    <input type="text" class="search-field form-control" placeholder="Search" ng-model="txtSearchUser">
+                                                </div>
+                                            </div>
+                                            <div class="actions btn-group">
+                                                <div class="dropdown btn-group">
+                                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="dropdown-text"><span class="zmdi icon zmdi-view-module"></span></span> <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu pull-right" role="menu">
+                                                        <li>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" checked="checked" /><i class="helper"></i>Log Date
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" /><i class="helper"></i>Username
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" /><i class="helper"></i>Module
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </dl>
+                                <div class="daterange">
+                                    <div class="form-group width col-md-4">
+                                        <label>From</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control searchInput" data-date-format="MMM dd yyyy" ng-model="details.dateFrom" bs-datepicker/>
+                                            <div class="input-group-addon inputAdd">
+                                                <i class="zmdi zmdi-network"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group width col-md-4">
+                                        <label>To</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control searchInput" data-date-format="MMM dd yyyy" ng-model="details.dateEnd" bs-datepicker/>
+                                            <div class="input-group-addon inputAdd">
+                                                <i class="zmdi zmdi-network"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group col-md-2">
+                                        <label>&nbsp;</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-flat" ng-click="filterLogs()"><i class="fa fa-filter"></i> Filter</button>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="table-responsive mailbox-messages">
+                                        <table class="table table-hover table-striped" data-page-size="20" data-limit-navigation="10">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Log Date</th>
+                                                    <th class="text-center">Username</th>
+                                                    <th class="text-center">Module</th>
+                                                    <th class="text-center">IP Address</th>
+                                                    <th class="text-center">Action</th>
+                                                    <th class="text-center">Parameters</th>
+                                                    <th class="text-center">Details</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="row in logs  track by $index">
+                                                    <td class="text-center" data-title="'Log Date'">
+                                                        {{row.created_at}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Username'">
+                                                        {{row.userprofile.username}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Module'">
+                                                        {{row.module}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'IP Address'">
+                                                        {{row.ip_address}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Action'">
+                                                        {{row.action}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Parameters'">
+                                                        {{row.parameters}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Details'">
+                                                        {{row.action_details}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot class="hide-if-no-paging">
+                                                <tr>
+                                                    <td colspan="6" align="center">
+                                                        <ul class="pagination"></ul>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.col -->
+                        <div class="slide"></div>
                     </div>
-                    <!--  <div class="row no-print">
-                <div class="col-xs-12">
-                    <button ng-hide=" details.is_approved == 1 " class="btn btn-sm btn-primary " ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
-                    <button ng-hide="  details.deny_date !=null " class="btn btn-sm btn-danger" ng-click="denySubscription(details.sr_id)">Denied</button>
                 </div>
-            </div> -->
-                </form>
+                <!--  <div class="nav-tabs-custom" bs-tabs>
+                    <div data-title="<i class='fa fa-user'></i> Profile" bs-pane>
+                        <div class="tab-pane active" id="profile">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="page-header">
+                            <i class="glyphicon glyphicon-info-sign"></i>Contact Information
+                            
+                        </h2>
+                                </div>
+                            </div> -->
+                <!-- <form role="form" class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> Customer ID: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.company_username" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label"> Company Name: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.company_name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Last Name: </label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.lastname" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">First Name :</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.firstname" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Middle Name :</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.middlename" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Type :</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.person_type" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Email:</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Mobile Number:</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.mobile" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Address:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea disabled ng-model="contacts.address" class="form-control" rows="3" placeholder="Address ..." /></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">State:</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.state" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">City:</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.city" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Zip Code:</label>
+                                                <div class="col-sm-8">
+                                                    <input disabled class="form-control" ng-model="contacts.zipcode" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="col-sm-4 control-label">Start Term: </label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input type="text" disabled class="form-control" data-date-format="MM-dd-yyyy" ng-model="contacts.date_start" bs-datepicker/>
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="col-sm-4 control-label">End Term: </label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input type="text" disabled class="form-control" ng-disabled="!enableEndTerm" data-date-format="MM-dd-yyyy" ng-model="contacts.date_end" bs-datepicker/>
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <label class="col-sm-4 control-label">Image:</label>
+                                                <div class="col-sm-8">
+                                                    <img ng-src="{{contacts.image}}" err-src="http://placehold.it/250x250" class="thumbnail" width="250" height="250">
+                                                    <div class="input-group image-preview">
+                                                        <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-warning image-preview-clear"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                                                            <div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="prod.product_variant_imgPath" ngf-max-size="8MB" ngf-select="upload($files)" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <dl class="dl-horizontal">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-4 control-label"></div>
+                                                <div class="col-sm-8">
+                                                    <button class="btn btn-sm btn-primary" ng-click="updateAccount()"><i class="fa fa-edit"></i> Update</button>
+                                                </div>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </form> -->
+                <!--  </div>
+                    </div>
+                    <div data-title="<i class='fa fa-key'></i> User Account" bs-pane>
+                        <div class="tab-pane active" id="profile" ng-controller="ContactAccountCtrl">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="page-header">
+                            <i class="glyphicon glyphicon-info-sign"></i>Account Information
+                        </h2>
+                                </div>
+                            </div> -->
+                <!-- <div class="row">
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <label class="col-sm-4 control-label"> User Roles: </label>
+                                            <div class="col-sm-8">
+                                                <span ng-if="account.role.length > 0" class="role-tag label label-primary" ng-repeat="tag in account.role">{{tag.name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="col-sm-4 control-label">Valid Until: </label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <input type="text" disabled class="form-control" data-date-format="MM-dd-yyyy" ng-model="account.valid_until" bs-datepicker/>
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="page-header"></h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <label class="col-sm-4 control-label"> Username: </label>
+                                            <div class="col-sm-8">
+                                                <input disabled class="form-control" ng-model="account.username" />
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <label class="col-sm-4 control-label"> User Password: </label>
+                                            <div class="col-sm-8">
+                                                <input type="password" disabled class="form-control" ng-model="account.password" />
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <label class="col-sm-4 control-label"> Recovery Email: </label>
+                                            <div class="col-sm-8">
+                                                <input disabled class="form-control" ng-model="account.recovery_email" />
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <label class="col-sm-4 control-label"> Personal Identification Number: </label>
+                                            <div class="col-sm-8">
+                                                <input disabled class="form-control" ng-model="account.pos_pin" />
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <dl class="dl-horizontal">
+                                        <div class="form-group col-sm-6">
+                                            <div class="col-sm-4 control-label"></div>
+                                            <div class="col-sm-8">
+                                                <button class="btn btn-sm btn-primary" ng-click="updateAccount()"><i class="fa fa-edit"></i> Update</button>
+                                            </div>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div> -->
+                <!-- </div>
+                    </div>
+                    <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>
+                        <div class="tab-pane active" id="activity">
+                            <div class="box box-primary" ng-controller="ContactLogsCtrl">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"></h3>
+                                    <div class="box-tools pull-right">
+                                        <div class="has-feedback">
+                                            <input type="text" class="form-control input-sm" placeholder="Search..." ng-model="txtSearchUser" />
+                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-header with-border">
+                                    <div class="form-group col-md-2">
+                                        <label>From: </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.dateFrom" bs-datepicker/>
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>To: </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.dateEnd" bs-datepicker/>
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>&nbsp;</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-flat" ng-click="filterLogs()"><i class="fa fa-filter"></i> Filter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    <div class="table-responsive mailbox-messages">
+                                        <table class="table table-hover table-striped" data-page-size="20" data-limit-navigation="10">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">Log Date</td>
+                                                    <td class="text-center">Username</td>
+                                                    <td class="text-center">Module</td>
+                                                    <td class="text-center">IP Address</td>
+                                                    <td class="text-center">Action</td>
+                                                    <td class="text-center">Parameters</td>
+                                                    <td class="text-center">Details</td>
+                                                </tr>
+                                                <tr ng-repeat="row in logs  track by $index">
+                                                    <td class="text-center" data-title="'Log Date'">
+                                                        {{row.created_at}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Username'">
+                                                        {{row.userprofile.username}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Module'">
+                                                        {{row.module}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'IP Address'">
+                                                        {{row.ip_address}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Action'">
+                                                        {{row.action}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Parameters'">
+                                                        {{row.parameters}}
+                                                    </td>
+                                                    <td class="text-center" data-title="'Details'">
+                                                        {{row.action_details}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot class="hide-if-no-paging">
+                                                <tr>
+                                                    <td colspan="6" align="center">
+                                                        <ul class="pagination"></ul>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
             </div>
-        </div>
-        <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
-        <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
-        <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
-        <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div>
+        </section>
     </div>
 </section>
+<style type="text/css">
+@media (min-width: 768px) {
+    #profile-main .pm-overview {
+        position: inherit;
+        left: 0;
+        top: 0;
+        /*height: 100%;*/
+        background: #f8f8f8;
+        border-right: 1px solid #eee;
+    }
+}
+
+@media (min-width: 1200px) {
+    #profile-main .pm-overview {
+        width: 400px;
+    }
+}
+
+.dropdown-menu.datepicker {
+    top: -15% !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 300ms;
+    animation-duration: 300ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    padding: 10px 0px;
+    border-radius: 3px;
+}
+
+.dropdown-menu.datepicker thead .btn-default {
+    background: #fff;
+    border: 0 !important;
+    border-radius: 3px;
+    height: 38px;
+    width: 100%;
+    font-weight: 400;
+}
+
+.dropdown-menu.datepicker thead th {
+    font-weight: 400;
+}
+
+.dropdown-menu.datepicker thead tr:last-child {
+    color: #333 !important;
+    background: #ddd;
+}
+
+.dropdown-menu.datepicker thead th:first-child .btn-default {
+    border-radius: 50%;
+}
+
+.dropdown-menu.datepicker thead th:last-child .btn-default {
+    border-radius: 50%;
+}
+
+.dropdown-menu.datepicker thead th .btn-default {
+    border-radius: 3px;
+}
+
+.dropdown-menu.datepicker .btn-default {
+    background: #fff;
+    border: 0 !important;
+    border-radius: 50%;
+    height: 39px;
+    width: 45px;
+}
+
+.dropdown-menu.datepicker .btn-default:hover {
+    background: rgba(0, 0, 0, 0.075);
+}
+
+.daterange {
+    padding-left: 50px;
+}
+
+.daterange .width {
+    padding-right: 0px;
+    width: 36%;
+}
+
+.daterange .searchInput {
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #009688 !important;
+    font-size: 15px !important;
+}
+
+.daterange .inputAdd {
+    padding: 6px 0px !important;
+    border: 0px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #999999 !important;
+}
+
+.daterange label {
+    color: #555;
+    font-weight: 400;
+}
+
+.daterange .input-group {
+    width: 100%;
+}
+
+.bootgrid-header .search .glyphicon-search {
+    vertical-align: top;
+    padding: 9px 10px 0;
+}
+
+.bootgrid-header .search .form-control,
+.bootgrid-header .search .input-group-addon {
+    border: 0;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.bootgrid-header {
+    padding: 0 25px 10px;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.bootgrid-footer .infoBar,
+.bootgrid-header .actionBar {
+    text-align: left;
+}
+
+.bootgrid-header .search {
+    width: 300px;
+}
+
+.bootgrid-header .actions {
+    box-shadow: none;
+}
+
+.bootgrid-header .search {
+    border: 1px solid #e0e0e0;
+}
+
+.bootgrid-footer .search,
+.bootgrid-header .search {
+    vertical-align: top;
+}
+
+.bootgrid-header .actions .btn-group {
+    border: 1px solid #e0e0e0;
+}
+
+.bootgrid-header .actions .btn-group .btn {
+    height: 34px;
+    box-shadow: none !important;
+    background: transparent;
+    border: 0px;
+}
+
+.icon.zmdi-search:before {
+    content: '\f1c3';
+    font-size: 17px;
+}
+
+.bootgrid-header .actions .btn-group .zmdi {
+    line-height: 100%;
+    font-size: 18px;
+    vertical-align: top;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+}
+
+.bootgrid-header .actions .btn-group .caret {
+    display: none;
+}
+
+.bootgrid-footer .infoBar .btn-group>.btn-group .dropdown-menu,
+.bootgrid-header .actionBar .btn-group>.btn-group .dropdown-menu {
+    text-align: left;
+}
+
+.bootgrid-header .dropdown-menu .checkbox {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.bootgrid-header .dropdown-menu .checkbox label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 5rem;
+    text-align: left;
+    color: #333;
+    display: block;
+}
+
+.bootgrid-header .dropdown-menu .checkbox .helper {
+    color: #999;
+    position: absolute;
+    top: 1px;
+    left: 25px;
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: 0;
+    border: 0.125rem solid currentColor;
+    border-radius: 0.0625rem;
+    -webkit-transition: border-color 0.28s ease;
+    transition: border-color 0.28s ease;
+}
+
+.bootgrid-header .dropdown-menu .checkbox .helper::before {
+    top: 1.1rem;
+    left: 0.50rem;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    box-shadow: 0 0 0 0.0625rem #fff;
+}
+
+.bootgrid-header .dropdown-menu .checkbox .helper::after {
+    top: 0.6rem;
+    left: 1px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.bootgrid-header .dropdown-menu .checkbox input:checked ~ .helper::before {
+    height: 1.5rem;
+    -webkit-transition-delay: 0.28s;
+    transition-delay: 0.8s;
+}
+
+.bootgrid-footer .infoBar .btn-group>.btn-group .dropdown-menu .dropdown-item,
+.bootgrid-header .actionBar .btn-group>.btn-group .dropdown-menu .dropdown-item {
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
+
+.glyphicon-search:before {
+    content: "\e003";
+}
+
+.bootgrid-header .actions .btn-group .dropdown-menu .dropdown-item {
+    padding: 0 0 0 27px !important;
+}
+
+.bootgrid-header .actions .btn-group .dropdown-menu {
+    left: 0;
+    -webkit-transform-origin: top left;
+    -moz-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+    margin-top: 1px;
+}
+
+.bootgrid-header .actions .btn-group .dropdown-menu {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 300ms;
+    animation-duration: 300ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    padding: 10px 20px;
+    border-radius: 3px;
+    top: -1px;
+    margin: 0;
+    border: 0;
+}
+
+.bootgrid-footer .search,
+.bootgrid-header .search {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    vertical-align: middle;
+    width: 300px;
+}
+
+.bootgrid-footer,
+.bootgrid-header {
+    margin: 15px 50px 10px;
+}
+
+#profile-main .pmb-block .pmbb-header {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+#profile-main .pmb-block .pmbb-header h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.m-r-5 {
+    margin-right: 5px !important;
+}
+
+#profile-main .pmb-block .pmbb-header .actions {
+    position: absolute;
+    top: -2px;
+    right: 0;
+}
+
+#profile-main .pmb-block:last-child {
+    margin-bottom: 50px;
+}
+
+.actions {
+    list-style: none;
+    padding: 0;
+    z-index: 3;
+    margin: 0;
+}
+
+.actions > li {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.actions > li > a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 50%;
+}
+
+.actions > li > a,
+.actions > li > a > i {
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+}
+
+.actions > li > a > i {
+    color: #adadad;
+    font-size: 20px;
+}
+
+.dropdown-menu-right {
+    left: auto;
+    right: 0;
+}
+
+.p-l-30 {
+    padding-left: 30px !important;
+}
+
+.bootgrid-header .actions .btn-group.open .zmdi {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #5e5e5e;
+}
+
+.dl-horizontal dt {
+    text-align: left;
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+dt {
+    font-weight: bold;
+}
+
+.pmbb-edit .dl-horizontal dd {
+    margin-left: 195px;
+}
+
+.pmbb-edit dl {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #5e5e5e;
+}
+
+dt,
+dd {
+    line-height: 1.42857143;
+}
+
+.updateBtnHolder {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.dl-horizontal dd {
+    margin-left: 180px;
+}
+
+.pmbb-edit .form-group {
+    position: relative;
+    margin-bottom: 0rem;
+    margin-top: -4px;
+}
+
+dd {
+    margin-left: 0;
+}
+
+#profile-main .pmb-block {
+    padding: 40px 42px 0;
+}
+
+#profile-main .pm-overview {
+    overflow-y: auto;
+}
+
+.mCustomScrollbar {
+    -ms-touch-action: pinch-zoom;
+    touch-action: pinch-zoom;
+}
+
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr;
+}
+
+.mCSB_container {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+#profile-main .pmo-pic {
+    position: relative;
+    margin: 20px;
+}
+
+#profile-main .pmo-pic img {
+    width: 100%;
+    border-radius: 2px 2px 0 0;
+}
+
+.btn.palette-White {
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+#profile-main .pmo-pic .pmop-message .dropdown-menu button {
+    bottom: 5px;
+    left: 88px;
+}
+
+.bgm-green {
+    background-color: #4caf50 !important;
+    color: #fff;
+}
+
+.btn-float i {
+    font-size: 23px;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+#profile-main .pmo-pic .pmop-message .dropdown-menu {
+    padding: 5px 0 55px;
+    left: -90px;
+    width: 228px;
+    height: 155px;
+    top: -77px;
+    border-radius: 3px;
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+
+#profile-main .pmo-pic .pmop-message .dropdown-menu textarea {
+    width: 100%;
+    height: 95px;
+    border: 0;
+    resize: none;
+    padding: 10px 19px;
+}
+
+.btn-float {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 45px !important;
+}
+
+#profile-main .pmo-pic .pmop-edit {
+    width: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#profile-main .pmo-pic .pmop-edit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.38);
+    text-align: center;
+    padding: 10px 10px 11px;
+    -webkit-transition: opacity;
+    -o-transition: opacity;
+    transition: opacity;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+}
+
+#profile-main .pmo-pic .pmop-edit i {
+    margin-right: 4px;
+}
+
+#profile-main .pmo-pic .pmop-edit i {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+#profile-main .pmo-pic .pmo-stat {
+    background: #ffc107;
+    padding-bottom: 15px !important;
+}
+
+#profile-main .pmo-pic .pmo-stat {
+    border-radius: 0 0 2px 2px;
+    color: #fff;
+    text-align: center;
+    padding: 30px 5px 0;
+}
+
+.m-0 {
+    margin: 0px !important;
+}
+
+#profile-main .pmo-pic .pmop-edit:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#profile-main .pmo-pic:hover .pmop-edit {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+#profile-main .pmo-pic .pmop-edit {
+    width: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#profile-main {
+    min-height: 797px;
+    position: relative;
+    display: flex;
+}
+
+.card {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    border-radius: 2px;
+}
+
+.waves-float {
+    -webkit-mask-image: none;
+    -webkit-box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    -o-transition: all 300ms;
+    transition: all 300ms;
+}
+
+.btn-float {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 45px !important;
+}
+
+#profile-main .pmo-pic .pmop-message {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: 245px;
+    ;
+}
+
+#profile-main .pmo-block {
+    padding: 25px;
+    padding-top: 15px;
+}
+
+#profile-main .pmo-block > h2 {
+    font-size: 16px;
+    margin: 0 0 15px;
+}
+
+.pmo-contact ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pmo-contact ul li {
+    position: relative;
+    padding: 8px 0 8px 35px;
+}
+
+.pmo-contact ul li i {
+    font-size: 18px;
+    vertical-align: top;
+    line-height: 100%;
+    position: absolute;
+    left: 0;
+    width: 18px;
+    text-align: center;
+    color: #555;
+}
+
+.tab-wrap {
+    width: 100%;
+    /* margin-left: 20%; */
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 1px;
+    /*box-shadow: inset 0 -2px 0 0 #e2e2e2;*/
+}
+
+input[type="radio"][name="tabs"] {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content label {
+    color: rgb(72, 72, 72);
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+    display: block;
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+    left: calc((100% / 3) * 0);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+    left: calc((100% / 3) * 1);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+    left: calc((100% / 3) * 2);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+    left: calc((100% / 3) * 3);
+}
+
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+    left: 0;
+}
+
+.tab-label-header {
+    cursor: pointer;
+    color: #777777;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 45px;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.slide {
+    background: #2196f3;
+    width: calc(100% / 3);
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: calc(8% - 19px);
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+}
+
+.tab-label-content {
+    width: 100%;
+}
+
+.tab-label-content .tab-content {
+    position: absolute;
+    top: 45px;
+    border-top: 2px solid #ececec;
+    left: 16px;
+    line-height: 130%;
+    display: none;
+    margin-left: -16px;
+    background: #fff;
+    padding: 0px;
+    width: 100%;
+    /*height: 475px;*/
+    /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)*/
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        padding: 40px 0 90px 10%;
+    }
+    .tab-wrap {
+        width: 100%;
+    }
+}
+
+.form-radio,
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group small {
+    font-size: 11px;
+    color: #a5a5a5;
+    position: absolute;
+}
+
+.form-inline > .form-group,
+.form-inline > .btn {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.form-help {
+    margin-top: 0.125rem;
+    margin-left: 0.125rem;
+    color: #b3b3b3;
+    font-size: 0.8rem;
+}
+
+.checkbox .form-help,
+.form-radio .form-help,
+.form-group .form-help {
+    position: absolute;
+    width: 100%;
+}
+
+.checkbox .form-help {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-radio .form-help {
+    padding-top: 0.25rem;
+    margin-top: -1rem;
+}
+
+.form-group input {
+    /*height: 1.9rem;*/
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.form-group select {
+    height: 2.8rem;
+    border: none;
+    display: block;
+    background: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group .control-label {
+    position: absolute;
+    top: 0.25rem;
+    pointer-events: none;
+    padding-left: 0.125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: normal;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+}
+
+.form-group .bar {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    display: block;
+}
+
+.form-group .bar::before {
+    content: '';
+    height: 0.100rem;
+    width: 0;
+    left: 50%;
+    bottom: -0.0625rem;
+    position: absolute;
+    background: #2196f3;
+    -webkit-transition: left 0.28s ease, width 0.28s ease;
+    transition: left 0.28s ease, width 0.28s ease;
+    z-index: 2;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    background: none;
+    padding: 0.125rem 0.125rem 0.0625rem;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group input[type="file"] {
+    line-height: 1;
+}
+
+.form-group input[type="file"] ~ .bar {
+    display: none;
+}
+
+.form-group select,
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value,
+.form-group textarea:focus,
+.form-group textarea:valid,
+.form-group textarea.form-file,
+.form-group textarea.has-value {
+    color: #333;
+}
+
+.form-group select ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
+.form-group textarea:valid ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label {
+    font-size: 0.8rem;
+    color: gray;
+    top: -1rem;
+    left: 0;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+}
+
+.form-group select:focus ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group textarea:focus ~ .control-label {
+    color: #337ab7;
+}
+
+.form-group select:focus ~ .bar::before,
+.form-group input:focus ~ .bar::before,
+.form-group textarea:focus ~ .bar::before {
+    width: 100%;
+    left: 0;
+}
+
+.checkbox label,
+.form-radio label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 2rem;
+    text-align: left;
+    color: #333;
+    display: block;
+}
+
+.checkbox input,
+.form-radio input {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+}
+
+.radio {
+    margin-bottom: 1rem;
+}
+
+.radio .helper {
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #999;
+}
+
+.radio .helper::before,
+.radio .helper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    -webkit-transition: -webkit-transform 0.28s ease;
+    transition: -webkit-transform 0.28s ease;
+    transition: transform 0.28s ease;
+    transition: transform 0.28s ease, -webkit-transform 0.28s ease;
+    border-radius: 50%;
+    border: 0.125rem solid currentColor;
+}
+
+.radio .helper::after {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.radio label:hover .helper {
+    color: #337ab7;
+}
+
+.radio input:checked ~ .helper::after {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.radio input:checked ~ .helper::before {
+    color: #337ab7;
+}
+
+.checkbox {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox .helper {
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    z-index: 0;
+    border: 0.125rem solid currentColor;
+    border-radius: 0.0625rem;
+    -webkit-transition: border-color 0.28s ease;
+    transition: border-color 0.28s ease;
+}
+
+.checkbox .helper::before,
+.checkbox .helper::after {
+    position: absolute;
+    height: 0;
+    width: 0.2rem;
+    background-color: #337ab7;
+    display: block;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-radius: 0.25rem;
+    content: '';
+    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;
+    transition: opacity 0.28s ease, height 0s linear 0.28s;
+    opacity: 0;
+}
+
+.checkbox .helper::before {
+    top: 0.65rem;
+    left: 0.38rem;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    box-shadow: 0 0 0 0.0625rem #fff;
+}
+
+.checkbox .helper::after {
+    top: 0.3rem;
+    left: 0;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.checkbox label:hover .helper {
+    color: #337ab7;
+}
+
+.checkbox input:checked ~ .helper {
+    color: #337ab7;
+}
+
+.checkbox input:checked ~ .helper::after,
+.checkbox input:checked ~ .helper::before {
+    opacity: 1;
+    -webkit-transition: height 0.28s ease;
+    transition: height 0.28s ease;
+}
+
+.checkbox input:checked ~ .helper::after {
+    height: 0.5rem;
+}
+
+.checkbox input:checked ~ .helper::before {
+    height: 1.2rem;
+    -webkit-transition-delay: 0.28s;
+    transition-delay: 0.28s;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+    margin-top: 1rem;
+}
+
+.has-error .legend.legend,
+.has-error.form-group .control-label.control-label {
+    color: #d9534f;
+}
+
+.has-error.form-group .form-help,
+.has-error.form-group .helper,
+.has-error.checkbox .form-help,
+.has-error.checkbox .helper,
+.has-error.radio .form-help,
+.has-error.radio .helper,
+.has-error.form-radio .form-help,
+.has-error.form-radio .helper {
+    color: #d9534f;
+}
+
+.has-error .bar::before {
+    background: #d9534f;
+    left: 0;
+    width: 100%;
+}
+</style>

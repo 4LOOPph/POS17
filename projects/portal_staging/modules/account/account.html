@@ -1,48 +1,37 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Accounts
-        <small>Subscribers</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li class="active">Account</li>
-    </ol>
-</section>
-<!-- Main content -->
+<div class="overTop"></div>
 <section class="content">
     <!-- /.row -->
     <div class="row">
         <section class="col-lg-12">
             <div class="box">
-                <div class="box-header">
-                    <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-info">Action</button>
-                            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
+                <div class="box-header palette-Light">
+                    <h3 class="box-title">Accounts Subscribers
+                    <small>List of Accounts Subscribers</small></h3>
+                </div>
+                <div class="boxSubheader">
+                    <div class="subHeaderLabel">Action</div>
+                    <div class="input-group" style="width: 50%;">
+                        <div class="input-group-btn">
+                            <button class="btn searchBtn dropdown-toggle ng-binding" data-toggle="dropdown">
+                                Export by:
+                                <i class="zmdi zmdi-network"></i>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Export All</a>
+                            <ul class="dropdown-menu search" role="menu">
+                                <li><a>Export All</a>
                                 </li>
-                                <li><a href="#">Export Selected</a>
+                                <li><a>Export Selected</a>
                                 </li>
                             </ul>
                         </div>
-                        <a ui-sref="main.account.new">
-                            <button class="btn btn-sm btn-info">New Account</button>
-                        </a>
                     </div>
-                    <!-- /. tools -->
-                    <i class="fa fa-users"></i>
-                    <h3 class="box-title">Accounts</h3>
+                    <div class="actionBtnHolder">
+                        <button ui-sref="main.account.new" class="actionBtn" style="padding: 1px 7px !important;"><i class="zmdi zmdi-playlist-plus"></i></button>
+                    </div>
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover footable" data-page-size="10">
+                    <table class="table table-hover table-accounts footable" data-page-size="10">
                         <thead>
                             <tr>
                                 <th>Company Name</th>
@@ -51,25 +40,32 @@
                                 <th>Current Address</th>
                                 <th>Account Type</th>
                                 <th>Phone</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="account in accounts">
-                                <td><a ng-click="getAccountDetails(account.sub_id) ">{{account.company_name}}</a></td>
+                            <tr ng-repeat="account in accounts" ng-repeat-end-watch="myFunction">
+                                <td>{{account.company_name}}</td>
                                 <td>{{account.firstname+ ',' + account.lastname}}</td>
                                 <td>{{account.email}}</td>
                                 <td>{{account.address1}}</td>
                                 <td>
-                                    <span ng-if="account.isExisting == 1" class="label label-success">Existing</span>
-                                    <span ng-if="account.isExisting == 0" class="label label-primary">New</span>
+                                    <ul class="lgi-attrs">
+                                        <li ng-if="account.isExisting == 1"><span style="color:#4caf50">Existing</span></li>
+                                        <li ng-if="account.isExisting == 0"><span style="color:#2196F3">New</span></li>
+                                    </ul>
                                 </td>
                                 <td>{{account.phone}}</td>
+                                <td class="text-right">
+                                    <button ng-click="getAccountDetails(account.sub_id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-edit"></span></button>
+                                    <button ng-click="getSymphonyDetails(account.sub_id)" class="btn btn-icon command-delete waves-effect waves-circle"><span class="zmdi zmdi-home"></span></button>
+                                    <button ng-click="getSymphonyAssets(account.sub_id)" class="btn btn-icon command-delete waves-effect waves-circle"><span class="zmdi zmdi-storage"></span></button>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>
-                                <td colspan="6" align="center">
+                                <td colspan="6">
                                     <ul class="pagination"></ul>
                                 </td>
                             </tr>

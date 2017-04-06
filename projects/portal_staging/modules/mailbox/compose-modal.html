@@ -1,0 +1,102 @@
+<div class="modal-header">
+    <h4>New Message</h4>
+</div>
+<div class="modal-body">
+    <!--  <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-rss"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Plan Name" ng-model="plan.name" />
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-label-alt-outline"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Label" ng-model="plan.label" />
+                        <i class="bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <img>
+                    </div>
+                    <div class="col-sm-11">
+                        <textarea placeholder="Description" ng-model="plan.description"></textarea>
+                        <i class="bar"></i>
+                        <small>(Plan Description)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-tag-more"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" required="required" placeholder="Price" ng-model="plan.price" />
+                        <i class="bar"></i>
+                        <small>(Price)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> -->
+    <div class="col-md-12 senderEmail">
+        <small>From</small>
+        <br> Sample_1@mail.com
+    </div>
+    <div class="col-md-12 no-padding">
+        <div class="form-group">
+            <input type="text" required="required" autofocus="true" />
+            <label class="control-label" for="input">To</label><i class="bar"></i>
+            <div class="Bcc">
+                <span ng-show="!Cc" ng-click="Cc = true">CC</span>
+                <span ng-show="!Bcc" ng-click="Bcc = true">BCC</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 no-padding" ng-show="Cc">
+        <div class="form-group">
+            <input type="text" required="required" />
+            <label class="control-label" for="input">Cc</label><i class="bar"></i>
+        </div>
+    </div>
+    <div class="col-md-12 no-padding" ng-show="Bcc">
+        <div class="form-group">
+            <input type="text" required="required" />
+            <label class="control-label" for="input">Bcc</label><i class="bar"></i>
+        </div>
+    </div>
+    <div class="col-md-12 no-padding">
+        <div class="form-group">
+            <input type="text" required="required" />
+            <label class="control-label" for="input">Subject</label><i class="bar"></i>
+        </div>
+    </div>
+    <div class="col-md-12 no-padding trixHolder">
+        <trix-editor ng-model="trix" angular-trix trix-initialize="trixInitialize(e, editor);" trix-change="trixChange(e, editor);" trix-selection-change="trixSelectionChange(e, editor);" trix-focus="trixFocus(e, editor);" trix-blur="trixBlur(e, editor);" trix-file-accept="trixFileAccept(e, editor);" trix-attachment-add="trixAttachmentAdd(e, editor);" trix-attachment-remove="trixAttachmentRemove(e, editor);"></trix-editor>
+    </div>
+</div>
+</div>
+<div class="modal-footer">
+    <button ng-click="savePlan()" class="btnss palette-Blue bg waves-effect leftBtn">Send</button>
+    <ul class="ah-actions action a-alt leftBtn" style="padding-left: 15px;">
+        <li>
+            <a class="ah-search-trigger" uib-tooltip="Attach file">
+                <i class="zmdi zmdi-attachment-alt" style="color: #555"></i>
+            </a>
+        </li>
+    </ul>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
+</div>

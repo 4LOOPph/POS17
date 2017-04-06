@@ -1,30 +1,41 @@
 <div class="modal-header">
-    <h3 class="modal-title">Manage Subscription Plan</h3>
+    <h4>Manage Subscription Plan</h4>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal" novalidate>
-        <div class="form-group">
-            <label for="inputGroupName" class="col-sm-3 control-label">Plan</label>
-            <div class="col-sm-9">
-                <ui-select ng-model="details.plan">
-                    <ui-select-match>
-                        {{$select.selected.name}}
-                    </ui-select-match>
-                    <ui-select-choices repeat="emp in plans | filter: $select.search track by $index">
-                        {{emp.name}}
-                    </ui-select-choices>
-                </ui-select>
+    <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12" style="padding-left: 51px;">
+                <div class="col-sm-12">Select Types of Plan</div>
+                <div class="form-group col-sm-6">
+                    <div class="">
+                        <ui-select ng-model="details.plan">
+                            <ui-select-match>
+                                {{$select.selected.name}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="emp in plans | filter: $select.search track by $index">
+                                {{emp.name}}
+                            </ui-select-choices>
+                        </ui-select>
+                        <i class="zmdi zmdi-network selectiCon"></i>
+                        <i class="bar"></i>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputGroupDesc" class="col-sm-3 control-label">Memo</label>
-            <div class="col-sm-9">
-                <textarea class="form-control" placeholder="Memo" row="10" ng-model="details.memo" ng-required="true" ></textarea>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                    </div>
+                    <div class="col-sm-11">
+                        <textarea placeholder="Memo" ng-model="details.memo" class="ng-pristine ng-untouched ng-valid ng-not-empty" ng-required="true" row="10"></textarea>
+                        <i class="bar"></i>
+                        <small>(Memo)</small>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-flat btn-primary" ng-click="saveAccountPlan()">Update</button>
-    <button class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+    <button ng-click="saveAccountPlan()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
 </div>

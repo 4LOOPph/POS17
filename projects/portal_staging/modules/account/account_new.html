@@ -1,195 +1,252 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Customer
-        <small>New Account</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li class="active">Account</li>
-    </ol>
-</section>
-
-<!-- Main content -->
+<div class="overTop"></div>
 <section class="content">
     <div class="row">
         <section class="col-lg-12">
             <div class="box box-primary">
-                <div class="box-header">
-                    <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <button type="submit" class="btn btn-sm btn-primary">Save</button>
-                        <button type="submit" class="btn btn-sm btn-success">Save &amp; Create Another</button>
-                        <button type="submit" class="btn btn-sm btn-warning">Discard</button>
-                    </div>
-                    <!-- /. tools -->
-                    <h3 class="box-title"><i class="fa fa-user"></i> Account
-                        <small>Basic Information</small>
-                    </h3>
+                <div class="box-header palette-Light">
+                    <h3 class="box-title">Basic Information
+                    <small>Account basic information</small></h3>
                 </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" class="form-horizontal">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="form-group col-sm-6">
-                                <label for="exampleInputEmail1" class="col-sm-4 control-label">Account Name</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Required" />
+                <form role="form">
+                    <div class="form-body">
+                        <dl class="dl-horizontal">
+                            <div class="box-body">
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-assignment-account"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="Account Name" />
+                                            <i class="bar"></i>
+                                            <small class="reqField">(Required)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-account-box-o"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="Account Owner" />
+                                            <i class="bar"></i>
+                                            <small class="reqField">(Required)</small>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Account Owner</label>
-                                <div class="col-sm-8">
-                                    <p class="form-control">Toto Lara</p>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-pin-account"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <select>
+                                                <option value="" disabled selected style="display: none;">Select</option>
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </select>
+                                            <i class="zmdi zmdi-network selectiCon"></i>
+                                            <i class="bar"></i>
+                                            <small>(Type)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-accounts"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <select>
+                                                <option value="" disabled selected style="display: none;">Select</option>
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </select>
+                                            <i class="zmdi zmdi-network selectiCon"></i>
+                                            <i class="bar"></i>
+                                            <small>(Parent Account)</small>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Type</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" data-placeholder="Pick a type">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-globe"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="Website" />
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Parent Account</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" data-placeholder="Pick a type">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-phone"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="Phone" />
+                                            <i class="bar"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Website</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" />
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-city"></i>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <select>
+                                                <option value="" disabled selected style="display: none;">Select</option>
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </select>
+                                            <i class="zmdi zmdi-network selectiCon"></i>
+                                            <i class="bar"></i>
+                                            <small>(Industry)</small>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Phone</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" />
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-10">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <textarea placeholder="Description"></textarea>
+                                            <i class="bar"></i>
+                                            <small>(Description)</small>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Industry</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" data-placeholder="Pick a type">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="col-sm-4 control-label">Description</label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <section class="col-lg-6">
-                                <div class="box-header">
-                                    <h3 class="box-title"><i class="fa fa-credit-card"></i> Billing Address
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12 rowDivider" style="padding-top: 0px;">
+                                    </div>
+                                    <div style="padding-bottom: 20px">Billing Address
+                                        <br>
                                         <small>Bill to this address</small>
-                                    </h3>
+                                    </div>
                                 </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="form-group col-sm-12">
-                                            <label for="exampleInputEmail1" class="col-sm-4 control-label">Country</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" data-placeholder="Pick a type">
-                                                    <option>Mustard</option>
-                                                    <option>Ketchup</option>
-                                                    <option>Relish</option>
-                                                </select>
-                                            </div>
+                                <br>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-pin"></i>
                                         </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">Postal Code</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" placeholder="Country" />
+                                            <i class="bar"></i>
+                                            <small>(Country)</small>
                                         </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">State/Province</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">City</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">Street</label>
-                                            <div class="col-sm-8">
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" placeholder="Postal Code" />
+                                            <i class="bar"></i>
+                                            <small>(Postal Code)</small>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                            <section class="col-lg-6">
-                                <div class="box-header">
-                                    <h3 class="box-title"><i class="fa fa-truck"></i> Shipping Address
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="State/Province" />
+                                            <i class="bar"></i>
+                                            <small>(State/Province)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="City" />
+                                            <i class="bar"></i>
+                                            <small>(City)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-10">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <textarea placeholder="Street"></textarea>
+                                            <i class="bar"></i>
+                                            <small>(Street)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12 rowDivider" style="padding-top: 0px;">
+                                    </div>
+                                    <div style="padding-bottom: 20px">Shipping Address
+                                        <br>
                                         <small>Ship to this address</small>
-                                    </h3>
+                                    </div>
                                 </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="form-group col-sm-12">
-                                            <label for="exampleInputEmail1" class="col-sm-4 control-label">Country</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" data-placeholder="Pick a type">
-                                                    <option>Mustard</option>
-                                                    <option>Ketchup</option>
-                                                    <option>Relish</option>
-                                                </select>
-                                            </div>
+                                <br>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <i class="zmdi zmdi-pin"></i>
                                         </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">Zip/Postal Code</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" placeholder="Country" />
+                                            <i class="bar"></i>
+                                            <small>(Country)</small>
                                         </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">State/Province</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">City</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label class="col-sm-4 control-label">Street</label>
-                                            <div class="col-sm-8">
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" placeholder="Postal Code" />
+                                            <i class="bar"></i>
+                                            <small>(Postal Code)</small>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-6">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="State/Province" />
+                                            <i class="bar"></i>
+                                            <small>(State/Province)</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="col-sm-11">
+                                            <input type="text" required="required" placeholder="City" />
+                                            <i class="bar"></i>
+                                            <small>(City)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-group col-sm-10">
+                                        <div class="imgInput">
+                                            <img>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <textarea placeholder="Street"></textarea>
+                                            <i class="bar"></i>
+                                            <small>(Street)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="row no-print">
+                        <div class="col-xs-12 btnHolder">
+                            <button class="btnss palette-Blue bg waves-effect" type="submit">Save</button>
+                            <button class="btnss palette-Green bg waves-effect" type="submit">Save &amp; Create Another</button>
+                            <button class="btnss  bg waves-effect" type="submit">Discard</button>
                         </div>
                     </div>
-                    <!-- /.box-body -->
                 </form>
             </div>
         </section>

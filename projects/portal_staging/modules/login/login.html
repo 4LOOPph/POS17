@@ -1,29 +1,93 @@
-<div class="login-box">
-    <div class="login-logo">
-        <b>PORTAL</b>-Login
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <form ng-submit="login()">
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Username" ng-model="user.username" />
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password" ng-model="user.password" />
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+<div class="login" ng-init="login" ng-class="{'teal':login, 'blue':register, 'purple':forgot}">
+    <!-- Login -->
+    <div class="l-block toggled" ng-show="login">
+        <div class="lb-header palette-Teal bg">
+            <i class="zmdi zmdi-account-circle"></i> Hi there! Please Sign in
+        </div>
+        <div class="lb-body">
+            <form ng-submit="login()">
+                <div class="form-group fg-float">
+                    <div class="fg-line">
+                        <input type="text" class="input-sm form-control fg-input" placeholder="Username" ng-model="user.username">
+                        <i class="bar"></i>
+                    </div>
                 </div>
+                <div class="form-group fg-float">
+                    <div class="fg-line">
+                        <input type="password" class="input-sm form-control fg-input" placeholder="Password" ng-model="user.password">
+                        <i class="bar"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btnss palette-Teal bg waves-effect" data-ripple>Sign in</button>
+            </form>
+            <div class="m-t-20">
+                <a ng-click="register = true; login = false; forgot = false" class="palette-Teal text d-block m-b-5">Creat an account</a>
+                <a ng-click="register = false; login = false; forgot = true" class="palette-Teal text">Forgot password?</a>
             </div>
-        </form>
-        <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a ui-sref="forgot" class="btn btn-block btn-default btn-flat">I forgot my password</a>
         </div>
     </div>
-    <!-- /.login-box-body -->
+    <!-- Register -->
+    <div class="l-block toggled" ng-show="register">
+        <div class="lb-header palette-Blue bg">
+            <i class="zmdi zmdi-account-circle"></i> Create an account
+        </div>
+        <div class="lb-body">
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="text" class="input-sm form-control fg-input" placeholder="Name" ng-model="user.username">
+                    <i class="bar"></i>
+                </div>
+            </div>
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="Email" class="input-sm form-control fg-input" placeholder="Email Address" ng-model="user.username">
+                    <i class="bar"></i>
+                </div>
+            </div>
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="password" class="input-sm form-control fg-input" placeholder="Password" ng-model="user.username">
+                    <i class="bar"></i>
+                </div>
+            </div>
+            <div class="checkbox m-b-30">
+                <label class="padL50">
+                    <input id="cbx1" type="checkbox" class="cbx" />
+                    <label for="cbx1" class="lbl positionCheckbox">Accept the license agreement</label>
+                </label>
+            </div>
+            <button class="btnss palette-Blue bg waves-effect" data-ripple>Create Account</button>
+            <div class="m-t-20">
+                <a ng-click="register = false; login = true; forgot = false" class="text d-block m-b-5">Already have an account?</a>
+                <a ng-click="register = false; login = false; forgot = true" class="text">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot Password -->
+    <div class="l-block toggled" ng-show="forgot">
+        <div class="lb-header palette-Purple bg">
+            <i class="zmdi zmdi-account-circle"></i> Forgot Password?
+        </div>
+        <div class="lb-body">
+            <p class="m-b-30">Please enter email address associated with your account to reset your password.</p>
+            <div class="form-group fg-float">
+                <div class="fg-line">
+                    <input type="Email" class="input-sm form-control fg-input" placeholder="Email Address" ng-model="user.username">
+                    <i class="bar"></i>
+                </div>
+            </div>
+            <button class="btnss palette-Purple bg waves-effect" data-ripple>Create Account</button>
+            <div class="m-t-20">
+                <a ng-click="register = false; login = true; forgot = false" class="palette-Purple text d-block m-b-5">Already have an account?</a>
+                <a ng-click="register = true; login = false; forgot = false" class="palette-Purple text">Create an account</a>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /.login-box -->
+<div class="showbox" ng-hide="loginAlertMessage">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div>

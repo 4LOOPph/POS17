@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add an Event</h4>
+</div>
+<div class="modal-body">
+    <form class="addEvent" role="form">
+        <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <div class="fg-line">
+                <input type="text" required="required" placeholder="eg: Sports day" required="true" />
+                <i class="bar"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eventName">Tag Color</label>
+            <div class="event-tag">
+                <span id="tagColor" class="palette-Teal bg" ng-click="T = 1;R = !1;P = !1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': T == 1}">
+                </span>
+                <span id="tagColor" class="palette-Red bg" ng-click="T = !1;R = 1;P = !1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': R == 1}">
+                </span>
+                <span id="tagColor" class="palette-Pink bg" ng-click="T = !1;R = !1;P = 1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': P == 1}">
+                </span>
+                <span id="tagColor" class="palette-Blue bg" ng-click="T = !1;R = !1;P = !1;B = 1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': B == 1}">
+                </span>
+                <span id="tagColor" class="palette-Lime bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = 1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': L == 1}">
+                </span>
+                <span id="tagColor" class="palette-Green bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = 1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': G == 1}">
+                </span>
+                <span id="tagColor" class="palette-Cyan bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = !1;C = 1;O = !1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': C == 1}">
+                </span>
+                <span id="tagColor" class="palette-Orange bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = !1;C = !1;O = 1;Pu = !1;Gr = !1;Bl = !1;" ng-class="{'selected': O == 1}">
+                </span>
+                <span id="tagColor" class="palette-Purple bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = 1;Gr = !1;Bl = !1;" ng-class="{'selected': Pu == 1}">
+                </span>
+                <span id="tagColor" class="palette-Grey bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = 1;Bl = !1;" ng-class="{'selected': Gr == 1}">
+                </span>
+                <span id="tagColor" class="palette-Black bg" ng-click="T = !1;R = !1;P = !1;B = !1;L = !1;G = !1;C = !1;O = !1;Pu = !1;Gr = !1;Bl = 1;" ng-class="{'selected': Bl == 1}">
+                </span>
+            </div>
+        </div>
+        <input type="hidden" ng-model="Start" value="{{}}">
+        <input type="hidden" ng-model="End" value="{{}}">
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btnss palette-Blue bg waves-effect" ng-click="addEvent()">Add Event</button>
+    <button type="button" class="btnss  waves-effect" ng-click="cancel()">Close</button>
+</div>

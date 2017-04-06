@@ -1,0 +1,414 @@
+<div ng-controller="AccountPaymentCtrl">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Payment Gateways
+                    <small>Available payment gateways</small></h3>
+    </div>
+    <div style="padding: 0 15px;">
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-stripe"></i> Stripe 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-paypal"></i> Paypal 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-jcb"></i> JCB 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-mastercard"></i> Mastercard 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-visa"></i> Visa 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-discover"></i> Discover 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="fa fa-cc-amex"></i> A Express 
+                </h3>
+                    <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

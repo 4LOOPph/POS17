@@ -1,0 +1,717 @@
+<!-- Content Header (Page header) -->
+<div class="overTop"></div>
+<section class="content-header">
+    <h1>
+        Subscription Account / Symphony Details
+    </h1>
+</section>
+<section class="content" ng-init="isActiveTab('contacts')">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box box-primary" style="height: 301px;">
+                <div class="box-header palette-Light">
+                    <h3 class="box-title">Subscription Account / Symphony Details
+                    <small>Symphony Details</small></h3>
+                </div>
+                <form role="form" class="">
+                    <div class="form-body">
+                        <dl class="dl-horizontal">
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled placeholder="Last Name" ng-model="details.lastname" />
+                                        <i class="bar"></i>
+                                        <small>(Last Name)</small>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/ic_email_black_24px.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled placeholder="Email" ng-model="details.email" />
+                                        <i class="bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 rowDivider" style="padding-top: 0px;border: 0;">
+                            </div>
+                        </dl>
+                    </div>
+                </form>
+                <div class="col-md-12" style="padding:0">
+                    <div class="tab-wrap">
+                        <input type="radio" name="tabs" id="tab1" value="contacts" ng-model="activeTab.name" ng-click="setActiveTab('contacts')">
+                        <div class="tab-label-content" id="tab1-content">
+                            <label class="tab-label-header" for="tab1">Contact List</label>
+                            <div class="tab-content">
+                                <ng-include src="'./modules/account/symphony/contact.html'" scope="" onload=""></ng-include>
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab2" value="users" ng-model="activeTab.name" ng-click="setActiveTab('users')">
+                        <div class="tab-label-content" id="tab2-content">
+                            <label class="tab-label-header" for="tab2">User Accounts</label>
+                            <div class="tab-content">
+                                <ng-include src="'./modules/account/symphony/users.html'" scope="" onload=""></ng-include>
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab3" value="products" ng-model="activeTab.name" ng-click="setActiveTab('products')">
+                        <div class="tab-label-content" id="tab3-content">
+                            <label class="tab-label-header" for="tab3">Products</label>
+                            <div class="tab-content">
+                                <ng-include src="'./modules/account/symphony/products.html'" scope="" onload=""></ng-include>
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab4" value="bundles" ng-model="activeTab.name" ng-click="setActiveTab('bundles')">
+                        <div class="tab-label-content" id="tab4-content">
+                            <label class="tab-label-header" for="tab4">Bundles</label>
+                            <div class="tab-content">
+                                <ng-include src="'./modules/account/symphony/bundles.html'" scope="" onload=""></ng-include>
+                            </div>
+                        </div>
+                        <input type="radio" name="tabs" id="tab5" value="companies" ng-model="activeTab.name" ng-click="setActiveTab('companies')">
+                        <div class="tab-label-content" id="tab5-content">
+                            <label class="tab-label-header" for="tab5">Companies</label>
+                            <div class="tab-content">
+                                <ng-include src="'./modules/account/symphony/company.html'" scope="" onload=""></ng-include>
+                            </div>
+                        </div>
+                        <div class="slide"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<style type="text/css">
+.tab-wrap {
+    /* width: 50%;*/
+    /* margin-left: 20%; */
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 1px;
+    box-shadow: inset 0 -2px 0 0 #e2e2e2;
+}
+
+input[type="radio"][name="tabs"] {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content label {
+    color: rgb(72, 72, 72);
+}
+
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+    display: block;
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+    left: calc((100% / 5) * 0);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+    left: calc((100% / 5) * 1);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+    left: calc((100% / 5) * 2);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+    left: calc((100% / 5) * 3);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(5):checked ~ .slide {
+    left: calc((100% / 5) * 4);
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(6):checked ~ .slide {
+    left: calc((100% / 5) * 5);
+}
+
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+    left: 0;
+}
+
+.tab-label-header {
+    cursor: pointer;
+    color: #777777;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.slide {
+    background: #2196f3;
+    width: calc(100% / 5);
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 2px);
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+}
+
+.tab-label-content {
+    width: 100%;
+}
+
+.tab-label-content .tab-content {
+    position: absolute;
+    top: 45px;
+    left: 16px;
+    line-height: 130%;
+    display: none;
+    margin-left: -16px;
+    background: #fff;
+    padding: 0px;
+    width: 100%;
+    /*height: 475px;*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        padding: 40px 0 90px 10%;
+    }
+    .tab-wrap {
+        width: 100%;
+    }
+}
+
+.form-radio,
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group small {
+    font-size: 11px;
+    color: #a5a5a5;
+    position: absolute;
+}
+
+.form-inline > .form-group,
+.form-inline > .btn {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.form-help {
+    margin-top: 0.125rem;
+    margin-left: 0.125rem;
+    color: #b3b3b3;
+    font-size: 0.8rem;
+}
+
+.checkbox .form-help,
+.form-radio .form-help,
+.form-group .form-help {
+    position: absolute;
+    width: 100%;
+}
+
+.checkbox .form-help {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-radio .form-help {
+    padding-top: 0.25rem;
+    margin-top: -1rem;
+}
+
+.form-group input {
+    /*height: 1.9rem;*/
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.form-group select {
+    height: 2.8rem;
+    border: none;
+    display: block;
+    background: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group .control-label {
+    position: absolute;
+    top: 0.25rem;
+    pointer-events: none;
+    padding-left: 0.125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: normal;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+}
+
+.form-group .bar {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    display: block;
+}
+
+.form-group .bar::before {
+    content: '';
+    height: 0.100rem;
+    width: 0;
+    left: 50%;
+    bottom: -0.0625rem;
+    position: absolute;
+    background: #2196f3;
+    -webkit-transition: left 0.28s ease, width 0.28s ease;
+    transition: left 0.28s ease, width 0.28s ease;
+    z-index: 2;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    background: none;
+    padding: 0.125rem 0.125rem 0.0625rem;
+    font-size: 1.3rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 2.1;
+    width: 100%;
+    color: #999999;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+
+.form-group input[type="file"] {
+    line-height: 1;
+}
+
+.form-group input[type="file"] ~ .bar {
+    display: none;
+}
+
+.form-group select,
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value,
+.form-group textarea:focus,
+.form-group textarea:valid,
+.form-group textarea.form-file,
+.form-group textarea.has-value {
+    color: #333;
+}
+
+.form-group select ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
+.form-group textarea:valid ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label {
+    font-size: 0.8rem;
+    color: gray;
+    top: -1rem;
+    left: 0;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+}
+
+.form-group select:focus ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group textarea:focus ~ .control-label {
+    color: #337ab7;
+}
+
+.form-group select:focus ~ .bar::before,
+.form-group input:focus ~ .bar::before,
+.form-group textarea:focus ~ .bar::before {
+    width: 100%;
+    left: 0;
+}
+
+.checkbox label,
+.form-radio label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 2rem;
+    text-align: left;
+    color: #333;
+    display: block;
+}
+
+.checkbox input,
+.form-radio input {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+}
+
+.radio {
+    margin-bottom: 1rem;
+}
+
+.radio .helper {
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #999;
+}
+
+.radio .helper::before,
+.radio .helper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    -webkit-transition: -webkit-transform 0.28s ease;
+    transition: -webkit-transform 0.28s ease;
+    transition: transform 0.28s ease;
+    transition: transform 0.28s ease, -webkit-transform 0.28s ease;
+    border-radius: 50%;
+    border: 0.125rem solid currentColor;
+}
+
+.radio .helper::after {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.radio label:hover .helper {
+    color: #337ab7;
+}
+
+.radio input:checked ~ .helper::after {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.radio input:checked ~ .helper::before {
+    color: #337ab7;
+}
+
+.checkbox {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox .helper {
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    z-index: 0;
+    border: 0.125rem solid currentColor;
+    border-radius: 0.0625rem;
+    -webkit-transition: border-color 0.28s ease;
+    transition: border-color 0.28s ease;
+}
+
+.checkbox .helper::before,
+.checkbox .helper::after {
+    position: absolute;
+    height: 0;
+    width: 0.2rem;
+    background-color: #337ab7;
+    display: block;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-radius: 0.25rem;
+    content: '';
+    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;
+    transition: opacity 0.28s ease, height 0s linear 0.28s;
+    opacity: 0;
+}
+
+.checkbox .helper::before {
+    top: 0.65rem;
+    left: 0.38rem;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    box-shadow: 0 0 0 0.0625rem #fff;
+}
+
+.checkbox .helper::after {
+    top: 0.3rem;
+    left: 0;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.checkbox label:hover .helper {
+    color: #337ab7;
+}
+
+.checkbox input:checked ~ .helper {
+    color: #337ab7;
+}
+
+.checkbox input:checked ~ .helper::after,
+.checkbox input:checked ~ .helper::before {
+    opacity: 1;
+    -webkit-transition: height 0.28s ease;
+    transition: height 0.28s ease;
+}
+
+.checkbox input:checked ~ .helper::after {
+    height: 0.5rem;
+}
+
+.checkbox input:checked ~ .helper::before {
+    height: 1.2rem;
+    -webkit-transition-delay: 0.28s;
+    transition-delay: 0.28s;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+    margin-top: 1rem;
+}
+
+.has-error .legend.legend,
+.has-error.form-group .control-label.control-label {
+    color: #d9534f;
+}
+
+.has-error.form-group .form-help,
+.has-error.form-group .helper,
+.has-error.checkbox .form-help,
+.has-error.checkbox .helper,
+.has-error.radio .form-help,
+.has-error.radio .helper,
+.has-error.form-radio .form-help,
+.has-error.form-radio .helper {
+    color: #d9534f;
+}
+
+.has-error .bar::before {
+    background: #d9534f;
+    left: 0;
+    width: 100%;
+}
+
+.content-wrapper,
+.right-side {
+    min-height: 1000px !important;
+    background-color: #edecec;
+    z-index: 800;
+}
+
+.input-group .input-group-addon {
+    font-size: 18px;
+    padding: 0;
+    min-width: 45px;
+}
+
+.searching {
+    margin: 0;
+}
+
+.searching input {
+    padding-left: 50px;
+    height: 45px;
+}
+
+.searching span {
+    position: absolute;
+    font-size: 20px;
+    top: 13px;
+    left: 20px;
+    color: #555;
+}
+
+.ui-select-multiple.ui-select-bootstrap {
+    height: auto !important;
+    padding: 4px 0px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #d2d6de !important;
+}
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+    padding-left: 5px;
+    background: #e8e8e8;
+    border-radius: 2px;
+}
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match .close {
+    font-size: 1em;
+    line-height: 0.70;
+    color: #fff;
+    background: #7d7d7d;
+    border-radius: 50%;
+    padding: 2px 3px 12px 0px;
+    text-align: center;
+    height: 12px;
+    /* width: 17px; */
+    margin-top: 4px;
+    margin-left: 7px;
+    opacity: 1;
+}
+
+.dropdown-menu.datepicker {
+    top: -15% !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 300ms;
+    animation-duration: 300ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    padding: 10px 0px;
+    border-radius: 3px;
+}
+
+.dropdown-menu.datepicker thead .btn-default {
+    background: #fff;
+    border: 0 !important;
+    border-radius: 3px;
+    height: 38px;
+    width: 100%;
+    font-weight: 400;
+}
+
+.dropdown-menu.datepicker thead th {
+    font-weight: 400;
+}
+
+.dropdown-menu.datepicker thead tr:last-child {
+    color: #333 !important;
+    background: #ddd;
+}
+
+.dropdown-menu.datepicker thead th:first-child .btn-default {
+    border-radius: 50%;
+}
+
+.dropdown-menu.datepicker thead th:last-child .btn-default {
+    border-radius: 50%;
+}
+
+.dropdown-menu.datepicker thead th .btn-default {
+    border-radius: 3px;
+}
+
+.dropdown-menu.datepicker .btn-default {
+    background: #fff;
+    border: 0 !important;
+    border-radius: 50%;
+    height: 39px;
+    width: 45px;
+}
+
+.dropdown-menu.datepicker .btn-default:hover {
+    background: rgba(0, 0, 0, 0.075);
+}
+
+.daterange {
+    /*padding-left: 50px;*/
+}
+
+.daterange .width {
+    padding-right: 0px;
+    width: 40%;
+}
+
+.daterange .searchInput {
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #009688 !important;
+    font-size: 15px !important;
+}
+
+.daterange .inputAdd {
+    padding: 6px 0px !important;
+    border: 0px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #999999 !important;
+    font-size: 15px;
+}
+
+.daterange label {
+    color: #555;
+    font-weight: 400;
+}
+
+.daterange .input-group {
+    width: 100%;
+}
+
+.daterange .inputAdd {
+    padding: 6px 0px !important;
+    border: 0px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    color: #999999 !important;
+    min-width: inherit;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.paddforBtninmodal {
+    padding: 35px;
+    padding-top: 20px;
+}
+</style>

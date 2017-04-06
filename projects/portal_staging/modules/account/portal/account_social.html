@@ -1,0 +1,359 @@
+<div ng-controller="socialAccountCtrl">
+    <div class="box-header palette-Light">
+        <h3 class="box-title">Social Media Accounts
+                    <small>Available social media accounts</small></h3>
+    </div>
+    <div style="padding: 0 15px;">
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader facebook-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-facebook"></i> Facebook 
+                </h3>
+                    <!-- <small ng-show="facebook.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small> -->
+                    <small>
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" ng-disabled="!facebook.request" />
+                                    <i class="bar"></i>
+                                    <small>(App ID)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" ng-disabled="!facebook.request" />
+                                    <i class="bar"></i>
+                                    <small>(App Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" ng-disabled="!facebook.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!facebook.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="facebook.request && !facebook.approved" ng-click="approvedSocialAuth('facebook')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="facebook.request" ng-click="updateSocialAuth('facebook')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.approved" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader twitter-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-twitter"></i> Twitter 
+                </h3>
+                    <small ng-show="twitter.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Consumer Key" ng-model="twitter.apiKey" ng-disabled="!twitter.request" />
+                                    <i class="bar"></i>
+                                    <small>Consumer Key (API Key)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Api Secret" ng-model="twitter.apiSecret" ng-disabled="!twitter.request" />
+                                    <i class="bar"></i>
+                                    <small>Consumer Secret (API Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="twitter.redirectUri" ng-disabled="!twitter.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!twitter.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="twitter.request && !twitter.approved" ng-click="approvedSocialAuth('twitter')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="twitter.request" ng-click="updateSocialAuth('twitter')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="twitter.approved" ng-click="deleteSocialAuth('twitter')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader googleplus-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-google"></i> Google
+                </h3>
+                    <small ng-show="google.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Id" ng-model="google.apiKey" ng-disabled="!google.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Id)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Secret" ng-model="google.apiSecret" ng-disabled="!google.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="google.redirectUri" ng-disabled="!google.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!google.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="google.request && !google.approved" ng-click="approvedSocialAuth('google')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="google.request" ng-click="updateSocialAuth('google')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="google.approved" ng-click="deleteSocialAuth('google')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader linkedIn-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-linkedin"></i> LinkedIn
+                </h3>
+                    <small ng-show="linkedin.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Id" ng-model="linkedin.apiKey" ng-disabled="!linkedin.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Id)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Secret" ng-model="linkedin.apiSecret" ng-disabled="!linkedin.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="linkedin.redirectUri" ng-disabled="!linkedin.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!linkedin.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="linkedin.request && !linkedin.approved" ng-click="approvedSocialAuth('linkedin')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="linkedin.request" ng-click="updateSocialAuth('linkedin')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="linkedin.approved" ng-click="deleteSocialAuth('linkedin')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader instagram-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-instagram"></i> Instagram
+                </h3>
+                    <small ng-show="instagram.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Id" ng-model="instagram.apiKey" ng-disabled="!instagram.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Id)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Secret" ng-model="instagram.apiSecret" ng-disabled="!instagram.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="instagram.redirectUri" ng-disabled="!instagram.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!instagram.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="instagram.request && !instagram.approved" ng-click="approvedSocialAuth('instagram')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="instagram.request" ng-click="updateSocialAuth('instagram')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="instagram.approved" ng-click="deleteSocialAuth('instagram')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-default socialBox">
+                <div class="box-header socialHeader yahoo-Bg">
+                    <h3 class="box-title"><i class="zmdi zmdi-yahoo"></i> Yahoo
+                </h3>
+                    <small ng-show="yahoo.isEnable">
+                 <span style="margin-left: 5px;" class="label label-success">ACTIVE</span>
+                </small>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/fingerprint.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Id" ng-model="yahoo.apiKey" ng-disabled="!yahoo.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Id)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/key-variant.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Client Secret" ng-model="yahoo.apiSecret" ng-disabled="!yahoo.request" />
+                                    <i class="bar"></i>
+                                    <small>(Client Secret)</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12">
+                                <div class="imgInput">
+                                    <img src="/images/link.svg">
+                                </div>
+                                <div class="col-sm-11">
+                                    <input type="text" placeholder="Redirect URL" ng-model="yahoo.redirectUri" ng-disabled="!yahoo.request" />
+                                    <i class="bar"></i>
+                                    <small>(Redirect URL)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="socialBtnHolder">
+                    <div ng-hide="!yahoo.request">
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="yahoo.request && !yahoo.approved" ng-click="approvedSocialAuth('yahoo')">Approve</button>
+                        <button class="btnss waves-effect" ng-if="yahoo.request" ng-click="updateSocialAuth('yahoo')">Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="yahoo.approved" ng-click="deleteSocialAuth('yahoo')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,120 +1,154 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Subscription  
-        <small>Details</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li><a ui-sref="main.subscriptionrequest">Subscription</a>
-        </li>
-        <li class="active">Subscription Detail</li>
-    </ol>
-</section>
-<!-- Main content -->
+<div class="overTop"></div>
 <section class="content">
-    <div class="nav-tabs-custom" bs-tabs>
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="page-header">
-                    <i class="glyphicon glyphicon-info-sign"></i>Account Information
-                </h2>
-            </div>
-        </div>
-        <form role="form" class="form-horizontal">
-            <div class="row">
-                <div class="col-sm-12">
-                    <dl class="dl-horizontal">
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Status: </label>
-                            <div class="col-sm-8">
-                                <span class="label label-primary" ng-show="details.isExisting !== 1">New Account</span>
-                                <span class="label label-success" ng-show="details.isExisting == 1">Existing Account</span>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Subscription Plan: </label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.plans.name" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Company Name: </label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.company_name" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">First Name:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.firstname" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Last Name:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.lastname" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Email:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.email" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Address:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.address1" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Address:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.address2" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">Country:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.country" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">State:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.state" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label class="col-sm-4 control-label">City:</label>
-                            <div class="col-sm-8">
-                                <input disabled class="form-control" ng-model="details.city" />
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label ng-hide=" details.is_approved == 1 && details.deny_date == null" class="col-sm-4 control-label">No. of Devices :</label>
-                            <div class="col-sm-8">
-                                <input ng-hide=" details.is_approved == 1 && details.deny_date == null" class="form-control" placeholder="total" ng-model="details.tot_qty" />
-                            </div>
-                        </div>
-                    </dl>
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header palette-Light">
+                    <h3 class="box-title">Subscription Requests
+                    <small>Subscription Requests Details</small></h3>
                 </div>
-                <!-- /.col -->
-            </div>
-            <div class="row no-print">
-                <div class="col-xs-12">
-                    <button ng-hide=" details.is_approved == 1 " class="btn btn-sm btn-primary " ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
-                    <button ng-hide="  details.deny_date !=null " class="btn btn-sm btn-danger" ng-click="denySubscription(details.sr_id)">Denied</button>
-                </div>
-            </div>
-        </form>
-        <!--    </div>
+                <form role="form">
+                    <div class="form-body">
+                        <dl class="dl-horizontal">
+                            <div class="status">
+                                Status:
+                                <span style="color: #2196F3;" ng-show="details.isExisting !== 1">New Account</span>
+                                <span style="color: #009688;" ng-show="details.isExisting == 1">Existing Account</span>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <i class="zmdi zmdi-rss"></i>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Subscription Plan" ng-model="details.plans.name" />
+                                        <i class="bar"></i>
+                                        <small>(Subscription Plan)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/domain.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Company Name" ng-model="details.company_name" />
+                                        <i class="bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/ic_person_black_24px.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="First Name" ng-model="details.firstname" />
+                                        <i class="bar"></i>
+                                        <small>(First Name)</small>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Last Name" ng-model="details.lastname" />
+                                        <i class="bar"></i>
+                                        <small>(Last Name)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/ic_email_black_24px.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Email" ng-model="details.email" />
+                                        <i class="bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/ic_location_on_black_24px.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Address" ng-model="details.address1" />
+                                        <i class="bar"></i>
+                                        <small>(Primary Address)</small>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Address" ng-model="details.address2" />
+                                        <i class="bar"></i>
+                                        <small>(Secondary Address)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="Country" ng-model="details.country" />
+                                        <i class="bar"></i>
+                                        <small>(Country)</small>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="State" ng-model="details.state" />
+                                        <i class="bar"></i>
+                                        <small>(State)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="City" ng-model="details.city" />
+                                        <i class="bar"></i>
+                                        <small>(City)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12" ng-hide=" details.is_approved == 1 && details.deny_date == null">
+                                <div class="form-group col-sm-6">
+                                    <div class="imgInput">
+                                        <img src="/images/ic_exposure_black_24px.svg">
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" disabled required="required" placeholder="No. of Devices" ng-model="details.tot_qty" />
+                                        <i class="bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </dl>
+                        <!-- </div> -->
+                        <!-- /.col -->
+                    </div>
+                    <div class="row no-print">
+                        <div class="col-xs-12 btnHolder">
+                            <button ng-hide=" details.is_approved == 1 " class="btnss palette-Blue bg waves-effect" ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
+                            <button ng-hide="  details.deny_date !=null " class="btnss palette-Red bg waves-effect" ng-click="denySubscription(details.sr_id)">Denied</button>
+                        </div>
+                    </div>
+                </form>
+                <!--    </div>
         </div> -->
-        <!-- <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
+                <!-- <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
         <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
         <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
         <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div> -->
+            </div>
+        </section>
     </div>
+    <!-- </div> -->
 </section>
