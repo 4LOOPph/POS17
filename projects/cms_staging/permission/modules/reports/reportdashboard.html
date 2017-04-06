@@ -1,0 +1,320 @@
+<section class="content-header">
+    <h1>
+            Report Dashboard
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Report Dashboard</li>
+    </ol>
+</section>
+<section class="reportdashboard">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn active btn-default" ng-click="setActive('day')">
+                        <input name="day" id="day" value="day" class="active" type="radio" data-ng-model="cssPre">Day
+                    </label>
+                    <label class="btn btn-default" ng-click="setActive('week')">
+                        <input name="week" id="week" value="week" type="radio" data-ng-model="cssPre">Week
+                    </label>
+                    <label class="btn btn-default" ng-click="setActive('month')">
+                        <input name="month" id="month" value="month" type="radio" checked="checked" data-ng-model="cssPre">Month
+                    </label>
+                    <label class="btn btn-default" ng-click="setActive('year')">
+                        <input name="year" id="year" value="year" type="radio" data-ng-model="cssPre">Year
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Date From: </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="dateFrom" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
+                    <div class="input-group-addon">
+                        <img src="./images/icon/calendar-today.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Date To: </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="dateTo" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
+                    <div class="input-group-addon">
+                        <img src="./images/icon/calendar-today.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="input-group col-md-2">
+                <label style="visibility: hidden">Click to refresh: </label>
+                <div class="input-group">
+                    <button ng-click="refresh()" class="btn"><i ng-show="isloadingGraphs" class="fa fa-spinner fa-spin ng-hide"></i> refresh</button>
+                </div>
+            </div>
+            <br></br>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Revenue</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
+                            <i style="color:{{pickAcolor(changeOf_revenue_Stat)}}"  class="{{pickAnArrow(changeOf_revenue_Stat)}}"></i>
+                            <small>( {{changeOf_revenue_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_revenue_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_revenue_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Revenue | number:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv1">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Gross Profit</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">$ {{getOverall_Grossprofit | number:2}}
+                            <i style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}"  class="{{pickAnArrow(changeOf_gross_profit_Stat)}}"></i>
+                            <small>( {{changeOf_gross_profit_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_gross_profit_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_gross_profit_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Grossprofit | number:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv2">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Sale Count</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">{{getOverall_Salecount | number:0}}
+                            <i style="color:{{pickAcolor(changeOf_items_sold_Stat)}}"  class="{{pickAnArrow(changeOf_items_sold_Stat | number:2)}}"></i>
+                            <small>( {{changeOf_items_sold_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_items_sold_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_items_sold_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Salecount | number:0}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv3">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Customers</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_customers_Stat)}}">{{getOverall_Customercount | number:0}}
+                            <i style="color:{{pickAcolor(changeOf_customers_Stat)}}" class="{{pickAnArrow(changeOf_customers_Stat)}}"></i>
+                            <small>( {{changeOf_customers_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_customers_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_customers_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Customercount | number:0}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv4">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Basket Size</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">{{getOverall_Basketsize | number: 2}}
+                            <i style="color:{{pickAcolor(changeOf_basket_size_Stat)}}" class="{{pickAnArrow(changeOf_basket_size_Stat)}}"></i>
+                            <small>( {{changeOf_basket_size_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_size_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_size_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Basketsize | number: 2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv5">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Basket Value</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">$ {{getOverall_Basketvalue | number:2}}
+                            <i style="color:{{pickAcolor(changeOf_basket_value_Stat)}}" class="{{pickAnArrow(changeOf_basket_value_Stat)}}"></i>
+                            <small>( {{changeOf_basket_value_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_value_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_value_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Basketvalue | number:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv6">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Discount</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_discount_Stat)}}">$ {{getOverall_Discount | number:2}} 
+                            <i style="color:{{pickAcolor(changeOf_discount_Stat)}}" class="{{pickAnArrow(changeOf_discount_Stat)}}"></i>
+                            <small>( {{changeOf_discount_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">$ {{getOverall_Discount | number:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv7">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Discount %</h3>
+                    </div>
+                    <div class="" style="margin: 5%;">
+                        <h3 style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">{{getOverall_Discountpercent | number:2}} 
+                        <i style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}" class="{{pickAnArrow(changeOf_discount_percent_Stat)}}"></i>
+                            <small>( {{changeOf_discount_percent_Stat | number:2}}% )</small>
+                        </h3>
+                        <div class="progress" ng-repeat="d2 in data2">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_percent_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_percent_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
+                                {{d2.store_name}} <span style="float:right;margin-right:3px;color: gray;">{{getOverall_Discountpercent | number:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="myDiv8">
+                        </div>
+                    </div>
+                    <div class="overlay" ng-show="productIsLoading">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Report Summary</h3>
+                    </div>
+                    <div class="">
+                        <div id="myDivSummary">  
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+</section>
+<div class="clearfix"></div>
+<style type="text/css">
+.chart {
+    background: #eee;
+    padding: 3px;
+}
+
+.chart div {
+    width: 0;
+    transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+.chart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 5px;
+    color: white;
+    box-shadow: 2px 2px 2px #666;
+}
+
+div .hideOnHover:hover {
+    overflow: auto;
+}
+
+.y2-axis {
+    Display: none;
+}
+
+.chart-legend {
+    Display: none;
+}
+.modebar--hover {
+    display: none;
+}
+</style>

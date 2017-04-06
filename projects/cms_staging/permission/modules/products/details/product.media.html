@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class=" box-warning m-0">
+            <div class="s">
+                <h4 class="box-title">Media / File</h4>
+            </div>
+            <div class="box-header">
+                <div class="pull-left disp-inline-flex">
+                    <button ng-click="openUploader()" class="btnflat primary-color waves-effect ml-10 fr" angular-ripple>Upload Image</button>
+                    <button ng-click="deleteAllMedia()" class="btnflat danger-color waves-effect ml-10 fr" angular-ripple>Delete All</button>
+                </div>
+            </div>
+            <div class="box-body justcont">
+                <div ng-repeat="files in product_image" class="thumbnailBox col-md-3 col-sm-6 col-xs-12 p-0">
+                    <img ngf-src="files.image_path" err-src="http://placehold.it/750x450" width="150px" height="150px" style=" width: 100% !important;">
+                    <div class="thumfooter ">
+                        <div class="btn-group pull-right" uib-dropdown>
+                            <button class=" actbuttonassets btn-box-tool dropdown-toggle" uib-dropdown-toggle uib-tooltip="More action"><img src="./images/icon/ic_more_vert_black_24px.svg " style="margin: 0;"></button>
+                            <ul class="dropdown-menu" uib-dropdown-menu>
+                                <li>
+                                    <a ng-href="{{files.image_path}}" target="_self" download="{{files.image_path}}">
+                                        <img src="./images/icon/ic_file_download_black_24px.svg"> Download
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" ng-click="openLightboxModal(files)">
+                                        <img src="./images/icon/ic_visibility_black_24px.svg "> View
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" ng-click="setAsThumbNail(files)">Set as Thumbnail</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="" ng-click="copyURLLink(files)"><img src="./images/icon/ic_link_black_24px.svg"> Copy URL
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="pull-right actbuttonassets btn-box-tool" ng-click="deleteSelected(files)" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg "></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

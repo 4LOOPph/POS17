@@ -1,0 +1,140 @@
+<div class="row variants" ng-controller="productVariantsCtrl">
+    <form role="form" ng-submit="addProduct()">
+        <div class="col-md-12">
+            <div class=" box-warning m-0">
+                <div class="s">
+                    <h4 class="box-title">Variants</h4>
+                </div>
+                <!-- <div class="box-header" style="padding: 10px 20px;">
+                    <div class="">
+                        <div class="form-inline w100p disp-inline-flex ">
+                            <div class=" btn-group mailbox-controls  ">
+                                <button ng-click="openAttributeModal()" class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Add Variants</button>
+                                <button ng-click="saveCategory()" class="btnflat danger-color waves-effect fl mr-10 " angular-ripple>Delete</button>
+                                <button ng-click="getAllCategory()" class="btnflat  waves-effect fl mr-10 " angular-ripple>Refresh</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="box-body pt-20">
+                    <div class="form-group col-md-6">
+                        <label>Add Attribute</label>
+                        <!-- <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteEmail($item)" multiple tagging="tagTransform" tagging-label="Enter Email" ng-model="sharer.email" theme="bootstrap" close-on-select="false">
+                            <ui-select-match><img src="./images/icon/ic_person_black_24px.svg"> <span>{{$item.displayName}}</span> </ui-select-match>
+                            <ui-select-choices repeat="tag in items | propsFilter: {email: $select.search,displayName:$select.search}">
+                                <div ng-bind-html="tag.displayName | highlight: $select.search"></div>
+                                <small>
+                          Name: {{tag.displayName}}<br>
+                          email: {{tag.email}}
+                        </small>
+                            </ui-select-choices>
+                        </ui-select> -->
+                        <!-- <tags-input ng-model="tags">
+                            <auto-complete source="loadTags($query)"></auto-complete>
+                        </tags-input> -->
+                        <ui-select class="form-control" reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="attribute.tags" theme="bootstrap" close-on-select="false">
+                            <ui-select-match placeholder="Enter Attributes...">{{$item.tags}}</ui-select-match>
+                            <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>
+                            <input for="check" type="checkbox" class="checkbox ng-pristine ng-valid ng-empty ng-touched ng-untouched" ng-true-value="1" ng-false-value="0" ng-checked="details.is_visible == 1" >
+                            <div id="check" class="lab"> Create Variation Automatically</div>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button class="btnflat primary-color fl waves-effect mr-10 " angular-ripple>Create</button>
+                    </div>
+                </div>
+                <div class="box-body p-0">
+                    <table class="table  footable" data-page-size="10" id="tblAttributes">
+                        <thead>
+                            <tr>
+                                <th class="" data-sort-ignore="true">Color</th>
+                                <th class="" data-sort-ignore="true">Image</th>
+                                <th class="" data-sort-ignore="true">Size</th>
+                                <th class="" data-sort-ignore="true">Price</th>
+                                <th class="" data-sort-ignore="true">SKU</th>
+                                <th class="" data-sort-ignore="true">Inventory</th>
+                                <th class="" data-sort-ignore="true">Status</th>
+                                <th data-sort-ignore="true"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td style="padding-top: 22px;">
+                                    Red
+                                </td>
+                                <td>
+                                    <img class="img-thumbnail" ng-src="http://placehold.it/40x40" err-src="http://placehold.it/40x40" style="width:40px;height:40px;">
+                                </td>
+                                <td style="padding-top: 22px;">
+                                    Small
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="Price" style="margin-top: 7px;" value="500">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="SKU" style="margin-top: 7px;" value="50">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="Inventory" style="margin-top: 7px;" value="5">
+                                </td>
+                                <td>
+                                    <div>
+                                        <div class="">
+                                            <input type="checkbox" id="unchecked" class="cbx hidden" />
+                                            <label for="unchecked" class="lbl" style="top: 13px;"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- <button ng-click="edit(product.p_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button ng-click="edit(product.p_id)" class="btn btn-danger btn-xs btn-flat"><i class="glyphicon glyphicon-remove"></i></button> -->
+                                    <!-- <nav class="menu">
+                                        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+                                        <label class="menu-open-button" for="menu-open">
+                                            <span class="hamburger hamburger-1"></span>
+                                            <span class="hamburger hamburger-2"></span>
+                                            <span class="hamburger hamburger-3"></span>
+                                        </label>
+                                        <a href="#" class="menu-item"></a>
+                                        <a href="#" class="menu-item"> </a>
+                                        <a href="#" class="menu-item"> </a>
+                                        <a href="#" class="menu-item"> </a>
+                                    </nav> -->
+                                    <div class="disp-inline-flex pt-10">
+                                        <a ng-click="edit(product.p_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit"><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                                        <a ng-click="toggleModal(article.article_id);" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Delete"><img src="./images/icon/ic_delete_black_24px.svg"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" align="center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box-body disp-inline-flex  pr-25 pb-20 fr">
+            <button ng-click="goBack()" class="btnflat default-color waves-effect fr" angular-ripple>Cancel</button>
+            <button type="submit" class="btnflat primary-color waves-effect ml-10 fr" ng-disabled="productForm.$invalid" angular-ripple>Save</button>
+        </div>
+    </form>
+</div>
+<style type="text/css">
+.tab-content .open>.dropdown-menu {
+    display: block;
+    float: right !important;
+    margin-left: 0;
+    margin-top: -1px;
+}
+</style>

@@ -1,0 +1,60 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<div class="sidebar" ng-show="bigside" ng-init="hideOther = true">
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" class="img-circle" alt="User Image" />
+        </div>
+        <div class="pull-right info">
+            <b ng-bind="profile.EmpName"></b>
+            <br>
+            <br>
+            <small><i class="fa fa-circle text-success"></i> ( {{activeSub}} )</small>
+        </div>
+    </div>
+    <!-- Sidebar user panel -->
+    <div class="autoscroll">
+        <ul class="sidebar-menu ">
+            <li class="header">NAVIGATION</li>
+            <li angular-ripple>
+                <a ui-sref="main.dashboard"><img src="./images/icon/ic_dashboard_white_24px.svg"> Dashboard</a>
+            </li>
+            <li class="treeview" ng-repeat="item in appPermissions.modules | orderBy:'sortorder'" ng-if="item.features.length > 0 && item.name !=='Others'">
+                <a angular-ripple>
+                    <i class="zmdi zmdi-{{item.icon}} zmdi-hc-lg"></i> <span>{{item.name}}</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-down pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li angular-ripple ng-repeat="row in item.features | orderBy:'nodes'">
+                        <a ui-sref="{{row.item_url}}" ng-if="row.item_url !== null">
+                            <i class="zmdi zmdi-{{row.item_icon}} zmdi-hc-lg"></i> <span>{{row.item_name}}</span>
+                        </a>
+                        <a href="" ng-if="row.item_url == null">
+                            <i class="zmdi zmdi-{{row.item_icon}} zmdi-hc-lg"></i> <span>{{row.item_name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="header">OTHERS</li>
+            <li angular-ripple ng-class="{'active': active === true}" ng-repeat="item in appPermissions.others track by $index">
+                <a ui-sref="{{item.item_url}}" ng-click="hideOther = false">
+                    <i class="zmdi zmdi-{{item.icon}} zmdi-hc-lg"></i> {{item.item_name}}
+                </a>
+            </li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+            <li class="header"></li>
+        </ul>
+    </div>
+</div>
