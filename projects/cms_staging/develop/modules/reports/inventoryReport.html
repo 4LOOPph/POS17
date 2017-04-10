@@ -9,27 +9,10 @@
         <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Report Dashboard</li>
     </ol>
-    <!-- <div class="form-group" style="     margin-top: 20px;
-    position: absolute;
-    left: 0px;">
-                  <i class="zmdi zmdi-calendar-note" style="    position: absolute;
-    margin-top: 7px;
-    margin-left: 15px;
-    font-size: 20px;color: #247471"></i>
-                    <input date-range-picker " class="form-control date-picker" type="text" ng-model="date" options="opts" required/ style="  padding-left: 38px;
-    color: rgb(24, 82, 79);
-    width: 225px;
-    border: 0px;">
-    <i class="zmdi zmdi-chevron-down" style="    position: absolute;
-    margin-top: -23px;
-    right: 14px;"></i>
-                </div> -->
 </section>
 <section class="reportdashboard">
     <div class="col-md-12">
-        <button type="button" class="btnflat success-color waves-effect" style="    position: absolute;
-    right: 15px;
-    margin-top: -67px;">Export Data</button>
+        <button type="button" class="btnflat success-color waves-effect" style="position: absolute;right: 15px;margin-top: -67px;">Export Data</button>
         <div class="row" style="position: absolute;
     margin-top: -85px;">
             <div class="form-group col-md-4" style="margin-top: 5px;">
@@ -38,7 +21,6 @@
                         <div class="input-group ">
                             <label>Report Type:</label>
                             <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple="" aria-expanded="true"><span class=" angular-ripple animate" style="width: 220px; height: 220px; left: -42px; top: -108px;"></span> Stock on hand
-                                <!-- {{applicationStatus}} -->
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
@@ -76,123 +58,22 @@
                             </tr>
                         </table>
                         <table class="table table-hover" ng-table="quoteTable">
-                            <tr>
+                            <tr ng-repeat="alias in invProducts">
                                 <td class="text-center totalHeader" width="25%">
-                                    Total
-                                </td>
-                                <td class="text-center totalHeader" width="25%">
-                                    100
+                                    {{alias.product_name}}
                                 </td>
                                 <td class="text-center totalHeader" width="25%">
-                                    100
+                                    {{alias.store}}
                                 </td>
                                 <td class="text-center totalHeader" width="25%">
-                                    100
+                                    {{alias.stock_onhand}}
                                 </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" width="25%">
-                                    Cheese Cake
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
-                                </td>
-                                <td class="text-center" width="25%">
-                                    20
+                                <td class="text-center totalHeader" width="25%">
+                                    {{alias.reorder_level}}
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    <!-- <div class="overlay" ng-show="productIsLoading">
-                        <div class="loader"></div>
-                    </div> -->
                 </div>
             </div>
         </div>
