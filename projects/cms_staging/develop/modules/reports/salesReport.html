@@ -1,0 +1,101 @@
+<section class="content-header" style="    background: #ffffff;
+    padding-bottom: 80px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);">
+    <h1>
+            Sales Report
+          </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sales Dashboard</li>
+    </ol>
+</section>
+<section class="reportdashboard">
+    <div class="col-md-12">
+        <div class="row" style="position: absolute;margin-top: -85px;">
+            <div class="form-group col-md-4" style="margin-top: 5px;">
+                <form class="datepickar ng-pristine ng-valid">
+                    <div class="form-group">
+                        <div class="input-group ">
+                            <label>Sales Summary :</label>
+                            <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple="" aria-expanded="true"><span class=" angular-ripple animate" style="width: 220px; height: 220px; left: -42px; top: -108px;"></span> {{selectedParam1}}
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <span class="barzz"></span>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="updateSalesSummary('user')">User</a>
+                                </li>
+                                <li><a ng-click="updateSalesSummary('product')">Product</a>
+                                </li>
+                                <li><a ng-click="updateSalesSummary('customer')">Customer</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group col-md-4" style="margin-top: 5px;">
+                <form class="datepickar ng-pristine ng-valid">
+                    <div class="form-group">
+                        <div class="input-group ">
+                            <label>Measures :</label>
+                            <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple="" aria-expanded="true"><span class=" angular-ripple animate" style="width: 220px; height: 220px; left: -42px; top: -108px;"></span> {{selectedParam2}}
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <span class="barzz"></span>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="updateSalesMeasures('revenue')">Revenue</a>
+                                </li>
+                                <li><a ng-click="updateSalesMeasures('others')">Others</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br></br>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-body table-responsive padding p-0">
+                        <table class="table table-hover">
+                            <tr>
+                                <td class="text-center tableHeadzz" width="25%">
+                                    Summary
+                                </td>
+                                <td class="text-center tableHeadzz" width="25%">
+                                    Revenue
+                                </td>
+                                <td class="text-center tableHeadzz" width="25%">
+                                    Cost Of Goods
+                                </td>
+                                <td class="text-center tableHeadzz" width="25%">
+                                    Gross Profit
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-hover" ng-table="quoteTable">
+                            <tr ng-repeat="alias in filteredSalesRep">
+                                <td class="text-center totalHeader" width="25%">
+                                    {{alias.product_name}}
+                                </td>
+                                <td class="text-center totalHeader" width="25%">
+                                    {{alias.store}}
+                                </td>
+                                <td class="text-center totalHeader" width="25%">
+                                    {{alias.stock_onhand}}
+                                </td>
+                                <td class="text-center totalHeader" width="25%">
+                                    {{alias.reorder_level}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

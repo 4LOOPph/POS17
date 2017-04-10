@@ -13,22 +13,21 @@
 <section class="reportdashboard">
     <div class="col-md-12">
         <button type="button" class="btnflat success-color waves-effect" style="position: absolute;right: 15px;margin-top: -67px;">Export Data</button>
-        <div class="row" style="position: absolute;
-    margin-top: -85px;">
+        <div class="row" style="position: absolute;margin-top: -85px;">
             <div class="form-group col-md-4" style="margin-top: 5px;">
                 <form class="datepickar ng-pristine ng-valid">
                     <div class="form-group">
                         <div class="input-group ">
                             <label>Report Type:</label>
-                            <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple="" aria-expanded="true"><span class=" angular-ripple animate" style="width: 220px; height: 220px; left: -42px; top: -108px;"></span> Stock on hand
+                            <button class="dropdown-toggle ng-binding" data-toggle="dropdown" angular-ripple="" aria-expanded="true"><span class=" angular-ripple animate" style="width: 220px; height: 220px; left: -42px; top: -108px;"></span> {{selectedParam3}}
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <span class="barzz"></span>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="updateStatus('Stockhand')">Stock on hand</a>
+                                <li><a ng-click="getDashboardInventoryReports()">Stock on hand</a>
                                 </li>
-                                <li><a ng-click="updateStatus('Lowstocks')">Low in stocks</a>
+                                <li><a ng-click="updateInventoryReportType('Lowstocks')">Low in stocks</a>
                                 </li>
                             </ul>
                         </div>
