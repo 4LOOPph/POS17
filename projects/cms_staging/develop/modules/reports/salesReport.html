@@ -78,18 +78,18 @@
                             </tr>
                         </table>
                         <table class="table table-hover" ng-table="quoteTable">
-                            <tr ng-repeat="alias in filteredSalesRep">
+                            <tr ng-repeat="alias in formattedSalesReport">
                                 <td class="text-center totalHeader" width="25%">
-                                    {{alias.product_name}}
+                                    {{alias.summary}}
                                 </td>
                                 <td class="text-center totalHeader" width="25%">
-                                    {{alias.store}}
+                                    {{alias.revenue | number : 2}}
                                 </td>
                                 <td class="text-center totalHeader" width="25%">
-                                    {{alias.stock_onhand}}
+                                    {{alias.costofgoods | number : 2}}
                                 </td>
                                 <td class="text-center totalHeader" width="25%">
-                                    {{alias.reorder_level}}
+                                    {{alias.gross | number : 2}}
                                 </td>
                             </tr>
                         </table>
