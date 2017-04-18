@@ -11,192 +11,127 @@
 </section>
 <!-- Main content -->
 <section class="content">
-    <!-- <div class="row">
-        <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-blue ">
-                <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
-                <div class="info-box-content">
-                    <span class="info-box-number">{{totalItems}}</span>
-                    <span class="info-box-text">Total Products</span>
-                </div>
-            </div>
-        </div>
-        <div class="dash col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box-green ">
-                <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
-                <div class="info-box-content">
-                    <span class="info-box-number">{{totalPersonel}}</span>
-                    <span class="info-box-text">Personels</span>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <div class='ui'>
-        <div class='ui_box'>
-            <div class='ui_box__inner'>
-                <h2>Total Products</h2>
-                <p>Total Products</p>
-                <div class='stat' style="height: 51px;">
-                    <span>{{totalItems}}</span>
-                </div>
-                <!-- <div class='progress'>
-                    <div class='progress_bar'></div>
-                </div> -->
-                <div class='progress_graph'>
-                    <div class='progress_graph__bar--1'></div>
-                    <div class='progress_graph__bar--2'></div>
-                    <div class='progress_graph__bar--3'></div>
-                    <div class='progress_graph__bar--4'></div>
-                </div>
-                <p>Product Recorded in This Year</p>
-            </div>
-            <div class='drop' ui-sref="main.products">
-                <p>View Details</p>
-                <div class='arrow'></div>
-            </div>
-        </div>
-        <div class='ui_box'>
-            <div class='ui_box__inner'>
-                <h2>Personels</h2>
-                <p>Total Personels</p>
-                <div class='stat' style="height: 51px;">
-                    <span>{{totalPersonel}}</span>
-                </div>
-                <!-- <div class='progress'>
-                    <div class='progress_bar--two'></div>
-                </div> -->
-                <div class='progress_graph'>
-                    <div class='progress_graph__bar--1'></div>
-                    <div class='progress_graph__bar--2'></div>
-                    <div class='progress_graph__bar--3'></div>
-                    <div class='progress_graph__bar--4'></div>
-                </div>
-                <p>Subscribers This Year</p>
-            </div>
-            <div class='drop' ui-sref="main.settings-humanresource">
-                <p>View Details</p>
-                <div class='arrow'></div>
-            </div>
-        </div>
-    </div>
     <div class="row">
-        <div class="col-md-8 col-sm-12 col-xs-12">
-            <!-- PRODUCT LIST -->
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Recently Added Products</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="">
-                    <ul class="products-list product-list-in-box example-animate-container">
-                        <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
-                            <div class="product-img">
-                                <img src="./images/icon/product-icon-300x300.png" alt="Product Image" />
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="box" style="margin-bottom: 0px;">
+                        <div class='ui_box__inner boxerPersonel'>
+                            <h3>Products</h3>
+                            <!-- <p>Total Products</p> -->
+                            <div class='stat'>
+                                {{totalItems}}
                             </div>
-                            <div class="product-info">
-                                <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
-                                    <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
+                            <p>Product Recorded in This Year <a><i class="zmdi zmdi-play-circle"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header with-border prodHead">
+                            <h3 class="box-title">Recently Added Products</h3>
+                        </div>
+                        <div class="dashBoX">
+                            <ul class="products-list product-list-in-box example-animate-container">
+                                <li class="item" ng-repeat="product in products | orderBy: '-date_created' | limitTo: 5">
+                                    <div class="product-img">
+                                        <ng-letter-avatar fontsize="20" data="{{product.item_name}}"></ng-letter-avatar>
+                                        <!-- <img src="./images/icon/product-icon-300x300.png" alt="Product Image" /> -->
+                                    </div>
+                                    <div class="product-info">
+                                        <a ui-sref="main.products-add({p_id:product.p_id})" class="product-title">{{product.item_name}}
+                                        <span class="pull-right"><small am-time-ago="product.date_created" class="dashdateS"></small></span>
                                 </a>
-                                <div class="product-description">
-                                    <p>{{product.brand}}</p>
-                                </div>
-                                <div class="product-description">
-                                    <p>{{product.product_code}}</p>
-                                </div>
+                                        <div class="product-description">
+                                            <p>{{product.brand}}, {{product.product_code}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                        <div class="box-footer fotar">
+                            <a ui-sref="main.products" class="uppercase">View All Products <i class="zmdi zmdi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="box" style="margin-bottom: 0px;">
+                        <div class='ui_box__inner boxerPersonel2'>
+                            <h3>Personels</h3>
+                            <!-- <p>Total Personels</p> -->
+                            <div class='stat'>
+                                {{totalPersonel}}
                             </div>
-                        </li>
-                        <!-- /.item -->
-                    </ul>
-                </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <a ui-sref="main.products" class="uppercase">View All Products</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Latest Personel</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body bg">
-                    <ul class="users-lista clearfix">
-                        <li ng-repeat="person in persons | limitTo:8 | orderBy:'person.date_created':true">
-                            <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="150" width="150" alt="User Image" />
-                            <a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
-                            <span class="users-list-date" am-time-ago="person.date_created"></span>
-                        </li>
-                    </ul>
-                    <!-- /.users-list -->
-                </div>
-                <div class="box-body sm">
-                    <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
-                        <img ng-src="{{person.image}}" err-src="http://afirmio.com/wp-content/uploads/2014/10/maleprofilecircle2.jpg" height="70" width="70" alt="User Image" />
-                        <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
-                            <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                            <p>Personels Recorded in This Year <a><i class="zmdi zmdi-play-circle"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="box box-danger">
+                        <div class="box-header with-border personHead">
+                            <h3 class="box-title">Latest Personel</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body  dashBoX">
+                            <ul class="users-lista clearfix">
+                                <li ng-repeat="person in persons | limitTo:10 | orderBy:'person.date_created':true">
+                                    <img ng-src="{{person.image}}" ng-if="!person.image" height="150" width="150" alt="User Image">
+                                    <ng-letter-avatar fontWeight="200" charCount="2" fontsize="14" ng-if="person.image" data="{{person.firstname}}"></ng-letter-avatar>
+                                    <a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                                    <span class="users-list-date" am-time-ago="person.date_created"></span>
+                                </li>
+                            </ul>
+                            <!-- /.users-list -->
+                        </div>
+                        <!--  <div class="box-body sm">
+                            <div class="disp-inline-flex w100p" ng-repeat="person in persons | limitTo:5 | orderBy:'person.date_created':true">
+                                <ng-letter-avatar data="{{person.firstname}}"></ng-letter-avatar>
+                                <div class="pt-5"><a ui-sref="main.settings-humanresource-detail({person_id:person.person_id})" class="users-list-name">{{person.lastname + ',' + person.firstname}}</a>
+                                    <span class="users-list-date" am-time-ago="person.date_created"></span></div>
+                            </div>
+                        </div> -->
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer fotar">
+                            <a ui-sref="main.settings-humanresource" class="uppercase">View All Users <i class="zmdi zmdi-arrow-right"></i></a>
+                        </div>
+                        <!-- /.box-footer -->
                     </div>
                 </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <a ui-sref="main.settings-humanresource" class="uppercase">View All Users</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-        </div>
-        <!-- <div class="col-md-8 col-sm-6 col-xs-12">
-           
-        </div> -->
-        <div class="col-md-4 col-sm-12 col-xs-12">
-            <div class="box box-success tab">
-                <div class="box-header ">
-                    <h3 class="box-title">Recently Added User Account</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>User Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
-                                    <td>{{user.EmpName}}</td>
-                                    <td>
-                                        <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
-                                    </td>
-                            </tbody>
-                        </table>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="box box-success tab">
+                        <div class="box-header ">
+                            <h3 class="box-title">Recently Added User Account</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    
+                                    <tbody>
+                                        <tr ng-repeat="user in useraccounts | limitTo: 10 | orderBy: 'user.date_created':true">
+                                            <td style="padding: 15px 30px;">{{user.EmpName}}
+                                            <br>
+                                            <span class="spaaan" ng-repeat="tag in user.userRoles">
+                                            {{tag.name}}
+                                            </span>
+                                            </td>
+                                           <!--  <td>
+                                                <span class="role-tag label label-primary " ng-repeat="tag in user.userRoles">{{tag.name}}</span>
+                                            </td> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="overlay" ng-show="productIsLoading">
+                            <div class="loader"></div>
+                        </div>
                     </div>
-                    <!-- /.row -->
                 </div>
-                <div class="overlay" ng-show="productIsLoading">
-                    <div class="loader"></div>
-                </div>
-                <!-- /.box-body -->
-                <!--   <div class="box-footer no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
-                        <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
-                        <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
-                    </ul>
-                </div> -->
-                <!-- /.footer -->
             </div>
-            <!-- /.box -->
         </div>
-    </div>
 </section>
-<!-- /.content -->
 <style type="text/css">
 @media only screen and (max-width: 320px) {
     body .ui_box {

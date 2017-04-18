@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-inline w100p disp-inline-flex box-header" style="padding: 8px 5px;height: 60px;">
-                    <div class="pull-right searchposition b">
+                    <div class="pull-right searchposition">
                         <form class="form-inline">
                             <div class="form-group">
                                 <div class="pt-5">
@@ -65,10 +65,9 @@
                             <td class="text-center" data-title="'Tags'">
                                 <span class="label label-default label-tags" ng-repeat="tag in type.tags">{{tag.tags}}</span>
                             </td>
-                            <td class="text-right">
-                                <!-- <button ng-click="edit(type.ptype_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button> -->
-                                <div class="disp-inline-flex">
-                                    <a ng-click="edit(type.ptype_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" href="#/main/products-bundle/78" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
+                            <td>
+                                <div class="disp-inline-flex smscreen">
+                                    <a ng-click="edit(type.ptype_id)" class="btn ml-10 bgscreen actbutton btn-info btn-xs btn-flat" uib-tooltip="Edit" href="#/main/settings/producttype/{{type.ptype_id}}" angular-ripple><img src="./images/icon/ic_mode_edit_white_18px.svg"></a>
                                 </div>
                             </td>
                         </tr>
