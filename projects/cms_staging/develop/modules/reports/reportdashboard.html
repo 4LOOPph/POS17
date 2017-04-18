@@ -78,7 +78,7 @@
                         <h3 class="box-title">Revenue</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
+                        <h3 ng-show="getOverall_Revenue" style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_revenue_Stat)}}"  class="{{pickAnArrow(changeOf_revenue_Stat)}}"></i>
                             <small>( {{changeOf_revenue_Stat | number:2}}% )</small>
                         </h3>
@@ -103,7 +103,7 @@
                         <h3 class="box-title">Gross Profit</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">$ {{getOverall_Grossprofit | number:2}}
+                        <h3 ng-show="getOverall_Grossprofit" style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">$ {{getOverall_Grossprofit | number:2}}
                             <i style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}"  class="{{pickAnArrow(changeOf_gross_profit_Stat)}}"></i>
                             <small>( {{changeOf_gross_profit_Stat | number:2}}% )</small>
                         </h3>
@@ -128,7 +128,7 @@
                         <h3 class="box-title">Sale Count</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">{{getOverall_Salecount | number:0}}
+                        <h3 ng-show="getOverall_Salecount" style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">{{getOverall_Salecount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_items_sold_Stat)}}"  class="{{pickAnArrow(changeOf_items_sold_Stat | number:2)}}"></i>
                             <small>( {{changeOf_items_sold_Stat | number:2}}% )</small>
                         </h3>
@@ -155,7 +155,7 @@
                         <h3 class="box-title">Customers</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_customers_Stat)}}">{{getOverall_Customercount | number:0}}
+                        <h3 ng-show="getOverall_Customercount" ng-show="getOverall_Customercount" style="color:{{pickAcolor(changeOf_customers_Stat)}}">{{getOverall_Customercount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_customers_Stat)}}" class="{{pickAnArrow(changeOf_customers_Stat)}}"></i>
                             <small>( {{changeOf_customers_Stat | number:2}}% )</small>
                         </h3>
@@ -180,7 +180,7 @@
                         <h3 class="box-title">Basket Size</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">{{getOverall_Basketsize | number: 2}}
+                        <h3 ng-show="getOverall_Basketsize" style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">{{getOverall_Basketsize | number: 2}}
                             <i style="color:{{pickAcolor(changeOf_basket_size_Stat)}}" class="{{pickAnArrow(changeOf_basket_size_Stat)}}"></i>
                             <small>( {{changeOf_basket_size_Stat | number:2}}% )</small>
                         </h3>
@@ -205,7 +205,7 @@
                         <h3 class="box-title">Basket Value</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">$ {{getOverall_Basketvalue | number:2}}
+                        <h3 ng-show="getOverall_Basketvalue" style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">$ {{getOverall_Basketvalue | number:2}}
                             <i style="color:{{pickAcolor(changeOf_basket_value_Stat)}}" class="{{pickAnArrow(changeOf_basket_value_Stat)}}"></i>
                             <small>( {{changeOf_basket_value_Stat | number:2}}% )</small>
                         </h3>
@@ -232,7 +232,7 @@
                         <h3 class="box-title">Discount</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_discount_Stat)}}">$ {{getOverall_Discount | number:2}} 
+                        <h3 ng-show="getOverall_Discount" style="color:{{pickAcolor(changeOf_discount_Stat)}}">$ {{getOverall_Discount | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_discount_Stat)}}" class="{{pickAnArrow(changeOf_discount_Stat)}}"></i>
                             <small>( {{changeOf_discount_Stat | number:2}}% )</small>
                         </h3>
@@ -257,7 +257,7 @@
                         <h3 class="box-title">Discount %</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">{{getOverall_Discountpercent | number:2}} 
+                        <h3 ng-show="getOverall_Discountpercent" style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">{{getOverall_Discountpercent | number:2}} 
                         <i style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}" class="{{pickAnArrow(changeOf_discount_percent_Stat)}}"></i>
                             <small>( {{changeOf_discount_percent_Stat | number:2}}% )</small>
                         </h3>
