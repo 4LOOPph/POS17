@@ -1,0 +1,257 @@
+<div class="modal-header">
+    <h4>Manage Information</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-label-alt-outline"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Last Name" ng-model="contact.lastname" />
+                            <i class="bar"></i>
+                            <small>(Last Name)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-label-alt-outline"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="First Name" ng-model="contact.firstname" />
+                            <i class="bar"></i>
+                            <small>(First Name)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-email"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="email" required="required" placeholder="Email Address" ng-model="contact.email" />
+                            <i class="bar"></i>
+                            <small>(Email Address)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-account-box-o"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Customer ID" ng-model="contact.company_username" />
+                            <i class="bar"></i>
+                            <small>(Customer ID)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-accounts-outline"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <ui-select ng-model="contact.per_type">
+                                <ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="emp in persontypes">
+                                    {{emp.name}}
+                                </ui-select-choices>
+                            </ui-select>
+                            <i class="zmdi zmdi-network selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Person Type)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <img>
+                        </div>
+                        <div class="col-sm-11">
+                            <textarea placeholder="Address" ng-model="contact.address"></textarea>
+                            <i class="bar"></i>
+                            <small>(Address)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-city"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="City" ng-model="contact.city" />
+                            <i class="bar"></i>
+                            <small>(City)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-city"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <ui-select ng-model="contact.selected_country">
+                                <ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="emp in countries">
+                                    {{emp.name}}
+                                </ui-select-choices>
+                            </ui-select>
+                            <i class="zmdi zmdi-network selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Country)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-calendar-alt"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="contact.date_start" bs-datepicker/>
+                            <i class="bar"></i>
+                            <small>(Date From)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-calendar"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="contact.date_end" bs-datepicker/>
+                            <i class="bar"></i>
+                            <small>(Date To)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-label-alt-outline"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Middle Name" ng-model="contact.middlename" />
+                            <i class="bar"></i>
+                            <small>(Middle Name)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-label-alt-outline"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Display Name" ng-model="contact.displayName" />
+                            <i class="bar"></i>
+                            <small>(Display Name)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-phone"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Mobile No." ng-model="contact.mobile" />
+                            <i class="bar"></i>
+                            <small>(Mobile No.)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-account-box-o"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Company Name" ng-model="contact.company_name" />
+                            <i class="bar"></i>
+                            <small>(Company Name)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-time"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <ui-select ng-model="contact.selected_timeZone">
+                                <ui-select-match>
+                                    {{$select.selected.text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="emp in timeZones">
+                                    {{emp.text}}
+                                </ui-select-choices>
+                            </ui-select>
+                            <i class="zmdi zmdi-network selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Time Zones)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <img>
+                        </div>
+                        <div class="col-sm-11">
+                            <textarea placeholder="Address 2" ng-model="contact.address2"></textarea>
+                            <i class="bar"></i>
+                            <small>(Address 2)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-city"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="State" ng-model="contact.state" />
+                            <i class="bar"></i>
+                            <small>(State)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
+                        <div class="imgInput">
+                            <i class="zmdi zmdi-city"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" required="required" placeholder="Zip Code" ng-model="contact.zipcode" />
+                            <i class="bar"></i>
+                            <small>(Zip Code)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveChanges()" class="btnss palette-Blue bg waves-effect">Save</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
+</div>

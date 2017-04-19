@@ -1,0 +1,35 @@
+<table class="table table-hover footable table-groups" data-page-size="20" style="margin-bottom: 0">
+    <thead>
+        <tr>
+            <th data-sort-ignore="true">
+                <label>
+                    <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                    <label for="cbxHead" class="lbl positionCheckbox"></label>
+                </label>
+            </th>
+            <th>Name</th>
+            <th>Company/Customer</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="group in groups | filter:searchText" ng-repeat-end-watch="myFunction">
+            <td>
+                <label>
+                    <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="group.selected" ng-change="checkDataChanges(group)" />
+                    <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                </label>
+            </td>
+            <td>{{group.name}}</td>
+            <td>{{group.store_name}}</td>
+            <td>{{group.description}}</td>
+        </tr>
+    </tbody>
+    <tfoot class="hide-if-no-paging">
+        <tr>
+            <td colspan="6">
+                <ul class="pagination"></ul>
+            </td>
+        </tr>
+    </tfoot>
+</table>

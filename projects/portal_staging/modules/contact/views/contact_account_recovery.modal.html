@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4>Update Recovery Email</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="row">
+            <div class="form-group">
+                <div class="imgInput">
+                    <i class="zmdi zmdi-label-alt-outline"></i>
+                </div>
+                <div class="col-sm-11">
+                    <input type="text" required="required" placeholder="Recovery Email" ng-model="account.recovery_email" />
+                    <i class="bar"></i>
+                    <small>(Recovery Email)</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveChanges()" class="btnss palette-Blue bg waves-effect">Save</button>
+    <button ng-click="cancel()" class="btnss bg waves-effect">Cancel</button>
+</div>

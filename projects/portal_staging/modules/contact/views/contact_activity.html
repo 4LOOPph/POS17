@@ -1,0 +1,113 @@
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2><i class="zmdi zmdi-time-restore"></i> Transaction History </h2>
+    </div>
+</div>
+<div id="data-table-basic-header" class="bootgrid-header container-fluid">
+    <div class="row">
+        <div class="col-sm-12 actionBar">
+            <div class="search form-group">
+                <div class="input-group"><span class="zmdi icon input-group-addon zmdi-search"></span>
+                    <input type="text" class="search-field form-control" placeholder="Search" ng-model="txtSearchUser">
+                </div>
+            </div>
+            <div class="actions btn-group">
+                <div class="dropdown btn-group">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="dropdown-text"><span class="zmdi icon zmdi-view-module"></span></span> <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" checked="checked" /><i class="helper"></i>Log Date
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" /><i class="helper"></i>Username
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" /><i class="helper"></i>Module
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="daterange">
+    <div class="form-group width col-md-4">
+        <label>From</label>
+        <div class="input-group">
+            <input type="text" class="form-control searchInput" data-date-format="MMM dd yyyy" ng-model="details.dateFrom" bs-datepicker/>
+            <div class="input-group-addon inputAdd">
+                <i class="zmdi zmdi-network"></i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group width col-md-4">
+        <label>To</label>
+        <div class="input-group">
+            <input type="text" class="form-control searchInput" data-date-format="MMM dd yyyy" ng-model="details.dateEnd" bs-datepicker/>
+            <div class="input-group-addon inputAdd">
+                <i class="zmdi zmdi-network"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-body no-padding">
+    <div class="table-responsive mailbox-messages">
+        <table class="table table-hover table-striped" data-page-size="20" data-limit-navigation="10">
+            <thead>
+                <tr>
+                    <th class="text-center">Log Date</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Module</th>
+                    <th class="text-center">IP Address</th>
+                    <th class="text-center">Action</th>
+                    <th class="text-center">Parameters</th>
+                    <th class="text-center">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in logs  track by $index">
+                    <td class="text-center" data-title="'Log Date'">
+                        {{row.created_at}}
+                    </td>
+                    <td class="text-center" data-title="'Username'">
+                        {{row.userprofile.username}}
+                    </td>
+                    <td class="text-center" data-title="'Module'">
+                        {{row.module}}
+                    </td>
+                    <td class="text-center" data-title="'IP Address'">
+                        {{row.ip_address}}
+                    </td>
+                    <td class="text-center" data-title="'Action'">
+                        {{row.action}}
+                    </td>
+                    <td class="text-center" data-title="'Parameters'">
+                        {{row.parameters}}
+                    </td>
+                    <td class="text-center" data-title="'Details'">
+                        {{row.action_details}}
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6" align="center">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

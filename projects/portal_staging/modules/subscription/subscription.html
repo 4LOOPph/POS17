@@ -65,8 +65,8 @@
                                         <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
                                     </label>
                                 </td>
-                                <td><a ui-sref="main.subscriptionrequest.detail({'sr_id': req.sr_id})">{{req.company_name}}</a></td>
-                                <td><a ui-sref="main.subscriptionrequest.detail({'sr_id': req.sr_id})">{{req.lastname+','+ req.firstname }}</a></td>
+                                <td><a ui-sref="main.subscriptionrequest.detail({'sr_id': req._id})">{{req.company_name}}</a></td>
+                                <td><a ui-sref="main.subscriptionrequest.detail({'sr_id': req._id})">{{req.lastname+','+ req.firstname }}</a></td>
                                 <td>{{req.address1 +','+ req.city+','+ req.zipcode}}</td>
                                 <td>
                                     <ul class="lgi-attrs">
@@ -80,14 +80,13 @@
                                         <li ng-if="req.is_approved == 0 && req.deny_date != null"><span style="color:#f44336">Denied</span></li>
                                         <li ng-if="req.is_approved == 0 && req.deny_date == null && req.approved_date ==null"><span style="color:#ff9800">Pending</span></li>
                                     </ul>
-                                    <!--   <span ng-if="req.is_approved == 1 && req.deny_date == null" class="label label-success">approved</span>
-                                    <span ng-if="req.is_approved == 0 && req.deny_date != null" class="label label-danger">denied</span>
-                                    <span ng-if="req.is_approved == 0 && req.deny_date == null && req.approved_date ==null" class="label label-warning">pending</span> -->
                                 </td>
                                 <td class="text-right">
-                                    <!-- <button ng-click="getSubscriptionRequestDetail(req.sr_id)" class="btn btn-info btn-xs btn-flat"><i class="glyphicon glyphicon-edit"></i></button> -->
-                                    <a ui-sref="main.subscriptionrequest.detail({sr_id:req.sr_id})" class="btn btn-icon command-edit waves-effect waves-circle">
+                                    <a ui-sref="main.subscriptionrequest.detail({sr_id:req._id})" uib-tooltip="View Details" class="btn btn-icon command-edit waves-effect waves-circle">
                                         <span class="zmdi zmdi-edit"></span>
+                                    </a>
+                                     <a ng-if="req.is_approved == 1 && req.deny_date == null" href="" ng-click="viewSubscription(req.sr_id)" uib-tooltip="View Subscription" class="btn btn-icon command-edit waves-effect waves-circle">
+                                        <span class="zmdi zmdi-collection-item"></span>
                                     </a>
                                 </td>
                             </tr>

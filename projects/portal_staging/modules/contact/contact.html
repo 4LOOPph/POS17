@@ -11,20 +11,14 @@
                         <i ng-click="search = false" class="search-close zmdi zmdi-long-arrow-left"></i>
                     </div>
                     <ul class="ah-actions action a-alt">
-                        <li ng-click="search = true">
-                            <a class="ah-search-trigger">
-                                <i class="zmdi zmdi-search"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="zmdi zmdi-time"></i>
-                            </a>
-                        </li>
+                        <li ng-click="search = true"><a class="ah-search-trigger"><i class="zmdi zmdi-search"></i></a></li>
+                        <li><a href=""><i class="zmdi zmdi-time"></i></a></li>
+                        <li ng-if="isGrid"><a href="" ng-click="changeDisplay(false)"><i class="zmdi zmdi-view-list"></i></a></li>
+                        <li ng-if="!isGrid"><a href="" ng-click="changeDisplay(true)"><i class="zmdi zmdi-view-module"></i></a></li>
                     </ul>
                 </div>
                 <div class="box-body">
-                    <div class="">
+                    <div class="" ng-if="!isGrid">
                         <div id="slider" slider-nav class="clearfix slider">
                             <div class="slider-content" id="searchTextResult" style="height:608px;">
                                 <ul class="list-unstyled">
@@ -51,6 +45,27 @@
                                     <li ng-repeat="let in letters"> <a alt="{{let.url}}">{{let.letter}}</a>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" ng-if="isGrid">
+                        <div class="card-body card-padding">
+                            <div class="contacts clearfix row">
+                                <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="contact in contacts | filter: searchText">
+                                    <div class="c-item">
+                                        <a href="" class="ci-avatar">
+                                            <img ng-src="{{contact.image}}" err-src="./images/avatar.png" alt="" height="215px">
+                                        </a>
+                                        <div class="c-info">
+                                            <strong>{{contact.firstname}} {{contact.lastname}}</strong>
+                                            <small ng-if="contact.email !== null">{{contact.email}}</small>
+                                            <small ng-if="contact.email == null">(No Email)</small>
+                                        </div>
+                                        <div class="c-footer">
+                                            <button class="waves-effect" ng-click="getContactDetail(contact._id)"><i class="zmdi zmdi-person-add"></i> View Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

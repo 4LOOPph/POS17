@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4>Update PIN Number</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="row">
+            <div class="form-group">
+                <div class="imgInput">
+                    <i class="zmdi zmdi-label-alt-outline"></i>
+                </div>
+                <div class="col-sm-11">
+                    <input type="text" required="required" placeholder="PIN Number" ng-model="account.pos_pin" />
+                    <i class="bar"></i>
+                    <small>(PIN Number)</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveChanges()" class="btnss palette-Blue bg waves-effect">Save</button>
+    <button ng-click="cancel()" class="btnss bg waves-effect">Cancel</button>
+</div>

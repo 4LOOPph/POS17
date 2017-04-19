@@ -1,45 +1,96 @@
-<div ng-controller="AccountSymphonyCompanyCtrl">
-    <div class="actionBar">
-        <div class="searching form-group">
-            <span class="zmdi zmdi-search"></span>
-            <input type="text" ng-model="searchText" class="search-field form-control" placeholder="Search...">
-        </div>
-    </div>
+<div class="overTop"></div>
+<!-- Main content -->
+<section class="content ng-scope">
     <div class="row">
-        <div class="col-xs-12">
-            <div id="slider" slider-nav class="clearfix slider">
-                <div class="slider-content" id="searchTextResult" style="height: 610px;">
-                    <ul class="list-unstyled">
-                        <li id="{{let.letter}}" class="selected" ng-repeat="let in letters ">
-                            <a name="{{let.letter}}" ng-if="let.company.length != ''" class="title">{{let.ucase}}</a>
-                            <!-- <ul class="list-unstyled">
-                                <li ng-value="contact._id" ng-repeat="contact in let.company | filter: searchText ">
-                                    <a ng-click="getContactDetail(contact._id)">{{contact.name}}</a>
+        <section class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Companies</div>
+                    <ul class="ah-actions actions a-alt">
+                        <li><a href="" ng-click="addContact()" uib-tooltip="Add New"><i class="zmdi zmdi-plus"></i></a></li>
+                        <li><a href="" ng-click="reloadData()" uib-tooltip="Refresh"><i class="zmdi zmdi-refresh-sync"></i></a></li>
+                        <li><a href=""><i class="zmdi zmdi-delete" ng-disabled="!deleteSomeData" uib-tooltip="Delete"></i></a></li>
+                        <li class="dropdown">
+                            <a href="" data-toggle="dropdown" aria-expanded="true">
+                                <i class="zmdi zmdi-sort"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="">Date Created</a>
                                 </li>
-                            </ul> -->
-                            <div class="" ng-value="contact._id" ng-repeat="contact in let.company | filter: searchText ">
-                                <div class="list-group-item media contact" ng-click="getContactDetail(contact._id)">
-                                    <div class="col-sm-1">
-                                        <ng-letter-avatar data="{{contact.name}}" shape="round" height="40" width="40" fontsize="25" fontWeight="100"></ng-letter-avatar>
-                                    </div>
-                                    <div class="col-sm-11" style="padding-left: 0">
-                                        <div class="media-body ns-item" style="display: block;">
-                                            <h3>{{contact.name}}</h3>
-                                            <small>{{contact.name}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <li>
+                                    <a href="">Name</a>
+                                </li>
+                                <li>
+                                    <a href="">Brand</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="slider-nav" style="height:610px; top: 20px;">
-                    <ul>
-                        <li ng-repeat="let in letters"> <a alt="{{let.url}}">{{let.letter}}</a>
-                        </li>
-                    </ul>
+                <div class="boxSubheader">
+                    <div class="input-group" style="width: 30%">
+                        <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
+                        <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-company footable" data-page-size="50">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true" width="5%">
+                                    <label>
+                                        <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                                        <label for="cbxHead" class="lbl positionCheckbox"></label>
+                                    </label>
+                                </th>
+                                <th data-sort-ignore="true" width="5%"></th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>Zipcode</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="company in companies | filter:searchText" ng-repeat-end-watch="myFunction">
+                                <td>
+                                    <label>
+                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="company.selected" />
+                                        <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                                    </label>
+                                </td>
+                                <td>
+                                    <ng-letter-avatar data="{{company.name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                </td>
+                                <td>{{company.name}}</td>
+                                <td>{{company.email_address}}</td>
+                                <td>{{company.address}}</td>
+                                <td>{{company.country}}</td>
+                                <td>{{company.state}}</td>
+                                <td>{{company.zipcode}}</td>
+                                <td>
+                                    <div class="pull-right">
+                                        <ul class="actions">
+                                            <li><a href="" ng-click="getCompanyDetail(company._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li><a href="" ng-click="deleteData(company._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</div>
+</section>
