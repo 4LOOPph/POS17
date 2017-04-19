@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h4>Update User Password</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12" ng-if="contact.status == 'create'">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-label-alt-outline"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" ng-model="contact.username"/>
+                        <i class="bar"></i>
+                        <small>(Username)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-label-alt-outline"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <ui-select multiple on-select="clearInput($select)" tagging="tagTransform" reset-search-input="true" close-on-select="true" ng-model="contact.role">
+                            <ui-select-match placeholder="Select User Roles...">
+                                {{$item.name}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="emp in usergroups | propsFilter: {name: $select.search}">
+                                {{emp.name}}
+                                <div ng-bind-html="emp.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <i class="bar"></i>
+                        <small>(User Roles)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                        <i class="zmdi zmdi-calendar-alt"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="contact.valid_until" bs-datepicker/>
+                        <i class="bar"></i>
+                        <small>(Valid Until)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveChanges()" class="btnss palette-Blue bg waves-effect">Save</button>
+    <button ng-click="cancel()" class="btnss bg waves-effect">Cancel</button>
+</div>

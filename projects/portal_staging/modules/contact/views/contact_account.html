@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="pmb-block">
+        <div class="pmb-block" ng-if="account.uc_id != null">
             <div class="pmbb-header">
                 <h2><i class="zmdi zmdi-assignment-check m-r-5"></i> Validations</h2>
                 <div class="actions">
-                    <button class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                    <button ng-click="updateUserRoles(account)" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
                 </div>
             </div>
             <div class="pmbb-body p-l-30">
@@ -19,12 +19,12 @@
                     </dl>
                     <dl class="dl-horizontal">
                         <dt>Valid Until</dt>
-                        <dd>{{account.valid_until}}</dd>
+                        <dd>{{account.valid_until | amDateFormat:'MM / DD / YYYY'}}</dd>
                     </dl>
                 </div>
             </div>
         </div>
-        <div class="pmb-block">
+        <div class="pmb-block"  ng-if="account.uc_id != null">
             <div class="pmbb-header">
                 <h2><i class="zmdi zmdi-account-o m-r-5"></i> Account Information</h2>
             </div>
@@ -54,6 +54,15 @@
                             <button ng-click="updateUserPin({uc_id: account.uc_id,pos_pin: account.pos_pin})" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
                         </dd>
                     </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="pmb-block"  ng-if="account.uc_id == null">
+             <div class="pmbb-header">
+                <h2><i class="zmdi zmdi-assignment-check m-r-5"></i> No Account? Create New...</h2>
+                <div class="actions">
+                    <button ng-click="createAccount()" class="btnss palette-Blue bg waves-effect">Create</button>
                 </div>
             </div>
         </div>
