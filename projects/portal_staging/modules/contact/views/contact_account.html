@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pmb-block">
+            <div class="pmbb-header">
+                <h2><i class="zmdi zmdi-assignment-check m-r-5"></i> Validations</h2>
+                <div class="actions">
+                    <button class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                </div>
+            </div>
+            <div class="pmbb-body p-l-30">
+                <div class="pmbb-view">
+                    <dl class="dl-horizontal">
+                        <dt>User Roles</dt>
+                        <dd>
+                            <ul class="lgi-attrs">
+                                <li ng-repeat="item in account.role"><span style="color:#4caf50">{{item.name}}</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Valid Until</dt>
+                        <dd>{{account.valid_until}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="pmb-block">
+            <div class="pmbb-header">
+                <h2><i class="zmdi zmdi-account-o m-r-5"></i> Account Information</h2>
+            </div>
+            <div class="pmbb-body p-l-30">
+                <div class="pmbb-view">
+                    <dl class="dl-horizontal">
+                        <dt>Username</dt>
+                        <dd>{{account.username}}
+                            <button ng-click="updateUsername({uc_id: account.uc_id,username: account.username})" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>User Password</dt>
+                        <dd>{{account.password}}
+                            <button ng-click="updateUserPassword({uc_id: account.uc_id,password: account.password})" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Recovery Email</dt>
+                        <dd>{{account.recovery_email}}
+                            <button ng-click="updateRecoveryEmail({uc_id: account.uc_id,recovery_email: account.recovery_email})" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Personal ID Number</dt>
+                        <dd>{{account.pos_pin}}
+                            <button ng-click="updateUserPin({uc_id: account.uc_id,pos_pin: account.pos_pin})" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

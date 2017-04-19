@@ -1,45 +1,98 @@
-<div ng-controller="AccountSymphonyProductsCtrl">
-    <div class="actionBar">
-        <div class="searching form-group">
-            <span class="zmdi zmdi-search"></span>
-            <input type="text" ng-model="searchText" class="search-field form-control" placeholder="Search...">
-        </div>
-    </div>
+<div class="overTop"></div>
+<!-- Main content -->
+<section class="content ng-scope">
     <div class="row">
-        <div class="col-xs-12">
-            <div id="slider" slider-nav class="clearfix slider">
-                <div class="slider-content" id="searchTextResult" style="height: 610px;">
-                    <ul class="list-unstyled">
-                        <li id="{{let.letter}}" class="selected" ng-repeat="let in letters ">
-                            <a name="{{let.letter}}" ng-if="let.products.length != ''" class="title">{{let.ucase}}</a>
-                           <!--  <ul class="list-unstyled">
-                                <li ng-value="contact._id" ng-repeat="contact in let.products | filter: searchText ">
-                                    <a ng-click="getProductDetails(contact._id)">{{contact.item_name}}</a>
+        <section class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Products</div>
+                    <ul class="ah-actions actions a-alt">
+                        <li><a href="" ng-click="addContact()" uib-tooltip="Add New"><i class="zmdi zmdi-plus"></i></a></li>
+                        <li><a href="" ng-click="reloadData()" uib-tooltip="Refresh"><i class="zmdi zmdi-refresh-sync"></i></a></li>
+                        <li><a href=""><i class="zmdi zmdi-delete" ng-disabled="!deleteSomeData" uib-tooltip="Delete"></i></a></li>
+                        <li class="dropdown">
+                            <a href="" data-toggle="dropdown" aria-expanded="true">
+                                <i class="zmdi zmdi-sort"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="">Date Created</a>
                                 </li>
-                            </ul> -->
-                            <div class="" ng-value="contact._id" ng-repeat="contact in let.products | filter: searchText ">
-                                <div class="list-group-item media contact" ng-click="getContactDetail(contact._id)">
-                                    <div class="col-sm-1">
-                                        <ng-letter-avatar data="{{contact.item_name}}" shape="round" height="40" width="40" fontsize="25" fontWeight="100"></ng-letter-avatar>
-                                    </div>
-                                    <div class="col-sm-11" style="padding-left: 0">
-                                        <div class="media-body ns-item" style="display: block;">
-                                            <h3>{{contact.item_name}}</h3>
-                                            <small>{{contact.item_name}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <li>
+                                    <a href="">Name</a>
+                                </li>
+                                <li>
+                                    <a href="">Brand</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="slider-nav" style="height:610px; top: 20px;">
-                    <ul>
-                        <li ng-repeat="let in letters"> <a alt="{{let.url}}">{{let.letter}}</a>
-                        </li>
-                    </ul>
+                <div class="boxSubheader">
+                    <div class="input-group" style="width: 30%">
+                        <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
+                        <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-products footable" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true" width="5%">
+                                    <label>
+                                        <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                                        <label for="cbxHead" class="lbl positionCheckbox"></label>
+                                    </label>
+                                </th>
+                                <th data-sort-ignore="true" width="5%"></th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Code</th>
+                                <th>Type</th>
+                                <th>Selling Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in products | filter:searchText" ng-repeat-end-watch="myFunction">
+                                <td>
+                                    <label>
+                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="product.selected" />
+                                        <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                                    </label>
+                                </td>
+                                <td>
+                                    <img class="avatar-img" ng-src="{{product.img_default}}" ng-if="product.img_default !== null">
+                                    <ng-letter-avatar ng-if="product.img_default == null" data="{{product.item_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                </td>
+                                <td>{{product.item_name}}</td>
+                                <td>{{product.brand}}</td>
+                                <td>{{product.product_code}}</td>
+                                <td>{{product.product_type}}</td>
+                                <td><b>{{product.sell_price | number:2}}</b></td>
+                                <td>
+                                    {{product.date_created | amDateFormat:'MM/DD/YYYY'}}
+                                </td>
+                                <td>
+                                    <div class="pull-right">
+                                        <ul class="actions">
+                                            <li><a href="" ng-click="getProductDetail(product._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li><a href="" ng-click="deleteData(product._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</div>
+</section>

@@ -1,12 +1,8 @@
 <a class="logo"><b>Symphony</b><div class="underlogo">Portal</div></a>
 <nav class="navbar navbar-static-top" role="navigation">
-    <!--  <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-    </a> -->
     <div class="media-body h-search">
         <form class="p-relative" ng-init="hasFocus = false; blur=false">
             <input type="text" ng-class="{'activated':gSearch, myBlur: blur, myFocus: focus}" class="hs-input" placeholder="Search for people, files &amp; reports" ng-model="gSearch" ng-click="hasFocus=true" ng-customblur="onBlur()" ng-blur="blur=true;focus=false;">
-            <!-- <i class="zmdi zmdi-search hs-reset" ng-class="{'active':hasFocus==true,'inactive':hasFocus==false}"></i> -->
             <i class="zmdi zmdi-search hs-reset" ng-class="{'active':hasFocus==true,'inactive':hasFocus==false}" ng-show="!gSearch"></i>
             <i class="zmdi zmdi-long-arrow-left hs-reset" style="color: #5e5e5e;" ng-show="hasFocus==true; gSearch"></i>
         </form>
@@ -43,9 +39,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i class="palette-Purple-300 bg zmdi zmdi-view-headline"></i>
-                            <small>News</small>
+                        <a ui-sref="main.messages">
+                            <i class="palette-Purple-300 bg zmdi zmdi-comments"></i>
+                            <small>Messages</small>
                         </a>
                     </li>
                     <li>
@@ -77,7 +73,7 @@
             </li>
             <li class="dropdown user user-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                    <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160" class="user-image" alt="User Image">
+                    <img ng-src="{{profile.profile.image}}" err-src="./images/avatar.png" class="user-image" alt="User Image">
                     <!-- <span class="hidden-xs">John Doe</span> -->
                 </a>
                 <ul class="dropdown-menu pull-right dm-icon">

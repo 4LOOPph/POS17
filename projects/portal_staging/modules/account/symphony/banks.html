@@ -5,27 +5,11 @@
         <section class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">Contacts</div>
+                    <div class="ah-label hidden-xs palette-White text">Banks</div>
                     <ul class="ah-actions actions a-alt">
                         <li><a href="" ng-click="addContact()" uib-tooltip="Add New"><i class="zmdi zmdi-plus"></i></a></li>
                         <li><a href="" ng-click="reloadData()" uib-tooltip="Refresh"><i class="zmdi zmdi-refresh-sync"></i></a></li>
                         <li><a href=""><i class="zmdi zmdi-delete" ng-disabled="!deleteSomeData" uib-tooltip="Delete"></i></a></li>
-                        <li class="dropdown">
-                            <a href="" data-toggle="dropdown" aria-expanded="true">
-                                <i class="zmdi zmdi-sort"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <a href="">Date Created</a>
-                                </li>
-                                <li>
-                                    <a href="">First Name</a>
-                                </li>
-                                <li>
-                                    <a href="">Last Name</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
                 <div class="boxSubheader">
@@ -33,9 +17,25 @@
                         <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
                         <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
                     </div>
+                    <div class="actionBtnHolder" style=" margin-top: -5px;">
+                        <div class="actionBtnHolder" style="display: inline-flex;">
+                            <button uib-tooltip="Sort" ng-click="createModule()" class="actionBtn dropdown-toggle" data-toggle="dropdown" style="padding: 4px 6px !important;"><i class="zmdi zmdi-sort"></i></button>
+                            <ul class="dropdown-menu search" role="menu" style=" min-width: 100%;left: -65px;">
+                                <li>
+                                    <a href="">Date Created</a>
+                                </li>
+                                <li>
+                                    <a href="">Name</a>
+                                </li>
+                                <li>
+                                    <a href="">Brand</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover table-contacts footable" data-page-size="10">
+                    <table class="table table-hover table-banks footable" data-page-size="15">
                         <thead>
                             <tr>
                                 <th data-sort-ignore="true" width="5%">
@@ -45,38 +45,31 @@
                                     </label>
                                 </th>
                                 <th data-sort-ignore="true" width="5%"></th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Type</th>
-                                <th>Mobile</th>
+                                <th>Name</th>
+                                <th>Address</th>
                                 <th>Date Created</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="contact in contacts | filter:searchText" ng-repeat-end-watch="myFunction">
+                            <tr ng-repeat="bank in banks | filter:searchText" ng-repeat-end-watch="myFunction">
                                 <td>
                                     <label>
-                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="contact.selected" />
+                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="bundle.selected" />
                                         <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
                                     </label>
                                 </td>
                                 <td>
-                                     <img class="avatar-img" ng-src="{{contact.image}}" ng-if="contact.image !== null">
-                                    <ng-letter-avatar ng-if="contact.image == null" data="{{contact.displayName}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                    <ng-letter-avatar data="{{bank.name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
                                 </td>
-                                 <td>{{contact.firstname}}</td>
-                                <td>{{contact.lastname}}</td>
-                                <td>{{contact.email}}</td>
-                                <td>{{contact.person_type}}</td>
-                                <td>{{contact.mobile}}</td>
-                                <td>{{contact.date_created | amDateFormat:'MM/DD/YYYY'}} </td>
+                                <td>{{bank.name}}</td>
+                                <td>{{bank.address}}</td>
+                                <td>{{bank.date_created | amDateFormat:'MM/DD/YYYY'}} </td>
                                 <td>
                                     <div class="pull-right">
                                         <ul class="actions">
-                                            <li><a href="" ng-click="getContactDetail(contact._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
-                                            <li><a href="" ng-click="deleteData(contact._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
+                                            <li><a href="" ng-click="getCompanyDetail(bank._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li><a href="" ng-click="deleteData(bank._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
                                         </ul>
                                     </div>
                                 </td>

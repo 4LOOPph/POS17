@@ -13,8 +13,11 @@
                         <dl class="dl-horizontal">
                             <div class="status">
                                 Status:
-                                <span style="color: #2196F3;" ng-show="details.isExisting !== 1">New Account</span>
-                                <span style="color: #009688;" ng-show="details.isExisting == 1">Existing Account</span>
+                                <span style="color: #2196F3;" ng-if="details.isExisting == 0">New Account</span>
+                                <span style="color: #009688;" ng-if="details.isExisting == 1">Existing Account</span>
+                                <span style="color: #4caf50;" ng-if="details.is_approved == 1 && details.deny_date == null">/ Approved</span>
+                                <span style="color: #f44336;" ng-if="details.is_approved == 0 && details.deny_date != null">/ Denied</span>
+                                <span style="color: #ff9800;" ng-if="details.is_approved == 0 && details.deny_date == null && details.approved_date ==null">/ Pending</span>
                             </div>
                             <div class="form-group col-sm-12">
                                 <div class="form-group col-sm-6">
@@ -127,6 +130,7 @@
                                     <div class="col-sm-11">
                                         <input type="text" disabled required="required" placeholder="No. of Devices" ng-model="details.tot_qty" />
                                         <i class="bar"></i>
+                                        <small>No. of Devices</small>
                                     </div>
                                 </div>
                             </div>
@@ -136,17 +140,11 @@
                     </div>
                     <div class="row no-print">
                         <div class="col-xs-12 btnHolder">
-                            <button ng-hide=" details.is_approved == 1 " class="btnss palette-Blue bg waves-effect" ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
-                            <button ng-hide="  details.deny_date !=null " class="btnss palette-Red bg waves-effect" ng-click="denySubscription(details.sr_id)">Denied</button>
+                            <button ng-if="details.is_approved !== 1" class="btnss palette-Blue bg waves-effect" ng-click="ApprovedSubscription(details.sr_id)">Approve</button>
+                            <button ng-if="details.deny_date !== null && details.is_approved == 0" class="btnss palette-Red bg waves-effect" ng-click="denySubscription(details.sr_id)">Denied</button>
                         </div>
                     </div>
                 </form>
-                <!--    </div>
-        </div> -->
-                <!-- <div data-title="<i class='fa fa-rss'></i> Activity" bs-pane>Activity</div>
-        <div data-title="<i class='fa fa-bars'></i> Campaign History" bs-pane>Campaign History</div>
-        <div data-title="<i class='fa fa-envelope'></i> Email History" bs-pane>Email History</div>
-        <div data-title="<i class='fa fa-info'></i> Note &amp; Attachment" bs-pane>Note &amp; Attachment</div> -->
             </div>
         </section>
     </div>

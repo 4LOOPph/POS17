@@ -1,0 +1,80 @@
+<form role="form" class="form-horizontal">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
+                    <div class="actions">
+                        <button ng-click="updateDetails(contacts)" class="actionBtn" style="padding: 4px 7px !important;" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></button>
+                    </div>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Last Name</dt>
+                            <dd>{{contacts.lastname}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>First Name</dt>
+                            <dd>{{contacts.firstname}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Middle Name</dt>
+                            <dd>{{contacts.middlename}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Customer ID</dt>
+                            <dd>{{contacts.company_username}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Company Name</dt>
+                            <dd>{{contacts.company_name}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Type</dt>
+                            <dd>{{contacts.person_type}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact Information</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Mobile Phone</dt>
+                            <dd>{{contacts.mobile}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Email Address</dt>
+                            <dd>{{contacts.email}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Address</dt>
+                            <dd>{{contacts.address}}, {{contacts.state}} {{contacts.city}} {{contacts.zipcode}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="zmdi zmdi-rss m-r-5"></i> Subscription</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Start Term</dt>
+                            <dd>{{contacts.date_start | amDateFormat:'MM / DD / YYYY'}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>End Term</dt>
+                            <dd>{{contacts.date_end | amDateFormat:'MM / DD / YYYY'}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

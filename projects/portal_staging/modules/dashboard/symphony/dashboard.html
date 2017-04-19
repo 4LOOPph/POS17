@@ -1,0 +1,159 @@
+<div class="overTop"></div>
+<!-- Main content -->
+<section class="content ng-scope">
+    <div class="row">
+        <section class="col-lg-6">
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Contacts</div>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="contact in contacts">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <img class="avatar-img" ng-src="{{contact.image}}" ng-if="contact.image !== null">
+                                    <ng-letter-avatar ng-if="contact.image == null" data="{{contact.displayName}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                </td>
+                                <td>{{contact.firstname}}</td>
+                                <td>{{contact.lastname}}</td>
+                                <td>{{contact.email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">User Accounts</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users">
+                                <td>{{index + 1}}</td>
+                                <td><ng-letter-avatar data="{{user.username}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar></td>
+                                <td>{{user.EmpName}}</td>
+                                <td>@{{user.username}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Products</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in products">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <img ng-if="product.img_default !== null" ng-src="{{product.img_default}}" class="avatar-img" height="40" width="40">
+                                    <ng-letter-avatar ng-if="product.img_default == null" data="{{product.item_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
+                                </td>
+                                <td>{{product.item_name}}</td>
+                                <td>{{product.brand}}</td>
+                                <td>{{product.product_code}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="col-lg-6">
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Companies</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="company in companies">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <ng-letter-avatar data="{{company.name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                </td>
+                                <td>{{company.name}}</td>
+                                <td>{{company.email_address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="action-headers clearfix palette-Teal-400 bg">
+                    <div class="ah-label hidden-xs palette-White text">Bundles</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="bundle in bundles">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <img ng-if="bundle.img_default !== null" ng-src="{{bundle.img_default}}" class="avatar-img" height="40" width="40">
+                                    <ng-letter-avatar ng-if="bundle.img_default == null" data="{{bundle.bundle_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
+                                </td>
+                                <td>{{bundle.bundle_name}}</td>
+                                <td>{{bundle.bundle_brand}}</td>
+                                <td>{{bundle.bundle_code}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<!-- <div class="showbox" ng-hide="loginAlertMessage" style="height: 150vh">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div> -->

@@ -1,0 +1,649 @@
+<div class="overTop"></div>
+<section class="content-header" ng-init="HideDetails = true;">
+    <h1>
+            Assets
+     </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="">
+        <div class="col-md-12 box no-padding">
+            <div class="col-md-2 no-padding">
+                <div class="mailHead">
+                    <!-- <img ng-src="{{profile.profile.image}}" err-src="http://placehold.it/160x160"> -->
+                    <button class="btnss bg waves-effect" style="width: 100%;" ng-click="compose()">New</button>
+                </div>
+                <div>
+                    <div class="">
+                        <div class="">
+                            <ul class="navs nav-pills nav-stacked">
+                                <li><a href=""><i class="zmdi zmdi-folder"></i> Files</a></li>
+                                <li><a href=""><i class="zmdi zmdi-accounts-alt"></i> Shared Files</a></li>
+                                <li><a href=""><i class="zmdi zmdi-star"></i> Starred</a></li>
+                                <li><a href=""><i class="zmdi zmdi-delete"></i> Trash</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="padding: 15px;">
+                        <div ng-controller="AccountSymphonyAssetStorageCtrl" ng-init="initStorage()">
+                            <div class="brColor br-top with-border minisidebarbg">
+                                <h2 style="font-size: 15px;">Storage 
+                            <br><small>{{ filesize }} of 2GB used</small></h2>
+                            </div>
+                            <div class=" no-padding">
+                                <div class="chart-responsive p-10">
+                                    <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-legend="true" chart-data="chart.data" chart-labels="chart.labels" chart-colors="chart.colors" chart-options="chart.options" chart-dataset-override="chart.options"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 no-padding mailbox bordLeft">
+                <div class="">
+                    <div class=" no-padding">
+                        <div class="btnHolderzz">
+                            <div class="btnHold">
+                                <div class="btn-group btnRight">
+                                    <ul class="ah-actions action a-alt">
+                                        <li>
+                                            <a class="ah-search-trigger" uib-tooltip="Archive">
+                                                <i class="zmdi zmdi-archive"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" uib-tooltip="Spam">
+                                                <i class="zmdi zmdi-alert-octagon"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" uib-tooltip="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" uib-tooltip="move to">
+                                                <i class="zmdi zmdi-folder"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="" uib-tooltip="labels">
+                                                <i class="zmdi zmdi-label-alt"></i>
+                                            </a>
+                                        </li>
+                                        <li class="dropdown user user-menu">
+                                            <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                <i class="zmdi zmdi-more-vert"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dm-icon pull-right">
+                                                <li>
+                                                    <a href="">Mark as read</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Mark as unread</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Mark as important</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Mark as not important</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Add star</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Remove star</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group pull-right" style="margin-right: 20px;">
+                                    <a href="" uib-tooltip="Grid View" ng-click="changeDisplay()" ng-if="isList">
+                                        <img src="/images/ic_view_module_white_24px.svg">
+                                    </a>
+                                    <a href="" uib-tooltip="List View" ng-click="changeDisplay()" ng-if="!isList">
+                                        <img src="/images/ic_list_white_24px.svg">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LIST -->
+                        <ng-include src=" './modules/account/symphony/assets/assets.lists.html' " ng-if="isList"></ng-include>
+                        <!-- GRID -->
+                    </div>
+                </div>
+            </div>
+            <!-- /. box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<style type="text/css">
+/*modal*/
+
+
+/*modal*/
+
+.leftBtn {
+    float: left;
+    left: 5px;
+}
+
+.senderEmail {
+    border-bottom: 1px dashed #ccc;
+    padding: 0;
+    color: #7d7d7d;
+    font-size: 16px;
+    padding-bottom: 8px;
+    margin-bottom: 35px;
+}
+
+.modal-body .form-group {
+    position: relative;
+    margin-bottom: 3.5rem;
+}
+
+.Bcc {
+    position: absolute;
+    right: 0px;
+    margin-top: 1px;
+}
+
+.Bcc span {
+    margin-left: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.trixHolder {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+trix-editor {
+    color: #111;
+    border: 0px solid #bbb !important;
+    border-radius: 3px;
+    margin: 0;
+    padding: 4px 8px;
+    min-height: 200px;
+    outline: none;
+}
+
+trix-toolbar {
+    display: block;
+    background: #efefef !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+trix-toolbar .button_group {
+    margin: 5px 8px 1px 0 !important;
+    border: 0px solid #bbb !important;
+}
+
+trix-toolbar .button_group button,
+trix-toolbar .button_group input[type=button] {
+    position: relative;
+    font-size: 0;
+    margin: 0;
+    height: 28px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    border-bottom: 0px solid #ddd !important;
+}
+
+trix-toolbar .button_group button:not(:first-child),
+trix-toolbar .button_group input[type=button]:not(:first-child) {
+    border-left: 0px solid #ccc !important;
+}
+
+trix-toolbar .button_group button.bold::before {
+    background-size: 50% !important;
+}
+
+trix-toolbar .button_group button.italic::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.strike::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.quote::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.link::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.code::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.bullets::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.numbers::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.block-level.decrease::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.block-level.increase::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.undo::before {
+    background-size: 50%;
+}
+
+trix-toolbar .button_group button.redo::before {
+    background-size: 50%;
+}
+
+
+/*modal*/
+
+
+/*modal*/
+
+
+/*modal*/
+
+.msgContainer {
+    height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.msgContainer:hover {
+    height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.msgContainer::-webkit-scrollbar {
+    width: 3px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.msgContainer::-webkit-scrollbar-thumb {
+    background: transparent;
+    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+    line-height: 50px;
+}
+
+.msgContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.msgContainer:hover::-webkit-scrollbar {
+    width: 3px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.msgContainer:hover::-webkit-scrollbar-thumb {
+    background: #c2c2c2;
+    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+    line-height: 50px;
+}
+
+.msgContainer:hover::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.firstDiv {
+    height: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    /*max-width: 50%;*/
+    max-height: 100%;
+    box-sizing: border-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: initial;
+    padding: 24px;
+}
+
+.secondDiv {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    max-width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.secondDiv i {
+    font-size: 120px!important;
+    width: 120px!important;
+    height: 120px!important;
+    min-width: 120px!important;
+    min-height: 120px!important;
+    line-height: 120px!important;
+    color: #BDBDBD!important;
+    background-repeat: no-repeat no-repeat;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 180px;
+}
+
+.secondDiv span {
+    font-size: 24px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.26);
+    min-height: initial;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -webkit-text-rendering: optimizeLegibility;
+}
+
+.layout-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.borderKilid {
+    border-left: 1px solid rgba(255, 255, 255, 0.44);
+    padding-left: 20px;
+}
+
+.senderAction {
+    position: absolute;
+    right: 15px;
+    margin-top: -55px;
+}
+
+.senderAction i {
+    color: #555 !important;
+}
+
+.detail {
+    color: rgba(0, 0, 0, .54);
+    display: block;
+}
+
+.title {
+    font-weight: 500;
+    margin-right: 6px;
+}
+
+.mailHead {
+    padding: 16.5px;
+    background: #26A69A;
+    height: 63px;
+}
+
+.mailHead img {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.42);
+    border-radius: 50%;
+    width: 30px;
+    float: left;
+}
+
+.mailHead > div {
+    overflow: hidden;
+    padding: 0px 5px 7px 12px;
+    font-size: 11px;
+    color: #fff;
+}
+
+.navs {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navs>li {
+    position: relative;
+    display: block;
+}
+
+.nav-stacked>li.active>a,
+.nav-stacked>li.active>a:hover {
+    background: transparent;
+    color: #444;
+    border-top: 0;
+    border-left-color: #3c8dbc;
+}
+
+.navs>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px 10px 40px;
+    height: 50px;
+    line-height: 30px;
+}
+
+.navs>li>a:hover {
+    background: rgba(237, 236, 236, 0.32);
+}
+
+.navs i {
+    font-size: 20px;
+    position: absolute;
+    top: 16px;
+    color: #4c4c4c;
+    left: 15px;
+}
+
+.box .nav-stacked>li {
+    border-bottom: transparent;
+    margin: 0;
+}
+
+.mailbox-controls {
+    padding: 16.5px 15px 16.5px 0;
+    background: #26a69a;
+    color: #fff;
+}
+
+.btnHolderzz {
+    background: #26a69a;
+    height: 63px;
+    padding-top: 15px;
+    margin-left: -1px;
+}
+
+.btnRight {
+    margin-top: -3px;
+    margin-right: 20px;
+}
+
+.tableDate {
+    width: 20%;
+    text-align: right;
+    line-height: 63px !important;
+    /*border-right: 1px solid #e6e6e6;*/
+}
+
+.btnHold {
+    border-left: 1px solid rgb(133, 205, 198);
+    padding-left: 5px;
+    padding-top: 5px;
+    height: 35px;
+}
+
+.btnHold ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+
+.tableCheckbox {
+    margin-right: 0px !important;
+    top: 16px !important;
+}
+
+.tableFirst {
+    width: 10% !important;
+    padding-left: 18px !important;
+}
+
+.bordLeft {
+    border-left: 1px solid #e6e6e6;
+}
+
+.msgHolder {
+    font-weight: 600;
+}
+
+.margin0 {
+    margin: 0 !important;
+}
+
+.msgHolder img {
+    width: 30px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.msgHolder p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    font-weight: 400;
+    width: 95%;
+}
+
+.msgHolder p:last-child {
+    color: #828282;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    font-weight: 400;
+    width: 95%;
+}
+
+.positionCheckbox {
+    margin-left: 12px;
+    position: absolute !important;
+    top: 32px;
+}
+
+.msgHolder div {
+    line-height: 17px;
+}
+
+.msgContentHeader {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+}
+
+.msgContentHeader h4 {
+    width: 76%;
+}
+
+.msgContentHeader .action > li > a > i {
+    color: #555;
+    font-size: 20px;
+}
+
+.msgContentBody {
+    padding-top: 25px;
+}
+
+.btnRight .action > li > a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 1px;
+    border-radius: 50%;
+}
+
+.msgContentBody img {
+    width: 41px !important;
+    height: 41px !important;
+    border-radius: 50% !important;
+    position: absolute;
+}
+
+.msgContentBody .sender {
+    margin-left: 55px;
+    font-weight: 600;
+}
+
+.sender p {
+    font-weight: 400;
+    color: #656565;
+}
+
+.senderDetails {
+    padding-top: 5px;
+}
+
+.senderDetails a {
+    color: rgb(3, 155, 229);
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.senderDetails a:hover {
+    color: rgb(3, 155, 229);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.details {
+    padding-top: 8px;
+    height: 80px;
+    margin-top: 5px;
+}
+
+.msgBody {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.attachment {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e6e6e6;
+    font-weight: 500;
+    color: #000;
+}
+
+.mailbox .dropdown-menu {
+    right: 0 !important;
+    left: auto;
+    padding: 10px 0 10px 0px !important;
+    border-top-width: 0 !important;
+    width: auto;
+    border-radius: 3px !important;
+    top: 1px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+</style>

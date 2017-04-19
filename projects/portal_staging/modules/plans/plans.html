@@ -32,6 +32,7 @@
                                 <th>Label</th>
                                 <th data-sort-ignore="true">Description</th>
                                 <th>Price</th>
+                                <th data-sort-ignore="true"># of Device</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +46,8 @@
                                 <td><a ui-sref="main.plan.detail({'_id': plan._id})">{{plan.name}}</a></td>
                                 <td>{{plan.label}}</td>
                                 <td>{{plan.description}}</td>
-                                <td>{{plan.price}}</td>
+                                <td>{{plan.price | number:2}}</td>
+                                <td>{{plan.noOfDevice}}</td>
                                 <td class="text-right">
                                     <button ng-click="editPlan(plan._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-edit"></span></button>
                                     <button ng-click="deletePlan(plan._id)" class="btn btn-icon command-edit waves-effect waves-circle"><span class="zmdi zmdi-delete"></span></button>
