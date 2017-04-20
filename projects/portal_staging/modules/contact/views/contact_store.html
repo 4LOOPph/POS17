@@ -1,35 +1,46 @@
-<table class="table table-hover footable table-stores" data-page-size="20" style="margin-bottom: 0">
-    <thead>
-        <tr>
-            <th data-sort-ignore="true">
-                <label>
-                    <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
-                    <label for="cbxHead" class="lbl positionCheckbox"></label>
-                </label>
-            </th>
-            <th data-sort-ignore="true"><b>Name</b></th>
-            <th data-sort-ignore="true"><b>Address</b></th>
-            <th data-sort-ignore="true"><b>Owner</b></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="store in stores | filter:searchText" ng-repeat-end-watch="myFunction">
-            <td>
-                <label>
-                    <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="store.selected" ng-change="checkDataChanges(store)" />
-                    <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
-                </label>
-            </td>
-            <td>{{store.name}}</td>
-            <td>{{store.address}}</td>
-            <td>{{store.owner_name}}</td>
-        </tr>
-    </tbody>
-    <tfoot class="hide-if-no-paging">
-        <tr>
-            <td colspan="6">
-                <ul class="pagination"></ul>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <div class="actions">
+            <button ng-click="saveSelected()" class="btnss palette-Blue bg waves-effect">Save Selected</button>
+        </div>
+    </div>
+    <div class="pmbb-body">
+        <div class="pmbb-view">
+            <table class="table table-hover footable table-stores" data-page-size="20" style="margin-bottom: 0">
+                <thead>
+                    <tr>
+                        <th data-sort-ignore="true">
+                            <label>
+                                <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                                <label for="cbxHead" class="lbl positionCheckbox"></label>
+                            </label>
+                        </th>
+                        <th data-sort-ignore="true"><b>Name</b></th>
+                        <th data-sort-ignore="true"><b>Address</b></th>
+                        <th data-sort-ignore="true"><b>Owner</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="store in stores | filter:searchText" ng-repeat-end-watch="myFunction">
+                        <td>
+                            <label>
+                                <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="store.selected" ng-change="checkDataChanges(store)" />
+                                <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                            </label>
+                        </td>
+                        <td>{{store.name}}</td>
+                        <td>{{store.address}}</td>
+                        <td>{{store.owner_name}}</td>
+                    </tr>
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+                    <tr>
+                        <td colspan="6">
+                            <ul class="pagination"></ul>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
