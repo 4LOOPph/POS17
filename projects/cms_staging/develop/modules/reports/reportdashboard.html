@@ -309,8 +309,8 @@
                     <div class="box-header with-border nestedHeader">
                         <h3 class="box-title">Top Sales Persons</h3>
                     </div>
-                    <div class="nestedPerson" ng-repeat="fsp in copyOfFilteredSalesPerson">
-                        <h4>{{fsp.sales_person}}</h4>
+                    <div class="nestedPerson" ng-repeat="fsp in copyOfFilteredSalesPerson | orderBy: 'total_transactions' ">
+                        <h4>{{fsp.sales_person}} <span>{{fsp.total_transactions}}</span></h4>
                         <div>$ {{fsp.total_sales | number:2}}</div>
                         <p>Sales</p>
                     </div>
