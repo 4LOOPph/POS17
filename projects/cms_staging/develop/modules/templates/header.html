@@ -5,7 +5,7 @@
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li class="dropdown messages-menu">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="notbtnback" angular-ripple>
                         <img src="./images/icon/ic_message_black_24px.svg">
                     </div><span class="headbadge">2</span>
@@ -197,8 +197,8 @@
 <div class="box-footer p-0">
     <form action="#" method="post">
         <div class="input-group w100p">
-            <input type="text" name="message" placeholder="Type a message..." class="pl-35 p-20 b-0 form-control">
-            <div class="emojis"></div>
+            <input type="text" name="message" ng-model="chatMessage" placeholder="Type a message..." class="pl-35 p-20 b-0 form-control">
+            <div class="emojis" ng-click="sendMessage()"></div>
         </div>
     </form>
 </div>
@@ -206,7 +206,7 @@
 </div>
 <style type="text/css">
 .chatposition {
-   position: fixed;
+    position: fixed;
     bottom: -20px;
     right: 0px;
     z-index: 99999;
