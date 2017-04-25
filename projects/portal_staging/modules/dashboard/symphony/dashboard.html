@@ -2,158 +2,186 @@
 <!-- Main content -->
 <section class="content ng-scope">
     <div class="row">
-        <section class="col-lg-6">
+        <div class="col-md-12">
             <div class="card">
-                <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">Contacts</div>
-                </div>
-                <div class="card-body table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="contact in contacts">
-                                <td>{{$index + 1}}</td>
-                                <td>
-                                    <img class="avatar-img" ng-src="{{contact.image}}" ng-if="contact.image !== null">
-                                    <ng-letter-avatar ng-if="contact.image == null" data="{{contact.displayName}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
-                                </td>
-                                <td>{{contact.firstname}}</td>
-                                <td>{{contact.lastname}}</td>
-                                <td>{{contact.email}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="container">
+                    <div class="card-header">
+                        <h1>Overview</h1>
+                    </div>
+                    <div class="card-body card-padding">
+                        <h3 class="lead">Welcome to Symphony for Portal! Get started here.</h3>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">User Accounts</div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="user in users">
-                                <td>{{index + 1}}</td>
-                                <td><ng-letter-avatar data="{{user.username}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar></td>
-                                <td>{{user.EmpName}}</td>
-                                <td>@{{user.username}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="container">
+                <div class="col-md-12">
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/notifications.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;">
+                            </div>
+                            <div class="card-header">
+                                <h2>Contacts<small> Manage Contact List</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.contacts({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/auth.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;">
+                            </div>
+                            <div class="card-header">
+                                <h2>User Accounts<small> Manage Symphony's User Accounts</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.users({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/analytics.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Companies<small>Manage Symphony's Company / Customer Information</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.companies({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/dynamiclinks.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Products<small>Manage Symphony's Products</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.products({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/config.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Product Bundles<small>Manage Symphony's Product Bundles</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.bundles({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/storage.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Articles / Experience<small>Manage Article Post for sharing experience towards your CMS</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.articles({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://d187qskirji7ti.cloudfront.net/news/wp-content/uploads/2016/10/cash-or-credit-1.jpg) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Banks <small>Manage Banks Information</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.banks({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/testlab.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Categories <small>Manage Categories Information to be map for products</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.categories({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/testlab.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Stores <small>Manage Stores Information to be map for products</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.stores({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160921_mobilesdk/discoverycards/2x/appindexing.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Quotations <small>Manage Sales Quotation</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.quotes({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/170215_mobilesdk/discoveryCards/2x/functions.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Roles / Access <small>Manage User Roles and Privileges within Symphony</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a href="" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="card">
+                            <div class="card-header ch-img" style="background: url(https://www.gstatic.com/mobilesdk/160505_mobilesdk/discoverycards/2x/database.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 145px;"></div>
+                            <div class="card-header">
+                                <h2>Assets Storage <small>Store and retrieve user generated content like images, audio, and video</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <a ui-sref="symphony.assets({sub_id: details.sub_id})" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> Get Started ...</a>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-             <div class="card">
-                <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">Products</div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Code</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="product in products">
-                                <td>{{$index + 1}}</td>
-                                <td>
-                                    <img ng-if="product.img_default !== null" ng-src="{{product.img_default}}" class="avatar-img" height="40" width="40">
-                                    <ng-letter-avatar ng-if="product.img_default == null" data="{{product.item_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                </td>
-                                <td>{{product.item_name}}</td>
-                                <td>{{product.brand}}</td>
-                                <td>{{product.product_code}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        <section class="col-lg-6">
-            <div class="card">
-                <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">Companies</div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="company in companies">
-                                <td>{{$index + 1}}</td>
-                                <td>
-                                    <ng-letter-avatar data="{{company.name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
-                                </td>
-                                <td>{{company.name}}</td>
-                                <td>{{company.email_address}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="action-headers clearfix palette-Teal-400 bg">
-                    <div class="ah-label hidden-xs palette-White text">Bundles</div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Code</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="bundle in bundles">
-                                <td>{{$index + 1}}</td>
-                                <td>
-                                    <img ng-if="bundle.img_default !== null" ng-src="{{bundle.img_default}}" class="avatar-img" height="40" width="40">
-                                    <ng-letter-avatar ng-if="bundle.img_default == null" data="{{bundle.bundle_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                </td>
-                                <td>{{bundle.bundle_name}}</td>
-                                <td>{{bundle.bundle_brand}}</td>
-                                <td>{{bundle.bundle_code}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
 </section>
-<!-- <div class="showbox" ng-hide="loginAlertMessage" style="height: 150vh">
-    <div class="loader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
-    </div>
-</div> -->
+<style type="text/css">
+.content {
+    min-height: 100vh;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 45px;
+    padding-right: 30px;
+}
+
+.view-more {
+    text-align: center;
+    padding: 10px 0;
+    color: #AEAEAE;
+    font-size: 12px;
+    margin-top: 10px;
+    border-bottom: 0;
+}
+
+.view-more i {
+    font-size: 15px;
+    line-height: 100%;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background: #EFEFEF;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+    color: #9E9E9E;
+}
+</style>

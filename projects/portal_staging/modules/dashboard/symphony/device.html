@@ -1,0 +1,90 @@
+<div class="overTop"></div>
+<!-- Main content -->
+<section class="content ng-scope">
+    <div class="row">
+        <section class="col-lg-3" ng-repeat="device in devices">
+            <div class="card">
+                <div class="boom">
+                    <i class="zmdi zimdi zmdi-{{device.zmdi}}"></i>
+                    <!--     <i class="zmdi zimdi zmdi-laptop-mac" ng-if="device.initial = MacBook"></i>
+                    <i class="zmdi zimdi zmdi-desktop-mac" ng-if="device.initial = Desktop"></i>
+                    <i class="zmdi zimdi zmdi-tablet-mac" ng-if="device.initial = Tablet"></i>
+                    <i class="zmdi zimdi zmdi-smartphone-android" ng-if="device.initial = SmartPhone"></i>
+                    <i class="zmdi zimdi zmdi-radio" ng-if="device.initial = Radio"></i> -->
+                    <div class="deviceName">{{device.Name}}</div>
+                    <span>{{device.Details}}</span>
+                    <p>{{device.Assignee}}</p>
+                    <a ng-class="{'Applied': device.alert == 'check-circle', 'notApplied': device.alert == 'alert-circle'}"><i class="zmdi zmdi-{{device.alert}}"></i> Settings {{device.Settings}}</a>
+                    <div class="deTails">Enrolled</div>
+                </div>
+            </div>
+        </section>
+        <!--  <section class="col-lg-3">
+            <div class="card">
+                <div class="boom">
+                    <i class="zmdi zimdi zmdi-tablet-mac"></i>
+                    <div class="deviceName">Thor MacBook Pro</div>
+                    <span>MacBook Pro 2GB</span>
+                    <p>Assign to Vcuii</p>
+                    <a class="Applied"><i class="zmdi zmdi-check-circle"></i> Settings not applied</a>
+                    <div class="deTails">Enrolled</div>
+                </div>
+            </div>
+        </section> -->
+    </div>
+</section>
+<!-- <div class="showbox" ng-hide="loginAlertMessage" style="height: 150vh">
+    <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div> -->
+<style type="text/css">
+.boom {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.zimdi {
+    font-size: 100px;
+}
+
+.deviceName {
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+.boom span {
+    color: #989898;
+}
+
+.boom p {
+    color: #989898;
+}
+
+.notApplied {
+    color: #ff6464 !important;
+}
+
+.Applied {
+    color: #8BC34A !important;
+}
+
+.deTails {
+    padding: 5px 15px;
+    margin-top: 20px;
+    border-top: #ccc 1px solid;
+    text-align: left;
+    border-bottom: 4px solid #333333;
+}
+
+.content {
+    min-height: 100vh;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 45px;
+    padding-right: 30px;
+}
+</style>
