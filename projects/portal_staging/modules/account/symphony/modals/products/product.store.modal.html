@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h3 class="modal-title">Product Stores</h3>
+</div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-products footable" data-page-size="10">
+            <thead>
+                <tr>
+                    <th data-sort-ignore="true" width="5%">
+                        <label>
+                            <input id="cbxHead" type="checkbox" class="cbx" ng-model="selectDeselectAll" ng-change="changeSelectDeselectAll()" />
+                            <label for="cbxHead" class="lbl positionCheckbox"></label>
+                        </label>
+                    </th>
+                    <th data-sort-ignore="true" width="5%"></th>
+                    <th data-sort-ignore="true">Name</th>
+                    <th data-sort-ignore="true">Address</th>
+                    <th data-sort-ignore="true">Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products | filter:searchText" ng-repeat-end-watch="myFunction">
+                    <td>
+                        <label>
+                            <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="product.selected" />
+                            <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
+                        </label>
+                    </td>
+                    <td>
+                        <img class="avatar-img" ng-src="{{product.img_default}}" ng-if="product.img_default !== null">
+                        <ng-letter-avatar ng-if="product.img_default == null" data="{{product.item_name}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                    </td>
+                    <td>{{product.item_name}}</td>
+                    <td>{{product.brand}}</td>
+                    <td>{{product.product_code}}</td>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="6">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveEntry()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
+</div>

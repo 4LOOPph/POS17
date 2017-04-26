@@ -45,12 +45,12 @@
                                     </label>
                                 </th>
                                 <th data-sort-ignore="true" width="5%"></th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Code</th>
-                                <th>Type</th>
-                                <th>Selling Price</th>
-                                <th></th>
+                                <th data-sort-ignore="true">Name</th>
+                                <th data-sort-ignore="true">Brand</th>
+                                <th data-sort-ignore="true">Code</th>
+                                <th data-sort-ignore="true">Type</th>
+                                <th data-sort-ignore="true">Selling Price</th>
+                                <th data-sort-ignore="true"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,7 +76,31 @@
                                 <td>
                                     <div class="pull-right">
                                         <ul class="actions">
-                                            <li><a href="" ng-click="getProductDetail(product._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li class="dropdown">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true" uib-tooltip="More Options">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="" ng-click="getProductDetail(product._id)"><i class="zmdi zmdi-edit"></i> Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-cloud-box"></i> Media/Files</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="" ng-click="getProductStore(product._id)"><i class="zmdi zmdi-city"></i> Store</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-view-list"></i> Category</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-widgets"></i> Attributes</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-view-module"></i> Variants</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="" ng-click="deleteData(product._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
                                         </ul>
                                     </div>

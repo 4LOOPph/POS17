@@ -1,7 +1,7 @@
 <div ng-controller="AccountPaymentCtrl">
     <div class="box-header palette-Light">
         <h3 class="box-title">Payment Gateways
-                    <small>Available payment gateways</small></h3>
+                    <small>Available payment gateways to be integrated on the account</small></h3>
     </div>
     <div style="padding: 0 15px;">
         <div class="col-md-6">
@@ -21,7 +21,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -33,7 +33,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -45,7 +45,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -55,9 +55,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -91,7 +91,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -103,7 +103,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -113,9 +113,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -149,7 +149,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -161,7 +161,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -171,9 +171,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -207,7 +207,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -219,7 +219,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -229,9 +229,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -253,7 +253,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -265,7 +265,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -277,7 +277,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -287,9 +287,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -311,7 +311,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -323,7 +323,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -335,7 +335,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -345,9 +345,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                                     <img src="/images/fingerprint.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" />
+                                    <input type="text" placeholder="App ID" ng-model="facebook.apiKey" disabled/>
                                     <i class="bar"></i>
                                     <small>(App ID)</small>
                                 </div>
@@ -381,7 +381,7 @@
                                     <img src="/images/key-variant.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" />
+                                    <input type="text" placeholder="App Secret" ng-model="facebook.apiSecret" disabled/>
                                     <i class="bar"></i>
                                     <small>(App Secret)</small>
                                 </div>
@@ -393,7 +393,7 @@
                                     <img src="/images/link.svg">
                                 </div>
                                 <div class="col-sm-11">
-                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" />
+                                    <input type="text" placeholder="Redirect URL" ng-model="facebook.redirectUri" disabled/>
                                     <i class="bar"></i>
                                     <small>(Redirect URL)</small>
                                 </div>
@@ -403,9 +403,9 @@
                 </div>
                 <div class="socialBtnHolder">
                     <div>
-                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')">Enable</button>
-                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')">Update</button>
-                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')">Delete</button>
+                        <button class="btnss palette-Blue bg waves-effect" ng-if="!facebook.isEnable" ng-click="approvedSocialAuth('facebook')" disabled>Enable</button>
+                        <button class="btnss waves-effect" ng-if="facebook.isEnable" ng-click="updateSocialAuth('facebook')" disabled>Update</button>
+                        <button class="btnss palette-Red bg waves-effect" ng-if="facebook.isEnable" ng-click="deleteSocialAuth('facebook')" disabled>Delete</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h4>Manage Billing Information</h4>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-11">
+                        <textarea placeholder="Billing Address" ng-model="details.billing_address" class="ng-pristine ng-untouched ng-valid ng-not-empty" ng-required="true" row="10"></textarea>
+                        <i class="bar"></i>
+                        <small>(Billing Address)</small>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                        <div class="imgInput">
+                        </div>
+                        <div class="">
+                            <select class="form-control" ng-model="details.billing_country" ng-options="option.name as option.name for option in countries" required />
+                            </select>
+                            <i class="zmdi zmdi-city selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Country)</small>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="">
+                            <input type="text" placeholder="State" ng-model="details.billing_state" />
+                            <i class="zmdi zmdi-city selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(State)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                        <div class="">
+                            <input type="text" placeholder="City" ng-model="details.billing_city" />
+                            <i class="zmdi zmdi-city selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(City)</small>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="">
+                            <input type="text" placeholder="Zip Code" ng-model="details.billing_zip_code" />
+                            <i class="zmdi zmdi-city selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Zip Code)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                        <div class="">
+                            <input type="text" placeholder="Phone No." ng-model="details.billing_phone" />
+                            <i class="zmdi zmdi-phone selectiCon"></i>
+                            <i class="bar"></i>
+                            <small>(Phone No.)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="saveEntry()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
+</div>

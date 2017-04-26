@@ -48,7 +48,7 @@
                                 <th>Title</th>
                                 <th>Summary</th>
                                 <th>Date Created</th>
-                                <th></th>
+                                <th data-sort-ignore="true" width="10%"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,8 +69,8 @@
                                 <td>
                                     <div class="pull-right">
                                         <ul class="actions">
-                                            <li><a href="" ng-click="getCompanyDetail(article._id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
-                                            <li><a href="" ng-click="deleteData(article._id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
+                                            <li><a href="" ng-click="getArticleDetail(article.article_id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li><a href="" ng-click="deleteData(article.article_id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
                                         </ul>
                                     </div>
                                 </td>
