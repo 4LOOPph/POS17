@@ -57,7 +57,7 @@
             <div class="form-group col-md-3">
                 <label>Date To: </label>
                 <div class="input-group">
-                    <input type="text" class="form-control" ng-model="dateTo" data-date-format="yyyy-MM-dd" bs-datepicker onChange='getDashboardReports()' />
+                    <input type="text" class="form-control" ng-model="dateTo" data-date-format="yyyy-MM-dd" bs-datepicker ng-change='dashboardreportChangeDate()' />
                     <div class="input-group-addon">
                         <img src="./images/icon/calendar-today.svg">
                     </div>
@@ -307,7 +307,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="box" style="padding-bottom: 15px;">
                     <div class="box-header with-border nestedHeader">
-                        <h3 class="box-title">Top Sales Persons</h3>
+                        <h3 class="box-title">Top Users</h3>
                     </div>
                     <div class="nestedPerson" ng-repeat="fsp in copyOfFilteredSalesPerson | orderBy: 'total_transactions' ">
                         <h4>{{fsp.sales_person}} <span>{{fsp.total_transactions}}</span></h4>

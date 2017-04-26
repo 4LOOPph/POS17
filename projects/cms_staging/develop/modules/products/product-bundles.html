@@ -34,6 +34,9 @@
                                 <button ng-click="refresh()" class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Refresh" angular-ripple>
                                     <img src="./images/icon/refresh.svg">
                                 </button>
+                                <button ng-json-export-excel data="bundles" report-fields="reportFields" filename="'export-excel-bundles'" separator="," class="btn btn-default actbutton btn-xs btn-flat mr-10" uib-tooltip="Export" angular-ripple>
+                                    <img src="./images/icon/file-excel.svg">
+                                </button>
                             </div>
                         </form>
                     </div>
