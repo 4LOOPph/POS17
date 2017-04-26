@@ -4,45 +4,94 @@
 <div class="modal-body">
     <form novalidate>
         <div class="row">
-            <div class="form-group col-sm-12">
-                <div class="form-group col-sm-6">
+            <div class="form-group col-sm-12" ng-if="details.article_id">
+                <div class="form-group col-sm-12">
                     <div class="imgInput">
                     </div>
                     <div class="col-sm-11">
-                        <input type="text" required="required" placeholder="Product Name" ng-model="details.item_name" />
-                        <i class="bar"></i>
-                        <small>(Product Name)</small>
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="text" required="required" placeholder="Product Code" ng-model="details.product_code" />
-                        <i class="bar"></i>
-                        <small>(Product Code)</small>
+                        <span ng-if="details.is_active == '1' " class="label label-success">Published</span>
+                        <span ng-if="details.is_active == '0' " class="label label-warning">Draft</span>
                     </div>
                 </div>
             </div>
             <div class="form-group col-sm-12">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-12">
                     <div class="imgInput">
                     </div>
                     <div class="col-sm-11">
-                        <select class="form-control" ng-model="details.ptype_id" ng-options="option.ptype_id as option.name for option in ptypes" required />
-                        </select>
+                        <input type="text" required="required" placeholder="Article Title" ng-model="details.title" />
+                        <i class="bar"></i>
+                        <small>(Article Title)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                    </div>
+                    <div class="col-sm-11">
+                        <text-angular ng-model="details.article"></text-angular>
+                        <i class="bar"></i>
+                        <small>(Article Summary)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                    </div>
+                    <div class="col-sm-11">
+                        <text-angular ng-model="details.description"></text-angular>
+                        <i class="bar"></i>
+                        <small>(Article Description)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12">
+                    <div class="imgInput">
+                    </div>
+                    <div class="col-sm-11">
+                        <ui-select ng-model="details.media" on-select="showArticleMedia()">
+                            <ui-select-match>
+                                {{$select.selected.media_name}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (mediafile | filter: $select.search) track by item._id">
+                                <div ng-bind-html="item.media_name | highlight: $select.search"></div>
+                                <small><span ng-bind-html="company.media_mimetype | highlight: $select.search"></span></small>
+                            </ui-select-choices>
+                        </ui-select>
                         <i class="zmdi zmdi-network selectiCon"></i>
                         <i class="bar"></i>
-                        <small>(Product Type)</small>
+                        <small>(Article Thumbnail)</small>
                     </div>
                 </div>
-                <div class="form-group col-sm-6">
+            </div>
+            <div class="form-group col-sm-12" ng-if="mediafile.length > 0">
+                <div class="form-group col-sm-12">
                     <div class="imgInput">
                     </div>
                     <div class="col-sm-11">
-                        <input type="text" required="required" placeholder="Product Brand" ng-model="details.brand" />
-                        <i class="bar"></i>
-                        <small>(Product Brand)</small>
+                        <img class="img-responsive img-rounded" ng-src="{{mediaSource.media_path}}" err-src="./images/dateBg.png" ng-if="!mediaSource.media">
+                        <div class="videogular-container" ng-class="{'audio': audio}" ng-if="mediaSource.media">
+                            <videogular vg-theme="mediaSource.url">
+                                <vg-media vg-src="mediaSource.media_path"></vg-media>
+                                <vg-controls>
+                                    <vg-play-pause-button></vg-play-pause-button>
+                                    <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                                    <vg-scrub-bar>
+                                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                    </vg-scrub-bar>
+                                    <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                                    <vg-volume>
+                                        <vg-mute-button></vg-mute-button>
+                                        <vg-volume-bar></vg-volume-bar>
+                                    </vg-volume>
+                                    <vg-fullscreen-button></vg-fullscreen-button>
+                                </vg-controls>
+                                <vg-overlay-play></vg-overlay-play>
+                            </videogular>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,76 +100,14 @@
                     <div class="imgInput">
                     </div>
                     <div class="col-sm-11">
-                        <input type="number" required="required" placeholder="Selling Price" ng-model="details.sell_price" />
+                        <ui-select reset-search-input="true" on-select="clearInput($select)" on-remove="deleteProductTags($item)" multiple tagging="tagTransform" tagging-label="Enter Tag" ng-model="details.tags" close-on-select="false">
+                            <ui-select-match placeholder="Enter Tags...">{{$item.tags}}</ui-select-match>
+                            <ui-select-choices repeat="tag in tagsArr | propsFilter: {tags: $select.search}">
+                                <div ng-bind-html="tag.tags | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
                         <i class="bar"></i>
-                        <small>(Selling Price)</small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="form-group col-sm-4">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="number" ng-keyup="changeOf_PP(details.purchase_price,details.markup, details.retail_price)" required="required" placeholder="Purchase Price" ng-model="details.purchase_price" />
-                        <i class="bar"></i>
-                        <small>(Purchase Price)</small>
-                    </div>
-                </div>
-                <div class="form-group col-sm-4">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="number" ng-keyup="changeOf_MU(details.purchase_price,details.markup, details.retail_price)" required="required" placeholder="Mark Up" ng-model="details.markup" />
-                        <i class="bar"></i>
-                        <small>(Mark Up (%))</small>
-                    </div>
-                </div>
-                <div class="form-group col-sm-4">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="number" ng-keyup="changeOf_RP(details.purchase_price,details.markup, details.retail_price)" required="required" placeholder="Retail Price" ng-model="details.retail_price" />
-                        <i class="bar"></i>
-                        <small>(Retail Price)</small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="form-group col-sm-6">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.start_date" bs-datepicker/>
-                        <i class="bar"></i>
-                        <small>(Start Date)</small>
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" data-date-format="MM-dd-yyyy" ng-model="details.end_date" data-min-date="{{details.start_date}}" bs-datepicker/>
-                        <i class="bar"></i>
-                        <small>(End Date)</small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="form-group col-sm-6">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                        <input type="text" required="required" placeholder="Product Barcode" ng-model="details.barcode" />
-                        <i class="bar"></i>
-                        <small>(Product Barcode)</small>
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <div class="imgInput">
-                    </div>
-                    <div class="col-sm-11">
-                       <barcode type="{{mycode.type}}" render="img" string="{{details.barcode}}" options="barcodeoptions"></barcode>
+                        <small>(Tags)</small>
                     </div>
                 </div>
             </div>
@@ -128,6 +115,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button ng-click="saveEntry()" class="btnss palette-Blue bg waves-effect">Save changes</button>
+    <button ng-click="saveArticle()" class="btnss palette-Blue bg waves-effect">Save changes</button>
     <button ng-click="cancel()" class="btnss  bg waves-effect">Cancel</button>
 </div>

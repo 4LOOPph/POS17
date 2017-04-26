@@ -22,7 +22,7 @@
                             <div class="list-group lg-alt messageList">
                                 <a class="list-group-item media" href="" ng-repeat="acc in accounts" ng-click="getMessage(acc)" style="display: flex;">
                                     <div class="pull-left">
-                                        <ng-letter-avatar data="{{acc.firstname}}" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
+                                        <ng-letter-avatar data="{{acc.firstname}}" shape="round" height="45" width="45" fontsize="15" fontWeight="100" charCount="2" class="avatar-img"></ng-letter-avatar>
                                     </div>
                                     <div class="media-body">
                                         <div class="lgi-heading">{{acc.firstname}} {{acc.lastname}}</div>
@@ -159,7 +159,7 @@
                             </div>
                             <div>
                                 <div class="list-group lg-alt">
-                                    <div class="msgCOntainerz">
+                                    <!-- <div class="msgCOntainerz">
                                         <div class="list-group-item media" ng-repeat="msg in filterMessages" style="display: flex;">
                                             <div class="pull-left">
                                                 <ng-letter-avatar data="{{msg.user.displayName}}" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2"></ng-letter-avatar>
@@ -170,72 +170,39 @@
                                                         {{msg.value}}
                                                     </div>
                                                 </div>
-                                                <!-- <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 09:00</small> -->
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="msgCOntainerz">
+                                        <div class="list-group-item media" style="display: flex;">
+                                            <div style="margin: 2px 10px 0px 0px;">
+                                                <ng-letter-avatar data="Walter Marsh" shape="round" height="45" width="45" fontsize="15" fontWeight="100" charCount="2"></ng-letter-avatar>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>
+                                                    <div class="msb-item">
+                                                        Mauris volutpat magna nibh, et condimentum est rutrum a. Nunc sed turpis mi. In eu massa a sem pulvinar lobortis.
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="msb-item">
+                                                        Condimentum est rutrum lobortis.
+                                                    </div>
+                                                </div>
+                                                <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 09:30</small>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item media">
+                                            <div class="media-body">
+                                                <div>
+                                                    <div class="msb-item">
+                                                        Etiam ex arcumentum
+                                                    </div>
+                                                </div>
+                                                <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 09:33</small>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--  <div class="list-group-item media">
-                                    <div class="pull-right">
-                                        <ng-letter-avatar data="Walter Marsh" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="msb-item">
-                                                Mauris volutpat magna nibh, et condimentum est rutrum a. Nunc sed turpis mi. In eu massa a sem pulvinar lobortis.
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="msb-item">
-                                                Condimentum est rutrum lobortis.
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="msb-item">
-                                                :)
-                                            </div>
-                                        </div>
-                                        <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 09:30</small>
-                                    </div>
-                                </div>
-                                <div class="list-group-item media">
-                                    <div class="pull-left">
-                                        <ng-letter-avatar data="Kane Williams" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="msb-item">
-                                                Etiam ex arcumentum
-                                            </div>
-                                        </div>
-                                        <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 09:33</small>
-                                    </div>
-                                </div>
-                                <div class="list-group-item media">
-                                    <div class="pull-right">
-                                        <ng-letter-avatar data="Walter Marsh" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="msb-item">
-                                                Etiam nec facilisis lacus. Nulla imperdiet augue ullamcorper dui ullamcorper, eu laoreet sem consectetur. Aenean et ligula risus. Praesent sed posuere sem. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                            </div>
-                                        </div>
-                                        <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 10:10</small>
-                                    </div>
-                                </div>
-                                <div class="list-group-item media">
-                                    <div class="pull-left">
-                                        <ng-letter-avatar data="Kane Williams" shape="round" height="45" width="45" fontsize="25" fontWeight="100" charCount="2"></ng-letter-avatar>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="msb-item">
-                                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ac tortor ut elit sodales varius. Mauris id ipsum id mauris malesuada tincidunt. Vestibulum elit massa, pulvinar at sapien sed, luctus vestibulum eros. Etiam finibus tristique ante, vitae rhoncus sapien volutpat eget
-                                            </div>
-                                        </div>
-                                        <small class="ms-date"><i class="zmdi zmdi-time"></i> 20/02/2015 at 10:24</small>
-                                    </div>
-                                </div> -->
                                     <div class="ms-reply">
                                         <textarea placeholder="What's on your mind..." ng-model="chatMessage"></textarea>
                                         <button ng-click="sendMessage()"><i class="zmdi zmdi-mail-send"></i></button>

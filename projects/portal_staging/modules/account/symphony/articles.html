@@ -7,9 +7,9 @@
                 <div class="action-headers clearfix palette-Teal-400 bg">
                     <div class="ah-label hidden-xs palette-White text">Articles</div>
                     <ul class="ah-actions actions a-alt">
-                        <li><a href="" ng-click="addContact()" uib-tooltip="Add New"><i class="zmdi zmdi-plus"></i></a></li>
+                        <li><a href="" ng-click="addArticle()" uib-tooltip="Add New"><i class="zmdi zmdi-plus"></i></a></li>
                         <li><a href="" ng-click="reloadData()" uib-tooltip="Refresh"><i class="zmdi zmdi-refresh-sync"></i></a></li>
-                        <li><a href=""><i class="zmdi zmdi-delete" ng-disabled="!deleteSomeData" uib-tooltip="Delete"></i></a></li>
+                        <li><a href="" ng-click="deleteSelected()"><i class="zmdi zmdi-delete" ng-disabled="!deleteSomeData" uib-tooltip="Delete"></i></a></li>
                     </ul>
                 </div>
                 <div class="boxSubheader">
@@ -17,25 +17,9 @@
                         <span class="zmdi icon input-group-addon zmdi-search customSearch"></span>
                         <input type="text" class=" customSearchinput search-field form-control" placeholder="Search" ng-model="searchText">
                     </div>
-                    <div class="actionBtnHolder" style=" margin-top: -5px;">
-                        <div class="actionBtnHolder" style="display: inline-flex;">
-                            <button uib-tooltip="Sort" ng-click="createModule()" class="actionBtn dropdown-toggle" data-toggle="dropdown" style="padding: 4px 6px !important;"><i class="zmdi zmdi-sort"></i></button>
-                            <ul class="dropdown-menu search" role="menu" style=" min-width: 100%;left: -65px;">
-                                <li>
-                                    <a href="">Date Created</a>
-                                </li>
-                                <li>
-                                    <a href="">Name</a>
-                                </li>
-                                <li>
-                                    <a href="">Brand</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover table-bundles footable" data-page-size="15">
+                    <table class="table table-hover table-articles footable" data-page-size="15">
                         <thead>
                             <tr>
                                 <th data-sort-ignore="true" width="5%">
@@ -55,7 +39,7 @@
                             <tr ng-repeat="article in articles | filter:searchText" ng-repeat-end-watch="myFunction">
                                 <td>
                                     <label>
-                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="bundle.selected" />
+                                        <input id="cbxBody-{{$index}}" type="checkbox" class="cbx" ng-model="article.selected" ng-change="checkDataChanges(article)"/>
                                         <label for="cbxBody-{{$index}}" class="lbl positionCheckbox"></label>
                                     </label>
                                 </td>
@@ -64,12 +48,27 @@
                                     <ng-letter-avatar ng-if="!article.article_thumbnail" data="{{article.title}}" shape="round" height="40" width="40" fontsize="20" fontWeight="100" charCount="2"></ng-letter-avatar>
                                 </td>
                                 <td>{{article.title}}</td>
-                                <td><span ng-bind-html="article.article | limitTo:150"></span></td>
+                                <td><span ng-bind-html="sanitizeMe(article.article) | limitTo:150"></span></td>
                                 <td>{{article.date_created | amDateFormat:'MM/DD/YYYY'}} </td>
                                 <td>
                                     <div class="pull-right">
                                         <ul class="actions">
-                                            <li><a href="" ng-click="getArticleDetail(article.article_id)" uib-tooltip="Edit"><i class="zmdi zmdi-edit"></i></a></li>
+                                            <li class="dropdown">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true" uib-tooltip="More Options">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="" ng-click="getArticleDetail(article.article_id)"><i class="zmdi zmdi-edit"></i> Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-cloud-box"></i> Media/Files</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href=""><i class="zmdi zmdi-view-list"></i> Package Items</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="" ng-click="deleteData(article.article_id)" uib-tooltip="Delete"><i class="zmdi zmdi-delete"></i></a></li>
                                         </ul>
                                     </div>
