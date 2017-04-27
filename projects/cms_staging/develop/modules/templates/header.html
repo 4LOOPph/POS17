@@ -120,10 +120,10 @@
         </ul>
     </div>
 </nav>
-<div class="col-md-3 chatposition" ng-show="chatbox">
-    <div class="box box-primary direct-chat direct-chat-primary chatshadow">
+<div class="col-md-3 chatposition" ng-show="chatbox" scroll-glue>
+    <div class="box box-primary direct-chat direct-chat-primary chatshadow" scroll-glue>
         <div class="box-header with-border chathead p-5 pl-10">
-            <b>{{profile.EmpName}}</b>
+            <b>Portal Service</b>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool p-0 mr-10" uib-tooltip="Settings">
                     <img src="./images/icon/ic_settings_black_18px.svg"></button>
@@ -131,78 +131,41 @@
                     <img src="./images/icon/ic_close_black_18px.svg"></button>
             </div>
         </div>
-        <div class="box-body">
-            <div class="direct-chat-messages">
-                <span>
-                <div class="direct-chat-msg">
-                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image">
-                    <li class="direct-chat-text">
-
-                        Gawex?.. Musta dha?
-                    </li>
-                </div>
-                <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+        <div class="box-body" scroll-glue>
+            <div class="direct-chat-messages" scroll-glue>
+                <span ng-repeat="msg in getmessage" scroll-glue>
+                        <div class="direct-chat-msg" ng-class="{right:msg.p_type == 1}">
+                            <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image" ng-if="msg.p_type == 0">
+                            <li class="direct-chat-text">{{msg.value}}</li>
+                        </div>
+                        <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-timestamp" ng-class="{'pull-right':msg.p_type == 1,'pull-left':msg.p_type == 0}">{{msg.send_at | amTimeAgo}}</span>
             </div>
             </span>
-            <span>
-                <div class="direct-chat-msg right">
-                    <li class="direct-chat-text">
-                        Okay pas Alright diguard..
-                    </li>
-                </div>
-                <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-timestamp pull-right">23 Jan 2:05 pm</span>
+            <!-- <span>
+                        <div class="direct-chat-msg right">
+                            <li class="direct-chat-text">Okay pas Alright diguard..</li>
+                        </div>
+                        <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-timestamp pull-right">23 Jan 2:05 pm</span>
+                        </div>
+                </span>
+                <span>
+                        <div class="direct-chat-msg">
+                            <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image"><li class="direct-chat-text">G?</li>
+                        </div>
+                        <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+                        </div>
+                </span> -->
         </div>
-        </span>
-        <span>
-                <div class="direct-chat-msg">
-                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image">
-                    <li class="direct-chat-text">
-                        G?
-                    </li>
-                </div>
-                <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
     </div>
-    </span>
-    <span>
-                <div class="direct-chat-msg">
-                    <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image">
-                    <li class="direct-chat-text">
-                        Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?Gawex?.. Musta dha?
-                    </li>
-                </div>
-                <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
-</div>
-</span>
-</div>
-<!-- <div class="direct-chat-contacts">
-                <ul class="contacts-list">
-                    <li>
-                        <a href="#">
-                            <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Image">
-                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                              Count Dracula
-                              <small class="contacts-list-date pull-right">2/28/2015</small>
-                            </span>
-                                <span class="contacts-list-msg">How have you been? I was...</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
-</div>
-<div class="box-footer p-0">
-    <form action="#" method="post">
+    <div class="box-footer p-0">
         <div class="input-group w100p">
-            <input type="text" name="message" ng-model="chatMessage" placeholder="Type a message..." class="pl-35 p-20 b-0 form-control">
+            <input type="text" name="message" ng-model="chatMessage" placeholder="Type a message..." class="pl-35 p-20 b-0 form-control" ng-change="(chatMessage.length < 1)?sendMessage():0" ng-keypress="($event.which === 13)?sendMessage():0">
             <div class="emojis" ng-click="sendMessage()"></div>
         </div>
-    </form>
-</div>
+    </div>
 </div>
 </div>
 <style type="text/css">

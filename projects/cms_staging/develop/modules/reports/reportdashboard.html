@@ -78,9 +78,9 @@
                         <h3 class="box-title">Revenue</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Revenue" style="color:{{pickAcolor(changeOf_revenue_Stat)}}">$ {{getOverall_Revenue | number:2}} 
+                        <h3 ng-show="getOverall_Revenue">$ {{getOverall_Revenue | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_revenue_Stat)}}"  class="{{pickAnArrow(changeOf_revenue_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_revenue_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_revenue_Stat)}}">( {{formatoDouble(changeOf_revenue_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_revenue_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_revenue_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -88,9 +88,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv1">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -103,9 +106,9 @@
                         <h3 class="box-title">Gross Profit</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Grossprofit" style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">$ {{getOverall_Grossprofit | number:2}}
+                        <h3 ng-show="getOverall_Grossprofit">$ {{getOverall_Grossprofit | number:2}}
                             <i style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}"  class="{{pickAnArrow(changeOf_gross_profit_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_gross_profit_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_gross_profit_Stat)}}">( {{formatoDouble(changeOf_gross_profit_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_gross_profit_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_gross_profit_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -114,7 +117,10 @@
                         </div>
                     </div>
                     <div class="">
-                        <div id="myDiv2">
+                        <div ng-show="data2.length > 0" id="myDiv2">
+                        </div>
+                        <div ng-show="data2.length < 1" style="min-height: 100px;">
+                            <center>No data available</center>
                         </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
@@ -128,9 +134,9 @@
                         <h3 class="box-title">Sale Count</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Salecount" style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">{{getOverall_Salecount | number:0}}
+                        <h3 ng-show="getOverall_Salecount">{{getOverall_Salecount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_items_sold_Stat)}}"  class="{{pickAnArrow(changeOf_items_sold_Stat | number:2)}}"></i>
-                            <small>( {{formatoDouble(changeOf_items_sold_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_items_sold_Stat)}}">( {{formatoDouble(changeOf_items_sold_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_items_sold_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_items_sold_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -139,7 +145,10 @@
                         </div>
                     </div>
                     <div class="">
-                        <div id="myDiv3">
+                        <div ng-show="data2.length > 0" id="myDiv3">
+                        </div>
+                        <div ng-show="data2.length < 1" style="min-height: 100px;">
+                            <center>No data available</center>
                         </div>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
@@ -155,9 +164,9 @@
                         <h3 class="box-title">Customers</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Customercount" ng-show="getOverall_Customercount" style="color:{{pickAcolor(changeOf_customers_Stat)}}">{{getOverall_Customercount | number:0}}
+                        <h3 ng-show="getOverall_Customercount" ng-show="getOverall_Customercount" >{{getOverall_Customercount | number:0}}
                             <i style="color:{{pickAcolor(changeOf_customers_Stat)}}" class="{{pickAnArrow(changeOf_customers_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_customers_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_customers_Stat)}}">( {{formatoDouble(changeOf_customers_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_customers_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_customers_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -165,9 +174,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv4">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -180,9 +192,9 @@
                         <h3 class="box-title">Basket Size</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Basketsize" style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">{{getOverall_Basketsize | number: 2}}
+                        <h3 ng-show="getOverall_Basketsize">{{getOverall_Basketsize | number: 2}}
                             <i style="color:{{pickAcolor(changeOf_basket_size_Stat)}}" class="{{pickAnArrow(changeOf_basket_size_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_basket_size_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_basket_size_Stat)}}">( {{formatoDouble(changeOf_basket_size_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_size_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_size_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -190,9 +202,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv5">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -205,9 +220,9 @@
                         <h3 class="box-title">Basket Value</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Basketvalue" style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">$ {{getOverall_Basketvalue | number:2}}
+                        <h3 ng-show="getOverall_Basketvalue">$ {{getOverall_Basketvalue | number:2}}
                             <i style="color:{{pickAcolor(changeOf_basket_value_Stat)}}" class="{{pickAnArrow(changeOf_basket_value_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_basket_value_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_basket_value_Stat)}}">( {{formatoDouble(changeOf_basket_value_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_basket_value_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_basket_value_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -215,9 +230,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv6">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -232,9 +250,9 @@
                         <h3 class="box-title">Discount</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Discount" style="color:{{pickAcolor(changeOf_discount_Stat)}}">$ {{getOverall_Discount | number:2}} 
+                        <h3 ng-show="getOverall_Discount">$ {{getOverall_Discount | number:2}} 
                             <i style="color:{{pickAcolor(changeOf_discount_Stat)}}" class="{{pickAnArrow(changeOf_discount_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_discount_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_discount_Stat)}}">( {{formatoDouble(changeOf_discount_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -242,9 +260,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv7">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -257,9 +278,9 @@
                         <h3 class="box-title">Discount %</h3>
                     </div>
                     <div class="" style="margin: 5%;">
-                        <h3 ng-show="getOverall_Discountpercent" style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">{{getOverall_Discountpercent | number:2}} 
+                        <h3 ng-show="getOverall_Discountpercent">{{getOverall_Discountpercent | number:2}} 
                         <i style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}" class="{{pickAnArrow(changeOf_discount_percent_Stat)}}"></i>
-                            <small>( {{formatoDouble(changeOf_discount_percent_Stat)}} )</small>
+                            <small style="color:{{pickAcolor(changeOf_discount_percent_Stat)}}">( {{formatoDouble(changeOf_discount_percent_Stat)}} )</small>
                         </h3>
                         <div class="progress" ng-repeat="d2 in data2">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="d2.percent_discount_percent_by_store" aria-valuemin="0" aria-valuemax="100" style="width:{{d2.percent_discount_percent_by_store}}%;background-color: #cde5cf;color: #4d9a53;">
@@ -267,9 +288,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div ng-show="data2.length > 0" class="">
                         <div id="myDiv8">
                         </div>
+                    </div>
+                    <div ng-show="data2.length < 1" style="min-height: 100px;">
+                        <center>No data available</center>
                     </div>
                     <div class="overlay" ng-show="productIsLoading">
                         <div class="loader"></div>
@@ -290,7 +314,6 @@
                     </div>
                 </div> -->
             </div>
-
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -298,7 +321,7 @@
                     <div class="box-header with-border nestedHeader">
                         <h3 class="box-title">Top Selling Products</h3>
                     </div>
-                    <div class="nestedProduct" ng-repeat="tsp in productPerformance_data" >
+                    <div class="nestedProduct" ng-repeat="tsp in productPerformance_data">
                         <div>{{tsp.product_name}}</div>
                         <p>{{tsp.quantity}}</p>
                     </div>
@@ -309,9 +332,9 @@
                     <div class="box-header with-border nestedHeader">
                         <h3 class="box-title">Top Users</h3>
                     </div>
-                    <div class="nestedPerson" ng-repeat="fsp in copyOfFilteredSalesPerson | orderBy: 'total_transactions' ">
-                        <h4>{{fsp.sales_person}} <span>{{fsp.total_transactions}}</span></h4>
-                        <div>$ {{fsp.total_sales | number:2}}</div>
+                    <div class="nestedPerson" ng-repeat="fsp in copyOfFilteredSalesPerson | orderBy: '-total_transactions' ">
+                        <h4>{{fsp.sales_person}} </h4>
+                        <div>$ {{fsp.total_sales | number:2}} <span ng-hide="true"> | trans: {{fsp.total_transactions}}</span></div>
                         <p>Sales</p>
                     </div>
                 </div>
@@ -362,7 +385,7 @@
                     </div>
                 </div> -->
             </div>
-            </div>
+        </div>
         <!-- <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="box">
