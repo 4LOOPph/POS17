@@ -134,30 +134,14 @@
         <div class="box-body" scroll-glue>
             <div class="direct-chat-messages" scroll-glue>
                 <span ng-repeat="msg in getmessage" scroll-glue>
-                        <div class="direct-chat-msg" ng-class="{right:msg.p_type == 1}">
-                            <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image" ng-if="msg.p_type == 0">
+                        <div class="direct-chat-msg" ng-class="{'right':msg.p_type == 1}">
+                            <img class="direct-chat-img" ng-src="./images/avatar.png" alt="Message User Image" ng-if="msg.p_type == 0">
                             <li class="direct-chat-text">{{msg.value}}</li>
                         </div>
                         <div class="direct-chat-info clearfix">
                             <span class="direct-chat-timestamp" ng-class="{'pull-right':msg.p_type == 1,'pull-left':msg.p_type == 0}">{{msg.send_at | amTimeAgo}}</span>
             </div>
             </span>
-            <!-- <span>
-                        <div class="direct-chat-msg right">
-                            <li class="direct-chat-text">Okay pas Alright diguard..</li>
-                        </div>
-                        <div class="direct-chat-info clearfix">
-                            <span class="direct-chat-timestamp pull-right">23 Jan 2:05 pm</span>
-                        </div>
-                </span>
-                <span>
-                        <div class="direct-chat-msg">
-                            <img class="direct-chat-img" ng-src="{{profile.profile.image}}" err-src="./images/avatar5.png" alt="Message User Image"><li class="direct-chat-text">G?</li>
-                        </div>
-                        <div class="direct-chat-info clearfix">
-                            <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
-                        </div>
-                </span> -->
         </div>
     </div>
     <div class="box-footer p-0">
@@ -169,116 +153,117 @@
 </div>
 </div>
 <style type="text/css">
-.chatposition {
-    position: fixed;
-    bottom: -20px;
-    right: 0px;
-    z-index: 99999;
-    width: 350px !important;
-}
+    .chatposition {
+        position: fixed;
+        bottom: -20px;
+        right: 0px;
+        z-index: 99999;
+        width: 350px !important;
+    }
+    
+    .chatshadow {
+        box-shadow: 0 1px 10px 3px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12) !important;
+    }
+    
+    .right .direct-chat-text {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    
+    .right .direct-chat-text:after {
+        border-width: 5px;
+        margin-top: -5px;
+        display: none !important;
+    }
+    
+    .right .direct-chat-text:before {
+        border-width: 6px;
+        margin-top: -6px;
+        display: none !important;
+    }
+    
+    .direct-chat-messages {
+        overflow-x: hidden !important;
+    }
+    
+    .direct-chat-info {
+        margin-left: 50px;
+    }
+    
+    .direct-chat-primary .right>.direct-chat-text {
+        background: rgb(66, 133, 244);
+        border-color: rgb(66, 133, 244);
+        color: #fff;
+        float: right;
+    }
+    
+    .chathead {
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
+        border-bottom: 0 !important;
+        background: #565656;
+        color: #fff;
+    }
+    
+    .emojis {
+        position: absolute;
+        display: block;
+        bottom: 7px;
+        left: 5px;
+        width: 25px;
+        height: 25px;
+        background-image: url(http://i.imgur.com/5WUpcPZ.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 100;
+        cursor: pointer;
+    }
+    
+    .direct-chat-messages {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        padding: 10px;
+        height: 300px;
+        overflow: auto;
+    }
+    
+    .direct-chat-messages li {
+        display: table;
+    }
+    
+    .direct-chat-msg {
+        margin-bottom: 0px;
+    }
+    
+    .direct-chat-text:after,
+    .direct-chat-text:before {
+        left: 20px;
+        border: 0;
+    }
+    
+    .direct-chat-text:before {
+        border-width: 6px;
+        margin-top: -6px;
+        content: "";
+        top: 5px;
+        right: 0px;
+        left: -10px;
+        width: 0px;
+        height: 0px;
+        border: 5px solid #d2d6de;
+        border-left-color: transparent;
+        border-bottom-color: transparent
+    }
+    
+    .direct-chat-text {
+        border-radius: 2px;
+    }
+    
+    .menu {
+        position: inherit !important;
+        width: inherit !important;
+        right: inherit !important;
+    }
 
-.chatshadow {
-    box-shadow: 0 1px 10px 3px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12) !important;
-}
-
-.right .direct-chat-text {
-    margin-right: 0px;
-    margin-left: 0px;
-}
-
-.right .direct-chat-text:after {
-    border-width: 5px;
-    margin-top: -5px;
-    display: none !important;
-}
-
-.right .direct-chat-text:before {
-    border-width: 6px;
-    margin-top: -6px;
-    display: none !important;
-}
-
-.direct-chat-messages {
-    overflow-x: hidden !important;
-}
-
-.direct-chat-info {
-    margin-left: 50px;
-}
-
-.direct-chat-primary .right>.direct-chat-text {
-    background: rgb(66, 133, 244);
-    border-color: rgb(66, 133, 244);
-    color: #fff;
-    float: right;
-}
-
-.chathead {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
-    border-bottom: 0 !important;
-    background: #565656;
-    color: #fff;
-}
-
-.emojis {
-    position: absolute;
-    display: block;
-    bottom: 7px;
-    left: 5px;
-    width: 25px;
-    height: 25px;
-    background-image: url(http://i.imgur.com/5WUpcPZ.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 100;
-    cursor: pointer;
-}
-
-.direct-chat-messages {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
-    padding: 10px;
-    height: 300px;
-    overflow: auto;
-}
-
-.direct-chat-messages li {
-    display: table;
-}
-
-.direct-chat-msg {
-    margin-bottom: 0px;
-}
-
-.direct-chat-text:after,
-.direct-chat-text:before {
-    left: 20px;
-    border: 0;
-}
-
-.direct-chat-text:before {
-    border-width: 6px;
-    margin-top: -6px;
-    content: "";
-    top: 5px;
-    right: 0px;
-    left: -10px;
-    width: 0px;
-    height: 0px;
-    border: 5px solid #d2d6de;
-    border-left-color: transparent;
-    border-bottom-color: transparent
-}
-
-.direct-chat-text {
-    border-radius: 2px;
-}
-
-.menu {
-    position: inherit !important;
-    width: inherit !important;
-    right: inherit !important;
-}
 </style>
