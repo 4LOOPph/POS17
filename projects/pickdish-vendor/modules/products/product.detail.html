@@ -1,0 +1,18 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content" class="md-padding">
+        <h2 class="md-headline">Products</h2>
+        <md-card>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="General Info">
+                    <ng-include src="'./modules/products/partials/info.html'" scope="" onload=""></ng-include>
+                </md-tab>
+                <md-tab label="Media Files">
+                    <ng-include src="'./modules/products/partials/media.html'" scope="" onload=""></ng-include>
+                </md-tab>
+                <md-tab label="Categories">
+                    <ng-include src="'./modules/products/partials/category.html'" scope="" onload=""></ng-include>
+                </md-tab>
+            </md-tabs>
+        </md-card>
+    </div>
+</div>

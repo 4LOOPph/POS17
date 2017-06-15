@@ -1,0 +1,61 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content" class="md-padding">
+        <h2 class="md-headline">Categories</h2>
+        <md-card layout-padding>
+            <h3 class="md-subhead">Category Entry Form</h3>
+            <form name="userForm">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Category Name</label>
+                        <input required name="name" ng-model="user.name" />
+                        <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Name is required.</div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                           Top Level Category
+                        </md-checkbox>
+                        <div data-angular-treeview="true" data-tree-id="abc" data-tree-model="treedata" data-node-id="id" data-node-label="label" data-node-children="children">
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Category Label</label>
+                        <input required name="name" ng-model="user.label" />
+                        <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Label is required.</div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Category Description</label>
+                        <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <img src="http://placekitten.com/g/48/48" />
+                </div>
+                <md-button class="md-raised md-primary">Save</md-button>
+                <md-button class="md-raised">Cancel</md-button>
+            </form>
+        </md-card>
+    </div>
+</div>

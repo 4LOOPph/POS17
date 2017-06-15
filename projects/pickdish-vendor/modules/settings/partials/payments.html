@@ -1,0 +1,74 @@
+<form name="userForm" layout-padding id="settings_payment">
+    <div layout="column">
+        <div flex>
+            <div layout-gt-lg="row">
+                <md-card>
+                    <md-card-content layout="column" class="md-padding" style="padding-bottom: 55px;">
+                        <img src="./images/credit_cards.png" width="300px" />
+                    </md-card-content>
+                    <md-card-actions layout="column" layout-align="start">
+                        <md-button class="md-primary md-raised" aria-label="More" ng-click="addCreditCard()">
+                            ADD CREDIT CARD
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+                 <md-card>
+                    <md-card-content layout="column" class="md-padding">
+                        <img src="./images/paypal.png" width="300px" />
+                    </md-card-content>
+                    <md-card-actions layout="column" layout-align="start">
+                        <md-button class="md-primary md-raised" aria-label="More">
+                            ADD PAYPAL
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+        </div>
+        <div flex>
+            <md-list>
+                <div ng-repeat="chunk in payments">
+                    <md-card>
+                        <md-item layout="row">
+                            <div>
+                                <img src="./images/visa.png" class="payment-card" ng-if="chunk.card_type == 'visa'" />
+                                <img src="./images/mastercard.svg" class="payment-card" ng-if="chunk.card_type == 'mc'" />
+                                <img src="./images/amex.svg" class="payment-card" ng-if="chunk.card_type == 'amex'" />
+                                <img src="./images/discover.png" class="payment-card" ng-if="chunk.card_type == 'discover'" />
+                                <img src="./images/paypal.png" class="payment-card" ng-if="chunk.card_type == 'paypal'" />
+                            </div>
+                            <div class="collapsed-row" layout="row" layout-align="start center" flex>
+                                <span flex="5"></span>
+                                <span flex="45"><b>{{ chunk.accnt_number }}</b></span>
+                                <span flex></span>
+                                <span flex="none">
+                                        <md-button class="md-raised md-blue" ng-click="showConfirmDefault(chunk,$event)">Default</md-button>
+                                    </span>
+                                <span flex="none">
+                                        <md-button class="md-icon-button" aria-label="More" ng-click="showConfirm(chunk, $event)">
+                                            <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                                        </md-button>
+                                    </span>
+                                <span flex="none">
+                                        <md-menu>
+                                            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                                                <md-tooltip>More</md-tooltip>
+                                                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                                            </md-button>
+                                            <md-menu-content width="3">
+                                                <md-menu-item>
+                                                    <md-button ng-click="refresh()">
+                                                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                                                        Edit
+                                                    </md-button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </md-menu>
+                                    </span>
+                            </div>
+                        </md-item>
+                    </md-card>
+                </div>
+            </md-list>
+        </div>
+    </div>
+</form>

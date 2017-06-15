@@ -1,0 +1,100 @@
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2 class="md-title"><md-icon md-font-icon="mdi mdi-view-list mdi-24px m-r-5"></md-icon> Summary</h2>
+        <md-menu class="actions">
+            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                <md-tooltip>More</md-tooltip>
+                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click="updateStoreOverview($event)">
+                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                        Edit
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="pmbb-body p-l-30">
+        <div class="md-body-1">
+            Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.
+        </div>
+    </div>
+</div>
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2 class="md-title"><md-icon md-font-icon="mdi mdi-account mdi-24px m-r-5"></md-icon> Basic Information</h2>
+        <md-menu class="actions">
+            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                <md-tooltip>More</md-tooltip>
+                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click="updateStoreInfo($event)">
+                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                        Edit
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="pmbb-body p-l-30">
+        <div class="pmbb-view">
+            <dl class="dl-horizontal">
+                <dt class="md-body-1">Store Owner</dt>
+                <dd class="md-body-1">Mallinda Hollaway</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="md-body-1">Owner Email</dt>
+                <dd class="md-body-1">store_sample@yopmail.com</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2 class="md-title"><md-icon md-font-icon="mdi mdi-phone mdi-24px m-r-5"></md-icon> Contact Information</h2>
+        <md-menu class="actions">
+            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                <md-tooltip>More</md-tooltip>
+                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click="updateStoreContact($event)">
+                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                        Edit
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="pmbb-body p-l-30">
+        <div class="pmbb-view">
+            <dl class="dl-horizontal">
+                <dt class="md-body-1">Mobile Phone</dt>
+                <dd class="md-body-1">00971 12345678 9</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="md-body-1">Email Address</dt>
+                <dd class="md-body-1">store_sample@yopmail.com</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="md-body-1">Tel. No.</dt>
+                <dd class="md-body-1">00971 12345678 9</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="pmb-block">
+    <div class="pmbb-body p-l-30 p-t-30">
+        <div class="pmbb-view">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                <ui-gmap-marker ng-repeat="m in map.markers" coords="m" idkey="'m.id'" icon="{url: map.icon}">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
+    </div>
+</div>

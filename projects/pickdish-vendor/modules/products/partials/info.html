@@ -1,0 +1,68 @@
+<form name="userForm" layout-padding>
+    <div layout="row">
+        <div flex>
+            <md-input-container class="md-block">
+                <label>Product Name</label>
+                <input required name="productname" ng-model="product.item_name" />
+                <div ng-messages="userForm.productname.$error">
+                    <div ng-message="required">Product Name is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Product Type</label>
+                <md-select ng-model="product.gender">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-value="type1">
+                        Type 1
+                    </md-option>
+                    <md-option ng-value="type2">
+                        Type 2
+                    </md-option>
+                    <md-option ng-value="type3">
+                        Type 3
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Product Code</label>
+                <input required name="product_code" ng-model="product.product_code" />
+                <div ng-messages="userForm.product_code.$error">
+                    <div ng-message="required">Product Code is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Product Brand</label>
+                <input name="brand" ng-model="product.brand" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Barcode</label>
+                <input type="text" name="barcode" ng-model="product.barcode" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <io-barcode code="123" type="CODE128B"></io-barcode>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Selling Price</label>
+                <input type="text" name="selling_price" ng-model="product.selling_price    " />
+            </md-input-container>
+        </div>
+        <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+        </div>
+        <div flex>
+            <h3 class="md-subhead">Summary</h3>
+            <md-input-container class="md-block" flex-gt-sm>
+                <text-angular ng-model="product.item_overview" aria-label="sadasd"></text-angular>
+            </md-input-container>
+            <h3 class="md-subhead">Description</h3>
+            <md-input-container class="md-block" flex-gt-sm>
+                <text-angular ng-model="product.item_description" aria-label="sadasd"></text-angular>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="md-actions" layout="row">
+        <md-button class="md-raised md-primary">Save</md-button>
+        <md-button class="md-raised">Cancel</md-button>
+        <span flex></span>
+    </div>
+</form>

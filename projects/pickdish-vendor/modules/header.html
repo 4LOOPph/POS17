@@ -1,0 +1,42 @@
+<md-toolbar scroll-shrink layout="row">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleMenu()" class="md-icon-button">
+            <md-icon md-font-icon="mdi mdi-menu mdi-24px"></md-icon>
+        </md-button>
+        <h3 flex md-truncate>
+                <span>{{currentModule}}</span>
+            </h3>
+        <md-button ng-click="toggleMenu()" class="md-icon-button">
+            <md-icon md-font-icon="mdi mdi-apps mdi-24px"></md-icon>
+        </md-button>
+        <md-button ng-click="toggleMenu()" class="md-icon-button">
+            <md-icon md-font-icon="mdi mdi-bell mdi-24px"></md-icon>
+        </md-button>
+        <md-menu>
+            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <md-icon md-font-icon="mdi mdi-account-box mdi-24px"></md-icon>
+                        View Profile
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <md-icon md-font-icon="mdi mdi-settings mdi-24px"></md-icon>
+                        Settings
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <md-icon md-font-icon="mdi mdi-exit-to-app mdi-24px"></md-icon>
+                        Sign out
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <img class="round-face" src="http://placekitten.com/g/48/48" />
+    </div>
+</md-toolbar>

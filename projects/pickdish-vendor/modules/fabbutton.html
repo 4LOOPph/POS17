@@ -1,0 +1,17 @@
+<div id="fab-popup" layout="column" layout-align="space-between" ng-if="showAddButtons" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+    <md-button class="md-fab md-raised" ng-click="openDialog($event);" aria-label="New document">
+        <md-icon md-font-icon="mdi mdi-gesture-tap mdi-24px"></md-icon>
+    </md-button>
+    <md-button class="md-fab md-raised" ng-click="openDialog($event);" aria-label="New document">
+        <md-icon md-font-icon="mdi mdi-content-paste mdi-24px"></md-icon>
+    </md-button>
+    <md-button class="md-fab md-raised" ng-click="openDialog($event);" aria-label="New document">
+        <md-icon md-font-icon="mdi mdi-archive mdi-24px"></md-icon>
+    </md-button>
+    <md-button class="md-fab md-raised" ng-click="openDialog($event);" aria-label="New document">
+        <md-icon md-font-icon="mdi mdi-email mdi-24px"></md-icon>
+    </md-button>
+</div>
+<md-button id="mainFab" class="md-fab md-raised" ng-click="showAddButtons = !showAddButtons;" aria-label="Photos">
+    <md-icon md-font-icon="mdi mdi-plus mdi-24px"></md-icon>
+</md-button>

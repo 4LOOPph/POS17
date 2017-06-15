@@ -1,0 +1,42 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop>
+    <md-content ng-controller="LeftCtrl" class="md-padding" flex layout="column" layout-align="start">
+        <md-list>
+            <md-list-item ng-click="gotoDashboard()" ng-class="{'activelist': currentModule=='Dashboard'}">
+                <md-icon md-colors="{color: 'light-blue-500'}" md-font-icon="mdi mdi-home mdi-24px"></md-icon>
+                <p>Dashboard</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoCategories()" ng-class="{'activelist': currentModule=='Categories'}">
+                <md-icon md-colors="{color: 'cyan-500'}" md-font-icon="mdi mdi-format-list-bulleted mdi-24px"></md-icon>
+                <p>Categories</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoProducts()" ng-class="{'activelist': currentModule=='Products'}">
+                <md-icon md-font-icon="mdi mdi-apps mdi-24px"></md-icon>
+                <p>Products</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoUsers()" ng-class="{'activelist': currentModule=='Users'}">
+                <md-icon md-colors="{color: 'teal-500'}" md-font-icon="mdi mdi-account-multiple mdi-24px"></md-icon>
+                <p>Users</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoOrders()" ng-class="{'activelist': currentModule=='Orders'}">
+                <md-icon md-colors="{color: 'brown-500'}" md-font-icon="mdi mdi-cart mdi-24px"></md-icon>
+                <p>Orders</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoPayments()" ng-class="{'activelist': currentModule=='Payments'}">
+                <md-icon md-colors="{color: 'green-A400'}" md-font-icon="mdi mdi-credit-card mdi-24px"></md-icon>
+                <p>Payments</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoReviews()" ng-class="{'activelist': currentModule=='Reviews'}">
+                <md-icon md-colors="{color: 'indigo-A400'}" md-font-icon="mdi mdi-comment-multiple-outline mdi-24px"></md-icon>
+                <p>Reviews</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoStore()" ng-class="{'activelist': currentModule=='Store Information'}">
+                <md-icon md-colors="{color: 'pink-A400'}" md-font-icon="mdi mdi-bank mdi-24px"></md-icon>
+                <p>Store Information</p>
+            </md-list-item>
+            <md-list-item ng-click="gotoSettings()" ng-class="{'activelist': currentModule=='Settings'}">
+                <md-icon md-colors="{color: 'orange-900'}" md-font-icon="mdi mdi-wrench mdi-24px"></md-icon>
+                <p>Settings</p>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>

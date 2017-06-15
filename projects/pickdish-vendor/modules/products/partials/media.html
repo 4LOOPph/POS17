@@ -1,0 +1,261 @@
+<form name="userForm" layout-padding>
+    <div class="md-actions" layout="row">
+        <md-button class="md-raised md-primary">Upload Image</md-button>
+        <md-button class="md-raised">Cancel</md-button>
+        <span flex></span>
+    </div>
+    <div layout="row" layout-wrap>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/1.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/2.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/3.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/4.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/5.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex="20">
+            <md-card>
+                <img ng-src="http://byrushan.com/projects/mae/1-0/media/gallery/thumbs/6.jpg" class="md-card-image">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-click="showConfirm(null,$event)">
+                        <md-tooltip>Delete</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-download mdi-24px"></md-icon>
+                                    Download
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Set as Thumbnail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon="mdi mdi-link mdi-24px"></md-icon>
+                                    Copy URL
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</form>

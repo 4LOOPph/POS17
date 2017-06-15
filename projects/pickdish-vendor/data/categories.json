@@ -1,0 +1,399 @@
+{
+  "response": {
+    "pagination": {
+      "results": 24,
+      "page": 0,
+      "page_size": 0,
+      "pages": 0
+    },
+    "result": [
+      {
+        "c_id": 80,
+        "name": "Screen",
+        "label": "Screen",
+        "description": ".",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 80,
+          "name": "Screen",
+          "label": "Screen",
+          "description": ".",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 81,
+        "name": "Eze_Impress",
+        "label": "Eze Impress",
+        "description": "Eze Impress",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 81,
+          "name": "Eze_Impress",
+          "label": "Eze Impress",
+          "description": "Eze Impress",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 82,
+        "name": "Mount",
+        "label": "Mount",
+        "description": "s",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 82,
+          "name": "Mount",
+          "label": "Mount",
+          "description": "s",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 83,
+        "name": "Media_Player",
+        "label": "Media Player",
+        "description": "Media Player",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 83,
+          "name": "Media_Player",
+          "label": "Media Player",
+          "description": "Media Player",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 84,
+        "name": "Display_Cable",
+        "label": "Display Cable",
+        "description": "Display Cable",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 84,
+          "name": "Display_Cable",
+          "label": "Display Cable",
+          "description": "Display Cable",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 85,
+        "name": "Serial_Cable",
+        "label": "Serial Cable",
+        "description": "Serial Cable",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 85,
+          "name": "Serial_Cable",
+          "label": "Serial Cable",
+          "description": "Serial Cable",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 87,
+        "name": "Deployment",
+        "label": "Deployment",
+        "description": "Deployment",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 87,
+          "name": "Deployment",
+          "label": "Deployment",
+          "description": "Deployment",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 89,
+        "name": "Network_Cable",
+        "label": "Network Cable",
+        "description": "Network Cable",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 89,
+          "name": "Network_Cable",
+          "label": "Network Cable",
+          "description": "Network Cable",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 90,
+        "name": "Support",
+        "label": "Support",
+        "description": "Support",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 90,
+          "name": "Support",
+          "label": "Support",
+          "description": "Support",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 91,
+        "name": "CMS",
+        "label": "CMS",
+        "description": "CMS",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 91,
+          "name": "CMS",
+          "label": "CMS",
+          "description": "CMS",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 92,
+        "name": "CMS",
+        "label": "CMS",
+        "description": "CMS",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 92,
+          "name": "CMS",
+          "label": "CMS",
+          "description": "CMS",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 99,
+        "name": "Eze Find",
+        "label": "Eze Find",
+        "description": "Eze Find",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 99,
+          "name": "Eze Find",
+          "label": "Eze Find",
+          "description": "Eze Find",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 100,
+        "name": "Eze Orda",
+        "label": "Eze Orda",
+        "description": "Eze Orda",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 100,
+          "name": "Eze Orda",
+          "label": "Eze Orda",
+          "description": "Eze Orda",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 101,
+        "name": "Eze Wi-Fi",
+        "label": "Eze Wifi",
+        "description": "Eze Wifi",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 101,
+          "name": "Eze Wi-Fi",
+          "label": "Eze Wifi",
+          "description": "Eze Wifi",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 104,
+        "name": "SAmple",
+        "label": "SAmple",
+        "description": "SAmple",
+        "c_image": null,
+        "parent_id": "80",
+        "parent_category": {
+          "c_id": 104,
+          "name": "SAmple",
+          "label": "SAmple",
+          "description": "SAmple",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 105,
+        "name": "Test 1",
+        "label": "This is a test for name display dynamic and r",
+        "description": "Test 1",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 105,
+          "name": "Test 1",
+          "label": "This is a test for name display dynamic and r",
+          "description": "Test 1",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 119,
+        "name": "eze_wifi",
+        "label": "Eze Wifi",
+        "description": "Eze Wifi",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 119,
+          "name": "eze_wifi",
+          "label": "Eze Wifi",
+          "description": "Eze Wifi",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 120,
+        "name": "Switch",
+        "label": "Switch",
+        "description": "Switch",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 120,
+          "name": "Switch",
+          "label": "Switch",
+          "description": "Switch",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 121,
+        "name": "AccessPoints",
+        "label": "Access Points",
+        "description": "Access Points",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 121,
+          "name": "AccessPoints",
+          "label": "Access Points",
+          "description": "Access Points",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 122,
+        "name": "Applications",
+        "label": "Applications",
+        "description": "Applications",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 122,
+          "name": "Applications",
+          "label": "Applications",
+          "description": "Applications",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 123,
+        "name": "eze_find",
+        "label": "Eze Find",
+        "description": "eze find",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 123,
+          "name": "eze_find",
+          "label": "Eze Find",
+          "description": "eze find",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 127,
+        "name": "Camera",
+        "label": "Camera",
+        "description": "Camera",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 127,
+          "name": "Camera",
+          "label": "Camera",
+          "description": "Camera",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 132,
+        "name": "Tablets",
+        "label": "Tablets",
+        "description": ".",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 132,
+          "name": "Tablets",
+          "label": "Tablets",
+          "description": ".",
+          "c_image": null
+        },
+        "tags": []
+      },
+      {
+        "c_id": 146,
+        "name": "Age Categoru",
+        "label": "Age Categoru",
+        "description": "Age Categoru",
+        "c_image": null,
+        "parent_id": null,
+        "parent_category": {
+          "c_id": 146,
+          "name": "Age Categoru",
+          "label": "Age Categoru",
+          "description": "Age Categoru",
+          "c_image": null
+        },
+        "tags": []
+      }
+    ],
+    "msg": "",
+    "success": true
+  },
+  "statusCode": 200
+}

@@ -1,0 +1,19 @@
+<md-dialog aria-label="User account">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Set store description</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="userForm">
+            <md-input-container class="md-block" flex-gt-sm>
+                <text-angular ng-model="product.item_overview" aria-label="sadasd"></text-angular>
+            </md-input-container>
+        </form>
+    </md-content>
+    <div class="md-actions" layout="row"> <span flex></span>
+        <md-button ng-click="answer('not useful')"> Cancel </md-button>
+        <md-button ng-click="answer('useful')" class="md-primary"> Save </md-button>
+    </div>
+</md-dialog>

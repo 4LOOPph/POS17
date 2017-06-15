@@ -1,0 +1,42 @@
+<form name="userForm" layout-padding>
+    <div class="md-actions" layout="row">
+        <md-button class="md-raised md-primary">Save</md-button>
+        <md-button class="md-raised">Cancel</md-button>
+        <span flex></span>
+    </div>
+    <div layout="row" layout-wrap>
+        <md-table-container>
+            <md-input-container>
+                <label>Filter</label>
+                <md-select ng-model="product.gender">
+                    <md-option ng-value="type1">
+                        Type 1
+                    </md-option>
+                    <md-option ng-value="type2">
+                        Type 2
+                    </md-option>
+                    <md-option ng-value="type3">
+                        Type 3
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selectedDatas">
+                <thead md-head md-order="query.order">
+                    <tr md-row>
+                        <th md-column md-order-by="name" class="my-th"><span>Label</span></th>
+                        <th md-column md-order-by="type" class="my-th"><span>Name</span></th>
+                        <th md-column md-desc class="my-th2"><span>Description</span></th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-select="category" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="category in categories.result | filter: txtSearch | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{{category.label}}</td>
+                        <td md-cell>{{category.name}}</td>
+                        <td md-cell>{{category.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{categories.pagination.results}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></md-table-pagination>
+    </div>
+</form>

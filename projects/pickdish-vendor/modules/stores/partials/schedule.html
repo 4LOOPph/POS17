@@ -1,0 +1,145 @@
+<md-card>
+    <md-toolbar class="md-table-toolbar md-accent">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate></h2>
+            <md-button class="md-icon-button" aria-label="Add" ng-click="addDeliveryTime()">
+                <md-tooltip>Add</md-tooltip>
+                <md-icon md-font-icon="mdi mdi-plus mdi-24px"></md-icon>
+            </md-button>
+            <md-menu>
+                <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                    <md-tooltip>More</md-tooltip>
+                    <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button ng-click="refresh()">
+                            <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
+                            Refresh
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="showDeleteConfirm($event)">
+                            <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                            Delete
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-table-container>
+        <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selectedDatas">
+            <thead md-head md-order="query.order">
+                <tr md-row>
+                    <th md-column class="my-th"><span>DAY</span></th>
+                    <th md-column><span>START TIME</span></th>
+                    <th md-column><span>END TIME</span></th>
+                    <th md-column></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="product" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="product in delivery_sched | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell>{{product.day}}</td>
+                    <td md-cell>{{product.start_time}}</td>
+                    <td md-cell>{{product.end_time}}</td>
+                    <td md-cell>
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                                <md-tooltip>More</md-tooltip>
+                                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="showDetails(product)">
+                                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                                        Update
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="showConfirm(product,$event)">
+                                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                                        Delete
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{delivery_sched.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></md-table-pagination>
+    <br>
+    <md-toolbar class="md-table-toolbar md-accent">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate></h2>
+            <md-button class="md-icon-button" aria-label="Add" ng-click="addPickUpTime()">
+                <md-tooltip>Add</md-tooltip>
+                <md-icon md-font-icon="mdi mdi-plus mdi-24px"></md-icon>
+            </md-button>
+            <md-menu>
+                <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                    <md-tooltip>More</md-tooltip>
+                    <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button ng-click="refresh()">
+                            <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
+                            Refresh
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="showDeleteConfirm($event)">
+                            <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                            Delete
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-table-container>
+        <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selectedDatas">
+            <thead md-head md-order="query.order">
+                <tr md-row>
+                    <th md-column class="my-th"><span>DAY</span></th>
+                    <th md-column><span>START TIME</span></th>
+                    <th md-column><span>END TIME</span></th>
+                    <th md-column></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="product" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="product in pickup_sched | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell>{{product.day}}</td>
+                    <td md-cell>{{product.start_time}}</td>
+                    <td md-cell>{{product.end_time}}</td>
+                    <td md-cell>
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                                <md-tooltip>More</md-tooltip>
+                                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="showDetails(product)">
+                                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                                        Update
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="showConfirm(product,$event)">
+                                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                                        Delete
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{pickup_sched.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></md-table-pagination>
+</md-card>

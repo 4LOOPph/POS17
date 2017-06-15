@@ -1,0 +1,114 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content" class="md-padding">
+        <h2 class="md-headline">Users</h2>
+        <md-card>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="General Info">
+                    <form name="userForm" layout-padding>
+                        <div layout="row">
+                            <div flex>
+                                <md-input-container class="md-block">
+                                    <label>Firstname</label>
+                                    <input required name="name" ng-model="user.name" />
+                                    <div ng-messages="userForm.name.$error">
+                                        <div ng-message="required">Name is required.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Middlename</label>
+                                    <input required name="name" ng-model="user.middlename" />
+                                    <div ng-messages="userForm.name.$error">
+                                        <div ng-message="required">Middlename is required.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Lastname</label>
+                                    <input required name="name" ng-model="user.lastname" />
+                                    <div ng-messages="userForm.name.$error">
+                                        <div ng-message="required">Lastname is required.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Email Address</label>
+                                    <input type="email" required name="name" ng-model="user.email" />
+                                    <div ng-messages="userForm.name.$error">
+                                        <div ng-message="required">Email is required.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Mobile Number</label>
+                                    <input type="text" name="name" ng-model="user.mobile" />
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Company Name</label>
+                                    <input type="text" name="name" ng-model="user.company_name" />
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Gender</label>
+                                    <md-select ng-model="user.gender">
+                                        <md-option><em>None</em></md-option>
+                                        <md-option ng-value="male">
+                                            Male
+                                        </md-option>
+                                        <md-option ng-value="female">
+                                            Female
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <div layout="column" flex>
+                                    <label>Birthdate</label>
+                                    <md-datepicker ng-model="user.birthdate" class="md-block" md-placeholder="Enter date"></md-datepicker>
+                                </div>
+                                <br>
+                                <md-button class="md-raised md-primary md-block">Set User Account</md-button>
+                            </div>
+                            <div flex="5" hide-xs hide-sm>
+                                <!-- Spacer //-->
+                            </div>
+                            <div flex>
+                                <md-input-container class="md-block">
+                                    <img src="https://www.itelligence.com/Content/Images/no-image.png" height="200px">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Address</label>
+                                    <textarea ng-model="user.address" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Country</label>
+                                    <md-select ng-model="user.gender">
+                                        <md-option><em>None</em></md-option>
+                                        <md-option ng-value="male">
+                                            Philipppines
+                                        </md-option>
+                                        <md-option ng-value="female">
+                                            Pakistan
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>State / Province</label>
+                                    <input type="text" name="name" ng-model="user.state" />
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>City / Town</label>
+                                    <input type="text" name="name" ng-model="user.city" />
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Zipcode</label>
+                                    <input type="text" name="name" ng-model="user.zipcode" />
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="md-actions" layout="row">
+                            <md-button class="md-raised md-primary">Save</md-button>
+                            <md-button class="md-raised">Cancel</md-button>
+                            <span flex></span>
+                        </div>
+                    </form>
+                </md-tab>
+            </md-tabs>
+        </md-card>
+    </div>
+</div>

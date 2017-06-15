@@ -1,0 +1,13 @@
+<div layout="column" layout-fill>
+    <ng-include src="'./modules/header.html'" scope="" onload=""></ng-include>
+    <md-content layout="vertical" flex>
+        <!-- LEFT SIDEBAR -->
+        <ng-include src="'./modules/sidebar.html'" scope="" onload=""></ng-include>
+        <!-- MAIN CONTENT -->
+        <md-content id="main">
+            <div ui-view></div>
+        </md-content>
+    </md-content>
+</div>
+<!-- FAB POPUP -->
+<ng-include src="'./modules/fabbutton.html'" scope="" onload=""></ng-include>

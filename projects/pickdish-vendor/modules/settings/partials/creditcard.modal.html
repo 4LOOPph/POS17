@@ -1,0 +1,66 @@
+<md-dialog aria-label="User account">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add a Payment Method</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="paymentForm">
+            <div>
+                 <img src="./images/credit_cards.png" width="200px" />
+            </div>
+            <div layout layout-sm="row">
+                <md-input-container flex>
+                    <label>Credit Card Number</label>
+                    <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-eager-type />
+                    <div ng-show="paymentForm.cardNumber.$invalid && paymentForm.cardNumber.$ccEagerType">
+                        Looks like you're typing a {{paymentForm.cardNumber.$ccEagerType}} number!
+                    </div>
+                    <div ng-show="paymentForm.cardNumber.$valid">
+                        Yes, that looks like a valid {{paymentForm.cardNumber.$ccType}} number!
+                    </div>
+                    <div ng-show="paymentForm.cardNumber.$error.required">
+                        You must enter a credit card number!
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout layout-sm="row">
+                <md-input-container flex>
+                    <label>Cardholder Name</label>
+                    <input type="text" ng-model="card.cvc" required name="cardHolder"/>
+                    <div ng-show="paymentForm.cardHolder.$error.required">
+                        This is required.
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout layout-sm="row">
+                <md-input-container flex>
+                    <label>CVC</label>
+                    <input type="text" ng-model="card.cvc" name="cvc" cc-cvc ng-required="true" />
+                    <div ng-show="paymentForm.cvc.$error.required">
+                        This is required.
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout layout-sm="row">
+                <md-input-container flex>
+                    <label>Expiration Month</label>
+                    <div cc-exp>
+                        <input ng-model="card.exp_month" cc-exp-month ng-required="true" />
+                    </div>
+                </md-input-container>
+                 <md-input-container flex>
+                    <label>Expiration Year</label>
+                    <div cc-exp>
+                        <input ng-model="card.exp_year" cc-exp-year ng-required="true" />
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+    </md-content>
+    <div class="md-actions" layout="row"> <span flex></span>
+        <md-button ng-click="answer('not useful')"> Cancel </md-button>
+        <md-button ng-click="answer('useful')" class="md-primary"> Save </md-button>
+    </div>
+</md-dialog>

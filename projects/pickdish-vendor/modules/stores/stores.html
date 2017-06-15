@@ -1,0 +1,61 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content" class="md-padding">
+        <md-card id="profile-main">
+            <form name="userForm">
+                <div layout="row">
+                    <div flex="25" style="background-color: #ececec !important;">
+                        <div class="pmo-pic">
+                            <div class="p-relative">
+                                <a href="">
+                                    <img class="img-responsive mCS_img_loaded" src="http://www.baxter.com/assets/images/products/Renal/thumb_image_not_available.png" alt="">
+                                </a>
+                                <div class="dropdown pmop-message">
+                                    <md-button theme="default" class="md-fab md-default" aria-label="Edit">
+                                        <md-icon md-font-icon="mdi mdi-pencil mdi-24px"></md-icon>
+                                    </md-button>
+                                </div>
+                            </div>
+                            <div class="pmo-stat md-body-1">
+                                <h2 class="m-0 md-headline">MALINDA HOLLAWAY</h2> Web/UI Developer, Edinburgh, Scotland
+                            </div>
+                        </div>
+                        <div class="pmo-block pmo-contact hidden-xs">
+                            <h2 class="md-subhead">Contact</h2>
+                            <ul>
+                                <li class="md-body-1">
+                                    <md-icon md-font-icon="mdi mdi-phone mdi-18px"></md-icon> 00971 12345678 9</li>
+                                <li class="md-body-1">
+                                    <md-icon md-font-icon="mdi mdi-email mdi-18px"></md-icon> malinda-h@gmail.com</li>
+                                <li class="md-body-1">
+                                    <md-icon md-font-icon="mdi mdi-web mdi-18px"></md-icon> www.store_sample.com</li>
+                                <li class="md-body-1">
+                                    <md-icon md-font-icon="mdi mdi-map-marker mdi-18px"></md-icon>
+                                    <address class="m-b-0 ng-binding">
+                                        44-46 Morningside Road,
+                                        <br> Edinburgh,
+                                        <br> Scotland
+                                    </address>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div flex>
+                        <div layout-padding>
+                            <md-tabs md-dynamic-height md-border-bottom>
+                                <md-tab label="About">
+                                    <ng-include src="'./modules/stores/partials/about.html'" scope="" onload=""></ng-include>
+                                </md-tab>
+                                <md-tab label="Gallery">
+                                    <ng-include src="'./modules/stores/partials/gallery.html'" scope="" onload=""></ng-include>
+                                </md-tab>
+                                <md-tab label="Schedules">
+                                    <ng-include src="'./modules/stores/partials/schedule.html'" scope="" onload=""></ng-include>
+                                </md-tab>
+                            </md-tabs>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </md-card>
+    </div>
+</div>
