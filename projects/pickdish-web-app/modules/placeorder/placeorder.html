@@ -3,7 +3,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div id="backpager" style="padding: 20px 17px 0px;">
+        <div id="backpager" style="padding: 20px 17px 0px;" ui-sref="main.checkout">
             <i class="glyphicon glyphicon-arrow-left"></i>
         </div>
         <div class="col-md-12">
@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div style="padding: 10px 0px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 1">Proceed to Payment</button>
+                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 1;proceedPayment()">Proceed to Payment</button>
                                     </div>
                                 </div>
                             </div>
