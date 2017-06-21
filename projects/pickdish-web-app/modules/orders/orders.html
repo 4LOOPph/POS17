@@ -1,4 +1,4 @@
-<div class="" ng-init="initmap()">
+<div class="" ng-init="act = true">
     <!-- STORE IMAGE BACK PREVIEW -->
     <!-- STORE IMAGE BACK PREVIEW -->
     <!-- STORE IMAGE BACK PREVIEW -->
@@ -24,24 +24,28 @@
         <div class="container" style="padding: 0;">
             <div class="row" style="display: flex;width: 100%;margin: 0;">
                 <div class="btn-group" style="width: 295px;">
-                    <button type="button" class="btn btn-warning active"><img src="img/delivery-motorbike copy.png" style="width: 22px;margin-top: -3px;"> Delivery</button>
-                    <button type="button" class="btn btn-warning"><img src="img/shopping-bag.png" style="width: 16px;margin-top: -5px;"> Pickup</button>
+                    <button type="button" class="btn tabber" ng-class="{'actives':act}" ng-click="act = true">
+                        Delivery
+                    </button>
+                    <button type="button" class="btn tabber" ng-click="act = false">
+                        Pickup
+                    </button>
                 </div>
-                <div style="padding: 0 20px;display: flex;width: 70%">
+                <div style="padding: 0 20px;display: flex;" class="searcherss">
                     <div style="width: 90%;display: flex;margin: auto;">
                         <i class="glyphicon glyphicon-search searchIcon"></i>
-                        <input type="text" class="form-control searcherr" placeholder="Street address, city, suburb, postcode" style="height: 42px;">
+                        <input type="text" class="form-control searcherr" placeholder="Search Food..." style="height: 42px;">
                         <button class="searchBtn" style="color: #fff">Find Food</button>
                     </div>
                 </div>
                 <div class="btn-group" style="width: 290px;margin-right: -35px;">
-                    <button ng-class="{'active':gridview == true}" type="button" class="btn btn-warning" style="padding: 7px 25px;" ng-click="gridview = true; listview = false; mapview = false;initmap()">
+                    <button ng-class="{'active':gridview == true}" type="button" class="btn btn-warning btnPadder" ng-click="gridview = true; listview = false; mapview = false;initmap()">
                         <i class="glyphicon glyphicon-th" style="font-size: 22px;"></i>
                     </button>
-                    <button ng-class="{'active':listview == true}" type="button" class="btn btn-warning" style="padding: 7px 25px;" ng-click="listview = true; gridview = false; mapview = false;">
+                    <button ng-class="{'active':listview == true}" type="button" class="btn btn-warning btnPadder" ng-click="listview = true; gridview = false; mapview = false;">
                         <i class="glyphicon glyphicon-menu-hamburger" style="font-size: 22px;"></i>
                     </button>
-                    <button ng-class="{'active':mapview == true}" type="button" class="btn btn-warning" style="padding: 7px 25px;" ng-click="mapview = true; gridview = false; listview = false;">
+                    <button ng-class="{'active':mapview == true}" type="button" class="btn btn-warning btnPadder" ng-click="initmap();mapview = true; gridview = false; listview = false;">
                         <i class="glyphicon glyphicon-map-marker" style="font-size: 22px;"></i>
                     </button>
                 </div>
@@ -92,10 +96,10 @@
             <!-- LISTVIEW -->
             <!-- LISTVIEW -->
             <div ng-show="listview">
-                <ul class="list-group" style="padding-top: 10px;padding-bottom: 10px;background: #fff;">
+                <ul class="list-group" style="padding-top: 10px;padding-bottom: 10px;background: #fff;box-shadow: 0px 0px 1px 1px #e0e0e0;">
                     <li class="list-group-item" ng-repeat="storesies in storesList" style="display: flex;padding: 20px 30px;">
                         <!-- <img src="/img/Image 401.png"> -->
-                        <div ><img src="img/store/{{storesies.image}}" style="width: 130px;"></div>
+                        <div><img src="{{storesies.image}}" style="width: 130px;"></div>
                         <div style="padding: 10px 30px;">
                             <div style="font-size: 22px;font-weight: 500;color: #3c3c3c;">{{storesies.Name}}</div>
                             <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
@@ -168,14 +172,14 @@
             <!-- MAPVIEW -->
             <!-- MAPVIEW -->
             <!-- MAPVIEW -->
-            <div ng-show="mapview">
+            <div ng-if="mapview">
                 <div class="col-md-5" style="padding-right: 0;">
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="storesies in storesList" style="display: flex;padding: 20px 15px;border: 1px solid #ccc !important;">
                             <div id="mapviewPlaceholderHolder"><img src="img/placeholder.png" style="width: 40px">
                                 <div id="mapviewPlaceholder">A</div>
                             </div>
-                            <div><img src="img/store/{{storesies.image}}" style="width: 100px;"></div>
+                            <div><img src="{{storesies.image}}" style="width: 100px;"></div>
                             <div style="padding: 0px 30px;margin-top: -6px;">
                                 <div style="font-size: 18px;">{{storesies.Name}}</div>
                                 <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
@@ -200,8 +204,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-7" style="padding-left: 0;">
-                    <ng-map zoom="20" center="8.4807258,124.64481989999999" id="mapler" on-center-changed="centerCustomMarker()">
+                <div class="col-md-7" style="padding-left: 0;"  data-tap-disabled="true">
+                    <ng-map zoom="20"  center="8.4807258,124.64481989999999" id="mapler" on-center-changed="centerCustomMarker()">
                         <marker position="8.4807258,124.64481989999999" ng-click="showCustomMarker()"></marker>
                         <!-- <marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->
                     </ng-map>

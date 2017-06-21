@@ -1,4 +1,3 @@
-
 <div>
     <img src="img/Group4184.png" style="width: 100%;height: 340px;">
 </div>
@@ -32,40 +31,11 @@
                 <div class="row customCLicker">
                     <div class="col-md-3">
                         <ul class="list-group" style="padding: 15px 0;background: #fff;box-shadow: 1px 1px 2px 0px #ccc;">
-                            <li class="list-group-item">
-                                <a>All</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Appetizers</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Omelettes & Skillets</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Burgers</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Pizza</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Soups & Salads</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Sandwiches</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Steaks</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Deserts</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Vegetables</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a>Beverages</a>
+                            <li class="list-group-item" ng-repeat="Menus in MenuList" ng-click="toggle(Menus); ClickLoader()" ng-class="{'activated':Menus.active == true}">
+                                <a>{{Menus.Name}}</a>
                             </li>
                         </ul>
+                        <!-- ng-class='{activated:$index}' -->
                         <div class="smallTab">
                             <uib-tabset active="activeJustified" justified="true">
                                 <uib-tab index="0" heading="DELIVERY">
@@ -124,44 +94,25 @@
                                 <button class="searchBtn" style="color: #fff">Search</button>
                             </div>
                         </div>
-                        <h3 style="text-transform: none;margin-bottom: 20px;">Burger</h3>
+                        <h3 style="text-transform: none;margin-bottom: 20px;">{{open.Name}}</h3>
                         <div class="row">
-                            <div class="col-md-6" ng-repeat="menu in Menus">
+                            <div class="col-md-12">
+                                <div class="spinnerHolder" ng-if="showLoader">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" ng-repeat="menu in Menus" style="z-index: 0;">
                                 <div id="customCArd" ng-click="openMenuModal()">
                                     <div>
-                                        <img ng-src="img/store/{{menu.image}}" style="width: 110px;">
+                                        <img ng-src="img/store/{{avatar.image}}" style="width: 110px;">
                                     </div>
                                     <div class="content">
-                                        <h3>Meaty Cheese Burger</h3>
+                                        <h3>{{open.Name}}</h3>
                                         <div style="margin-bottom: 7px;"><span>$ 8.00</span></div>
                                         <small>Some food description Some food description Some food description Some food description</small>
                                     </div>
                                 </div>
                             </div>
-                           <!--  <div class="col-md-6">
-                                <div id="customCArd">
-                                    <div>
-                                        <img src="img/burger.png" style="width: 110px;">
-                                    </div>
-                                    <div class="content">
-                                        <h3>Meaty Cheese Burger</h3>
-                                        <div style="margin-bottom: 7px;"><span>$ 8.00</span></div>
-                                        <small>Some food description Some food description Some food description Some food description</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="customCArd">
-                                    <div>
-                                        <img src="img/burger.png" style="width: 110px;">
-                                    </div>
-                                    <div class="content">
-                                        <h3>Meaty Cheese Burger</h3>
-                                        <div style="margin-bottom: 7px;"><span>$ 8.00</span></div>
-                                        <small>Some food description Some food description Some food description Some food description</small>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -181,7 +132,7 @@
                 </div>
             </div>
         </uib-tab>
-        <uib-tab index="1" heading="About Us">
+        <uib-tab index="1" heading="About Us" ng-click="initmap()">
             <div class="container" style="margin-top:35px">
                 <div class="row">
                     <div class="col-md-7">
@@ -284,12 +235,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12" style="margin-bottom: 60px;">
+                    <div ng-if="showMap" class="col-md-12" style="margin-bottom: 60px;" data-tap-disabled="true">
                         <div style="font-size: 22px;margin-bottom: 20px;">Locate us here:</div>
                         <ng-map zoom="20" center="8.4807258,124.64481989999999" id="mapler" on-center-changed="centerCustomMarker()">
-                        <marker position="8.4807258,124.64481989999999" ng-click="showCustomMarker()"></marker>
-                        <!-- <marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->
-                    </ng-map>
+                            <marker position="8.4807258,124.64481989999999" ng-click="showCustomMarker()"></marker>
+                            <!-- <marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->
+                        </ng-map>
                     </div>
                 </div>
             </div>

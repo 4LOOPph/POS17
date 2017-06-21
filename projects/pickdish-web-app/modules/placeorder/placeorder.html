@@ -1,6 +1,6 @@
 <div id="subHeader" ng-init="deliVer = true;">
     <div class="container">
-        Pay and Place Order
+        Delivery Information
     </div>
 </div>
 <div class="container">
@@ -10,8 +10,8 @@
         </div>
         <div class="col-md-12">
             <div class="row">
-                <md-steppers md-selected="selected" md-stretch-steppers="always" ng-init="selected = 0" md-alternative="Alternative" md-linear="Linear">
-                    <md-step label="Delivery information" md-complete="step1.completed" ng-disabled="step1.disabled">
+                <md-steppers md-selected="selected" md-stretch-steppers="always" ng-init="selected = 0;step2.disabled=true;step3.disabled=true" id="stepper-demo" >
+                    <md-step label="Delivery information"   md-complete="step1.completed" ng-disabled="step1.disabled">
                         <md-step-body>
                             <div class="col-md-6">
                                 <div class="boX-shadower" style="padding: 30px 30px;background: #fff;margin-bottom: 50px;">
@@ -64,7 +64,7 @@
                                                         <option>4</option>
                                                     </select>
                                                 </div>
-                                                <div style="text-align: right;color: #f26822;"><i class="glyphicon glyphicon-plus"></i> Add Address</div>
+                                                <div style="text-align: right;color: #f26822;"><i style="z-index: 0;" class="glyphicon glyphicon-plus"></i> Add Address</div>
                                                 <div style="background: #fff;padding: 15px;display: flex;margin-top: 20px;">
                                                     <div style="z-index: 0;"><i class="glyphicon glyphicon-map-marker" style="font-size: 16px;color: #7a7977;z-index: 0;margin-top: 9px;"></i></div>
                                                     <div class="col-md-12" style="z-index: 0;">
@@ -92,12 +92,18 @@
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-6" style="padding-left: 0">
-                                                        <datepicker>
+                                                        <!-- <datepicker>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon" id="clearAddon"><i class="fa fa-calendar"></i></span>
-                                                                <input class="form-control" id="bottomBorderInput" ng-model="date" type="text" />
+                                                                <input class="form-control" id="bottomBorderInput" ng-model="date2" type="text" />
                                                             </div>
-                                                        </datepicker>
+                                                        </datepicker> -->
+                                                        <div style="display: flex;margin-top: 5px;">
+                                                            <span class="input-group-addon" id="clearAddon" style="margin-right: 13px"><i class="fa fa-calendar"></i></span>
+                                                            <datepicker date-format="MMMM d, y" button-prev='<i class="fa fa-arrow-circle-left"></i>' button-next='<i class="fa fa-arrow-circle-right"></i>'>
+                                                                <input ng-model="date1" type="text" id="bottomBorderInput" class="font-fontawesome font-light radius3" style="width: 100%;outline: 0;" />
+                                                            </datepicker>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0">
                                                         <div class="input-group">
@@ -110,7 +116,7 @@
                                             <div class="labelz" style="margin-top: 30px;display: -webkit-inline-box;">Pick Up Address</div>
                                             <div>
                                                 <li class="list-group-item" style="display: flex;padding: 20px 30px;z-index: 0;">
-                                                    <div class="lister" style="    background-image: url(../img/Mcdonald.png);background-size: 80px 50px;background-position-x: -6px;background-position-y: 5px;width: 70px;height: 60px;"></div>
+                                                    <div class="lister" style="background-image: url(img/Mcdonald.png);background-size: 80px 50px;background-position-x: -6px;background-position-y: 5px;width: 70px;height: 60px;"></div>
                                                     <div style="padding: 0px 5px;">
                                                         <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
                                                             <li style="display: flex;">
@@ -124,7 +130,7 @@
                                         </div>
                                     </div>
                                     <div style="padding: 10px 0px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 1;proceedPayment()">Proceed to Payment</button>
+                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 1;proceedPayment();step1.completed = true;step2.disabled = false">Proceed to Payment</button>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +138,7 @@
                                 <div class="boX-shadower" style="padding: 30px 40px;background: #fff;margin-bottom: 50px;">
                                     <li class="list-group-item" style="display: flex;padding: 20px 30px;">
                                         <!-- <img src="/img/Image 401.png"> -->
-                                        <div class="lister" style="background-image: url(../img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
+                                        <div class="lister" style="background-image: url(img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
                                         <div style="padding: 10px 30px;">
                                             <div style="font-size: 22px; color:#F26822;">McDonald's - Divisoria</div>
                                             <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
@@ -263,23 +269,26 @@
                                     <div id="cardDivider">Please select your desired payment method.</div>
                                     <div class="row">
                                         <div class="col-md-12" style="margin-top: 20px;">
-                                            <div class="col-md-6" id="creditHolder"><img src="img/credit.png" style="width: 200px;"></div>
-                                            <div class="col-md-6" id="paypal"><img src="img/paypal.png" style="width: 100px;"></div>
+                                            <button class="col-md-6 cardButton" ng-click="Visa = true;Paypal = false" ng-class="{activeness: Visa == true}" id="creditHolder">
+                                                <img src="img/credit.png" style="width: 200px;"></button>
+                                            <button class="col-md-6 cardButton" ng-click="Paypal = true;Visa = false" ng-class="{activeness: Paypal == true }" id="paypal">
+                                                <img src="img/paypal.png" style="width: 100px;"></button>
                                         </div>
                                     </div>
                                     <div id="darkContent">
                                         <div>
                                             <div class="form-group">
-                                                <select class="form-control" id="sel1">
-                                                    <option ng-click="visa = false">johndoe@mail.com</option>
-                                                    <option ng-click="visa = true">xxxx xxxx xxxx 1234 VISA</option>
+                                                <select class="form-control" id="sel1" ng-model="myDropDown">
+                                                    <option value="one">johndoe@mail.com</option>
+                                                    <option value="two">xxxx xxxx xxxx 1234 VISA</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div ng-show="visa"><img src="img/card.png"></div>
+                                        <div ng-show="myDropDown=='two'"><img src="img/card.png" style="width: 120px;margin-top: 10px;margin-bottom: 5px;"></div>
                                     </div>
+                                    <div style="padding: 20px 0 10px;color: #737373;">By making this purchase you agree to our <span href="" style="color: #f26822">Terms and Condition</span></div>
                                     <div style="padding: 10px 0px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 3">Pay & Place Order</button>
+                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 3;step2.completed = true;step3.disabled = false">Pay & Place Order</button>
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +296,7 @@
                                 <div class="boX-shadower" style="padding: 30px 40px;background: #fff;margin-bottom: 50px;">
                                     <li class="list-group-item" style="display: flex;padding: 20px 30px;">
                                         <!-- <img src="/img/Image 401.png"> -->
-                                        <div class="lister" style="background-image: url(../img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
+                                        <div class="lister" style="background-image: url(img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
                                         <div style="padding: 10px 30px;">
                                             <div style="font-size: 22px; color:#F26822;">McDonald's - Divisoria</div>
                                             <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
@@ -466,7 +475,7 @@
                                         <small>Estimated time delivered</small>
                                     </div>
                                     <div style="padding: 20px 30px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.proof">Proceed to Payment</button>
+                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.proof">See Proof of Purchase</button>
                                     </div>
                                     <div style="padding: 5px 30px;text-align: center;"><a style="color: #f26822;font-size: 15px;">Contact Support</a></div>
                                 </div>
@@ -475,7 +484,7 @@
                                 <div class="boX-shadower" style="padding: 30px 40px;background: #fff;margin-bottom: 20px;">
                                     <li class="list-group-item" style="display: flex;padding: 20px 30px;">
                                         <!-- <img src="/img/Image 401.png"> -->
-                                        <div class="lister" style="background-image: url(../img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
+                                        <div class="lister" style="background-image: url(img/Mcdonald.png);background-size: 150px 130px;background-position-x: -10px;width: 190px;"></div>
                                         <div style="padding: 10px 30px;">
                                             <div style="font-size: 22px; color:#F26822;">McDonald's - Divisoria</div>
                                             <ul class="" style="list-style: none;padding-left: 0;margin-top: 10px;">
