@@ -427,13 +427,13 @@
                                     <div style="padding-left: 30px; padding-top: 20px;">
                                         <div class="step">
                                             <div>
-                                                <div class="circle ActiveCircle"></div>
+                                                <div class="circle" ng-class="{'cancelorder':cancel,'ActiveCircle': !cancel}"></div>
                                                 <div class="line"></div>
                                             </div>
                                             <div>
                                                 <div class="title">Confirming order with restaurant</div>
                                                 <div class="body">
-                                                    <button class="cancelBtn">Cancel Order</button>
+                                                    <button class="cancelBtn" ng-click="cancelorder()" ng-class="{'cancelorder':cancel}">Cancel Order</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -471,8 +471,9 @@
                                 </div>
                                 <div class="boX-shadower" style="padding: 0px 0px 25px;background: #fff;margin-bottom: 50px;">
                                     <div style="text-align: center;background: rgba(234, 199, 81, 0.35);padding: 15px;">
-                                        <div style="color: #F26822;font-size: 25px;">11:45 AM</div>
-                                        <small>Estimated time delivered</small>
+                                        <div style="color: #F26822;font-size: 25px;" ng-if="!cancel">11:45 AM</div>
+                                        <h4 style="color: #F26822;font-size: 30px;" ng-if="cancel">Order cancelled</h4>
+                                        <small ng-if="!cancel">Estimated time delivered</small>
                                     </div>
                                     <div style="padding: 20px 30px;">
                                         <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.proof">See Proof of Purchase</button>
@@ -525,6 +526,9 @@
     </div>
 </div>
 <style type="text/css">
+.cancelorder{
+    background: #98918d !important;
+}
 .btn-pick {
     color: #fff;
     background-color: #fb6430;
