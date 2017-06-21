@@ -1,0 +1,96 @@
+<md-dialog aria-label="User account" flex="45">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <img class="round-face" src="http://placekitten.com/g/48/48" />
+            <h2>{{order.customer.firstname}} {{order.customer.lastname}} <small class="md-caption">{{order.customer.email}}</small></h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div layout="row">
+            <div flex>
+                <div layout layout-sm="row">
+                    <md-input-container flex>
+                        <span class="md-body-1">Order No.</span>
+                        <span class="md-body-2 pull-right">{{order.order_no}}</span>
+                        <p>
+                            <span class="md-body-1">Transaction No.</span>
+                            <span class="md-body-2 pull-right">{{order.trans_no}}</span>
+                        </p>
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="row">
+                    <md-input-container flex>
+                        <span class="md-title">ORDERS</span>
+                        <md-list flex>
+                            <md-divider></md-divider>
+                            <md-list-item class="md-3-line" ng-repeat="item in order.order_details" ng-click="null">
+                                <img class="round-face" src="http://placekitten.com/g/48/48" />
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ item.product.item_name }}</h3>
+                                    <h4>{{ item.product.selling_price }}</h4>
+                                    <p>{{ item.product.item_description }}</p>
+                                </div>
+                                <md-divider></md-divider>
+                            </md-list-item>
+                        </md-list>
+                    </md-input-container>
+                </div>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+            </div>
+            <div flex>
+                <div layout layout-sm="row">
+                    <md-input-container flex>
+                        <div class="pull-right">
+                            <span class="md-body-1">Trans. Date</span>
+                            <span class="md-body-2">{{curDate | amDateFormat:'MM/DD/YYYY'}}</span>
+                            <p>
+                                <span class="md-body-1">&nbsp;</span>
+                                <span class="md-body-2 pull-right">&nbsp;</span>
+                            </p>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="row">
+                    <md-input-container flex>
+                        <span class="md-title">Charged</span>
+                        <md-divider></md-divider>
+                        <div class="p-t-30">
+                            <img src="./../images/visa_small.png" />
+                            <span>**** - **** - **** - 1234</span>
+                            <span class="md-body-2 pull-right">Php 2500.00</span>
+                        </div>
+                        <p>
+                            <span class="md-body-1">Subtotal</span>
+                            <span class="md-body-2 pull-right">Php 2500.00</span>
+                        </p>
+                        <p>
+                            <span class="md-body-1">Delivery Fee</span>
+                            <span class="md-body-2 pull-right">Php 20.00</span>
+                        </p>
+                        <p>
+                            <span class="md-title">Total</span>
+                            <span class="md-title pull-right">Php 2500.00</span>
+                        </p>
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="row">
+                    <img src="./../images/accepted.png" style="width: 380px;" ng-if="action == 'accept'"/>
+                    <img src="./../images/delivered.png" style="width: 380px;height: 150px;" ng-if="action == 'delivered'"/>
+                </div>
+            </div>
+        </div>
+        <div layout layout-sm="row">
+            <md-input-container flex>
+                <span class="md-body-2">Delivery Instruction</span>
+                <p class="md-body-1">{{order.delivery_note}}</p>
+            </md-input-container>
+        </div>
+    </md-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()"> Close </md-button>
+    </md-dialog-actions>
+</md-dialog>

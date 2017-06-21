@@ -1,7 +1,7 @@
 <md-dialog aria-label="User account" flex="45">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Set User account</h2>
+            <h2>Promo Codes</h2>
             <span flex></span>
         </div>
     </md-toolbar>
@@ -9,21 +9,20 @@
         <form name="userForm">
             <div layout layout-sm="row">
                 <md-input-container flex>
-                    <label>Username</label>
-                    <md-icon md-font-icon="mdi mdi-account-circle mdi-24px" class="name"></md-icon>
-                    <input ng-model="user.username" type="text">
+                    <label>Promocode</label>
+                    <input ng-model="user.promocode" type="text">
                 </md-input-container>
             </div>
             <div layout layout-sm="row">
                 <md-input-container flex>
-                    <label>Password</label>
-                    <md-icon md-font-icon="mdi mdi-lock mdi-24px"></md-icon>
-                    <input ng-model="user.password" type="password">
+                    <label>Discount</label>
+                    <input ng-model="user.discount" type="text">
                 </md-input-container>
+            </div>
+            <div layout layout-sm="row">
                 <md-input-container flex>
-                    <label>Confirm Password</label>
-                    <md-icon md-font-icon="mdi mdi-lock mdi-24px"></md-icon>
-                    <input ng-model="user.confirm_password" type="password">
+                    <h4 class="md-body-1">Expiration</h4>
+                    <md-datepicker ng-model="user.expiration" md-placeholder="Enter date"></md-datepicker>
                 </md-input-container>
             </div>
         </form>

@@ -1,0 +1,176 @@
+{
+    "response": {
+        "pagination": {
+            "results": 2,
+            "page": 0,
+            "page_size": 0,
+            "pages": 0
+        },
+        "result": [{
+            "order_no": "ORD0100",
+            "trans_no": "ORD0100",
+            "order_type": "DELIVERY",
+            "customer": {
+                "firstname": "CustomerFname",
+                "middlename": "CustomerMname",
+                "lastname": "CustomerLname",
+                "email":"sample1@yopmail.com"
+            },
+            "total_amt": 195,
+            "payment_method": "card",
+            "delivery_date": "2017-05-22",
+            "delivery_time": "18:00",
+            "order_status":"delivered",
+            "delivery_note":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "order_details":[{
+              "product":{
+                "item_name":"Chicken Inasal",
+                "item_description":"Sample Description",
+                "selling_price":100
+              },
+              "quantity": 1,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken Inasal",
+                "item_description":"Sample Description",
+                "selling_price":100
+              },
+              "quantity": 1,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            }],
+            "sub-total":100,
+            "tax":10,
+            "delivery_charge":10,
+            "payment_status": "Paid",
+            "payment":{
+              "amount_tendered": 100,
+              "amount_change":0
+            }
+        },{
+            "order_no": "ORD0101",
+            "trans_no": "ORD0101",
+            "order_type": "DELIVERY",
+            "customer": {
+                "firstname": "CustomerFname",
+                "middlename": "CustomerMname",
+                "lastname": "CustomerLname",
+                "email":"sample2@yopmail.com"
+            },
+            "total_amt": 195,
+            "payment_method": "card",
+            "delivery_date": "2017-05-22",
+            "delivery_time": "18:00",
+            "order_status":"new",
+            "delivery_note":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "order_details":[{
+              "product":{
+                "item_name":"Chicken Inasal",
+                "item_description":"Sample Description",
+                "selling_price":100
+              },
+              "quantity": 1,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken Inasal",
+                "item_description":"Sample Description",
+                "selling_price":100
+              },
+              "quantity": 1,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            },{
+              "product":{
+                "item_name":"Chicken BBQ",
+                "item_description":"Sample Description",
+                "selling_price":200
+              },
+              "quantity": 3,
+              "additional_note":""
+            }],
+            "sub-total":100,
+            "tax":10,
+            "delivery_charge":10,
+            "payment_status": "Paid",
+            "payment":{
+              "amount_tendered": 100,
+              "amount_change":0
+            }
+        }],
+        "msg": "",
+        "success": true
+    },
+    "statusCode": 200
+}

@@ -29,6 +29,10 @@
                 <md-icon md-colors="{color: 'indigo-A400'}" md-font-icon="mdi mdi-comment-multiple-outline mdi-24px"></md-icon>
                 <p>Reviews</p>
             </md-list-item>
+            <md-list-item ng-click="gotoPromos()" ng-class="{'activelist': currentModule=='Promo Codes'}">
+                <md-icon md-colors="{color: 'purple-900'}" md-font-icon="mdi mdi-comment-multiple-outline mdi-24px"></md-icon>
+                <p>Promo Codes</p>
+            </md-list-item>
             <md-list-item ng-click="gotoStore()" ng-class="{'activelist': currentModule=='Store Information'}">
                 <md-icon md-colors="{color: 'pink-A400'}" md-font-icon="mdi mdi-bank mdi-24px"></md-icon>
                 <p>Store Information</p>
