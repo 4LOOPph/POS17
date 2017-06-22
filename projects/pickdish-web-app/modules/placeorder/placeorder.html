@@ -280,7 +280,7 @@
                                                 <div class="title">Meaty Chee</div>
                                                 <div class="price">$ 20.00</div>
                                                 <div class="action col-md-4" style="padding: 0;margin-top: 5px;">
-                                                     <span style="color: #f26822;">x2</span>
+                                                    <span style="color: #f26822;">x2</span>
                                                 </div>
                                             </div>
                                             <div class="floater" style="margin-top: 10px">
@@ -296,7 +296,7 @@
                                                 <div class="title">Meaty Chee</div>
                                                 <div class="price">$ 20.00</div>
                                                 <div class="action col-md-4" style="padding: 0;margin-top: 5px;">
-                                                      <span style="color: #f26822;">x2</span>
+                                                    <span style="color: #f26822;">x2</span>
                                                 </div>
                                             </div>
                                             <div class="floater" style="margin-top: 10px">
@@ -312,7 +312,7 @@
                                                 <div class="title">Meaty Chee</div>
                                                 <div class="price">$ 20.00</div>
                                                 <div class="action col-md-4" style="padding: 0;margin-top: 5px;">
-                                                      <span style="color: #f26822;">x2</span>
+                                                    <span style="color: #f26822;">x2</span>
                                                 </div>
                                             </div>
                                             <div class="floater" style="margin-top: 10px">
@@ -381,7 +381,8 @@
                                                 <div class="line"></div>
                                             </div>
                                             <div>
-                                                <div class="title">Courier is on the way</div>
+                                                <div class="title" ng-show="deliVer">Courier is on the way</div>
+                                                <div class="title" ng-show="pickUp">Food is ready for pick up.</div>
                                                 <div class="body"></div>
                                             </div>
                                         </div>
@@ -391,7 +392,8 @@
                                                 <!-- <div class="line"></div> -->
                                             </div>
                                             <div>
-                                                <div class="title">Food is ariving.Time to eat</div>
+                                                <div class="title" ng-show="deliVer">Food is ariving.Time to eat</div>
+                                                <div class="title" ng-show="pickUp">Time to eat!</div>
                                                 <div class="body"></div>
                                             </div>
                                         </div>
