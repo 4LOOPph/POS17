@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div id="backpager" ui-sref="main.menu">
-                <i class="glyphicon glyphicon-arrow-left"></i>
+                <i class="glyphicon glyphicon-chevron-left"></i>
             </div>
             <div class="col-md-12">
                 <div class="row">
@@ -134,8 +134,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div ng-if="!showuser" style="margin-left:15px;margin-right:15px;" id="cardDivider">Please enter your email address to Login or Signup.</div>
                             <div style="padding: 10px 15px;">
-                                <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.placeorder">Proceed</button>
+                                <button ng-if="!showuser" id="pickDishBtn" class="login FullWidth outLiner" style="margin-top: 5px;" ng-click="openLoginModal()">Login</button>
+                                <button ng-if="!showuser" id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="openSignupModal()">Signup</button>
+                                <button ng-if="showuser" id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.placeorder">Proceed</button>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div id="backpager" style="padding: 20px 17px 0px;" ui-sref="main.checkout">
-            <i class="glyphicon glyphicon-arrow-left"></i>
+            <i class="glyphicon glyphicon-chevron-left"></i>
         </div>
         <div class="col-md-12">
             <div class="row">
@@ -361,7 +361,7 @@
                                             <div>
                                                 <div class="title">Confirming order with restaurant</div>
                                                 <div class="body">
-                                                    <button class="cancelBtn" ng-click="cancelorder(); buttonsDisabled = true" ng-class="{'cancelorder':cancel}">Cancel Order</button>
+                                                    <button class="cancelBtn" ng-click="cancelorder(); Back = true; Proceed = false" ng-class="{'cancelorder':cancel}">Cancel Order</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -399,19 +399,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="boX-shadower" style="padding: 0px 0px 25px;background: #fff;margin-bottom: 50px;">
+                                <div class="boX-shadower" style="padding: 0px 0px 25px;background: #fff;margin-bottom: 50px;" ng-init="Proceed = true">
                                     <div style="text-align: center;background: rgba(234, 199, 81, 0.35);padding: 15px;">
                                         <div style="color: #F26822;font-size: 25px;" ng-if="!cancel">11:45 AM</div>
                                         <h4 style="color: #F26822;font-size: 31px;" ng-if="cancel">Order cancelled</h4>
                                         <small ng-if="!cancel">Estimated time delivered</small>
                                     </div>
                                     <div style="padding: 20px 30px;">
-                                        <button id="pickDishBtn" class="login btn FullWidth" style="margin-top: 5px;" ui-sref="main.proof" ng-disabled="buttonsDisabled">See Proof of Purchase</button>
+                                        <button id="pickDishBtn" class="login btn FullWidth" style="margin-top: 5px;" ui-sref="main.proof" ng-show="Proceed">See Proof of Purchase</button>
+                                        <button id="pickDishBtn" class="login btn FullWidth" style="margin-top: 5px;" ui-sref="home" ng-show="Back">Back to Home</button>
                                     </div>
                                     <div style="padding: 5px 30px;text-align: center;"><a style="color: #f26822;font-size: 15px;">Contact Support</a></div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" >
                                 <div class="boX-shadower" style="padding: 30px 40px;background: #fff;margin-bottom: 20px;">
                                     <li class="list-group-item" style="display: flex;padding: 20px 30px;">
                                         <!-- <img src="/img/Image 401.png"> -->
