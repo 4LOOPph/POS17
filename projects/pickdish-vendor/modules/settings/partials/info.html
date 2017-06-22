@@ -6,9 +6,23 @@
                     Enable VAT
                 </md-checkbox>
             </md-input-container>
+            <md-input-container class="md-block" ng-if="data.cb1">
+                <label>TAX %</label>
+                <input ng-model="user.title">
+            </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2">
                     Enable Pre-order
+                </md-checkbox>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <md-checkbox ng-model="data.cb3" aria-label="Checkbox 3">
+                    Enable SMS-Notification
+                </md-checkbox>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <md-checkbox ng-model="data.cb4" aria-label="Checkbox 4">
+                    Enable Email Notification
                 </md-checkbox>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>

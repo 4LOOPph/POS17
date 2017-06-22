@@ -1,0 +1,53 @@
+{
+    "response": {
+        "pagination": {
+            "results": 24,
+            "page": 0,
+            "page_size": 0,
+            "pages": 0
+        },
+        "result": [{
+            "review_id":1,
+            "username": "User1",
+            "profile": {
+                "firstname": "Firstname",
+                "middlename": "Middlename",
+                "lastname": "Lastname",
+                "email":"sample1@yopmail.com"
+            },
+            "food_rate": 5,
+            "value_rate": 7,
+            "speed_rate": 8,
+            "comments": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }, {
+            "review_id":2,
+            "username": "User2",
+            "profile": {
+                "firstname": "Firstname2",
+                "middlename": "Middlename2",
+                "lastname": "Lastname2",
+                "email":"sample2@yopmail.com"
+            },
+            "food_rate": 9,
+            "value_rate": 7,
+            "speed_rate": 6,
+            "comments": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }, {
+            "review_id":3,
+            "username": "User3",
+            "profile": {
+                "firstname": "Firstname3",
+                "middlename": "Middlename3",
+                "lastname": "Lastname3",
+                "email":"sample3@yopmail.com"
+            },
+            "food_rate": 5,
+            "value_rate": 4,
+            "speed_rate": 8,
+            "comments": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }],
+        "msg": "",
+        "success": true
+    },
+    "statusCode": 200
+}

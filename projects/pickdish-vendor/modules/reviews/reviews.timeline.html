@@ -1,0 +1,42 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content">
+        <md-card>
+            <md-toolbar class="md-table-toolbar md-accent">
+                <div class="md-toolbar-tools">
+                    <h2 flex md-truncate></h2>
+                    <md-datepicker ng-model="curDate" md-placeholder="Enter date"></md-datepicker>
+                    <md-button class="md-icon-button" aria-label="Search">
+                        <md-tooltip>Refresh</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <div class="md-padding">
+                <div class="p-timeline" ng-repeat="time in timelineDate">
+                    <div class="pt-line c-gray text-right">
+                        <span class="d-block">{{time | amDateFormat:'YYYY'}} </span> {{time | amDateFormat:'MM/DD'}}
+                    </div>
+                    <div class="pt-body" ng-repeat="review in reviews">
+                        <img class="round-face" src="http://placekitten.com/g/48/48" />
+                        <h3 class="timeline-header"><a href="#">Support Team</a></h3>
+                        <div class="lightbox clearfix">
+                            <div class="timeline-body">
+                                <cite>{{review.comments}}</cite>
+                            </div>
+                            <div class="timeline-footer">
+                                <span class="md-body-2">Food Rating: </span>
+                                <star-rating ng-model="review.food_rate" max="10" readonly="true"></star-rating>
+                                <br>
+                                <span class="md-body-2">Value Rating: </span>
+                                <star-rating ng-model="review.value_rate" max="10" readonly="true"></star-rating>
+                                <br>
+                                <span class="md-body-2">Speed Rating: </span>
+                                <star-rating ng-model="review.speed_rate" max="10" readonly="true"></star-rating>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-card>
+    </div>
+</div>

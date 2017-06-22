@@ -1,0 +1,100 @@
+<md-toolbar class="md-table-toolbar md-accent">
+    <div class="md-toolbar-tools">
+        <h2 flex md-truncate></h2>
+        <md-button class="md-icon-button" aria-label="Add" ng-click="addDeliveryTime()">
+            <md-tooltip>Add</md-tooltip>
+            <md-icon md-font-icon="mdi mdi-plus mdi-24px"></md-icon>
+        </md-button>
+        <md-menu>
+            <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                <md-tooltip>More</md-tooltip>
+                <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click="refresh()">
+                        <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
+                        Refresh
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="refresh()">
+                        <md-icon md-font-icon="mdi mdi-file-excel mdi-24px"></md-icon>
+                        Export to CSV
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="refresh()">
+                        <md-icon md-font-icon="mdi mdi-file-pdf mdi-24px"></md-icon>
+                        Export to PDF
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="showDeleteConfirm($event)">
+                        <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
+                        Delete
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</md-toolbar>
+<md-table-container>
+    <table md-table multiple="{{options.multiSelect}}" ng-model="selectedDatas">
+        <thead md-head md-order="query.order">
+            <tr md-row>
+                <th md-column><span>Order No</span></th>
+                <th md-column><span>Customer</span></th>
+                <th md-column><span>Order Type</span></th>
+                <th md-column><span>Total Amount</span></th>
+                <th md-column><span>Payment Type</span></th>
+                <th md-column><span>Status</span></th>
+                <th md-column md-desc class="my-th"><span>Delivery Note</span></th>
+                <th md-column md-desc></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-repeat="product in newOrders | limitTo: query.limit : (query.page -1) * query.limit" ng-click="viewOrder(product,$event)">
+                <td md-cell>{{product.order_no}}</td>
+                <td md-cell>{{product.customer.firstname}} {{product.customer.lastname}}</td>
+                <td md-cell>{{product.order_type}}</td>
+                <td md-cell>{{product.total_amt | number:2}}</td>
+                <td md-cell>{{product.payment_method | uppercase}}</td>
+                <td md-cell><span class="tag tag-success">{{product.order_status | uppercase}}</span></td>
+                <td md-cell>{{product.delivery_note}}</td>
+                <td md-cell>
+                    <md-menu>
+                        <md-button class="md-raised md-blue" ng-click="openMenu($mdMenu,$event)">Action</md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button ng-click="showDetails(product)">
+                                    <md-icon md-font-icon="mdi mdi-thumb-up mdi-24px"></md-icon>
+                                    Accept
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="showConfirm(product,$event)">
+                                    <md-icon md-font-icon="mdi mdi-thumb-down mdi-24px"></md-icon>
+                                    Decline
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button aria-label="More" ng-click="trackDetails(product,'accept',$event)">
+                                    <md-icon md-menu-origin md-font-icon="mdi mdi-magnify mdi-24px"></md-icon>
+                                    Track
+                                </md-button>
+                            </md-menu-item>
+                             <md-menu-item>
+                                <md-button aria-label="More" ng-click="viewDetails(product,$event)">
+                                    <md-icon md-menu-origin md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
+                                    View
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
+<md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{newOrders.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></md-table-pagination>

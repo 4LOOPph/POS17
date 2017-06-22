@@ -24,7 +24,7 @@
                             <md-tooltip>More</md-tooltip>
                             <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
                         </md-button>
-                        <md-menu-content width="3">
+                         <md-menu-content width="3">
                             <md-menu-item>
                                 <md-button ng-click="refresh()">
                                     <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
@@ -69,7 +69,7 @@
                             <md-tooltip>More</md-tooltip>
                             <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
                         </md-button>
-                        <md-menu-content width="3">
+                         <md-menu-content width="3">
                             <md-menu-item>
                                 <md-button ng-click="refresh()">
                                     <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
@@ -102,21 +102,21 @@
                 <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selectedDatas">
                     <thead md-head md-order="query.order">
                         <tr md-row>
-                            <th md-column md-order-by="name"><span>Firstname</span></th>
-                            <th md-column md-order-by="type"><span>Lastname</span></th>
-                            <th md-column md-order-by="type"><span>Email</span></th>
-                            <th md-column md-desc class="my-th2"><span>Address</span></th>
-                            <th md-column><span>Date Created</span></th>
+                            <th md-column md-desc class="my-th"><span>Promo Code</span></th>
+                            <th md-column md-order-by="type"><span>Discount</span></th>
+                            <th md-column md-order-by="type"><span>Expiration</span></th>
+                            <th md-column md-order-by="type"><span>Status</span></th>
+                            <th md-column><span>Used Count</span></th>
                             <th md-column md-desc></th>
                         </tr>
                     </thead>
                     <tbody md-body>
-                        <tr md-row md-select="user" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="user in users.result | filter: txtSearch | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                            <td md-cell>{{user.firstname}}</td>
-                            <td md-cell>{{user.lastname}}</td>
-                            <td md-cell>{{user.email}}</td>
-                            <td md-cell>{{user.address}} {{user.city}} {{user.state}} {{user.zipcode}} {{user.country}}</td>
-                            <td md-cell>{{user.date_created | amDateFormat:'MM/DD/YYYY'}}</td>
+                        <tr md-row md-select="user" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="user in promos.result | filter: txtSearch | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                            <td md-cell>{{user.promocode}}</td>
+                            <td md-cell>{{user.discount}}</td>
+                            <td md-cell>{{user.expiration}}</td>
+                            <td md-cell><span class="tag" ng-class="{'tag-danger':user.status == 'Expiration','tag-success':user.status=='Valid'}">{{user.status}}</span></td>
+                            <td md-cell>{{user.used_count}}</td>
                             <td md-cell>
                                 <md-menu>
                                     <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
@@ -131,21 +131,9 @@
                                             </md-button>
                                         </md-menu-item>
                                         <md-menu-item>
-                                            <md-button ng-click="viewDetails(user)">
-                                                <md-icon md-font-icon="mdi mdi-eye mdi-24px"></md-icon>
-                                                View
-                                            </md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
                                             <md-button ng-click="showConfirm(user,$event)">
                                                 <md-icon md-font-icon="mdi mdi-delete mdi-24px"></md-icon>
                                                 Delete
-                                            </md-button>
-                                        </md-menu-item>
-                                        <md-menu-item>
-                                            <md-button ng-click="setUserAccount(user,$event)">
-                                                <md-icon md-font-icon="mdi mdi-account-box mdi-24px"></md-icon>
-                                                Add Account
                                             </md-button>
                                         </md-menu-item>
                                     </md-menu-content>

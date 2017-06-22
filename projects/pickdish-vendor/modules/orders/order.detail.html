@@ -1,0 +1,139 @@
+<div layout="horizontal" layout-align="center">
+    <div id="content" class="md-padding">
+        <md-card>
+            <md-toolbar class="md-table-toolbar md-accent" ng-show="!showSearch">
+                <div class="md-toolbar-tools">
+                    <img class="round-face" src="http://placekitten.com/g/48/48" />
+                    <h2>{{order.customer.firstname}} {{order.customer.lastname}} <small class="md-caption">{{order.customer.email}}</small></h2>
+                    <h2 flex md-truncate></h2>
+                    <md-button class="md-icon-button" aria-label="Add" ng-click="addNewEntry()">
+                        <md-tooltip>Refresh</md-tooltip>
+                        <md-icon md-font-icon="mdi mdi-refresh mdi-24px"></md-icon>
+                    </md-button>
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="openMenu($mdMenu, $event)">
+                            <md-tooltip>More</md-tooltip>
+                            <md-icon md-menu-origin md-font-icon="mdi mdi-dots-vertical mdi-24px"></md-icon>
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button ng-click="refresh()">
+                                    <md-icon md-font-icon="mdi mdi-file-excel mdi-24px"></md-icon>
+                                    Export to CSV
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="refresh()">
+                                    <md-icon md-font-icon="mdi mdi-file-pdf mdi-24px"></md-icon>
+                                    Export to PDF
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="showDeleteConfirm($event)">
+                                    <md-icon md-font-icon="mdi mdi-printer mdi-24px"></md-icon>
+                                    Print
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </md-toolbar>
+            <md-card-content>
+                <div layout="row">
+                    <div flex="66">
+                        <div layout="row" class="md-padding">
+                            <div flex>
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <span class="md-body-1">Order No.</span>
+                                        <span class="md-body-2 pull-right">{{order.order_no}}</span>
+                                        <p>
+                                            <span class="md-body-1">Transaction No.</span>
+                                            <span class="md-body-2 pull-right">{{order.trans_no}}</span>
+                                        </p>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <span class="md-title">ORDERS</span>
+                                        <md-list flex>
+                                            <md-divider></md-divider>
+                                            <md-list-item class="md-3-line" ng-repeat="item in order.order_details" ng-click="null">
+                                                <img class="round-face" src="http://placekitten.com/g/48/48" />
+                                                <div class="md-list-item-text" layout="column">
+                                                    <h3>{{ item.product.item_name }}</h3>
+                                                    <h4>{{ item.product.selling_price }}</h4>
+                                                    <p>{{ item.product.item_description }}</p>
+                                                </div>
+                                                <md-divider></md-divider>
+                                            </md-list-item>
+                                        </md-list>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div flex="5" hide-xs hide-sm></div>
+                            <div flex>
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <div class="pull-right">
+                                            <span class="md-body-1">Trans. Date</span>
+                                            <span class="md-body-2">{{curDate | amDateFormat:'MM/DD/YYYY'}}</span>
+                                            <p>
+                                                <span class="md-body-1">&nbsp;</span>
+                                                <span class="md-body-2 pull-right">&nbsp;</span>
+                                            </p>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <span class="md-title">Charged</span>
+                                        <md-divider></md-divider>
+                                        <div class="p-t-30">
+                                            <img src="./../images/visa_small.png" />
+                                            <span>**** - **** - **** - 1234</span>
+                                            <span class="md-body-2 pull-right">Php 2500.00</span>
+                                        </div>
+                                        <p>
+                                            <span class="md-body-1">Subtotal</span>
+                                            <span class="md-body-2 pull-right">Php 2500.00</span>
+                                        </p>
+                                        <p>
+                                            <span class="md-body-1">Delivery Fee</span>
+                                            <span class="md-body-2 pull-right">Php 20.00</span>
+                                        </p>
+                                        <p>
+                                            <span class="md-title">Total</span>
+                                            <span class="md-title pull-right">Php 2500.00</span>
+                                        </p>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <span class="md-body-2">Delivery Instruction</span>
+                                        <p class="md-body-1">{{order.delivery_note}}</p>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex="5" style="border-left: 2px solid #C1C1C1;"></div>
+                    <div flex="33">
+                        <div class="jumbotron md-padding">
+                            <a class="btn btn-lg btn-success btn-block" href="">Order Accepted</a>
+                            <div class="p-b-30"></div>
+                            <a class="btn btn-lg btn-info btn-block" href="">Order Ready</a>
+                            <div class="p-b-30"></div>
+                            <a class="btn btn-lg btn-primary btn-block" href="">Deliver Order</a>
+                            <div class="p-b-30"></div>
+                            <a class="btn btn-lg btn-warning btn-block" href="">Order Received</a>
+                        </div>
+                    </div>
+                </div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="start center">
+                <md-button class="md-raised">Print Receipt</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "response": {
+    "pagination": {
+      "results": 24,
+      "page": 0,
+      "page_size": 0,
+      "pages": 0
+    },
+    "result": [{
+        "promo_code_id":"1",
+        "promocode":"ORD0100",
+        "discount": "10",
+        "expiration": "19-06-2017",
+        "status":"Expiration",
+        "used_count":10
+    },{
+        "promo_code_id":"2",
+        "promocode":"ORD0101",
+        "discount": 15,
+        "expiration": "30-06-2017",
+        "status":"Valid",
+        "used_count":10
+    },{
+        "promo_code_id":"3",
+        "promocode":"ORD0103",
+        "discount": 55,
+        "expiration": "26-05-2017",
+        "status":"Expiration",
+        "used_count":10
+    }],
+    "msg": "",
+    "success": true
+  },
+  "statusCode": 200
+}

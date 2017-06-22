@@ -1,0 +1,57 @@
+<md-dialog aria-label="User account" flex="45">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <img class="round-face" src="http://placekitten.com/g/48/48" />
+            <h2>{{review.profile.firstname}} {{review.profile.lastname}} <small class="md-caption">{{review.profile.email}}</small></h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div layout="row">
+            <div flex="75">
+                <form name="userForm">
+                    <div layout layout-sm="row">
+                        <md-input-container flex>
+                            <h5>Food Rating</h5>
+                            <!-- <ng-rate-it min="0" max="10" read-only="true" ng-model="review.food_rate"></ng-rate-it> -->
+                            <star-rating ng-model="review.food_rate" max="10" readonly="true"></star-rating>
+                        </md-input-container>
+                    </div>
+                    <div layout layout-sm="row">
+                        <md-input-container flex>
+                            <h5>Value Rating</h5>
+                            <!-- <ng-rate-it min="0" max="10" read-only="true" ng-model="review.value_rate"></ng-rate-it> -->
+                            <star-rating ng-model="review.value_rate" max="10" readonly="true"></star-rating>
+                        </md-input-container>
+                    </div>
+                    <div layout layout-sm="row">
+                        <md-input-container flex>
+                            <h5>Speed Rating</h5>
+                            <!-- <ng-rate-it min="0" max="10" read-only="true" ng-model="review.speed_rate"></ng-rate-it> -->
+                            <star-rating ng-model="review.speed_rate" max="10" readonly="true"></star-rating>
+                        </md-input-container>
+                    </div>
+                </form>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+            </div>
+            <div flex>
+                <div class="_left">
+                    <div class="_rate-num">7.8</div>
+                    <div class="_divider"></div>
+                    <div class="_v10">10</div>
+                </div>
+            </div>
+        </div>
+        <div layout layout-sm="row">
+            <md-input-container flex>
+                <h5>Comment</h5>
+                <textarea ng-model="review.comments" md-maxlength="150" rows="5" readonly="true"></textarea>
+            </md-input-container>
+        </div>
+    </md-content>
+    <div class="md-actions" layout="row"> <span flex></span>
+        <md-button ng-click="cancel()"> Cancel </md-button>
+    </div>
+</md-dialog>
