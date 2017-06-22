@@ -1,6 +1,6 @@
 <div id="subHeader" ng-init="deliVer = true;">
     <div class="container">
-        Delivery Information
+        {{title}}
     </div>
 </div>
 <div class="container">
@@ -252,7 +252,7 @@
                                     </div>
                                     <div style="padding: 20px 0 10px;color: #737373;">By making this purchase you agree to our <span href="" style="color: #f26822">Terms and Condition</span></div>
                                     <div style="padding: 10px 0px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 3;step2.completed = true;step3.disabled = false">Pay & Place Order</button>
+                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ng-click="selected = 3;step2.completed = true;step3.disabled = false;placeorder()">Pay & Place Order</button>
                                     </div>
                                 </div>
                             </div>
@@ -361,7 +361,7 @@
                                             <div>
                                                 <div class="title">Confirming order with restaurant</div>
                                                 <div class="body">
-                                                    <button class="cancelBtn" ng-click="cancelorder()" ng-class="{'cancelorder':cancel}">Cancel Order</button>
+                                                    <button class="cancelBtn" ng-click="cancelorder(); buttonsDisabled = true" ng-class="{'cancelorder':cancel}">Cancel Order</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -402,11 +402,11 @@
                                 <div class="boX-shadower" style="padding: 0px 0px 25px;background: #fff;margin-bottom: 50px;">
                                     <div style="text-align: center;background: rgba(234, 199, 81, 0.35);padding: 15px;">
                                         <div style="color: #F26822;font-size: 25px;" ng-if="!cancel">11:45 AM</div>
-                                        <h4 style="color: #F26822;font-size: 30px;" ng-if="cancel">Order cancelled</h4>
+                                        <h4 style="color: #F26822;font-size: 31px;" ng-if="cancel">Order cancelled</h4>
                                         <small ng-if="!cancel">Estimated time delivered</small>
                                     </div>
                                     <div style="padding: 20px 30px;">
-                                        <button id="pickDishBtn" class="login FullWidth" style="margin-top: 5px;" ui-sref="main.proof">See Proof of Purchase</button>
+                                        <button id="pickDishBtn" class="login btn FullWidth" style="margin-top: 5px;" ui-sref="main.proof" ng-disabled="buttonsDisabled">See Proof of Purchase</button>
                                     </div>
                                     <div style="padding: 5px 30px;text-align: center;"><a style="color: #f26822;font-size: 15px;">Contact Support</a></div>
                                 </div>
