@@ -15,16 +15,17 @@
                     <ul class="list-group" style="padding-left: 35px;font-size: 17px;line-height: 0;">
                         <li class="list-group-item" style="background: transparent;">
                             <a href="" ng-click="profile = true; payments = false" ng-class="{'activeProfile':profile == true}" class="list-group-item" style="background: transparent;">
-                                <span class="glyphicon glyphicon-user" style="margin-right: 12px;"></span> Profile</a>
+                                <span class="zmdi zmdi-account" style="margin-right: 12px;font-size: 18px;"></span> 
+                                Profile</a>
                         </li>
                         <li class="list-group-item" style="background: transparent;">
                             <a href="" ng-click="profile = false; payments = true" ng-class="{'activeProfile':payments == true}" class="list-group-item" style="background: transparent;display: flex;">
-                                <span class="glyphicon glyphicon-credit-card" style="margin-right: 12px;"></span>
-                                <div style="margin-top: 7px;padding-left: 5px;">Payments</div>
+                                <span class="zmdi zmdi-card" style="margin-right: 10px;font-size: 18px;"></span>
+                                <div style="margin-top: 9px;padding-left: 5px;">Payments</div>
                             </a>
                         </li>
                         <li class="list-group-item" style="background: transparent;">
-                            <a href="" class="list-group-item" style="background: transparent;" ui-sref="home"><span class="glyphicon glyphicon-off"  style="margin-right: 12px;"></span> Logout</a>
+                            <a href="" class="list-group-item" style="background: transparent;" ui-sref="home"><span class="zmdi zmdi-power"  style="margin-right: 12px;font-size: 18px;"></span> Logout</a>
                         </li>
                     </ul>
                 </div>
