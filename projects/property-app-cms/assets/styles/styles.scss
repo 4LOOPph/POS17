@@ -1,0 +1,552 @@
+body {
+    font-family: Roboto;
+    overflow: hidden;
+}
+
+// global
+// main section body
+.s-body {
+    height: 70vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: -2px -2px 23px -3px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: -2px -2px 23px -3px rgba(0, 0, 0, 0.49);
+    box-shadow: -2px -2px 23px -3px rgba(0, 0, 0, 0.49);
+    -webkit-box-shadow: 2px 2px 23px -3px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 2px 2px 23px -3px rgba(0, 0, 0, 0.49);
+    box-shadow: 2px 2px 23px -3px rgba(0, 0, 0, 0.49);
+    margin-top: .4vw;
+    overflow-y: auto;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    font-family: Roboto;
+}
+
+.app-table {
+    color: #616161;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.app-table thead {
+    font-size: 14px;
+    background-color: #ECEFF1;
+    border-bottom: 1px solid #CFD8DC;
+    color: #999999;
+}
+
+.app-table th {
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.app-table th:first-child {
+    width: 15%;
+}
+
+.app-table body {
+    background-color: white;
+}
+
+.app-table tr {
+    border-bottom: 1px solid #CFD8DC;
+    color: #616161;
+}
+
+.app-table td {
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+}
+
+.app-table td:first-child {
+    color: #999999;
+    padding-left: 15px;
+}
+
+.action-title {
+    color: #424242;
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.action-content {
+    box-sizing: border-box;
+    padding-top: 20px!important;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.action-content-wrapper {
+    padding-top: 20px;
+}
+
+.app-tab>.active>a,
+.app-tab>.active>a:hover,
+.app-tab>li>a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #42A5F5;
+    color: #000 !important;
+    background-color: transparent !important;
+    font-family: Roboto;
+}
+
+.app-tab {
+    padding: 0px;
+}
+
+.app-tab>li {
+    list-style: none;
+}
+
+.app-tab>li>a {
+    border-radius: 0px;
+    color: #000;
+    padding: 6px;
+}
+
+span {
+    font-family: Roboto;
+}
+
+label {
+    font-family: Roboto;
+}
+
+.app-form-group {
+    float: left;
+    width: 100%;
+}
+
+.app-form-control {
+    float: left;
+    widows: 199%;
+}
+
+.card {
+    border: 1px solid #E0E0E0;
+    margin-top: 10px;
+    margin-left: 5px;
+    height: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #ECEFF1;
+}
+
+.iconned-container {
+    padding: 2px;
+}
+
+.iconned-container-left-specified {
+    padding-left: 10px;
+}
+
+.left-specified {
+    padding-left: 15px;
+}
+
+.left-specified-25 {
+    padding-left: 25px;
+}
+
+// 'iconned' boot boot na name (cwl)
+.iconned-edit {
+    content: url('../icons/icon_edit.png');
+    height: 21px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+.iconned-delete {
+    content: url('../icons/icon_delete.png');
+    height: 21px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+.iconned-delete-circle {
+    content: url('../icons/icon_delete_circle_bg.png');
+    height: 21px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+.iconned-infinite {
+    content: url('../icons/icon_infinite.png');
+    height: auto;
+    width: auto;
+    vertical-align: middle;
+}
+
+.iconned-settings {
+    content: url('../icons/icon_settings.png');
+    height: 21px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+.iconned-plus {
+    content: url('../icons/icon_plus.png');
+    //height: 3vh;
+    width: 2vw;
+    vertical-align: middle;
+    background-size: 100% 100%;
+}
+
+.iconned-plus-regular {
+    content: url('../icons/icon_plus_regular.png');
+    background-size: 100% 100%;
+}
+
+.iconned-close-large {
+    content: url('../icons/icon_close_large.png');
+    width: 2vw;
+    vertical-align: middle;
+}
+
+.iconned-check-large {
+    content: url('../icons/icon_check_large.png');
+    width: 2vw;
+    vertical-align: middle;
+}
+
+.iconned-info-black {
+    content: url('../icons/icon_info.png');
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+}
+
+.iconned-info-white {
+    content: url('../icons/icon_info_white.png');
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+}
+
+.iconned-close-mini {
+    content: url('../icons/icon_close_mini.png');
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+}
+
+// 'iconned' boot boot na name (cwl)
+.icon-container {
+    text-align: left;
+}
+
+.iconned-trashcan {
+    content: url('../icons/icon_trashcan.png');
+    height: 21px;
+    width: 21px;
+    vertical-align: middle;
+}
+
+.app-table-mini {
+    color: #616161;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.app-table-mini thead {
+    font-size: 14px;
+    background-color: #ECEFF1;
+    border-bottom: 1px solid #CFD8DC;
+    color: #999999;
+}
+
+.app-table-mini th {
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 7px;
+    text-align: left;
+}
+
+.app-table-mini body {
+    background-color: white;
+}
+
+.app-table-mini tr {
+    border-bottom: 1px solid #CFD8DC;
+    color: #616161;
+}
+
+.app-table-mini td {
+    text-align: left;
+    //padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    //padding-right: 7px;
+}
+
+.app-table-mini td:first-child {
+    color: #999999;
+    padding-left: 15px;
+}
+
+.no-padding {
+    padding: 0!important;
+}
+
+.text-normal {
+    font-style: normal;
+    font-weight: normal;
+    font-family: Roboto;
+}
+
+.file-input {
+    padding: 10px;
+    background: url('../icons/dotted_bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    font-family: Roboto;
+}
+
+.border-nothing {
+    border: none!important;
+}
+
+.not-resizable {
+    resize: none;
+}
+
+// ---------- scrollbar style ----------
+.custom-scrolling::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.custom-scrolling::-webkit-scrollbar-thumb {
+    background-color: #1976D2;
+    border-radius: 5px;
+}
+
+.custom-scrolling::-webkit-scrollbar-track {
+    //box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+// ---------- scrollbar style ----------
+.full-width {
+    width: 100%;
+}
+
+.text-ellipse {
+    text-overflow: ellipsis!important;
+    white-space: normal!important;
+    overflow: hidden;
+}
+
+// a tag
+.action-link>a:hover {
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.action-link>a:focus {
+    text-decoration: none;
+    font-size: inherit;
+}
+
+// a tag
+.action-link {
+    color: #B0BEC5!important;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.action-link:hover {
+    color: #B0BEC5!important;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.action-link:focus {
+    color: #B0BEC5!important;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.input-group-no-border-right {
+    border-right: 0!important;
+}
+
+.input-group-no-border {
+    border: none!important;
+}
+
+.app-input-group {
+    width: 100%;
+}
+
+.icon-left {
+    margin-top: 10px;
+    position: absolute;
+    right: 30px;
+}
+
+// a tag
+.link-blue {
+    color: #42A5F5!important;
+    text-decoration: none;
+    //font-size: 1.9vh;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.link-blue>a:hover {
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.link-blue>a:focus {
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.link-blue:hover {
+    color: #42A5F5!important;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.link-blue:focus {
+    color: #42A5F5!important;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.child-item {
+    background-color: #E0E0E0;
+}
+
+.modal.show .modal-dialog {
+    width: 356px!important;
+}
+
+.modal-header {
+    display: block;
+    padding-bottom: 10px!important;
+    color: #424242;
+}
+
+.modal-body {
+    font-family: Roboto;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+    color: #424242;
+}
+
+.modal-footer {
+    display: block;
+    color: #424242;
+}
+
+.blue-button {
+    background-color: #1976D2;
+    border-style: none;
+    width: 6.875vw;
+    height: 35px;
+    font-size: 16px;
+    vertical-align: middle;
+    border-radius: 50px;
+    color: white;
+    cursor: default;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 3.3vh;
+    font-weight: 500;
+    font-family: Roboto;
+}
+
+.blue-button:hover {
+    background-color: rgb(116, 181, 241);
+}
+
+// modifying toastr styles
+.toast-black-custom {
+    background: black!important;
+}
+
+#toast-container .toast {
+    height: 90px!important;
+}
+
+.toast-success {
+    background: white!important;
+    color: #4D4D4D!important;
+    padding-left: 15px!important;
+    //padding-right: 20px!important;
+}
+
+.remove-bg-image {
+    background-image: none!important;
+}
+
+#toast-container .toast.toast-error {
+    background: black!important;
+    color: white!important;
+    padding-left: 15px!important;
+    background-image: url('../icons/icon_info.png')!important;
+    background-color: black!important;
+}
+
+.toast-message {
+    vertical-align: middle!important;
+    padding-top: 15px!important;
+}
+
+// #toast-container .toast.toast-success {
+//     background-image: url('../icons/icon_info.png') no-repeat!important;
+// }
+.toast-content {
+    font-family: Roboto;
+    color: #4D4D4D;
+    text-align: left;
+    height: 100%;
+    padding-right: 20px;
+    top: 30%;
+    bottom: 70%;
+    position: absolute;
+}
+
+//  HOVERS
+// tr tag
+.listHoverLightGray:hover {
+    background-color: rgb(251, 251, 251);
+}
+
+.bar {
+    z-index: 999999999!important;
+}
+
+.spinner {
+    z-index: 999999999!important;
+}
