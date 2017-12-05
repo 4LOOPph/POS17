@@ -17,7 +17,9 @@ body {
     box-shadow: 2px 2px 23px -3px rgba(0, 0, 0, 0.49);
     margin-top: .4vw;
     overflow-y: auto;
-    border-radius: 3px;
+    //border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 table {
@@ -143,6 +145,7 @@ label {
     margin-top: 10px;
     margin-left: 5px;
     height: 100%;
+    width: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -161,6 +164,10 @@ label {
 
 .left-specified {
     padding-left: 15px;
+}
+
+.right-specified {
+    margin-right: 15px;
 }
 
 .left-specified-25 {

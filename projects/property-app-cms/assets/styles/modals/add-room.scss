@@ -129,6 +129,22 @@
     border-radius: 5px;
 }
 
+// edit active
+.editActiveClass {
+    color: rgb(255, 255, 255);
+    background-color: #42A5F5;
+}
+.hideIcon {
+    display: none;
+}
+.activeDelete {
+    content: url('../../icons/icon_trashcan_hover.png');
+}
+.deactivate {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 // **
 // ADD HOME DIMENSION STYLES
 // **
